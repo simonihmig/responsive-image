@@ -5,11 +5,11 @@ moduleForComponent('responsive-image', 'Integration | Component | responsive ima
   integration: true
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
+test('it renders the correct sourceset', function(assert) {
   this.render(hbs`{{responsive-image image="kaliber5.png"}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  // <img id="ember276" src="assets/images/responsive/kaliber5100w.png" srcset="assets/images/responsive/kaliber5100w.png 100w, assets/images/responsive/kaliber550w.png 50w" class="ember-view">
+
+  //assert.ok(this.$().html().match());
+  assert.equal(this.$().attr('srcset'), 'assets/images/responsive/kaliber5100w.png 100w, assets/images/responsive/kaliber550w.png 50w', 'The sourceset is not as expected');
 });
