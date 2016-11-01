@@ -35,9 +35,9 @@ module.exports = {
   options: {},
   addonOptions: {},
 
-  isDevelopingAddon: function() {
-    return true;
-  },
+  //isDevelopingAddon: function() {
+  //  return true;
+  //},
 
   included: function(app) {
     this.addonOptions = app.options;
