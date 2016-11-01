@@ -1,0 +1,1 @@
+export { default } from 'ember-kaliber5-responsive-image/components/responsive-image';
