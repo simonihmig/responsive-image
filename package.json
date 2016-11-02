@@ -1,5 +1,5 @@
 {
-  "name": "ember-kaliber5-responsive-image",
+  "name": "ember-responsive-image",
   "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:testall"
+    "test": "ember try:each && node_modules/mocha/bin/mocha addon-tests/*-test.js"
   },
   "repository": "",
   "engines": {
@@ -19,6 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
+    "chai": "^3.5.0",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.5.1",
     "ember-cli-addon-tests": "^0.4.1",
@@ -28,7 +29,7 @@
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-jshint": "^1.0.0",
-    "ember-cli-qunit": "^1.4.0",
+    "ember-cli-mocha": "0.10.4",
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
@@ -37,8 +38,10 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
-    "ember-try": "^0.2.2",
-    "loader.js": "^4.0.1"
+    "ember-try": "^0.2.8",
+    "loader.js": "^4.0.1",
+    "mocha": "^3.1.2",
+    "request": "2.76.0"
   },
   "keywords": [
     "ember-addon"

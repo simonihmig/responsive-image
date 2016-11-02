@@ -1,30 +1,30 @@
-# ember-kaliber5-responsive-image
+# ember-responsive-image
 
-An ember-cli addon for generating img-tags with the srcset-attribute which automatic resize specific images to supported widths by ImageMagick and include them to the srcset-attribute
-
+An ember-cli addon for generating resized images and use them in img-tags with the srcset-attribute 
 
 ## Getting started
-First download and install [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
+### Install ImageMagick
+
+For the resizing, ImageMagick has to be installed on the machine where the build process will be executed (local and/or your build-server).
+Download and install [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
 
     brew install imagemagick
+### Install in ember-cli application
 
-    npm install kaliber5/ember-kaliber5-responsive-image
+In your application's directory:
 
+```bash
+    npm install ember-responsive-image
+```
 
 ## Basic Usage
 
 Add the configuration to your environment.js
 
-The sourceDir contains the origin images folder.
-The destinationDir will be created, if not exists.
-The supportedWidths will be the widths of the resized images.
-If removeSourceDir is true (default), the origin images will be removed from the build.
-If justCopy is true, the images will just be copied without resizing. This is usefull for development builds to speed things up, but should be false for production.
-
 ```js
 module.exports = function(environment) {
   var ENV = {
-    'kaliber5-responsive-image': {
+    'responsive-image': {
       sourceDir: 'assets/images/generate',
       destinationDir: 'assets/images/responsive',
       quality: 80,
@@ -34,14 +34,76 @@ module.exports = function(environment) {
     }
   }
 }
+```
+
+### Options
+
+**sourceDir:** The folder with the origin images.
+**destinationDir:** This folder will contain the generated Images. It will be created, if not exists. Must not the same as sourceDir.
+**supportedWidths:** These are the widths of the resized images.
+**removeSourceDir:** If true, the sourceDir will be removed from the build.
+**justCopy:** If true, the images will just be copied without resizing. This is usefull for development builds to speed things up, but should be false for production.
+
+Put one or more images in the source-folder (in this case 'assets/images/generate/'), like 'myImage.png', and build the project. The resized images will be generated into the destination directory (assets/images/responsive):
+```
+myImage640w.png
+myImage750w.png
+myImage1080w.png
+myImage1536w.png
+myImage2048w.png
+```
+
+## Component
+
+In a template you can use the responsive-image component. The image argument is required and must be one of the origin files:
+
 ```js
+{{responsive-image image="myImage.png"}}
+```
 
-Put one or more images in the source-folder (in this case '/assets/images/generate/'), like 'myImage.png', and build the project.
+this will generate an img-tag with the resized images as srcset, so the browser can decide, which image fits the needs:
+```html
+<img id="ember308" src="/assets/images/responsive/myImage1080w.png" srcset="/assets/images/responsive/myImage640w.png 640w, /assets/images/responsive/myImage750w.png 750w, /assets/images/responsive/myImage1080w.png 1080w, /assets/images/responsive/myImage1536w.png 1536w, /assets/images/responsive/myImage2048w.png 2048w" class="ember-view">
+```
 
-In a template you can use the responsive-image component with specify the image. Other attributes like 'style', 'className',... are optional:
+The image in the src-attribute is calculated from the component and will be used by browsers without the srcset-support.
+
+Other attributes like 'alt', 'className' are optional:
 
 ```js
-{{responsive-image image="myImage.png" className="my-css-class" }}
-```js
+{{responsive-image image="myImage.png" className="my-css-class" alt="This is my image"}}
+```
 
-this will generate an img-tag with the resized images as srcset.
+```html
+<img id="ember308" src="..." srcset="..." class="ember-view my-css-class" alt="This is my image">
+```
+
+If your image-width is not '100vw', say 70vw for Example, you can specify the 'size' (only vw supported by now):
+```js
+{{responsive-image image="myImage.png" size="70"}}
+```
+
+```html
+<img id="ember308" src="..." srcset="..." sizes="70vw">
+```
+
+You can also replace the sizes argument if your image width is more complicated like:
+```js
+{{responsive-image image="myImage.png" sizes="(min-width: 800px) 800px, 100vw"}}
+```
+
+```html
+<img id="ember308" src="..." srcset="..." sizes="(min-width: 800px) 800px, 100vw">
+```
+
+**Note:** If you use this component, you have to exclude the destination folder from fingerprinting
+```js
+//ember-cli-build.js
+
+//  ...
+    fingerprint: {
+        exclude: ['assets/images/responsive'] // or whatever your destination folder is
+      }
+//  ...      
+
+```

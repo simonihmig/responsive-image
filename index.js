@@ -31,7 +31,7 @@ function defaultConfig(env) {
  *
  */
 module.exports = {
-  name: 'ember-kaliber5-responsive-image',
+  name: 'ember-responsive-image',
   options: {},
   addonOptions: {},
 
@@ -42,7 +42,7 @@ module.exports = {
   config: function(env, baseConfig) {
     if (!env)
       return;
-    this.options = extend(defaultConfig(env), baseConfig['kaliber5-responsive-image']);
+    this.options = extend(defaultConfig(env), baseConfig['responsive-image']);
     this.addonOptions['responsive'] = this.options;
   },
 
@@ -50,6 +50,7 @@ module.exports = {
     var options = this.options;
     var funnel = new Funnel('public', {
       srcDir: options.sourceDir,
+      allowEmpty: true,
       destDir: '/'
     });
     return new Writer([funnel], this.addonOptions, this.ui);

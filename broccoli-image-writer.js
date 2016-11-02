@@ -41,6 +41,7 @@ ImageResizer.prototype.build = function () {
     var that = this;
 
     files.forEach(function (file) {
+      writeLn(chalk.green(file));
       var newPromise;
       if (options.justCopy) {
         newPromise = that.copyImages(file, sourcePath, destinationPath, options);
