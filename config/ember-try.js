@@ -50,6 +50,13 @@ module.exports = {
           'ember': 'canary'
         }
       }
+    },
+    {
+      name: 'generate-image',
+      command: 'node_modules/mocha/bin/mocha addon-tests/server-test.js',
+      bower: {
+        dependencies: {}
+      }
     }
   ]
 };

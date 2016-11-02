@@ -15,6 +15,7 @@ env:
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
+  - EMBER_TRY_SCENARIO=generate-image
 
 matrix:
   fast_finish: true
@@ -33,3 +34,8 @@ install:
 
 script:
   - ember try $EMBER_TRY_SCENARIO test
+
+addons:
+  apt:
+    packages:
+    - imagemagick
