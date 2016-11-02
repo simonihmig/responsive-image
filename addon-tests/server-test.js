@@ -5,7 +5,7 @@ var AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
 var expect = require('chai').expect;
 
 describe('serve assets acceptance', function() {
-  this.timeout(300000);
+  this.timeout(600000);
 
   var app;
 

@@ -23,7 +23,7 @@ function defaultConfig(env) {
   //  defaultConfig.justCopy = true;
   //}
   return defaultConfig;
-};
+}
 
 /**
  * Ember Addon, generate resized images on build time

@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/kaliber5/ember-responsive-image.svg?branch=master)](https://travis-ci.org/kaliber5/ember-responsive-image)
 
+[![Code Climate](https://codeclimate.com/github/kaliber5/ember-responsive-image/badges/gpa.svg)](https://codeclimate.com/github/kaliber5/ember-responsive-image)
+
 An ember-cli addon for generating resized images and use them in img-tags with the srcset-attribute 
 
 ## Getting started

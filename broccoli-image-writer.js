@@ -128,7 +128,7 @@ ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPa
     ])
     .then(function(infos) {
       var format = infos[0];
-      var colors = parseInt(infos[1]);
+      var colors = parseInt(infos[1], 10);
 
       gmImage.resize(width, null, '>') // resize, but do not enlarge
         .quality(options.quality)
