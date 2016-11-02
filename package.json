@@ -1,7 +1,7 @@
 {
   "name": "ember-responsive-image",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "An ember-cli addon for generating resized images and use them in img-tags with the srcset-attribute.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -30,7 +30,7 @@
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-jshint": "^1.0.0",
     "ember-cli-mocha": "0.10.4",
-    "ember-cli-release": "0.2.8",
+    "ember-cli-release": "1.0.0-beta.2",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.5.0",

@@ -53,6 +53,8 @@ myImage1536w.png
 myImage2048w.png
 ```
 
+**Note:** If the width of your origin image is less than the generated should be, the image will be generated unresized.
+
 ## Component
 
 In a template you can use the responsive-image component. The image argument is required and must be one of the origin files:
@@ -96,7 +98,7 @@ You can also replace the sizes argument if your image width is more complicated 
 <img id="ember308" src="..." srcset="..." sizes="(min-width: 800px) 800px, 100vw">
 ```
 
-**Note:** If you use this component, you have to exclude the destination folder from fingerprinting
+**Important:** If you use this component, you have to exclude the destination folder from fingerprinting:
 ```js
 //ember-cli-build.js
 

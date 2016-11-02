@@ -26,7 +26,7 @@ describe('serve assets acceptance', function() {
   });
 
   it('loads image 100w', function() {
-    return request('http://localhost:49741/assets/images/responsive/kaliber5100w.png')
+    return request('http://localhost:49741/assets/images/responsive/test100w.png')
     .then(function(response) {
       expect(response.statusCode).to.equal(200);
       expect(response.headers["content-type"]).to.eq("image/png");
@@ -34,7 +34,7 @@ describe('serve assets acceptance', function() {
   });
 
   it('loads image 50w', function() {
-    return request('http://localhost:49741/assets/images/responsive/kaliber550w.png')
+    return request('http://localhost:49741/assets/images/responsive/test50w.png')
     .then(function(response) {
       expect(response.statusCode).to.equal(200);
       expect(response.headers["content-type"]).to.eq("image/png");
