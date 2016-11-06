@@ -98,6 +98,7 @@ export default Ember.Component.extend({
    * the path to the assets, if the baseURL points to something
    *
    * @property assetsPath
+   * @readonly
    * @type string
    * @private
    */
@@ -105,23 +106,25 @@ export default Ember.Component.extend({
     let config = getOwner(this)._lookupFactory('config:environment'),
       baseUrl = Ember.get(config, 'baseURL') || '';
     return baseUrl;
-  }),
+  }).readOnly(),
 
   /**
    * the fallback src, takes the image which fits at best
    *
    * @property src
+   * @readonly
    * @type string
    * @private
    */
   src: computed('imageName', 'imageEnding', 'destinationPath', 'sourceWidth', function() {
     return `${this.get('destinationPath')}${this.get('imageName')}${this.get('sourceWidth')}w.${this.get('imageEnding')}`;
-  }),
+  }).readOnly(),
 
   /**
    * the supported widths from the configuration
    *
    * @property supportedWidths
+   * @readonly
    * @type string
    * @private
    */
@@ -129,26 +132,26 @@ export default Ember.Component.extend({
     let config = getOwner(this)._lookupFactory('config:environment'),
       widths = Ember.get(config, 'responsive-image.supportedWidths');
     return widths;
-  }),
+  }).readOnly(),
 
   /**
    * the generated source set
    *
    * @property srcset
    * @type number
-   * @readOnly
+   * @readonly
    * @private
    */
   srcset: computed('sources', function() {
     return this.get('sources').join(', ');
-  }),
+  }).readOnly(),
 
   /**
    * returns the width next to needed by display-size
    *
    * @property sourceWidth
    * @type number
-   * @readOnly
+   * @readonly
    * @private
    */
   sourceWidth: computed('supportedWidths', 'destinationWidth', function() {
@@ -159,14 +162,14 @@ export default Ember.Component.extend({
         return (item >= prevValue) ? item : prevValue;
       }
     }, 0);
-  }),
+  }).readOnly(),
 
   /**
    * returns the width of the screen in px
    *
    * @property physicalWidth
    * @type number
-   * @readOnly
+   * @readonly
    * @private
    */
   physicalWidth: screen.width * (window.devicePixelRatio || 1),
@@ -176,7 +179,7 @@ export default Ember.Component.extend({
    *
    * @property destinationWidth
    * @type number
-   * @readOnly
+   * @readonly
    * @private
    */
   destinationWidth: computed('size', 'physicalWidth', function() {
@@ -185,28 +188,28 @@ export default Ember.Component.extend({
       factor = this.get('size') / 100;
     }
     return this.get('physicalWidth') * factor;
-  }),
+  }).readOnly(),
 
   /**
    * an array of strings with the images and the width
    *
    * @property sources
    * @type string[]
-   * @readOnly
+   * @readonly
    * @private
    */
   sources: computed('imageName', 'imageEnding', 'destinationPath', 'supportedWidths', function() {
     return this.get('supportedWidths').map((item) => {
       return `${this.get('destinationPath')}${this.get('imageName')}${item}w.${this.get('imageEnding')} ${item}w`;
     }, this);
-  }),
+  }).readOnly(),
 
   /**
    * the path where the generated images will be
    *
    * @property destinationPath
    * @type string
-   * @readOnly
+   * @readonly
    * @private
    */
   destinationPath: computed(function() {
@@ -217,29 +220,29 @@ export default Ember.Component.extend({
     // if assetPath is empty the first file path would lead to an absolute path, that might break things (e.g. cordova),
     // so check for empty assetPath!
     return Ember.isPresent(assetsPath) ? `${assetsPath}${destinationDir}/` : `${destinationDir}/`;
-  }),
+  }).readOnly(),
 
   /**
    * the name of the image without the file extension
    *
    * @property imageEnding
    * @type string
-   * @readOnly
+   * @readonly
    * @private
    */
   imageName: computed('image', function() {
     return this.get('image').substr(0, this.get('image').lastIndexOf('.'));
-  }),
+  }).readOnly(),
 
   /**
    * the file extension of the image
    *
    * @property imageEnding
    * @type string
-   * @readOnly
+   * @readonly
    * @private
    */
   imageEnding: computed('image', function() {
     return this.get('image').substr(this.get('image').lastIndexOf('.') + 1);
-  })
+  }).readOnly()
 });
