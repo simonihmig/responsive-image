@@ -1,11 +1,14 @@
 ---
 language: node_js
 node_js:
-  - "0.12"
+  - "4"
+  - "5"
+  - "6"
 
 sudo: false
 
 cache:
+  yarn: true
   directories:
     - node_modules
 
@@ -29,8 +32,8 @@ before_install:
 
 install:
   - npm install -g bower
-  - npm install
   - bower install
+  - yarn install
 
 script:
   - ember try:one $EMBER_TRY_SCENARIO test
