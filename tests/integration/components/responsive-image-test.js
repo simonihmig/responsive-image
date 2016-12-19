@@ -38,13 +38,14 @@ describeComponent(
     });
 
     it('it renders the fallback src next to needed display size', function() {
-      this.set('displaySize', '45');
-      this.render(hbs`{{responsive-image image="test.png" physicalWidth=displaySize}}`);
+      this.inject.service('responsive-image');
+      this.get('responsive-image').set('physicalWidth', 45);
+      this.render(hbs`{{responsive-image image="test.png"}}`);
       expect(this.$('img').attr('src')).to.equal('/assets/images/responsive/test50w.png');
-      this.set('displaySize', '51');
+      this.get('responsive-image').set('physicalWidth', 51);
+      this.render(hbs`{{responsive-image image="test.png"}}`);
       expect(this.$('img').attr('src')).to.equal('/assets/images/responsive/test100w.png');
     });
-
     it('it renders the alt and classNames arguments', function() {
       this.set('alt', 'my description');
       this.set('className', 'my-css-class');
@@ -52,6 +53,5 @@ describeComponent(
       expect(this.$('img').attr('alt')).to.equal('my description');
       expect(this.$('img').attr('class')).to.contain('my-css-class');
     });
-
   }
 );
