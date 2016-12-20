@@ -81,6 +81,7 @@ export default Ember.Service.extend({
    * @method getDestinationWidthBySize
    * @param {Number} size returns the physical width factored by size
    * @returns {Number}
+   * @private
    */
   getDestinationWidthBySize(size)
   {

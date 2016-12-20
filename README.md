@@ -61,7 +61,42 @@ myImage2048w.png
 
 **Note:** If the width of your origin image is less than the generated should be, the image will be generated unresized.
 
-## Component
+## Service
+
+The `responsive-image` service provides the available images with the sizes for a given origin image, and also retrieves the image that fits for the current screen size.
+```js
+let availableImages = responsiveImageService.getImages("myImage.png");
+/**
+avaliableImages contains now: 
+[
+    {width: 640, image: "/assets/images/responsive/myImage640w.png"},
+    {width: 750, image: "/assets/images/responsive/myImage750w.png"},
+    ...
+    {width: 2048, image: "/assets/images/responsive/myImage2048w.png"}
+]
+*/
+
+let fittingImage = responsiveImageService.getImageBySize("myImage.png", 100); // The size argument is in ´vw´, 100 is the default and can be omitted
+// "/assets/images/responsive/myImage1080w.png"
+```
+
+## Helper
+
+The `responsive-image-resolve` helper provides the image url that fits for the current screen size. The first parameter is the name of the origin image. 
+The second argument is the width in `vw` and has a default value of 100, so it can be omitted. 
+
+```hbs
+{{responsive-image-resolve "myImage.png" 100}}
+```
+
+will result in
+
+```html
+/assets/images/responsive/myImage1080w.png
+```
+
+## Components
+### The responsive-image component
 
 In a template you can use the responsive-image component. The image argument is required and must be one of the origin files:
 
@@ -104,7 +139,40 @@ You can also replace the [`sizes` attribute](https://developer.mozilla.org/de/do
 <img id="ember308" src="..." srcset="..." sizes="(min-width: 800px) 800px, 100vw">
 ```
 
-**Important:** If you use this component, you have to exclude the destination folder from fingerprinting in production. This is because the image URLs are generated dynamically at runtime, where replacement of all original file names with their fingerprinted counterpart is currently not possible:
+### The responsive-background component
+
+In a template you can use the `responsive-background` component. The image argument is required and must be one of the origin files:
+
+```js
+{{responsive-background image="myImage.png"}}
+```
+
+This will generate an `div` tag with an image as a background image, which fits the needs:
+```html
+<img id="ember308" style="background-image: url('/assets/images/responsive/myImage1080w.png')" class="ember-view">
+```
+
+Like the `responsive-image` component, you can pass a size:
+```js
+{{responsive-background image="myImage.png" size="50"}}
+```
+
+```html
+<img id="ember308" style="background-image: url('/assets/images/responsive/myImage640w.png')" class="ember-view">
+```
+
+## Mixins
+### The responsive-image mixin
+
+This mixin binds the url of the best fitting image to the source attribute, based in the values provided by the `image` and `size` attribute. It also get the ´responsiveImage` service injected.
+
+### The responsive-background mixin
+
+This mixin binds the url of the best fitting image as the background url to the elements style attribute, based in the values provided by the `image` and `size` attribute. It also get the ´responsiveImage` service injected.
+
+
+
+**Important:** If you use one of these components/mixins/helper or service, you have to exclude the destination folder from fingerprinting in production. This is because the image URLs are generated dynamically at runtime, where replacement of all original file names with their fingerprinted counterpart is currently not possible:
 ```js
 //ember-cli-build.js
 

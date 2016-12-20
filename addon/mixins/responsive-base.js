@@ -13,7 +13,7 @@ export default Ember.Mixin.create({
 
   /**
    * @property responsiveImage
-   * @private
+   * @protected
    */
   responsiveImage: inject.service(),
 
