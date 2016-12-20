@@ -149,7 +149,7 @@ In a template you can use the `responsive-background` component. The image argum
 
 This will generate an `div` tag with an image as a background image, which fits the needs:
 ```html
-<img id="ember308" style="background-image: url('/assets/images/responsive/myImage1080w.png')" class="ember-view">
+<div id="ember308" style="background-image: url('/assets/images/responsive/myImage1080w.png')" class="ember-view"></div>
 ```
 
 Like the `responsive-image` component, you can pass a size:
@@ -158,7 +158,7 @@ Like the `responsive-image` component, you can pass a size:
 ```
 
 ```html
-<img id="ember308" style="background-image: url('/assets/images/responsive/myImage640w.png')" class="ember-view">
+<div id="ember308" style="background-image: url('/assets/images/responsive/myImage640w.png')" class="ember-view"></div>
 ```
 
 ## Mixins
