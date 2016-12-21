@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import BaseMixin from 'ember-responsive-image/mixins/responsive-base';
 
-const {computed} = Ember;
+const { computed, String: { htmlSafe } } = Ember;
 
 /**
  * you can use this mixin to set a background image fits the size of the screen
@@ -40,6 +40,9 @@ export default Ember.Mixin.create(BaseMixin, {
    * @private
    */
   backgroundImage: computed('suitableSrc', function() {
-    return `background-image: url('${this.get('suitableSrc')}');`;
+    let src = this.get('suitableSrc');
+    if (src) {
+      return htmlSafe(`background-image: url('${this.get('suitableSrc')}');`);
+    }
   }).readOnly()
 });

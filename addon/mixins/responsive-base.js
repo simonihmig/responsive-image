@@ -45,6 +45,9 @@ export default Ember.Mixin.create({
    * @private
    */
   suitableSrc: computed('image', 'size', function() {
-    return this.get('responsiveImage').getImageBySize(this.get('image'), this.get('size'));
+    let image = this.get('image');
+    if (image) {
+      return this.get('responsiveImage').getImageBySize(this.get('image'), this.get('size'));
+    }
   }).readOnly()
 });
