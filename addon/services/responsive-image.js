@@ -121,7 +121,7 @@ export default Ember.Service.extend({
    */
   assetsPath: computed(function() {
     let config = getOwner(this)._lookupFactory('config:environment'),
-      baseUrl = Ember.get(config, 'baseURL') || '';
+      baseUrl = Ember.get(config, 'baseURL') || Ember.get(config, 'rootURL') || '';
     return baseUrl;
   }).readOnly(),
 

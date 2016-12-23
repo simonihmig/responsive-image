@@ -20,12 +20,12 @@ Download and install [ImageMagick](http://www.imagemagick.org/). In Mac OS X, yo
 In your application's directory:
 
 ```bash
-    ember install ember-responsive-image
+ember install ember-responsive-image
 ```
 
 ## Basic Usage
 
-Add the configuration to your environment.js
+Add the configuration to your `config/environment.js`
 
 ```js
 module.exports = function(environment) {
@@ -83,7 +83,7 @@ let fittingImage = responsiveImageService.getImageBySize("myImage.png", 100); //
 ## Helper
 
 The `responsive-image-resolve` helper provides the image url that fits for the current screen size. The first parameter is the name of the origin image. 
-The second argument is the width in `vw` and has a default value of 100, so it can be omitted. 
+The second argument is the width in `vw` and has a default value of `100`, so it can be omitted. 
 
 ```hbs
 {{responsive-image-resolve "myImage.png" 100}}
@@ -164,11 +164,11 @@ Like the `responsive-image` component, you can pass a size:
 ## Mixins
 ### The responsive-image mixin
 
-This mixin binds the url of the best fitting image to the source attribute, based in the values provided by the `image` and `size` attribute. It also get the ´responsiveImage` service injected.
+This mixin binds the url of the best fitting image to the source attribute, based in the values provided by the `image` and `size` attribute. It also get the `responsiveImage` service injected.
 
 ### The responsive-background mixin
 
-This mixin binds the url of the best fitting image as the background url to the elements style attribute, based in the values provided by the `image` and `size` attribute. It also get the ´responsiveImage` service injected.
+This mixin binds the url of the best fitting image as the background url to the elements style attribute, based in the values provided by the `image` and `size` attribute. It also get the `responsiveImage` service injected.
 
 
 
