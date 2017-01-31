@@ -1,3 +1,5 @@
+'use strict';
+
 const expect = require('chai').expect;
 
 describe('image', function() {
@@ -7,7 +9,7 @@ describe('image', function() {
       .then(function(res) {
         let $ = res.jQuery;
         expect($('img').length).to.equal(1);
-        expect($('img').attr('src')).to.equal('/assets/images/responsive/awesome1080w.jpg');
+        expect($('img').attr('src')).to.equal('/assets/images/responsive/awesome640w.jpg');
       });
   });
 
