@@ -13,13 +13,13 @@
   },
   "repository": "https://github.com/kaliber5/ember-responsive-image",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4.0.0"
   },
   "author": "Andreas Schacht <schacht@kaliber5.de>, Simon Ihmig <ihmig@kaliber5.de>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
-    "chai": "^3.5.0",
+    "chai": "3.5.0",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.5.1",
     "ember-cli-addon-tests": "^0.4.1",
@@ -36,6 +36,7 @@
     "ember-data": "^2.5.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
+    "ember-fastboot-addon-tests": "0.1.2",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-try": "^0.2.8",

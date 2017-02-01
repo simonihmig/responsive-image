@@ -156,6 +156,15 @@ export default Ember.Service.extend({
   }).readOnly(),
 
   /**
+   * the screen's width
+   *
+   * @property screenWidth
+   * @type {Number}
+   * @private
+   */
+  screenWidth: typeof screen !== 'undefined' ? screen.width : 320,
+
+  /**
    * the physical width
    *
    * @property physicalWidth
@@ -163,5 +172,7 @@ export default Ember.Service.extend({
    * @readonly
    * @private
    */
-  physicalWidth: screen.width * (window.devicePixelRatio || 1)
+  physicalWidth: computed('screenWidth', function() {
+    return this.get('screenWidth') * (window && window.devicePixelRatio || 1);
+  })
 });

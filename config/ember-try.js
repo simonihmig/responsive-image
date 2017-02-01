@@ -79,6 +79,13 @@ module.exports = {
       bower: {
         dependencies: {}
       }
+    },
+    {
+      name: 'fastboot-addon-tests',
+      command: 'ember fastboot:test',
+      npm: {
+        devDependencies: {}
+      }
     }
   ]
 };

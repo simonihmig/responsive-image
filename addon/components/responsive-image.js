@@ -6,7 +6,7 @@ const {computed} = Ember;
 /**
  * Use this component to show the generated images from the source folder, just set the image property with the image
  * name and optional a css-className
- * (e.g. {{responsive-image image="awesome.jpg" className="responsive-image-css" }}) and enjoy the generated img-Tag
+ * (e.g. `{{responsive-image image="awesome.jpg" className="responsive-image-css"}}`) and enjoy the generated img-Tag
  * with srcset-attribute
  *
  *
