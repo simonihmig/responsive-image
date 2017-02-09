@@ -80,6 +80,8 @@ let fittingImage = responsiveImageService.getImageBySize("myImage.png", 100); //
 // "/assets/images/responsive/myImage1080w.png"
 ```
 
+The base width to calculate the necessary image width is the `screen.width` assigned to the `screenWidth` property of the services. If this doesn't fit your needs, you can assign an other value, e.g. `document.documentElement.clientWidth`. 
+
 ## Helper
 
 The `responsive-image-resolve` helper provides the image url that fits for the current screen size. The first parameter is the name of the origin image. 

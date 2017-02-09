@@ -14,6 +14,18 @@ const { computed, getOwner } = Ember;
 export default Ember.Service.extend({
 
   /**
+   * the screen's width
+   * This is the base value to calculate the image size.
+   * That means the {{#crossLink "Services/ResponsiveImage:getImageBySize"}}getImageBySize{{/crossLink}} will return
+   * an image that's close to `screenWidth *  window.devicePixelRatio * size / 100`
+   *
+   * @property screenWidth
+   * @type {Number}
+   * @public
+   */
+  screenWidth: typeof screen !== 'undefined' ? screen.width : 320,
+
+  /**
    * return the images with the different widths
    *
    * @method getImages
@@ -154,15 +166,6 @@ export default Ember.Service.extend({
     // so check for empty assetPath!
     return Ember.isPresent(assetsPath) ? `${assetsPath}${destinationDir}/` : `${destinationDir}/`;
   }).readOnly(),
-
-  /**
-   * the screen's width
-   *
-   * @property screenWidth
-   * @type {Number}
-   * @private
-   */
-  screenWidth: typeof screen !== 'undefined' ? screen.width : 320,
 
   /**
    * the physical width
