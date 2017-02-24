@@ -1533,6 +1533,12 @@ ember-cli-htmlbars@^1.0.0, ember-cli-htmlbars@^1.0.3:
     json-stable-stringify "^1.0.0"
     strip-bom "^2.0.0"
 
+ember-cli-ifa@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-ifa/-/ember-cli-ifa-0.3.0.tgz#3823d358f2a10b8c11afbc7cd28ad18e09ec383e"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+
 ember-cli-inject-live-reload@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/ember-cli-inject-live-reload/-/ember-cli-inject-live-reload-1.4.1.tgz#ddadb9a346c5ed694ec0f9e11f49994eacafd277"

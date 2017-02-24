@@ -5,6 +5,13 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     // Add options here
+    fingerprint: {
+      // exclude: ['assets/images/responsive'], // or whatever your destination folder is
+      enabled: true,
+      generateAssetMap: true,
+      fingerprintAssetMap: true,
+      extensions: ['png']
+    }
   });
 
   /*

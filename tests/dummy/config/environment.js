@@ -22,7 +22,11 @@ module.exports = function(environment) {
       destinationDir: 'assets/images/responsive',
       quality: 50,
       supportedWidths: [100, 50]
+    },
+    ifa: {
+      enabled: true
     }
+    
   };
 
   if (environment === 'development') {
