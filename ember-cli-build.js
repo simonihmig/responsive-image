@@ -10,7 +10,8 @@ module.exports = function(defaults) {
       enabled: true,
       generateAssetMap: true,
       fingerprintAssetMap: true,
-      extensions: ['png']
+      extensions: ['png'],
+      customHash: '00e24234f1b58e32b935b1041432916f'
     }
   });
 

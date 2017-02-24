@@ -6,7 +6,11 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
     fingerprint: {
-      exclude: ['assets/images/responsive']
+      enabled: true,
+      generateAssetMap: true,
+      fingerprintAssetMap: true,
+      extensions: ['png'],
+      customHash: '00e24234f1b58e32b935b1041432916f'
     }
   });
 
