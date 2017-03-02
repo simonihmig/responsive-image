@@ -18,13 +18,21 @@
   "author": "Andreas Schacht <schacht@kaliber5.de>, Simon Ihmig <ihmig@kaliber5.de>",
   "license": "MIT",
   "devDependencies": {
+    "async-q": "^0.3.1",
     "broccoli-asset-rev": "^2.4.2",
+    "broccoli-caching-writer": "^2.2.1",
+    "broccoli-funnel": "^1.0.1",
+    "broccoli-merge-trees": "^1.1.1",
+    "broccoli-stew": "^1.4.0",
     "chai": "3.5.0",
+    "chalk": "^1.1.1",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.5.1",
     "ember-cli-addon-tests": "^0.4.1",
     "ember-cli-app-version": "^1.0.0",
+    "ember-cli-babel": "^5.0.0",
     "ember-cli-dependency-checker": "^1.2.0",
+    "ember-cli-fastboot": "^1.0.0-beta.15",
     "ember-cli-htmlbars": "^1.0.3",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-inject-live-reload": "^1.4.0",
@@ -37,33 +45,28 @@
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-fastboot-addon-tests": "0.1.2",
+    "ember-getowner-polyfill": "^1.2.2",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-try": "^0.2.8",
+    "fastboot-filter-initializers": "^0.0.2",
+    "fs-extra": "^0.26.5",
+    "gm": "^1.21.1",
     "loader.js": "^4.0.1",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.1.2",
+    "q": "^1.4.1",
     "request": "2.76.0",
+    "rimraf": "^2.5.2",
     "rsvp": "^3.3.3"
   },
   "keywords": [
     "ember-addon"
   ],
-  "dependencies": {
-    "async-q": "^0.3.1",
-    "broccoli-caching-writer": "^2.2.1",
-    "broccoli-funnel": "^1.0.1",
-    "broccoli-merge-trees": "^1.1.1",
-    "chalk": "^1.1.1",
-    "ember-cli-babel": "^5.0.0",
-    "ember-cli-ifa": "^0.4.0",
-    "ember-getowner-polyfill": "^1.2.2",
-    "fs-extra": "^0.26.5",
-    "gm": "^1.21.1",
-    "mkdirp": "^0.5.1",
-    "q": "^1.4.1",
-    "rimraf": "^2.5.2"
-  },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "before": [
+      "broccoli-asset-rev"
+    ]
   }
 }

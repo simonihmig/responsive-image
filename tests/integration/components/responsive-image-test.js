@@ -1,12 +1,12 @@
 import { expect } from 'chai';
+import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
 import {
   describeComponent,
   it
 } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import {
-  beforeEach,
-  afterEach
+  before
 } from 'mocha';
 
 describeComponent(
@@ -16,12 +16,9 @@ describeComponent(
     integration: true
   },
   function() {
-    beforeEach(function() {
+    before(function() {
+      initialize();
     });
-
-    afterEach(function() {
-    });
-
     it('it renders the correct sourceset', function() {
       this.render(hbs`{{responsive-image image="test.png"}}`);
       expect(this.$('img').attr('srcset')).to.equal('/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png 100w, /assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png 50w');

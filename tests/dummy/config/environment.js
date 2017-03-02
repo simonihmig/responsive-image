@@ -21,12 +21,9 @@ module.exports = function(environment) {
       sourceDir: 'assets/images/generate',
       destinationDir: 'assets/images/responsive',
       quality: 50,
+      justCopy: true,
       supportedWidths: [100, 50]
-    },
-    ifa: {
-      enabled: true
     }
-    
   };
 
   if (environment === 'development') {

@@ -1,9 +1,13 @@
 /* jshint expr:true */
 import { expect } from 'chai';
+import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
 import {
   describeComponent,
   it
 } from 'ember-mocha';
+import {
+  before
+} from 'mocha';
 import hbs from 'htmlbars-inline-precompile';
 
 describeComponent(
@@ -13,6 +17,9 @@ describeComponent(
     integration: true
   },
   function() {
+    before(function() {
+      initialize();
+    });
     it('renders with backround url', function() {
       this.render(hbs`{{responsive-background image="test.png"}}`);
       expect(this.$('div').attr('style')).to.equal('background-image: url(\'/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png\');');
