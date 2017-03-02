@@ -5,7 +5,9 @@ const Writer = require('./broccoli-image-writer');
 const rimraf = require('rimraf');
 const extend = require('util')._extend;
 const map = require('broccoli-stew').map;
+const log = require('broccoli-stew').log;
 const filterInitializers = require('fastboot-filter-initializers');
+const mergeTrees = require('broccoli-merge-trees');
 
 
 /*jshint node:true*/
@@ -38,9 +40,9 @@ module.exports = {
   metaData: {},
   app: null,
 
-  included(app) {
+  included(app, parentAddon) {
     this._super.included.apply(this, arguments);
-    this.app = app;
+    this.app = (parentAddon || app);
   },
 
   config(env, baseConfig) {
@@ -55,6 +57,7 @@ module.exports = {
   },
 
   treeForPublic(tree) {
+    tree = this._super.treeForPublic.apply(this, arguments);
     let options = this.options;
     let funnel = new Funnel('public', {
       srcDir: options.sourceDir,
@@ -66,7 +69,8 @@ module.exports = {
     if (this.app && this.app.options && this.app.options.fingerprint) {
       this.metaData.prepend = this.app.options.fingerprint.prepend;
     }
-    return new Writer([funnel], this.options, this.metaData, this.ui);
+    let responseTree = new Writer([funnel], this.options, this.metaData, this.ui);
+    return mergeTrees([tree, responseTree]);
   },
 
   contentFor(type) {
