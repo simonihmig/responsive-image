@@ -5,12 +5,12 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
-    // fingerprint: {
-    //   enabled: true,
-    //   generateAssetMap: true,
-    //   fingerprintAssetMap: true,
-    //   customHash: '00e24234f1b58e32b935b1041432916f'
-    // }
+    fingerprint: {
+      enabled: true,
+      generateAssetMap: true,
+      fingerprintAssetMap: true,
+      customHash: '00e24234f1b58e32b935b1041432916f'
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

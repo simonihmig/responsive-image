@@ -5,7 +5,6 @@ const Writer = require('./broccoli-image-writer');
 const rimraf = require('rimraf');
 const extend = require('util')._extend;
 const map = require('broccoli-stew').map;
-const log = require('broccoli-stew').log;
 const filterInitializers = require('fastboot-filter-initializers');
 const mergeTrees = require('broccoli-merge-trees');
 
@@ -56,10 +55,9 @@ module.exports = {
     return filterInitializers(tree, this.app.name);
   },
 
-  treeForPublic(tree) {
-    tree = this._super.treeForPublic.apply(this, arguments);
+  resizeImages(tree) {
     let options = this.options;
-    let funnel = new Funnel('public', {
+    let funnel = new Funnel(tree, {
       srcDir: options.sourceDir,
       allowEmpty: true,
       destDir: '/'
@@ -69,8 +67,7 @@ module.exports = {
     if (this.app && this.app.options && this.app.options.fingerprint) {
       this.metaData.prepend = this.app.options.fingerprint.prepend;
     }
-    let responseTree = new Writer([funnel], this.options, this.metaData, this.ui);
-    return mergeTrees([tree, responseTree]);
+    return new Writer([funnel], this.options, this.metaData, this.ui);
   },
 
   contentFor(type) {
@@ -86,18 +83,20 @@ module.exports = {
 
   postprocessTree(type, tree) {
     if (type === 'all') {
+      let imageTree = this.resizeImages(tree);
       let pattern = '\'__ember_responsive_image_meta__\'';
       if (process.env.EMBER_CLI_FASTBOOT) {
         tree = map(tree, '**/*.js', (content, path) => {
           let metaData = JSON.stringify(this.metaData);
           return content.replace(pattern, metaData);
-        })
+        });
       } else {
         tree = map(tree, '**/index.html', (content, path) => {
           let metaData = JSON.stringify(this.metaData);
           return content.replace(pattern, metaData);
-        })
+        });
       }
+      return mergeTrees([imageTree, tree]);
     }
 
     return tree;
