@@ -171,16 +171,3 @@ This mixin binds the url of the best fitting image to the source attribute, base
 ### The responsive-background mixin
 
 This mixin binds the url of the best fitting image as the background url to the elements style attribute, based in the values provided by the `image` and `size` attribute. It also get the `responsiveImage` service injected.
-
-##Note##
-**Important:** If you use one of these components/mixins/helper or service, you have to exclude the destination folder from fingerprinting in production. This is because the image URLs are generated dynamically at runtime, where replacement of all original file names with their fingerprinted counterpart is currently not possible:
-```js
-//ember-cli-build.js
-
-//  ...
-    fingerprint: {
-        exclude: ['assets/images/responsive'] // or whatever your destination folder is
-      }
-//  ...      
-
-```
