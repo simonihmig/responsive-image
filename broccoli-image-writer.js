@@ -23,42 +23,45 @@ function ImageResizer(inputNodes, options, metaData, userInterface) {
 
 util.inherits(ImageResizer, CachingWriter);
 
+ImageResizer.prototype.writeGreen = function(message) {
+  if (this.ui) {
+    this.ui.writeLine(chalk.green(message));
+  }
+};
+
+ImageResizer.prototype.writeRed = function(message) {
+  if (this.ui) {
+    this.ui.writeLine(chalk.red(message));
+  }
+};
+
 ImageResizer.prototype.build = function () {
-  let ui = this.ui;
-  let writeLn = function (line) {
-    if (ui) {
-      ui.writeLine(line);
-    }
-  };
-
-  let options = this.image_options;
   let sourcePath = this.inputPaths[0];
-  let destinationPath = path.join(this.outputPath, options.destinationDir);
+  let destinationPath = path.join(this.outputPath, this.image_options.destinationDir);
   let promises = [];
-
   try {
     //make destination folder, if not exists
     mkdirp.sync(destinationPath);
     //read files from source folder
     let files = fs.readdirSync(sourcePath);
-    let that = this;
-    files.forEach(function (file) {
-      writeLn(chalk.green(file));
+    files.forEach((file) => {
+      this.writeGreen(file);
+
       let newPromise;
-      if (options.justCopy) {
-        newPromise = that.copyImages(file, sourcePath, destinationPath, options);
+      if (this.image_options.justCopy) {
+        newPromise = this.copyImages(file, sourcePath, destinationPath);
       } else {
-        newPromise = that.generateImages(file, sourcePath, destinationPath, options);
+        newPromise = this.generateImages(file, sourcePath, destinationPath);
       }
       promises = promises.concat(newPromise);
     });
   } catch (e) {
-    writeLn(chalk.red(e));
+    this.writeRed(e);
     return e;
   }
-  return async.parallelLimit(promises, 4).then(function (values) {
-    let message = promises.length + ' images ' + (options.justCopy ? 'copied' : 'generated');
-    writeLn(chalk.green('\n' + message + '\n'));
+  return async.parallelLimit(promises, 4).then((values) => {
+    let message = promises.length + ' images ' + (this.image_options.justCopy ? 'copied' : 'generated');
+    this.writeGreen('\n' + message + '\n');
   });
 };
 
@@ -67,16 +70,13 @@ ImageResizer.prototype.build = function () {
  * @param file
  * @param sourcePath
  * @param destinationPath
- * @param widths
- * @param options
  * @returns {Array} an array of promise-functions
  */
-ImageResizer.prototype.generateImages = function (file, sourcePath, destinationPath, options) {
+ImageResizer.prototype.generateImages = function (file, sourcePath, destinationPath) {
   let promises = [];
-  let that = this;
-  options.supportedWidths.forEach(function (width) {
-    promises.push(function () {
-      return that.generateImage(file, sourcePath, destinationPath, width, options)
+  this.image_options.supportedWidths.forEach((width) => {
+    promises.push(() => {
+      return this.generateImage(file, sourcePath, destinationPath, width)
     });
   });
   return promises;
@@ -88,25 +88,23 @@ ImageResizer.prototype.generateImages = function (file, sourcePath, destinationP
  * @param file
  * @param sourcePath
  * @param destinationPath
- * @param options
  * @returns {Array} an array of promise-functions
  */
-ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath, options) {
+ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath) {
   let promises = [];
-  let that = this;
-  options.supportedWidths.forEach(function (width) {
+  this.image_options.supportedWidths.forEach((width) => {
     let source = path.join(sourcePath, file);
-    let generatedFilename = that.generateFilename(file, width);
+    let generatedFilename = this.generateFilename(file, width);
     let destination = path.join(destinationPath, generatedFilename);
     let gmImage = gm(source);
-    promises.push(function () {
+    promises.push(() => {
       return Q.all([
         Q.ninvoke(gmImage, 'format'),
         Q.ninvoke(gmImage, 'color'),
         Q.ninvoke(gmImage, 'size')
       ])
-      .then(function(infos) {
-        that.insertMetadata(generatedFilename, width, infos, options);
+      .then((infos) => {
+        this.insertMetadata(generatedFilename, width, infos);
         return Q.nfcall(fs.copy, source, destination);
       })
     });
@@ -124,11 +122,10 @@ ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath,
  * @param width
  * @returns {deferred.promise|*}
  */
-ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPath, width, options) {
+ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPath, width) {
   let source = path.join(sourcePath, file);
   let generatedFilename = this.generateFilename(file, width);
   let destination = path.join(destinationPath, generatedFilename);
-  let that = this;
   let gmImage = gm(source);
 
   return Q.all([
@@ -136,12 +133,12 @@ ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPa
       Q.ninvoke(gmImage, 'color'),
       Q.ninvoke(gmImage, 'size')
     ])
-    .then(function(infos) {
+    .then((infos) => {
       let format = infos[0];
       let colors = parseInt(infos[1], 10);
 
       gmImage.resize(width, null, '>') // resize, but do not enlarge
-        .quality(options.quality)
+        .quality(this.image_options.quality)
         .strip() // remove profiles or comments
         .interlace('Line')
       ;
@@ -153,7 +150,7 @@ ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPa
         gmImage.setFormat('PNG8');
       }
 
-      that.insertMetadata(generatedFilename, width, infos, options);
+      this.insertMetadata(generatedFilename, width, infos);
       return Q.ninvoke(gmImage, 'write', destination);
     });
 };
@@ -162,10 +159,9 @@ ImageResizer.prototype.generateFilename = function (file, width) {
   return file.substr(0, file.lastIndexOf('.')) + width + 'w.' + file.substr(file.lastIndexOf('.') + 1);
 };
 
-ImageResizer.prototype.insertMetadata = function (file, width, infos, options) {
-  
+ImageResizer.prototype.insertMetadata = function (file, width, infos) {
   let aspectRatio = 1;
-  let filename = path.join(options.rootURL, options.destinationDir, file);
+  let filename = path.join(this.image_options.rootURL, this.image_options.destinationDir, file);
   if (infos[2].height > 0) {
     aspectRatio = Math.round((infos[2].width / infos[2].height) * 100) / 100;
   }
@@ -175,6 +171,5 @@ ImageResizer.prototype.insertMetadata = function (file, width, infos, options) {
     filename
   }
 };
-
 
 module.exports = ImageResizer;

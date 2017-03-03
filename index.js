@@ -100,5 +100,12 @@ module.exports = {
     }
 
     return tree;
+  },
+
+  postBuild(result) {
+    if (this.options.removeSourceDir) {
+      // remove folder with source files
+      rimraf.sync(path.join(result.directory, this.options.sourceDir));
+    }
   }
 };

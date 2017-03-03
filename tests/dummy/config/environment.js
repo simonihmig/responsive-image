@@ -27,6 +27,7 @@ module.exports = function(environment) {
       destinationDir: 'assets/images/responsive',
       quality: 50,
       justCopy: true,
+      removeSourceDir: true,
       supportedWidths: [100, 50]
     }
   };
