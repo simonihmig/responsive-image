@@ -1,30 +1,27 @@
 import { expect } from 'chai';
+import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
 import {
-  describeComponent,
+  setupComponentTest,
   it
 } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import {
-  beforeEach,
-  afterEach
+  before,
+  describe
 } from 'mocha';
 
-describeComponent(
-  'responsive-image',
+describe(
   'Integration: Responsive Image Component',
-  {
-    integration: true
-  },
   function() {
-    beforeEach(function() {
+    setupComponentTest('responsive-image', {
+      integration: true
     });
-
-    afterEach(function() {
+    before(function() {
+      initialize();
     });
-
     it('it renders the correct sourceset', function() {
       this.render(hbs`{{responsive-image image="test.png"}}`);
-      expect(this.$('img').attr('srcset')).to.equal('/assets/images/responsive/test100w.png 100w, /assets/images/responsive/test50w.png 50w');
+      expect(this.$('img').attr('srcset')).to.equal('/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png 100w, /assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png 50w');
     });
 
     it('it renders a given size as sizes', function() {
@@ -41,10 +38,10 @@ describeComponent(
       this.inject.service('responsive-image');
       this.get('responsive-image').set('physicalWidth', 45);
       this.render(hbs`{{responsive-image image="test.png"}}`);
-      expect(this.$('img').attr('src')).to.equal('/assets/images/responsive/test50w.png');
+      expect(this.$('img').attr('src')).to.equal('/assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png');
       this.get('responsive-image').set('physicalWidth', 51);
       this.render(hbs`{{responsive-image image="test.png"}}`);
-      expect(this.$('img').attr('src')).to.equal('/assets/images/responsive/test100w.png');
+      expect(this.$('img').attr('src')).to.equal('/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png');
     });
     it('it renders the alt and classNames arguments', function() {
       this.set('alt', 'my description');

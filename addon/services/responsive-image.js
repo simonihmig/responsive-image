@@ -59,13 +59,32 @@ export default Ember.Service.extend({
    * @method getImageByWidth
    * @param {String} imageName The origin name of the Image
    * @param {Number} width The width of the image
-   * @type string
+   * @return string
    * @private
    */
   getImageByWidth(imageName, width) {
     let name = this.getImageNamePart(imageName);
     let type = this.getImageType(imageName);
-    return `${this.get('destinationPath')}${name}${width}w.${type}`;
+    return this.getImageFromMeta(`${name}${width}w.${type}`);
+  },
+
+  /**
+   * returns the image string from the metadata
+   *
+   * @method getImageFromMeta
+   * @param {String} imageName The sized name of the Image
+   * @return string
+   * @private
+   */
+  getImageFromMeta(imageName) {
+    let meta = this.get('meta');
+    let img = '';
+    if (meta[imageName] && meta[imageName].filename) {
+      img = meta[imageName].filename;
+    } else {
+      img = `${this.get('destinationPath')}${imageName}`;
+    }
+    return img;
   },
 
   /**
@@ -130,8 +149,8 @@ export default Ember.Service.extend({
    * @private
    */
   assetsPath: computed(function() {
-    let config = getOwner(this)._lookupFactory('config:environment'),
-      baseUrl = Ember.get(config, 'baseURL') || Ember.get(config, 'rootURL') || '';
+    let config = getOwner(this).resolveRegistration('config:environment'),
+      baseUrl = Ember.get(config, 'rootURL') || Ember.get(config, 'baseURL') || '';
     return baseUrl;
   }).readOnly(),
 
@@ -144,7 +163,7 @@ export default Ember.Service.extend({
    * @private
    */
   supportedWidths: computed(function() {
-    let config = getOwner(this)._lookupFactory('config:environment'),
+    let config = getOwner(this).resolveRegistration('config:environment'),
       widths = Ember.get(config, 'responsive-image.supportedWidths');
     return widths;
   }).readOnly(),
@@ -158,7 +177,7 @@ export default Ember.Service.extend({
    * @private
    */
   destinationPath: computed(function() {
-    let config = getOwner(this)._lookupFactory('config:environment'),
+    let config = getOwner(this).resolveRegistration('config:environment'),
       destinationDir = Ember.get(config, 'responsive-image.destinationDir'),
       assetsPath = this.get('assetsPath');
 
@@ -166,6 +185,15 @@ export default Ember.Service.extend({
     // so check for empty assetPath!
     return Ember.isPresent(assetsPath) ? `${assetsPath}${destinationDir}/` : `${destinationDir}/`;
   }).readOnly(),
+
+  /**
+   * the meta values from build time
+   *
+   * @property meta
+   * @type {string}
+   * @private
+   */
+  meta: '__ember_responsive_image_meta__',
 
   /**
    * the physical width

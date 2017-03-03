@@ -1,16 +1,19 @@
-var path = require('path');
-var Funnel = require('broccoli-funnel');
-var Writer = require('./broccoli-image-writer');
-var rimraf = require('rimraf');
-var extend = require('util')._extend;
-var chalk = require('chalk');
+'use strict';
+const path = require('path');
+const Funnel = require('broccoli-funnel');
+const Writer = require('./broccoli-image-writer');
+const rimraf = require('rimraf');
+const extend = require('util')._extend;
+const map = require('broccoli-stew').map;
+const filterInitializers = require('fastboot-filter-initializers');
+const mergeTrees = require('broccoli-merge-trees');
 
 
 /*jshint node:true*/
 
 
 function defaultConfig(env) {
-  var defaultConfig = {
+  let defaultConfig = {
       sourceDir: 'assets/images/generate',
       destinationDir: 'assets/images/responsive',
       quality: 80,
@@ -33,30 +36,73 @@ function defaultConfig(env) {
 module.exports = {
   name: 'ember-responsive-image',
   options: {},
-  addonOptions: {},
+  metaData: {},
+  app: null,
 
-  included: function(app) {
-    this.addonOptions = app.options;
+  included(app, parentAddon) {
+    this._super.included.apply(this, arguments);
+    this.app = (parentAddon || app);
   },
 
-  config: function(env, baseConfig) {
+  config(env, baseConfig) {
     if (!env)
       return;
     this.options = extend(defaultConfig(env), baseConfig['responsive-image']);
-    this.addonOptions['responsive'] = this.options;
+    this.options.rootURL = baseConfig.rootURL || baseConfig.baseURL || '';
   },
 
-  treeForPublic: function (tree) {
-    var options = this.options;
-    var funnel = new Funnel('public', {
+  preconcatTree: function(tree) {
+    return filterInitializers(tree, this.app.name);
+  },
+
+  resizeImages(tree) {
+    let options = this.options;
+    let funnel = new Funnel(tree, {
       srcDir: options.sourceDir,
       allowEmpty: true,
       destDir: '/'
     });
-    return new Writer([funnel], this.addonOptions, this.ui);
+
+    this.metaData.prepend = '';
+    if (this.app && this.app.options && this.app.options.fingerprint) {
+      this.metaData.prepend = this.app.options.fingerprint.prepend;
+    }
+    return new Writer([funnel], this.options, this.metaData, this.ui);
   },
 
-  postBuild: function(result) {
+  contentFor(type) {
+    if (type === 'head-footer') {
+      let txt = [
+        '<script id="ember_responsive_image_meta" type="application/json">',
+        '\'__ember_responsive_image_meta__\'',
+        '</script>'
+      ];
+      return txt.join("\n");
+    }
+  },
+
+  postprocessTree(type, tree) {
+    if (type === 'all') {
+      let imageTree = this.resizeImages(tree);
+      let pattern = '\'__ember_responsive_image_meta__\'';
+      if (process.env.EMBER_CLI_FASTBOOT) {
+        tree = map(tree, '**/*.js', (content, path) => {
+          let metaData = JSON.stringify(this.metaData);
+          return content.replace(pattern, metaData);
+        });
+      } else {
+        tree = map(tree, '**/index.html', (content, path) => {
+          let metaData = JSON.stringify(this.metaData);
+          return content.replace(pattern, metaData);
+        });
+      }
+      return mergeTrees([imageTree, tree]);
+    }
+
+    return tree;
+  },
+
+  postBuild(result) {
     if (this.options.removeSourceDir) {
       // remove folder with source files
       rimraf.sync(path.join(result.directory, this.options.sourceDir));

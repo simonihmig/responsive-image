@@ -4,13 +4,18 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'dummy',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
+
     },
 
     APP: {
@@ -21,6 +26,8 @@ module.exports = function(environment) {
       sourceDir: 'assets/images/generate',
       destinationDir: 'assets/images/responsive',
       quality: 50,
+      justCopy: true,
+      removeSourceDir: true,
       supportedWidths: [100, 50]
     }
   };
@@ -35,7 +42,6 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter

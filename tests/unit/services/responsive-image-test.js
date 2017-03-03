@@ -1,18 +1,18 @@
 /* jshint expr:true */
 import { expect } from 'chai';
 import {
-  describeModule,
+  setupTest,
   it
 } from 'ember-mocha';
+import {
+  describe
+} from 'mocha';
 
-describeModule(
-  'service:responsive-image',
+describe(
   'ResponsiveImageService',
-  {
-    // Specify the other units that are required for this test.
-    // needs: ['service:foo']
-  },
   function() {
+    setupTest('service:responsive-image', {
+    });
     // Replace this with your real tests.
     it('exists', function() {
       let service = this.subject();
