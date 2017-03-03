@@ -1,21 +1,21 @@
 import { expect } from 'chai';
 import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
 import {
-  describeComponent,
+  setupComponentTest,
   it
 } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import {
-  before
+  before,
+  describe
 } from 'mocha';
 
-describeComponent(
-  'responsive-image',
+describe(
   'Integration: Responsive Image Component',
-  {
-    integration: true
-  },
   function() {
+    setupComponentTest('responsive-image', {
+      integration: true
+    });
     before(function() {
       initialize();
     });

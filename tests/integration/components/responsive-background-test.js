@@ -2,21 +2,20 @@
 import { expect } from 'chai';
 import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
 import {
-  describeComponent,
+  setupComponentTest,
   it
 } from 'ember-mocha';
 import {
-  before
+  before,
+  describe
 } from 'mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-describeComponent(
-  'responsive-background',
-  'Integration: ResponsiveBackgroundComponent',
-  {
-    integration: true
-  },
+describe('Integration: ResponsiveBackgroundComponent',
   function() {
+    setupComponentTest('responsive-background', {
+      integration: true
+    });
     before(function() {
       initialize();
     });
