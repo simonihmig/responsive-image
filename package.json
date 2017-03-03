@@ -18,18 +18,24 @@
   "author": "Andreas Schacht <schacht@kaliber5.de>, Simon Ihmig <ihmig@kaliber5.de>",
   "license": "MIT",
   "dependencies": {
-    "ember-cli-babel": "^5.1.7"
-  },
-  "devDependencies": {
     "async-q": "^0.3.1",
-    "broccoli-asset-rev": "^2.4.5",
     "broccoli-caching-writer": "^2.2.1",
     "broccoli-funnel": "^1.0.1",
     "broccoli-merge-trees": "^1.2.1",
     "broccoli-stew": "^1.4.0",
+    "chalk": "^1.1.1",
+    "ember-cli-babel": "^5.1.7",
+    "fastboot-filter-initializers": "^0.0.2",
+    "fs-extra": "^0.26.5",
+    "gm": "^1.21.1",
+    "mkdirp": "^0.5.1",
+    "q": "^1.4.1",
+    "rimraf": "^2.5.2"
+  },
+  "devDependencies": {
+    "broccoli-asset-rev": "^2.4.5",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
-    "chalk": "^1.1.1",
     "ember-ajax": "^2.4.1",
     "ember-cli": "^2.11.1",
     "ember-cli-addon-tests": "^0.4.1",
@@ -55,15 +61,9 @@
     "ember-load-initializers": "^0.6.0",
     "ember-resolver": "^2.0.3",
     "ember-source": "~2.11.0",
-    "fastboot-filter-initializers": "^0.0.2",
-    "fs-extra": "^0.26.5",
-    "gm": "^1.21.1",
     "loader.js": "^4.0.10",
-    "mkdirp": "^0.5.1",
     "mocha": "^3.1.2",
-    "q": "^1.4.1",
     "request": "2.76.0",
-    "rimraf": "^2.5.2",
     "rsvp": "^3.3.3"
   },
   "keywords": [
