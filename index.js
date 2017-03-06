@@ -19,7 +19,8 @@ function defaultConfig(env) {
       quality: 80,
       supportedWidths: [2048, 1536, 1080, 750, 640],
       removeSourceDir: true,
-      justCopy: false
+      justCopy: false,
+      extensions: ['jpg', 'jpeg', 'png', 'gif']
   };
 
   //if (env !== 'production') {
@@ -57,8 +58,10 @@ module.exports = {
 
   resizeImages(tree) {
     let options = this.options;
+    let extensions = this.options.extensions.join('|');
     let funnel = new Funnel(tree, {
       srcDir: options.sourceDir,
+      include: [`**/*.+(${extensions})`],
       allowEmpty: true,
       destDir: '/'
     });
