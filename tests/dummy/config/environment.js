@@ -22,14 +22,24 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    'responsive-image': {
-      sourceDir: 'assets/images/generate',
-      destinationDir: 'assets/images/responsive',
-      quality: 50,
-      justCopy: true,
-      removeSourceDir: true,
-      supportedWidths: [100, 50]
-    }
+    'responsive-image': [
+      {
+        sourceDir: 'assets/images/generate',
+        destinationDir: 'assets/images/responsive',
+        quality: 50,
+        justCopy: true,
+        removeSourceDir: true,
+        supportedWidths: [100, 50]
+      },
+      {
+        sourceDir: 'assets/images/small',
+        destinationDir: 'assets/images/smallresponsive',
+        quality: 10,
+        justCopy: true,
+        removeSourceDir: true,
+        supportedWidths: [10, 25]
+      }
+    ]
   };
 
   if (environment === 'development') {

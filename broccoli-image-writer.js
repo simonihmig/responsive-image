@@ -104,7 +104,7 @@ ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath)
         Q.ninvoke(gmImage, 'size')
       ])
       .then((infos) => {
-        this.insertMetadata(generatedFilename, width, infos);
+        this.insertMetadata(file, generatedFilename, width, infos);
         return Q.nfcall(fs.copy, source, destination);
       })
     });
@@ -150,7 +150,7 @@ ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPa
         gmImage.setFormat('PNG8');
       }
 
-      this.insertMetadata(generatedFilename, width, infos);
+      this.insertMetadata(file, generatedFilename, width, infos);
       return Q.ninvoke(gmImage, 'write', destination);
     });
 };
@@ -159,17 +159,22 @@ ImageResizer.prototype.generateFilename = function (file, width) {
   return file.substr(0, file.lastIndexOf('.')) + width + 'w.' + file.substr(file.lastIndexOf('.') + 1);
 };
 
-ImageResizer.prototype.insertMetadata = function (file, width, infos) {
+ImageResizer.prototype.insertMetadata = function (filename, imagename, width, infos) {
+  let image = path.join(this.image_options.rootURL, this.image_options.destinationDir, imagename);
   let aspectRatio = 1;
-  let filename = path.join(this.image_options.rootURL, this.image_options.destinationDir, file);
   if (infos[2].height > 0) {
     aspectRatio = Math.round((infos[2].width / infos[2].height) * 100) / 100;
   }
-  this.metaData[file] = {
+  let height = Math.round(width / aspectRatio);
+  let meta = {
+    image,
     width,
-    aspectRatio,
-    filename
+    height
+  };
+  if (this.metaData.hasOwnProperty(filename) === false) {
+    this.metaData[filename] = [];
   }
+  this.metaData[filename].push(meta);
 };
 
 module.exports = ImageResizer;

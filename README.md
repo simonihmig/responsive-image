@@ -71,12 +71,15 @@ let availableImages = responsiveImageService.getImages("myImage.png");
 /**
 avaliableImages contains now: 
 [
-    {width: 640, image: "/assets/images/responsive/myImage640w.png"},
-    {width: 750, image: "/assets/images/responsive/myImage750w.png"},
+    {width: 640, height: 320, image: "/assets/images/responsive/myImage640w.png"},
+    {width: 750, height: 375, image: "/assets/images/responsive/myImage750w.png"},
     ...
-    {width: 2048, image: "/assets/images/responsive/myImage2048w.png"}
+    {width: 2048, height: 1012, image: "/assets/images/responsive/myImage2048w.png"}
 ]
 */
+
+let imageData = responsiveImageService.getImageDataBySize("myImage.png", 100); // The size argument is in ´vw´, 100 is the default and can be omitted
+// {width: 750, height: 375, image: "/assets/images/responsive/myImage750w.png"}
 
 let fittingImage = responsiveImageService.getImageBySize("myImage.png", 100); // The size argument is in ´vw´, 100 is the default and can be omitted
 // "/assets/images/responsive/myImage1080w.png"
