@@ -43,6 +43,36 @@ module.exports = function(environment) {
 }
 ```
 
+If you need different configurations, you can make the `responsive-image` config an array:
+
+```js
+module.exports = function(environment) {
+  var ENV = {
+    'responsive-image': [
+        {
+          sourceDir: 'assets/images/generateLarge',
+          destinationDir: 'assets/images/responsiveLarge',
+          quality: 80,
+          supportedWidths: [2048, 1536, 1080],
+          removeSourceDir: true,
+          justCopy: false,
+          extensions: ['jpg', 'jpeg', 'png', 'gif']
+        },
+        {
+          sourceDir: 'assets/images/generateSmall',
+          destinationDir: 'assets/images/responsiveSmall',
+          quality: 80,
+          supportedWidths: [750, 640, 320],
+          removeSourceDir: true,
+          justCopy: false,
+          extensions: ['jpg', 'jpeg', 'png', 'gif']
+        }
+    ]
+  }
+}
+```
+
+
 ### Options
 
 * **sourceDir:** The folder with the origin images.

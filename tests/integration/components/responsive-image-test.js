@@ -21,7 +21,11 @@ describe(
     });
     it('it renders the correct sourceset', function() {
       this.render(hbs`{{responsive-image image="test.png"}}`);
-      expect(this.$('img').attr('srcset')).to.equal('/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png 100w, /assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png 50w');
+      expect(this.$('img').attr('srcset')).to.have.string('/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png 100w');
+      expect(this.$('img').attr('srcset')).to.have.string('/assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png 50w');
+      this.render(hbs`{{responsive-image image="small.png"}}`);
+      expect(this.$('img').attr('srcset')).to.have.string('/assets/images/smallresponsive/small10w-00e24234f1b58e32b935b1041432916f.png 10w');
+      expect(this.$('img').attr('srcset')).to.have.string('/assets/images/smallresponsive/small25w-00e24234f1b58e32b935b1041432916f.png 25w');
     });
 
     it('it renders a given size as sizes', function() {
@@ -42,6 +46,12 @@ describe(
       this.get('responsive-image').set('physicalWidth', 51);
       this.render(hbs`{{responsive-image image="test.png"}}`);
       expect(this.$('img').attr('src')).to.equal('/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png');
+      this.get('responsive-image').set('physicalWidth', 9);
+      this.render(hbs`{{responsive-image image="small.png"}}`);
+      expect(this.$('img').attr('src')).to.equal('/assets/images/smallresponsive/small10w-00e24234f1b58e32b935b1041432916f.png');
+      this.get('responsive-image').set('physicalWidth', 11);
+      this.render(hbs`{{responsive-image image="small.png"}}`);
+      expect(this.$('img').attr('src')).to.equal('/assets/images/smallresponsive/small25w-00e24234f1b58e32b935b1041432916f.png');
     });
     it('it renders the alt and classNames arguments', function() {
       this.set('alt', 'my description');
