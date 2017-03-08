@@ -206,3 +206,28 @@ This mixin binds the url of the best fitting image to the source attribute, base
 ### The responsive-background mixin
 
 This mixin binds the url of the best fitting image as the background url to the elements style attribute, based in the values provided by the `image` and `size` attribute. It also get the `responsiveImage` service injected.
+
+##Tests
+
+Sometimes you can get in trouble in integration tests and get an assertion `'There is no data for image ...'` if your subject relates to this addon. Because the `ResponsiveImageService` get necessary data injected in the instance-initializer, and the instance-initializers won't be called in the integration tests. To fix this, you can call the instance-initializer yourself in the tests:
+
+```js
+import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
+// ...
+// assume using mocha
+import { before, describe} from 'mocha';
+import { setupComponentTest} from 'ember-mocha';
+
+describe(
+  'Integration: My Image Component',
+  function() {
+    setupComponentTest('my-image', {
+      integration: true
+    });
+    before(function() {
+      initialize();
+    });
+    // ....your tests here
+  }
+);
+```
