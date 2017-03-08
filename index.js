@@ -48,29 +48,33 @@ module.exports = {
   config(env, baseConfig) {
     if (!env)
       return;
-    this.options = extend(defaultConfig(env), baseConfig['responsive-image']);
-    this.options.rootURL = baseConfig.rootURL || baseConfig.baseURL || '';
+    let config = baseConfig['responsive-image'];
+    let url = baseConfig.rootURL || baseConfig.baseURL || '';
+    this.options = [];
+
+    if (Array.isArray(config) === false) {
+      config = [config];
+    }
+    config.forEach((item) => {
+      let extendedConfig = extend(defaultConfig(env), item);
+      extendedConfig.rootURL = url;
+      this.options.push(extendedConfig);
+    })
   },
 
   preconcatTree: function(tree) {
     return filterInitializers(tree, this.app.name);
   },
 
-  resizeImages(tree) {
-    let options = this.options;
-    let extensions = this.options.extensions.join('|');
+  resizeImages(tree, options) {
+    let extensions = options.extensions.join('|');
     let funnel = new Funnel(tree, {
       srcDir: options.sourceDir,
       include: [`**/*.+(${extensions})`],
       allowEmpty: true,
       destDir: '/'
     });
-
-    this.metaData.prepend = '';
-    if (this.app && this.app.options && this.app.options.fingerprint) {
-      this.metaData.prepend = this.app.options.fingerprint.prepend;
-    }
-    return new Writer([funnel], this.options, this.metaData, this.ui);
+    return new Writer([funnel], options, this.metaData, this.ui);
   },
 
   contentFor(type) {
@@ -86,7 +90,16 @@ module.exports = {
 
   postprocessTree(type, tree) {
     if (type === 'all') {
-      let imageTree = this.resizeImages(tree);
+      this.metaData.prepend = '';
+      if (this.app && this.app.options && this.app.options.fingerprint) {
+        this.metaData.prepend = this.app.options.fingerprint.prepend;
+      }
+      let trees = [];
+      this.options.forEach((options) => {
+        let imageTree = this.resizeImages(tree, options)
+        trees.push(imageTree);
+      });
+
       let pattern = '\'__ember_responsive_image_meta__\'';
       if (process.env.EMBER_CLI_FASTBOOT) {
         tree = map(tree, '**/*.js', (content, path) => {
@@ -99,16 +112,19 @@ module.exports = {
           return content.replace(pattern, metaData);
         });
       }
-      return mergeTrees([imageTree, tree]);
+      trees.push(tree);
+      return mergeTrees(trees);
     }
 
     return tree;
   },
 
   postBuild(result) {
-    if (this.options.removeSourceDir) {
-      // remove folder with source files
-      rimraf.sync(path.join(result.directory, this.options.sourceDir));
-    }
+    this.options.forEach((options) => {
+      if (options.removeSourceDir) {
+        // remove folder with source files
+        rimraf.sync(path.join(result.directory, options.sourceDir));
+      }
+    });
   }
 };
