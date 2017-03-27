@@ -50,7 +50,7 @@ module.exports = {
       return;
     let config = baseConfig['responsive-image'];
     let url = baseConfig.rootURL || baseConfig.baseURL || '';
-    this.options = [];
+    this.addonOptions = [];
 
     if (Array.isArray(config) === false) {
       config = [config];
@@ -58,7 +58,7 @@ module.exports = {
     config.forEach((item) => {
       let extendedConfig = extend(defaultConfig(env), item);
       extendedConfig.rootURL = url;
-      this.options.push(extendedConfig);
+      this.addonOptions.push(extendedConfig);
     })
   },
 
@@ -95,7 +95,7 @@ module.exports = {
         this.metaData.prepend = this.app.options.fingerprint.prepend;
       }
       let trees = [];
-      this.options.forEach((options) => {
+      this.addonOptions.forEach((options) => {
         let imageTree = this.resizeImages(tree, options)
         trees.push(imageTree);
       });
@@ -120,7 +120,7 @@ module.exports = {
   },
 
   postBuild(result) {
-    this.options.forEach((options) => {
+    this.addonOptions.forEach((options) => {
       if (options.removeSourceDir) {
         // remove folder with source files
         rimraf.sync(path.join(result.directory, options.sourceDir));
