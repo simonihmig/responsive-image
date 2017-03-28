@@ -100,7 +100,7 @@ module.exports = {
         trees.push(imageTree);
       });
 
-      let pattern = '\'__ember_responsive_image_meta__\'';
+      let pattern = /["']__ember_responsive_image_meta__["']/;
       if (process.env.EMBER_CLI_FASTBOOT) {
         tree = map(tree, '**/*.js', (content, path) => {
           let metaData = JSON.stringify(this.metaData);
