@@ -1,3 +1,4 @@
+/*jshint node:true*/
 'use strict';
 const path = require('path');
 const Funnel = require('broccoli-funnel');
@@ -5,22 +6,18 @@ const Writer = require('./broccoli-image-writer');
 const rimraf = require('rimraf');
 const extend = require('util')._extend;
 const map = require('broccoli-stew').map;
-const filterInitializers = require('fastboot-filter-initializers');
+const find = require('broccoli-stew').find;
 const mergeTrees = require('broccoli-merge-trees');
-
-
-/*jshint node:true*/
-
 
 function defaultConfig(env) {
   let defaultConfig = {
-      sourceDir: 'assets/images/generate',
-      destinationDir: 'assets/images/responsive',
-      quality: 80,
-      supportedWidths: [2048, 1536, 1080, 750, 640],
-      removeSourceDir: true,
-      justCopy: false,
-      extensions: ['jpg', 'jpeg', 'png', 'gif']
+    sourceDir: 'assets/images/generate',
+    destinationDir: 'assets/images/responsive',
+    quality: 80,
+    supportedWidths: [2048, 1536, 1080, 750, 640],
+    removeSourceDir: true,
+    justCopy: false,
+    extensions: ['jpg', 'jpeg', 'png', 'gif']
   };
 
   //if (env !== 'production') {
@@ -46,8 +43,9 @@ module.exports = {
   },
 
   config(env, baseConfig) {
-    if (!env)
+    if (!env) {
       return;
+    }
     let config = baseConfig['responsive-image'];
     let url = baseConfig.rootURL || baseConfig.baseURL || '';
     this.addonOptions = [];
@@ -59,11 +57,7 @@ module.exports = {
       let extendedConfig = extend(defaultConfig(env), item);
       extendedConfig.rootURL = url;
       this.addonOptions.push(extendedConfig);
-    })
-  },
-
-  preconcatTree: function(tree) {
-    return filterInitializers(tree, this.app.name);
+    });
   },
 
   resizeImages(tree, options) {
@@ -101,18 +95,13 @@ module.exports = {
       });
 
       let pattern = /["']__ember_responsive_image_meta__["']/;
-      if (process.env.EMBER_CLI_FASTBOOT) {
-        tree = map(tree, '**/*.js', (content, path) => {
-          let metaData = JSON.stringify(this.metaData);
-          return content.replace(pattern, metaData);
-        });
-      } else {
-        tree = map(tree, '**/index.html', (content, path) => {
-          let metaData = JSON.stringify(this.metaData);
-          return content.replace(pattern, metaData);
-        });
-      }
-      trees.push(tree);
+      let mapMeta = (content) => content.replace(pattern, JSON.stringify(this.metaData));
+
+      trees = trees.concat([
+          map(find(tree, '**/*.js'), mapMeta),
+          map(find(tree, '**/index.html'), mapMeta)
+        ]
+      );
       return mergeTrees(trees);
     }
 

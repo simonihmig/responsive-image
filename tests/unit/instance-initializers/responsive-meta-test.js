@@ -6,7 +6,7 @@ import {
   beforeEach
 } from 'mocha';
 import Ember from 'ember';
-import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
+import { initialize } from 'ember-responsive-image/instance-initializers/responsive-meta';
 
 describe('ResponsiveMetaInstanceInitializer', function() {
   let appInstance;

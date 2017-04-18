@@ -1,6 +1,6 @@
 /* jshint expr:true */
 import { expect } from 'chai';
-import { initialize } from 'ember-responsive-image/instance-initializers/browser/responsive-meta';
+import { initialize } from 'ember-responsive-image/instance-initializers/responsive-meta';
 import {
   setupComponentTest,
   it
