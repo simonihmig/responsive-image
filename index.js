@@ -98,11 +98,12 @@ module.exports = {
       let mapMeta = (content) => content.replace(pattern, JSON.stringify(this.metaData));
 
       trees = trees.concat([
+          tree,
           map(find(tree, '**/*.js'), mapMeta),
           map(find(tree, '**/index.html'), mapMeta)
         ]
       );
-      return mergeTrees(trees);
+      return mergeTrees(trees, { overwrite: true });
     }
 
     return tree;
