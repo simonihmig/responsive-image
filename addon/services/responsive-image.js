@@ -117,10 +117,10 @@ export default Ember.Service.extend({
    * the meta values from build time
    *
    * @property meta
-   * @type {string}
+   * @type {object}
    * @private
    */
-  meta: '__ember_responsive_image_meta__',
+  meta: {},
 
   /**
    * the physical width
