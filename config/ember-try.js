@@ -1,8 +1,8 @@
-/*jshint node:true*/
+/* eslint-env node */
 module.exports = {
   scenarios: [
     {
-      name: 'default',
+      name: 'ember-default',
       bower: {
         dependencies: { }
       }
@@ -107,7 +107,7 @@ module.exports = {
     },
     {
       name: 'fastboot-addon-tests',
-      command: 'ember fastboot:test',
+      command: 'DEBUG=ember-cli-addon-tests,ember-fastboot-addon-tests ember fastboot:test',
       npm: {
         devDependencies: {}
       }

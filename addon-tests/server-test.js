@@ -13,11 +13,12 @@ describe('serve assets acceptance', function() {
 
     app = new AddonTestApp();
 
-    return app.create('dummy', {fixturesPath: 'addon-tests/fixtures'})
+    return app.create('dummy', {
+      emberVersion: '2.13.3',
+      fixturesPath: 'addon-tests/fixtures'
+    })
     .then(function() {
-      return app.startServer({
-        additionalArguments: ['--serve-assets']
-      });
+      return app.startServer();
     });
   });
 

@@ -7,13 +7,9 @@ sudo: false
 
 cache:
   yarn: true
-  directories:
-    - node_modules
-    - $HOME/.yarn-cache
-    - $HOME/.cache # includes bowers cache
 
 env:
-  - EMBER_TRY_SCENARIO=default
+  - EMBER_TRY_SCENARIO=ember-default
   - EMBER_TRY_SCENARIO=ember-1.13
   - EMBER_TRY_SCENARIO=ember-lts-2.4
   - EMBER_TRY_SCENARIO=ember-lts-2.8
@@ -29,7 +25,6 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-  - npm config set spin false
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
   - yarn global add phantomjs-prebuilt
@@ -43,7 +38,7 @@ install:
   - bower install
 
 script:
-  - ember try:one $EMBER_TRY_SCENARIO test
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
 
 addons:
   apt:
