@@ -8,7 +8,6 @@ module.exports = function(defaults) {
     fingerprint: {
       enabled: true,
       generateAssetMap: true,
-      fingerprintAssetMap: true,
       customHash: '00e24234f1b58e32b935b1041432916f'
     }
   });

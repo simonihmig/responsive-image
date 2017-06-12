@@ -1,16 +1,13 @@
-/*jshint node:true*/
+/* eslint-env node */
 /* global require, module */
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
-  var app = new EmberAddon(defaults, {
+  let app = new EmberAddon(defaults, {
     // Add options here
     fingerprint: {
-      // exclude: ['assets/images/responsive'], // or whatever your destination folder is
       enabled: true,
       generateAssetMap: true,
-      fingerprintAssetMap: true,
-      extensions: ['png'],
       customHash: '00e24234f1b58e32b935b1041432916f'
     }
   });

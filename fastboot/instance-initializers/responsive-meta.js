@@ -1,4 +1,4 @@
-import ResponsiveImage from '../../addon/services/responsive-image';
+import ResponsiveImage from 'ember-responsive-image/services/responsive-image';
 
 export function initialize(/* appInstance */) {
     let meta = '__ember_responsive_image_meta__';

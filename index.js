@@ -1,4 +1,4 @@
-/*jshint node:true*/
+/* eslint-env node */
 'use strict';
 const path = require('path');
 const Funnel = require('broccoli-funnel');
