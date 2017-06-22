@@ -74,9 +74,15 @@ ImageResizer.prototype.build = function () {
  */
 ImageResizer.prototype.generateImages = function (file, sourcePath, destinationPath) {
   let promises = [];
+  let gmImage = gm(path.join(sourcePath, file));
+  let imageInfos = Q.all([
+    Q.ninvoke(gmImage, 'format'),
+    Q.ninvoke(gmImage, 'color'),
+    Q.ninvoke(gmImage, 'size')
+  ]);
   this.image_options.supportedWidths.forEach((width) => {
     promises.push(() => {
-      return this.generateImage(file, sourcePath, destinationPath, width)
+      return this.generateImage(file, sourcePath, destinationPath, width, imageInfos)
     });
   });
   return promises;
@@ -92,23 +98,19 @@ ImageResizer.prototype.generateImages = function (file, sourcePath, destinationP
  */
 ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath) {
   let promises = [];
+  let source = path.join(sourcePath, file);
+  let imageSize = Q.ninvoke(gm(source), 'size');
   this.image_options.supportedWidths.forEach((width) => {
-    let source = path.join(sourcePath, file);
-    let generatedFilename = this.generateFilename(file, width);
-    let destination = path.join(destinationPath, generatedFilename);
-    let gmImage = gm(source);
     promises.push(() => {
-      return Q.all([
-        Q.ninvoke(gmImage, 'format'),
-        Q.ninvoke(gmImage, 'color'),
-        Q.ninvoke(gmImage, 'size')
-      ])
-      .then((infos) => {
-        this.insertMetadata(file, generatedFilename, width, infos);
+      imageSize.then((size) => {
+        let generatedFilename = this.generateFilename(file, width);
+        let destination = path.join(destinationPath, generatedFilename);
+        this.insertMetadata(file, generatedFilename, width, ['', '', size]);
         return Q.nfcall(fs.copy, source, destination);
-      })
+      });
     });
   });
+
   return promises;
 };
 
@@ -120,19 +122,16 @@ ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath)
  * @param sourcePath
  * @param destinationPath
  * @param width
+ * @param {Promise} imageInfos
  * @returns {deferred.promise|*}
  */
-ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPath, width) {
+ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPath, width, imageInfos) {
   let source = path.join(sourcePath, file);
   let generatedFilename = this.generateFilename(file, width);
   let destination = path.join(destinationPath, generatedFilename);
   let gmImage = gm(source);
 
-  return Q.all([
-      Q.ninvoke(gmImage, 'format'),
-      Q.ninvoke(gmImage, 'color'),
-      Q.ninvoke(gmImage, 'size')
-    ])
+  return imageInfos
     .then((infos) => {
       let format = infos[0];
       let colors = parseInt(infos[1], 10);
