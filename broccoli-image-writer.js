@@ -74,9 +74,15 @@ ImageResizer.prototype.build = function () {
  */
 ImageResizer.prototype.generateImages = function (file, sourcePath, destinationPath) {
   let promises = [];
+  let gmImage = gm(path.join(sourcePath, file));
+  let imageInfos = Q.all([
+    Q.ninvoke(gmImage, 'format'),
+    Q.ninvoke(gmImage, 'color'),
+    Q.ninvoke(gmImage, 'size')
+  ]);
   this.image_options.supportedWidths.forEach((width) => {
     promises.push(() => {
-      return this.generateImage(file, sourcePath, destinationPath, width)
+      return imageInfos.then((infos) => this.generateImage(file, sourcePath, destinationPath, width, infos));
     });
   });
   return promises;
@@ -92,23 +98,19 @@ ImageResizer.prototype.generateImages = function (file, sourcePath, destinationP
  */
 ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath) {
   let promises = [];
+  let source = path.join(sourcePath, file);
+  let imageSize = Q.ninvoke(gm(source), 'size');
   this.image_options.supportedWidths.forEach((width) => {
-    let source = path.join(sourcePath, file);
-    let generatedFilename = this.generateFilename(file, width);
-    let destination = path.join(destinationPath, generatedFilename);
-    let gmImage = gm(source);
     promises.push(() => {
-      return Q.all([
-        Q.ninvoke(gmImage, 'format'),
-        Q.ninvoke(gmImage, 'color'),
-        Q.ninvoke(gmImage, 'size')
-      ])
-      .then((infos) => {
-        this.insertMetadata(file, generatedFilename, width, infos);
+      return imageSize.then((size) => {
+        let generatedFilename = this.generateFilename(file, width);
+        let destination = path.join(destinationPath, generatedFilename);
+        this.insertMetadata(file, generatedFilename, width, ['', '', size]);
         return Q.nfcall(fs.copy, source, destination);
-      })
+      });
     });
   });
+
   return promises;
 };
 
@@ -120,39 +122,32 @@ ImageResizer.prototype.copyImages = function (file, sourcePath, destinationPath)
  * @param sourcePath
  * @param destinationPath
  * @param width
+ * @param {Array} info
  * @returns {deferred.promise|*}
  */
-ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPath, width) {
+ImageResizer.prototype.generateImage = function (file, sourcePath, destinationPath, width, infos) {
   let source = path.join(sourcePath, file);
   let generatedFilename = this.generateFilename(file, width);
   let destination = path.join(destinationPath, generatedFilename);
   let gmImage = gm(source);
+  let format = infos[0];
+  let colors = parseInt(infos[1], 10);
 
-  return Q.all([
-      Q.ninvoke(gmImage, 'format'),
-      Q.ninvoke(gmImage, 'color'),
-      Q.ninvoke(gmImage, 'size')
-    ])
-    .then((infos) => {
-      let format = infos[0];
-      let colors = parseInt(infos[1], 10);
+  gmImage.resize(width, null, '>') // resize, but do not enlarge
+    .quality(this.image_options.quality)
+    .strip() // remove profiles or comments
+    .interlace('Line')
+  ;
 
-      gmImage.resize(width, null, '>') // resize, but do not enlarge
-        .quality(this.image_options.quality)
-        .strip() // remove profiles or comments
-        .interlace('Line')
-      ;
+  if (format === 'PNG' && colors <= 256) {
+    // force PNG8 to stay PNG8
+    // gm otherwise writes a PNG24 file
+    gmImage.colors(colors);
+    gmImage.setFormat('PNG8');
+  }
 
-      if (format === 'PNG' && colors <= 256) {
-        // force PNG8 to stay PNG8
-        // gm otherwise writes a PNG24 file
-        gmImage.colors(colors);
-        gmImage.setFormat('PNG8');
-      }
-
-      this.insertMetadata(file, generatedFilename, width, infos);
-      return Q.ninvoke(gmImage, 'write', destination);
-    });
+  this.insertMetadata(file, generatedFilename, width, infos);
+  return Q.ninvoke(gmImage, 'write', destination);
 };
 
 ImageResizer.prototype.generateFilename = function (file, width) {
