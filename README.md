@@ -13,7 +13,7 @@ This is very usefull for responsive web apps to optimize images for a wide range
 ### Install ImageMagick
 
 For the resizing, ImageMagick has to be installed on the machine where the build process will be executed (local and/or your build-server).
-Download and install [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
+Download and install [ImageMagick](http://www.imagemagick.org/) (make sure you select the option to **Install legacy utilities** or you will encounter build errors). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
 
     brew install imagemagick
 ### Install in ember-cli application
