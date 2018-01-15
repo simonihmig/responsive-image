@@ -66,6 +66,12 @@ module.exports = {
       }
     },
     {
+      name: 'ember-default',
+      npm: {
+        devDependencies: {}
+      }
+    },
+    {
       name: 'generate-image',
       command: 'node_modules/mocha/bin/mocha addon-tests/server-test.js',
       bower: {
