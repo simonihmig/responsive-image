@@ -1,6 +1,6 @@
-import Ember from 'ember';
-
-const {inject, Helper} = Ember;
+import { inject as service } from '@ember/service';
+import { htmlSafe } from '@ember/string';
+import Helper from '@ember/component/helper';
 
 /**
  * @class responsiveImageResolve
@@ -9,13 +9,13 @@ const {inject, Helper} = Ember;
  * @public
  */
 export default Helper.extend({
-  responsiveImage: inject.service(),
+  responsiveImage: service(),
 
   compute(params/*, hash*/) {
     let image = params[0];
     let size = params[1] || 100;
     let responsive = this.get('responsiveImage').getImageBySize(image, size);
 
-    return Ember.String.htmlSafe(responsive);
+    return htmlSafe(responsive);
   }
 });

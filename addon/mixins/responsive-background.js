@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
+import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 import BaseMixin from 'ember-responsive-image/mixins/responsive-base';
-
-const { computed, String: { htmlSafe } } = Ember;
 
 /**
  * you can use this mixin to set a background image fits the size of the screen
@@ -10,7 +10,7 @@ const { computed, String: { htmlSafe } } = Ember;
  * @namespace Mixins
  * @public
  */
-export default Ember.Mixin.create(BaseMixin, {
+export default Mixin.create(BaseMixin, {
 
   /**
    * @property attributeBindings

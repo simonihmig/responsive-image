@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import ResponsiveBackgroundMixin from 'ember-responsive-image/mixins/responsive-background';
 
 /**
@@ -12,5 +12,5 @@ import ResponsiveBackgroundMixin from 'ember-responsive-image/mixins/responsive-
  * @namespace Components
  * @public
  */
-export default Ember.Component.extend(ResponsiveBackgroundMixin, {
+export default Component.extend(ResponsiveBackgroundMixin, {
 });

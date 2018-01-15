@@ -1,6 +1,6 @@
-import Ember from 'ember';
-
-const {inject, computed} = Ember;
+import { inject as service } from '@ember/service';
+import Mixin from '@ember/object/mixin';
+import { computed } from '@ember/object';
 
 /**
  * The Base Mixin for the responsive mixins
@@ -9,13 +9,13 @@ const {inject, computed} = Ember;
  * @namespace Mixins
  * @private
  */
-export default Ember.Mixin.create({
+export default Mixin.create({
 
   /**
    * @property responsiveImage
    * @protected
    */
-  responsiveImage: inject.service(),
+  responsiveImage: service(),
 
   /**
    * the origin image name to display

@@ -1,15 +1,13 @@
-/* eslint-env node */
 'use strict';
 const path = require('path');
 const Funnel = require('broccoli-funnel');
 const Writer = require('./broccoli-image-writer');
 const rimraf = require('rimraf');
-const extend = require('util')._extend;
 const map = require('broccoli-stew').map;
 const find = require('broccoli-stew').find;
 const mergeTrees = require('broccoli-merge-trees');
 
-function defaultConfig(env) {
+function defaultConfig() {
   let defaultConfig = {
     sourceDir: 'assets/images/generate',
     destinationDir: 'assets/images/responsive',
@@ -54,7 +52,7 @@ module.exports = {
       config = [config];
     }
     config.forEach((item) => {
-      let extendedConfig = extend(defaultConfig(env), item);
+      let extendedConfig = Object.assign({}, defaultConfig(env), item);
       extendedConfig.rootURL = url;
       this.addonOptions.push(extendedConfig);
     });
