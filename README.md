@@ -9,13 +9,10 @@ An ember-cli addon to automatically generate resized images and use them in `img
 
 This is very usefull for responsive web apps to optimize images for a wide range of devices (smartphones, tablets, desktops etc.). All browsers with [support for the `srcset` attribute](http://caniuse.com/#search=srcset) will automatically load the most appropriate resized image for the given device, e.g. based on screen size and density (high dpi "retina" screens).
 
+Built on top of the awesome [sharp](https://github.com/lovell/sharp) library.
+
 ## Getting started
-### Install ImageMagick
 
-For the resizing, ImageMagick has to be installed on the machine where the build process will be executed (local and/or your build-server).
-Download and install [ImageMagick](http://www.imagemagick.org/) (make sure you select the option to **Install legacy utilities** or you will encounter build errors). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
-
-    brew install imagemagick
 ### Install in ember-cli application
 
 In your application's directory:
@@ -23,6 +20,12 @@ In your application's directory:
 ```bash
 ember install ember-responsive-image
 ```
+
+### Install sharp
+
+On Windows, Mac and Linux `npm` / `yarn` will download and install the `sharp` image processing library 
+automatically. For other environments please consult the [installation](http://sharp.dimens.io/en/stable/install/#installation)
+instructions.
 
 ## Basic Usage
 
