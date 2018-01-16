@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import { readOnly } from '@ember/object/computed';
+import Mixin from '@ember/object/mixin';
 import BaseMixin from 'ember-responsive-image/mixins/responsive-base';
-
-const {computed} = Ember;
 
 /**
  * The ResponsiveImage Mixin for components, sets the src attribute
@@ -10,7 +9,7 @@ const {computed} = Ember;
  * @namespace Mixins
  * @public
  */
-export default Ember.Mixin.create(BaseMixin, {
+export default Mixin.create(BaseMixin, {
 
   /**
    * @property attributeBindings
@@ -27,5 +26,5 @@ export default Ember.Mixin.create(BaseMixin, {
    * @type string
    * @private
    */
-  src: computed.readOnly('suitableSrc')
+  src: readOnly('suitableSrc')
 });

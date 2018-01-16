@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import { isPresent } from '@ember/utils';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import ResponsiveImageMixin from 'ember-responsive-image/mixins/responsive-image';
-
-const {computed} = Ember;
 
 /**
  * Use this component to show the generated images from the source folder, just set the image property with the image
@@ -15,7 +15,7 @@ const {computed} = Ember;
  * @namespace Components
  * @public
  */
-export default Ember.Component.extend(ResponsiveImageMixin, {
+export default Component.extend(ResponsiveImageMixin, {
 
   /**
    * @property tagName
@@ -68,7 +68,7 @@ export default Ember.Component.extend(ResponsiveImageMixin, {
    * @public
    */
   sizes: computed('size', function() {
-    if (Ember.isPresent(this.get('size'))) {
+    if (isPresent(this.get('size'))) {
       return this.get('size') + 'vw';
     }
     return null;

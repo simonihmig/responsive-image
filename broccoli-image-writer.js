@@ -59,7 +59,7 @@ ImageResizer.prototype.build = function () {
     this.writeRed(e);
     return e;
   }
-  return async.parallelLimit(promises, 4).then((values) => {
+  return async.parallelLimit(promises, 4).then(() => {
     let message = promises.length + ' images ' + (this.image_options.justCopy ? 'copied' : 'generated');
     this.writeGreen('\n' + message + '\n');
   });

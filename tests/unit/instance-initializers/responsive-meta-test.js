@@ -1,19 +1,21 @@
 /* jshint expr:true */
+import Application from '@ember/application';
+
+import { run } from '@ember/runloop';
 import { expect } from 'chai';
 import {
   describe,
   it,
   beforeEach
 } from 'mocha';
-import Ember from 'ember';
 import { initialize } from 'ember-responsive-image/instance-initializers/responsive-meta';
 
 describe('ResponsiveMetaInstanceInitializer', function() {
   let appInstance;
 
   beforeEach(function() {
-    Ember.run(function() {
-      const application = Ember.Application.create();
+    run(function() {
+      const application = Application.create();
       appInstance = application.buildInstance();
     });
   });
