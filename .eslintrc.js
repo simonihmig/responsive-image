@@ -52,6 +52,27 @@ module.exports = {
       env: {
         embertest: true
       }
-    }
+    },
+
+    // node test files
+    {
+      files: [
+        'addon-tests/**/*.js',
+        'fastboot-tests/**/*.js'
+      ],
+      parserOptions: {
+        sourceType: 'script',
+        ecmaVersion: 2015
+      },
+      env: {
+        browser: false,
+        node: true,
+        mocha: true
+      },
+      plugins: ['node'],
+      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
+        'ember/no-global-jquery': 'off'
+      })
+    },
   ]
 };
