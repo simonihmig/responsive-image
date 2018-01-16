@@ -1,13 +1,14 @@
-/* jshint node: true */
-var RSVP = require('rsvp');
-var request = RSVP.denodeify(require('request'));
-var AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
-var expect = require('chai').expect;
+'use strict';
+
+const RSVP = require('rsvp');
+const request = RSVP.denodeify(require('request'));
+const AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
+const expect = require('chai').expect;
 
 describe('serve assets acceptance', function() {
   this.timeout(600000);
 
-  var app;
+  let app;
 
   before(function() {
 
