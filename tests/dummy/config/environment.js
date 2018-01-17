@@ -26,8 +26,8 @@ module.exports = function(environment) {
       {
         sourceDir: 'assets/images/generate',
         destinationDir: 'assets/images/responsive',
-        quality: 50,
-        justCopy: true,
+        quality: 5,
+        // justCopy: true,
         removeSourceDir: true,
         supportedWidths: [100, 50]
       },
@@ -35,7 +35,7 @@ module.exports = function(environment) {
         sourceDir: 'assets/images/small',
         destinationDir: 'assets/images/smallresponsive',
         quality: 10,
-        justCopy: true,
+        // justCopy: true,
         removeSourceDir: true,
         supportedWidths: [10, 25]
       }

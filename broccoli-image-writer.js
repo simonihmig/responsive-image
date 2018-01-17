@@ -118,6 +118,11 @@ class ImageResizer extends CachingWriter {
     return sharp(source)
       .resize(width, null)
       .withoutEnlargement(true)
+      .jpeg({
+        quality: this.image_options.quality,
+        progressive: true,
+        force: false
+      })
       .toFile(destination);
   }
 
