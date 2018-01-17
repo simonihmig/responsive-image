@@ -8,9 +8,9 @@
   },
   "scripts": {
     "build": "ember build",
-    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests addon-tests fastboot-tests",
+    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
     "start": "ember serve",
-    "test": "ember try:each && node_modules/mocha/bin/mocha addon-tests/*-test.js"
+    "test": "ember try:each && mocha addon-tests/*-test.js"
   },
   "repository": "https://github.com/kaliber5/ember-responsive-image",
   "engines": {
@@ -20,24 +20,20 @@
   "license": "MIT",
   "dependencies": {
     "async-q": "^0.3.1",
-    "broccoli-caching-writer": "^2.2.1",
-    "broccoli-funnel": "^1.0.1",
-    "broccoli-merge-trees": "^1.2.1",
-    "broccoli-stew": "^1.4.0",
+    "broccoli-caching-writer": "^3.0.3",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^2.0.0",
+    "broccoli-stew": "^1.5.0",
     "chalk": "^1.1.1",
     "ember-cli-babel": "^6.6.0",
     "ember-native-dom-helpers": "^0.5.10",
-    "fs-extra": "^0.26.5",
-    "gm": "^1.21.1",
-    "mkdirp": "^0.5.1",
-    "q": "^1.4.1",
-    "rimraf": "^2.5.2"
+    "fs-extra": "^5.0.0",
+    "sharp": "^0.19.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
-    "ember-ajax": "^3.0.0",
     "ember-cli": "~2.18.0",
     "ember-cli-addon-tests": "^0.7.0",
     "ember-cli-app-version": "^2.0.0",
@@ -55,7 +51,6 @@
     "ember-cli-sri": "^2.1.0",
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^2.0.0",
-    "ember-data": "^2.13.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-fastboot-addon-tests": "0.4.0",
@@ -65,9 +60,8 @@
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-node": "^5.2.1",
     "loader.js": "^4.2.3",
-    "mocha": "^3.1.2",
-    "request": "2.76.0",
-    "rsvp": "^3.3.3"
+    "mocha": "^4.1.0",
+    "request": "^2.83.0"
   },
   "keywords": [
     "ember-addon"

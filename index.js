@@ -2,7 +2,7 @@
 const path = require('path');
 const Funnel = require('broccoli-funnel');
 const Writer = require('./broccoli-image-writer');
-const rimraf = require('rimraf');
+const fs = require('fs-extra');
 const map = require('broccoli-stew').map;
 const find = require('broccoli-stew').find;
 const mergeTrees = require('broccoli-merge-trees');
@@ -111,7 +111,7 @@ module.exports = {
     this.addonOptions.forEach((options) => {
       if (options.removeSourceDir) {
         // remove folder with source files
-        rimraf.sync(path.join(result.directory, options.sourceDir));
+        fs.removeSync(path.join(result.directory, options.sourceDir));
       }
     });
   }
