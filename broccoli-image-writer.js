@@ -127,6 +127,9 @@ class ImageResizer extends CachingWriter {
 
   insertMetadata(filename, imagename, width, meta) {
     let image = path.join(this.image_options.rootURL, this.image_options.destinationDir, imagename);
+    if (process.platform === 'win32') {
+      image = image.replace(/\\/g, '/');
+    }
     let aspectRatio = 1;
     if (meta.height > 0) {
       aspectRatio = Math.round((meta.width / meta.height) * 100) / 100;
