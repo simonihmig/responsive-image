@@ -8,7 +8,7 @@ module.exports = function(defaults) {
     fingerprint: {
       enabled: true,
       generateAssetMap: true,
-      extensions: ['png'],
+      extensions: ['png', 'jpg'],
       customHash: '00e24234f1b58e32b935b1041432916f'
     }
   });
