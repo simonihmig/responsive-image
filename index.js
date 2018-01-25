@@ -26,14 +26,35 @@ function defaultConfig() {
 
 /**
  * Ember Addon, generate resized images on build time
- *
- *
  */
 module.exports = {
   name: 'ember-responsive-image',
   options: {},
   metaData: {},
   app: null,
+  metaExtensions: [],
+
+  /**
+   * Add a callback function to change the generated metaData of the images.
+   * The callback method you provide must have the following signature:
+   * ```javascript
+   * function(metaData);
+   * ```
+   * - `metaData` the current metaData
+   *
+   * It should return the changed metaData-object.
+   * Note that in addition to a callback, you can also pass an optional target
+   * object that will be set as `this` on the context. This is a good way
+   * to give your function access to the current object.
+   *
+   * @method addMetaExtension
+   * @param {Function} callback The callback to execute
+   * @param {Object} [target] The target object to use
+   * @public
+   */
+  addMetaExtension(callback, target) {
+    this.metaExtensions.push({ callback, target });
+  },
 
   included(app, parentAddon) {
     this._super.included.apply(this, arguments);
@@ -92,8 +113,16 @@ module.exports = {
         trees.push(imageTree);
       });
 
+      let extendedMeta = this.metaExtensions.reduce(function(extension, metaData) {
+        return extension.callback.call(extension.target, metaData);
+      }, this.metaData);
+
+      if (!extendedMeta) {
+        throw Error('The MetaDataExtensions didn\'t return an object');
+      }
+
       let pattern = /["']__ember_responsive_image_meta__["']/;
-      let mapMeta = (content) => content.replace(pattern, JSON.stringify(this.metaData));
+      let mapMeta = (content) => content.replace(pattern, JSON.stringify(extendedMeta));
 
       trees = trees.concat([
           tree,
