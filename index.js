@@ -63,7 +63,7 @@ module.exports = {
    * @private
    */
   callMetaExtensions() {
-    return this.metaExtensions.reduce(function(extension, metaData) {
+    return this.metaExtensions.reduce(function(metaData, extension) {
       return extension.callback.call(extension.target, metaData);
     }, this.metaData);
   },
