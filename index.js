@@ -56,6 +56,18 @@ module.exports = {
     this.metaExtensions.push({ callback, target });
   },
 
+  /**
+   * calls the add MetaExtensions
+   *
+   * @return {Object} the new metadata
+   * @private
+   */
+  callMetaExtensions() {
+    return this.metaExtensions.reduce(function(extension, metaData) {
+      return extension.callback.call(extension.target, metaData);
+    }, this.metaData);
+  },
+
   included(app, parentAddon) {
     this._super.included.apply(this, arguments);
     this.app = (parentAddon || app);
@@ -113,16 +125,8 @@ module.exports = {
         trees.push(imageTree);
       });
 
-      let extendedMeta = this.metaExtensions.reduce(function(extension, metaData) {
-        return extension.callback.call(extension.target, metaData);
-      }, this.metaData);
-
-      if (!extendedMeta) {
-        throw Error('The MetaDataExtensions didn\'t return an object');
-      }
-
       let pattern = /["']__ember_responsive_image_meta__["']/;
-      let mapMeta = (content) => content.replace(pattern, JSON.stringify(extendedMeta));
+      let mapMeta = (content) => content.replace(pattern, JSON.stringify(this.callMetaExtensions()));
 
       trees = trees.concat([
           tree,
