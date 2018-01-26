@@ -11,13 +11,14 @@ const async = require('async-q');
 const sharp = require('sharp');
 
 class ImageResizer extends CachingWriter {
-  constructor(inputNodes, options, metaData, userInterface) {
+  constructor(inputNodes, options, metaData, configData, userInterface) {
     options = options || {};
     options.cacheInclude = [/.*/];
     super(inputNodes, options);
 
     this.image_options = options;
     this.metaData = metaData || {};
+    this.configData = configData || {};
     this.ui = userInterface;
   }
 
@@ -38,7 +39,7 @@ class ImageResizer extends CachingWriter {
     let tasks = files
       .map((file) => {
         this.writeGreen(file);
-
+        this.addConfigData(file);
         if (justCopy) {
           return this.copyImages(file, sourcePath, destinationPath);
         } else {
@@ -149,6 +150,18 @@ class ImageResizer extends CachingWriter {
       this.metaData[filename] = [];
     }
     this.metaData[filename].push(metadata);
+  }
+
+  /**
+   * adds the current configuration options for a particular image
+   *
+   * @param filename
+   * @private
+   */
+  addConfigData(filename) {
+    if (this.configData.hasOwnProperty(filename) === false) {
+      this.configData[filename] = this.image_options;
+    }
   }
 
 }

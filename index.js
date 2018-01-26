@@ -31,19 +31,22 @@ module.exports = {
   name: 'ember-responsive-image',
   options: {},
   metaData: {},
+  configData: {},
   app: null,
   metaExtensions: [],
   extendedMetaData: null,
 
   /**
-   * Add a callback function to change the generated metaData of the images.
+   * Add a callback function to change the generated metaData per origin image.
    * The callback method you provide must have the following signature:
    * ```javascript
-   * function(metaData);
+   * function(image, metaData, configuration);
    * ```
-   * - `metaData` the current metaData
+   * - `image` the name of the origin image file
+   * - `metaData` array with the metaData of the generated images
+   * - `configuration` the configuration for the image generation
    *
-   * It should return the changed metaData-object.
+   * It should return an array with the changed metaDatas.
    * Note that in addition to a callback, you can also pass an optional target
    * object that will be set as `this` on the context. This is a good way
    * to give your function access to the current object.
@@ -68,9 +71,13 @@ module.exports = {
     if (this.extendedMetaData) {
       return this.extendedMetaData;
     }
-    this.extendedMetaData = this.metaExtensions.reduce(function(metaData, extension) {
-      return extension.callback.call(extension.target, metaData);
-    }, this.metaData);
+    Object.keys(this.metaData).forEach((key) => {
+      if (this.extendedMetaData.hasOwnProperty(key) === false) {
+        this.extendedMetaData[key] = this.metaExtensions.reduce((data, extension) => {
+          return extension.callback.call(extension.target, key, data, this.configData[key]);
+        }, this.metaData[key]);
+      }
+    });
 
     return this.extendedMetaData;
   },
@@ -106,7 +113,7 @@ module.exports = {
       allowEmpty: true,
       destDir: '/'
     });
-    return new Writer([funnel], options, this.metaData, this.ui);
+    return new Writer([funnel], options, this.metaData, this.configData, this.ui);
   },
 
   contentFor(type) {
