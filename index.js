@@ -33,6 +33,7 @@ module.exports = {
   metaData: {},
   app: null,
   metaExtensions: [],
+  extendedMetaData: null,
 
   /**
    * Add a callback function to change the generated metaData of the images.
@@ -63,9 +64,15 @@ module.exports = {
    * @private
    */
   callMetaExtensions() {
-    return this.metaExtensions.reduce(function(metaData, extension) {
+    // Call the hooks only once
+    if (this.extendedMetaData) {
+      return this.extendedMetaData;
+    }
+    this.extendedMetaData = this.metaExtensions.reduce(function(metaData, extension) {
       return extension.callback.call(extension.target, metaData);
     }, this.metaData);
+
+    return this.extendedMetaData;
   },
 
   included(app, parentAddon) {
