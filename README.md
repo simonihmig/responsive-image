@@ -211,11 +211,11 @@ This mixin binds the url of the best fitting image to the source attribute, base
 
 This mixin binds the url of the best fitting image as the background url to the elements style attribute, based in the values provided by the `image` and `size` attribute. It also get the `responsiveImage` service injected.
 
-##Extensibility hooks
+## Extensibility hooks
 ### Extend the image processing
 
 During the image process the addon calls the `preProcessImage` and the `postProcessImage` hooks for each origin image and supported width. Here you can add custom image process steps, like a watermark integration. The first hook will be called just before the addon's image process calls applies, the latter after. You can register your callbacks by calling the addon's `addImagePreProcessor` or `addImagePostProcessor` function before the addon's `postprocessTree` was called.
-In both cases the callback method you provide must have the following signature:
+In both cases the callback function you provide must have the following signature:
 
 ```javascript
   function preProcessor(sharp, image, width, configuration)
@@ -233,14 +233,16 @@ The callback must return a `sharp`-object or a Promise resolves to it.
 **Note:** In addition to the callback, you can also pass an optional target object that will be set as `this` on the context. This is a good way to give your function access to the current object.
 
 For an example see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/index.js)
+
 ### Extend the metadata
 
-Before the addon injects the generated metadata into the build, a `extendMetadata`-hook is called for each origin image. Here you can add custom metadata.  You can register your callbacks by calling the addon's `addMetadataExtension` function before the addon's `postprocessTree` was called.
-The callback method you provide must have the following signature:
+Before the addon injects the generated metadata into the build, a `extendMetadata`-hook is called for each origin image. The `metadata`-object contains the information for the addon's `ResponsiveImage`-Service. Here you can add custom metadata. You can register your callbacks by calling the addon's `addMetadataExtension` function before the addon's `postprocessTree` was called.
+The callback function you provide must have the following signature:
 
 ```javascript
   function customMetadata(image, metadata, configuration)
   { 
+    metadata.imageCount = metadata.images.length;  
     return metadata;
   }
 ```
@@ -248,11 +250,11 @@ The callback method you provide must have the following signature:
 * **metadata:** object with the metadata of the generated images
 * **configuration:** the configuration for the image generation (from environments configuration)
 
-The callback must return an object with the extended metadatas.
+The callback must return an object with the extended metadata.
 
 **Note:** In addition to the callback, you can also pass an optional target object that will be set as `this` on the context. This is a good way to give your function access to the current object.
 
-For an example see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/index.js)
+For an example see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/index.js) and the extended [ResponsiveImageService](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/addon/services/responsive-image.js)
 
 ## Tests
 
