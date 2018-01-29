@@ -11,7 +11,7 @@ const async = require('async-q');
 const sharp = require('sharp');
 
 class ImageResizer extends CachingWriter {
-  constructor(inputNodes, options, metaData, configData, userInterface) {
+  constructor(inputNodes, options, metaData, configData, imagePreProcessors, imagePostProcessors, userInterface) {
     options = options || {};
     options.cacheInclude = [/.*/];
     super(inputNodes, options);
@@ -19,6 +19,8 @@ class ImageResizer extends CachingWriter {
     this.image_options = options;
     this.metaData = metaData || {};
     this.configData = configData || {};
+    this.imagePreProcessors = imagePreProcessors || [];
+    this.imagePostProcessors = imagePostProcessors || [];
     this.ui = userInterface;
   }
 
@@ -116,15 +118,49 @@ class ImageResizer extends CachingWriter {
     let destination = path.join(destinationPath, generatedFilename);
 
     this.insertMetadata(file, generatedFilename, width, meta);
-    return sharp(source)
-      .resize(width, null)
+    let sharped = sharp(source);
+    return this.preProcessImage(sharped, file, width)
+    .then((preProcessedSharp) => {
+      preProcessedSharp.resize(width, null)
       .withoutEnlargement(true)
       .jpeg({
         quality: this.image_options.quality,
         progressive: true,
         force: false
-      })
-      .toFile(destination);
+      });
+      return this.postProcessImage(preProcessedSharp, file, width);
+    })
+    .then((postProcessed) => {
+      return postProcessed.toFile(destination);
+    });
+  }
+
+  /**
+   * calls the image pre-processors
+   *
+   * @param sharp
+   * @param filename
+   * @param width
+   * @returns {deferred.promise|*}
+   */
+  preProcessImage(sharp, filename, width) {
+    return this.imagePreProcessors.reduce((sharpPromise, processor) => {
+      return sharpPromise.then((result) => Promise.resolve(processor.callback.call(processor.target, result, filename, width, this.image_options)));
+    }, Promise.resolve(sharp));
+  }
+
+  /**
+   * calls the image post-processors
+   *
+   * @param sharp
+   * @param filename
+   * @param width
+   * @returns {deferred.promise|*}
+   */
+  postProcessImage(sharp, filename, width) {
+    return this.imagePostProcessors.reduce((sharpPromise, processor) => {
+      return sharpPromise.then((result) => Promise.resolve(processor.callback.call(processor.target, result, filename, width, this.image_options)));
+    }, Promise.resolve(sharp));
   }
 
   generateFilename(file, width) {
@@ -147,9 +183,9 @@ class ImageResizer extends CachingWriter {
       height
     };
     if (this.metaData.hasOwnProperty(filename) === false) {
-      this.metaData[filename] = [];
+      this.metaData[filename] = { images: [] };
     }
-    this.metaData[filename].push(metadata);
+    this.metaData[filename].images.push(metadata);
   }
 
   /**

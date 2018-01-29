@@ -35,6 +35,8 @@ module.exports = {
   app: null,
   metaExtensions: [],
   extendedMetaData: null,
+  imagePreProcessors: [],
+  imagePostProcessors: [],
 
   /**
    * Add a callback function to change the generated metaData per origin image.
@@ -43,10 +45,10 @@ module.exports = {
    * function(image, metaData, configuration);
    * ```
    * - `image` the name of the origin image file
-   * - `metaData` array with the metaData of the generated images
+   * - `metaData` object with the metaData of the generated images
    * - `configuration` the configuration for the image generation
    *
-   * It should return an array with the changed metaDatas.
+   * It should return an object with the changed metaDatas.
    * Note that in addition to a callback, you can also pass an optional target
    * object that will be set as `this` on the context. This is a good way
    * to give your function access to the current object.
@@ -61,6 +63,56 @@ module.exports = {
   },
 
   /**
+   * Add a callback function to hook into image processing before the addon's image processes are executed.
+   * The callback method you provide must have the following signature:
+   * ```javascript
+   * function(sharp, image, width, configuration);
+   * ```
+   * - `sharp` sharp object with the current origin image
+   * - `image` the name of the origin image file
+   * - `width` the with of the resulting resized image of the current processing
+   * - `configuration` the configuration for the current image processing
+   *
+   * It should return a `sharp`-object or a Promise wich resolves to it.
+   * Note that in addition to a callback, you can also pass an optional target
+   * object that will be set as `this` on the context. This is a good way
+   * to give your function access to the current object.
+   *
+   * @method addImagePreProcessor
+   * @param {Function} callback The callback to execute
+   * @param {Object} [target] The target object to use
+   * @public
+   */
+  addImagePreProcessor(callback, target) {
+    this.imagePreProcessors.push({ callback, target });
+  },
+
+  /**
+   * Add a callback function to hook into image processing after the addon's image processes are executed.
+   * The callback method you provide must have the following signature:
+   * ```javascript
+   * function(sharp, image, width, configuration);
+   * ```
+   * - `sharp` sharp object with the current origin image
+   * - `image` the name of the origin image file
+   * - `width` the with of the resulting resized image of the current processing
+   * - `configuration` the configuration for the current image processing
+   *
+   * It should return a `sharp`-object or a Promise wich resolves to it.
+   * Note that in addition to a callback, you can also pass an optional target
+   * object that will be set as `this` on the context. This is a good way
+   * to give your function access to the current object.
+   *
+   * @method addImagePreProcessor
+   * @param {Function} callback The callback to execute
+   * @param {Object} [target] The target object to use
+   * @public
+   */
+  addImagePostProcessor(callback, target) {
+    this.imagePostProcessors.push({ callback, target });
+  },
+
+  /**
    * calls the add MetaExtensions
    *
    * @return {Object} the new metadata
@@ -71,8 +123,9 @@ module.exports = {
     if (this.extendedMetaData) {
       return this.extendedMetaData;
     }
+    this.extendedMetaData = {};
     Object.keys(this.metaData).forEach((key) => {
-      if (this.extendedMetaData.hasOwnProperty(key) === false) {
+      if (this.configData[key] && this.extendedMetaData.hasOwnProperty(key) === false) {
         this.extendedMetaData[key] = this.metaExtensions.reduce((data, extension) => {
           return extension.callback.call(extension.target, key, data, this.configData[key]);
         }, this.metaData[key]);
@@ -113,7 +166,7 @@ module.exports = {
       allowEmpty: true,
       destDir: '/'
     });
-    return new Writer([funnel], options, this.metaData, this.configData, this.ui);
+    return new Writer([funnel], options, this.metaData, this.configData,this.imagePreProcessors, this.imagePostProcessors, this.ui);
   },
 
   contentFor(type) {
