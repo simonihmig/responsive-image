@@ -33,7 +33,7 @@ module.exports = {
   metaData: {},
   configData: {},
   app: null,
-  metaExtensions: [],
+  metadataExtensions: [],
   extendedMetaData: null,
   imagePreProcessors: [],
   imagePostProcessors: [],
@@ -42,10 +42,10 @@ module.exports = {
    * Add a callback function to change the generated metaData per origin image.
    * The callback method you provide must have the following signature:
    * ```javascript
-   * function(image, metaData, configuration);
+   * function(image, metadata, configuration);
    * ```
    * - `image` the name of the origin image file
-   * - `metaData` object with the metaData of the generated images
+   * - `metadata` object with the metaData of the generated images
    * - `configuration` the configuration for the image generation
    *
    * It should return an object with the changed metaDatas.
@@ -53,13 +53,13 @@ module.exports = {
    * object that will be set as `this` on the context. This is a good way
    * to give your function access to the current object.
    *
-   * @method addMetaExtension
+   * @method addMetadataExtension
    * @param {Function} callback The callback to execute
    * @param {Object} [target] The target object to use
    * @public
    */
-  addMetaExtension(callback, target) {
-    this.metaExtensions.push({ callback, target });
+  addMetadataExtension(callback, target) {
+    this.metadataExtensions.push({ callback, target });
   },
 
   /**
@@ -70,11 +70,11 @@ module.exports = {
    * ```
    * - `sharp` sharp object with the current origin image
    * - `image` the name of the origin image file
-   * - `width` the with of the resulting resized image of the current processing
+   * - `width` the width of the resulting resized image of the current processing
    * - `configuration` the configuration for the current image processing
    *
    * It should return a `sharp`-object or a Promise wich resolves to it.
-   * Note that in addition to a callback, you can also pass an optional target
+   * Note that in addition to the callback, you can also pass an optional target
    * object that will be set as `this` on the context. This is a good way
    * to give your function access to the current object.
    *
@@ -95,11 +95,11 @@ module.exports = {
    * ```
    * - `sharp` sharp object with the current origin image
    * - `image` the name of the origin image file
-   * - `width` the with of the resulting resized image of the current processing
+   * - `width` the width of the resulting resized image of the current processing
    * - `configuration` the configuration for the current image processing
    *
    * It should return a `sharp`-object or a Promise wich resolves to it.
-   * Note that in addition to a callback, you can also pass an optional target
+   * Note that in addition to the callback, you can also pass an optional target
    * object that will be set as `this` on the context. This is a good way
    * to give your function access to the current object.
    *
@@ -113,12 +113,13 @@ module.exports = {
   },
 
   /**
-   * calls the add MetaExtensions
+   * calls the metadata extensions
    *
+   * @method extendMetadata
    * @return {Object} the new metadata
    * @private
    */
-  callMetaExtensions() {
+  extendMetadata() {
     // Call the hooks only once
     if (this.extendedMetaData) {
       return this.extendedMetaData;
@@ -126,7 +127,7 @@ module.exports = {
     this.extendedMetaData = {};
     Object.keys(this.metaData).forEach((key) => {
       if (this.configData[key] && this.extendedMetaData.hasOwnProperty(key) === false) {
-        this.extendedMetaData[key] = this.metaExtensions.reduce((data, extension) => {
+        this.extendedMetaData[key] = this.metadataExtensions.reduce((data, extension) => {
           return extension.callback.call(extension.target, key, data, this.configData[key]);
         }, this.metaData[key]);
       }
@@ -193,7 +194,7 @@ module.exports = {
       });
 
       let pattern = /["']__ember_responsive_image_meta__["']/;
-      let mapMeta = (content) => content.replace(pattern, JSON.stringify(this.callMetaExtensions()));
+      let mapMeta = (content) => content.replace(pattern, JSON.stringify(this.extendMetadata()));
 
       trees = trees.concat([
           tree,
