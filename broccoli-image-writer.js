@@ -43,7 +43,7 @@ class ImageResizer extends CachingWriter {
     fs.ensureDirSync(destinationPath);
     let files = fs.readdirSync(sourcePath);
 
-    if (this.image_options.justCopy && Boolean(this.imagePreProcessors.length || this.imagePostProcessors.length)) {
+    if (this.image_options.justCopy && (this.imagePreProcessors.length || this.imagePostProcessors.length)) {
       this.writeWarnLine('You turned on the copy-mode and there are image-processors registered. So be aware of the image processors will be called, but their result will be ignored');
     }
 
@@ -105,10 +105,10 @@ class ImageResizer extends CachingWriter {
           let generatedFilename = this.generateFilename(file, width);
           let destination = path.join(destinationPath, generatedFilename);
           this.insertMetadata(file, generatedFilename, width, meta);
-          if(Boolean(this.imagePreProcessors.length || this.imagePostProcessors.length)) {
+          if(this.imagePreProcessors.length || this.imagePostProcessors.length) {
             return this.preProcessImage(sharp(source), file, width)
             .then((preProcessedSharp) => this.postProcessImage(preProcessedSharp, file, width))
-            .then((postProcessed) => {
+            .then(() => {
               return fs.copy(source, destination);
             });
           } else {
