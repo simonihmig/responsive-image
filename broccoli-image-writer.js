@@ -5,25 +5,33 @@
  */
 const path = require('path');
 const fs = require('fs-extra');
-const chalk = require('chalk');
 const CachingWriter = require('broccoli-caching-writer');
 const async = require('async-q');
 const sharp = require('sharp');
 
 class ImageResizer extends CachingWriter {
-  constructor(inputNodes, options, metaData, userInterface) {
+  constructor(inputNodes, options, metaData, configData, imagePreProcessors, imagePostProcessors, userInterface) {
     options = options || {};
     options.cacheInclude = [/.*/];
     super(inputNodes, options);
 
     this.image_options = options;
     this.metaData = metaData || {};
+    this.configData = configData || {};
+    this.imagePreProcessors = imagePreProcessors || [];
+    this.imagePostProcessors = imagePostProcessors || [];
     this.ui = userInterface;
   }
 
-  writeGreen(message) {
+  writeInfoLine(message) {
     if (this.ui) {
-      this.ui.writeLine(chalk.green(message));
+      this.ui.writeInfoLine(message);
+    }
+  }
+
+  writeWarnLine(message) {
+    if (this.ui) {
+      this.ui.writeWarnLine(message);
     }
   }
 
@@ -35,10 +43,14 @@ class ImageResizer extends CachingWriter {
     fs.ensureDirSync(destinationPath);
     let files = fs.readdirSync(sourcePath);
 
+    if (this.image_options.justCopy && (this.imagePreProcessors.length || this.imagePostProcessors.length)) {
+      this.writeWarnLine('You turned on the copy-mode and there are image-processors registered. So be aware of the image processors will be called, but their result will be ignored');
+    }
+
     let tasks = files
       .map((file) => {
-        this.writeGreen(file);
-
+        this.writeInfoLine(file);
+        this.addConfigData(file);
         if (justCopy) {
           return this.copyImages(file, sourcePath, destinationPath);
         } else {
@@ -48,7 +60,7 @@ class ImageResizer extends CachingWriter {
       .reduce((res, fns) => res.concat(fns), []); // flat map to an array of promise-functions
 
     return async.parallelLimit(tasks, 4).then(() => {
-      this.writeGreen(`\n${tasks.length} images ${justCopy ? 'copied' : 'generated'}.\n`);
+      this.writeInfoLine(`\n${tasks.length} images ${justCopy ? 'copied' : 'generated'}.\n`);
     });
   }
 
@@ -93,7 +105,15 @@ class ImageResizer extends CachingWriter {
           let generatedFilename = this.generateFilename(file, width);
           let destination = path.join(destinationPath, generatedFilename);
           this.insertMetadata(file, generatedFilename, width, meta);
-          return fs.copy(source, destination);
+          if(this.imagePreProcessors.length || this.imagePostProcessors.length) {
+            return this.preProcessImage(sharp(source), file, width)
+            .then((preProcessedSharp) => this.postProcessImage(preProcessedSharp, file, width))
+            .then(() => {
+              return fs.copy(source, destination);
+            });
+          } else {
+            return fs.copy(source, destination);
+          }
         });
       }
     });
@@ -115,15 +135,49 @@ class ImageResizer extends CachingWriter {
     let destination = path.join(destinationPath, generatedFilename);
 
     this.insertMetadata(file, generatedFilename, width, meta);
-    return sharp(source)
-      .resize(width, null)
+    let sharped = sharp(source);
+    return this.preProcessImage(sharped, file, width)
+    .then((preProcessedSharp) => {
+      preProcessedSharp.resize(width, null)
       .withoutEnlargement(true)
       .jpeg({
         quality: this.image_options.quality,
         progressive: true,
         force: false
-      })
-      .toFile(destination);
+      });
+      return this.postProcessImage(preProcessedSharp, file, width);
+    })
+    .then((postProcessed) => {
+      return postProcessed.toFile(destination);
+    });
+  }
+
+  /**
+   * calls the image pre-processors
+   *
+   * @param sharp
+   * @param filename
+   * @param width
+   * @returns {deferred.promise|*}
+   */
+  preProcessImage(sharp, filename, width) {
+    return this.imagePreProcessors.reduce((sharpPromise, processor) => {
+      return sharpPromise.then((result) => Promise.resolve(processor.callback.call(processor.target, result, filename, width, this.image_options)));
+    }, Promise.resolve(sharp));
+  }
+
+  /**
+   * calls the image post-processors
+   *
+   * @param sharp
+   * @param filename
+   * @param width
+   * @returns {deferred.promise|*}
+   */
+  postProcessImage(sharp, filename, width) {
+    return this.imagePostProcessors.reduce((sharpPromise, processor) => {
+      return sharpPromise.then((result) => Promise.resolve(processor.callback.call(processor.target, result, filename, width, this.image_options)));
+    }, Promise.resolve(sharp));
   }
 
   generateFilename(file, width) {
@@ -146,9 +200,21 @@ class ImageResizer extends CachingWriter {
       height
     };
     if (this.metaData.hasOwnProperty(filename) === false) {
-      this.metaData[filename] = [];
+      this.metaData[filename] = { images: [] };
     }
-    this.metaData[filename].push(metadata);
+    this.metaData[filename].images.push(metadata);
+  }
+
+  /**
+   * adds the current configuration options for a particular image
+   *
+   * @param filename
+   * @private
+   */
+  addConfigData(filename) {
+    if (this.configData.hasOwnProperty(filename) === false) {
+      this.configData[filename] = this.image_options;
+    }
   }
 
 }

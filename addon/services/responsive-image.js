@@ -38,7 +38,8 @@ export default Service.extend({
    */
   getImages(imageName) {
     assert(`There is no data for image ${imageName}`, this.get('meta').hasOwnProperty(imageName));
-    return A(this.get('meta')[imageName]);
+    assert(`There is no image data for image ${imageName}`, this.get('meta')[imageName].hasOwnProperty('images'));
+    return A(this.get('meta')[imageName].images);
   },
 
   /**
