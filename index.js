@@ -167,7 +167,7 @@ module.exports = {
       allowEmpty: true,
       destDir: '/'
     });
-    return new Writer([funnel], options, this.metaData, this.configData,this.imagePreProcessors, this.imagePostProcessors, this.ui);
+    return new Writer([funnel], options, this.metaData, this.configData, this.imagePreProcessors, this.imagePostProcessors, this.ui);
   },
 
   contentFor(type) {

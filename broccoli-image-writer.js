@@ -5,7 +5,6 @@
  */
 const path = require('path');
 const fs = require('fs-extra');
-const chalk = require('chalk');
 const CachingWriter = require('broccoli-caching-writer');
 const async = require('async-q');
 const sharp = require('sharp');
@@ -24,9 +23,15 @@ class ImageResizer extends CachingWriter {
     this.ui = userInterface;
   }
 
-  writeGreen(message) {
+  writeInfoLine(message) {
     if (this.ui) {
-      this.ui.writeLine(chalk.green(message));
+      this.ui.writeInfoLine(message);
+    }
+  }
+
+  writeWarnLine(message) {
+    if (this.ui) {
+      this.ui.writeWarnLine(message);
     }
   }
 
@@ -38,9 +43,13 @@ class ImageResizer extends CachingWriter {
     fs.ensureDirSync(destinationPath);
     let files = fs.readdirSync(sourcePath);
 
+    if (this.image_options.justCopy && Boolean(this.imagePreProcessors.length || this.imagePostProcessors.length)) {
+      this.writeWarnLine('You turned on the copy-mode and there are image-processors registered. So be aware of the image processors will be called, but their result will be ignored');
+    }
+
     let tasks = files
       .map((file) => {
-        this.writeGreen(file);
+        this.writeInfoLine(file);
         this.addConfigData(file);
         if (justCopy) {
           return this.copyImages(file, sourcePath, destinationPath);
@@ -51,7 +60,7 @@ class ImageResizer extends CachingWriter {
       .reduce((res, fns) => res.concat(fns), []); // flat map to an array of promise-functions
 
     return async.parallelLimit(tasks, 4).then(() => {
-      this.writeGreen(`\n${tasks.length} images ${justCopy ? 'copied' : 'generated'}.\n`);
+      this.writeInfoLine(`\n${tasks.length} images ${justCopy ? 'copied' : 'generated'}.\n`);
     });
   }
 
@@ -96,7 +105,15 @@ class ImageResizer extends CachingWriter {
           let generatedFilename = this.generateFilename(file, width);
           let destination = path.join(destinationPath, generatedFilename);
           this.insertMetadata(file, generatedFilename, width, meta);
-          return fs.copy(source, destination);
+          if(Boolean(this.imagePreProcessors.length || this.imagePostProcessors.length)) {
+            return this.preProcessImage(sharp(source), file, width)
+            .then((preProcessedSharp) => this.postProcessImage(preProcessedSharp, file, width))
+            .then((postProcessed) => {
+              return fs.copy(source, destination);
+            });
+          } else {
+            return fs.copy(source, destination);
+          }
         });
       }
     });
