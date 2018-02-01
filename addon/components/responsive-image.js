@@ -39,7 +39,27 @@ export default Component.extend(ResponsiveImageMixin, {
    * @readOnly
    * @protected
    */
-  attributeBindings: ['srcset', 'alt', 'sizes'],
+  attributeBindings: ['srcset', 'alt', 'sizes', 'width', 'height'],
+
+  /**
+   * set the `width` attribute
+   *
+   * @property width
+   * @type Number
+   * @default null
+   * @public
+   */
+  width: null,
+
+  /**
+   * set the `height` attribute
+   *
+   * @property height
+   * @type Number
+   * @default null
+   * @public
+   */
+  height: null,
 
   /**
    * optional, the html alt attribute of the img tag

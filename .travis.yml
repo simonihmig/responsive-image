@@ -1,16 +1,13 @@
 ---
 language: node_js
 node_js:
-  - "6"
+  - "4"
 
 sudo: false
 dist: trusty
 
 addons:
   chrome: stable
-  apt:
-    packages:
-    - imagemagick
 
 cache:
   yarn: true
