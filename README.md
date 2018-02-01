@@ -233,6 +233,8 @@ The callback must return a `sharp`-object or a Promise resolves to it.
 
 **Note:** In addition to the callback, you can also pass an optional target object that will be set as `this` on the context. This is a good way to give your function access to the current object.
 
+**Note:** If you set `justCopy` to `true` in your configuration, your callback will be called, but the result doesn't take effect to the resulting image (because it's just a copy).
+
 For an example see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/index.js)
 
 ### Extend the metadata
