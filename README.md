@@ -259,7 +259,7 @@ The callback must return an object with the extended metadata.
 
 For an example see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/index.js) and the extended [ResponsiveImageService](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/addon/services/responsive-image.js)
 
-## Lazy loading and LQIP (Low Quality Placeholder Image)
+## Lazy loading and LQIP (Low Quality Image Placeholder)
 
 For lazy-loading and LQIP support, see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image).
 

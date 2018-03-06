@@ -1,9 +1,8 @@
-import $ from 'jquery';
 import ResponsiveImage from '../services/responsive-image';
 
 export function initialize(/* appInstance */) {
   if (typeof FastBoot === 'undefined') {
-    let meta = JSON.parse($('#ember_responsive_image_meta').text());
+    let meta = JSON.parse(document.querySelector('#ember_responsive_image_meta').textContent);
     ResponsiveImage.reopen({
       meta
     });
