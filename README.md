@@ -141,7 +141,7 @@ will result in
 
 In a template you can use the responsive-image component. The image argument is required and must be one of the origin files:
 
-```js
+```hbs
 {{responsive-image image="myImage.png"}}
 ```
 
@@ -154,7 +154,7 @@ The image in the `src` attribute is calculated by the component and will be used
 
 Other attributes like `alt`, `className`, `width` or `height` are optional:
 
-```js
+```hbs
 {{responsive-image image="myImage.png" className="my-css-class" alt="This is my image"}}
 ```
 
@@ -163,7 +163,7 @@ Other attributes like `alt`, `className`, `width` or `height` are optional:
 ```
 
 If your image width is not '100vw', say 70vw for example, you can specify the `size` (only `vw` is supported as a unit by now):
-```js
+```hbs
 {{responsive-image image="myImage.png" size="70"}}
 ```
 
@@ -184,7 +184,7 @@ You can also replace the [`sizes` attribute](https://developer.mozilla.org/de/do
 
 In a template you can use the `responsive-background` component. The image argument is required and must be one of the origin files:
 
-```js
+```hbs
 {{responsive-background image="myImage.png"}}
 ```
 
