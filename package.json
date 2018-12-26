@@ -10,7 +10,7 @@
     "test": "ember test",
     "test:all": "ember try:each",
     "test:images": "mocha addon-tests/server-test.js",
-    "test:fastboot": "DEBUG=ember-cli-addon-tests,ember-fastboot-addon-tests ember fastboot:test"
+    "test:fastboot": "ember fastboot:test"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
@@ -40,7 +40,6 @@
     "ember-cli-htmlbars": "^3.0.0",
     "ember-cli-htmlbars-inline-precompile": "^1.0.3",
     "ember-cli-inject-live-reload": "^1.8.2",
-    "ember-cli-release": "^1.0.0-beta.2",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-template-lint": "^1.0.0-beta.1",
     "ember-cli-test-loader": "^1.1.0",
