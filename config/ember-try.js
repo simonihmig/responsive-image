@@ -74,11 +74,11 @@ module.exports = function() {
         },
         {
           name: 'generate-image',
-          command: 'node_modules/mocha/bin/mocha addon-tests/server-test.js'
+          command: 'yarn test:images'
         },
         {
           name: 'fastboot-addon-tests',
-          command: 'DEBUG=ember-cli-addon-tests,ember-fastboot-addon-tests ember fastboot:test'
+          command: 'yarn test:fastboot'
         }
       ]
     };
