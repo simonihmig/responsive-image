@@ -21,16 +21,21 @@ module.exports = {
     // node files
     {
       files: [
+        '.eslintrc.js',
+        '.template-lintrc.js',
+        'ember-cli-build.js',
         'index.js',
         'testem.js',
-        'ember-cli-build.js',
+        'blueprints/*/index.js',
         'config/**/*.js',
         'tests/dummy/config/**/*.js',
         'broccoli-image-writer.js'
       ],
       excludedFiles: [
+        'addon/**',
+        'addon-test-support/**',
         'app/**',
-        'addon/**'
+        'tests/dummy/app/**'
       ],
       parserOptions: {
         sourceType: 'script',
@@ -44,15 +49,6 @@ module.exports = {
       rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
         // add your custom rules and overrides for node files here
       })
-    },
-
-    // test files
-    {
-      files: ['tests/**/*.js'],
-      excludedFiles: ['tests/dummy/**/*.js'],
-      env: {
-        embertest: true
-      }
     },
 
     // node test files
@@ -72,8 +68,9 @@ module.exports = {
       },
       plugins: ['node'],
       rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
+        'ember/no-jquery': 'off',
         'ember/no-global-jquery': 'off'
       })
-    },
+    }
   ]
 };
