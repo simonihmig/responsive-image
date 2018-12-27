@@ -138,8 +138,7 @@ class ImageResizer extends CachingWriter {
     let sharped = sharp(source);
     return this.preProcessImage(sharped, file, width)
     .then((preProcessedSharp) => {
-      preProcessedSharp.resize(width, null)
-      .withoutEnlargement(true)
+      preProcessedSharp.resize(width, null, { withoutEnlargement: true })
       .jpeg({
         quality: this.image_options.quality,
         progressive: true,
