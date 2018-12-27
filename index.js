@@ -28,7 +28,7 @@ function defaultConfig() {
  * Ember Addon, generate resized images on build time
  */
 module.exports = {
-  name: 'ember-responsive-image',
+  name: require('./package').name,
   options: {},
   metaData: {},
   configData: {},
