@@ -7,7 +7,7 @@
 
 An ember-cli addon to automatically generate resized images and use them in `img` tags with the `srcset` attribute.
 
-This is very usefull for responsive web apps to optimize images for a wide range of devices (smartphones, tablets, desktops etc.). All browsers with [support for the `srcset` attribute](http://caniuse.com/#search=srcset) will automatically load the most appropriate resized image for the given device, e.g. based on screen size and density (high dpi "retina" screens).
+This is very useful for responsive web apps to optimize images for a wide range of devices (smartphones, tablets, desktops etc.). All browsers with [support for the `srcset` attribute](http://caniuse.com/#search=srcset) will automatically load the most appropriate resized image for the given device, e.g. based on screen size and density (high dpi "retina" screens).
 
 Built on top of the awesome [sharp](https://github.com/lovell/sharp) library.
 
@@ -83,7 +83,7 @@ module.exports = function(environment) {
 * **destinationDir:** This folder will contain the generated Images. It will be created, if not existing. Must not be the same as sourceDir.
 * **supportedWidths:** These are the widths of the resized images.
 * **removeSourceDir:** If true, the sourceDir will be removed from the build.
-* **justCopy:** If true, the images will just be copied without resizing. This is usefull for development builds to speed things up, but should be false for production.
+* **justCopy:** If true, the images will just be copied without resizing. This is useful for development builds to speed things up, but should be false for production.
 * **extensions:** Array of file extensions. Only files with these extensions will be resized, others will be ignored. Avoid errors with files like `.DS_Store`.
 
 Put one or more images in the source folder (in this case 'assets/images/generate/'), like 'myImage.png', and build the project. The resized images will be generated into the destination directory ('assets/images/responsive'):
