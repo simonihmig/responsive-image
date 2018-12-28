@@ -265,25 +265,15 @@ For lazy-loading and LQIP support, see [ember-lazy-responsive-image](https://git
 
 ## Tests
 
-Sometimes you can get in trouble in integration tests and get an assertion `'There is no data for image ...'` if your subject relates to this addon. Because the `ResponsiveImageService` get necessary data injected in the instance-initializer, and the instance-initializers won't be called in the integration tests. To fix this, you can call the instance-initializer yourself in the tests:
+Sometimes you can get in trouble in integration tests and get an assertion `'There is no data for image ...'` if your subject relates to this addon. Because the `ResponsiveImageService` gets necessary data injected in an instance-initializer, and instance-initializers won't be called in the integration tests. To fix this, you can provided ``setupResponsiveImage()` test helper in tests:
 
 ```js
-import { initialize } from 'ember-responsive-image/instance-initializers/responsive-meta';
-// ...
-// assume using mocha
-import { before, describe} from 'mocha';
-import { setupComponentTest} from 'ember-mocha';
+import { setupRenderingTest} from 'ember-qunit';
+import { setupResponsiveImage } from 'ember-responsive-image/test-support';
 
-describe(
-  'Integration: My Image Component',
-  function() {
-    setupComponentTest('my-image', {
-      integration: true
-    });
-    before(function() {
-      initialize();
-    });
-    // ....your tests here
-  }
-);
+module('Integration: My Image Component', function(hooks) {
+  setupResponsiveImage(hooks);
+
+  test(...);
+});
 ```
