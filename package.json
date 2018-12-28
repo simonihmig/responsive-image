@@ -9,7 +9,6 @@
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
-    "test:images": "mocha addon-tests/server-test.js",
     "test:fastboot": "ember fastboot:test"
   },
   "engines": {
