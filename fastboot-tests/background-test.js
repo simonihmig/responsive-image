@@ -3,7 +3,7 @@
 const expect = require('chai').expect;
 const setupTest = require('ember-fastboot-addon-tests').setupTest;
 
-describe('background', function() {
+describe('background component', function() {
   setupTest('fastboot'/*, options */);
 
   it('renders', function() {

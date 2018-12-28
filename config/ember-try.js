@@ -72,10 +72,6 @@ module.exports = function() {
           }
         },
         {
-          name: 'generate-image',
-          command: 'yarn test:images'
-        },
-        {
           name: 'fastboot-addon-tests',
           command: 'yarn test:fastboot'
         }

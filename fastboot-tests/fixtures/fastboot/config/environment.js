@@ -25,8 +25,8 @@ module.exports = function(environment) {
     'responsive-image': {
       sourceDir: 'assets/images/generate',
       destinationDir: 'assets/images/responsive',
-      quality: 80,
-      supportedWidths: [2048, 640],
+      quality: 50,
+      supportedWidths: [50, 100, 640],
       removeSourceDir: true,
       justCopy: false
     }
