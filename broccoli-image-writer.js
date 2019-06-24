@@ -9,6 +9,8 @@ const CachingWriter = require('broccoli-caching-writer');
 const async = require('async-q');
 const sharp = require('sharp');
 
+sharp.cache(false);
+
 class ImageResizer extends CachingWriter {
   constructor(inputNodes, options, metaData, configData, imagePreProcessors, imagePostProcessors, userInterface) {
     options = options || {};
