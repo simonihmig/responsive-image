@@ -1,6 +1,6 @@
 {
   "name": "ember-responsive-image",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "description": "An ember addon that generates resized images and use them in img-tags with the srcset-attribute.",
   "scripts": {
     "build": "ember build --environment=production",
@@ -28,8 +28,8 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^0.6.3",
-    "broccoli-asset-rev": "^2.7.0",
     "babel-eslint": "^10.1.0",
+    "broccoli-asset-rev": "^2.7.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^6.0.0",
     "ember-cli": "~3.6.0",
