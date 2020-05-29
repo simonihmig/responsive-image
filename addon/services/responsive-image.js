@@ -58,7 +58,7 @@ export default Service.extend({
   /**
    * returns the image data which fits for given size
    *
-   * @method getImageBySize
+   * @method getImageDataBySize
    * @param {String} imageName The origin name of the Image
    * @param {Number} size The width of the image in percent of the screenwidth
    * @return {Object} The data with image,width and height
