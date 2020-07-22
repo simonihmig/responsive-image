@@ -15,6 +15,7 @@ function defaultConfig() {
     supportedWidths: [2048, 1536, 1080, 750, 640],
     removeSourceDir: true,
     justCopy: false,
+    recursive: false,
     extensions: ['jpg', 'jpeg', 'png', 'gif']
   };
 

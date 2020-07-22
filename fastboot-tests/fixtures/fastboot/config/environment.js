@@ -28,6 +28,7 @@ module.exports = function(environment) {
       quality: 50,
       supportedWidths: [50, 100, 640],
       removeSourceDir: true,
+      recursive: true,
       justCopy: false
     }
   };
