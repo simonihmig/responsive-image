@@ -15,7 +15,6 @@ const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
  * @public
  */
 export default Service.extend({
-
   /**
    * the screen's width
    * This is the base value to calculate the image size.
@@ -37,9 +36,15 @@ export default Service.extend({
    * @public
    */
   getImages(imageName) {
-    assert(`There is no data for image ${imageName}`, this.get('meta').hasOwnProperty(imageName));
-    assert(`There is no image data for image ${imageName}`, this.get('meta')[imageName].hasOwnProperty('images'));
-    return A(this.get('meta')[imageName].images);
+    assert(
+      `There is no data for image ${imageName}`,
+      Object.prototype.hasOwnProperty.call(this.meta.hasOwnProperty, imageName)
+    );
+    assert(
+      `There is no image data for image ${imageName}`,
+      Object.prototype.hasOwnProperty.call(this.meta[imageName], 'images')
+    );
+    return A(this.meta[imageName].images);
   },
 
   /**
@@ -80,11 +85,11 @@ export default Service.extend({
    */
   getDestinationImageWidthBySize(image, size) {
     let destinationWidth = this.getDestinationWidthBySize(size || 100);
-    return this.getSupportedWidths(image).reduce((prevValue, item)=> {
+    return this.getSupportedWidths(image).reduce((prevValue, item) => {
       if (item >= destinationWidth && prevValue >= destinationWidth) {
-        return (item >= prevValue) ? prevValue : item;
+        return item >= prevValue ? prevValue : item;
       } else {
-        return (item >= prevValue) ? item : prevValue;
+        return item >= prevValue ? item : prevValue;
       }
     }, 0);
   },
@@ -109,9 +114,8 @@ export default Service.extend({
    * @returns {Number}
    * @private
    */
-  getDestinationWidthBySize(size)
-  {
-    let physicalWidth = this.get('physicalWidth');
+  getDestinationWidthBySize(size) {
+    let physicalWidth = this.physicalWidth;
     let factor = (size || 100) / 100;
 
     return physicalWidth * factor;
@@ -134,7 +138,7 @@ export default Service.extend({
    * @readonly
    * @private
    */
-  physicalWidth: computed('screenWidth', function() {
-    return this.get('screenWidth') * (window && window.devicePixelRatio || 1);
-  })
+  physicalWidth: computed('screenWidth', function () {
+    return this.screenWidth * ((window && window.devicePixelRatio) || 1);
+  }),
 });

@@ -1,1 +1,4 @@
-export { default, initialize } from 'ember-responsive-image/initializers/responsive-meta';
+export {
+  default,
+  initialize,
+} from 'ember-responsive-image/initializers/responsive-meta';

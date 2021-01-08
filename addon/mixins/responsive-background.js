@@ -11,7 +11,6 @@ import BaseMixin from 'ember-responsive-image/mixins/responsive-base';
  * @public
  */
 export default Mixin.create(BaseMixin, {
-
   /**
    * @property attributeBindings
    * @type string[]
@@ -27,9 +26,7 @@ export default Mixin.create(BaseMixin, {
    * @type string
    * @protected
    */
-  style: computed('backgroundImage', function() {
-    return this.get('backgroundImage');
-  }),
+  style: computed.reads('backgroundImage'),
 
   /**
    * the background image
@@ -39,10 +36,9 @@ export default Mixin.create(BaseMixin, {
    * @readOnly
    * @private
    */
-  backgroundImage: computed('suitableSrc', function() {
-    let src = this.get('suitableSrc');
-    if (src) {
-      return htmlSafe(`background-image: url('${this.get('suitableSrc')}');`);
-    }
-  }).readOnly()
+  backgroundImage: computed('suitableSrc', function () {
+    return this.suitableSrc
+      ? htmlSafe(`background-image: url('${this.suitableSrc}');`)
+      : undefined;
+  }).readOnly(),
 });
