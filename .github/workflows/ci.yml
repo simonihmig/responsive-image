@@ -98,8 +98,11 @@ jobs:
     - name: Install dependencies
       uses: bahmutov/npm-install@v1
 
-    - name: Test
+    - name: Test Ember
       run: yarn test:ember --launch ${{ matrix.browser }}
+
+    - name: Test Image Processing
+      run: yarn test:node
 
 
   floating-dependencies:
@@ -128,6 +131,9 @@ jobs:
 
     - name: Test
       run: yarn test:ember --launch ${{ matrix.browser }}
+
+    - name: Test Image Processing
+      run: yarn test:node
 
 
   try-scenarios:

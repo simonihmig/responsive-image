@@ -59,14 +59,14 @@ module.exports = {
     },
     // node test files
     {
-      files: ['addon-tests/**/*.js', 'fastboot-tests/**/*.js'],
+      files: ['node-tests/**/*.js'],
       parserOptions: {
         sourceType: 'script',
       },
       env: {
         browser: false,
         node: true,
-        mocha: true,
+        jest: true,
       },
       plugins: ['node'],
       rules: Object.assign(
