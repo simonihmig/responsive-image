@@ -1,3 +1,12 @@
+## v1.0.1 (2021-01-08)
+
+#### :house: Internal
+* [#102](https://github.com/kaliber5/ember-responsive-image/pull/102) Refactor image processor to async/await ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 2
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v1.0.0 (2021-01-08)
 
 #### :boom: Breaking Change
