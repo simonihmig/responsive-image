@@ -41,7 +41,7 @@ Add the configuration to your `config/environment.js`
 
 ```js
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     'responsive-image': {
       sourceDir: 'assets/images/generate',
       destinationDir: 'assets/images/responsive',
@@ -60,7 +60,7 @@ If you need different configurations, you can make the `responsive-image` config
 
 ```js
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     'responsive-image': [
         {
           sourceDir: 'assets/images/generateLarge',
@@ -115,7 +115,7 @@ The `responsive-image` service provides the available images with the sizes for 
 ```js
 let availableImages = responsiveImageService.getImages("myImage.png");
 /**
-avaliableImages contains now: 
+availableImages contains now: 
 [
     {width: 640, height: 320, image: "/assets/images/responsive/myImage640w.png"},
     {width: 750, height: 375, image: "/assets/images/responsive/myImage750w.png"},
@@ -149,79 +149,68 @@ will result in
 ```
 
 ## Components
-### The responsive-image component
+### The responsive image component
 
-In a template you can use the responsive-image component. The image argument is required and must be one of the origin files:
+In a template you can use the `<ResponsiveImage/>` component. The image argument is required and must be one of the origin files:
 
 ```hbs
-{{responsive-image image="myImage.png"}}
+<ResponsiveImage @image="myImage.png"/>
 ```
 
 This will generate an `img` tag with the resized images as the [`srcset` attribute](https://developer.mozilla.org/de/docs/Web/HTML/Element/img#attr-srcset), so the browser can decide, which image fits the needs:
 ```html
-<img id="ember308" src="/assets/images/responsive/myImage1080w.png" srcset="/assets/images/responsive/myImage640w.png 640w, /assets/images/responsive/myImage750w.png 750w, /assets/images/responsive/myImage1080w.png 1080w, /assets/images/responsive/myImage1536w.png 1536w, /assets/images/responsive/myImage2048w.png 2048w" class="ember-view">
+<img src="/assets/images/responsive/myImage1080w.png" srcset="/assets/images/responsive/myImage640w.png 640w, /assets/images/responsive/myImage750w.png 750w, /assets/images/responsive/myImage1080w.png 1080w, /assets/images/responsive/myImage1536w.png 1536w, /assets/images/responsive/myImage2048w.png 2048w" class="ember-view">
 ```
 
 The image in the `src` attribute is calculated by the component and will be used by browsers without `srcset` support.
 
-Other attributes like `alt`, `className`, `width` or `height` are optional:
-
 ```hbs
-{{responsive-image image="myImage.png" className="my-css-class" alt="This is my image"}}
+<ResponsiveImage @image="myImage.png" class="my-css-class" alt="This is my image"/>
 ```
 
 ```html
-<img id="ember308" src="..." srcset="..." class="ember-view my-css-class" alt="This is my image">
+<img src="..." srcset="..." class="my-css-class" alt="This is my image">
 ```
 
 If your image width is not '100vw', say 70vw for example, you can specify the `size` (only `vw` is supported as a unit by now):
 ```hbs
-{{responsive-image image="myImage.png" size="70"}}
+<ResponsiveImage @image="myImage.png" @size="70"/>
 ```
 
 ```html
-<img id="ember308" src="..." srcset="..." sizes="70vw">
+<img src="..." srcset="..." sizes="70vw">
 ```
 
 You can also replace the [`sizes` attribute](https://developer.mozilla.org/de/docs/Web/HTML/Element/img#attr-sizes) if your responsive image width is more complicated like:
 ```hbs
-{{responsive-image image="myImage.png" sizes="(min-width: 800px) 800px, 100vw"}}
+<ResponsiveImage @image="myImage.png" @sizes="(min-width: 800px) 800px, 100vw"/>
 ```
 
 ```html
-<img id="ember308" src="..." srcset="..." sizes="(min-width: 800px) 800px, 100vw">
+<img src="..." srcset="..." sizes="(min-width: 800px) 800px, 100vw">
 ```
 
-### The responsive-background component
+### The responsive background component
 
-In a template you can use the `responsive-background` component. The image argument is required and must be one of the origin files:
+In a template you can use the `<ResponsiveBackground>` component. The image argument is required and must be one of the origin files:
 
 ```hbs
-{{responsive-background image="myImage.png"}}
+<ResponsiveBackground @image="myImage.png"/>
 ```
 
 This will generate an `div` tag with an image as a background image, which fits the needs:
 ```html
-<div id="ember308" style="background-image: url('/assets/images/responsive/myImage1080w.png')" class="ember-view"></div>
+<div style="background-image: url('/assets/images/responsive/myImage1080w.png')"></div>
 ```
 
-Like the `responsive-image` component, you can pass a size:
+Like the `<ResponsiveImage/>` component, you can pass a size:
 ```hbs
-{{responsive-background image="myImage.png" size="50"}}
+<ResponsiveBackground @image="myImage.png" @size="50"/>
 ```
 
 ```html
-<div id="ember308" style="background-image: url('/assets/images/responsive/myImage640w.png')" class="ember-view"></div>
+<div style="background-image: url('/assets/images/responsive/myImage640w.png')"></div>
 ```
-
-## Mixins
-### The responsive-image mixin
-
-This mixin binds the url of the best fitting image to the source attribute, based in the values provided by the `image` and `size` attribute. It also get the `responsiveImage` service injected.
-
-### The responsive-background mixin
-
-This mixin binds the url of the best fitting image as the background url to the elements style attribute, based in the values provided by the `image` and `size` attribute. It also get the `responsiveImage` service injected.
 
 ## Extensibility hooks
 ### Extend the image processing
