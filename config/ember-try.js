@@ -4,7 +4,8 @@ const getChannelURL = require('ember-source-channel-url');
 
 module.exports = async function () {
   return {
-    useYarn: true,
+    // Somehow there are segmentation faults *after* the scenario has run, presumingly from `sharp`, when installing dependencies with yarn
+    // useYarn: true,
     scenarios: [
       {
         name: 'ember-lts-3.16',
