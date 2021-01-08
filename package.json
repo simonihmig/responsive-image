@@ -2,6 +2,16 @@
   "name": "ember-responsive-image",
   "version": "1.0.0-rc.7",
   "description": "An ember addon that generates resized images and use them in img-tags with the srcset-attribute.",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": "https://github.com/kaliber5/ember-responsive-image",
+  "license": "MIT",
+  "author": "Andreas Schacht <schacht@kaliber5.de>, Simon Ihmig <ihmig@kaliber5.de>",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
   "scripts": {
     "build": "ember build --environment=production",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
@@ -12,9 +22,6 @@
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
     "test:fastboot": "ember fastboot:test"
-  },
-  "engines": {
-    "node": "10.* || >= 12"
   },
   "dependencies": {
     "async-q": "^0.3.1",
@@ -62,23 +69,36 @@
     "loader.js": "^4.7.0",
     "mocha": "^5.2.0",
     "npm-run-all": "^4.1.5",
+    "release-it": "^14.2.1",
+    "release-it-lerna-changelog": "^3.1.0",
     "request": "^2.83.0",
     "rsvp": "^4.7.0"
   },
-  "keywords": [
-    "ember-addon"
-  ],
-  "repository": "https://github.com/kaliber5/ember-responsive-image",
-  "license": "MIT",
-  "author": "Andreas Schacht <schacht@kaliber5.de>, Simon Ihmig <ihmig@kaliber5.de>",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
+  "engines": {
+    "node": "10.* || >= 12"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "before": [
       "broccoli-asset-rev"
     ]
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": true
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
   }
 }
