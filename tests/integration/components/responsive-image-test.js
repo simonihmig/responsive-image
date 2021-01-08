@@ -126,4 +126,13 @@ module('Integration: Responsive Image Component', function (hooks) {
     assert.equal(find('img').getAttribute('alt'), 'my description');
     assert.dom('img').hasClass('my-css-class');
   });
+
+  test('it renders arbitrary HTML attributes', async function (assert) {
+    await render(
+      hbs`<ResponsiveImage @image="test.png" class="foo" role="button" data-test-image />`
+    );
+    assert.dom('img').hasClass('foo');
+    assert.dom('img').hasAttribute('role', 'button');
+    assert.dom('img').hasAttribute('data-test-image');
+  });
 });
