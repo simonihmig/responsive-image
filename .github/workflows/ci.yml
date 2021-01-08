@@ -69,23 +69,8 @@ jobs:
       id: global-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
-    - name: Cache package manager's global cache and node_modules
-      id: cache-dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          ${{ steps.global-cache-dir-path.outputs.dir }}
-          node_modules
-        key: ${{ runner.os }}-${{ matrix.node-version }}-${{
-          hashFiles('**/yarn.lock'
-          ) }}
-        restore-keys: |
-          ${{ runner.os }}-${{ matrix.node-version }}-
-
-    - name: Install Dependencies
-      run: yarn install --frozen-lockfile
-      if: |
-        steps.cache-dependencies.outputs.cache-hit != 'true'
+    - name: Install dependencies
+      uses: bahmutov/npm-install@v1
 
     - name: Lint
       run: yarn lint
@@ -110,27 +95,8 @@ jobs:
       with:
         node-version: '${{ env.NODE_VERSION }}'
 
-    - name: Get package manager's global cache path
-      id: global-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-
-    - name: Cache package manager's global cache and node_modules
-      id: cache-dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          ${{ steps.global-cache-dir-path.outputs.dir }}
-          node_modules
-        key: ${{ runner.os }}-${{ matrix.node-version }}-${{
-          hashFiles('**/yarn.lock'
-          ) }}
-        restore-keys: |
-          ${{ runner.os }}-${{ matrix.node-version }}-
-
-    - name: Install Dependencies
-      run: yarn install --frozen-lockfile
-      if: |
-        steps.cache-dependencies.outputs.cache-hit != 'true'
+    - name: Install dependencies
+      uses: bahmutov/npm-install@v1
 
     - name: Test
       run: yarn test:ember --launch ${{ matrix.browser }}
@@ -155,23 +121,10 @@ jobs:
       with:
         node-version: '${{ env.NODE_VERSION }}'
 
-    - name: Get package manager's global cache path
-      id: global-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-
-    - name: Cache package manager's global cache and node_modules
-      id: cache-dependencies
-      uses: actions/cache@v2
+    - name: Install dependencies
+      uses: bahmutov/npm-install@v1
       with:
-        path: |
-          ${{ steps.global-cache-dir-path.outputs.dir }}
-          node_modules
-        key: ${{ runner.os }}-${{ matrix.node-version }}-floating-deps
-        restore-keys: |
-          ${{ runner.os }}-${{ matrix.node-version }}-
-
-    - name: Install Dependencies
-      run: yarn install --no-lockfile --non-interactive
+        useLockFile: false
 
     - name: Test
       run: yarn test:ember --launch ${{ matrix.browser }}
@@ -212,27 +165,8 @@ jobs:
       with:
         node-version: '${{ env.NODE_VERSION }}'
 
-    - name: Get package manager's global cache path
-      id: global-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-
-    - name: Cache package manager's global cache and node_modules
-      id: cache-dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          ${{ steps.global-cache-dir-path.outputs.dir }}
-          node_modules
-        key: ${{ runner.os }}-${{ matrix.node-version }}-${{
-          hashFiles('**/yarn.lock'
-          ) }}
-        restore-keys: |
-          ${{ runner.os }}-${{ matrix.node-version }}-
-
-    - name: Install Dependencies
-      run: yarn install --frozen-lockfile
-      if: |
-        steps.cache-dependencies.outputs.cache-hit != 'true'
+    - name: Install dependencies
+      uses: bahmutov/npm-install@v1
 
     - name: Test
       env:
