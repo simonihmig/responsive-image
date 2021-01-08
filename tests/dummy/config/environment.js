@@ -38,7 +38,17 @@ module.exports = function(environment) {
         // justCopy: true,
         removeSourceDir: true,
         supportedWidths: [10, 25]
+      },
+      {
+        sourceDir: 'assets/images/recursive',
+        destinationDir: 'assets/images/recursiveresponsive',
+        quality: 5,
+        // justCopy: true,
+        removeSourceDir: true,
+        recursive: true,
+        supportedWidths: [100, 50]
       }
+
     ]
   };
 

@@ -21,6 +21,10 @@ describe('Integration: Responsive Image Component', function() {
     await render(hbs`{{responsive-image image="small.png"}}`);
     expect(find('img').getAttribute('srcset')).to.have.string('/assets/images/smallresponsive/small10w-00e24234f1b58e32b935b1041432916f.png 10w');
     expect(find('img').getAttribute('srcset')).to.have.string('/assets/images/smallresponsive/small25w-00e24234f1b58e32b935b1041432916f.png 25w');
+    await render(hbs`{{responsive-image image="dir/test.png"}}`);
+    expect(find('img').getAttribute('srcset')).to.have.string('/assets/images/recursiveresponsive/dir/test100w-00e24234f1b58e32b935b1041432916f.png 100w');
+    expect(find('img').getAttribute('srcset')).to.have.string('/assets/images/recursiveresponsive/dir/test50w-00e24234f1b58e32b935b1041432916f.png 50w');
+
   });
 
   it('it renders a given size as sizes', async function() {
@@ -47,6 +51,13 @@ describe('Integration: Responsive Image Component', function() {
     service.set('physicalWidth', 11);
     await render(hbs`{{responsive-image image="small.png"}}`);
     expect(find('img').getAttribute('src')).to.equal('/assets/images/smallresponsive/small25w-00e24234f1b58e32b935b1041432916f.png');
+    service.set('physicalWidth', 45);
+    await render(hbs`{{responsive-image image="dir/test.png"}}`);
+    expect(find('img').getAttribute('src')).to.equal('/assets/images/recursiveresponsive/dir/test50w-00e24234f1b58e32b935b1041432916f.png');
+    service.set('physicalWidth', 51);
+    await render(hbs`{{responsive-image image="dir/test.png"}}`);
+    expect(find('img').getAttribute('src')).to.equal('/assets/images/recursiveresponsive/dir/test100w-00e24234f1b58e32b935b1041432916f.png');
+
   });
 
   it('it renders the alt and classNames arguments', async function() {

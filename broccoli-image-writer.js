@@ -40,8 +40,7 @@ class ImageResizer extends CachingWriter {
     let destinationPath = path.join(this.outputPath, this.image_options.destinationDir);
     let justCopy = this.image_options.justCopy;
 
-    fs.ensureDirSync(destinationPath);
-    let files = fs.readdirSync(sourcePath);
+    let files = this.getFiles(sourcePath, null,this.image_options.recursive );
 
     if (this.image_options.justCopy && (this.imagePreProcessors.length || this.imagePostProcessors.length)) {
       this.writeWarnLine('You turned on the copy-mode and there are image-processors registered. So be aware of the image processors will be called, but their result will be ignored');
@@ -133,6 +132,7 @@ class ImageResizer extends CachingWriter {
     let source = path.join(sourcePath, file);
     let generatedFilename = this.generateFilename(file, width);
     let destination = path.join(destinationPath, generatedFilename);
+    fs.ensureDirSync(path.dirname(destination));
 
     this.insertMetadata(file, generatedFilename, width, meta);
     let sharped = sharp(source);
@@ -214,6 +214,33 @@ class ImageResizer extends CachingWriter {
     if (this.configData.hasOwnProperty(filename) === false) {
       this.configData[filename] = this.image_options;
     }
+  }
+
+  /**
+   * Gets the files to process, potentially recursively
+   * @param {string} sourcePath The starting path to index
+   * @param {string} subPath The sub path to index or null
+   * @param {boolean} recursive Should sub directories be indexed
+   * @private
+   * @returns {string[]} List of files
+   */
+  getFiles(sourcePath, subPath, recursive) {
+    let files = [];
+    let currentPath = subPath ? path.join(sourcePath, subPath) : sourcePath
+    let directoryContents = fs.readdirSync(currentPath);
+    for (let item of directoryContents) {
+      let fullFilePath = path.join(currentPath, item);
+      let stat = fs.lstatSync(fullFilePath);
+      if (stat.isDirectory() && recursive) {
+        let subPathToIndex = subPath ? path.join(subPath, item) : item;
+        files.push(...this.getFiles(sourcePath, subPathToIndex, true));
+      } else if (stat.isDirectory()) {
+        this.writeWarnLine('The sourceDir contains a directory but "recursive" is not enabled so the contents will be ignored');
+      } else {
+        files.push(subPath ? path.join(subPath, item) : item);
+      }
+    }
+    return files;
   }
 
 }

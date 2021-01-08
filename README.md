@@ -41,6 +41,7 @@ module.exports = function(environment) {
       supportedWidths: [2048, 1536, 1080, 750, 640],
       removeSourceDir: true,
       justCopy: false,
+      recursive: false,
       extensions: ['jpg', 'jpeg', 'png', 'gif']
     }
   }
@@ -60,6 +61,7 @@ module.exports = function(environment) {
           supportedWidths: [2048, 1536, 1080],
           removeSourceDir: true,
           justCopy: false,
+          recursive: false,
           extensions: ['jpg', 'jpeg', 'png', 'gif']
         },
         {
@@ -69,6 +71,7 @@ module.exports = function(environment) {
           supportedWidths: [750, 640, 320],
           removeSourceDir: true,
           justCopy: false,
+          recursive: false,
           extensions: ['jpg', 'jpeg', 'png', 'gif']
         }
     ]
@@ -84,6 +87,7 @@ module.exports = function(environment) {
 * **supportedWidths:** These are the widths of the resized images.
 * **removeSourceDir:** If true, the sourceDir will be removed from the build.
 * **justCopy:** If true, the images will just be copied without resizing. This is useful for development builds to speed things up, but should be false for production.
+* **recursive** If true sub directories of sourceDir will be processed and retain the same directory structure in destinationDir. Defaults to false.
 * **extensions:** Array of file extensions. Only files with these extensions will be resized, others will be ignored. Avoid errors with files like `.DS_Store`.
 
 Put one or more images in the source folder (in this case 'assets/images/generate/'), like 'myImage.png', and build the project. The resized images will be generated into the destination directory ('assets/images/responsive'):
