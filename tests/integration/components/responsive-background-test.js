@@ -12,7 +12,7 @@ module('Integration: ResponsiveBackgroundComponent', function (hooks) {
     await render(hbs`<ResponsiveBackground @image="test.png"/>`);
     assert.equal(
       find('div[style]').getAttribute('style'),
-      "background-image: url('/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png');"
+      "background-image: url('/assets/images/responsive/test640w-00e24234f1b58e32b935b1041432916f.png');"
     );
   });
 
