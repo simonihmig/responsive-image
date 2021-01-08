@@ -11,7 +11,7 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
     assert
       .dom('h1')
       .hasText(
-        '/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png'
+        '/assets/images/responsive/test640w-00e24234f1b58e32b935b1041432916f.png'
       );
   });
 
