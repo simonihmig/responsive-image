@@ -9,7 +9,7 @@ module('Integration: Responsive Image Component', function (hooks) {
   setupResponsiveImage(hooks);
 
   test('it renders the correct sourceset', async function (assert) {
-    await render(hbs`{{responsive-image image="test.png"}}`);
+    await render(hbs`<ResponsiveImage @image="test.png"/>`);
     assert
       .dom('img')
       .hasAttribute(
@@ -26,7 +26,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           '/assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png 50w'
         )
       );
-    await render(hbs`{{responsive-image image="small.png"}}`);
+    await render(hbs`<ResponsiveImage @image="small.png"/>`);
     assert
       .dom('img')
       .hasAttribute(
@@ -43,7 +43,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           '/assets/images/smallresponsive/small25w-00e24234f1b58e32b935b1041432916f.png 25w'
         )
       );
-    await render(hbs`{{responsive-image image="dir/test.png"}}`);
+    await render(hbs`<ResponsiveImage @image="dir/test.png"/>`);
     assert
       .dom('img')
       .hasAttribute(
@@ -63,13 +63,13 @@ module('Integration: Responsive Image Component', function (hooks) {
   });
 
   test('it renders a given size as sizes', async function (assert) {
-    await render(hbs`{{responsive-image image="test.png" size="40"}}`);
+    await render(hbs`<ResponsiveImage @image="test.png" @size="40"/>`);
     assert.dom('img').hasAttribute('sizes', '40vw');
   });
 
   test('it renders with given sizes', async function (assert) {
     await render(
-      hbs`{{responsive-image image="test.png" sizes="(max-width: 767px) 100vw, 50vw"}}`
+      hbs`<ResponsiveImage @image="test.png" @sizes="(max-width: 767px) 100vw, 50vw"/>`
     );
     assert.equal(
       find('img').getAttribute('sizes'),
@@ -80,37 +80,37 @@ module('Integration: Responsive Image Component', function (hooks) {
   test('it renders the fallback src next to needed display size', async function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     service.set('physicalWidth', 45);
-    await render(hbs`{{responsive-image image="test.png"}}`);
+    await render(hbs`<ResponsiveImage @image="test.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
       '/assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png'
     );
     service.set('physicalWidth', 51);
-    await render(hbs`{{responsive-image image="test.png"}}`);
+    await render(hbs`<ResponsiveImage @image="test.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
       '/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png'
     );
     service.set('physicalWidth', 9);
-    await render(hbs`{{responsive-image image="small.png"}}`);
+    await render(hbs`<ResponsiveImage @image="small.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
       '/assets/images/smallresponsive/small10w-00e24234f1b58e32b935b1041432916f.png'
     );
     service.set('physicalWidth', 11);
-    await render(hbs`{{responsive-image image="small.png"}}`);
+    await render(hbs`<ResponsiveImage @image="small.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
       '/assets/images/smallresponsive/small25w-00e24234f1b58e32b935b1041432916f.png'
     );
     service.set('physicalWidth', 45);
-    await render(hbs`{{responsive-image image="dir/test.png"}}`);
+    await render(hbs`<ResponsiveImage @image="dir/test.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
       '/assets/images/recursiveresponsive/dir/test50w-00e24234f1b58e32b935b1041432916f.png'
     );
     service.set('physicalWidth', 51);
-    await render(hbs`{{responsive-image image="dir/test.png"}}`);
+    await render(hbs`<ResponsiveImage @image="dir/test.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
       '/assets/images/recursiveresponsive/dir/test100w-00e24234f1b58e32b935b1041432916f.png'
@@ -121,7 +121,7 @@ module('Integration: Responsive Image Component', function (hooks) {
     this.set('alt', 'my description');
     this.set('className', 'my-css-class');
     await render(
-      hbs`{{responsive-image image="test.png" alt=alt className=className}}`
+      hbs`<ResponsiveImage @image="test.png" @alt={{this.alt}} @className={{this.className}} />`
     );
     assert.equal(find('img').getAttribute('alt'), 'my description');
     assert.dom('img').hasClass('my-css-class');
