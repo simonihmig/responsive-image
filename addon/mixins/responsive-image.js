@@ -10,7 +10,6 @@ import BaseMixin from 'ember-responsive-image/mixins/responsive-base';
  * @public
  */
 export default Mixin.create(BaseMixin, {
-
   /**
    * @property attributeBindings
    * @type string[]
@@ -26,5 +25,5 @@ export default Mixin.create(BaseMixin, {
    * @type string
    * @private
    */
-  src: readOnly('suitableSrc')
+  src: readOnly('suitableSrc'),
 });

@@ -12,5 +12,4 @@ import ResponsiveBackgroundMixin from 'ember-responsive-image/mixins/responsive-
  * @namespace Components
  * @public
  */
-export default Component.extend(ResponsiveBackgroundMixin, {
-});
+export default Component.extend(ResponsiveBackgroundMixin, {});

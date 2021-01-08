@@ -10,7 +10,15 @@ const async = require('async-q');
 const sharp = require('sharp');
 
 class ImageResizer extends CachingWriter {
-  constructor(inputNodes, options, metaData, configData, imagePreProcessors, imagePostProcessors, userInterface) {
+  constructor(
+    inputNodes,
+    options,
+    metaData,
+    configData,
+    imagePreProcessors,
+    imagePostProcessors,
+    userInterface
+  ) {
     options = options || {};
     options.cacheInclude = [/.*/];
     super(inputNodes, options);
@@ -37,13 +45,21 @@ class ImageResizer extends CachingWriter {
 
   build() {
     let sourcePath = this.inputPaths[0];
-    let destinationPath = path.join(this.outputPath, this.image_options.destinationDir);
+    let destinationPath = path.join(
+      this.outputPath,
+      this.image_options.destinationDir
+    );
     let justCopy = this.image_options.justCopy;
 
-    let files = this.getFiles(sourcePath, null,this.image_options.recursive );
+    let files = this.getFiles(sourcePath, null, this.image_options.recursive);
 
-    if (this.image_options.justCopy && (this.imagePreProcessors.length || this.imagePostProcessors.length)) {
-      this.writeWarnLine('You turned on the copy-mode and there are image-processors registered. So be aware of the image processors will be called, but their result will be ignored');
+    if (
+      this.image_options.justCopy &&
+      (this.imagePreProcessors.length || this.imagePostProcessors.length)
+    ) {
+      this.writeWarnLine(
+        'You turned on the copy-mode and there are image-processors registered. So be aware of the image processors will be called, but their result will be ignored'
+      );
     }
 
     let tasks = files
@@ -59,7 +75,9 @@ class ImageResizer extends CachingWriter {
       .reduce((res, fns) => res.concat(fns), []); // flat map to an array of promise-functions
 
     return async.parallelLimit(tasks, 4).then(() => {
-      this.writeInfoLine(`\n${tasks.length} images ${justCopy ? 'copied' : 'generated'}.\n`);
+      this.writeInfoLine(
+        `\n${tasks.length} images ${justCopy ? 'copied' : 'generated'}.\n`
+      );
     });
   }
 
@@ -75,14 +93,10 @@ class ImageResizer extends CachingWriter {
     let metaPromise = image.metadata();
     return this.image_options.supportedWidths.map((width) => {
       return () => {
-        return metaPromise.then((meta) => this.generateImage(
-          file,
-          sourcePath,
-          destinationPath,
-          width,
-          meta
-        ));
-      }
+        return metaPromise.then((meta) =>
+          this.generateImage(file, sourcePath, destinationPath, width, meta)
+        );
+      };
     });
   }
 
@@ -104,17 +118,22 @@ class ImageResizer extends CachingWriter {
           let generatedFilename = this.generateFilename(file, width);
           let destination = path.join(destinationPath, generatedFilename);
           this.insertMetadata(file, generatedFilename, width, meta);
-          if(this.imagePreProcessors.length || this.imagePostProcessors.length) {
+          if (
+            this.imagePreProcessors.length ||
+            this.imagePostProcessors.length
+          ) {
             return this.preProcessImage(sharp(source), file, width)
-            .then((preProcessedSharp) => this.postProcessImage(preProcessedSharp, file, width))
-            .then(() => {
-              return fs.copy(source, destination);
-            });
+              .then((preProcessedSharp) =>
+                this.postProcessImage(preProcessedSharp, file, width)
+              )
+              .then(() => {
+                return fs.copy(source, destination);
+              });
           } else {
             return fs.copy(source, destination);
           }
         });
-      }
+      };
     });
   }
 
@@ -137,18 +156,19 @@ class ImageResizer extends CachingWriter {
     this.insertMetadata(file, generatedFilename, width, meta);
     let sharped = sharp(source);
     return this.preProcessImage(sharped, file, width)
-    .then((preProcessedSharp) => {
-      preProcessedSharp.resize(width, null, { withoutEnlargement: true })
-      .jpeg({
-        quality: this.image_options.quality,
-        progressive: true,
-        force: false
+      .then((preProcessedSharp) => {
+        preProcessedSharp
+          .resize(width, null, { withoutEnlargement: true })
+          .jpeg({
+            quality: this.image_options.quality,
+            progressive: true,
+            force: false,
+          });
+        return this.postProcessImage(preProcessedSharp, file, width);
+      })
+      .then((postProcessed) => {
+        return postProcessed.toFile(destination);
       });
-      return this.postProcessImage(preProcessedSharp, file, width);
-    })
-    .then((postProcessed) => {
-      return postProcessed.toFile(destination);
-    });
   }
 
   /**
@@ -161,7 +181,17 @@ class ImageResizer extends CachingWriter {
    */
   preProcessImage(sharp, filename, width) {
     return this.imagePreProcessors.reduce((sharpPromise, processor) => {
-      return sharpPromise.then((result) => Promise.resolve(processor.callback.call(processor.target, result, filename, width, this.image_options)));
+      return sharpPromise.then((result) =>
+        Promise.resolve(
+          processor.callback.call(
+            processor.target,
+            result,
+            filename,
+            width,
+            this.image_options
+          )
+        )
+      );
     }, Promise.resolve(sharp));
   }
 
@@ -175,16 +205,35 @@ class ImageResizer extends CachingWriter {
    */
   postProcessImage(sharp, filename, width) {
     return this.imagePostProcessors.reduce((sharpPromise, processor) => {
-      return sharpPromise.then((result) => Promise.resolve(processor.callback.call(processor.target, result, filename, width, this.image_options)));
+      return sharpPromise.then((result) =>
+        Promise.resolve(
+          processor.callback.call(
+            processor.target,
+            result,
+            filename,
+            width,
+            this.image_options
+          )
+        )
+      );
     }, Promise.resolve(sharp));
   }
 
   generateFilename(file, width) {
-    return file.substr(0, file.lastIndexOf('.')) + width + 'w.' + file.substr(file.lastIndexOf('.') + 1);
+    return (
+      file.substr(0, file.lastIndexOf('.')) +
+      width +
+      'w.' +
+      file.substr(file.lastIndexOf('.') + 1)
+    );
   }
 
   insertMetadata(filename, imagename, width, meta) {
-    let image = path.join(this.image_options.rootURL, this.image_options.destinationDir, imagename);
+    let image = path.join(
+      this.image_options.rootURL,
+      this.image_options.destinationDir,
+      imagename
+    );
     if (process.platform === 'win32') {
       image = image.replace(/\\/g, '/');
     }
@@ -196,9 +245,11 @@ class ImageResizer extends CachingWriter {
     let metadata = {
       image,
       width,
-      height
+      height,
     };
-    if (this.metaData.hasOwnProperty(filename) === false) {
+    if (
+      Object.prototype.hasOwnProperty.call(this.metaData, filename) === false
+    ) {
       this.metaData[filename] = { images: [] };
     }
     this.metaData[filename].images.push(metadata);
@@ -211,7 +262,9 @@ class ImageResizer extends CachingWriter {
    * @private
    */
   addConfigData(filename) {
-    if (this.configData.hasOwnProperty(filename) === false) {
+    if (
+      Object.prototype.hasOwnProperty.call(this.configData, filename) === false
+    ) {
       this.configData[filename] = this.image_options;
     }
   }
@@ -226,7 +279,7 @@ class ImageResizer extends CachingWriter {
    */
   getFiles(sourcePath, subPath, recursive) {
     let files = [];
-    let currentPath = subPath ? path.join(sourcePath, subPath) : sourcePath
+    let currentPath = subPath ? path.join(sourcePath, subPath) : sourcePath;
     let directoryContents = fs.readdirSync(currentPath);
     for (let item of directoryContents) {
       let fullFilePath = path.join(currentPath, item);
@@ -235,14 +288,15 @@ class ImageResizer extends CachingWriter {
         let subPathToIndex = subPath ? path.join(subPath, item) : item;
         files.push(...this.getFiles(sourcePath, subPathToIndex, true));
       } else if (stat.isDirectory()) {
-        this.writeWarnLine('The sourceDir contains a directory but "recursive" is not enabled so the contents will be ignored');
+        this.writeWarnLine(
+          'The sourceDir contains a directory but "recursive" is not enabled so the contents will be ignored'
+        );
       } else {
         files.push(subPath ? path.join(subPath, item) : item);
       }
     }
     return files;
   }
-
 }
 
 module.exports = ImageResizer;

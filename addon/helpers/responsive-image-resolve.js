@@ -11,11 +11,11 @@ import Helper from '@ember/component/helper';
 export default Helper.extend({
   responsiveImage: service(),
 
-  compute(params/*, hash*/) {
+  compute(params /*, hash*/) {
     let image = params[0];
     let size = params[1] || 100;
-    let responsive = this.get('responsiveImage').getImageBySize(image, size);
+    let responsive = this.responsiveImage.getImageBySize(image, size);
 
     return htmlSafe(responsive);
-  }
+  },
 });

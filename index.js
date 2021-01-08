@@ -16,7 +16,7 @@ function defaultConfig() {
     removeSourceDir: true,
     justCopy: false,
     recursive: false,
-    extensions: ['jpg', 'jpeg', 'png', 'gif']
+    extensions: ['jpg', 'jpeg', 'png', 'gif'],
   };
 
   //if (env !== 'production') {
@@ -127,10 +127,22 @@ module.exports = {
     }
     this.extendedMetaData = {};
     Object.keys(this.metaData).forEach((key) => {
-      if (this.configData[key] && this.extendedMetaData.hasOwnProperty(key) === false) {
-        this.extendedMetaData[key] = this.metadataExtensions.reduce((data, extension) => {
-          return extension.callback.call(extension.target, key, data, this.configData[key]);
-        }, this.metaData[key]);
+      if (
+        this.configData[key] &&
+        Object.prototype.hasOwnProperty.call(this.extendedMetaData, key) ===
+          false
+      ) {
+        this.extendedMetaData[key] = this.metadataExtensions.reduce(
+          (data, extension) => {
+            return extension.callback.call(
+              extension.target,
+              key,
+              data,
+              this.configData[key]
+            );
+          },
+          this.metaData[key]
+        );
       }
     });
 
@@ -139,7 +151,7 @@ module.exports = {
 
   included(app, parentAddon) {
     this._super.included.apply(this, arguments);
-    this.app = (parentAddon || app);
+    this.app = parentAddon || app;
   },
 
   config(env, baseConfig) {
@@ -166,19 +178,27 @@ module.exports = {
       srcDir: options.sourceDir,
       include: [`**/*.+(${extensions})`],
       allowEmpty: true,
-      destDir: '/'
+      destDir: '/',
     });
-    return new Writer([funnel], options, this.metaData, this.configData, this.imagePreProcessors, this.imagePostProcessors, this.ui);
+    return new Writer(
+      [funnel],
+      options,
+      this.metaData,
+      this.configData,
+      this.imagePreProcessors,
+      this.imagePostProcessors,
+      this.ui
+    );
   },
 
   contentFor(type) {
     if (type === 'head-footer') {
       let txt = [
         '<script id="ember_responsive_image_meta" type="application/json">',
-        '\'__ember_responsive_image_meta__\'',
-        '</script>'
+        "'__ember_responsive_image_meta__'",
+        '</script>',
       ];
-      return txt.join("\n");
+      return txt.join('\n');
     }
   },
 
@@ -190,19 +210,19 @@ module.exports = {
       }
       let trees = [];
       this.addonOptions.forEach((options) => {
-        let imageTree = this.resizeImages(tree, options)
+        let imageTree = this.resizeImages(tree, options);
         trees.push(imageTree);
       });
 
       let pattern = /["']__ember_responsive_image_meta__["']/;
-      let mapMeta = (content) => content.replace(pattern, JSON.stringify(this.extendMetadata()));
+      let mapMeta = (content) =>
+        content.replace(pattern, JSON.stringify(this.extendMetadata()));
 
       trees = trees.concat([
-          tree,
-          map(find(tree, '**/*.js'), mapMeta),
-          map(find(tree, '**/index.html'), mapMeta)
-        ]
-      );
+        tree,
+        map(find(tree, '**/*.js'), mapMeta),
+        map(find(tree, '**/index.html'), mapMeta),
+      ]);
       return mergeTrees(trees, { overwrite: true });
     }
 
@@ -216,5 +236,5 @@ module.exports = {
         fs.removeSync(path.join(result.directory, options.sourceDir));
       }
     });
-  }
+  },
 };

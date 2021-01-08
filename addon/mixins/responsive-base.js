@@ -10,7 +10,6 @@ import { computed } from '@ember/object';
  * @private
  */
 export default Mixin.create({
-
   /**
    * @property responsiveImage
    * @protected
@@ -44,10 +43,9 @@ export default Mixin.create({
    * @type string
    * @private
    */
-  suitableSrc: computed('image', 'size', function() {
-    let image = this.get('image');
-    if (image) {
-      return this.get('responsiveImage').getImageBySize(this.get('image'), this.get('size'));
-    }
-  }).readOnly()
+  suitableSrc: computed('image', 'size', function () {
+    return this.image
+      ? this.responsiveImage.getImageBySize(this.image, this.size)
+      : undefined;
+  }).readOnly(),
 });

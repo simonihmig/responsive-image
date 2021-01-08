@@ -16,7 +16,6 @@ import ResponsiveImageMixin from 'ember-responsive-image/mixins/responsive-image
  * @public
  */
 export default Component.extend(ResponsiveImageMixin, {
-
   /**
    * @property tagName
    * @type string
@@ -87,9 +86,9 @@ export default Component.extend(ResponsiveImageMixin, {
    * @type string
    * @public
    */
-  sizes: computed('size', function() {
-    if (isPresent(this.get('size'))) {
-      return this.get('size') + 'vw';
+  sizes: computed('size', function () {
+    if (isPresent(this.size)) {
+      return this.size + 'vw';
     }
     return null;
   }),
@@ -102,8 +101,8 @@ export default Component.extend(ResponsiveImageMixin, {
    * @readonly
    * @private
    */
-  srcset: computed('sources', function() {
-    return this.get('sources').join(', ');
+  srcset: computed('sources', function () {
+    return this.sources.join(', ');
   }).readOnly(),
 
   /**
@@ -114,9 +113,9 @@ export default Component.extend(ResponsiveImageMixin, {
    * @readonly
    * @private
    */
-  sources: computed('image', function() {
-    return this.get('responsiveImage').getImages(this.get('image')).map((item) => {
+  sources: computed('image', 'responsiveImage', function () {
+    return this.responsiveImage.getImages(this.image).map((item) => {
       return `${item.image} ${item.width}w`;
     }, this);
-  }).readOnly()
+  }).readOnly(),
 });

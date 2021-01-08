@@ -1,8 +1,7 @@
 # ember-responsive-image
 
-[![Build Status](https://travis-ci.org/kaliber5/ember-responsive-image.svg?branch=master)](https://travis-ci.org/kaliber5/ember-responsive-image)
+[![CI](https://github.com/kaliber5/ember-responsive-image/workflows/CI/badge.svg)](https://github.com/kaliber5/ember-responsive-image/actions?query=workflow%3ACI)
 [![npm version](https://badge.fury.io/js/ember-responsive-image.svg)](https://badge.fury.io/js/ember-responsive-image)
-[![Code Climate](https://codeclimate.com/github/kaliber5/ember-responsive-image/badges/gpa.svg)](https://codeclimate.com/github/kaliber5/ember-responsive-image)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-responsive-image.svg)](https://emberobserver.com/addons/ember-responsive-image)
 
 An ember-cli addon to automatically generate resized images and use them in `img` tags with the `srcset` attribute.
@@ -10,6 +9,15 @@ An ember-cli addon to automatically generate resized images and use them in `img
 This is very useful for responsive web apps to optimize images for a wide range of devices (smartphones, tablets, desktops etc.). All browsers with [support for the `srcset` attribute](http://caniuse.com/#search=srcset) will automatically load the most appropriate resized image for the given device, e.g. based on screen size and density (high dpi "retina" screens).
 
 Built on top of the awesome [sharp](https://github.com/lovell/sharp) library.
+
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v3.16 or above
+* Ember CLI v2.13 or above
+* Node.js v10 or above
+
 
 ## Getting started
 
@@ -281,3 +289,14 @@ module('Integration: My Image Component', function(hooks) {
   test(...);
 });
 ```
+
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).

@@ -1,17 +1,13 @@
 /* jshint expr:true */
 import EmberObject from '@ember/object';
-import { expect } from 'chai';
-import {
-  describe,
-  it
-} from 'mocha';
+import { module, test } from 'qunit';
 import ResponsiveBaseMixin from 'ember-responsive-image/mixins/responsive-base';
 
-describe('ResponsiveBaseMixin', function() {
+module('ResponsiveBaseMixin', function () {
   // Replace this with your real tests.
-  it('works', function() {
+  test('works', function (assert) {
     let ResponsiveBaseObject = EmberObject.extend(ResponsiveBaseMixin);
     let subject = ResponsiveBaseObject.create();
-    expect(subject).to.be.ok;
+    assert.ok(subject);
   });
 });

@@ -1,17 +1,15 @@
 /* jshint expr:true */
 import EmberObject from '@ember/object';
-import { expect } from 'chai';
-import {
-  describe,
-  it
-} from 'mocha';
+import { module, test } from 'qunit';
 import ResponsiveBackgroundMixin from 'ember-responsive-image/mixins/responsive-background';
 
-describe('ResponsiveBackgroundMixin', function() {
+module('ResponsiveBackgroundMixin', function () {
   // Replace this with your real tests.
-  it('works', function() {
-    let ResponsiveBackgroundObject = EmberObject.extend(ResponsiveBackgroundMixin);
+  test('works', function (assert) {
+    let ResponsiveBackgroundObject = EmberObject.extend(
+      ResponsiveBackgroundMixin
+    );
     let subject = ResponsiveBackgroundObject.create();
-    expect(subject).to.be.ok;
+    assert.ok(subject);
   });
 });
