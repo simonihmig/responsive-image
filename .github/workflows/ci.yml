@@ -143,8 +143,7 @@ jobs:
           ember-lts-3.16,
           ember-release,
           ember-beta,
-          ember-default-with-jquery,
-          fastboot-addon-tests
+          ember-default-with-jquery
         ]
         allow-failure: [false]
         include:
