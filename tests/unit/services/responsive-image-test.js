@@ -1,6 +1,5 @@
-import { expect } from 'chai';
-import { setupTest, it } from 'ember-mocha';
-import { describe, beforeEach } from 'mocha';
+import { setupTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 const meta = {
   prepend: '',
@@ -22,39 +21,39 @@ const meta = {
   },
 };
 
-describe('ResponsiveImageService', function () {
-  setupTest();
+module('ResponsiveImageService', function (hooks) {
+  setupTest(hooks);
 
-  beforeEach(function () {
+  hooks.beforeEach(function () {
     let service = this.owner.lookup('service:responsive-image');
     service.set('meta', meta);
   });
 
-  it('retrieve generated images by name', function () {
+  test('retrieve generated images by name', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     let images = service.getImages('test.png');
-    expect(images).to.be.deep.equal(meta['test.png'].images);
+    assert.deepEqual(images, meta['test.png'].images);
   });
 
-  it('retrieve generated image data by size', function () {
+  test('retrieve generated image data by size', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     service.set('physicalWidth', 100);
     let images = service.getImageDataBySize('test.png', 120);
-    expect(images).to.be.deep.equal(meta['test.png'].images[0]);
+    assert.deepEqual(images, meta['test.png'].images[0]);
     images = service.getImageDataBySize('test.png', 60);
-    expect(images).to.be.deep.equal(meta['test.png'].images[0]);
+    assert.deepEqual(images, meta['test.png'].images[0]);
     images = service.getImageDataBySize('test.png', 45);
-    expect(images).to.be.deep.equal(meta['test.png'].images[1]);
+    assert.deepEqual(images, meta['test.png'].images[1]);
   });
 
-  it('retrieve a generated image by size', function () {
+  test('retrieve a generated image by size', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     service.set('physicalWidth', 100);
     let image = service.getImageBySize('test.png', 120);
-    expect(image).to.be.equal(meta['test.png'].images[0].image);
+    assert.equal(image, meta['test.png'].images[0].image);
     image = service.getImageBySize('test.png', 60);
-    expect(image).to.be.equal(meta['test.png'].images[0].image);
+    assert.equal(image, meta['test.png'].images[0].image);
     image = service.getImageBySize('test.png', 45);
-    expect(image).to.be.equal(meta['test.png'].images[1].image);
+    assert.equal(image, meta['test.png'].images[1].image);
   });
 });

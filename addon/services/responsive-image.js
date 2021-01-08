@@ -38,7 +38,7 @@ export default Service.extend({
   getImages(imageName) {
     assert(
       `There is no data for image ${imageName}`,
-      Object.prototype.hasOwnProperty.call(this.meta.hasOwnProperty, imageName)
+      Object.prototype.hasOwnProperty.call(this.meta, imageName)
     );
     assert(
       `There is no image data for image ${imageName}`,
