@@ -190,28 +190,6 @@ You can also replace the [`sizes` attribute](https://developer.mozilla.org/de/do
 <img src="..." srcset="..." sizes="(min-width: 800px) 800px, 100vw">
 ```
 
-### The responsive background component
-
-In a template you can use the `<ResponsiveBackground>` component. The image argument is required and must be one of the origin files:
-
-```hbs
-<ResponsiveBackground @image="myImage.png"/>
-```
-
-This will generate an `div` tag with an image as a background image, which fits the needs:
-```html
-<div style="background-image: url('/assets/images/responsive/myImage1080w.png')"></div>
-```
-
-Like the `<ResponsiveImage/>` component, you can pass a size:
-```hbs
-<ResponsiveBackground @image="myImage.png" @size="50"/>
-```
-
-```html
-<div style="background-image: url('/assets/images/responsive/myImage640w.png')"></div>
-```
-
 ## Extensibility hooks
 ### Extend the image processing
 
