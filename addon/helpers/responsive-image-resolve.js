@@ -8,8 +8,9 @@ import Helper from '@ember/component/helper';
  * @extends Ember.Helper
  * @public
  */
-export default Helper.extend({
-  responsiveImage: service(),
+export default class ResponsiveImageResolve extends Helper {
+  @service
+  responsiveImage;
 
   compute(params /*, hash*/) {
     let image = params[0];
@@ -17,5 +18,5 @@ export default Helper.extend({
     let responsive = this.responsiveImage.getImageBySize(image, size);
 
     return htmlSafe(responsive);
-  },
-});
+  }
+}

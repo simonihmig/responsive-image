@@ -37,7 +37,7 @@ module('ResponsiveImageService', function (hooks) {
 
   test('retrieve generated image data by size', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
-    service.set('physicalWidth', 100);
+    service.physicalWidth = 100;
     let images = service.getImageDataBySize('test.png', 120);
     assert.deepEqual(images, meta['test.png'].images[0]);
     images = service.getImageDataBySize('test.png', 60);
@@ -48,7 +48,7 @@ module('ResponsiveImageService', function (hooks) {
 
   test('retrieve a generated image by size', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
-    service.set('physicalWidth', 100);
+    service.physicalWidth = 100;
     let image = service.getImageBySize('test.png', 120);
     assert.equal(image, meta['test.png'].images[0].image);
     image = service.getImageBySize('test.png', 60);
