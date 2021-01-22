@@ -1,10 +1,9 @@
 'use strict';
 const path = require('path');
 const Funnel = require('broccoli-funnel');
-const Writer = require('./broccoli-image-writer');
+const Writer = require('./lib/image-writer');
 const fs = require('fs-extra');
 const map = require('broccoli-stew').map;
-const find = require('broccoli-stew').find;
 const mergeTrees = require('broccoli-merge-trees');
 
 function defaultConfig() {
@@ -152,6 +151,7 @@ module.exports = {
   included(app, parentAddon) {
     this._super.included.apply(this, arguments);
     this.app = parentAddon || app;
+    this.processingTree = this.createProcessingTree();
   },
 
   config(env, baseConfig) {
@@ -192,41 +192,53 @@ module.exports = {
   },
 
   contentFor(type) {
+    // we write our image meta data as a script tag into the app's index.html, which the service will read from
+    // (that happens only in the browser, where we have easy access to the DOM. For FastBoot this is different, see below)
     if (type === 'head-footer') {
-      let txt = [
+      return [
         '<script id="ember_responsive_image_meta" type="application/json">',
-        "'__ember_responsive_image_meta__'",
+        JSON.stringify(this.extendMetadata()),
         '</script>',
-      ];
-      return txt.join('\n');
+      ].join('\n');
     }
   },
 
-  postprocessTree(type, tree) {
-    if (type === 'all') {
-      this.metaData.prepend = '';
-      if (this.app && this.app.options && this.app.options.fingerprint) {
-        this.metaData.prepend = this.app.options.fingerprint.prepend;
+  treeForFastBoot() {
+    // we have to rename our own fastboot tree so that our dummy app works correctly, due to this bug in ember-cli-fastboot:
+    // https://github.com/ember-fastboot/ember-cli-fastboot/issues/807
+    const tree = this.treeGenerator(path.join(__dirname, '-fastboot'));
+    const pattern = /["']__ember_responsive_image_meta__["']/;
+    // we replace our placeholder token with the image meta data generated from our broccoli plugin, so the meta data
+    // is part of the FastBoot specific service within the generated fastboot.js bundle. See `-fastboot/services/responsive-image.js`
+    const mapMeta = (content) =>
+      content.replace(pattern, JSON.stringify(this.extendMetadata()));
+
+    // This is some ugly hack to make sure the image processing happened before the FastBoot tree is emitted, as we need
+    // its meta data here. This is normally not the case, due to the timing of these hooks.
+    // So we merge the processingTree into our fastboot tree, and remove it later, to make sure it gets consumed.
+    return new Funnel(
+      map(mergeTrees([tree, this.processingTree]), '**/*.js', mapMeta),
+      {
+        include: ['**/*.js'],
       }
-      let trees = [];
-      this.addonOptions.forEach((options) => {
-        let imageTree = this.resizeImages(tree, options);
-        trees.push(imageTree);
-      });
+    );
+  },
 
-      let pattern = /["']__ember_responsive_image_meta__["']/;
-      let mapMeta = (content) =>
-        content.replace(pattern, JSON.stringify(this.extendMetadata()));
+  treeForPublic() {
+    return this.processingTree;
+  },
 
-      trees = trees.concat([
-        tree,
-        map(find(tree, '**/*.js'), mapMeta),
-        map(find(tree, '**/index.html'), mapMeta),
-      ]);
-      return mergeTrees(trees, { overwrite: true });
+  createProcessingTree() {
+    const tree = this._findHost().trees.public;
+    this.metaData.prepend = '';
+    if (this.app && this.app.options && this.app.options.fingerprint) {
+      this.metaData.prepend = this.app.options.fingerprint.prepend;
     }
+    const trees = this.addonOptions.map((options) => {
+      return this.resizeImages(tree, options);
+    });
 
-    return tree;
+    return mergeTrees(trees, { overwrite: true });
   },
 
   postBuild(result) {

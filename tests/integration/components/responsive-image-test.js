@@ -1,12 +1,10 @@
 import { find, render } from '@ember/test-helpers';
-import { setupResponsiveImage } from 'ember-responsive-image/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { test, module } from 'qunit';
 
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
-  setupResponsiveImage(hooks);
 
   test('it renders the correct sourceset', async function (assert) {
     await render(hbs`<ResponsiveImage @image="test.png"/>`);

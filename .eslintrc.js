@@ -39,7 +39,7 @@ module.exports = {
         'blueprints/*/index.js',
         'config/**/*.js',
         'tests/dummy/config/**/*.js',
-        'broccoli-image-writer.js',
+        'lib/*.js',
       ],
       excludedFiles: [
         'addon/**',

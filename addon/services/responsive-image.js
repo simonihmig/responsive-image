@@ -46,7 +46,7 @@ export default class ResponsiveImageService extends Service {
    */
   getImages(imageName) {
     assert(
-      `There is no data for image ${imageName}`,
+      `There is no data for image ${imageName}: ${this.meta}`,
       Object.prototype.hasOwnProperty.call(this.meta, imageName)
     );
     assert(
@@ -137,4 +137,18 @@ export default class ResponsiveImageService extends Service {
    * @type {object}
    * @private
    */
+  get meta() {
+    if (this._meta) {
+      return this._meta;
+    }
+    const script = document.getElementById('ember_responsive_image_meta');
+    assert(
+      'No script tag found containing meta data for ember-responsive-image',
+      script
+    );
+    return JSON.parse(script.textContent);
+  }
+  set meta(meta) {
+    this._meta = meta;
+  }
 }
