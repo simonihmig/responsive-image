@@ -1,7 +1,8 @@
 import { isPresent } from '@ember/utils';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import ResponsiveImageMixin from 'ember-responsive-image/mixins/responsive-image';
+import { readOnly } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 
 /**
  * Use this component to show the generated images from the source folder, just set the image property with the image
@@ -15,7 +16,55 @@ import ResponsiveImageMixin from 'ember-responsive-image/mixins/responsive-image
  * @namespace Components
  * @public
  */
-export default Component.extend(ResponsiveImageMixin, {
+export default Component.extend({
+  /**
+   * @property responsiveImage
+   * @protected
+   */
+  responsiveImage: service(),
+
+  /**
+   * the origin image name to display
+   *
+   * @property image
+   * @type string
+   * @public
+   */
+  image: null,
+
+  /**
+   * optional, the size in vw (only vw supported now)
+   * @TODO provide a solution for a use case where the image has a size in px unit.
+   *
+   * @property size
+   * @type number
+   * @public
+   */
+  size: null,
+
+  /**
+   * the image source which fits at best for the size and screen
+   *
+   * @property suitableSrc
+   * @readonly
+   * @type string
+   * @private
+   */
+  suitableSrc: computed('image', 'size', function () {
+    return this.image
+      ? this.responsiveImage.getImageBySize(this.image, this.size)
+      : undefined;
+  }).readOnly(),
+
+  /**
+   * takes the image which fits at best and bind to the src attribute
+   *
+   * @property src
+   * @type string
+   * @private
+   */
+  src: readOnly('suitableSrc'),
+
   /**
    * @property tagName
    * @type string
@@ -38,7 +87,7 @@ export default Component.extend(ResponsiveImageMixin, {
    * @readOnly
    * @protected
    */
-  attributeBindings: ['srcset', 'alt', 'sizes', 'width', 'height'],
+  attributeBindings: ['src', 'srcset', 'alt', 'sizes', 'width', 'height'],
 
   /**
    * set the `width` attribute
