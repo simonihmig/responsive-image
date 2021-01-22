@@ -117,16 +117,6 @@ module('Integration: Responsive Image Component', function (hooks) {
     );
   });
 
-  test('it renders the alt and classNames arguments', async function (assert) {
-    this.set('alt', 'my description');
-    this.set('className', 'my-css-class');
-    await render(
-      hbs`<ResponsiveImage @image="test.png" @alt={{this.alt}} @className={{this.className}} />`
-    );
-    assert.equal(find('img').getAttribute('alt'), 'my description');
-    assert.dom('img').hasClass('my-css-class');
-  });
-
   test('it renders arbitrary HTML attributes', async function (assert) {
     await render(
       hbs`<ResponsiveImage @image="test.png" class="foo" role="button" data-test-image />`
