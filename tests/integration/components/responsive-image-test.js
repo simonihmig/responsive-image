@@ -13,7 +13,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       .hasAttribute(
         'srcset',
         new RegExp(
-          '/assets/images/test100w-00e24234f1b58e32b935b1041432916f.png 100w'
+          '/assets/images/test100w.png 100w'
         )
       );
     assert
@@ -21,7 +21,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       .hasAttribute(
         'srcset',
         new RegExp(
-          '/assets/images/test50w-00e24234f1b58e32b935b1041432916f.png 50w'
+          '/assets/images/test50w.png 50w'
         )
       );
     await render(hbs`<ResponsiveImage @image="assets/images/small.png"/>`);
@@ -30,7 +30,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       .hasAttribute(
         'srcset',
         new RegExp(
-          '/assets/images/small10w-00e24234f1b58e32b935b1041432916f.png 10w'
+          '/assets/images/small10w.png 10w'
         )
       );
     assert
@@ -38,7 +38,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       .hasAttribute(
         'srcset',
         new RegExp(
-          '/assets/images/small25w-00e24234f1b58e32b935b1041432916f.png 25w'
+          '/assets/images/small25w.png 25w'
         )
       );
     await render(
@@ -49,7 +49,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       .hasAttribute(
         'srcset',
         new RegExp(
-          '/assets/images/recursive/dir/test100w-00e24234f1b58e32b935b1041432916f.png 100w'
+          '/assets/images/recursive/dir/test100w.png 100w'
         )
       );
     assert
@@ -57,7 +57,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       .hasAttribute(
         'srcset',
         new RegExp(
-          '/assets/images/recursive/dir/test50w-00e24234f1b58e32b935b1041432916f.png 50w'
+          '/assets/images/recursive/dir/test50w.png 50w'
         )
       );
   });
@@ -85,25 +85,25 @@ module('Integration: Responsive Image Component', function (hooks) {
     await render(hbs`<ResponsiveImage @image="assets/images/test.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
-      '/assets/images/test50w-00e24234f1b58e32b935b1041432916f.png'
+      '/assets/images/test50w.png'
     );
     service.set('physicalWidth', 51);
     await render(hbs`<ResponsiveImage @image="assets/images/test.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
-      '/assets/images/test100w-00e24234f1b58e32b935b1041432916f.png'
+      '/assets/images/test100w.png'
     );
     service.set('physicalWidth', 9);
     await render(hbs`<ResponsiveImage @image="assets/images/small.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
-      '/assets/images/small10w-00e24234f1b58e32b935b1041432916f.png'
+      '/assets/images/small10w.png'
     );
     service.set('physicalWidth', 11);
     await render(hbs`<ResponsiveImage @image="assets/images/small.png"/>`);
     assert.equal(
       find('img').getAttribute('src'),
-      '/assets/images/small25w-00e24234f1b58e32b935b1041432916f.png'
+      '/assets/images/small25w.png'
     );
     service.set('physicalWidth', 45);
     await render(
@@ -111,7 +111,7 @@ module('Integration: Responsive Image Component', function (hooks) {
     );
     assert.equal(
       find('img').getAttribute('src'),
-      '/assets/images/recursive/dir/test50w-00e24234f1b58e32b935b1041432916f.png'
+      '/assets/images/recursive/dir/test50w.png'
     );
     service.set('physicalWidth', 51);
     await render(
@@ -119,7 +119,7 @@ module('Integration: Responsive Image Component', function (hooks) {
     );
     assert.equal(
       find('img').getAttribute('src'),
-      '/assets/images/recursive/dir/test100w-00e24234f1b58e32b935b1041432916f.png'
+      '/assets/images/recursive/dir/test100w.png'
     );
   });
 

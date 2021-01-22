@@ -12,7 +12,7 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
     );
     assert
       .dom('h1')
-      .hasText('/assets/images/test640w-00e24234f1b58e32b935b1041432916f.png');
+      .hasText('/assets/images/test640w.png');
   });
 
   test('is size aware', async function (assert) {
@@ -24,6 +24,6 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
 
     assert
       .dom('h1')
-      .hasText('/assets/images/test50w-00e24234f1b58e32b935b1041432916f.png');
+      .hasText('/assets/images/test50w.png');
   });
 });

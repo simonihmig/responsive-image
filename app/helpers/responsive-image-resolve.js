@@ -1,4 +1,1 @@
-export {
-  default,
-  responsiveImageResolve,
-} from 'ember-responsive-image/helpers/responsive-image-resolve';
+export { default } from 'ember-responsive-image/helpers/responsive-image-resolve';
