@@ -1,5 +1,4 @@
 import Service from '@ember/service';
-import { computed } from '@ember/object';
 import { A } from '@ember/array';
 import { assert } from '@ember/debug';
 
@@ -14,7 +13,7 @@ const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
  * @module responsive-image
  * @public
  */
-export default Service.extend({
+export default class ResponsiveImageService extends Service {
   /**
    * the screen's width
    * This is the base value to calculate the image size.
@@ -25,7 +24,17 @@ export default Service.extend({
    * @type {Number}
    * @public
    */
-  screenWidth,
+  screenWidth = screenWidth;
+
+  /**
+   * the physical width
+   *
+   * @property physicalWidth
+   * @type {Number}
+   * @readonly
+   * @private
+   */
+  physicalWidth = this.screenWidth * ((window && window.devicePixelRatio) || 1);
 
   /**
    * return the images with the different widths
@@ -45,7 +54,7 @@ export default Service.extend({
       Object.prototype.hasOwnProperty.call(this.meta[imageName], 'images')
     );
     return A(this.meta[imageName].images);
-  },
+  }
 
   /**
    * returns the image which fits for given size
@@ -58,7 +67,7 @@ export default Service.extend({
    */
   getImageBySize(imageName, size) {
     return this.getImageDataBySize(imageName, size).image;
-  },
+  }
 
   /**
    * returns the image data which fits for given size
@@ -72,7 +81,7 @@ export default Service.extend({
   getImageDataBySize(imageName, size) {
     let width = this.getDestinationImageWidthBySize(imageName, size);
     return this.getImages(imageName).findBy('width', width);
-  },
+  }
 
   /**
    * returns the closest supported width to the screenwidth and size
@@ -92,7 +101,7 @@ export default Service.extend({
         return item >= prevValue ? item : prevValue;
       }
     }, 0);
-  },
+  }
 
   /**
    * returns the supported widths of an image
@@ -106,7 +115,7 @@ export default Service.extend({
     return this.getImages(image).map((item) => {
       return item.width;
     });
-  },
+  }
 
   /**
    * @method getDestinationWidthBySize
@@ -119,7 +128,7 @@ export default Service.extend({
     let factor = (size || 100) / 100;
 
     return physicalWidth * factor;
-  },
+  }
 
   /**
    * the meta values from build time
@@ -128,17 +137,4 @@ export default Service.extend({
    * @type {object}
    * @private
    */
-  meta: undefined,
-
-  /**
-   * the physical width
-   *
-   * @property physicalWidth
-   * @type {Number}
-   * @readonly
-   * @private
-   */
-  physicalWidth: computed('screenWidth', function () {
-    return this.screenWidth * ((window && window.devicePixelRatio) || 1);
-  }),
-});
+}
