@@ -1,6 +1,7 @@
 version: 1
 update_configs:
   - package_manager: "javascript"
+    target_branch: "dev-v2"
     directory: "/"
     update_schedule: "weekly"
     automerged_updates:
