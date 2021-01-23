@@ -43,14 +43,10 @@ Add the configuration to your `config/environment.js`
 module.exports = function(environment) {
   let ENV = {
     'responsive-image': {
-      sourceDir: 'assets/images/generate',
-      destinationDir: 'assets/images/responsive',
+      include: 'assets/images/**/*',
       quality: 80,
       supportedWidths: [2048, 1536, 1080, 750, 640],
-      removeSourceDir: true,
-      justCopy: false,
-      recursive: false,
-      extensions: ['jpg', 'jpeg', 'png', 'gif']
+      removeSource: true,
     }
   }
 }
@@ -63,42 +59,36 @@ module.exports = function(environment) {
   let ENV = {
     'responsive-image': [
         {
-          sourceDir: 'assets/images/generateLarge',
-          destinationDir: 'assets/images/responsiveLarge',
+          include: 'assets/images/**/*',
+          exclude: 'assets/images/small.png',
           quality: 80,
           supportedWidths: [2048, 1536, 1080],
           removeSourceDir: true,
-          justCopy: false,
-          recursive: false,
-          extensions: ['jpg', 'jpeg', 'png', 'gif']
         },
         {
-          sourceDir: 'assets/images/generateSmall',
-          destinationDir: 'assets/images/responsiveSmall',
+          include: 'assets/images/small.png',
           quality: 80,
           supportedWidths: [750, 640, 320],
           removeSourceDir: true,
-          justCopy: false,
-          recursive: false,
-          extensions: ['jpg', 'jpeg', 'png', 'gif']
         }
     ]
   }
 }
 ```
 
+Just make sure the `include`/`exclude` patterns don't create overlapping configurations!
 
 ### Options
 
-* **sourceDir:** The folder with the origin images.
+* **include:** Glob pattern for which images should be processed based on this configuration.
+* **exclude:** Optional pattern which images to exclude, takes precedence over `include`.
 * **destinationDir:** This folder will contain the generated Images. It will be created, if not existing. Must not be the same as sourceDir.
+* **quality:** Image quality (JPEG)
 * **supportedWidths:** These are the widths of the resized images.
-* **removeSourceDir:** If true, the sourceDir will be removed from the build.
+* **removeSource:** If true, the source images will be removed from the build.
 * **justCopy:** If true, the images will just be copied without resizing. This is useful for development builds to speed things up, but should be false for production.
-* **recursive** If true sub directories of sourceDir will be processed and retain the same directory structure in destinationDir. Defaults to false.
-* **extensions:** Array of file extensions. Only files with these extensions will be resized, others will be ignored. Avoid errors with files like `.DS_Store`.
 
-Put one or more images in the source folder (in this case 'assets/images/generate/'), like 'myImage.png', and build the project. The resized images will be generated into the destination directory ('assets/images/responsive'):
+Put one or more images in the source folder (in this case 'assets/images/'), like 'myImage.png', and build the project. The resized images will be generated into the same directory:
 ```
 myImage640w.png
 myImage750w.png

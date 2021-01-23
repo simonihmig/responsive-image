@@ -7,23 +7,23 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
   setupRenderingTest(hooks);
 
   test('works without size', async function (assert) {
-    await render(hbs`<h1>{{responsive-image-resolve "test.png"}}</h1>`);
+    await render(
+      hbs`<h1>{{responsive-image-resolve "assets/images/test.png"}}</h1>`
+    );
     assert
       .dom('h1')
-      .hasText(
-        '/assets/images/responsive/test640w-00e24234f1b58e32b935b1041432916f.png'
-      );
+      .hasText('/assets/images/test640w-00e24234f1b58e32b935b1041432916f.png');
   });
 
   test('is size aware', async function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     service.set('physicalWidth', 100);
-    await render(hbs`<h1>{{responsive-image-resolve "test.png" 45}}</h1>`);
+    await render(
+      hbs`<h1>{{responsive-image-resolve "assets/images/test.png" 45}}</h1>`
+    );
 
     assert
       .dom('h1')
-      .hasText(
-        '/assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png'
-      );
+      .hasText('/assets/images/test50w-00e24234f1b58e32b935b1041432916f.png');
   });
 });

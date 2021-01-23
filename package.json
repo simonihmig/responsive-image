@@ -27,6 +27,8 @@
     "test:node": "jest node-tests"
   },
   "dependencies": {
+    "@glimmer/component": "^1.0.3",
+    "@glimmer/tracking": "^1.0.3",
     "async-q": "^0.3.1",
     "broccoli-caching-writer": "^3.0.3",
     "broccoli-funnel": "^2.0.1",
@@ -35,9 +37,10 @@
     "ember-cli-babel": "^7.23.0",
     "ember-cli-htmlbars": "^5.3.1",
     "fs-extra": "^9.0.1",
-    "@glimmer/component": "^1.0.3",
-    "@glimmer/tracking": "^1.0.3",
-    "sharp": "^0.27.0"
+    "minimatch": "^3.0.4",
+    "sharp": "^0.27.0",
+    "silent-error": "^1.1.1",
+    "walk-sync": "^2.2.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",

@@ -5,20 +5,38 @@ const fs = require('fs');
 const path = require('path');
 
 const hash = '00e24234f1b58e32b935b1041432916f';
+// compare with tests/dummy/config/environment.js
 const images = [
   {
-    file: 'test.jpg',
+    file: 'assets/images/test.jpg',
     type: 'image/jpeg',
+    sizes: [50, 100],
     alpha: false,
     jpeqQuality: 50,
+    removeSource: true,
   },
   {
-    file: 'test.png',
+    file: 'assets/images/test.png',
     type: 'image/png',
+    sizes: [50, 100],
     alpha: true,
+    removeSource: true,
+  },
+  {
+    file: 'assets/images/recursive/dir/test.png',
+    type: 'image/png',
+    sizes: [50, 100],
+    alpha: false,
+    removeSource: true,
+  },
+  {
+    file: 'assets/images/small.png',
+    type: 'image/png',
+    sizes: [10, 25],
+    alpha: false,
+    removeSource: false,
   },
 ];
-const sizes = [50, 100];
 const aspectRatio = 2;
 const appDir = './dist';
 
@@ -28,17 +46,14 @@ beforeAll(function () {
 });
 
 images.forEach((img) => {
-  sizes.forEach((width) => {
+  img.sizes.forEach((width) => {
     test(`loads image ${img.file} ${width}w`, async function () {
-      const [name, ext] = img.file.split(['.']);
+      const [filename, ext] = img.file.split(['.']);
 
       const imageData = fs.readFileSync(
-        path.join(
-          appDir,
-          `assets/images/responsive/${name}${width}w-${hash}.${ext}`
-        )
+        path.join(appDir, `${filename}${width}w-${hash}.${ext}`)
       );
-
+      const originalSource = path.join(appDir, `${filename}-${hash}.${ext}`);
       const meta = await sharp(imageData).metadata();
 
       expect(meta).toBeDefined();
@@ -47,6 +62,7 @@ images.forEach((img) => {
       expect(meta.format).toEqual(img.type.split('/')[1]);
       expect(meta.hasAlpha).toEqual(img.alpha);
       expect(meta.hasProfile).toEqual(false);
+      expect(fs.existsSync(originalSource)).toBe(!img.removeSource);
 
       if (img.jpeqQuality) {
         expect(Math.round(jpegquality(imageData))).toEqual(img.jpeqQuality);

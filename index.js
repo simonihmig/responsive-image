@@ -5,17 +5,18 @@ const Writer = require('./lib/image-writer');
 const fs = require('fs-extra');
 const map = require('broccoli-stew').map;
 const mergeTrees = require('broccoli-merge-trees');
+const SilentError = require('silent-error');
+const minimatch = require('minimatch');
+const walk = require('walk-sync');
 
 function defaultConfig() {
   let defaultConfig = {
-    sourceDir: 'assets/images/generate',
-    destinationDir: 'assets/images/responsive',
+    exclude: [],
     quality: 80,
     supportedWidths: [2048, 1536, 1080, 750, 640],
-    removeSourceDir: true,
+    removeSource: true,
     justCopy: false,
-    recursive: false,
-    extensions: ['jpg', 'jpeg', 'png', 'gif'],
+    destinationDir: '/',
   };
 
   //if (env !== 'production') {
@@ -162,23 +163,37 @@ module.exports = {
     let url = baseConfig.rootURL || baseConfig.baseURL || '';
     this.addonOptions = [];
 
-    if (Array.isArray(config) === false) {
+    if (!Array.isArray(config)) {
       config = [config];
     }
     config.forEach((item) => {
+      this.validateConfigItem(item);
       let extendedConfig = Object.assign({}, defaultConfig(env), item);
       extendedConfig.rootURL = url;
+      if (!Array.isArray(extendedConfig.include)) {
+        extendedConfig.include = [extendedConfig.include];
+      }
+
+      if (!Array.isArray(extendedConfig.exclude)) {
+        extendedConfig.exclude = [extendedConfig.exclude];
+      }
+
       this.addonOptions.push(extendedConfig);
     });
   },
 
+  validateConfigItem(config) {
+    if (!config.include) {
+      throw new SilentError(
+        'include pattern must be given for responsive image config!'
+      );
+    }
+  },
+
   resizeImages(tree, options) {
-    let extensions = options.extensions.join('|');
     let funnel = new Funnel(tree, {
-      srcDir: options.sourceDir,
-      include: [`**/*.+(${extensions})`],
-      allowEmpty: true,
-      destDir: '/',
+      include: options.include,
+      exclude: options.exclude,
     });
     return new Writer(
       [funnel],
@@ -242,10 +257,35 @@ module.exports = {
   },
 
   postBuild(result) {
+    // remove original images that have `removeSource` set
+    const processedImages = Object.keys(this.metaData);
     this.addonOptions.forEach((options) => {
-      if (options.removeSourceDir) {
-        // remove folder with source files
-        fs.removeSync(path.join(result.directory, options.sourceDir));
+      if (options.removeSource) {
+        const globs = processedImages
+          .filter((file) => {
+            for (let pattern of options.include) {
+              if (!minimatch(file, pattern)) {
+                return false;
+              }
+            }
+            for (let pattern of options.exclude) {
+              if (minimatch(file, pattern)) {
+                return false;
+              }
+            }
+
+            return true;
+          })
+          .map((file) => {
+            const [filename, ext] = file.split('.');
+            const hashedFile = `${filename}-*.${ext}`;
+            return [file, hashedFile];
+          })
+          .reduce((result, arr) => [...result, ...arr], []); // flatMap
+
+        walk(result.directory, { globs }).forEach((file) =>
+          fs.removeSync(path.join(result.directory, file))
+        );
       }
     });
   },
