@@ -15,7 +15,7 @@ module('FastBoot | image', function (hooks) {
       .dom('img')
       .hasAttribute(
         'src',
-        '/assets/images/responsive/test640w-00e24234f1b58e32b935b1041432916f.png'
+        '/assets/images/test640w-00e24234f1b58e32b935b1041432916f.png'
       );
   });
 });
