@@ -6,15 +6,13 @@ const meta = {
   'test.png': {
     images: [
       {
-        image:
-          '/assets/images/responsive/test100w-00e24234f1b58e32b935b1041432916f.png',
+        image: '/assets/images/responsive/test100w.png',
         width: 100,
         height: 100,
         type: 'png',
       },
       {
-        image:
-          '/assets/images/responsive/test50w-00e24234f1b58e32b935b1041432916f.png',
+        image: '/assets/images/responsive/test50w.png',
         width: 50,
         height: 50,
         type: 'png',

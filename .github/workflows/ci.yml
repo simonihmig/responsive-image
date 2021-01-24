@@ -103,6 +103,8 @@ jobs:
           - ember-release
           - ember-beta
           - ember-default-with-jquery
+          - embroider-safe
+          - embroider-optimized
         allow-failure: [false]
         include:
           - ember-try-scenario: ember-canary

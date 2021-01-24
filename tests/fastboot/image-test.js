@@ -11,11 +11,6 @@ module('FastBoot | image', function (hooks) {
     await visit('/image');
 
     assert.dom('img').exists();
-    assert
-      .dom('img')
-      .hasAttribute(
-        'src',
-        '/assets/images/test640w-00e24234f1b58e32b935b1041432916f.png'
-      );
+    assert.dom('img').hasAttribute('src', '/assets/images/test640w.png');
   });
 });
