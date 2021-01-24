@@ -7,6 +7,7 @@ module.exports = function (defaults) {
     // Add options here
     fingerprint: {
       enabled: true,
+      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'webp'],
       exclude: ['testem.js'],
       customHash: '00e24234f1b58e32b935b1041432916f',
     },
