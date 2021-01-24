@@ -10,37 +10,17 @@ module('Integration: Responsive Image Component', function (hooks) {
     await render(hbs`<ResponsiveImage @image="assets/images/test.png"/>`);
     assert
       .dom('img')
-      .hasAttribute(
-        'srcset',
-        new RegExp(
-          '/assets/images/test100w.png 100w'
-        )
-      );
+      .hasAttribute('srcset', new RegExp('/assets/images/test100w.png 100w'));
     assert
       .dom('img')
-      .hasAttribute(
-        'srcset',
-        new RegExp(
-          '/assets/images/test50w.png 50w'
-        )
-      );
+      .hasAttribute('srcset', new RegExp('/assets/images/test50w.png 50w'));
     await render(hbs`<ResponsiveImage @image="assets/images/small.png"/>`);
     assert
       .dom('img')
-      .hasAttribute(
-        'srcset',
-        new RegExp(
-          '/assets/images/small10w.png 10w'
-        )
-      );
+      .hasAttribute('srcset', new RegExp('/assets/images/small10w.png 10w'));
     assert
       .dom('img')
-      .hasAttribute(
-        'srcset',
-        new RegExp(
-          '/assets/images/small25w.png 25w'
-        )
-      );
+      .hasAttribute('srcset', new RegExp('/assets/images/small25w.png 25w'));
     await render(
       hbs`<ResponsiveImage @image="assets/images/recursive/dir/test.png"/>`
     );
@@ -48,17 +28,13 @@ module('Integration: Responsive Image Component', function (hooks) {
       .dom('img')
       .hasAttribute(
         'srcset',
-        new RegExp(
-          '/assets/images/recursive/dir/test100w.png 100w'
-        )
+        new RegExp('/assets/images/recursive/dir/test100w.png 100w')
       );
     assert
       .dom('img')
       .hasAttribute(
         'srcset',
-        new RegExp(
-          '/assets/images/recursive/dir/test50w.png 50w'
-        )
+        new RegExp('/assets/images/recursive/dir/test50w.png 50w')
       );
   });
 
@@ -83,10 +59,7 @@ module('Integration: Responsive Image Component', function (hooks) {
     let service = this.owner.lookup('service:responsive-image');
     service.set('physicalWidth', 45);
     await render(hbs`<ResponsiveImage @image="assets/images/test.png"/>`);
-    assert.equal(
-      find('img').getAttribute('src'),
-      '/assets/images/test50w.png'
-    );
+    assert.equal(find('img').getAttribute('src'), '/assets/images/test50w.png');
     service.set('physicalWidth', 51);
     await render(hbs`<ResponsiveImage @image="assets/images/test.png"/>`);
     assert.equal(
