@@ -51,6 +51,23 @@ module('Integration: Responsive Image Component', function (hooks) {
         .dom('picture source[type="image/webp"]')
         .hasAttribute('srcset', new RegExp('/assets/images/test50w.webp 50w'));
 
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          new RegExp('/assets/images/test640w.avif 640w')
+        );
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          new RegExp('/assets/images/test100w.avif 100w')
+        );
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute('srcset', new RegExp('/assets/images/test50w.avif 50w'));
+
       await render(hbs`<ResponsiveImage @image="assets/images/small.png"/>`);
       // png
       assert
@@ -67,6 +84,14 @@ module('Integration: Responsive Image Component', function (hooks) {
       assert
         .dom('picture source[type="image/webp"]')
         .hasAttribute('srcset', new RegExp('/assets/images/small25w.webp 25w'));
+
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute('srcset', new RegExp('/assets/images/small10w.avif 10w'));
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute('srcset', new RegExp('/assets/images/small25w.avif 25w'));
 
       await render(
         hbs`<ResponsiveImage @image="assets/images/recursive/dir/test.png"/>`
@@ -97,6 +122,20 @@ module('Integration: Responsive Image Component', function (hooks) {
         .hasAttribute(
           'srcset',
           new RegExp('/assets/images/recursive/dir/test50w.webp 50w')
+        );
+
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          new RegExp('/assets/images/recursive/dir/test100w.avif 100w')
+        );
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          new RegExp('/assets/images/recursive/dir/test50w.avif 50w')
         );
     });
 
@@ -219,6 +258,14 @@ module('Integration: Responsive Image Component', function (hooks) {
         .dom('picture source[type="image/webp"]')
         .hasAttribute('srcset', new RegExp('/assets/images/test50w.webp 1x'));
 
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute('srcset', new RegExp('/assets/images/test100w.avif 2x'));
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute('srcset', new RegExp('/assets/images/test50w.avif 1x'));
+
       await render(
         hbs`<ResponsiveImage @width={{10}} @image="assets/images/small.png"/>`
       );
@@ -237,6 +284,14 @@ module('Integration: Responsive Image Component', function (hooks) {
       assert
         .dom('picture source[type="image/webp"]')
         .hasAttribute('srcset', new RegExp('/assets/images/small25w.webp 2x'));
+
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute('srcset', new RegExp('/assets/images/small10w.avif 1x'));
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute('srcset', new RegExp('/assets/images/small25w.avif 2x'));
 
       await render(
         hbs`<ResponsiveImage @image="assets/images/recursive/dir/test.png"/>`
@@ -267,6 +322,20 @@ module('Integration: Responsive Image Component', function (hooks) {
         .hasAttribute(
           'srcset',
           new RegExp('/assets/images/recursive/dir/test50w.webp 50w')
+        );
+
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          new RegExp('/assets/images/recursive/dir/test100w.avif 100w')
+        );
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          new RegExp('/assets/images/recursive/dir/test50w.avif 50w')
         );
     });
 
@@ -302,7 +371,7 @@ module('Integration: Responsive Image Component', function (hooks) {
     await render(hbs`<ResponsiveImage @image="assets/images/test.png"/>`);
 
     assert.dom('picture').exists({ count: 1 });
-    assert.dom('picture source').exists({ count: 2 });
+    assert.dom('picture source').exists({ count: 3 });
     assert.dom('picture source[type="image/png"]').exists({ count: 1 });
     assert.dom('picture source[type="image/webp"]').exists({ count: 1 });
   });

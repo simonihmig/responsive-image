@@ -1,8 +1,8 @@
 <picture>
-  {{#each this.sources as |s|}}
+  {{#each this.sourcesSorted as |s|}}
     <source
       srcset={{s.srcset}}
-      type={{s.type}}
+      type={{s.mimeType}}
       sizes={{s.sizes}}
     />
   {{/each}}
