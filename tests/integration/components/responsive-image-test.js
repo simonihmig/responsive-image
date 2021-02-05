@@ -319,6 +319,11 @@ module('Integration: Responsive Image Component', function (hooks) {
     assert.dom('img').hasAttribute('loading', 'eager');
   });
 
+  test('it decodes async', async function (assert) {
+    await render(hbs`<ResponsiveImage @image="assets/images/test.png" />`);
+    assert.dom('img').hasAttribute('decoding', 'async');
+  });
+
   test('it renders arbitrary HTML attributes', async function (assert) {
     await render(
       hbs`<ResponsiveImage @image="assets/images/test.png" class="foo" role="button" data-test-image />`
