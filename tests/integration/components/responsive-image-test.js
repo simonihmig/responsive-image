@@ -166,6 +166,18 @@ module('Integration: Responsive Image Component', function (hooks) {
     );
   });
 
+  test('it loads lazily by default', async function (assert) {
+    await render(hbs`<ResponsiveImage @image="assets/images/test.png" />`);
+    assert.dom('img').hasAttribute('loading', 'lazy');
+  });
+
+  test('it can optionally load eager', async function (assert) {
+    await render(
+      hbs`<ResponsiveImage @image="assets/images/test.png" loading="eager" />`
+    );
+    assert.dom('img').hasAttribute('loading', 'eager');
+  });
+
   test('it renders arbitrary HTML attributes', async function (assert) {
     await render(
       hbs`<ResponsiveImage @image="assets/images/test.png" class="foo" role="button" data-test-image />`
