@@ -386,6 +386,7 @@ module('Integration: Responsive Image Component', function (hooks) {
             .style.backgroundImage?.match(/data:image\/svg/),
           'it has a background SVG'
         );
+        assert.dom('img').hasStyle({ 'background-size': 'cover' });
         assert.ok(
           this.element.querySelector('img').style.backgroundImage?.length > 100,
           'the background SVG has a reasonable length'
