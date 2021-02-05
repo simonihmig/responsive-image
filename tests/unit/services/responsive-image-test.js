@@ -67,44 +67,22 @@ module('ResponsiveImageService', function (hooks) {
   test('retrieve generated image data by size', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     service.physicalWidth = 100;
-    let images = service.getImageDataBySize('test.png', 120);
+    let images = service.getImageMetaBySize('test.png', 120);
     assert.deepEqual(images, meta['test.png'].images[0]);
-    images = service.getImageDataBySize('test.png', 60);
+    images = service.getImageMetaBySize('test.png', 60);
     assert.deepEqual(images, meta['test.png'].images[0]);
-    images = service.getImageDataBySize('test.png', 45);
+    images = service.getImageMetaBySize('test.png', 45);
     assert.deepEqual(images, meta['test.png'].images[1]);
   });
 
   test('retrieve generated image data by size and type', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     service.physicalWidth = 100;
-    let images = service.getImageDataBySize('test.png', 120, 'webp');
+    let images = service.getImageMetaBySize('test.png', 120, 'webp');
     assert.deepEqual(images, meta['test.png'].images[2]);
-    images = service.getImageDataBySize('test.png', 60, 'webp');
+    images = service.getImageMetaBySize('test.png', 60, 'webp');
     assert.deepEqual(images, meta['test.png'].images[2]);
-    images = service.getImageDataBySize('test.png', 45, 'webp');
+    images = service.getImageMetaBySize('test.png', 45, 'webp');
     assert.deepEqual(images, meta['test.png'].images[3]);
-  });
-
-  test('retrieve a generated image by size', function (assert) {
-    let service = this.owner.lookup('service:responsive-image');
-    service.physicalWidth = 100;
-    let image = service.getImageBySize('test.png', 120);
-    assert.equal(image, meta['test.png'].images[0].image);
-    image = service.getImageBySize('test.png', 60);
-    assert.equal(image, meta['test.png'].images[0].image);
-    image = service.getImageBySize('test.png', 45);
-    assert.equal(image, meta['test.png'].images[1].image);
-  });
-
-  test('retrieve a generated image by size and type', function (assert) {
-    let service = this.owner.lookup('service:responsive-image');
-    service.physicalWidth = 100;
-    let image = service.getImageBySize('test.png', 120, 'webp');
-    assert.equal(image, meta['test.png'].images[2].image);
-    image = service.getImageBySize('test.png', 60, 'webp');
-    assert.equal(image, meta['test.png'].images[2].image);
-    image = service.getImageBySize('test.png', 45, 'webp');
-    assert.equal(image, meta['test.png'].images[3].image);
   });
 });
