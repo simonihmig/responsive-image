@@ -13,5 +13,7 @@
     class="eri-{{this.layout}}"
     loading="lazy"
     ...attributes
+    {{style (if this.showLqipImage (hash background-image=this.lqipImage) background-size="cover")}}
+    {{on "load" this.onLoad}}
   />
 </picture>

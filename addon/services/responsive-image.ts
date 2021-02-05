@@ -16,6 +16,11 @@ export interface ImageMeta {
 
 export interface Meta {
   images: ImageMeta[];
+  lqip?: {
+    image: string;
+    width: number;
+    height: number;
+  };
 }
 
 /**
@@ -39,20 +44,21 @@ export default class ResponsiveImageService extends Service {
    * return the images with the different widths
    */
   getImages(imageName: string, type?: ImageType): ImageMeta[] {
-    assert(
-      `There is no data for image ${imageName}: ${this.meta}`,
-      Object.prototype.hasOwnProperty.call(this.meta, imageName)
-    );
-    assert(
-      `There is no image data for image ${imageName}`,
-      Object.prototype.hasOwnProperty.call(this.meta[imageName], 'images')
-    );
-    let images = this.meta[imageName].images;
+    let images = this.getMeta(imageName).images;
     if (type) {
       images = images.filter((image) => image.type === type);
     }
 
     return images;
+  }
+
+  getMeta(imageName: string): Meta {
+    assert(
+      `There is no data for image ${imageName}: ${this.meta}`,
+      Object.prototype.hasOwnProperty.call(this.meta, imageName)
+    );
+
+    return this.meta[imageName];
   }
 
   private getType(imageName: string): ImageType {

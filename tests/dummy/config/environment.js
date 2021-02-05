@@ -24,9 +24,12 @@ module.exports = function (environment) {
     'responsive-image': [
       {
         include: 'assets/images/**/*',
-        exclude: 'assets/images/small.png',
+        exclude: ['assets/images/small.png', 'assets/images/lqip/**/*'],
         quality: 50,
         supportedWidths: [50, 100, 640],
+        lqip: {
+          type: 'color',
+        },
         removeSource: true,
         justCopy: false,
       },
@@ -35,6 +38,16 @@ module.exports = function (environment) {
         quality: 10,
         removeSource: false,
         supportedWidths: [10, 25],
+      },
+      {
+        include: 'assets/images/lqip/*.jpg',
+        quality: 50,
+        supportedWidths: [100, 640],
+        lqip: {
+          type: 'inline',
+        },
+        removeSource: true,
+        justCopy: false,
       },
     ],
   };
