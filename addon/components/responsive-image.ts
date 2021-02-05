@@ -8,9 +8,33 @@ interface ResponsiveImageComponentArgs {
   sizes?: string;
 }
 
+interface PictureSource {
+  srcset: string;
+  type: string;
+  sizes?: string;
+}
+
 export default class ResponsiveImageComponent extends Component<ResponsiveImageComponentArgs> {
   @service
   responsiveImage!: ResponsiveImageService;
+
+  get sources(): PictureSource[] {
+    return this.responsiveImage
+      .getAvailableTypes(this.args.image)
+      .map((type) => {
+        const sources = this.responsiveImage
+          .getImages(this.args.image, type)
+          .map((imageMeta) => `${imageMeta.image} ${imageMeta.width}w`);
+
+        return {
+          srcset: sources.join(', '),
+          sizes:
+            this.args.sizes ??
+            (this.args.size ? `${this.args.size}vw` : undefined),
+          type: `image/${type}`,
+        };
+      });
+  }
 
   /**
    * the image source which fits at best for the size and screen
@@ -19,17 +43,5 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return this.args.image
       ? this.responsiveImage.getImageBySize(this.args.image, this.args.size)
       : undefined;
-  }
-
-  /**
-   * the generated source set
-   */
-  get srcset(): string {
-    const sources = this.responsiveImage
-      .getImages(this.args.image)
-      .map((item) => {
-        return `${item.image} ${item.width}w`;
-      }, this);
-    return sources.join(', ');
   }
 }

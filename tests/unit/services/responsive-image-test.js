@@ -49,6 +49,21 @@ module('ResponsiveImageService', function (hooks) {
     assert.deepEqual(images, meta['test.png'].images);
   });
 
+  test('retrieve generated images by name and type', function (assert) {
+    let service = this.owner.lookup('service:responsive-image');
+    let images = service.getImages('test.png', 'png');
+    assert.deepEqual(images, meta['test.png'].images.slice(0, 2));
+
+    images = service.getImages('test.png', 'webp');
+    assert.deepEqual(images, meta['test.png'].images.slice(2, 4));
+  });
+
+  test('get available types', function (assert) {
+    let service = this.owner.lookup('service:responsive-image');
+    let types = service.getAvailableTypes('test.png');
+    assert.deepEqual(types, ['png', 'webp']);
+  });
+
   test('retrieve generated image data by size', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     service.physicalWidth = 100;

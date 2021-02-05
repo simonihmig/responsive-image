@@ -53,10 +53,11 @@ export default class ResponsiveImageService extends Service {
    *
    * @method getImages
    * @param {String} imageName The origin name of the Image
+   * @param {String} type The image type (jpeg, png, webp etc.). Optional, leave undefined to get all images
    * @returns {Array} An array of objects with the image name and width, e.g. [{ width: 40, height: 20, image: myImage40w.jpg}, ...]
    * @public
    */
-  getImages(imageName: string): ImageMeta[] {
+  getImages(imageName: string, type?: ImageType): ImageMeta[] {
     assert(
       `There is no data for image ${imageName}: ${this.meta}`,
       Object.prototype.hasOwnProperty.call(this.meta, imageName)
@@ -65,13 +66,27 @@ export default class ResponsiveImageService extends Service {
       `There is no image data for image ${imageName}`,
       Object.prototype.hasOwnProperty.call(this.meta[imageName], 'images')
     );
-    return this.meta[imageName].images;
+    let images = this.meta[imageName].images;
+    if (type) {
+      images = images.filter((image) => image.type === type);
+    }
+
+    return images;
   }
 
   private getType(imageName: string): ImageType {
     const extension = imageName.split('.').pop();
     assert(`No extension found for ${imageName}`, extension);
     return extentionTypeMapping.get(extension) ?? (extension as ImageType);
+  }
+
+  getAvailableTypes(imageName: string): ImageType[] {
+    return (
+      this.getImages(imageName)
+        .map((image) => image.type)
+        // unique
+        .filter((value, index, self) => self.indexOf(value) === index)
+    );
   }
 
   /**
