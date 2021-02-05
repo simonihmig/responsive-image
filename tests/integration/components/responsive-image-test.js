@@ -367,6 +367,41 @@ module('Integration: Responsive Image Component', function (hooks) {
     });
   });
 
+  module('LQIP', function () {
+    module('inline', function () {
+      test('it sets LQIP SVG as background', async function (assert) {
+        let resolve;
+        const waitUntilLoaded = new Promise((r) => {
+          resolve = r;
+        });
+        this.onload = () => setTimeout(resolve, 0);
+
+        await render(
+          hbs`<ResponsiveImage @image="assets/images/lqip/inline.jpg" {{on "load" this.onload}}/>`
+        );
+
+        assert.ok(
+          this.element
+            .querySelector('img')
+            .style.backgroundImage?.match(/data:image\/svg/),
+          'it has a background SVG'
+        );
+        assert.dom('img').hasStyle({ 'background-size': 'cover' });
+        assert.ok(
+          this.element.querySelector('img').style.backgroundImage?.length > 100,
+          'the background SVG has a reasonable length'
+        );
+
+        await waitUntilLoaded;
+
+        assert.notOk(
+          this.element.querySelector('img').style.backgroundImage,
+          'after image is loaded the background SVG is removed'
+        );
+      });
+    });
+  });
+
   test('it renders a source for every format', async function (assert) {
     await render(hbs`<ResponsiveImage @image="assets/images/test.png"/>`);
 

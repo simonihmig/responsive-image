@@ -38,6 +38,7 @@ module.exports = {
   extendedMetaData: null,
   imagePreProcessors: [],
   imagePostProcessors: [],
+  plugins: [],
 
   /**
    * Add a callback function to change the generated metaData per origin image.
@@ -153,6 +154,7 @@ module.exports = {
     this._super.included.apply(this, arguments);
     this.app = parentAddon || app;
     this.processingTree = this.createProcessingTree();
+    this.initPlugins();
   },
 
   config(env, baseConfig) {
@@ -179,6 +181,13 @@ module.exports = {
       }
 
       this.addonOptions.push(extendedConfig);
+    });
+  },
+
+  initPlugins() {
+    walk('lib/plugins', { globs: ['*.js'] }).forEach((file) => {
+      const Plugin = require(`./lib/plugins/${file}`);
+      this.plugins.push(new Plugin(this));
     });
   },
 

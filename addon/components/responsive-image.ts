@@ -3,8 +3,13 @@ import { inject as service } from '@ember/service';
 import ResponsiveImageService, {
   ImageMeta,
   ImageType,
+  Meta,
 } from 'ember-responsive-image/services/responsive-image';
 import { assert } from '@ember/debug';
+import dataUri from 'ember-responsive-image/utils/data-uri';
+import blurrySvg from 'ember-responsive-image/utils/blurry-svg';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 interface ResponsiveImageComponentArgs {
   image: string;
@@ -39,6 +44,9 @@ const typeScore = new Map<ImageType, number>([
 export default class ResponsiveImageComponent extends Component<ResponsiveImageComponentArgs> {
   @service
   responsiveImage!: ResponsiveImageService;
+
+  @tracked
+  isLoaded = false;
 
   constructor(owner: unknown, args: ResponsiveImageComponentArgs) {
     super(owner, args);
@@ -117,6 +125,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     }
   }
 
+  get meta(): Meta {
+    return this.responsiveImage.getMeta(this.args.image);
+  }
+
   /**
    * the image source which fits at best for the size and screen
    */
@@ -156,5 +168,36 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
       return undefined;
     }
+  }
+
+  get hasLqipImage(): boolean {
+    return !!this.meta.lqip?.image;
+  }
+
+  get showLqipImage(): boolean {
+    return !this.isLoaded && this.hasLqipImage;
+  }
+
+  get lqipImage(): string | undefined {
+    if (!this.hasLqipImage) {
+      return undefined;
+    }
+    const { lqip } = this.meta as Required<Meta>;
+
+    const uri = dataUri(
+      blurrySvg(
+        dataUri(lqip.image, 'image/png', true),
+        lqip.width,
+        lqip.height
+      ),
+      'image/svg+xml'
+    );
+
+    return `url("${uri}")`;
+  }
+
+  @action
+  onLoad(): void {
+    this.isLoaded = true;
   }
 }
