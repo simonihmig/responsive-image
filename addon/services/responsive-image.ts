@@ -5,7 +5,7 @@ const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 
 const extentionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
 
-export type ImageType = 'png' | 'jpeg' | 'webp';
+export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
 
 export interface ImageMeta {
   image: string;

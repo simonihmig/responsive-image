@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import ResponsiveImageService, {
   ImageMeta,
+  ImageType,
 } from 'ember-responsive-image/services/responsive-image';
 import { assert } from '@ember/debug';
 
@@ -15,7 +16,8 @@ interface ResponsiveImageComponentArgs {
 
 interface PictureSource {
   srcset: string;
-  type: string;
+  type: ImageType;
+  mimeType: string;
   sizes?: string;
 }
 
@@ -25,6 +27,14 @@ enum Layout {
 }
 
 const PIXEL_DENSITIES = [1, 2];
+
+// determines the order of sources, prefereing next-gen formats over legacy
+const typeScore = new Map<ImageType, number>([
+  ['png', 1],
+  ['jpeg', 1],
+  ['webp', 2],
+  ['avif', 3],
+]);
 
 export default class ResponsiveImageComponent extends Component<ResponsiveImageComponentArgs> {
   @service
@@ -55,7 +65,8 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
             sizes:
               this.args.sizes ??
               (this.args.size ? `${this.args.size}vw` : undefined),
-            type: `image/${type}`,
+            type,
+            mimeType: `image/${type}`,
           };
         });
     } else {
@@ -79,10 +90,17 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
           return {
             srcset: sources.join(', '),
-            type: `image/${type}`,
+            type,
+            mimeType: `image/${type}`,
           };
         });
     }
+  }
+
+  get sourcesSorted(): PictureSource[] {
+    return this.sources.sort(
+      (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0)
+    );
   }
 
   get imageMeta(): ImageMeta | undefined {
