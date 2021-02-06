@@ -16,6 +16,7 @@
     ...attributes
     {{style
       (if this.showLqipImage (hash background-image=this.lqipImage background-size="cover"))
+      (if this.showLqipBlurhash (hash background-image=this.lqipBlurhash background-size="cover"))
       (if this.showLqipColor (hash background-color=this.lqipColor))
     }}
     {{on "load" this.onLoad}}

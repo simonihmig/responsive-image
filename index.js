@@ -23,7 +23,6 @@ const defaultConfig = {
  */
 module.exports = {
   name: require('./package').name,
-  options: {},
   metaData: {},
   configData: {},
   app: null,
@@ -32,6 +31,12 @@ module.exports = {
   imagePreProcessors: [],
   imagePostProcessors: [],
   plugins: [],
+
+  options: {
+    '@embroider/macros': {
+      setOwnConfig: {},
+    },
+  },
 
   /**
    * Add a callback function to change the generated metaData per origin image.
