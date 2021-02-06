@@ -7,6 +7,22 @@ const extentionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
 
 export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
 
+export interface LqipBase {
+  type: string;
+}
+
+export interface LqipInline extends LqipBase {
+  type: 'inline';
+  image: string;
+  width: number;
+  height: number;
+}
+
+export interface LqipColor extends LqipBase {
+  type: 'color';
+  color: string;
+}
+
 export interface ImageMeta {
   image: string;
   width: number;
@@ -16,11 +32,7 @@ export interface ImageMeta {
 
 export interface Meta {
   images: ImageMeta[];
-  lqip?: {
-    image: string;
-    width: number;
-    height: number;
-  };
+  lqip?: LqipInline | LqipColor;
 }
 
 /**

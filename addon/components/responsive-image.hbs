@@ -14,7 +14,10 @@
     loading="lazy"
     decoding="async"
     ...attributes
-    {{style (if this.showLqipImage (hash background-image=this.lqipImage background-size="cover"))}}
+    {{style
+      (if this.showLqipImage (hash background-image=this.lqipImage background-size="cover"))
+      (if this.showLqipColor (hash background-color=this.lqipColor))
+    }}
     {{on "load" this.onLoad}}
   />
 </picture>

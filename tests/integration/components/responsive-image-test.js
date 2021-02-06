@@ -400,6 +400,29 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
       });
     });
+
+    module('color', function () {
+      test('it sets LQIP SVG as background', async function (assert) {
+        let resolve;
+        const waitUntilLoaded = new Promise((r) => {
+          resolve = r;
+        });
+        this.onload = () => setTimeout(resolve, 0);
+
+        await render(
+          hbs`<ResponsiveImage @image="assets/images/lqip/color.jpg" {{on "load" this.onload}}/>`
+        );
+
+        assert.dom('img').hasStyle({ 'background-color': 'rgb(88, 72, 56)' });
+
+        await waitUntilLoaded;
+
+        assert.notOk(
+          this.element.querySelector('img').style.backgroundColor,
+          'after image is loaded the background color is removed'
+        );
+      });
+    });
   });
 
   test('it renders a source for every format', async function (assert) {
