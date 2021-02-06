@@ -9,21 +9,14 @@ const SilentError = require('silent-error');
 const minimatch = require('minimatch');
 const walk = require('walk-sync');
 
-function defaultConfig() {
-  let defaultConfig = {
-    exclude: [],
-    quality: 80,
-    supportedWidths: [2048, 1536, 1080, 750, 640],
-    removeSource: true,
-    justCopy: false,
-    destinationDir: '/',
-  };
-
-  //if (env !== 'production') {
-  //  defaultConfig.justCopy = true;
-  //}
-  return defaultConfig;
-}
+const defaultConfig = {
+  exclude: [],
+  quality: 80,
+  supportedWidths: [2048, 1536, 1080, 750, 640],
+  removeSource: true,
+  justCopy: false,
+  destinationDir: '/',
+};
 
 /**
  * Ember Addon, generate resized images on build time
@@ -150,28 +143,32 @@ module.exports = {
     return this.extendedMetaData;
   },
 
-  included(app, parentAddon) {
+  included(parent) {
     this._super.included.apply(this, arguments);
-    this.app = parentAddon || app;
-    this.processingTree = this.createProcessingTree();
+    this.initConfig(parent);
     this.initPlugins();
+    this.processingTree = this.createProcessingTree();
   },
 
-  config(env, baseConfig) {
-    if (!env) {
+  initConfig(app) {
+    let config = app.options['responsive-image'];
+
+    if (!config) {
+      this.ui.writeWarnLine(
+        'Could not find config for ember-responsive-image, skipping image processing...'
+      );
+      this.addonOptions = [];
       return;
     }
-    let config = baseConfig['responsive-image'];
-    let url = baseConfig.rootURL || baseConfig.baseURL || '';
-    this.addonOptions = [];
 
     if (!Array.isArray(config)) {
       config = [config];
     }
-    config.forEach((item) => {
+
+    this.addonOptions = config.map((item) => {
       this.validateConfigItem(item);
-      let extendedConfig = Object.assign({}, defaultConfig(env), item);
-      extendedConfig.rootURL = url;
+      let extendedConfig = { ...defaultConfig, ...item };
+      // extendedConfig.rootURL = url;
       if (!Array.isArray(extendedConfig.include)) {
         extendedConfig.include = [extendedConfig.include];
       }
@@ -180,7 +177,7 @@ module.exports = {
         extendedConfig.exclude = [extendedConfig.exclude];
       }
 
-      this.addonOptions.push(extendedConfig);
+      return extendedConfig;
     });
   },
 
@@ -254,10 +251,6 @@ module.exports = {
 
   createProcessingTree() {
     const tree = this._findHost().trees.public;
-    this.metaData.prepend = '';
-    if (this.app && this.app.options && this.app.options.fingerprint) {
-      this.metaData.prepend = this.app.options.fingerprint.prepend;
-    }
     const trees = this.addonOptions.map((options) => {
       return this.resizeImages(tree, options);
     });

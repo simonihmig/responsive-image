@@ -11,6 +11,43 @@ module.exports = function (defaults) {
       exclude: ['testem.js'],
       customHash: '00e24234f1b58e32b935b1041432916f',
     },
+    'responsive-image': [
+      {
+        include: 'assets/images/**/*',
+        exclude: ['assets/images/small.png', 'assets/images/lqip/**/*'],
+        quality: 50,
+        supportedWidths: [50, 100, 640],
+        lqip: {
+          type: 'color',
+        },
+        removeSource: true,
+      },
+      {
+        include: 'assets/images/small.png',
+        quality: 10,
+        removeSource: false,
+        supportedWidths: [10, 25],
+      },
+      {
+        include: 'assets/images/lqip/inline.jpg',
+        quality: 50,
+        supportedWidths: [100, 640],
+        lqip: {
+          type: 'inline',
+        },
+        removeSource: true,
+      },
+      {
+        include: 'assets/images/lqip/color.jpg',
+        quality: 50,
+        supportedWidths: [100, 640],
+        lqip: {
+          type: 'color',
+        },
+        removeSource: true,
+        justCopy: false,
+      },
+    ],
   });
 
   /*
