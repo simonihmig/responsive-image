@@ -3,6 +3,8 @@ import { inject as service } from '@ember/service';
 import ResponsiveImageService, {
   ImageMeta,
   ImageType,
+  LqipColor,
+  LqipInline,
   Meta,
 } from 'ember-responsive-image/services/responsive-image';
 import { assert } from '@ember/debug';
@@ -171,7 +173,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get hasLqipImage(): boolean {
-    return !!this.meta.lqip?.image;
+    return this.meta.lqip?.type === 'inline';
   }
 
   get showLqipImage(): boolean {
@@ -182,7 +184,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     if (!this.hasLqipImage) {
       return undefined;
     }
-    const { lqip } = this.meta as Required<Meta>;
+    const lqip = (this.meta as Required<Meta>).lqip as LqipInline;
 
     const uri = dataUri(
       blurrySvg(
@@ -194,6 +196,23 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     );
 
     return `url("${uri}")`;
+  }
+
+  get hasLqipColor(): boolean {
+    return this.meta.lqip?.type === 'color';
+  }
+
+  get showLqipColor(): boolean {
+    return !this.isLoaded && this.hasLqipColor;
+  }
+
+  get lqipColor(): string | undefined {
+    if (!this.hasLqipColor) {
+      return undefined;
+    }
+    const lqip = (this.meta as Required<Meta>).lqip as LqipColor;
+
+    return lqip.color;
   }
 
   @action

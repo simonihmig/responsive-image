@@ -31,7 +31,6 @@ module.exports = function (environment) {
           type: 'color',
         },
         removeSource: true,
-        justCopy: false,
       },
       {
         include: 'assets/images/small.png',
@@ -40,11 +39,20 @@ module.exports = function (environment) {
         supportedWidths: [10, 25],
       },
       {
-        include: 'assets/images/lqip/*.jpg',
+        include: 'assets/images/lqip/inline.jpg',
         quality: 50,
         supportedWidths: [100, 640],
         lqip: {
           type: 'inline',
+        },
+        removeSource: true,
+      },
+      {
+        include: 'assets/images/lqip/color.jpg',
+        quality: 50,
+        supportedWidths: [100, 640],
+        lqip: {
+          type: 'color',
         },
         removeSource: true,
         justCopy: false,
