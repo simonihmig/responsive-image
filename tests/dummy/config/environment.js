@@ -21,43 +21,6 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    'responsive-image': [
-      {
-        include: 'assets/images/**/*',
-        exclude: ['assets/images/small.png', 'assets/images/lqip/**/*'],
-        quality: 50,
-        supportedWidths: [50, 100, 640],
-        lqip: {
-          type: 'color',
-        },
-        removeSource: true,
-      },
-      {
-        include: 'assets/images/small.png',
-        quality: 10,
-        removeSource: false,
-        supportedWidths: [10, 25],
-      },
-      {
-        include: 'assets/images/lqip/inline.jpg',
-        quality: 50,
-        supportedWidths: [100, 640],
-        lqip: {
-          type: 'inline',
-        },
-        removeSource: true,
-      },
-      {
-        include: 'assets/images/lqip/color.jpg',
-        quality: 50,
-        supportedWidths: [100, 640],
-        lqip: {
-          type: 'color',
-        },
-        removeSource: true,
-        justCopy: false,
-      },
-    ],
   };
 
   if (environment === 'development') {
