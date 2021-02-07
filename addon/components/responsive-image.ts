@@ -13,7 +13,11 @@ import dataUri from 'ember-responsive-image/utils/data-uri';
 import blurrySvg from 'ember-responsive-image/utils/blurry-svg';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { macroCondition, getOwnConfig, importSync } from '@embroider/macros';
+import {
+  macroCondition,
+  getOwnConfig /*, importSync*/,
+} from '@embroider/macros';
+import { decode } from 'blurhash';
 
 declare module '@embroider/macros' {
   export function getOwnConfig(): { usesBlurhash: boolean };
@@ -245,7 +249,11 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       }
       const { hash, width, height } = (this.meta as Required<Meta>)
         .lqip as LqipBlurhash;
-      const { decode } = importSync('blurhash') as any;
+
+      // This does not work correctly, see https://github.com/embroider-build/embroider/issues/684
+      // The idea was to pull `blurhash` into our vendor.js only when needed
+      // Currently we are instead importing it at the module head, but this comes at a cost for all users that don't need it.
+      // const { decode } = importSync('blurhash') as any;
 
       const blurWidth = width * 40;
       const blurHeight = height * 40;

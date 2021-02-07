@@ -47,6 +47,15 @@ module.exports = function (defaults) {
         removeSource: true,
         justCopy: false,
       },
+      {
+        include: 'assets/images/lqip/blurhash.jpg',
+        quality: 50,
+        supportedWidths: [100, 640],
+        lqip: {
+          type: 'blurhash',
+        },
+        removeSource: true,
+      },
     ],
   });
 
