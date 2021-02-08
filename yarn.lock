@@ -6382,16 +6382,16 @@ ember-page-title@^6.2.0:
   dependencies:
     ember-cli-babel "^7.22.1"
 
-ember-qunit@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/ember-qunit/-/ember-qunit-5.1.1.tgz#cd192e016889cf768ba661b7b91a2896f5274642"
-  integrity sha512-6kWWKPeqGtPu0AwrV3ZyVp2Z9EKykKx6B5pclOHoGcmcUy93UUGG8micicPSO//8pLnnFx4R34RvuKJd/Scifw==
+ember-qunit@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/ember-qunit/-/ember-qunit-5.1.2.tgz#72ce175f5d1c96a40fe810928c4d4a822a2e2c60"
+  integrity sha512-mrnFaUhAJWkJWeRZKajLuuRmKsifRrhAla1sQAfIiuh7OCVY1eqFvSUFzLR7/WgdNwPrUzEOOx39MdVRZBd/7A==
   dependencies:
     broccoli-funnel "^3.0.3"
     broccoli-merge-trees "^3.0.2"
     common-tags "^1.8.0"
-    ember-auto-import "^1.10.0"
-    ember-cli-babel "^7.23.0"
+    ember-auto-import "^1.10.1"
+    ember-cli-babel "^7.23.1"
     ember-cli-test-loader "^3.0.0"
     resolve-package-path "^3.1.0"
     silent-error "^1.1.1"
