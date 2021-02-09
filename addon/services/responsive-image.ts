@@ -23,6 +23,13 @@ export interface LqipColor extends LqipBase {
   color: string;
 }
 
+export interface LqipBlurhash extends LqipBase {
+  type: 'blurhash';
+  hash: string;
+  width: number;
+  height: number;
+}
+
 export interface ImageMeta {
   image: string;
   width: number;
@@ -32,7 +39,7 @@ export interface ImageMeta {
 
 export interface Meta {
   images: ImageMeta[];
-  lqip?: LqipInline | LqipColor;
+  lqip?: LqipInline | LqipColor | LqipBlurhash;
 }
 
 /**

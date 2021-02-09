@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import ResponsiveImageService, {
   ImageMeta,
   ImageType,
+  LqipBlurhash,
   LqipColor,
   LqipInline,
   Meta,
@@ -12,6 +13,15 @@ import dataUri from 'ember-responsive-image/utils/data-uri';
 import blurrySvg from 'ember-responsive-image/utils/blurry-svg';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import {
+  macroCondition,
+  getOwnConfig /*, importSync*/,
+} from '@embroider/macros';
+import { decode } from 'blurhash';
+
+declare module '@embroider/macros' {
+  export function getOwnConfig(): { usesBlurhash: boolean };
+}
 
 interface ResponsiveImageComponentArgs {
   image: string;
@@ -34,6 +44,11 @@ enum Layout {
 }
 
 const PIXEL_DENSITIES = [1, 2];
+const canvas =
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  (typeof FastBoot === 'undefined' &&
+    document.createElement('canvas')) as HTMLCanvasElement;
 
 // determines the order of sources, prefereing next-gen formats over legacy
 const typeScore = new Map<ImageType, number>([
@@ -213,6 +228,52 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     const lqip = (this.meta as Required<Meta>).lqip as LqipColor;
 
     return lqip.color;
+  }
+
+  get hasLqipBlurhash(): boolean {
+    if (macroCondition(getOwnConfig().usesBlurhash)) {
+      return this.meta.lqip?.type === 'blurhash';
+    } else {
+      return false;
+    }
+  }
+
+  get showLqipBlurhash(): boolean {
+    return !this.isLoaded && this.hasLqipBlurhash;
+  }
+
+  get lqipBlurhash(): string | undefined {
+    if (macroCondition(getOwnConfig().usesBlurhash)) {
+      if (!this.hasLqipBlurhash) {
+        return undefined;
+      }
+      const { hash, width, height } = (this.meta as Required<Meta>)
+        .lqip as LqipBlurhash;
+
+      // This does not work correctly, see https://github.com/embroider-build/embroider/issues/684
+      // The idea was to pull `blurhash` into our vendor.js only when needed
+      // Currently we are instead importing it at the module head, but this comes at a cost for all users that don't need it.
+      // const { decode } = importSync('blurhash') as any;
+
+      const blurWidth = width * 40;
+      const blurHeight = height * 40;
+      const pixels = decode(hash, blurWidth, blurHeight);
+      canvas.width = blurWidth;
+      canvas.height = blurHeight;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        return undefined;
+      }
+
+      const imageData = ctx.createImageData(blurWidth, blurHeight);
+      imageData.data.set(pixels);
+      ctx.putImageData(imageData, 0, 0);
+      const uri = canvas.toDataURL('image/png');
+
+      return `url("${uri}")`;
+    } else {
+      return undefined;
+    }
   }
 
   @action
