@@ -4,12 +4,26 @@
 [![npm version](https://badge.fury.io/js/ember-responsive-image.svg)](https://badge.fury.io/js/ember-responsive-image)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-responsive-image.svg)](https://emberobserver.com/addons/ember-responsive-image)
 
-An ember-cli addon to automatically generate resized images and use them in `img` tags with the `srcset` attribute.
+An ember-cli addon to automatically generate resized images at build-time, optimized for the responsive web, and using components to render
+  them easily as `<picture>` elements. 
 
-This is very useful for responsive web apps to optimize images for a wide range of devices (smartphones, tablets, desktops etc.). All browsers with [support for the `srcset` attribute](http://caniuse.com/#search=srcset) will automatically load the most appropriate resized image for the given device, e.g. based on screen size and density (high dpi "retina" screens).
+## Key Features
 
-Built on top of the awesome [sharp](https://github.com/lovell/sharp) library.
+🌇 Supports basic PNG and JPEG formats, as well as next-gen [WebP](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#webp) and [AVIF](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#avif), for best image quality at low file sizes.
 
+🏎 Super fast image processing, thanks to the awesome [sharp](https://github.com/lovell/sharp) library.
+
+📱 Layout modes for fixed sizes (with `1x` and `2x` image variants) as well as fluid/responsive layouts (`srcset` with optimized image sizes across all devices). 
+
+💯 Lazily rendered by default, with optimized `content-visibility` and `decoding` settings and optimized markup, to prevent [CLS](https://web.dev/cls/) (*Cumulative Layout Shift*), a core [Web Vital](https://web.dev/vitals/) and [Lighthouse](https://developers.google.com/web/tools/lighthouse) metric.
+
+⏳ Supports advanced LQIP (*Low Quality Image Placeholder*) techniques to show a preview while loading, using different configurable strategies
+like a blurry low-res image, [BlurHash](https://blurha.sh/) or a simple dominant color. 
+
+✨ Octane-based, written mostly in TypeScript, using Glimmer components, supporting [FastBoot](https://ember-fastboot.com/) and [Embroider](https://github.com/embroider-build/embroider), and fully tested.
+️⚙ Flexible configuration options
+
+Advanced optimization techniques inspired a.o. by [this blog post](https://www.industrialempathy.com/posts/image-optimizations/).
 
 Compatibility
 ------------------------------------------------------------------------------
@@ -29,208 +43,211 @@ In your application's directory:
 ember install ember-responsive-image
 ```
 
-### Install sharp
+### Add a basic configuration
 
-On Windows, Mac and Linux `npm` / `yarn` will download and install the `sharp` image processing library 
-automatically. For other environments please consult the [installation](http://sharp.dimens.io/en/stable/install/#installation)
-instructions.
+Add a basic configuration to your `ember-cli-build.js`, to point the addon to where your images are that:
+
+```js
+module.exports = function (defaults) {
+  let app = new EmberAddon(defaults, {
+    'responsive-image': [
+      {
+        include: 'assets/images/**/*',
+        supportedWidths: [2048, 1536, 1080, 750, 640],
+      }
+    ]
+  });
+};
+```
+
+Find more details about all available [configuration options](#configuration) below.
 
 ## Basic Usage
 
-Add the configuration to your `config/environment.js`
+### The `<ResponsiveImage/>` component
+
+In a template you can use the `<ResponsiveImage/>` component. The image argument is required and must be a path to one of the configured image files:
+
+```hbs
+<ResponsiveImage @image="assets/images/dog.jpg"/>
+```
+
+This will generate an `<img>` element wrapped in `<picture>` referencing all the resized images in the different formats, for the browser to decide which image it can support and fits best given the current context (device, screen size, user preferences like low bandwidth etc.):
+
+```html
+<picture>
+  <source srcset="/assets/images/dog1920w.avif 1920w, /assets/images/dog1280w.avif 1280w, /assets/images/dog640w.avif 640w, /assets/images/dog320w.avif 320w" type="image/avif">
+  <source srcset="/assets/images/dog1920w.webp 1920w, /assets/images/dog1280w.webp 1280w, /assets/images/dog640w.webp 640w, /assets/images/dog320w.webp 320w" type="image/webp">
+  <source srcset="/assets/images/dog1920w.jpg 1920w, /assets/images/dog1280w.jpg 1280w, /assets/images/dog640w.jpg 640w, /assets/images/dog320w.jpg 320w" type="image/jpeg">
+  <img src="1920" height="1280" class="eri-responsive" loading="lazy" decoding="async">
+</picture>
+```
+
+The image in the `src` attribute is calculated by the component and will be used by browsers [without `<picture>` support](https://caniuse.com/picture) - which is basically IE11.
+
+If your image width is not `100vw`, say `70vw` for example, you can specify the `@size` (only `vw` is supported as a unit for now):
+
+```hbs
+<ResponsiveImage @image="assets/images/dog.jpg" @size="70"/>
+```
+
+This will render the corresponding [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-sizes) on all `<source>` elements.
+You can also set the attribute like this if your responsive image width is more complicated:
+
+```hbs
+<ResponsiveImage @image="assets/images/dog.jpg" @sizes="(min-width: 800px) 800px, 100vw"/>
+```
+
+### Fixed layout
+
+The example above assumed you wanted a responsive image, i.e. one that automatically takes the whole available width of its parent element.
+This is the default mode, and will automatically the following CSS to you image:
+
+```css
+img {
+  width: 100%;
+  height: auto;
+}
+```
+
+But this addon also supports a *fixed* layout with fixed image dimensions. Just provide either `@width` or `@height` to opt into that mode:
+
+```hbs
+<ResponsiveImage @image="assets/images/dog.jpg" @width={{320}}/>
+```
+
+It will still render a `<img>` wrapped in a `<picture>`, but this time it will provide the image with the optimal width (smallest width which is equal or above the target width),
+and additionally a `2x` variant for devices with high pixel densities:
+
+```html
+<picture>
+  <source srcset="/assets/images/dog320w.avif 1x, /assets/images/dog640w.avif 2x" type="image/avif">
+  <source srcset="/assets/images/dog320w.webp 1x, /assets/images/dog640w.webp 2x" type="image/webp">
+  <source srcset="/assets/images/dog320w.jpg 1x, /assets/images/dog640w.jpg 2x" type="image/jpeg">
+  <img src="/assets/images/dog320w.jpg" width="320" height="213" class="eri-fixed" loading="lazy" decoding="async">
+</picture>
+```
+
+> Note it is sufficient to supply either `@width` or `@height`, the component will still render the missing attribute according to the
+image's aspect ratio!
+
+## Image formats
+
+Besides the basic PNG and JPEG also the next-gen formats [WebP](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#webp) and [AVIF](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#avif) are supported.
+While every modern browser [supports WebP](https://caniuse.com/webp) meanwhile, AVIF is a relatively new format and not well [supported](https://caniuse.com/avif) yet. But given the
+way multiple formats are supported using this addon as described above, browsers that support one of those will load them, while other will fallback to basic PNG/JPEG.
+
+To give you an idea of the improvements possible with these formats, here are some examples. *Note that the images might
+not show correctly if you are not using Chrome.* 
+
+A more detailed analysis can be found on [Jake Archibald's blog](https://jakearchibald.com/2020/avif-has-landed/).
+
+### JPEG
+
+Dimensions: 640px &times; 427px
+File size: **16KB**.
+
+![a dog near the costline](docs/images/dog640w.jpg)
+
+### WebP
+
+Dimensions: 640px &times; 427px
+File size: **10KB**.
+
+![a dog near the costline](docs/images/dog640w.webp)
+
+### AVIF
+
+Dimensions: 640px &times; 427px
+File size: **7KB**.
+
+![a dog near the costline](docs/images/dog640w.avif)
+
+## LQIP
+
+*Low Quality Image Placeholder* is a technique to give users a preview of the image while it is loading. This addon supports different types,
+all with their own tradeoffs. Based on the cute dog you saw above, you can see here how these different techniques will look like.
+
+See the [Configuration](#configuration) section for how to configure these.
+
+### Color
+
+This is the most basic technique, calculating the dominant color of the image, and setting it as the background color of the images while it loads.
+The "cost" is basically 7bytes, for the hex code of the color.
+
+![dominant color LQIP of a dog image](docs/images/lqip-color.png)
+
+### Inline
+
+This creates a very small thumbnail of the original image, wraps it into a SVG and applies a blurry filter. This is then
+set as a base64 encoded data-URL as the background of the image while it loads. The example below consumes 348 bytes (uncompressed).
+
+![blurry LQIP of a dog image](docs/images/lqip-inline.png)
+
+### Blurhash
+
+[BlurHash](https://blurha.sh/) is an encoding algorithm and library, dedicated for the very purpose of generating nice looking blurry placeholders, without the 
+overhead of a real image format, which was never optimized for that kind of *tiny* images. This example consumes just 40 bytes (uncompressed). 
+
+![blurry LQIP of a dog image](docs/images/lqip-blurhash.png)
+
+But the tradeoff here is that it needs a runtime library for decoding, which takes about 4.7KB (1.9KB compressed). Therefore it
+is less suited if you have just a few images, but shines if you need placeholders for a lot!
+
+## Configuration
+
+Configuration of the addon is done in your `ember-cli-build.js`. It expects an array of configuration items, with a number
+of different available options:
 
 ```js
-module.exports = function(environment) {
-  let ENV = {
-    'responsive-image': {
-      include: 'assets/images/**/*',
-      quality: 80,
+let app = new EmberAddon(defaults, {
+  'responsive-image': [
+    {
+      include: ['path/to/images/**/*'],
+      exclude: ['path/to/images/but-not-this/**/*'],
       supportedWidths: [2048, 1536, 1080, 750, 640],
+      formats: ['avif', 'webp'],
+      quality: 50,
+      lqip: {
+        type: 'inline', 
+        targetPixels: 60,
+      },
       removeSource: true,
-    }
-  }
-}
+      justCopy: false,
+    },
+    // possible more items
+  ]
+});
 ```
 
-If you need different configurations, you can make the `responsive-image` config an array:
+You must define at least one configuration item, with at least `include` defined. But you can provide more, to create separate
+configurations for different images. 
 
-```js
-module.exports = function(environment) {
-  let ENV = {
-    'responsive-image': [
-        {
-          include: 'assets/images/**/*',
-          exclude: 'assets/images/small.png',
-          quality: 80,
-          supportedWidths: [2048, 1536, 1080],
-          removeSourceDir: true,
-        },
-        {
-          include: 'assets/images/small.png',
-          quality: 80,
-          supportedWidths: [750, 640, 320],
-          removeSourceDir: true,
-        }
-    ]
-  }
-}
-```
+For example if you have a gallery of logos, of which all will be displayed with a width of max. 300px or less,it makes no sense to create very 
+large images for these, so a setting of `supportedWidths: [300, 600],` would make sense here (600px for the `2x` version aka "retina").
 
-Just make sure the `include`/`exclude` patterns don't create overlapping configurations!
+> Make sure you don't have multiple `include` definitions accidentally overlapping! You can use `exclude` in this case to prevent this.
 
 ### Options
 
 * **include:** Glob pattern for which images should be processed based on this configuration.
 * **exclude:** Optional pattern which images to exclude, takes precedence over `include`.
-* **destinationDir:** This folder will contain the generated Images. It will be created, if not existing. Must not be the same as sourceDir.
-* **quality:** Image quality (JPEG)
 * **supportedWidths:** These are the widths of the resized images.
-* **removeSource:** If true, the source images will be removed from the build.
-* **justCopy:** If true, the images will just be copied without resizing. This is useful for development builds to speed things up, but should be false for production.
-
-Put one or more images in the source folder (in this case 'assets/images/'), like 'myImage.png', and build the project. The resized images will be generated into the same directory:
-```
-myImage640w.png
-myImage750w.png
-myImage1080w.png
-myImage1536w.png
-myImage2048w.png
-```
+* **formats:** which image formats to produce. Supported are: `avif`, `webp`, `png` and `jpeg`. By default it will use `avif`, `webp` and whatever the origin image was (`png`/`jpeg`).
+* **quality:** Image quality (JPEG, WebP, AVIF)
+* **lqip:** Let's you opt into generating LQIPs, by setting at the `type`to one of the supported values. Disabled by default! 
+* **lqip.type:** `'inline'`, `'color'` or `'blurhash'`. See the [LQIP section](#lqip) for more details.
+* **lqip.targetPixels:** Desired approximate amount of pixels to use for the placeholder (does not apply for `color`).
+* **removeSource:** If true, the (large) source images will be removed from the build.
+* **justCopy:** If true, the images will just be copied without resizing. This can be useful for development builds to speed things up, but should be false for production.
 
 **Note:** If the width of your origin image is less than the generated should be, the image will be generated unresized.
 
-## Service
 
-The `responsive-image` service provides the available images with the sizes for a given origin image, and also retrieves the image that fits for the current screen size.
-```js
-let availableImages = responsiveImageService.getImages("myImage.png");
-/**
-availableImages contains now: 
-[
-    {width: 640, height: 320, image: "/assets/images/responsive/myImage640w.png"},
-    {width: 750, height: 375, image: "/assets/images/responsive/myImage750w.png"},
-    ...
-    {width: 2048, height: 1012, image: "/assets/images/responsive/myImage2048w.png"}
-]
-*/
+## Advanced Usage
 
-let imageData = responsiveImageService.getImageDataBySize("myImage.png", 100); // The size argument is in ´vw´, 100 is the default and can be omitted
-// {width: 750, height: 375, image: "/assets/images/responsive/myImage750w.png"}
-
-let fittingImage = responsiveImageService.getImageBySize("myImage.png", 100); // The size argument is in ´vw´, 100 is the default and can be omitted
-// "/assets/images/responsive/myImage1080w.png"
-```
-
-The base width to calculate the necessary image width is the `screen.width` assigned to the `screenWidth` property of the services. If this doesn't fit your needs, you can assign an other value, e.g. `document.documentElement.clientWidth`. 
-
-## Helper
-
-The `responsive-image-resolve` helper provides the image url that fits for the current screen size. The first parameter is the name of the origin image. 
-The second argument is the width in `vw` and has a default value of `100`, so it can be omitted. 
-
-```hbs
-{{responsive-image-resolve "myImage.png" 100}}
-```
-
-will result in
-
-```html
-/assets/images/responsive/myImage1080w.png
-```
-
-## Components
-### The responsive image component
-
-In a template you can use the `<ResponsiveImage/>` component. The image argument is required and must be one of the origin files:
-
-```hbs
-<ResponsiveImage @image="myImage.png"/>
-```
-
-This will generate an `img` tag with the resized images as the [`srcset` attribute](https://developer.mozilla.org/de/docs/Web/HTML/Element/img#attr-srcset), so the browser can decide, which image fits the needs:
-```html
-<img src="/assets/images/responsive/myImage1080w.png" srcset="/assets/images/responsive/myImage640w.png 640w, /assets/images/responsive/myImage750w.png 750w, /assets/images/responsive/myImage1080w.png 1080w, /assets/images/responsive/myImage1536w.png 1536w, /assets/images/responsive/myImage2048w.png 2048w" class="ember-view">
-```
-
-The image in the `src` attribute is calculated by the component and will be used by browsers without `srcset` support.
-
-```hbs
-<ResponsiveImage @image="myImage.png" class="my-css-class" alt="This is my image"/>
-```
-
-```html
-<img src="..." srcset="..." class="my-css-class" alt="This is my image">
-```
-
-If your image width is not '100vw', say 70vw for example, you can specify the `size` (only `vw` is supported as a unit by now):
-```hbs
-<ResponsiveImage @image="myImage.png" @size="70"/>
-```
-
-```html
-<img src="..." srcset="..." sizes="70vw">
-```
-
-You can also replace the [`sizes` attribute](https://developer.mozilla.org/de/docs/Web/HTML/Element/img#attr-sizes) if your responsive image width is more complicated like:
-```hbs
-<ResponsiveImage @image="myImage.png" @sizes="(min-width: 800px) 800px, 100vw"/>
-```
-
-```html
-<img src="..." srcset="..." sizes="(min-width: 800px) 800px, 100vw">
-```
-
-## Extensibility hooks
-### Extend the image processing
-
-During the image process the addon calls the `preProcessImage` and the `postProcessImage` hooks for each origin image and supported width. Here you can add custom image process steps, like a watermark integration. The first hook will be called just before the addon's image process calls applies, the latter after. You can register your callbacks by calling the addon's `addImagePreProcessor` or `addImagePostProcessor` function before the addon's `postprocessTree` was called.
-In both cases the callback function you provide must have the following signature:
-
-```javascript
-  function preProcessor(sharp, image, width, configuration)
-  {
-    // do something with the sharp-object...
-    return sharp;
-  }
-```
-* **sharp:** [sharp](https://github.com/lovell/sharp) object with the current origin image
-* **image:** the name of the origin image file
-* **width:** the width of the resulting resized image of the current process
-* **configuration:** the configuration for the current image processing (from environments configuration)
-
-The callback must return a `sharp`-object or a Promise resolves to it.
-
-**Note:** In addition to the callback, you can also pass an optional target object that will be set as `this` on the context. This is a good way to give your function access to the current object.
-
-**Note:** If you set `justCopy` to `true` in your configuration, your callback will be called, but the result doesn't take effect to the resulting image (because it's just a copy).
-
-For an example see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/index.js)
-
-### Extend the metadata
-
-Before the addon injects the generated metadata into the build, a `extendMetadata`-hook is called for each origin image. The `metadata`-object contains the information for the addon's `ResponsiveImage`-Service. Here you can add custom metadata. You can register your callbacks by calling the addon's `addMetadataExtension` function before the addon's `postprocessTree` was called.
-The callback function you provide must have the following signature:
-
-```javascript
-  function customMetadata(image, metadata, configuration)
-  { 
-    // do something with the metadata-object...  
-    return metadata;
-  }
-```
-* **image:** the name of the origin image file
-* **metadata:** object with the metadata of the generated images
-* **configuration:** the configuration for the image generation (from environments configuration)
-
-The callback must return an object with the extended metadata.
-
-**Note:** In addition to the callback, you can also pass an optional target object that will be set as `this` on the context. This is a good way to give your function access to the current object.
-
-For an example see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/index.js) and the extended [ResponsiveImageService](https://github.com/kaliber5/ember-lazy-responsive-image/blob/master/addon/services/responsive-image.js)
-
-## Lazy loading and LQIP (Low Quality Image Placeholder)
-
-For lazy-loading and LQIP support, see [ember-lazy-responsive-image](https://github.com/kaliber5/ember-lazy-responsive-image).
+The addons provides a service and a helper for more advances usages if required. You can also build addons that hook
+into the image precessing pipeline. This is described in detail in the [Advanced Usage documentation](docs/ADVANCED.md).
 
 Contributing
 ------------------------------------------------------------------------------
