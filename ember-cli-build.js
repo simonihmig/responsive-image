@@ -13,8 +13,11 @@ module.exports = function (defaults) {
     },
     'responsive-image': [
       {
-        include: 'assets/images/**/*',
-        exclude: ['assets/images/small.png', 'assets/images/lqip/**/*'],
+        include: 'assets/images/tests/**/*',
+        exclude: [
+          'assets/images/tests/small.png',
+          'assets/images/tests/lqip/**/*',
+        ],
         quality: 50,
         supportedWidths: [50, 100, 640],
         lqip: {
@@ -23,13 +26,13 @@ module.exports = function (defaults) {
         removeSource: true,
       },
       {
-        include: 'assets/images/small.png',
+        include: 'assets/images/tests/small.png',
         quality: 10,
         removeSource: false,
         supportedWidths: [10, 25],
       },
       {
-        include: 'assets/images/lqip/inline.jpg',
+        include: 'assets/images/tests/lqip/inline.jpg',
         quality: 50,
         supportedWidths: [100, 640],
         lqip: {
@@ -38,7 +41,7 @@ module.exports = function (defaults) {
         removeSource: true,
       },
       {
-        include: 'assets/images/lqip/color.jpg',
+        include: 'assets/images/tests/lqip/color.jpg',
         quality: 50,
         supportedWidths: [100, 640],
         lqip: {
@@ -48,9 +51,40 @@ module.exports = function (defaults) {
         justCopy: false,
       },
       {
-        include: 'assets/images/lqip/blurhash.jpg',
+        include: 'assets/images/tests/lqip/blurhash.jpg',
         quality: 50,
         supportedWidths: [100, 640],
+        lqip: {
+          type: 'blurhash',
+        },
+        removeSource: true,
+      },
+      {
+        include: 'assets/images/docs/**/*',
+        exclude: [
+          'assets/images/docs/lqip-color.jpg',
+          'assets/images/docs/lqip-blurhash.jpg',
+        ],
+        quality: 50,
+        supportedWidths: [1920, 1280, 640, 320],
+        lqip: {
+          type: 'inline',
+        },
+        removeSource: true,
+      },
+      {
+        include: 'assets/images/docs/lqip-color.jpg',
+        quality: 50,
+        supportedWidths: [1920, 1280, 640, 320],
+        lqip: {
+          type: 'color',
+        },
+        removeSource: true,
+      },
+      {
+        include: 'assets/images/docs/lqip-blurhash.jpg',
+        quality: 50,
+        supportedWidths: [1920, 1280, 640, 320],
         lqip: {
           type: 'blurhash',
         },

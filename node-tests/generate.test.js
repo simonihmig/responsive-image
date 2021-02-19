@@ -8,7 +8,7 @@ const hash = '00e24234f1b58e32b935b1041432916f';
 // compare with tests/dummy/config/environment.js
 const images = [
   {
-    file: 'assets/images/image.jpg',
+    file: 'assets/images/tests/image.jpg',
     type: 'jpeg',
     sizes: [50, 100],
     alpha: false,
@@ -16,14 +16,14 @@ const images = [
     removeSource: true,
   },
   {
-    file: 'assets/images/image.webp',
+    file: 'assets/images/tests/image.webp',
     type: 'webp',
     sizes: [50, 100],
     alpha: false,
     removeSource: true,
   },
   {
-    file: 'assets/images/image.avif',
+    file: 'assets/images/tests/image.avif',
     // sharp wrongly reports this as heif. See https://github.com/lovell/sharp/issues/2504
     type: 'heif',
     sizes: [50, 100],
@@ -31,42 +31,42 @@ const images = [
     removeSource: true,
   },
   {
-    file: 'assets/images/test.png',
+    file: 'assets/images/tests/test.png',
     type: 'png',
     sizes: [50, 100],
     alpha: true,
     removeSource: true,
   },
   {
-    file: 'assets/images/test.webp',
+    file: 'assets/images/tests/test.webp',
     type: 'webp',
     sizes: [50, 100],
     alpha: true,
     removeSource: true,
   },
   {
-    file: 'assets/images/test.avif',
+    file: 'assets/images/tests/test.avif',
     type: 'heif',
     sizes: [50, 100],
     alpha: true,
     removeSource: true,
   },
   {
-    file: 'assets/images/recursive/dir/test.png',
+    file: 'assets/images/tests/recursive/dir/test.png',
     type: 'png',
     sizes: [50, 100],
     alpha: false,
     removeSource: true,
   },
   {
-    file: 'assets/images/small.png',
+    file: 'assets/images/tests/small.png',
     type: 'png',
     sizes: [10, 25],
     alpha: false,
     removeSource: false,
   },
   {
-    file: 'assets/images/small.webp',
+    file: 'assets/images/tests/small.webp',
     type: 'webp',
     sizes: [10, 25],
     alpha: false,
@@ -75,7 +75,7 @@ const images = [
   // image output is somehow broken for avif at the the tiny size of 10px
   // and sharp reports the size of 25 as 24 :-/
   // {
-  //   file: 'assets/images/small.avif',
+  //   file: 'assets/images/tests/small.avif',
   //   type: 'heif',
   //   sizes: [10, 25],
   //   alpha: false,
