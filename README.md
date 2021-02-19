@@ -53,7 +53,7 @@ module.exports = function (defaults) {
     'responsive-image': [
       {
         include: 'assets/images/**/*',
-        supportedWidths: [2048, 1536, 1080, 750, 640],
+        widths: [2048, 1536, 1080, 750, 640],
       }
     ]
   });
@@ -205,7 +205,7 @@ let app = new EmberAddon(defaults, {
     {
       include: ['path/to/images/**/*'],
       exclude: ['path/to/images/but-not-this/**/*'],
-      supportedWidths: [2048, 1536, 1080, 750, 640],
+      widths: [2048, 1536, 1080, 750, 640],
       formats: ['avif', 'webp'],
       quality: 50,
       lqip: {
@@ -224,7 +224,7 @@ You must define at least one configuration item, with at least `include` defined
 configurations for different images. 
 
 For example if you have a gallery of logos, of which all will be displayed with a width of max. 300px or less,it makes no sense to create very 
-large images for these, so a setting of `supportedWidths: [300, 600],` would make sense here (600px for the `2x` version aka "retina").
+large images for these, so a setting of `widths: [300, 600],` would make sense here (600px for the `2x` version aka "retina").
 
 > Make sure you don't have multiple `include` definitions accidentally overlapping! You can use `exclude` in this case to prevent this.
 
@@ -232,7 +232,7 @@ large images for these, so a setting of `supportedWidths: [300, 600],` would mak
 
 * **include:** Glob pattern for which images should be processed based on this configuration.
 * **exclude:** Optional pattern which images to exclude, takes precedence over `include`.
-* **supportedWidths:** These are the widths of the resized images.
+* **widths:** These are the widths of the resized images.
 * **formats:** which image formats to produce. Supported are: `avif`, `webp`, `png` and `jpeg`. By default it will use `avif`, `webp` and whatever the origin image was (`png`/`jpeg`).
 * **quality:** Image quality (JPEG, WebP, AVIF)
 * **lqip:** Let's you opt into generating LQIPs, by setting at the `type`to one of the supported values. Disabled by default! 
