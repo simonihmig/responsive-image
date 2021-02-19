@@ -58,7 +58,7 @@ module.exports = function (defaults) {
     ]
   });
 };
-```
+`````________``
 
 Find more details about all available [configuration options](#configuration) below.
 
@@ -69,7 +69,7 @@ Find more details about all available [configuration options](#configuration) be
 In a template you can use the `<ResponsiveImage/>` component. The image argument is required and must be a path to one of the configured image files:
 
 ```hbs
-<ResponsiveImage @image="assets/images/dog.jpg"/>
+<ResponsiveImage @src="assets/images/dog.jpg"/>
 ```
 
 This will generate an `<img>` element wrapped in `<picture>` referencing all the resized images in the different formats, for the browser to decide which image it can support and fits best given the current context (device, screen size, user preferences like low bandwidth etc.):
@@ -88,14 +88,14 @@ The image in the `src` attribute is calculated by the component and will be used
 If your image width is not `100vw`, say `70vw` for example, you can specify the `@size` (only `vw` is supported as a unit for now):
 
 ```hbs
-<ResponsiveImage @image="assets/images/dog.jpg" @size="70"/>
+<ResponsiveImage @src="assets/images/dog.jpg" @size="70"/>
 ```
 
 This will render the corresponding [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-sizes) on all `<source>` elements.
 You can also set the attribute like this if your responsive image width is more complicated:
 
 ```hbs
-<ResponsiveImage @image="assets/images/dog.jpg" @sizes="(min-width: 800px) 800px, 100vw"/>
+<ResponsiveImage @src="assets/images/dog.jpg" @sizes="(min-width: 800px) 800px, 100vw"/>
 ```
 
 ### Fixed layout
@@ -113,7 +113,7 @@ img {
 But this addon also supports a *fixed* layout with fixed image dimensions. Just provide either `@width` or `@height` to opt into that mode:
 
 ```hbs
-<ResponsiveImage @image="assets/images/dog.jpg" @width={{320}}/>
+<ResponsiveImage @src="assets/images/dog.jpg" @width={{320}}/>
 ```
 
 It will still render a `<img>` wrapped in a `<picture>`, but this time it will provide the image with the optimal width (smallest width which is equal or above the target width),

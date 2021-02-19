@@ -8,27 +8,21 @@ module('Integration: Responsive Image Component', function (hooks) {
 
   module('responsive layout', function () {
     test('it has responsive layout by default', async function (assert) {
-      await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png"/>`
-      );
+      await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
 
       assert.dom('img').hasClass('eri-responsive');
       assert.dom('img').hasNoClass('eri-fixed');
     });
 
     test('it renders width and height attributes', async function (assert) {
-      await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png"/>`
-      );
+      await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
 
       assert.dom('img').hasAttribute('width', '640');
       assert.dom('img').hasAttribute('height', '320');
     });
 
     test('it renders the correct sourceset with width descriptors', async function (assert) {
-      await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png"/>`
-      );
+      await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
       // png
       assert
         .dom('picture source[type="image/png"]')
@@ -90,7 +84,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
 
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/small.png"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/small.png"/>`
       );
       // png
       assert
@@ -135,7 +129,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
 
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/recursive/dir/test.png"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/recursive/dir/test.png"/>`
       );
       // png
       assert
@@ -183,41 +177,37 @@ module('Integration: Responsive Image Component', function (hooks) {
     test('it renders the fallback src next to needed display size', async function (assert) {
       let service = this.owner.lookup('service:responsive-image');
       service.set('physicalWidth', 45);
-      await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png"/>`
-      );
+      await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
       assert.dom('img').hasAttribute('src', '/assets/images/tests/test50w.png');
       service.set('physicalWidth', 51);
-      await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png"/>`
-      );
+      await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/test100w.png');
       service.set('physicalWidth', 9);
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/small.png"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/small.png"/>`
       );
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/small10w.png');
       service.set('physicalWidth', 11);
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/small.png"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/small.png"/>`
       );
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/small25w.png');
       service.set('physicalWidth', 45);
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/recursive/dir/test.png"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/recursive/dir/test.png"/>`
       );
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/recursive/dir/test50w.png');
       service.set('physicalWidth', 51);
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/recursive/dir/test.png"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/recursive/dir/test.png"/>`
       );
       assert
         .dom('img')
@@ -226,7 +216,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     test('it renders a given size as sizes', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png" @size="40"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/test.png" @size="40"/>`
       );
       assert
         .dom('picture source[type="image/png"]')
@@ -238,7 +228,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     test('it renders with given sizes', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png" @sizes="(max-width: 767px) 100vw, 50vw"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/test.png" @sizes="(max-width: 767px) 100vw, 50vw"/>`
       );
       assert
         .dom('picture source[type="image/png"]')
@@ -252,14 +242,14 @@ module('Integration: Responsive Image Component', function (hooks) {
   module('fixed layout', function () {
     test('it has fixed layout when width or height is provided', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png" @width={{100}}/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/test.png" @width={{100}}/>`
       );
 
       assert.dom('img').hasClass('eri-fixed');
       assert.dom('img').hasNoClass('eri-responsive');
 
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png" @height={{100}}/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/test.png" @height={{100}}/>`
       );
 
       assert.dom('img').hasClass('eri-fixed');
@@ -268,7 +258,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     test('it renders width and height when given', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png" @width={{150}} @height={{50}} />`
+        hbs`<ResponsiveImage @src="assets/images/tests/test.png" @width={{150}} @height={{50}} />`
       );
 
       assert.dom('img').hasAttribute('width', '150');
@@ -277,7 +267,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     test('it renders height when width is given according to aspect ratio', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png" @width={{150}} />`
+        hbs`<ResponsiveImage @src="assets/images/tests/test.png" @width={{150}} />`
       );
 
       assert.dom('img').hasAttribute('width', '150');
@@ -286,7 +276,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     test('it renders width when height is given according to aspect ratio', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/test.png" @height={{100}} />`
+        hbs`<ResponsiveImage @src="assets/images/tests/test.png" @height={{100}} />`
       );
 
       assert.dom('img').hasAttribute('width', '200');
@@ -295,7 +285,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     test('it renders the correct sourceset with pixel densities', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @width={{50}} @image="assets/images/tests/test.png"/>`
+        hbs`<ResponsiveImage @width={{50}} @src="assets/images/tests/test.png"/>`
       );
       // png
       assert
@@ -340,7 +330,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
 
       await render(
-        hbs`<ResponsiveImage @width={{10}} @image="assets/images/tests/small.png"/>`
+        hbs`<ResponsiveImage @width={{10}} @src="assets/images/tests/small.png"/>`
       );
       // png
       assert
@@ -385,7 +375,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
 
       await render(
-        hbs`<ResponsiveImage @image="assets/images/tests/recursive/dir/test.png"/>`
+        hbs`<ResponsiveImage @src="assets/images/tests/recursive/dir/test.png"/>`
       );
       // png
       assert
@@ -432,35 +422,35 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     test('it renders the fallback src next to needed display size', async function (assert) {
       await render(
-        hbs`<ResponsiveImage @width={{320}} @image="assets/images/tests/test.png"/>`
+        hbs`<ResponsiveImage @width={{320}} @src="assets/images/tests/test.png"/>`
       );
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/test640w.png');
 
       await render(
-        hbs`<ResponsiveImage @width={{101}} @image="assets/images/tests/test.png"/>`
+        hbs`<ResponsiveImage @width={{101}} @src="assets/images/tests/test.png"/>`
       );
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/test640w.png');
 
       await render(
-        hbs`<ResponsiveImage @width={{100}} @image="assets/images/tests/test.png"/>`
+        hbs`<ResponsiveImage @width={{100}} @src="assets/images/tests/test.png"/>`
       );
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/test100w.png');
 
       await render(
-        hbs`<ResponsiveImage @width={{51}} @image="assets/images/tests/test.png"/>`
+        hbs`<ResponsiveImage @width={{51}} @src="assets/images/tests/test.png"/>`
       );
       assert
         .dom('img')
         .hasAttribute('src', '/assets/images/tests/test100w.png');
 
       await render(
-        hbs`<ResponsiveImage @width={{50}} @image="assets/images/tests/test.png"/>`
+        hbs`<ResponsiveImage @width={{50}} @src="assets/images/tests/test.png"/>`
       );
       assert.dom('img').hasAttribute('src', '/assets/images/tests/test50w.png');
     });
@@ -476,7 +466,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         this.onload = () => setTimeout(resolve, 0);
 
         await render(
-          hbs`<ResponsiveImage @image="assets/images/tests/lqip/inline.jpg" {{on "load" this.onload}}/>`
+          hbs`<ResponsiveImage @src="assets/images/tests/lqip/inline.jpg" {{on "load" this.onload}}/>`
         );
 
         assert.ok(
@@ -509,7 +499,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         this.onload = () => setTimeout(resolve, 0);
 
         await render(
-          hbs`<ResponsiveImage @image="assets/images/tests/lqip/color.jpg" {{on "load" this.onload}}/>`
+          hbs`<ResponsiveImage @src="assets/images/tests/lqip/color.jpg" {{on "load" this.onload}}/>`
         );
 
         assert.dom('img').hasStyle({ 'background-color': 'rgb(88, 72, 56)' });
@@ -531,7 +521,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           this.onload = () => setTimeout(resolve, 0);
 
           await render(
-            hbs`<ResponsiveImage @image="assets/images/tests/lqip/blurhash.jpg" {{on "load" this.onload}}/>`
+            hbs`<ResponsiveImage @src="assets/images/tests/lqip/blurhash.jpg" {{on "load" this.onload}}/>`
           );
 
           assert.ok(
@@ -559,7 +549,7 @@ module('Integration: Responsive Image Component', function (hooks) {
   });
 
   test('it renders a source for every format', async function (assert) {
-    await render(hbs`<ResponsiveImage @image="assets/images/tests/test.png"/>`);
+    await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
 
     assert.dom('picture').exists({ count: 1 });
     assert.dom('picture source').exists({ count: 3 });
@@ -568,29 +558,25 @@ module('Integration: Responsive Image Component', function (hooks) {
   });
 
   test('it loads lazily by default', async function (assert) {
-    await render(
-      hbs`<ResponsiveImage @image="assets/images/tests/test.png" />`
-    );
+    await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png" />`);
     assert.dom('img').hasAttribute('loading', 'lazy');
   });
 
   test('it can optionally load eager', async function (assert) {
     await render(
-      hbs`<ResponsiveImage @image="assets/images/tests/test.png" loading="eager" />`
+      hbs`<ResponsiveImage @src="assets/images/tests/test.png" loading="eager" />`
     );
     assert.dom('img').hasAttribute('loading', 'eager');
   });
 
   test('it decodes async', async function (assert) {
-    await render(
-      hbs`<ResponsiveImage @image="assets/images/tests/test.png" />`
-    );
+    await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png" />`);
     assert.dom('img').hasAttribute('decoding', 'async');
   });
 
   test('it renders arbitrary HTML attributes', async function (assert) {
     await render(
-      hbs`<ResponsiveImage @image="assets/images/tests/test.png" class="foo" role="button" data-test-image />`
+      hbs`<ResponsiveImage @src="assets/images/tests/test.png" class="foo" role="button" data-test-image />`
     );
     assert.dom('img').hasClass('foo');
     assert.dom('img').hasAttribute('role', 'button');

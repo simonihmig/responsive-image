@@ -24,7 +24,7 @@ declare module '@embroider/macros' {
 }
 
 interface ResponsiveImageComponentArgs {
-  image: string;
+  src: string;
   size?: number;
   sizes?: string;
   width?: number;
@@ -67,7 +67,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   constructor(owner: unknown, args: ResponsiveImageComponentArgs) {
     super(owner, args);
-    assert('No image argument supplied for <ResponsiveImage>', args.image);
+    assert('No image argument supplied for <ResponsiveImage>', args.src);
   }
 
   get layout(): Layout {
@@ -79,10 +79,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get sources(): PictureSource[] {
     if (this.layout === Layout.RESPONSIVE) {
       return this.responsiveImage
-        .getAvailableTypes(this.args.image)
+        .getAvailableTypes(this.args.src)
         .map((type) => {
           const sources: string[] = this.responsiveImage
-            .getImages(this.args.image, type)
+            .getImages(this.args.src, type)
             .map((imageMeta) => `${imageMeta.image} ${imageMeta.width}w`);
 
           return {
@@ -101,11 +101,11 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       }
 
       return this.responsiveImage
-        .getAvailableTypes(this.args.image)
+        .getAvailableTypes(this.args.src)
         .map((type) => {
           const sources: string[] = PIXEL_DENSITIES.map((density) => {
             const imageMeta = this.responsiveImage.getImageMetaByWidth(
-              this.args.image,
+              this.args.src,
               width * density,
               type
             )!;
@@ -131,19 +131,19 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get imageMeta(): ImageMeta | undefined {
     if (this.layout === Layout.RESPONSIVE) {
       return this.responsiveImage.getImageMetaBySize(
-        this.args.image,
+        this.args.src,
         this.args.size
       );
     } else {
       return this.responsiveImage.getImageMetaByWidth(
-        this.args.image,
+        this.args.src,
         this.width ?? 0
       );
     }
   }
 
   get meta(): Meta {
-    return this.responsiveImage.getMeta(this.args.image);
+    return this.responsiveImage.getMeta(this.args.src);
   }
 
   /**
@@ -161,7 +161,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         return this.args.width;
       }
 
-      const ar = this.responsiveImage.getAspectRatio(this.args.image);
+      const ar = this.responsiveImage.getAspectRatio(this.args.src);
       if (ar !== undefined && ar !== 0 && this.args.height !== undefined) {
         return this.args.height * ar;
       }
@@ -178,7 +178,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         return this.args.height;
       }
 
-      const ar = this.responsiveImage.getAspectRatio(this.args.image);
+      const ar = this.responsiveImage.getAspectRatio(this.args.src);
       if (ar !== undefined && ar !== 0 && this.args.width !== undefined) {
         return this.args.width / ar;
       }
