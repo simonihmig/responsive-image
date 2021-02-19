@@ -12,7 +12,7 @@ const walk = require('walk-sync');
 const defaultConfig = {
   exclude: [],
   quality: 80,
-  supportedWidths: [2048, 1536, 1080, 750, 640],
+  widths: [2048, 1536, 1080, 750, 640],
   removeSource: true,
   justCopy: false,
   destinationDir: '/',

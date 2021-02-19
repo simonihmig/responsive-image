@@ -19,7 +19,7 @@ module.exports = function (defaults) {
           'assets/images/tests/lqip/**/*',
         ],
         quality: 50,
-        supportedWidths: [50, 100, 640],
+        widths: [50, 100, 640],
         lqip: {
           type: 'color',
         },
@@ -29,12 +29,12 @@ module.exports = function (defaults) {
         include: 'assets/images/tests/small.png',
         quality: 10,
         removeSource: false,
-        supportedWidths: [10, 25],
+        widths: [10, 25],
       },
       {
         include: 'assets/images/tests/lqip/inline.jpg',
         quality: 50,
-        supportedWidths: [100, 640],
+        widths: [100, 640],
         lqip: {
           type: 'inline',
         },
@@ -43,7 +43,7 @@ module.exports = function (defaults) {
       {
         include: 'assets/images/tests/lqip/color.jpg',
         quality: 50,
-        supportedWidths: [100, 640],
+        widths: [100, 640],
         lqip: {
           type: 'color',
         },
@@ -53,7 +53,7 @@ module.exports = function (defaults) {
       {
         include: 'assets/images/tests/lqip/blurhash.jpg',
         quality: 50,
-        supportedWidths: [100, 640],
+        widths: [100, 640],
         lqip: {
           type: 'blurhash',
         },
@@ -66,7 +66,7 @@ module.exports = function (defaults) {
           'assets/images/docs/lqip-blurhash.jpg',
         ],
         quality: 50,
-        supportedWidths: [1920, 1280, 640, 320],
+        widths: [1920, 1280, 640, 320],
         lqip: {
           type: 'inline',
         },
@@ -75,7 +75,7 @@ module.exports = function (defaults) {
       {
         include: 'assets/images/docs/lqip-color.jpg',
         quality: 50,
-        supportedWidths: [1920, 1280, 640, 320],
+        widths: [1920, 1280, 640, 320],
         lqip: {
           type: 'color',
         },
@@ -84,7 +84,7 @@ module.exports = function (defaults) {
       {
         include: 'assets/images/docs/lqip-blurhash.jpg',
         quality: 50,
-        supportedWidths: [1920, 1280, 640, 320],
+        widths: [1920, 1280, 640, 320],
         lqip: {
           type: 'blurhash',
         },
