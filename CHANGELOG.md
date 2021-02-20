@@ -1,3 +1,12 @@
+## v2.0.0-rc.1 (2021-02-20)
+
+#### :bug: Bug Fix
+* [#159](https://github.com/kaliber5/ember-responsive-image/pull/159) Handle absolute image path ([@simonihmig](https://github.com/simonihmig))
+* [#158](https://github.com/kaliber5/ember-responsive-image/pull/158) Fix plugins path ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v2.0.0-rc.0 (2021-02-20)
 
 #### :boom: Breaking Change
