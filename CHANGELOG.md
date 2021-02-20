@@ -1,3 +1,45 @@
+## v2.0.0-rc.0 (2021-02-20)
+
+#### :boom: Breaking Change
+* [#154](https://github.com/kaliber5/ember-responsive-image/pull/154) Rename `@image` argument to `@src` ([@simonihmig](https://github.com/simonihmig))
+* [#155](https://github.com/kaliber5/ember-responsive-image/pull/155) Rename `supportedWidths` config option to `widths` ([@simonihmig](https://github.com/simonihmig))
+* [#136](https://github.com/kaliber5/ember-responsive-image/pull/136) Move addon options into ember-cli-build.js ([@simonihmig](https://github.com/simonihmig))
+* [#130](https://github.com/kaliber5/ember-responsive-image/pull/130) Support fixed and responsive layouts ([@simonihmig](https://github.com/simonihmig))
+* [#115](https://github.com/kaliber5/ember-responsive-image/pull/115) Change config to support different configurations per file pattern ([@simonihmig](https://github.com/simonihmig))
+* [#113](https://github.com/kaliber5/ember-responsive-image/pull/113) Refactor the ember-cli hooks integration, remove setupResponsiveImage test-helper ([@simonihmig](https://github.com/simonihmig))
+* [#111](https://github.com/kaliber5/ember-responsive-image/pull/111) Refactor ResponsiveImage to Glimmer component ([@simonihmig](https://github.com/simonihmig))
+* [#110](https://github.com/kaliber5/ember-responsive-image/pull/110) Remove mixins ([@simonihmig](https://github.com/simonihmig))
+* [#109](https://github.com/kaliber5/ember-responsive-image/pull/109) Remove ResponsiveBackground component ([@simonihmig](https://github.com/simonihmig))
+
+#### :rocket: Enhancement
+* [#157](https://github.com/kaliber5/ember-responsive-image/pull/157) Update helper to support image format ([@simonihmig](https://github.com/simonihmig))
+* [#153](https://github.com/kaliber5/ember-responsive-image/pull/153) Add `content-visibility: auto;` for lazy rendering ([@simonihmig](https://github.com/simonihmig))
+* [#137](https://github.com/kaliber5/ember-responsive-image/pull/137) Add support for blurhash-based LQIP ([@simonihmig](https://github.com/simonihmig))
+* [#136](https://github.com/kaliber5/ember-responsive-image/pull/136) Move addon options into ember-cli-build.js ([@simonihmig](https://github.com/simonihmig))
+* [#135](https://github.com/kaliber5/ember-responsive-image/pull/135) Add support for a dominant color LQIP strategy ([@simonihmig](https://github.com/simonihmig))
+* [#133](https://github.com/kaliber5/ember-responsive-image/pull/133) Add built-in support for a blurry placeholder (LQIP) ([@simonihmig](https://github.com/simonihmig))
+* [#132](https://github.com/kaliber5/ember-responsive-image/pull/132) Add AVIF format support ([@simonihmig](https://github.com/simonihmig))
+* [#131](https://github.com/kaliber5/ember-responsive-image/pull/131) Let the browser decode images asynchronously ([@simonihmig](https://github.com/simonihmig))
+* [#130](https://github.com/kaliber5/ember-responsive-image/pull/130) Support fixed and responsive layouts ([@simonihmig](https://github.com/simonihmig))
+* [#129](https://github.com/kaliber5/ember-responsive-image/pull/129) Enable native lazy loading by default ([@simonihmig](https://github.com/simonihmig))
+* [#128](https://github.com/kaliber5/ember-responsive-image/pull/128) Refactor component to render `<picture>` element, supporting multiple image types ([@simonihmig](https://github.com/simonihmig))
+* [#127](https://github.com/kaliber5/ember-responsive-image/pull/127) Migrate to TypeScript ([@simonihmig](https://github.com/simonihmig))
+* [#114](https://github.com/kaliber5/ember-responsive-image/pull/114) Add Embroider support ([@simonihmig](https://github.com/simonihmig))
+* [#116](https://github.com/kaliber5/ember-responsive-image/pull/116) Add WebP format support ([@simonihmig](https://github.com/simonihmig))
+* [#115](https://github.com/kaliber5/ember-responsive-image/pull/115) Change config to support different configurations per file pattern ([@simonihmig](https://github.com/simonihmig))
+* [#113](https://github.com/kaliber5/ember-responsive-image/pull/113) Refactor the ember-cli hooks integration, remove setupResponsiveImage test-helper ([@simonihmig](https://github.com/simonihmig))
+* [#111](https://github.com/kaliber5/ember-responsive-image/pull/111) Refactor ResponsiveImage to Glimmer component ([@simonihmig](https://github.com/simonihmig))
+
+#### :memo: Documentation
+* [#152](https://github.com/kaliber5/ember-responsive-image/pull/152) Update documentation for v2 ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#112](https://github.com/kaliber5/ember-responsive-image/pull/112) Refactor service and helper to native classes ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 2
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v1.0.1 (2021-01-08)
 
 #### :house: Internal
