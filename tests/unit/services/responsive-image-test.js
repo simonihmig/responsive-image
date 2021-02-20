@@ -49,6 +49,12 @@ module('ResponsiveImageService', function (hooks) {
     assert.deepEqual(images, meta['test.png'].images);
   });
 
+  test('handle absolute pats', function (assert) {
+    let service = this.owner.lookup('service:responsive-image');
+    let images = service.getImages('/test.png');
+    assert.deepEqual(images, meta['test.png'].images);
+  });
+
   test('retrieve generated images by name and type', function (assert) {
     let service = this.owner.lookup('service:responsive-image');
     let images = service.getImages('test.png', 'png');
