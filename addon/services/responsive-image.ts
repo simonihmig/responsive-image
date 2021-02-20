@@ -72,6 +72,9 @@ export default class ResponsiveImageService extends Service {
   }
 
   getMeta(imageName: string): Meta {
+    if (imageName.charAt(0) === '/') {
+      imageName = imageName.slice(1);
+    }
     assert(
       `There is no data for image ${imageName}: ${this.meta}`,
       Object.prototype.hasOwnProperty.call(this.meta, imageName)

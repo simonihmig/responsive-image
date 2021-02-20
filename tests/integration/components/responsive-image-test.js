@@ -14,6 +14,14 @@ module('Integration: Responsive Image Component', function (hooks) {
       assert.dom('img').hasNoClass('eri-fixed');
     });
 
+    test('handles absolute paths', async function (assert) {
+      await render(
+        hbs`<ResponsiveImage @src="/assets/images/tests/test.png"/>`
+      );
+
+      assert.dom('img').exists();
+    });
+
     test('it renders width and height attributes', async function (assert) {
       await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
 
