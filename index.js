@@ -187,10 +187,12 @@ module.exports = {
   },
 
   initPlugins() {
-    walk('lib/plugins', { globs: ['*.js'] }).forEach((file) => {
-      const Plugin = require(`./lib/plugins/${file}`);
-      this.plugins.push(new Plugin(this));
-    });
+    walk(path.join(__dirname, 'lib/plugins'), { globs: ['*.js'] }).forEach(
+      (file) => {
+        const Plugin = require(`./lib/plugins/${file}`);
+        this.plugins.push(new Plugin(this));
+      }
+    );
   },
 
   validateConfigItem(config) {
