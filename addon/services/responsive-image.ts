@@ -13,14 +13,12 @@ export interface LqipBase {
 
 export interface LqipInline extends LqipBase {
   type: 'inline';
-  image: string;
-  width: number;
-  height: number;
+  class: string;
 }
 
 export interface LqipColor extends LqipBase {
   type: 'color';
-  color: string;
+  class: string;
 }
 
 export interface LqipBlurhash extends LqipBase {

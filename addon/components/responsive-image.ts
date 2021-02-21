@@ -4,19 +4,12 @@ import ResponsiveImageService, {
   ImageMeta,
   ImageType,
   LqipBlurhash,
-  LqipColor,
-  LqipInline,
   Meta,
 } from 'ember-responsive-image/services/responsive-image';
 import { assert } from '@ember/debug';
-import dataUri from 'ember-responsive-image/utils/data-uri';
-import blurrySvg from 'ember-responsive-image/utils/blurry-svg';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import {
-  macroCondition,
-  getOwnConfig /*, importSync*/,
-} from '@embroider/macros';
+import { getOwnConfig, macroCondition } from '@embroider/macros';
 import { decode } from 'blurhash';
 
 declare module '@embroider/macros' {
@@ -187,47 +180,17 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     }
   }
 
-  get hasLqipImage(): boolean {
-    return this.meta.lqip?.type === 'inline';
-  }
-
-  get showLqipImage(): boolean {
-    return !this.isLoaded && this.hasLqipImage;
-  }
-
-  get lqipImage(): string | undefined {
-    if (!this.hasLqipImage) {
-      return undefined;
+  get classNames(): string {
+    const classNames = [`eri-${this.layout}`];
+    const lqip = this.meta.lqip;
+    if (lqip && !this.isLoaded) {
+      classNames.push(`eri-lqip-${lqip.type}`);
+      if (lqip.type === 'color' || lqip.type === 'inline') {
+        classNames.push(lqip.class);
+      }
     }
-    const lqip = (this.meta as Required<Meta>).lqip as LqipInline;
 
-    const uri = dataUri(
-      blurrySvg(
-        dataUri(lqip.image, 'image/png', true),
-        lqip.width,
-        lqip.height
-      ),
-      'image/svg+xml'
-    );
-
-    return `url("${uri}")`;
-  }
-
-  get hasLqipColor(): boolean {
-    return this.meta.lqip?.type === 'color';
-  }
-
-  get showLqipColor(): boolean {
-    return !this.isLoaded && this.hasLqipColor;
-  }
-
-  get lqipColor(): string | undefined {
-    if (!this.hasLqipColor) {
-      return undefined;
-    }
-    const lqip = (this.meta as Required<Meta>).lqip as LqipColor;
-
-    return lqip.color;
+    return classNames.join(' ');
   }
 
   get hasLqipBlurhash(): boolean {

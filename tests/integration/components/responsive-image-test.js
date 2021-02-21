@@ -1,4 +1,4 @@
-import { render } from '@ember/test-helpers';
+import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
@@ -478,21 +478,25 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
 
         assert.ok(
-          this.element
-            .querySelector('img')
-            .style.backgroundImage?.match(/data:image\/svg/),
+          window
+            .getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage?.match(/data:image\/svg/),
           'it has a background SVG'
         );
         assert.dom('img').hasStyle({ 'background-size': 'cover' });
         assert.ok(
-          this.element.querySelector('img').style.backgroundImage?.length > 100,
+          window.getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage?.length > 100,
           'the background SVG has a reasonable length'
         );
 
         await waitUntilLoaded;
+        await settled();
 
-        assert.notOk(
-          this.element.querySelector('img').style.backgroundImage,
+        assert.equal(
+          window.getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage,
+          'none',
           'after image is loaded the background SVG is removed'
         );
       });
@@ -513,11 +517,9 @@ module('Integration: Responsive Image Component', function (hooks) {
         assert.dom('img').hasStyle({ 'background-color': 'rgb(88, 72, 56)' });
 
         await waitUntilLoaded;
+        await settled();
 
-        assert.notOk(
-          this.element.querySelector('img').style.backgroundColor,
-          'after image is loaded the background color is removed'
-        );
+        assert.dom('img').hasStyle({ 'background-color': 'rgba(0, 0, 0, 0)' });
       });
 
       module('blurhash', function () {
@@ -540,15 +542,18 @@ module('Integration: Responsive Image Component', function (hooks) {
           );
           assert.dom('img').hasStyle({ 'background-size': 'cover' });
           assert.ok(
-            this.element.querySelector('img').style.backgroundImage?.length >
-              100,
+            window.getComputedStyle(this.element.querySelector('img'))
+              .backgroundImage?.length > 100,
             'the background SVG has a reasonable length'
           );
 
           await waitUntilLoaded;
+          await settled();
 
-          assert.notOk(
-            this.element.querySelector('img').style.backgroundImage,
+          assert.equal(
+            window.getComputedStyle(this.element.querySelector('img'))
+              .backgroundImage,
+            'none',
             'after image is loaded the background PNG is removed'
           );
         });
