@@ -2,6 +2,7 @@
 const path = require('path');
 const Funnel = require('broccoli-funnel');
 const Writer = require('./lib/image-writer');
+const CssWriter = require('./lib/css-writer');
 const fs = require('fs-extra');
 const map = require('broccoli-stew').map;
 const mergeTrees = require('broccoli-merge-trees');
@@ -26,6 +27,7 @@ module.exports = {
   metaData: {},
   configData: {},
   app: null,
+  cssExtensions: [],
   metadataExtensions: [],
   extendedMetaData: null,
   imagePreProcessors: [],
@@ -60,6 +62,10 @@ module.exports = {
    */
   addMetadataExtension(callback, target) {
     this.metadataExtensions.push({ callback, target });
+  },
+
+  addCssExtension(callback, target) {
+    this.cssExtensions.push({ callback, target });
   },
 
   /**
@@ -223,12 +229,22 @@ module.exports = {
     // we write our image meta data as a script tag into the app's index.html, which the service will read from
     // (that happens only in the browser, where we have easy access to the DOM. For FastBoot this is different, see below)
     if (type === 'head-footer') {
+      console.log('content');
       return [
         '<script id="ember_responsive_image_meta" type="application/json">',
         JSON.stringify(this.extendMetadata()),
         '</script>',
       ].join('\n');
     }
+  },
+
+  treeForAddonStyles(tree) {
+    const dynTree = new CssWriter(
+      [this.processingTree],
+      () => this.metaData,
+      this.cssExtensions
+    );
+    return mergeTrees([tree, dynTree]);
   },
 
   treeForFastBoot() {

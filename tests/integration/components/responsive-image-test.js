@@ -1,10 +1,14 @@
-import { render } from '@ember/test-helpers';
+import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
+
+  hooks.beforeEach(function () {
+    this.set('cacheBreaker', new Date().getTime());
+  });
 
   module('responsive layout', function () {
     test('it has responsive layout by default', async function (assert) {
@@ -474,25 +478,29 @@ module('Integration: Responsive Image Component', function (hooks) {
         this.onload = () => setTimeout(resolve, 0);
 
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/lqip/inline.jpg" {{on "load" this.onload}}/>`
+          hbs`<ResponsiveImage @src="assets/images/tests/lqip/inline.jpg" @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`
         );
 
         assert.ok(
-          this.element
-            .querySelector('img')
-            .style.backgroundImage?.match(/data:image\/svg/),
+          window
+            .getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage?.match(/data:image\/svg/),
           'it has a background SVG'
         );
         assert.dom('img').hasStyle({ 'background-size': 'cover' });
         assert.ok(
-          this.element.querySelector('img').style.backgroundImage?.length > 100,
+          window.getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage?.length > 100,
           'the background SVG has a reasonable length'
         );
 
         await waitUntilLoaded;
+        await settled();
 
-        assert.notOk(
-          this.element.querySelector('img').style.backgroundImage,
+        assert.equal(
+          window.getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage,
+          'none',
           'after image is loaded the background SVG is removed'
         );
       });
@@ -507,51 +515,52 @@ module('Integration: Responsive Image Component', function (hooks) {
         this.onload = () => setTimeout(resolve, 0);
 
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/lqip/color.jpg" {{on "load" this.onload}}/>`
+          hbs`<ResponsiveImage @src="assets/images/tests/lqip/color.jpg" @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`
         );
 
         assert.dom('img').hasStyle({ 'background-color': 'rgb(88, 72, 56)' });
 
         await waitUntilLoaded;
+        await settled();
 
-        assert.notOk(
-          this.element.querySelector('img').style.backgroundColor,
-          'after image is loaded the background color is removed'
-        );
+        assert.dom('img').hasStyle({ 'background-color': 'rgba(0, 0, 0, 0)' });
       });
+    });
 
-      module('blurhash', function () {
-        test('it sets LQIP from blurhash as background', async function (assert) {
-          let resolve;
-          const waitUntilLoaded = new Promise((r) => {
-            resolve = r;
-          });
-          this.onload = () => setTimeout(resolve, 0);
-
-          await render(
-            hbs`<ResponsiveImage @src="assets/images/tests/lqip/blurhash.jpg" {{on "load" this.onload}}/>`
-          );
-
-          assert.ok(
-            this.element
-              .querySelector('img')
-              .style.backgroundImage?.match(/data:image\/png/),
-            'it has a background PNG'
-          );
-          assert.dom('img').hasStyle({ 'background-size': 'cover' });
-          assert.ok(
-            this.element.querySelector('img').style.backgroundImage?.length >
-              100,
-            'the background SVG has a reasonable length'
-          );
-
-          await waitUntilLoaded;
-
-          assert.notOk(
-            this.element.querySelector('img').style.backgroundImage,
-            'after image is loaded the background PNG is removed'
-          );
+    module('blurhash', function () {
+      test('it sets LQIP from blurhash as background', async function (assert) {
+        let resolve;
+        const waitUntilLoaded = new Promise((r) => {
+          resolve = r;
         });
+        this.onload = () => setTimeout(resolve, 0);
+
+        await render(
+          hbs`<ResponsiveImage @src="assets/images/tests/lqip/blurhash.jpg" @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`
+        );
+
+        assert.ok(
+          this.element
+            .querySelector('img')
+            .style.backgroundImage?.match(/data:image\/png/),
+          'it has a background PNG'
+        );
+        assert.dom('img').hasStyle({ 'background-size': 'cover' });
+        assert.ok(
+          window.getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage?.length > 100,
+          'the background SVG has a reasonable length'
+        );
+
+        await waitUntilLoaded;
+        await settled();
+
+        assert.equal(
+          window.getComputedStyle(this.element.querySelector('img'))
+            .backgroundImage,
+          'none',
+          'after image is loaded the background PNG is removed'
+        );
       });
     });
   });
