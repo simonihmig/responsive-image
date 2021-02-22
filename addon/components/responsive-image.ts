@@ -217,6 +217,16 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return !this.isLoaded && this.hasLqipBlurhash;
   }
 
+  get blurhash(): string | undefined {
+    if (macroCondition(getOwnConfig().usesBlurhash)) {
+      return this.meta.lqip?.type === 'blurhash'
+        ? this.meta.lqip.hash
+        : undefined;
+    } else {
+      return undefined;
+    }
+  }
+
   get lqipBlurhash(): string | undefined {
     if (macroCondition(getOwnConfig().usesBlurhash)) {
       if (!this.hasLqipBlurhash) {

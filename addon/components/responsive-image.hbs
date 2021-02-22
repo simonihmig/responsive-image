@@ -14,6 +14,9 @@
     loading="lazy"
     decoding="async"
     ...attributes
+    data-eri-bh={{this.blurhash}}
+    data-eri-bh-w={{this.meta.lqip.width}}
+    data-eri-bh-h={{this.meta.lqip.height}}
     {{style
       (if this.showLqipBlurhash (hash background-image=this.lqipBlurhash background-size="cover"))
     }}
