@@ -22,6 +22,7 @@ interface ResponsiveImageComponentArgs {
   sizes?: string;
   width?: number;
   height?: number;
+  cacheBreaker?: string;
 }
 
 interface PictureSource {
@@ -76,7 +77,12 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         .map((type) => {
           const sources: string[] = this.responsiveImage
             .getImages(this.args.src, type)
-            .map((imageMeta) => `${imageMeta.image} ${imageMeta.width}w`);
+            .map(
+              (imageMeta) =>
+                `${imageMeta.image}${
+                  this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
+                } ${imageMeta.width}w`
+            );
 
           return {
             srcset: sources.join(', '),
@@ -103,7 +109,9 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
               type
             )!;
 
-            return `${imageMeta.image} ${density}x`;
+            return `${imageMeta.image}${
+              this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
+            } ${density}x`;
           }).filter((source) => source !== undefined);
 
           return {
@@ -143,7 +151,11 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
    * the image source which fits at best for the size and screen
    */
   get src(): string | undefined {
-    return this.imageMeta?.image;
+    return this.imageMeta
+      ? `${this.imageMeta.image}${
+          this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
+        }`
+      : undefined;
   }
 
   get width(): number | undefined {
