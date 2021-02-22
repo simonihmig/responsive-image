@@ -25,9 +25,7 @@ function bh2url(
   const imageData = ctx.createImageData(blurWidth, blurHeight);
   imageData.data.set(pixels);
   ctx.putImageData(imageData, 0, 0);
-  const uri = canvas.toDataURL('image/png');
-
-  return `url("${uri}")`;
+  return canvas.toDataURL('image/png');
 }
 
 function applySSR(): void {
@@ -42,7 +40,7 @@ function applySSR(): void {
     if (hash && width && height) {
       const url = bh2url(hash, parseInt(width, 10), parseInt(height, 10));
       if (url) {
-        image.style.backgroundImage = url;
+        image.style.backgroundImage = `url("${url}")`;
         image.style.backgroundSize = 'cover';
       }
     }
