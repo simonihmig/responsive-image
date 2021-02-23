@@ -1,3 +1,20 @@
+## v2.0.0-rc.2 (2021-02-23)
+
+#### :rocket: Enhancement
+* [#172](https://github.com/kaliber5/ember-responsive-image/pull/172) Add support for Blurhash in FastBoot ([@simonihmig](https://github.com/simonihmig))
+* [#162](https://github.com/kaliber5/ember-responsive-image/pull/162) Apply LQIP styles with dynamically generated CSS, to support FastBoot ([@simonihmig](https://github.com/simonihmig))
+
+#### :bug: Bug Fix
+* [#176](https://github.com/kaliber5/ember-responsive-image/pull/176) Delay setting src attribute after <img> is in DOM to prevent extraneous image loading ([@simonihmig](https://github.com/simonihmig))
+* [#175](https://github.com/kaliber5/ember-responsive-image/pull/175) Limit Blurhash size to allowed values ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#173](https://github.com/kaliber5/ember-responsive-image/pull/173) Import htmlSafe from `@ember/template` ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 2
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v2.0.0-rc.1 (2021-02-20)
 
 #### :bug: Bug Fix
