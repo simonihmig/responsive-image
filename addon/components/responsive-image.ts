@@ -19,6 +19,8 @@ declare global {
   const __eri_blurhash: {
     bh2url: (hash: string, width: number, height: number) => string | undefined;
   };
+
+  const FastBoot: unknown;
 }
 
 interface ResponsiveImageComponentArgs {
@@ -58,6 +60,9 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   @tracked
   isLoaded = false;
+
+  @tracked
+  isRendered = false;
 
   constructor(owner: unknown, args: ResponsiveImageComponentArgs) {
     super(owner, args);
@@ -151,7 +156,11 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
    * the image source which fits at best for the size and screen
    */
   get src(): string | undefined {
-    return this.imageMeta
+    // We *must not* set the src attribute before the <img> is actually rendered, and a child of <picture>
+    // Otherwise some browsers (FF, Safari) will eagerly load it, although the image isn't the one the browser
+    // should load given the other source/srcset variants. Also prevents native lazy loading.
+    return (this.isRendered || typeof FastBoot !== 'undefined') &&
+      this.imageMeta
       ? `${this.imageMeta.image}${
           this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
         }`
@@ -243,5 +252,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @action
   onLoad(): void {
     this.isLoaded = true;
+  }
+
+  @action
+  setRendered(): void {
+    this.isRendered = true;
   }
 }
