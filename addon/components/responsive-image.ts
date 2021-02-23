@@ -10,10 +10,15 @@ import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { getOwnConfig, macroCondition } from '@embroider/macros';
-import { decode } from 'blurhash';
 
 declare module '@embroider/macros' {
   export function getOwnConfig(): { usesBlurhash: boolean };
+}
+
+declare global {
+  const __eri_blurhash: {
+    bh2url: (hash: string, width: number, height: number) => string | undefined;
+  };
 }
 
 interface ResponsiveImageComponentArgs {
@@ -38,11 +43,6 @@ enum Layout {
 }
 
 const PIXEL_DENSITIES = [1, 2];
-const canvas =
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  (typeof FastBoot === 'undefined' &&
-    document.createElement('canvas')) as HTMLCanvasElement;
 
 // determines the order of sources, prefereing next-gen formats over legacy
 const typeScore = new Map<ImageType, number>([
@@ -217,6 +217,14 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return !this.isLoaded && this.hasLqipBlurhash;
   }
 
+  get blurhashMeta(): LqipBlurhash | undefined {
+    if (macroCondition(getOwnConfig().usesBlurhash)) {
+      return this.meta.lqip?.type === 'blurhash' ? this.meta.lqip : undefined;
+    } else {
+      return undefined;
+    }
+  }
+
   get lqipBlurhash(): string | undefined {
     if (macroCondition(getOwnConfig().usesBlurhash)) {
       if (!this.hasLqipBlurhash) {
@@ -224,26 +232,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       }
       const { hash, width, height } = (this.meta as Required<Meta>)
         .lqip as LqipBlurhash;
-
-      // This does not work correctly, see https://github.com/embroider-build/embroider/issues/684
-      // The idea was to pull `blurhash` into our vendor.js only when needed
-      // Currently we are instead importing it at the module head, but this comes at a cost for all users that don't need it.
-      // const { decode } = importSync('blurhash') as any;
-
-      const blurWidth = width * 40;
-      const blurHeight = height * 40;
-      const pixels = decode(hash, blurWidth, blurHeight);
-      canvas.width = blurWidth;
-      canvas.height = blurHeight;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) {
-        return undefined;
-      }
-
-      const imageData = ctx.createImageData(blurWidth, blurHeight);
-      imageData.data.set(pixels);
-      ctx.putImageData(imageData, 0, 0);
-      const uri = canvas.toDataURL('image/png');
+      const uri = __eri_blurhash.bh2url(hash, width, height);
 
       return `url("${uri}")`;
     } else {

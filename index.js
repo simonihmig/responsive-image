@@ -33,6 +33,7 @@ module.exports = {
   imagePreProcessors: [],
   imagePostProcessors: [],
   plugins: [],
+  usesBlurhash: false,
 
   options: {
     '@embroider/macros': {
@@ -159,6 +160,13 @@ module.exports = {
     this.initConfig(parent);
     this.initPlugins();
     this.processingTree = this.createProcessingTree();
+
+    this.usesBlurhash = this.addonOptions.some(
+      (imageConfig) => imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
+    );
+    this.options[
+      '@embroider/macros'
+    ].setOwnConfig.usesBlurhash = this.usesBlurhash;
   },
 
   initConfig(app) {
@@ -229,13 +237,33 @@ module.exports = {
     // we write our image meta data as a script tag into the app's index.html, which the service will read from
     // (that happens only in the browser, where we have easy access to the DOM. For FastBoot this is different, see below)
     if (type === 'head-footer') {
-      console.log('content');
       return [
         '<script id="ember_responsive_image_meta" type="application/json">',
         JSON.stringify(this.extendMetadata()),
         '</script>',
       ].join('\n');
     }
+
+    // add blurhash script before app scripts, to process blurhash images before all of the app get's loaded
+    // This makes blurhash - which requires a JS-based decoding step - reasonable to use in a SSR/FastBoot setup.
+    if (this.usesBlurhash && type === 'body') {
+      return `<script src="${this._getRootURL()}assets/blurhash.js"></script>\n`;
+    }
+  },
+
+  _getRootURL() {
+    if (this._projectRootURL) {
+      return this._projectRootURL;
+    }
+
+    let config = this._getConfig();
+    let rootURL = config.rootURL || config.baseURL || '/';
+
+    return (this._projectRootURL = rootURL);
+  },
+
+  _getConfig() {
+    return this.project.config(this.app.env);
   },
 
   treeForAddonStyles(tree) {
@@ -269,7 +297,50 @@ module.exports = {
   },
 
   treeForPublic() {
-    return this.processingTree;
+    const trees = [this.processingTree];
+
+    // Blurhash support requires a special JS script for SSR support
+    if (this.usesBlurhash) {
+      const rollup = require('broccoli-rollup');
+      const resolve = require('@rollup/plugin-node-resolve');
+      const cjs = require('@rollup/plugin-commonjs');
+
+      const babelAddon = this.addons.find(
+        (addon) => addon.name === 'ember-cli-babel'
+      );
+
+      const transpiledBlurhashScriptTree = babelAddon.transpileTree(
+        this.treeGenerator(path.join(__dirname, 'vendor')),
+        {
+          'ember-cli-babel': {
+            compileModules: false,
+          },
+        }
+      );
+
+      const bundledBlurhashScriptTree = rollup(transpiledBlurhashScriptTree, {
+        rollup: {
+          input: 'blurhash-script.js',
+          output: {
+            format: 'iife',
+            file: 'blurhash.js',
+            name: '__eri_blurhash',
+          },
+          plugins:
+            process.env.EMBER_ENV === 'production'
+              ? [resolve(), cjs(), require('rollup-plugin-terser').terser()]
+              : [resolve(), cjs()],
+        },
+      });
+
+      trees.push(
+        new Funnel(bundledBlurhashScriptTree, {
+          destDir: 'assets',
+        })
+      );
+    }
+
+    return mergeTrees(trees);
   },
 
   createProcessingTree() {
