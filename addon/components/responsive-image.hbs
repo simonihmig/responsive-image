@@ -21,5 +21,6 @@
       (if this.showLqipBlurhash (hash background-image=this.lqipBlurhash background-size="cover"))
     }}
     {{on "load" this.onLoad}}
+    {{did-insert this.setRendered}}
   />
 </picture>
