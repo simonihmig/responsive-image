@@ -33,7 +33,6 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'prettier/@typescript-eslint',
       ],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'error', // We want to be strict with types
