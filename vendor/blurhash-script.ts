@@ -4,6 +4,8 @@ const BLURHASH_ATTRIBUTE = 'data-eri-bh';
 const WIDTH_ATTRIBUTE = 'data-eri-bh-w';
 const HEIGHT_ATTRIBUTE = 'data-eri-bh-h';
 
+const BLURHASH_SCALE_FACTOR = 4;
+
 declare const FastBoot: unknown | undefined;
 
 function bh2url(
@@ -11,8 +13,8 @@ function bh2url(
   width: number,
   height: number
 ): string | undefined {
-  const blurWidth = width * 40;
-  const blurHeight = height * 40;
+  const blurWidth = width * BLURHASH_SCALE_FACTOR;
+  const blurHeight = height * BLURHASH_SCALE_FACTOR;
   const pixels = decode(hash, blurWidth, blurHeight);
   const canvas = document.createElement('canvas');
   canvas.width = blurWidth;
@@ -50,5 +52,5 @@ function applySSR(): void {
 export { bh2url, applySSR };
 
 if (typeof FastBoot === 'undefined') {
-  applySSR();
+  setTimeout(applySSR, 0);
 }
