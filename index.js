@@ -236,7 +236,7 @@ module.exports = {
   contentFor(type) {
     // we write our image meta data as a script tag into the app's index.html, which the service will read from
     // (that happens only in the browser, where we have easy access to the DOM. For FastBoot this is different, see below)
-    if (type === 'head-footer') {
+    if (type === 'body-footer') {
       return [
         '<script id="ember_responsive_image_meta" type="application/json">',
         JSON.stringify(this.extendMetadata()),
