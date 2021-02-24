@@ -1,3 +1,12 @@
+## v2.0.0-rc.3 (2021-02-24)
+
+#### :rocket: Enhancement
+* [#177](https://github.com/kaliber5/ember-responsive-image/pull/177) Optimize Blurhash performance ([@simonihmig](https://github.com/simonihmig))
+* [#178](https://github.com/kaliber5/ember-responsive-image/pull/178) Move meta data script to end of body, to improve FastBoot performance ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v2.0.0-rc.2 (2021-02-23)
 
 #### :rocket: Enhancement
