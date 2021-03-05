@@ -1,3 +1,14 @@
+## v2.0.0-rc.4 (2021-03-05)
+
+#### :boom: Breaking Change
+* [#180](https://github.com/kaliber5/ember-responsive-image/pull/180) Refactor internal meta format, add own fingerprinting implementation ([@simonihmig](https://github.com/simonihmig))
+
+#### :rocket: Enhancement
+* [#180](https://github.com/kaliber5/ember-responsive-image/pull/180) Refactor internal meta format, add own fingerprinting implementation ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v2.0.0-rc.3 (2021-02-24)
 
 #### :rocket: Enhancement
