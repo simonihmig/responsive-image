@@ -6,91 +6,92 @@ module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
     // Add options here
     fingerprint: {
-      enabled: false,
+      enabled: true,
       extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'webp', 'avif'],
       exclude: ['testem.js'],
-      customHash: '00e24234f1b58e32b935b1041432916f',
     },
-    'responsive-image': [
-      {
-        include: 'assets/images/tests/**/*',
-        exclude: [
-          'assets/images/tests/small.png',
-          'assets/images/tests/lqip/**/*',
-        ],
-        quality: 50,
-        widths: [50, 100, 640],
-        lqip: {
-          type: 'color',
+    'responsive-image': {
+      images: [
+        {
+          include: 'assets/images/tests/**/*',
+          exclude: [
+            'assets/images/tests/small.png',
+            'assets/images/tests/lqip/**/*',
+          ],
+          quality: 50,
+          widths: [50, 100, 640],
+          lqip: {
+            type: 'color',
+          },
+          removeSource: true,
         },
-        removeSource: true,
-      },
-      {
-        include: 'assets/images/tests/small.png',
-        quality: 10,
-        removeSource: false,
-        widths: [10, 25],
-      },
-      {
-        include: 'assets/images/tests/lqip/inline.jpg',
-        quality: 50,
-        widths: [100, 640],
-        lqip: {
-          type: 'inline',
+        {
+          include: 'assets/images/tests/small.png',
+          quality: 10,
+          removeSource: false,
+          widths: [10, 25],
         },
-        removeSource: true,
-      },
-      {
-        include: 'assets/images/tests/lqip/color.jpg',
-        quality: 50,
-        widths: [100, 640],
-        lqip: {
-          type: 'color',
+        {
+          include: 'assets/images/tests/lqip/inline.jpg',
+          quality: 50,
+          widths: [100, 640],
+          lqip: {
+            type: 'inline',
+          },
+          removeSource: true,
         },
-        removeSource: true,
-        justCopy: false,
-      },
-      {
-        include: 'assets/images/tests/lqip/blurhash.jpg',
-        quality: 50,
-        widths: [100, 640],
-        lqip: {
-          type: 'blurhash',
+        {
+          include: 'assets/images/tests/lqip/color.jpg',
+          quality: 50,
+          widths: [100, 640],
+          lqip: {
+            type: 'color',
+          },
+          removeSource: true,
+          justCopy: false,
         },
-        removeSource: true,
-      },
-      {
-        include: 'assets/images/docs/**/*',
-        exclude: [
-          'assets/images/docs/lqip-color.jpg',
-          'assets/images/docs/lqip-blurhash.jpg',
-        ],
-        quality: 50,
-        widths: [1920, 1280, 640, 320],
-        lqip: {
-          type: 'inline',
+        {
+          include: 'assets/images/tests/lqip/blurhash.jpg',
+          quality: 50,
+          widths: [100, 640],
+          lqip: {
+            type: 'blurhash',
+          },
+          removeSource: true,
         },
-        removeSource: true,
-      },
-      {
-        include: 'assets/images/docs/lqip-color.jpg',
-        quality: 50,
-        widths: [1920, 1280, 640, 320],
-        lqip: {
-          type: 'color',
+        {
+          include: 'assets/images/docs/**/*',
+          exclude: [
+            'assets/images/docs/lqip-color.jpg',
+            'assets/images/docs/lqip-blurhash.jpg',
+          ],
+          quality: 50,
+          widths: [1920, 1280, 640, 320],
+          lqip: {
+            type: 'inline',
+          },
+          removeSource: true,
         },
-        removeSource: true,
-      },
-      {
-        include: 'assets/images/docs/lqip-blurhash.jpg',
-        quality: 50,
-        widths: [1920, 1280, 640, 320],
-        lqip: {
-          type: 'blurhash',
+        {
+          include: 'assets/images/docs/lqip-color.jpg',
+          quality: 50,
+          widths: [1920, 1280, 640, 320],
+          lqip: {
+            type: 'color',
+          },
+          removeSource: true,
         },
-        removeSource: true,
-      },
-    ],
+        {
+          include: 'assets/images/docs/lqip-blurhash.jpg',
+          quality: 50,
+          widths: [1920, 1280, 640, 320],
+          lqip: {
+            type: 'blurhash',
+          },
+          removeSource: true,
+        },
+      ],
+    },
   });
 
   /*

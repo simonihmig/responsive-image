@@ -10,7 +10,9 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
     await render(
       hbs`<h1>{{responsive-image-resolve "assets/images/tests/test.png"}}</h1>`
     );
-    assert.dom('h1').hasText('/assets/images/tests/test640w.png');
+    assert
+      .dom('h1')
+      .hasText(new RegExp('/assets/images/tests/test640w(-\\w+)?.png'));
   });
 
   test('supports size', async function (assert) {
@@ -20,7 +22,9 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
       hbs`<h1>{{responsive-image-resolve "assets/images/tests/test.png" size=45}}</h1>`
     );
 
-    assert.dom('h1').hasText('/assets/images/tests/test50w.png');
+    assert
+      .dom('h1')
+      .hasText(new RegExp('/assets/images/tests/test50w(-\\w+)?.png'));
   });
 
   test('supports format', async function (assert) {
@@ -28,6 +32,8 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
       hbs`<h1>{{responsive-image-resolve "assets/images/tests/test.png" format="webp"}}</h1>`
     );
 
-    assert.dom('h1').hasText('/assets/images/tests/test640w.webp');
+    assert
+      .dom('h1')
+      .hasText(new RegExp('/assets/images/tests/test640w(-\\w+)?.webp'));
   });
 });

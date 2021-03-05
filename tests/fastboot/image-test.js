@@ -13,7 +13,10 @@ module('FastBoot | image', function (hooks) {
     assert.dom('img[data-test-simple-image]').exists();
     assert
       .dom('img[data-test-simple-image]')
-      .hasAttribute('src', '/assets/images/tests/test640w.png');
+      .hasAttribute(
+        'src',
+        new RegExp('/assets/images/tests/test640w(-\\w+)?.png')
+      );
   });
 
   test('it renders lqip color', async function (assert) {

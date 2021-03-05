@@ -39,6 +39,7 @@ export interface Meta {
   widths: number[];
   formats: ImageType[];
   aspectRatio: number;
+  fingerprint?: string;
   lqip?: LqipInline | LqipColor | LqipBlurhash;
 }
 
@@ -153,7 +154,8 @@ export default class ResponsiveImageService extends Service {
     // this must match `generateFilename()` of ImageWriter broccoli plugin!
     const ext = imageExtensions.get(format) ?? format;
     const base = image.substr(0, image.lastIndexOf('.'));
-    return `/${base}${width}w.${ext}`;
+    const fingerprint = this.getMeta(image).fingerprint;
+    return `/${base}${width}w${fingerprint ? '-' + fingerprint : ''}.${ext}`;
   }
 
   private getDestinationWidthBySize(size: number): number {
