@@ -11,6 +11,11 @@ module.exports = function (defaults) {
       exclude: ['testem.js'],
     },
     'responsive-image': {
+      fingerprint:
+        // used only for testing here, to override the md5 fingerprint with a constant (for deterministic testing)
+        process.env.ERI_FINGERPRINT !== undefined
+          ? process.env.ERI_FINGERPRINT
+          : true,
       images: [
         {
           include: 'assets/images/tests/**/*',
