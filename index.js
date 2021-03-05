@@ -155,13 +155,15 @@ module.exports = {
     return this.extendedMetaData;
   },
 
-  included(parent) {
+  included(app) {
     this._super.included.apply(this, arguments);
-    this.initConfig(parent);
+    this.app = app;
+    this.initConfig();
+    this.setupFingerprinting();
     this.initPlugins();
     this.processingTree = this.createProcessingTree();
 
-    this.usesBlurhash = this.addonOptions.some(
+    this.usesBlurhash = this.addonOptions.images.some(
       (imageConfig) => imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
     );
     this.options[
@@ -169,22 +171,23 @@ module.exports = {
     ].setOwnConfig.usesBlurhash = this.usesBlurhash;
   },
 
-  initConfig(app) {
-    let config = app.options['responsive-image'];
+  initConfig() {
+    this.addonOptions = this.app.options['responsive-image'];
 
-    if (!config) {
+    if (!this.addonOptions) {
       this.ui.writeWarnLine(
         'Could not find config for ember-responsive-image, skipping image processing...'
       );
-      this.addonOptions = [];
-      return;
+      this.addonOptions = { images: [] };
     }
 
-    if (!Array.isArray(config)) {
-      config = [config];
+    if (!Array.isArray(this.addonOptions.images)) {
+      throw new SilentError(
+        'Config for ember-responsive-image must include an `images` array.'
+      );
     }
 
-    this.addonOptions = config.map((item) => {
+    this.addonOptions.images = this.addonOptions.images.map((item) => {
       this.validateConfigItem(item);
       let extendedConfig = { ...defaultConfig, ...item };
       // extendedConfig.rootURL = url;
@@ -207,6 +210,38 @@ module.exports = {
         this.plugins.push(new Plugin(this));
       }
     );
+  },
+
+  setupFingerprinting() {
+    if (this.app.project.findAddonByName('broccoli-asset-rev')) {
+      const assetRevOptions = this.app.options.fingerprint;
+      this.addonOptions.fingerprint =
+        this.addonOptions.fingerprint !== undefined
+          ? this.addonOptions.fingerprint
+          : assetRevOptions === false
+          ? false
+          : assetRevOptions && assetRevOptions.enabled !== undefined
+          ? assetRevOptions.enabled
+          : this.app.env === 'production';
+
+      if (this.addonOptions.fingerprint) {
+        // exclude our own images from broccoli-asset-rev, as we will handle fingerprinting on our own
+
+        const excludeGlobs = this.addonOptions.images.reduce(
+          (globs, imageConfig) => [...globs, ...imageConfig.include],
+          []
+        );
+
+        assetRevOptions.exclude = assetRevOptions.exclude
+          ? [...assetRevOptions.exclude, ...excludeGlobs]
+          : excludeGlobs;
+      }
+    } else {
+      this.addonOptions.fingerprint =
+        this.addonOptions.fingerprint !== undefined
+          ? this.addonOptions.fingerprint
+          : this.app.env === 'production';
+    }
   },
 
   validateConfigItem(config) {
@@ -345,8 +380,9 @@ module.exports = {
 
   createProcessingTree() {
     const tree = this._findHost().trees.public;
-    const trees = this.addonOptions.map((options) => {
-      return this.resizeImages(tree, options);
+    const { fingerprint } = this.addonOptions;
+    const trees = this.addonOptions.images.map((options) => {
+      return this.resizeImages(tree, { ...options, fingerprint });
     });
 
     return mergeTrees(trees, { overwrite: true });
@@ -355,7 +391,7 @@ module.exports = {
   postBuild(result) {
     // remove original images that have `removeSource` set
     const processedImages = Object.keys(this.metaData);
-    this.addonOptions.forEach((options) => {
+    this.addonOptions.images.forEach((options) => {
       if (options.removeSource) {
         const globs = processedImages
           .filter((file) => {

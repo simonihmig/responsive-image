@@ -51,12 +51,14 @@ Add a basic configuration to your `ember-cli-build.js`, to point the addon to wh
 ```js
 module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
-    'responsive-image': [
-      {
-        include: 'assets/images/**/*',
-        widths: [2048, 1536, 1080, 750, 640],
-      }
-    ]
+    'responsive-image': {
+      images: [
+        {
+          include: 'assets/images/**/*',
+          widths: [2048, 1536, 1080, 750, 640],
+        }
+      ],
+    }
   });
 };
 ```
@@ -197,39 +199,48 @@ is less suited if you have just a few images, but shines if you need placeholder
 
 ## Configuration
 
-Configuration of the addon is done in your `ember-cli-build.js`. It expects an array of configuration items, with a number
-of different available options:
+Configuration of the addon is done in your `ember-cli-build.js`:
 
 ```js
 let app = new EmberAddon(defaults, {
-  'responsive-image': [
-    {
-      include: ['path/to/images/**/*'],
-      exclude: ['path/to/images/but-not-this/**/*'],
-      widths: [2048, 1536, 1080, 750, 640],
-      formats: ['avif', 'webp'],
-      quality: 50,
-      lqip: {
-        type: 'inline', 
-        targetPixels: 60,
+  'responsive-image': {
+    fingerprint: true,
+    images: [
+      {
+        include: ['path/to/images/**/*'],
+        exclude: ['path/to/images/but-not-this/**/*'],
+        widths: [2048, 1536, 1080, 750, 640],
+        formats: ['avif', 'webp'],
+        quality: 50,
+        lqip: {
+          type: 'inline',
+          targetPixels: 60,
+        },
+        removeSource: true,
+        justCopy: false,
       },
-      removeSource: true,
-      justCopy: false,
-    },
-    // possible more items
-  ]
+      // possible more items
+    ],
+  }
 });
 ```
 
-You must define at least one configuration item, with at least `include` defined. But you can provide more, to create separate
-configurations for different images. 
+### Options
+
+* **fingerprint:** Can be used to enable/disable fingerprinting of the generated image files. In most cases you can omit
+setting this explicitly, as it will follow whatever you have set under the main `fingerprint` options (used by the `broccoli-asset-rev` addon), 
+with the default being to enable fingerprinting only in production builds.
+* **images**: The main configuration how the addon generated images happens here, see the following section for details.
+
+### Image Options
+
+The main configuration happens with the `images` array. There you must define at least one configuration item, with at least `include` defined. 
+But you can provide more, to create separate configurations for different images. 
 
 For example if you have a gallery of logos, of which all will be displayed with a width of max. 300px or less,it makes no sense to create very 
 large images for these, so a setting of `widths: [300, 600],` would make sense here (600px for the `2x` version aka "retina").
 
 > Make sure you don't have multiple `include` definitions accidentally overlapping! You can use `exclude` in this case to prevent this.
-
-### Options
 
 * **include:** Glob pattern for which images should be processed based on this configuration.
 * **exclude:** Optional pattern which images to exclude, takes precedence over `include`.

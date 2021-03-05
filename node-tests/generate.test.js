@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 
 const hash = '00e24234f1b58e32b935b1041432916f';
-// compare with tests/dummy/config/environment.js
 const images = [
   {
     file: 'assets/images/tests/image.jpg',
@@ -87,7 +86,11 @@ const appDir = './dist';
 
 beforeAll(function () {
   jest.setTimeout(300000);
-  return execa('./node_modules/ember-cli/bin/ember', ['build']);
+  return execa('./node_modules/ember-cli/bin/ember', ['build'], {
+    env: {
+      ERI_FINGERPRINT: hash,
+    },
+  });
 });
 
 images.forEach((img) => {
@@ -98,7 +101,7 @@ images.forEach((img) => {
       const imageData = fs.readFileSync(
         path.join(appDir, `${filename}${width}w-${hash}.${ext}`)
       );
-      const originalSource = path.join(appDir, `${filename}-${hash}.${ext}`);
+      const originalSource = path.join(appDir, `${filename}.${ext}`);
       const meta = await sharp(imageData).metadata();
 
       expect(meta).toBeDefined();
