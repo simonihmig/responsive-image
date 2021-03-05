@@ -6,7 +6,7 @@ module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
     // Add options here
     fingerprint: {
-      enabled: true,
+      enabled: false,
       extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'webp', 'avif'],
       exclude: ['testem.js'],
       customHash: '00e24234f1b58e32b935b1041432916f',
