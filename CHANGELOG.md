@@ -1,3 +1,12 @@
+## v2.0.0-rc.5 (2021-03-06)
+
+#### :rocket: Enhancement
+* [#183](https://github.com/kaliber5/ember-responsive-image/pull/183) Disable AVIF by default ([@simonihmig](https://github.com/simonihmig))
+* [#182](https://github.com/kaliber5/ember-responsive-image/pull/182) Change `formats` config option to allow special `original` reference ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v2.0.0-rc.4 (2021-03-05)
 
 #### :boom: Breaking Change
