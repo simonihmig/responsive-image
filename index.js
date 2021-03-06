@@ -14,7 +14,7 @@ const defaultConfig = {
   exclude: [],
   quality: 80,
   widths: [2048, 1536, 1080, 750, 640],
-  formats: ['original', 'webp', 'avif'],
+  formats: ['original', 'webp' /*, 'avif'*/],
   removeSource: true,
   justCopy: false,
   destinationDir: '/',

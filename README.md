@@ -166,6 +166,9 @@ File size: **7KB**.
 
 ![a dog near the costline](docs/images/dog640w.avif)
 
+> Note: Generating AVIF files can take a lot of time, as it is very CPU-intensive. Therefore and given the limited browser support,
+the format is currently not enabled by default. You would have to opt-in, by defining the `formats` [configuration option](#configuration) to included AVIF.
+
 ## LQIP
 
 *Low Quality Image Placeholder* is a technique to give users a preview of the image while it is loading. This addon supports different types,
@@ -245,7 +248,7 @@ large images for these, so a setting of `widths: [300, 600],` would make sense h
 * **include:** Glob pattern for which images should be processed based on this configuration.
 * **exclude:** Optional pattern which images to exclude, takes precedence over `include`.
 * **widths:** These are the widths of the resized images.
-* **formats:** which image formats to produce. Supported are: `avif`, `webp`, `png` and `jpeg`. `original` is a special keyword here, representing the image format of the original source image. By default: `['original', 'webp', 'avif']`
+* **formats:** which image formats to produce. Supported are: `avif`, `webp`, `png` and `jpeg`. `original` is a special keyword here, representing the image format of the original source image. By default: `['original', 'webp']`
 * **quality:** Image quality (JPEG, WebP, AVIF)
 * **lqip:** Let's you opt into generating LQIPs, by setting at the `type`to one of the supported values. Disabled by default! 
 * **lqip.type:** `'inline'`, `'color'` or `'blurhash'`. See the [LQIP section](#lqip) for more details.

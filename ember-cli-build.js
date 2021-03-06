@@ -25,6 +25,7 @@ module.exports = function (defaults) {
           ],
           quality: 50,
           widths: [50, 100, 640],
+          formats: ['original', 'webp', 'avif'],
           lqip: {
             type: 'color',
           },
@@ -35,11 +36,13 @@ module.exports = function (defaults) {
           quality: 10,
           removeSource: false,
           widths: [10, 25],
+          formats: ['original', 'webp', 'avif'],
         },
         {
           include: 'assets/images/tests/lqip/inline.jpg',
           quality: 50,
           widths: [100, 640],
+          formats: ['original', 'webp', 'avif'],
           lqip: {
             type: 'inline',
           },
@@ -49,6 +52,7 @@ module.exports = function (defaults) {
           include: 'assets/images/tests/lqip/color.jpg',
           quality: 50,
           widths: [100, 640],
+          formats: ['original', 'webp', 'avif'],
           lqip: {
             type: 'color',
           },
@@ -59,6 +63,7 @@ module.exports = function (defaults) {
           include: 'assets/images/tests/lqip/blurhash.jpg',
           quality: 50,
           widths: [100, 640],
+          formats: ['original', 'webp', 'avif'],
           lqip: {
             type: 'blurhash',
           },
@@ -72,6 +77,7 @@ module.exports = function (defaults) {
           ],
           quality: 50,
           widths: [1920, 1280, 640, 320],
+          formats: ['original', 'webp', 'avif'],
           lqip: {
             type: 'inline',
           },
@@ -81,6 +87,7 @@ module.exports = function (defaults) {
           include: 'assets/images/docs/lqip-color.jpg',
           quality: 50,
           widths: [1920, 1280, 640, 320],
+          formats: ['original', 'webp', 'avif'],
           lqip: {
             type: 'color',
           },
@@ -90,6 +97,7 @@ module.exports = function (defaults) {
           include: 'assets/images/docs/lqip-blurhash.jpg',
           quality: 50,
           widths: [1920, 1280, 640, 320],
+          formats: ['original', 'webp', 'avif'],
           lqip: {
             type: 'blurhash',
           },
