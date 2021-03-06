@@ -245,7 +245,7 @@ large images for these, so a setting of `widths: [300, 600],` would make sense h
 * **include:** Glob pattern for which images should be processed based on this configuration.
 * **exclude:** Optional pattern which images to exclude, takes precedence over `include`.
 * **widths:** These are the widths of the resized images.
-* **formats:** which image formats to produce. Supported are: `avif`, `webp`, `png` and `jpeg`. By default it will use `avif`, `webp` and whatever the origin image was (`png`/`jpeg`).
+* **formats:** which image formats to produce. Supported are: `avif`, `webp`, `png` and `jpeg`. `original` is a special keyword here, representing the image format of the original source image. By default: `['original', 'webp', 'avif']`
 * **quality:** Image quality (JPEG, WebP, AVIF)
 * **lqip:** Let's you opt into generating LQIPs, by setting at the `type`to one of the supported values. Disabled by default! 
 * **lqip.type:** `'inline'`, `'color'` or `'blurhash'`. See the [LQIP section](#lqip) for more details.
