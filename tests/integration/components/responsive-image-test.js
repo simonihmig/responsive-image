@@ -23,7 +23,12 @@ module('Integration: Responsive Image Component', function (hooks) {
         hbs`<ResponsiveImage @src="/assets/images/tests/test.png"/>`
       );
 
-      assert.dom('img').exists();
+      assert
+        .dom('img')
+        .hasAttribute(
+          'src',
+          new RegExp('^/assets/images/tests/test([0-9])+w(-\\w+)?.png')
+        );
     });
 
     test('it renders width and height attributes', async function (assert) {

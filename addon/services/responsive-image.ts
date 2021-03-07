@@ -151,6 +151,7 @@ export default class ResponsiveImageService extends Service {
   }
 
   getImageFilename(image: string, width: number, format: ImageType): string {
+    image = this.normalizeImageName(image);
     // this must match `generateFilename()` of ImageWriter broccoli plugin!
     const ext = imageExtensions.get(format) ?? format;
     const base = image.substr(0, image.lastIndexOf('.'));
