@@ -36,6 +36,10 @@ Compatibility
 
 ## Getting started
 
+### Migration
+
+If you were previously using an older version (<2.x) of this addon, there is a [Migration Guide](docs/MIGRATION.md) to help you go through the (many!) breaking changes.
+
 ### Install in ember-cli application
 
 In your application's directory:
