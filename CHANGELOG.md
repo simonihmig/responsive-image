@@ -1,3 +1,18 @@
+## v2.0.0 (2021-03-09)
+
+This is a major new release, with a lot of new features and several breaking changes. Please see the changelog below of previous changes of the several RC-releases and the [Migration Guide](docs/MIGRATION.md) when upgrading!
+
+#### :bug: Bug Fix
+* [#184](https://github.com/kaliber5/ember-responsive-image/pull/184) Fix use of absolute path for `src` attribute ([@simonihmig](https://github.com/simonihmig))
+
+#### :memo: Documentation
+* [#196](https://github.com/kaliber5/ember-responsive-image/pull/196) Add a migration guide ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 2
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
+
 ## v2.0.0-rc.5 (2021-03-06)
 
 #### :rocket: Enhancement
