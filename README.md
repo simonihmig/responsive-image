@@ -9,22 +9,22 @@ An ember-cli addon to automatically generate resized images at build-time, optim
 
 ## Key Features
 
-🌇 Supports basic PNG and JPEG formats, as well as next-gen [**WebP**](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#webp) and [**AVIF**](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#avif), for best image quality at low file sizes.
+🌇  Supports basic PNG and JPEG formats, as well as next-gen [**WebP**](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#webp) and [**AVIF**](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#avif), for best image quality at low file sizes.
 
-🏎 Super **fast image processing**, thanks to the awesome [sharp](https://github.com/lovell/sharp) library.
+🏎  Super **fast image processing**, thanks to the awesome [sharp](https://github.com/lovell/sharp) library.
 
-📱 Layout modes for **fixed sizes** (with `1x` and `2x` image variants) as well as **responsive layouts** (`srcset` with optimized image sizes across all devices). 
+📱  Layout modes for **fixed sizes** (with `1x` and `2x` image variants) as well as **responsive layouts** (`srcset` with optimized image sizes across all devices). 
 
-💯 **Lazy rendering** by default, with optimized `content-visibility` and `decoding` settings and optimized markup, to prevent [**CLS**](https://web.dev/cls/) (*Cumulative Layout Shift*), a core [Web Vital](https://web.dev/vitals/) and [Lighthouse](https://developers.google.com/web/tools/lighthouse) metric.
+💯  **Lazy rendering** by default, with optimized `content-visibility` and `decoding` settings and optimized markup, to prevent [**CLS**](https://web.dev/cls/) (*Cumulative Layout Shift*), a core [Web Vital](https://web.dev/vitals/) and [Lighthouse](https://developers.google.com/web/tools/lighthouse) metric.
 
-⏳ Supports advanced **LQIP** (*Low Quality Image Placeholder*) techniques to show a preview while loading, using different configurable strategies
+⏳  Supports advanced **LQIP** (*Low Quality Image Placeholder*) techniques to show a preview while loading, using different configurable strategies
 like a blurry low-res image, [BlurHash](https://blurha.sh/) or a simple dominant color. 
 
-✨ Octane-based, written mostly in **TypeScript**, using **Glimmer** components, supporting [FastBoot](https://ember-fastboot.com/) and [Embroider](https://github.com/embroider-build/embroider), and fully tested.
+✨  Octane-based, written mostly in **TypeScript**, using **Glimmer** components, supporting [FastBoot](https://ember-fastboot.com/) and [Embroider](https://github.com/embroider-build/embroider), and fully tested.
 
-️⚙ Flexible configuration options
+️⚙  Flexible configuration options
 
-Advanced optimization techniques inspired amongst others by [this blog post](https://www.industrialempathy.com/posts/image-optimizations/).
+Advanced optimization techniques inspired amongst others by the blog post [Maximally optimizing image loading for the web in 2021](https://www.industrialempathy.com/posts/image-optimizations/).
 
 Compatibility
 ------------------------------------------------------------------------------
