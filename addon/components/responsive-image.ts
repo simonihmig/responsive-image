@@ -1,10 +1,10 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import ResponsiveImageService, {
-  ImageMeta,
+  Image,
   ImageType,
   LqipBlurhash,
-  Meta,
+  ImageMeta,
 } from 'ember-responsive-image/services/responsive-image';
 import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
@@ -134,7 +134,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     );
   }
 
-  get imageMeta(): ImageMeta | undefined {
+  get imageMeta(): Image | undefined {
     if (this.layout === Layout.RESPONSIVE) {
       return this.responsiveImage.getImageMetaBySize(
         this.args.src,
@@ -148,7 +148,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     }
   }
 
-  get meta(): Meta {
+  get meta(): ImageMeta {
     return this.responsiveImage.getMeta(this.args.src);
   }
 
@@ -239,7 +239,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       if (!this.hasLqipBlurhash) {
         return undefined;
       }
-      const { hash, width, height } = (this.meta as Required<Meta>)
+      const { hash, width, height } = (this.meta as Required<ImageMeta>)
         .lqip as LqipBlurhash;
       const uri = __eri_blurhash.bh2url(hash, width, height);
 

@@ -28,19 +28,25 @@ export interface LqipBlurhash extends LqipBase {
   height: number;
 }
 
-export interface ImageMeta {
+export interface Image {
   image: string;
   width: number;
   height: number;
   type: ImageType;
 }
 
-export interface Meta {
+export interface ImageMeta {
   widths: number[];
   formats: ImageType[];
   aspectRatio: number;
   fingerprint?: string;
   lqip?: LqipInline | LqipColor | LqipBlurhash;
+}
+
+interface Meta {
+  deviceWidths: number[];
+  providers?: Record<string, Record<string, unknown>>;
+  images: Record<string, ImageMeta>;
 }
 
 const imageExtensions: Map<ImageType, string> = new Map([['jpeg', 'jpg']]);
@@ -65,10 +71,10 @@ export default class ResponsiveImageService extends Service {
   /**
    * return the images with the different widths
    */
-  getImages(imageName: string, type?: ImageType): ImageMeta[] {
+  getImages(imageName: string, type?: ImageType): Image[] {
     imageName = this.normalizeImageName(imageName);
     const meta = this.getMeta(imageName);
-    const images: ImageMeta[] = [];
+    const images: Image[] = [];
 
     for (const width of meta.widths) {
       if (type) {
@@ -83,14 +89,14 @@ export default class ResponsiveImageService extends Service {
     return images;
   }
 
-  getMeta(imageName: string): Meta {
+  getMeta(imageName: string): ImageMeta {
     imageName = this.normalizeImageName(imageName);
     assert(
-      `There is no data for image ${imageName}: ${this.meta}`,
-      Object.prototype.hasOwnProperty.call(this.meta, imageName)
+      `There is no data for image ${imageName}`,
+      this.meta.images[imageName]
     );
 
-    return this.meta[imageName];
+    return this.meta.images[imageName];
   }
 
   private normalizeImageName(imageName: string): string {
@@ -114,7 +120,7 @@ export default class ResponsiveImageService extends Service {
     imageName: string,
     size?: number,
     type: ImageType = this.getType(imageName)
-  ): ImageMeta | undefined {
+  ): Image | undefined {
     const width = this.getDestinationWidthBySize(size ?? 0);
     return this.getImageMetaByWidth(imageName, width, type);
   }
@@ -126,7 +132,7 @@ export default class ResponsiveImageService extends Service {
     imageName: string,
     width: number,
     type: ImageType = this.getType(imageName)
-  ): ImageMeta {
+  ): Image {
     const imageWidth = this.getMeta(imageName).widths.reduce(
       (prevValue: number, w: number) => {
         if (w >= width && prevValue >= width) {
@@ -166,12 +172,12 @@ export default class ResponsiveImageService extends Service {
     return physicalWidth * factor;
   }
 
-  private _meta?: Record<string, Meta>;
+  private _meta?: Meta;
 
   /**
    * the meta values from build time
    */
-  get meta(): Record<string, Meta> {
+  get meta(): Meta {
     if (this._meta) {
       return this._meta;
     }
@@ -185,7 +191,7 @@ export default class ResponsiveImageService extends Service {
     this._meta = meta;
     return meta;
   }
-  set meta(meta: Record<string, Meta>) {
+  set meta(meta: Meta) {
     this._meta = meta;
   }
 }
