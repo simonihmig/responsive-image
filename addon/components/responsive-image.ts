@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 import { assert } from '@ember/debug';
-import { tracked } from '@glimmer/tracking';
+import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { getOwnConfig, macroCondition } from '@embroider/macros';
 import { provider as localProvider } from 'ember-responsive-image/helpers/responsive-image-local-provider';
@@ -70,7 +70,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     assert('No image argument supplied for <ResponsiveImage>', args.src);
   }
 
-  // @todo cached?
+  @cached
   get providerResult(): ProviderResult {
     return typeof this.args.src === 'string'
       ? localProvider(this.args.src, this.responsiveImage)
@@ -169,7 +169,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return this.providerResult.imageUrlFor(this.effectiveWidth ?? 640);
   }
 
-  // @todo @cached
+  @cached
   get width(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
       return this.responsiveImage.getDestinationWidthBySize(
