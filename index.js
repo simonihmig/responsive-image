@@ -177,9 +177,8 @@ module.exports = {
     this.usesBlurhash = this.addonOptions.images.some(
       (imageConfig) => imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
     );
-    this.options[
-      '@embroider/macros'
-    ].setOwnConfig.usesBlurhash = this.usesBlurhash;
+    this.options['@embroider/macros'].setOwnConfig.usesBlurhash =
+      this.usesBlurhash;
   },
 
   initConfig() {

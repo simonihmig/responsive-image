@@ -1,4 +1,4 @@
-import { TestContext } from "ember-test-helpers";
+import { TestContext } from 'ember-test-helpers';
 import { helper } from '@ember/component/helper';
 
 export default function setupDataDumper(hooks: NestedHooks): () => unknown {
@@ -7,12 +7,12 @@ export default function setupDataDumper(hooks: NestedHooks): () => unknown {
     data = argument;
   });
 
-  hooks.beforeEach(function(this: TestContext) {
+  hooks.beforeEach(function (this: TestContext) {
     this.owner.register('helper:dump', dumpHelper);
   });
-  hooks.afterEach(function() {
+  hooks.afterEach(function () {
     data = undefined;
   });
 
-  return () => data;
+  return (): unknown => data;
 }

@@ -1,9 +1,8 @@
 import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Helper from '@ember/component/helper';
-import ResponsiveImageService, {
-  ImageType,
-} from 'ember-responsive-image/services/responsive-image';
+import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import { ImageType } from 'ember-responsive-image/types';
 
 /**
  * @class responsiveImageResolve

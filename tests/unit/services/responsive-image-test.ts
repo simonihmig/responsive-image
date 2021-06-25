@@ -1,9 +1,7 @@
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import ResponsiveImageService, {
-  Image,
-  ImageMeta,
-} from 'ember-responsive-image/services/responsive-image';
+import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import { Image, ImageMeta } from 'ember-responsive-image/types';
 
 interface TestCase {
   moduleTitle: string;

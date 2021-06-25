@@ -136,25 +136,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     );
   }
 
-  get effectiveWidth(): number | undefined {
-    if (this.layout === Layout.RESPONSIVE) {
-      return this.responsiveImage.getDestinationWidthBySize(
-        this.args.size ?? 100
-      );
-    } else {
-      if (this.args.width) {
-        return this.args.width;
-      }
-
-      const ar = this.providerResult.aspectRatio;
-      if (ar !== undefined && ar !== 0 && this.args.height !== undefined) {
-        return this.args.height * ar;
-      }
-
-      return undefined;
-    }
-  }
-
   /**
    * the image source which fits at best for the size and screen
    */
@@ -166,7 +147,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return undefined;
     }
 
-    return this.providerResult.imageUrlFor(this.effectiveWidth ?? 640);
+    return this.providerResult.imageUrlFor(this.width ?? 640);
   }
 
   @cached
