@@ -5,7 +5,7 @@ import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { getOwnConfig, macroCondition } from '@embroider/macros';
-import { provider as localProvider } from 'ember-responsive-image/helpers/local';
+import { provider as localProvider } from 'ember-responsive-image/helpers/local-provider';
 import {
   ImageType,
   LqipBlurhash,
