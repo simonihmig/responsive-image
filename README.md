@@ -15,6 +15,8 @@ An ember-cli addon to automatically generate resized images at build-time, optim
 
 📱  Layout modes for **fixed sizes** (with `1x` and `2x` image variants) as well as **responsive layouts** (`srcset` with optimized image sizes across all devices). 
 
+🌍  Besides processing of local images, it also supports integrating remote images from image CDNs using a versatile image provider abstraction
+
 💯  **Lazy rendering** by default, with optimized `content-visibility` and `decoding` settings and optimized markup, to prevent [**CLS**](https://web.dev/cls/) (*Cumulative Layout Shift*), a core [Web Vital](https://web.dev/vitals/) and [Lighthouse](https://developers.google.com/web/tools/lighthouse) metric.
 
 ⏳  Supports advanced **LQIP** (*Low Quality Image Placeholder*) techniques to show a preview while loading, using different configurable strategies
@@ -204,6 +206,43 @@ overhead of a real image format, which was never optimized for that kind of *tin
 But the tradeoff here is that it needs a runtime library for decoding, which takes about 4.7KB (1.9KB compressed). Therefore it
 is less suited if you have just a few images, but shines if you need placeholders for a lot!
 
+## Image Providers
+
+So far we have only dealt with local images - static images that are commonly part of your app's git repo and get processed by this addon during the build process.
+But this is addon provides even a more versatile abstraction to use any kind of (remote) images: image providers. 
+
+A provider is basically an Ember helper that returns a [`ProviderResult`](addon/types.ts), which contains some meta data for a given image, and
+a function to compute the actual URL for each referenced image, based on its width and type. You can use one of the providers 
+that ship with this addon, or even write your own one. As long as it returns the appropriate data, the `<ResponsiveImage/>` component
+will be able to render all the image markup as described above.
+
+Simply pass the result of the helper as the `@src` of the component:
+
+```hbs
+<ResponsiveImage @src={{some-image-provider "some/image.jpg"}}/>
+```
+
+In fact you have already used one such provider, the `responsive-image-local-provider`, which is the default one. 
+Invoking the component with the reference to an image as a string...
+
+```hbs
+<ResponsiveImage @src="assets/images/dog.jpg"/>
+```
+
+is basically syntactic sugar for...
+
+```hbs
+<ResponsiveImage @src={{responsive-image-local-provider "assets/images/dog.jpg"}}/>
+```
+
+Besides local images, providers allow using also remote images. The most common use case is to load images from an [image CDN](https://web.dev/image-cdns/), that
+is then used to offload all image processing. Moreover, this allows for *dynamic* image processing, in cases where your images are not 
+available at build-time. For example you could have an `ember-data` model refer to the raw (large, unprocessed) image, and use
+an image CDN as a proxy to scale, optimize and deliver that image as needed, at *runtime*.
+
+The addon currently ships with these image providers (besides the local one) out of the box:
+* [Cloudinary](docs/providers/cloudinary.md)
+
 ## Configuration
 
 Configuration of the addon is done in your `ember-cli-build.js`:
@@ -212,6 +251,7 @@ Configuration of the addon is done in your `ember-cli-build.js`:
 let app = new EmberAddon(defaults, {
   'responsive-image': {
     fingerprint: true,
+    deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     images: [
       {
         include: ['path/to/images/**/*'],
@@ -234,14 +274,15 @@ let app = new EmberAddon(defaults, {
 
 ### Options
 
-* **fingerprint:** Can be used to enable/disable fingerprinting of the generated image files. In most cases you can omit
+* **fingerprint**: Can be used to enable/disable fingerprinting of the generated image files. In most cases you can omit
 setting this explicitly, as it will follow whatever you have set under the main `fingerprint` options (used by the `broccoli-asset-rev` addon), 
 with the default being to enable fingerprinting only in production builds.
+* **deviceWidths**: an array of widths representing the typical screen widths of your user's devices, used when the available image widths are not known beforehand, like when using an image CDN.
 * **images**: The main configuration how the addon generated images happens here, see the following section for details.
 
 ### Image Options
 
-The main configuration happens with the `images` array. There you must define at least one configuration item, with at least `include` defined. 
+When using images stored locally, the main configuration happens with the `images` array. There you must define at least one configuration item, with at least `include` defined. 
 But you can provide more, to create separate configurations for different images. 
 
 For example if you have a gallery of logos, of which all will be displayed with a width of max. 300px or less,it makes no sense to create very 
@@ -265,7 +306,7 @@ large images for these, so a setting of `widths: [300, 600],` would make sense h
 
 ## Advanced Usage
 
-The addons provides a service and a helper for more advances usages if required. You can also build addons that hook
+The addon provides a service and a helper for more advances usages if required. You can also build addons that hook
 into the image precessing pipeline. This is described in detail in the [Advanced Usage documentation](docs/ADVANCED.md).
 
 Contributing
