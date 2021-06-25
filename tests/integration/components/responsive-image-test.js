@@ -34,8 +34,13 @@ module('Integration: Responsive Image Component', function (hooks) {
     test('it renders width and height attributes', async function (assert) {
       await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
 
-      assert.dom('img').hasAttribute('width', '640');
-      assert.dom('img').hasAttribute('height', '320');
+      assert.dom('img').hasAttribute('width');
+      assert.dom('img').hasAttribute('height');
+      assert.equal(
+        this.element.querySelector('img').getAttribute('width') /
+          this.element.querySelector('img').getAttribute('height'),
+        2
+      );
     });
 
     test('it renders the correct sourceset with width descriptors', async function (assert) {

@@ -1,15 +1,16 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import ResponsiveImageService, {
-  Image,
-  ImageType,
-  LqipBlurhash,
-  ImageMeta,
-} from 'ember-responsive-image/services/responsive-image';
+import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { getOwnConfig, macroCondition } from '@embroider/macros';
+import { provider as localProvider } from 'ember-responsive-image/helpers/local';
+import {
+  ImageType,
+  LqipBlurhash,
+  ProviderResult,
+} from 'ember-responsive-image/types';
 
 declare module '@embroider/macros' {
   export function getOwnConfig(): { usesBlurhash: boolean };
@@ -24,7 +25,7 @@ declare global {
 }
 
 interface ResponsiveImageComponentArgs {
-  src: string;
+  src: string | ProviderResult;
   size?: number;
   sizes?: string;
   width?: number;
@@ -69,6 +70,13 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     assert('No image argument supplied for <ResponsiveImage>', args.src);
   }
 
+  // @todo cached?
+  get providerResult(): ProviderResult {
+    return typeof this.args.src === 'string'
+      ? localProvider(this.args.src, this.responsiveImage)
+      : this.args.src;
+  }
+
   get layout(): Layout {
     return this.args.width === undefined && this.args.height === undefined
       ? Layout.RESPONSIVE
@@ -77,54 +85,48 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   get sources(): PictureSource[] {
     if (this.layout === Layout.RESPONSIVE) {
-      return this.responsiveImage
-        .getAvailableTypes(this.args.src)
-        .map((type) => {
-          const sources: string[] = this.responsiveImage
-            .getImages(this.args.src, type)
-            .map(
-              (imageMeta) =>
-                `${imageMeta.image}${
-                  this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
-                } ${imageMeta.width}w`
-            );
-
-          return {
-            srcset: sources.join(', '),
-            sizes:
-              this.args.sizes ??
-              (this.args.size ? `${this.args.size}vw` : undefined),
-            type,
-            mimeType: `image/${type}`,
-          };
+      return this.providerResult.imageTypes.map((type) => {
+        let widths = this.providerResult.availableWidths;
+        if (!widths) {
+          widths = []; // @todo
+        }
+        const sources: string[] = widths.map((width) => {
+          const url = this.providerResult.imageUrlFor(width, type);
+          return `${url}${
+            this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
+          } ${width}w`;
         });
+
+        return {
+          srcset: sources.join(', '),
+          sizes:
+            this.args.sizes ??
+            (this.args.size ? `${this.args.size}vw` : undefined),
+          type,
+          mimeType: `image/${type}`,
+        };
+      });
     } else {
       const width = this.width;
       if (width === undefined) {
         return [];
       }
 
-      return this.responsiveImage
-        .getAvailableTypes(this.args.src)
-        .map((type) => {
-          const sources: string[] = PIXEL_DENSITIES.map((density) => {
-            const imageMeta = this.responsiveImage.getImageMetaByWidth(
-              this.args.src,
-              width * density,
-              type
-            )!;
+      return this.providerResult.imageTypes.map((type) => {
+        const sources: string[] = PIXEL_DENSITIES.map((density) => {
+          const url = this.providerResult.imageUrlFor(width * density, type)!;
 
-            return `${imageMeta.image}${
-              this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
-            } ${density}x`;
-          }).filter((source) => source !== undefined);
+          return `${url}${
+            this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
+          } ${density}x`;
+        }).filter((source) => source !== undefined);
 
-          return {
-            srcset: sources.join(', '),
-            type,
-            mimeType: `image/${type}`,
-          };
-        });
+        return {
+          srcset: sources.join(', '),
+          type,
+          mimeType: `image/${type}`,
+        };
+      });
     }
   }
 
@@ -134,22 +136,23 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     );
   }
 
-  get imageMeta(): Image | undefined {
+  get effectiveWidth(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
-      return this.responsiveImage.getImageMetaBySize(
-        this.args.src,
-        this.args.size
+      return this.responsiveImage.getDestinationWidthBySize(
+        this.args.size ?? 100
       );
     } else {
-      return this.responsiveImage.getImageMetaByWidth(
-        this.args.src,
-        this.width ?? 0
-      );
-    }
-  }
+      if (this.args.width) {
+        return this.args.width;
+      }
 
-  get meta(): ImageMeta {
-    return this.responsiveImage.getMeta(this.args.src);
+      const ar = this.providerResult.aspectRatio;
+      if (ar !== undefined && ar !== 0 && this.args.height !== undefined) {
+        return this.args.height * ar;
+      }
+
+      return undefined;
+    }
   }
 
   /**
@@ -159,23 +162,24 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     // We *must not* set the src attribute before the <img> is actually rendered, and a child of <picture>
     // Otherwise some browsers (FF, Safari) will eagerly load it, although the image isn't the one the browser
     // should load given the other source/srcset variants. Also prevents native lazy loading.
-    return (this.isRendered || typeof FastBoot !== 'undefined') &&
-      this.imageMeta
-      ? `${this.imageMeta.image}${
-          this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
-        }`
-      : undefined;
+    if (!this.isRendered && typeof FastBoot === 'undefined') {
+      return undefined;
+    }
+
+    return this.providerResult.imageUrlFor(this.effectiveWidth ?? 640);
   }
 
   get width(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
-      return this.imageMeta?.width;
+      return this.responsiveImage.getDestinationWidthBySize(
+        this.args.size ?? 0
+      );
     } else {
       if (this.args.width) {
         return this.args.width;
       }
 
-      const ar = this.responsiveImage.getAspectRatio(this.args.src);
+      const ar = this.providerResult.aspectRatio;
       if (ar !== undefined && ar !== 0 && this.args.height !== undefined) {
         return this.args.height * ar;
       }
@@ -185,25 +189,21 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get height(): number | undefined {
-    if (this.layout === Layout.RESPONSIVE) {
-      return this.imageMeta?.height;
-    } else {
-      if (this.args.height) {
-        return this.args.height;
-      }
-
-      const ar = this.responsiveImage.getAspectRatio(this.args.src);
-      if (ar !== undefined && ar !== 0 && this.args.width !== undefined) {
-        return this.args.width / ar;
-      }
-
-      return undefined;
+    if (this.args.height) {
+      return this.args.height;
     }
+
+    const ar = this.providerResult.aspectRatio;
+    if (ar !== undefined && ar !== 0 && this.width !== undefined) {
+      return this.width / ar;
+    }
+
+    return undefined;
   }
 
   get classNames(): string {
     const classNames = [`eri-${this.layout}`];
-    const lqip = this.meta.lqip;
+    const lqip = this.providerResult.lqip;
     if (lqip && !this.isLoaded) {
       classNames.push(`eri-lqip-${lqip.type}`);
       if (lqip.type === 'color' || lqip.type === 'inline') {
@@ -216,7 +216,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   get hasLqipBlurhash(): boolean {
     if (macroCondition(getOwnConfig().usesBlurhash)) {
-      return this.meta.lqip?.type === 'blurhash';
+      return this.providerResult.lqip?.type === 'blurhash';
     } else {
       return false;
     }
@@ -228,7 +228,9 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   get blurhashMeta(): LqipBlurhash | undefined {
     if (macroCondition(getOwnConfig().usesBlurhash)) {
-      return this.meta.lqip?.type === 'blurhash' ? this.meta.lqip : undefined;
+      return this.providerResult.lqip?.type === 'blurhash'
+        ? this.providerResult.lqip
+        : undefined;
     } else {
       return undefined;
     }
@@ -239,14 +241,19 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       if (!this.hasLqipBlurhash) {
         return undefined;
       }
-      const { hash, width, height } = (this.meta as Required<ImageMeta>)
-        .lqip as LqipBlurhash;
+      const { hash, width, height } = this.providerResult.lqip as LqipBlurhash;
       const uri = __eri_blurhash.bh2url(hash, width, height);
 
       return `url("${uri}")`;
     } else {
       return undefined;
     }
+  }
+
+  processUrl(url: string): string {
+    return `${url}${
+      this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
+    }`;
   }
 
   @action

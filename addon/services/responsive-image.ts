@@ -1,53 +1,15 @@
 import Service from '@ember/service';
 import { assert } from '@ember/debug';
+import {
+  Meta,
+  Image,
+  ImageMeta,
+  ImageType,
+} from 'ember-responsive-image/types';
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 
 const extentionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
-
-export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
-
-export interface LqipBase {
-  type: string;
-}
-
-export interface LqipInline extends LqipBase {
-  type: 'inline';
-  class: string;
-}
-
-export interface LqipColor extends LqipBase {
-  type: 'color';
-  class: string;
-}
-
-export interface LqipBlurhash extends LqipBase {
-  type: 'blurhash';
-  hash: string;
-  width: number;
-  height: number;
-}
-
-export interface Image {
-  image: string;
-  width: number;
-  height: number;
-  type: ImageType;
-}
-
-export interface ImageMeta {
-  widths: number[];
-  formats: ImageType[];
-  aspectRatio: number;
-  fingerprint?: string;
-  lqip?: LqipInline | LqipColor | LqipBlurhash;
-}
-
-interface Meta {
-  deviceWidths: number[];
-  providers?: Record<string, Record<string, unknown>>;
-  images: Record<string, ImageMeta>;
-}
 
 const imageExtensions: Map<ImageType, string> = new Map([['jpeg', 'jpg']]);
 
@@ -89,6 +51,11 @@ export default class ResponsiveImageService extends Service {
     return images;
   }
 
+  getAvailableWidths(imageName: string): number[] {
+    imageName = this.normalizeImageName(imageName);
+    return this.getMeta(imageName).widths;
+  }
+
   getMeta(imageName: string): ImageMeta {
     imageName = this.normalizeImageName(imageName);
     assert(
@@ -103,7 +70,7 @@ export default class ResponsiveImageService extends Service {
     return imageName.charAt(0) === '/' ? imageName.slice(1) : imageName;
   }
 
-  private getType(imageName: string): ImageType {
+  public getType(imageName: string): ImageType {
     const extension = imageName.split('.').pop();
     assert(`No extension found for ${imageName}`, extension);
     return extentionTypeMapping.get(extension) ?? (extension as ImageType);
@@ -165,7 +132,12 @@ export default class ResponsiveImageService extends Service {
     return `/${base}${width}w${fingerprint ? '-' + fingerprint : ''}.${ext}`;
   }
 
-  private getDestinationWidthBySize(size: number): number {
+  /**
+   *
+   * @param size
+   * @private
+   */
+  public getDestinationWidthBySize(size: number): number {
     const physicalWidth = this.physicalWidth;
     const factor = (size || 100) / 100;
 
