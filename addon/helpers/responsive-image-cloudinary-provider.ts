@@ -18,7 +18,7 @@ export const provider: Provider = (image, service) => {
 
   return {
     imageTypes: ['png', 'jpeg', 'webp', 'avif'],
-    imageUrlFor(width: number, type?: ImageType): string {
+    imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
       const params = [`w_${width}`, 'c_limit', 'q_auto'];
       return `https://res.cloudinary.com/${cloudName}/image/upload/${params.join(
         ','

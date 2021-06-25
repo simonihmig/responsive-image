@@ -169,6 +169,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return this.providerResult.imageUrlFor(this.effectiveWidth ?? 640);
   }
 
+  // @todo @cached
   get width(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
       return this.responsiveImage.getDestinationWidthBySize(

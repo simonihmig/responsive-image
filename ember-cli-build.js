@@ -16,6 +16,7 @@ module.exports = function (defaults) {
           cloudName: 'kaliber5',
         },
       },
+      deviceWidths: [640, 750, 1920],
       fingerprint:
         // used only for testing here, to override the md5 fingerprint with a constant (for deterministic testing)
         process.env.ERI_FINGERPRINT !== undefined
