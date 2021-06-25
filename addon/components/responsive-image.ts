@@ -88,7 +88,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return this.providerResult.imageTypes.map((type) => {
         let widths = this.providerResult.availableWidths;
         if (!widths) {
-          widths = []; // @todo
+          widths = [320, 640, 960]; // @todo
         }
         const sources: string[] = widths.map((width) => {
           const url = this.providerResult.imageUrlFor(width, type);

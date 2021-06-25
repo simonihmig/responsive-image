@@ -9,7 +9,7 @@ import {
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 
-const extentionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
+const extensionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
 
 const imageExtensions: Map<ImageType, string> = new Map([['jpeg', 'jpg']]);
 
@@ -73,7 +73,7 @@ export default class ResponsiveImageService extends Service {
   public getType(imageName: string): ImageType {
     const extension = imageName.split('.').pop();
     assert(`No extension found for ${imageName}`, extension);
-    return extentionTypeMapping.get(extension) ?? (extension as ImageType);
+    return extensionTypeMapping.get(extension) ?? (extension as ImageType);
   }
 
   getAvailableTypes(imageName: string): ImageType[] {
