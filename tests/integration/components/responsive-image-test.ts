@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
@@ -37,8 +38,14 @@ module('Integration: Responsive Image Component', function (hooks) {
       assert.dom('img').hasAttribute('width');
       assert.dom('img').hasAttribute('height');
       assert.equal(
-        this.element.querySelector('img').getAttribute('width') /
-          this.element.querySelector('img').getAttribute('height'),
+        parseInt(
+          this.element.querySelector('img')?.getAttribute('width') ?? '',
+          10
+        ) /
+          parseInt(
+            this.element.querySelector('img')?.getAttribute('height') ?? '',
+            10
+          ),
         2
       );
     });
@@ -209,7 +216,7 @@ module('Integration: Responsive Image Component', function (hooks) {
     });
 
     test('it renders the fallback src next to needed display size', async function (assert) {
-      let service = this.owner.lookup('service:responsive-image');
+      const service = this.owner.lookup('service:responsive-image');
       service.set('physicalWidth', 45);
       await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
       assert
@@ -542,11 +549,11 @@ module('Integration: Responsive Image Component', function (hooks) {
   module('LQIP', function () {
     module('inline', function () {
       test('it sets LQIP SVG as background', async function (assert) {
-        let resolve;
+        let resolve: (v: unknown) => void;
         const waitUntilLoaded = new Promise((r) => {
           resolve = r;
         });
-        this.onload = () => setTimeout(resolve, 0);
+        this.set('onload', () => setTimeout(resolve, 0));
 
         await render(
           hbs`<ResponsiveImage @src="assets/images/tests/lqip/inline.jpg" @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`
@@ -554,13 +561,13 @@ module('Integration: Responsive Image Component', function (hooks) {
 
         assert.ok(
           window
-            .getComputedStyle(this.element.querySelector('img'))
+            .getComputedStyle(this.element.querySelector('img')!)
             .backgroundImage?.match(/data:image\/svg/),
           'it has a background SVG'
         );
         assert.dom('img').hasStyle({ 'background-size': 'cover' });
         assert.ok(
-          window.getComputedStyle(this.element.querySelector('img'))
+          window.getComputedStyle(this.element.querySelector('img')!)
             .backgroundImage?.length > 100,
           'the background SVG has a reasonable length'
         );
@@ -569,7 +576,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         await settled();
 
         assert.equal(
-          window.getComputedStyle(this.element.querySelector('img'))
+          window.getComputedStyle(this.element.querySelector('img')!)
             .backgroundImage,
           'none',
           'after image is loaded the background SVG is removed'
@@ -579,11 +586,11 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     module('color', function () {
       test('it sets background-color', async function (assert) {
-        let resolve;
+        let resolve: (v: unknown) => void;
         const waitUntilLoaded = new Promise((r) => {
           resolve = r;
         });
-        this.onload = () => setTimeout(resolve, 0);
+        this.set('onload', () => setTimeout(resolve, 0));
 
         await render(
           hbs`<ResponsiveImage @src="assets/images/tests/lqip/color.jpg" @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`
@@ -600,11 +607,11 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     module('blurhash', function () {
       test('it sets LQIP from blurhash as background', async function (assert) {
-        let resolve;
+        let resolve: (v: unknown) => void;
         const waitUntilLoaded = new Promise((r) => {
           resolve = r;
         });
-        this.onload = () => setTimeout(resolve, 0);
+        this.set('onload', () => setTimeout(resolve, 0));
 
         await render(
           hbs`<ResponsiveImage @src="assets/images/tests/lqip/blurhash.jpg" @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`
@@ -612,13 +619,13 @@ module('Integration: Responsive Image Component', function (hooks) {
 
         assert.ok(
           this.element
-            .querySelector('img')
+            .querySelector('img')!
             .style.backgroundImage?.match(/data:image\/png/),
           'it has a background PNG'
         );
         assert.dom('img').hasStyle({ 'background-size': 'cover' });
         assert.ok(
-          window.getComputedStyle(this.element.querySelector('img'))
+          window.getComputedStyle(this.element.querySelector('img')!)
             .backgroundImage?.length > 100,
           'the background SVG has a reasonable length'
         );
@@ -627,7 +634,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         await settled();
 
         assert.equal(
-          window.getComputedStyle(this.element.querySelector('img'))
+          window.getComputedStyle(this.element.querySelector('img')!)
             .backgroundImage,
           'none',
           'after image is loaded the background PNG is removed'
