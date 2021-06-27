@@ -121,5 +121,16 @@ module.exports = function (defaults) {
   */
 
   const { maybeEmbroider } = require('@embroider/test-setup');
-  return maybeEmbroider(app);
+  return maybeEmbroider(app, {
+    packageRules: [
+      {
+        package: 'dummy',
+        components: {
+          '{{dump}}': {
+            safeToIgnore: true,
+          },
+        },
+      },
+    ],
+  });
 };
