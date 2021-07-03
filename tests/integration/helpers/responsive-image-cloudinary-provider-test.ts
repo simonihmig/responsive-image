@@ -43,5 +43,18 @@ module(
         'https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_auto/samples/animals/three-dogs.webp'
       );
     });
+
+    test('it supports custom transformations', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-cloudinary-provider "samples/animals/three-dogs" transformations="co_rgb:20a020,e_colorize:50")}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.equal(
+        data.imageUrlFor(100, 'jpeg'),
+        'https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_auto,co_rgb:20a020,e_colorize:50/samples/animals/three-dogs.jpeg'
+      );
+    });
   }
 );

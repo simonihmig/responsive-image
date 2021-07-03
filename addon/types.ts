@@ -44,8 +44,12 @@ export interface Meta {
   images: Record<string, ImageMeta>;
 }
 
-export interface Provider {
-  (image: string, service: ResponsiveImageService): ProviderResult;
+export interface Provider<OPTIONS = unknown> {
+  (
+    image: string,
+    service: ResponsiveImageService,
+    options?: OPTIONS
+  ): ProviderResult;
 }
 
 export interface ProviderResult {
