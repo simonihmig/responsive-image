@@ -10,6 +10,7 @@ import { assert } from '@ember/debug';
 
 interface CloudinaryOptions {
   transformations?: string;
+  formats?: ImageType[];
 }
 
 export const provider: Provider = (
@@ -25,7 +26,7 @@ export const provider: Provider = (
   const imageId = image.replace(/\.[^/.]+$/, '');
 
   return {
-    imageTypes: ['png', 'jpeg', 'webp', 'avif'],
+    imageTypes: options.formats ?? ['png', 'jpeg', 'webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
       const params = [
         `w_${width}`,

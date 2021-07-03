@@ -56,5 +56,15 @@ module(
         'https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_auto,co_rgb:20a020,e_colorize:50/samples/animals/three-dogs.jpeg'
       );
     });
+
+    test('it supports custom image formats', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-cloudinary-provider "samples/animals/three-dogs" formats=(array "webp" "avif"))}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.deepEqual(data.imageTypes, ['webp', 'avif']);
+    });
   }
 );
