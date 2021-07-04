@@ -1,19 +1,21 @@
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import {
-  ImageMeta,
-  Meta,
-} from 'ember-responsive-image/services/responsive-image';
+import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import { Image, ImageMeta } from 'ember-responsive-image/types';
 
 interface TestCase {
   moduleTitle: string;
-  meta: Record<string, Meta>;
-  imageMetas: ImageMeta[];
+  images: Record<string, ImageMeta>;
+  imageMetas: Image[];
 }
+const defaultMeta = {
+  deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+};
+
 const testCases: TestCase[] = [
   {
     moduleTitle: 'without fingerprinting',
-    meta: {
+    images: {
       'test.png': {
         widths: [50, 100],
         formats: ['png', 'webp'],
@@ -49,7 +51,7 @@ const testCases: TestCase[] = [
   },
   {
     moduleTitle: 'with fingerprinting',
-    meta: {
+    images: {
       'test.png': {
         widths: [50, 100],
         formats: ['png', 'webp'],
@@ -89,11 +91,13 @@ const testCases: TestCase[] = [
 module('ResponsiveImageService', function (hooks) {
   setupTest(hooks);
 
-  testCases.forEach(({ moduleTitle, meta, imageMetas }) => {
+  testCases.forEach(({ moduleTitle, images, imageMetas }) => {
     module(moduleTitle, function (hooks) {
       hooks.beforeEach(function () {
-        const service = this.owner.lookup('service:responsive-image');
-        service.set('meta', meta);
+        const service: ResponsiveImageService = this.owner.lookup(
+          'service:responsive-image'
+        );
+        service.meta = { ...defaultMeta, images };
       });
 
       test('retrieve generated images by name', function (assert) {

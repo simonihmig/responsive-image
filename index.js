@@ -10,7 +10,9 @@ const SilentError = require('silent-error');
 const minimatch = require('minimatch');
 const walk = require('walk-sync');
 
-const defaultConfig = {
+const defaultDeviceWidths = [640, 750, 828, 1080, 1200, 1920, 2048, 3840];
+
+const defaultImageConfig = {
   exclude: [],
   quality: 80,
   widths: [2048, 1536, 1080, 750, 640],
@@ -132,14 +134,19 @@ module.exports = {
     if (this.extendedMetaData) {
       return this.extendedMetaData;
     }
-    this.extendedMetaData = {};
+    this.extendedMetaData = {
+      deviceWidths: this.addonOptions.deviceWidths || defaultDeviceWidths,
+      images: {},
+    };
+
+    // Add image data to meta
     Object.keys(this.metaData).forEach((key) => {
       if (
         this.configData[key] &&
         Object.prototype.hasOwnProperty.call(this.extendedMetaData, key) ===
           false
       ) {
-        this.extendedMetaData[key] = this.metadataExtensions.reduce(
+        this.extendedMetaData.images[key] = this.metadataExtensions.reduce(
           (data, extension) => {
             return extension.callback.call(
               extension.target,
@@ -153,6 +160,9 @@ module.exports = {
       }
     });
 
+    if (this.addonOptions.providers) {
+      this.extendedMetaData.providers = this.addonOptions.providers;
+    }
     return this.extendedMetaData;
   },
 
@@ -167,9 +177,8 @@ module.exports = {
     this.usesBlurhash = this.addonOptions.images.some(
       (imageConfig) => imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
     );
-    this.options[
-      '@embroider/macros'
-    ].setOwnConfig.usesBlurhash = this.usesBlurhash;
+    this.options['@embroider/macros'].setOwnConfig.usesBlurhash =
+      this.usesBlurhash;
   },
 
   initConfig() {
@@ -182,15 +191,22 @@ module.exports = {
       this.addonOptions = { images: [] };
     }
 
-    if (!Array.isArray(this.addonOptions.images)) {
-      throw new SilentError(
-        'Config for ember-responsive-image must include an `images` array.'
-      );
+    if (
+      !Array.isArray(this.addonOptions.images) &&
+      !this.addonOptions.providers
+    ) {
+      if (!this.addonOptions.providers) {
+        throw new SilentError(
+          'Config for ember-responsive-image must include an `images` array or configure `providers`.'
+        );
+      }
+
+      this.addonOptions.images = [];
     }
 
     this.addonOptions.images = this.addonOptions.images.map((item) => {
       this.validateConfigItem(item);
-      let extendedConfig = { ...defaultConfig, ...item };
+      let extendedConfig = { ...defaultImageConfig, ...item };
       // extendedConfig.rootURL = url;
       if (!Array.isArray(extendedConfig.include)) {
         extendedConfig.include = [extendedConfig.include];

@@ -1,47 +1,15 @@
 import Service from '@ember/service';
 import { assert } from '@ember/debug';
+import {
+  Meta,
+  Image,
+  ImageMeta,
+  ImageType,
+} from 'ember-responsive-image/types';
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 
 const extentionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
-
-export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
-
-export interface LqipBase {
-  type: string;
-}
-
-export interface LqipInline extends LqipBase {
-  type: 'inline';
-  class: string;
-}
-
-export interface LqipColor extends LqipBase {
-  type: 'color';
-  class: string;
-}
-
-export interface LqipBlurhash extends LqipBase {
-  type: 'blurhash';
-  hash: string;
-  width: number;
-  height: number;
-}
-
-export interface ImageMeta {
-  image: string;
-  width: number;
-  height: number;
-  type: ImageType;
-}
-
-export interface Meta {
-  widths: number[];
-  formats: ImageType[];
-  aspectRatio: number;
-  fingerprint?: string;
-  lqip?: LqipInline | LqipColor | LqipBlurhash;
-}
 
 const imageExtensions: Map<ImageType, string> = new Map([['jpeg', 'jpg']]);
 
@@ -65,10 +33,10 @@ export default class ResponsiveImageService extends Service {
   /**
    * return the images with the different widths
    */
-  getImages(imageName: string, type?: ImageType): ImageMeta[] {
+  getImages(imageName: string, type?: ImageType): Image[] {
     imageName = this.normalizeImageName(imageName);
     const meta = this.getMeta(imageName);
-    const images: ImageMeta[] = [];
+    const images: Image[] = [];
 
     for (const width of meta.widths) {
       if (type) {
@@ -83,21 +51,26 @@ export default class ResponsiveImageService extends Service {
     return images;
   }
 
-  getMeta(imageName: string): Meta {
+  getAvailableWidths(imageName: string): number[] {
+    imageName = this.normalizeImageName(imageName);
+    return this.getMeta(imageName).widths;
+  }
+
+  getMeta(imageName: string): ImageMeta {
     imageName = this.normalizeImageName(imageName);
     assert(
-      `There is no data for image ${imageName}: ${this.meta}`,
-      Object.prototype.hasOwnProperty.call(this.meta, imageName)
+      `There is no data for image ${imageName}`,
+      this.meta.images[imageName]
     );
 
-    return this.meta[imageName];
+    return this.meta.images[imageName];
   }
 
   private normalizeImageName(imageName: string): string {
     return imageName.charAt(0) === '/' ? imageName.slice(1) : imageName;
   }
 
-  private getType(imageName: string): ImageType {
+  public getType(imageName: string): ImageType {
     const extension = imageName.split('.').pop();
     assert(`No extension found for ${imageName}`, extension);
     return extentionTypeMapping.get(extension) ?? (extension as ImageType);
@@ -114,7 +87,7 @@ export default class ResponsiveImageService extends Service {
     imageName: string,
     size?: number,
     type: ImageType = this.getType(imageName)
-  ): ImageMeta | undefined {
+  ): Image | undefined {
     const width = this.getDestinationWidthBySize(size ?? 0);
     return this.getImageMetaByWidth(imageName, width, type);
   }
@@ -126,7 +99,7 @@ export default class ResponsiveImageService extends Service {
     imageName: string,
     width: number,
     type: ImageType = this.getType(imageName)
-  ): ImageMeta {
+  ): Image {
     const imageWidth = this.getMeta(imageName).widths.reduce(
       (prevValue: number, w: number) => {
         if (w >= width && prevValue >= width) {
@@ -159,19 +132,24 @@ export default class ResponsiveImageService extends Service {
     return `/${base}${width}w${fingerprint ? '-' + fingerprint : ''}.${ext}`;
   }
 
-  private getDestinationWidthBySize(size: number): number {
+  /**
+   *
+   * @param size
+   * @private
+   */
+  public getDestinationWidthBySize(size: number): number {
     const physicalWidth = this.physicalWidth;
     const factor = (size || 100) / 100;
 
     return physicalWidth * factor;
   }
 
-  private _meta?: Record<string, Meta>;
+  private _meta?: Meta;
 
   /**
    * the meta values from build time
    */
-  get meta(): Record<string, Meta> {
+  get meta(): Meta {
     if (this._meta) {
       return this._meta;
     }
@@ -185,7 +163,7 @@ export default class ResponsiveImageService extends Service {
     this._meta = meta;
     return meta;
   }
-  set meta(meta: Record<string, Meta>) {
+  set meta(meta: Meta) {
     this._meta = meta;
   }
 }

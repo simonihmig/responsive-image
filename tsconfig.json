@@ -20,6 +20,7 @@
     "baseUrl": ".",
     "module": "es6",
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "paths": {
       "dummy/tests/*": [
         "tests/*"
@@ -40,6 +41,10 @@
       "ember-responsive-image/test-support/*": [
         "addon-test-support/*"
       ],
+      "@glimmer/tracking": [
+        "node_modules/ember-cached-decorator-polyfill",
+        "node_modules/@glimmer/tracking/dist/types"
+      ],
       "*": [
         "types/*"
       ]
@@ -51,6 +56,7 @@
     "tests/**/*",
     "types/**/*",
     "test-support/**/*",
-    "addon-test-support/**/*"
+    "addon-test-support/**/*",
+    "node_modules/@glimmer/component/dist/types/types/ember/index.d.ts"
   ]
 }
