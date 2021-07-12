@@ -38,7 +38,7 @@ export interface ImageMeta {
 
 export interface Meta {
   deviceWidths: number[];
-  providers?: Record<string, Record<string, unknown>>;
+  providers?: Record<string, unknown>;
   images: Record<string, ImageMeta>;
 }
 

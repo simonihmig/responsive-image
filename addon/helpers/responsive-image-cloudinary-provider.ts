@@ -4,6 +4,10 @@ import ResponsiveImageService from 'ember-responsive-image/services/responsive-i
 import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import { assert } from '@ember/debug';
 
+interface CloudinaryConfig {
+  cloudName: string;
+}
+
 interface CloudinaryOptions {
   transformations?: string;
   formats?: ImageType[];
@@ -14,7 +18,8 @@ export const provider = (
   service: ResponsiveImageService,
   options: CloudinaryOptions
 ): ProviderResult => {
-  const cloudName = service.meta.providers?.cloudinary?.cloudName; // @todo provide better API
+  const cloudName =
+    service.getProviderConfig<CloudinaryConfig>('cloudinary').cloudName;
   assert(
     'cloudName must be set for cloudinary provider!',
     typeof cloudName === 'string'

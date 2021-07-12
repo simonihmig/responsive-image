@@ -35,6 +35,12 @@ export default class ResponsiveImageService extends Service {
 
   private _meta?: Meta;
 
+  public getProviderConfig<CONFIG = unknown>(
+    provider: string
+  ): Partial<CONFIG> {
+    return (this.meta.providers?.[provider] as Partial<CONFIG>) ?? {};
+  }
+
   /**
    * the meta values from build time
    */
