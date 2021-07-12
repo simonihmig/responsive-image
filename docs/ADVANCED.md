@@ -2,7 +2,7 @@
 
 ## Service
 
-The `responsive-image` service provides the available images with the sizes for a given origin image, and retrieves the image that fits for the current screen size.
+The `responsive-image-local` service provides the available images (local privider) with the sizes for a given origin image, and retrieves the image that fits for the current screen size.
 
 ```js
 let availableImages = responsiveImageService.getImages("myImage.png");

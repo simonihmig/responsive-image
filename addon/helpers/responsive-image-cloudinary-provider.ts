@@ -1,11 +1,7 @@
 import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
 import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
-import {
-  ImageType,
-  Provider,
-  ProviderResult,
-} from 'ember-responsive-image/types';
+import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import { assert } from '@ember/debug';
 
 interface CloudinaryOptions {
@@ -13,11 +9,11 @@ interface CloudinaryOptions {
   formats?: ImageType[];
 }
 
-export const provider: Provider = (
-  image,
-  service,
+export const provider = (
+  image: string,
+  service: ResponsiveImageService,
   options: CloudinaryOptions
-) => {
+): ProviderResult => {
   const cloudName = service.meta.providers?.cloudinary?.cloudName; // @todo provide better API
   assert(
     'cloudName must be set for cloudinary provider!',
