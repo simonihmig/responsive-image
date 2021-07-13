@@ -1,8 +1,8 @@
 import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Helper from '@ember/component/helper';
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 import { ImageType } from 'ember-responsive-image/types';
+import ResponsiveImageLocalService from 'ember-responsive-image/services/responsive-image-local';
 
 /**
  * @class responsiveImageResolve
@@ -12,13 +12,13 @@ import { ImageType } from 'ember-responsive-image/types';
  */
 export default class ResponsiveImageResolve extends Helper {
   @service
-  responsiveImage!: ResponsiveImageService;
+  responsiveImageLocal!: ResponsiveImageLocalService;
 
   compute(
     [image]: [string],
     { size, format }: { size?: number; format?: ImageType }
   ): ReturnType<typeof htmlSafe> | undefined {
-    const responsive = this.responsiveImage.getImageMetaBySize(
+    const responsive = this.responsiveImageLocal.getImageMetaBySize(
       image,
       size,
       format

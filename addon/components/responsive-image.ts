@@ -11,6 +11,7 @@ import {
   LqipBlurhash,
   ProviderResult,
 } from 'ember-responsive-image/types';
+import { getOwner } from '@ember/application';
 
 declare module '@embroider/macros' {
   export function getOwnConfig(): { usesBlurhash: boolean };
@@ -73,7 +74,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @cached
   get providerResult(): ProviderResult {
     return typeof this.args.src === 'string'
-      ? localProvider(this.args.src, this.responsiveImage)
+      ? localProvider(
+          this.args.src,
+          getOwner(this).lookup('service:responsive-image-local')
+        )
       : this.args.src;
   }
 

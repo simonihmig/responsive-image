@@ -1,5 +1,3 @@
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
-
 export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
 
 export interface LqipBase {
@@ -40,16 +38,8 @@ export interface ImageMeta {
 
 export interface Meta {
   deviceWidths: number[];
-  providers?: Record<string, Record<string, unknown>>;
+  providers?: Record<string, unknown>;
   images: Record<string, ImageMeta>;
-}
-
-export interface Provider<OPTIONS = unknown> {
-  (
-    image: string,
-    service: ResponsiveImageService,
-    options?: OPTIONS
-  ): ProviderResult;
 }
 
 export interface ProviderResult {

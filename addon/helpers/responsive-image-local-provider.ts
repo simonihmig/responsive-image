@@ -1,13 +1,12 @@
 import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
-import {
-  ImageType,
-  Provider,
-  ProviderResult,
-} from 'ember-responsive-image/types';
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import { ImageType, ProviderResult } from 'ember-responsive-image/types';
+import ResponsiveImageLocalService from 'ember-responsive-image/services/responsive-image-local';
 
-export const provider: Provider = (image, service) => {
+export const provider = (
+  image: string,
+  service: ResponsiveImageLocalService
+): ProviderResult => {
   return {
     imageTypes: service.getAvailableTypes(image),
     availableWidths: service.getAvailableWidths(image),
@@ -22,9 +21,9 @@ export const provider: Provider = (image, service) => {
 
 export default class ResponsiveImageLocalProvider extends Helper {
   @service
-  responsiveImage!: ResponsiveImageService;
+  responsiveImageLocal!: ResponsiveImageLocalService;
 
   compute([image]: [string]): ProviderResult {
-    return provider(image, this.responsiveImage);
+    return provider(image, this.responsiveImageLocal);
   }
 }
