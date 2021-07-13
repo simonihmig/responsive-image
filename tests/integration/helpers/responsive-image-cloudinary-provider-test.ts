@@ -66,5 +66,18 @@ module(
 
       assert.deepEqual(data.imageTypes, ['webp', 'avif']);
     });
+
+    test('it supports remote fetching', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-cloudinary-provider "https://www.example.com/image.jpg")}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.equal(
+        data.imageUrlFor(100, 'webp'),
+        'https://res.cloudinary.com/kaliber5/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fwww.example.com%2Fimage.jpg'
+      );
+    });
   }
 );

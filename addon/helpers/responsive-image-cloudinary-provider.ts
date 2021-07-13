@@ -13,6 +13,8 @@ interface CloudinaryOptions {
   formats?: ImageType[];
 }
 
+const URL_REGEX = /https?:/;
+
 export const provider = (
   image: string,
   service: ResponsiveImageService,
@@ -24,7 +26,18 @@ export const provider = (
     'cloudName must be set for cloudinary provider!',
     typeof cloudName === 'string'
   );
-  const imageId = image.replace(/\.[^/.]+$/, '');
+  let imageId: string;
+  let deliveryType: 'upload' | 'fetch';
+
+  const isFullUrl = image.match(URL_REGEX);
+
+  if (isFullUrl) {
+    imageId = encodeURIComponent(image);
+    deliveryType = 'fetch';
+  } else {
+    imageId = image.replace(/\.[^/.]+$/, '');
+    deliveryType = 'upload';
+  }
 
   return {
     imageTypes: options.formats ?? ['png', 'jpeg', 'webp', 'avif'],
@@ -33,11 +46,12 @@ export const provider = (
         `w_${width}`,
         'c_limit',
         'q_auto',
+        deliveryType !== 'upload' ? `f_${type}` : undefined,
         options.transformations,
       ];
-      return `https://res.cloudinary.com/${cloudName}/image/upload/${params
+      return `https://res.cloudinary.com/${cloudName}/image/${deliveryType}/${params
         .filter(Boolean)
-        .join(',')}/${imageId}.${type}`;
+        .join(',')}/${imageId}${deliveryType === 'upload' ? '.' + type : ''}`;
     },
   };
 };
