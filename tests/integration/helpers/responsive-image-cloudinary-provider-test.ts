@@ -53,7 +53,20 @@ module(
 
       assert.equal(
         data.imageUrlFor(100, 'jpeg'),
-        'https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_auto,co_rgb:20a020,e_colorize:50/samples/animals/three-dogs.jpeg'
+        'https://res.cloudinary.com/kaliber5/image/upload/co_rgb:20a020,e_colorize:50/w_100,c_limit,q_auto/samples/animals/three-dogs.jpeg'
+      );
+    });
+
+    test('it supports custom chained transformations', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-cloudinary-provider "samples/animals/three-dogs" transformations="co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max")}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.equal(
+        data.imageUrlFor(100, 'jpeg'),
+        'https://res.cloudinary.com/kaliber5/image/upload/co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max/w_100,c_limit,q_auto/samples/animals/three-dogs.jpeg'
       );
     });
 
