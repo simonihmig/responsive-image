@@ -1,3 +1,33 @@
+## v3.0.0 (2021-07-23)
+
+#### :boom: Breaking Change
+* [#284](https://github.com/kaliber5/ember-responsive-image/pull/284) Drop node 10 support ([@simonihmig](https://github.com/simonihmig))
+* [#283](https://github.com/kaliber5/ember-responsive-image/pull/283) Update to Ember 3.27, drop support for Ember 3.16 ([@simonihmig](https://github.com/simonihmig))
+* [#297](https://github.com/kaliber5/ember-responsive-image/pull/297) Extract functionality for local images into separate service ([@simonihmig](https://github.com/simonihmig))
+
+#### :rocket: Enhancement
+* [#273](https://github.com/kaliber5/ember-responsive-image/pull/273) Add image provider API, implement basic Cloudinary image CDN support ([@simonihmig](https://github.com/simonihmig))
+* [#280](https://github.com/kaliber5/ember-responsive-image/pull/280) Support custom transformations in Cloudinary provider ([@simonihmig](https://github.com/simonihmig))
+* [#281](https://github.com/kaliber5/ember-responsive-image/pull/281) Support specifying image formats in Cloudinary provider ([@simonihmig](https://github.com/simonihmig))
+* [#299](https://github.com/kaliber5/ember-responsive-image/pull/299) Support Cloudinary's remote fetching mode ([@simonihmig](https://github.com/simonihmig))
+* [#308](https://github.com/kaliber5/ember-responsive-image/pull/308) Support Cloudinary's chained transformations ([@simonihmig](https://github.com/simonihmig))
+* [#310](https://github.com/kaliber5/ember-responsive-image/pull/310) Add imgix provider ([@simonihmig](https://github.com/simonihmig))
+* [#311](https://github.com/kaliber5/ember-responsive-image/pull/311) Support custom parameters for imgix provider ([@simonihmig](https://github.com/simonihmig))
+* [#314](https://github.com/kaliber5/ember-responsive-image/pull/314) Support a custom quality setting for cloudinary and imgix providers ([@simonihmig](https://github.com/simonihmig))
+
+#### :memo: Documentation
+* [#312](https://github.com/kaliber5/ember-responsive-image/pull/312) Add docs for provider configuration ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#298](https://github.com/kaliber5/ember-responsive-image/pull/298) Run CI with Firefox ([@simonihmig](https://github.com/simonihmig))
+* [#284](https://github.com/kaliber5/ember-responsive-image/pull/284) Drop node 10 support ([@simonihmig](https://github.com/simonihmig))
+* [#283](https://github.com/kaliber5/ember-responsive-image/pull/283) Update to Ember 3.27, drop support for Ember 3.16 ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 2
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
+
 ## v2.0.0 (2021-03-09)
 
 This is a major new release, with a lot of new features and several breaking changes. Please see the changelog below of previous changes of the several RC-releases and the [Migration Guide](docs/MIGRATION.md) when upgrading!
