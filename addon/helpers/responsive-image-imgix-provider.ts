@@ -12,6 +12,7 @@ interface ImgixConfig {
 interface ImgixOptions {
   params?: Record<string, string | number>;
   formats?: ImageType[];
+  quality?: number;
 }
 
 const formatMap: Record<string, string> = {
@@ -35,6 +36,10 @@ export const provider = (
       params.set('fm', formatMap[type] ?? type);
       params.set('w', String(width));
       params.set('fit', 'max');
+
+      if (options.quality) {
+        params.set('q', String(options.quality));
+      }
 
       if (options.params) {
         for (const [key, value] of Object.entries(options.params)) {

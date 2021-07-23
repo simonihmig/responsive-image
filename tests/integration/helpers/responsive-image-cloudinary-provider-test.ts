@@ -80,6 +80,19 @@ module(
       assert.deepEqual(data.imageTypes, ['webp', 'avif']);
     });
 
+    test('it supports custom quality setting', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-cloudinary-provider "samples/animals/three-dogs" quality=50)}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.equal(
+        data.imageUrlFor(100, 'jpeg'),
+        'https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_50/samples/animals/three-dogs.jpeg'
+      );
+    });
+
     test('it supports remote fetching', async function (assert) {
       await render(
         hbs`{{dump (responsive-image-cloudinary-provider "https://www.example.com/image.jpg")}}`

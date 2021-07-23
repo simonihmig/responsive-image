@@ -66,5 +66,18 @@ module(
 
       assert.deepEqual(data.imageTypes, ['webp', 'jpeg']);
     });
+
+    test('it supports custom quality setting', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-imgix-provider "foo/bar.jpg" quality=50)}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.equal(
+        data.imageUrlFor(100, 'jpeg'),
+        'https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max&q=50'
+      );
+    });
   }
 );
