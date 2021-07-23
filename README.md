@@ -242,6 +242,7 @@ an image CDN as a proxy to scale, optimize and deliver that image as needed, at 
 
 The addon currently ships with these image providers (besides the local one) out of the box:
 * [Cloudinary](docs/providers/cloudinary.md)
+* [imgix](docs/providers/imgix.md)
 
 ## Configuration
 

@@ -3,6 +3,7 @@ import Helper from '@ember/component/helper';
 import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import { assert } from '@ember/debug';
+import { normalizeSrc } from 'ember-responsive-image/utils/utils';
 
 interface CloudinaryConfig {
   cloudName: string;
@@ -35,7 +36,7 @@ export const provider = (
     imageId = encodeURIComponent(image);
     deliveryType = 'fetch';
   } else {
-    imageId = image.replace(/\.[^/.]+$/, '');
+    imageId = normalizeSrc(image).replace(/\.[^/.]+$/, '');
     deliveryType = 'upload';
   }
 

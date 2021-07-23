@@ -15,6 +15,9 @@ module.exports = function (defaults) {
         cloudinary: {
           cloudName: 'kaliber5',
         },
+        imgix: {
+          domain: 'kaliber5.imgix.net',
+        },
       },
       deviceWidths: [640, 750, 1920],
       fingerprint:
