@@ -25,3 +25,20 @@ You can tweak that using the `formats` argument:
 <ResponsiveImage @src={{responsive-image-imgix-provider "path/to/image.jpg" formats=(array "webp" "jpeg")}}/>
 ```
 
+
+## Configuration
+
+You need to specify your custom imgix `domain` in the `providers` part of the addon configuration:
+
+```js
+let app = new EmberAddon(defaults, {
+  'responsive-image': {
+    providers: {
+      imgix: {
+        domain: 'kaliber5.imgix.net',
+      },
+    }
+    // ...
+  }
+});
+```

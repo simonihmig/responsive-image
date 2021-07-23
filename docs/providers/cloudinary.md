@@ -34,3 +34,20 @@ pass a fully qualified http(s) URL:
 ```hbs
 <ResponsiveImage @src={{responsive-image-cloudinary-provider "https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png" transformations="e_grayscale"}}/>
 ```
+
+## Configuration
+
+You need to specify the `cloudName` in the `providers` part of the addon configuration:
+
+```js
+let app = new EmberAddon(defaults, {
+  'responsive-image': {
+    providers: {
+      cloudinary: {
+        cloudName: 'kaliber5',
+      },
+    }
+    // ...
+  }
+});
+```
