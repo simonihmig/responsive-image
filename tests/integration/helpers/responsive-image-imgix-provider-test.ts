@@ -44,6 +44,19 @@ module(
       );
     });
 
+    test('it supports custom params', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-imgix-provider "foo/bar.jpg" params=(hash monochrome="44768B" px=10))}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.equal(
+        data.imageUrlFor(100, 'jpeg'),
+        'https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max&monochrome=44768B&px=10'
+      );
+    });
+
     test('it supports custom image formats', async function (assert) {
       await render(
         hbs`{{dump (responsive-image-imgix-provider "foo/bar.jpg" formats=(array "webp" "jpeg"))}}`
