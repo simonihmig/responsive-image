@@ -253,6 +253,7 @@ let app = new EmberAddon(defaults, {
   'responsive-image': {
     fingerprint: true,
     deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    providers: {},
     images: [
       {
         include: ['path/to/images/**/*'],
@@ -279,6 +280,7 @@ let app = new EmberAddon(defaults, {
 setting this explicitly, as it will follow whatever you have set under the main `fingerprint` options (used by the `broccoli-asset-rev` addon), 
 with the default being to enable fingerprinting only in production builds.
 * **deviceWidths**: an array of widths representing the typical screen widths of your user's devices, used when the available image widths are not known beforehand, like when using an image CDN.
+* **providers**: configuration for specific providers goes here, see the appropriate [provider docs](docs/providers) for more details.
 * **images**: The main configuration how the addon generated images happens here, see the following section for details.
 
 ### Image Options
