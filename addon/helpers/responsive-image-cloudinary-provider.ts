@@ -12,6 +12,7 @@ interface CloudinaryConfig {
 interface CloudinaryOptions {
   transformations?: string;
   formats?: ImageType[];
+  quality?: number;
 }
 
 const URL_REGEX = /https?:/;
@@ -43,7 +44,7 @@ export const provider = (
   return {
     imageTypes: options.formats ?? ['png', 'jpeg', 'webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
-      let resizeParams = `w_${width},c_limit,q_auto`;
+      let resizeParams = `w_${width},c_limit,q_${options.quality ?? 'auto'}`;
       if (deliveryType !== 'upload') {
         resizeParams += `,f_${type}`;
       }

@@ -15,6 +15,14 @@ you can add your own [imgix parameters](https://docs.imgix.com/apis/rendering) b
 <ResponsiveImage @src={{responsive-image-imgix-provider "path/to/image.jpg" params=(hash monochrome="44768B" px=10)}}/>
 ```
 
+### Quality
+
+Use the `quality` parameter to pass a custom [quality](https://docs.imgix.com/apis/rendering/format/q) setting
+instead of the default of `75`:
+
+```hbs
+<ResponsiveImage @src={{responsive-image-imgix-provider "path/to/image.jpg" quality=50}}/>
+```
 
 ### Image formats
 

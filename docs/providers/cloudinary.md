@@ -16,6 +16,15 @@ you can add your own [Cloudinary transformations](https://cloudinary.com/documen
 <ResponsiveImage @src={{responsive-image-cloudinary-provider "path/to/uploaded/image.jpg" transformations="e_sharpen:400,e_grayscale"}}/>
 ```
 
+### Quality
+
+Use the `quality` parameter to pass a custom [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) setting 
+instead of the default `auto`:
+
+```hbs
+<ResponsiveImage @src={{responsive-image-cloudinary-provider "path/to/uploaded/image.jpg" quality=50}}/>
+```
+
 ### Image formats
 
 By default, all supported image formats (PNG, JPEG, WEBP, AVIF) are referenced in the generated `<source>` tags.
