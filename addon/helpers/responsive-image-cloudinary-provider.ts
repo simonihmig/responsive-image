@@ -42,16 +42,18 @@ export const provider = (
   return {
     imageTypes: options.formats ?? ['png', 'jpeg', 'webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
-      const params = [
-        `w_${width}`,
-        'c_limit',
-        'q_auto',
-        deliveryType !== 'upload' ? `f_${type}` : undefined,
-        options.transformations,
-      ];
-      return `https://res.cloudinary.com/${cloudName}/image/${deliveryType}/${params
-        .filter(Boolean)
-        .join(',')}/${imageId}${deliveryType === 'upload' ? '.' + type : ''}`;
+      let resizeParams = `w_${width},c_limit,q_auto`;
+      if (deliveryType !== 'upload') {
+        resizeParams += `,f_${type}`;
+      }
+
+      const params = options.transformations
+        ? `${options.transformations}/${resizeParams}`
+        : resizeParams;
+
+      return `https://res.cloudinary.com/${cloudName}/image/${deliveryType}/${params}/${imageId}${
+        deliveryType === 'upload' ? '.' + type : ''
+      }`;
     },
   };
 };
