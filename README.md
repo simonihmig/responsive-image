@@ -15,7 +15,7 @@ An ember-cli addon to automatically generate resized images at build-time, optim
 
 📱  Layout modes for **fixed sizes** (with `1x` and `2x` image variants) as well as **responsive layouts** (`srcset` with optimized image sizes across all devices). 
 
-🌍  Besides processing of local images, it also supports integrating remote images from image CDNs using a versatile image provider abstraction
+🌍  Besides processing of local images, it also supports integrating remote images from **image CDNs** like [Cloudinary](https://cloudinary.com/) or [imgix](https://imgix.com/) using a versatile image provider abstraction
 
 💯  **Lazy rendering** by default, with optimized `content-visibility` and `decoding` settings and optimized markup, to prevent [**CLS**](https://web.dev/cls/) (*Cumulative Layout Shift*), a core [Web Vital](https://web.dev/vitals/) and [Lighthouse](https://developers.google.com/web/tools/lighthouse) metric.
 
@@ -243,6 +243,8 @@ an image CDN as a proxy to scale, optimize and deliver that image as needed, at 
 The addon currently ships with these image providers (besides the local one) out of the box:
 * [Cloudinary](docs/providers/cloudinary.md)
 * [imgix](docs/providers/imgix.md)
+
+
 
 ## Configuration
 
