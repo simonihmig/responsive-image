@@ -1,3 +1,11 @@
+## v3.0.1 (2021-07-26)
+
+#### :bug: Bug Fix
+* [#323](https://github.com/kaliber5/ember-responsive-image/pull/323) Don't fail the build if images config is empty ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v3.0.0 (2021-07-23)
 
 #### :boom: Breaking Change
