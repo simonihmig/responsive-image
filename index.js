@@ -204,7 +204,7 @@ module.exports = {
       this.addonOptions.images = [];
     }
 
-    this.addonOptions.images = this.addonOptions.images.map((item) => {
+    this.addonOptions.images = (this.addonOptions.images || []).map((item) => {
       this.validateConfigItem(item);
       let extendedConfig = { ...defaultImageConfig, ...item };
       // extendedConfig.rootURL = url;
