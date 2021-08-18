@@ -19,13 +19,6 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {
-    'ember/no-mixins': 'warn',
-    'ember/no-new-mixins': 'warn',
-    'ember/no-classic-classes': 'warn',
-    'ember/no-classic-components': 'warn',
-    'ember/require-tagless-components': 'warn',
-  },
   overrides: [
     // ts files
     {
