@@ -1,3 +1,17 @@
+## v3.1.0 (2021-08-18)
+
+#### :rocket: Enhancement
+* [#329](https://github.com/kaliber5/ember-responsive-image/pull/329) Upgrade sharp to 0.29.0, enhancing AVIF performance and compatibility w/ Chrome 93+ ([@simonihmig](https://github.com/simonihmig))
+
+#### :bug: Bug Fix
+* [#330](https://github.com/kaliber5/ember-responsive-image/pull/330) Fix broken FastBoot rendering of imgix provider ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#332](https://github.com/kaliber5/ember-responsive-image/pull/332) Fix CI for Ember 4.x ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v3.0.1 (2021-07-26)
 
 #### :bug: Bug Fix
