@@ -8,4 +8,6 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('image');
+  this.route('cloudinary');
+  this.route('imgix');
 });
