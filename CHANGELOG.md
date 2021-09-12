@@ -1,3 +1,17 @@
+
+## v3.1.1 (2021-09-12)
+
+#### :bug: Bug Fix
+* [#339](https://github.com/kaliber5/ember-responsive-image/pull/339) Fix image lookup on Windows builds ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#335](https://github.com/kaliber5/ember-responsive-image/pull/335) Configure Renovate ([@renovate[bot]](https://github.com/apps/renovate))
+* [#340](https://github.com/kaliber5/ember-responsive-image/pull/340) Fix devDependencies for Ember 4 ([@simonihmig](https://github.com/simonihmig))
+* [#338](https://github.com/kaliber5/ember-responsive-image/pull/338) Run CI on Windows ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v3.1.0 (2021-08-18)
 
 #### :rocket: Enhancement
