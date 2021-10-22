@@ -4,6 +4,7 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import setupDataDumper from 'dummy/tests/helpers/dump';
 import { ProviderResult } from 'ember-responsive-image/types';
+import config from 'dummy/config/environment';
 
 module(
   'Integration | Helper | responsive-image-local-provider',
@@ -34,7 +35,7 @@ module(
       );
       assert.equal(
         data.imageUrlFor(100, 'jpeg'),
-        '/assets/images/tests/image100w-d4cc783fc0f24ecf14c47129743c5985.jpg'
+        `${config.rootURL}assets/images/tests/image100w-d4cc783fc0f24ecf14c47129743c5985.jpg`
       );
     });
   }

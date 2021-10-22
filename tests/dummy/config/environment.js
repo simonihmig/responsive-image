@@ -41,6 +41,7 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+    ENV.rootURL = process.env.ROOT_URL || '/';
   }
 
   if (environment === 'production') {

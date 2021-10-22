@@ -4,6 +4,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import { ProviderResult } from 'ember-responsive-image/types';
+import config from 'dummy/config/environment';
 
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
@@ -32,7 +33,9 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('^/assets/images/tests/test([0-9])+w(-\\w+)?.png')
+            new RegExp(
+              `^${config.rootURL}assets/images/tests/test([0-9])+w(-\\w+)?.png`
+            )
           );
       });
 
