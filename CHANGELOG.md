@@ -1,4 +1,20 @@
 
+
+## v3.2.0 (2021-10-26)
+
+#### :rocket: Enhancement
+* [#366](https://github.com/kaliber5/ember-responsive-image/pull/366) Support app running in shadow DOM ([@simonihmig](https://github.com/simonihmig))
+
+#### :bug: Bug Fix
+* [#365](https://github.com/kaliber5/ember-responsive-image/pull/365) Fix ember projects with rootURL ([@olafura](https://github.com/olafura))
+
+#### :house: Internal
+* [#367](https://github.com/kaliber5/ember-responsive-image/pull/367) Run Ember4 CI jobs w/ ember-auto-import v2 ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 2
+- Olafur Arason ([@olafura](https://github.com/olafura))
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v3.1.1 (2021-09-12)
 
 #### :bug: Bug Fix
