@@ -80,6 +80,12 @@ module.exports = async function () {
         name: 'fastboot-addon-tests',
         command: 'npm run test:fastboot',
       },
+      {
+        name: 'relative-rootURL',
+        env: {
+          ROOT_URL: '/my-app/',
+        },
+      },
       embroiderSafe(),
       embroiderOptimized(),
     ],

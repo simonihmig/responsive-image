@@ -1,3 +1,4 @@
+import { getOwner } from '@ember/application';
 import Service, { inject as service } from '@ember/service';
 import { assert } from '@ember/debug';
 import {
@@ -18,6 +19,8 @@ const imageExtensions: Map<ImageType, string> = new Map([['jpeg', 'jpg']]);
 export default class ResponsiveImageLocalService extends Service {
   @service
   responsiveImage!: ResponsiveImageService;
+
+  rootURL = getOwner(this).resolveRegistration('config:environment').rootURL;
 
   /**
    * return the images with the different widths
@@ -118,7 +121,9 @@ export default class ResponsiveImageLocalService extends Service {
     const ext = imageExtensions.get(format) ?? format;
     const base = image.substr(0, image.lastIndexOf('.'));
     const fingerprint = this.getMeta(image).fingerprint;
-    return `/${base}${width}w${fingerprint ? '-' + fingerprint : ''}.${ext}`;
+    return `${this.rootURL}${base}${width}w${
+      fingerprint ? '-' + fingerprint : ''
+    }.${ext}`;
   }
 
   get meta(): Meta {
