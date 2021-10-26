@@ -1,6 +1,6 @@
 import Service from '@ember/service';
-import { assert } from '@ember/debug';
 import { Meta } from 'ember-responsive-image/types';
+import { extractMeta } from '../utils/utils';
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 
@@ -45,18 +45,12 @@ export default class ResponsiveImageService extends Service {
    * the meta values from build time
    */
   get meta(): Meta {
-    if (this._meta) {
-      return this._meta;
+    if (!this._meta) {
+      // eslint-disable-next-line ember/no-side-effects
+      this._meta = extractMeta(this);
     }
-    const script = document.getElementById('ember_responsive_image_meta');
-    assert(
-      'No script tag found containing meta data for ember-responsive-image',
-      script?.textContent
-    );
-    const meta = JSON.parse(script.textContent);
-    // eslint-disable-next-line ember/no-side-effects
-    this._meta = meta;
-    return meta;
+
+    return this._meta;
   }
   set meta(meta: Meta) {
     this._meta = meta;
