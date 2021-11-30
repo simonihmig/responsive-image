@@ -281,6 +281,7 @@ let app = new EmberAddon(defaults, {
 * **fingerprint**: Can be used to enable/disable fingerprinting of the generated image files. In most cases you can omit
 setting this explicitly, as it will follow whatever you have set under the main `fingerprint` options (used by the `broccoli-asset-rev` addon), 
 with the default being to enable fingerprinting only in production builds.
+* **usesBlurhash**: make the addon support blurhash explicitly. This is useful when you aren't prebuilding image data but want to use blurhash for dynamic image data included in API responses. By default it will automatically enable blurhash support when you have configured local images to use blurhash, so in general you shouldn't need to set this.
 * **deviceWidths**: an array of widths representing the typical screen widths of your user's devices, used when the available image widths are not known beforehand, like when using an image CDN.
 * **providers**: configuration for specific providers goes here, see the appropriate [provider docs](docs/providers) for more details.
 * **images**: The main configuration how the addon generated images happens here, see the following section for details.
