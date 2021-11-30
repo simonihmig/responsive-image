@@ -174,12 +174,8 @@ module.exports = {
     this.initPlugins();
     this.processingTree = this.createProcessingTree();
 
-    this.usesBlurhash =
-      this.addonOptions.usesBlurhash ||
-      this.addonOptions.images.some(
-        (imageConfig) =>
-          imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
-      );
+    this._configureBlurhash();
+
     this.options['@embroider/macros'].setOwnConfig.usesBlurhash =
       this.usesBlurhash;
   },
@@ -319,6 +315,22 @@ module.exports = {
 
   _getConfig() {
     return this.project.config(this.app.env);
+  },
+
+  _configureBlurhash() {
+    const addonOptionsBlurhash = this.addonOptions.usesBlurhash;
+
+    const imagesUseBlurhash = this.addonOptions.images.some(
+      (imageConfig) => imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
+    );
+
+    if (this.addonOptions.usesBlurhash === false && imagesUseBlurhash) {
+      throw new SilentError(
+        "You cannot disable blurhash support while it is still used in your images config. Please remove any instance of `lqip: { type: 'blurhash' }` from your images config."
+      );
+    }
+
+    this.usesBlurhash = addonOptionsBlurhash || imagesUseBlurhash;
   },
 
   treeForAddonStyles(tree) {
