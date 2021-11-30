@@ -174,9 +174,12 @@ module.exports = {
     this.initPlugins();
     this.processingTree = this.createProcessingTree();
 
-    this.usesBlurhash = this.addonOptions.images.some(
-      (imageConfig) => imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
-    );
+    this.usesBlurhash =
+      this.addonOptions.usesBlurhash ||
+      this.addonOptions.images.some(
+        (imageConfig) =>
+          imageConfig.lqip && imageConfig.lqip.type === 'blurhash'
+      );
     this.options['@embroider/macros'].setOwnConfig.usesBlurhash =
       this.usesBlurhash;
   },
