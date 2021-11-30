@@ -1,5 +1,14 @@
 
 
+
+## v3.3.0 (2021-11-30)
+
+#### :rocket: Enhancement
+* [#373](https://github.com/kaliber5/ember-responsive-image/pull/373) Support enabling blurhash explicitly ([@LevelbossMike](https://github.com/LevelbossMike))
+
+#### Committers: 1
+- Michael Klein ([@LevelbossMike](https://github.com/LevelbossMike))
+
 ## v3.2.0 (2021-10-26)
 
 #### :rocket: Enhancement
