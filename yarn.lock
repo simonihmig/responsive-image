@@ -1981,19 +1981,12 @@
     "@types/ember__object" "^3"
     "@types/jquery" "*"
 
-"@types/ember__controller@*", "@types/ember__controller@^3":
+"@types/ember__controller@*", "@types/ember__controller@3.16.7", "@types/ember__controller@^3":
   version "3.16.7"
   resolved "https://registry.yarnpkg.com/@types/ember__controller/-/ember__controller-3.16.7.tgz#e45d5233d7cee8a5388b401081babc30cb65e960"
   integrity sha512-oGyjQPJ5PRY10TqJuxDo4nu59sCO6/YmeY4tsItI5RbDj7hmzd9ZOxKeOI/qrQJosMdHe5cd3RP1/zZOe0Xn3Q==
   dependencies:
     "@types/ember__object" "^3"
-
-"@types/ember__controller@3.16.6":
-  version "3.16.6"
-  resolved "https://registry.yarnpkg.com/@types/ember__controller/-/ember__controller-3.16.6.tgz#1fbb5f9483b9b9fd59b78f7289e6bd382e457f9c"
-  integrity sha512-oltv4YaMljVMvhXJMT/UFmAQOJgYbnNUBGgOsclctpb9FYkimsJm8xIAoEmP5wBekzjeNd5UDf9F1DxSDpqgGw==
-  dependencies:
-    "@types/ember__object" "*"
 
 "@types/ember__debug@*", "@types/ember__debug@3.16.5":
   version "3.16.5"
