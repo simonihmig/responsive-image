@@ -1972,22 +1972,13 @@
     "@types/ember__array" "^3"
     "@types/ember__object" "^3"
 
-"@types/ember__component@*", "@types/ember__component@^3":
+"@types/ember__component@*", "@types/ember__component@3.16.7", "@types/ember__component@^3":
   version "3.16.7"
   resolved "https://registry.yarnpkg.com/@types/ember__component/-/ember__component-3.16.7.tgz#7e97a38cde136caadff33438d0d88857c64f90a1"
   integrity sha512-zNxvlRYGCrwACmBbUfl+blwtzv9EhyX4TOgalXMPHvLBQrC7Fc3a3hbfIOYOrRilV27YNSV/WX5BcvbWKMA7iA==
   dependencies:
     "@types/ember__component" "^3"
     "@types/ember__object" "^3"
-    "@types/jquery" "*"
-
-"@types/ember__component@3.16.6":
-  version "3.16.6"
-  resolved "https://registry.yarnpkg.com/@types/ember__component/-/ember__component-3.16.6.tgz#affc4798ee97f58747f5d173b8f739ddab26e551"
-  integrity sha512-Zi82wppu0wtijXKAsyn75KBauJKIIHoYk5cbk7OmOKE2zmV1qzCfsxjM8x9iTJpu97T1P0vXWZ91aXM7KeQFMw==
-  dependencies:
-    "@types/ember__component" "*"
-    "@types/ember__object" "*"
     "@types/jquery" "*"
 
 "@types/ember__controller@*", "@types/ember__controller@^3":
