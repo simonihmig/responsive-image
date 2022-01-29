@@ -2015,20 +2015,12 @@
   resolved "https://registry.yarnpkg.com/@types/ember__error/-/ember__error-3.16.2.tgz#067df1808adcb6772f5198bac3145f77a978f656"
   integrity sha512-7t2fcIdKXg5sWR5HrmtoCeI/ItxDXO04AM8/AaHwEhh0BHUqq9aYpfT2KbDdQjHSzHQFhaR5YB2CJ6vm7lsiBg==
 
-"@types/ember__object@*", "@types/ember__object@^3":
+"@types/ember__object@*", "@types/ember__object@3.12.7", "@types/ember__object@^3":
   version "3.12.7"
   resolved "https://registry.yarnpkg.com/@types/ember__object/-/ember__object-3.12.7.tgz#539e70eed4c3799826cb293979854d3c0ebbe4f1"
   integrity sha512-JRVwFmUM1rm/shxDWaXKcMDXq6fl0uImqdj1MANhzb0koJ91GJCs/Sz+8lT04ueBpRv2Y1NBJckicMluknbo7w==
   dependencies:
     "@types/ember__object" "^3"
-    "@types/rsvp" "*"
-
-"@types/ember__object@3.12.6":
-  version "3.12.6"
-  resolved "https://registry.yarnpkg.com/@types/ember__object/-/ember__object-3.12.6.tgz#5f77662881e3c6f877d63e08b46861c52a36714a"
-  integrity sha512-LAGldyJmFpErWLCm1HOAGd3G4E7Sem+AzQycKH+zSiYSwKVxNSpzUIU1yewlScHn5WvKwLEVE2H6mPvwvkQ+yA==
-  dependencies:
-    "@types/ember__object" "*"
     "@types/rsvp" "*"
 
 "@types/ember__polyfills@*", "@types/ember__polyfills@3.12.1":
