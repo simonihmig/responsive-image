@@ -2075,12 +2075,12 @@
     "@types/ember__error" "*"
     "@types/htmlbars-inline-precompile" "*"
 
-"@types/ember__test@*", "@types/ember__test@3.16.1":
-  version "3.16.1"
-  resolved "https://registry.yarnpkg.com/@types/ember__test/-/ember__test-3.16.1.tgz#8407e42b9835a13ef0c6ef7a7ce3aa3d7ebcb7ed"
-  integrity sha512-0ICnkM4BDwOKhqmLQRpfvNuZlb6QOqE+FhP5fPaWXWy7bgcL9CY7kMRc7N+wZQbTvbSKqgEdfbvjd0bJsIrz5w==
+"@types/ember__test@*", "@types/ember__test@3.16.2":
+  version "3.16.2"
+  resolved "https://registry.yarnpkg.com/@types/ember__test/-/ember__test-3.16.2.tgz#410ff532bfe015a91dc73ddf244521eee1d14e50"
+  integrity sha512-TUuiw0U5qzkPAaQslMpYv+rZquuyJraCVIndYQNexxXC32bXeYn0An2Z3a5JR9BV409Nc8fvtGTT0lIT1fGCDA==
   dependencies:
-    "@types/ember__application" "*"
+    "@types/ember__application" "^3"
 
 "@types/ember__utils@*", "@types/ember__utils@3.16.2":
   version "3.16.2"
