@@ -30,6 +30,8 @@ jobs:
         run: yarn lint
       - name: Run Tests
         run: yarn test:ember
+      - name: Test Image Processing
+        run: yarn test:node
 
   floating:
     name: "Floating Dependencies"
