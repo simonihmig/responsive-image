@@ -21,7 +21,7 @@ module(
       assert.deepEqual(data.imageTypes, ['png', 'jpeg', 'webp', 'avif']);
     });
 
-    test('it returns correct image URLs', async function (assert) {
+    test('it returns correct upload image URLs', async function (assert) {
       await render(
         hbs`{{dump (responsive-image-cloudinary-provider "samples/animals/three-dogs")}}`
       );
@@ -41,6 +41,29 @@ module(
       assert.equal(
         data.imageUrlFor(100, 'webp'),
         'https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_auto/samples/animals/three-dogs.webp'
+      );
+    });
+
+    test('it returns correct fetch image URLs', async function (assert) {
+      await render(
+        hbs`{{dump (responsive-image-cloudinary-provider "https://via.placeholder.com/150")}}`
+      );
+
+      const data = getData() as ProviderResult;
+
+      assert.equal(
+        data.imageUrlFor(100, 'jpeg'),
+        'https://res.cloudinary.com/kaliber5/image/fetch/w_100,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150'
+      );
+
+      assert.equal(
+        data.imageUrlFor(1000, 'jpeg'),
+        'https://res.cloudinary.com/kaliber5/image/fetch/w_1000,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150'
+      );
+
+      assert.equal(
+        data.imageUrlFor(100, 'webp'),
+        'https://res.cloudinary.com/kaliber5/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fvia.placeholder.com%2F150'
       );
     });
 

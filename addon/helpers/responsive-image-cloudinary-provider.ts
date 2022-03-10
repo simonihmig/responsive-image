@@ -17,6 +17,10 @@ interface CloudinaryOptions {
 
 const URL_REGEX = /https?:/;
 
+const formatMap: Record<string, string> = {
+  jpeg: 'jpg',
+};
+
 export const provider = (
   image: string,
   service: ResponsiveImageService,
@@ -46,7 +50,7 @@ export const provider = (
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
       let resizeParams = `w_${width},c_limit,q_${options.quality ?? 'auto'}`;
       if (deliveryType !== 'upload') {
-        resizeParams += `,f_${type}`;
+        resizeParams += `,f_${formatMap[type] ?? type}`;
       }
 
       const params = options.transformations
