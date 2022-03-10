@@ -3,129 +3,78 @@ name: CI
 on:
   push:
     branches:
+      - main
       - master
       - renovate/*
-  pull_request:
+  pull_request: {}
 
-env:
-  NODE_VERSION: '12.x'
+concurrency:
+   group: ci-${{ github.head_ref || github.ref }}
+   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-
-    - uses: actions/setup-node@v2-beta
-      with:
-        node-version: '${{ env.NODE_VERSION }}'
-
-    - name: Install dependencies
-      uses: bahmutov/npm-install@v1
-
-    - name: Lint
-      run: yarn lint
-
-
   test:
-    name: Tests
-    runs-on: ${{ matrix.os }}
-    needs: lint
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        browser: [chrome, firefox]
-        include:
-          - os: windows-latest
-            browser: chrome
+    name: "Tests"
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
+      - uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Lint
+        run: yarn lint
+      - name: Run Tests
+        run: yarn test:ember
+      - name: Test Image Processing
+        run: yarn test:node
 
-    - uses: actions/setup-node@v2-beta
-      with:
-        node-version: '${{ env.NODE_VERSION }}'
-
-    - name: Install dependencies
-      uses: bahmutov/npm-install@v1
-
-    - name: Test Ember
-      run: yarn test:ember --launch ${{ matrix.browser }}
-
-    - name: Test Image Processing
-      run: yarn test:node
-
-
-  floating-dependencies:
-    name: Floating Dependencies
-    runs-on: ${{ matrix.os }}
-    needs: lint
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        browser: [chrome]
+  floating:
+    name: "Floating Dependencies"
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-
-    - uses: actions/setup-node@v2-beta
-      with:
-        node-version: '${{ env.NODE_VERSION }}'
-
-    - name: Install dependencies
-      uses: bahmutov/npm-install@v1
-      with:
-        useLockFile: false
-
-    - name: Test
-      run: yarn test:ember --launch ${{ matrix.browser }}
-
-    - name: Test Image Processing
-      run: yarn test:node
-
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install --no-lockfile
+      - name: Run Tests
+        run: yarn test:ember
 
   try-scenarios:
-    name: Tests - ${{ matrix.ember-try-scenario }}
+    name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.allow-failure }}
-    needs: test
+    needs: 'test'
 
     strategy:
       fail-fast: false
       matrix:
-        ember-try-scenario:
+        try-scenario:
           - ember-lts-3.20
           - ember-lts-3.24
+          - ember-lts-3.28
           - ember-release
           - ember-beta
-          - ember-default-with-jquery
+          - ember-canary
+          - ember-classic
           - embroider-safe
           - embroider-optimized
-        allow-failure: [false]
-        include:
-          - ember-try-scenario: ember-canary
-            allow-failure: true
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-
-    - uses: actions/setup-node@v2-beta
-      with:
-        node-version: '${{ env.NODE_VERSION }}'
-
-    - name: Install dependencies
-      uses: bahmutov/npm-install@v1
-
-    - name: Test
-      run: yarn ember try:one ${{ matrix.ember-try-scenario }}
+      - uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Run Tests
+        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}

@@ -33,7 +33,7 @@ module(
           },
         }
       );
-      assert.equal(
+      assert.strictEqual(
         data.imageUrlFor(100, 'jpeg'),
         `${config.rootURL}assets/images/tests/image100w-d4cc783fc0f24ecf14c47129743c5985.jpg`
       );

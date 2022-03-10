@@ -28,17 +28,17 @@ module(
 
       const data = getData() as ProviderResult;
 
-      assert.equal(
+      assert.strictEqual(
         data.imageUrlFor(100, 'jpeg'),
         'https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max'
       );
 
-      assert.equal(
+      assert.strictEqual(
         data.imageUrlFor(1000, 'jpeg'),
         'https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=1000&fit=max'
       );
 
-      assert.equal(
+      assert.strictEqual(
         data.imageUrlFor(100, 'webp'),
         'https://kaliber5.imgix.net/foo/bar.jpg?fm=webp&w=100&fit=max'
       );
@@ -51,7 +51,7 @@ module(
 
       const data = getData() as ProviderResult;
 
-      assert.equal(
+      assert.strictEqual(
         data.imageUrlFor(100, 'jpeg'),
         'https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max&monochrome=44768B&px=10'
       );
@@ -74,7 +74,7 @@ module(
 
       const data = getData() as ProviderResult;
 
-      assert.equal(
+      assert.strictEqual(
         data.imageUrlFor(100, 'jpeg'),
         'https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max&q=50'
       );
