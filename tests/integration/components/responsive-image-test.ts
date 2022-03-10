@@ -46,7 +46,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
         assert.dom('img').hasAttribute('width');
         assert.dom('img').hasAttribute('height');
-        assert.equal(
+        assert.strictEqual(
           parseInt(
             this.element.querySelector('img')?.getAttribute('width') ?? '',
             10
@@ -592,7 +592,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           await waitUntilLoaded;
           await settled();
 
-          assert.equal(
+          assert.strictEqual(
             window.getComputedStyle(this.element.querySelector('img')!)
               .backgroundImage,
             'none',
@@ -652,7 +652,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           await waitUntilLoaded;
           await settled();
 
-          assert.equal(
+          assert.strictEqual(
             window.getComputedStyle(this.element.querySelector('img')!)
               .backgroundImage,
             'none',
@@ -694,7 +694,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
         assert.dom('img').hasAttribute('width');
         assert.dom('img').hasAttribute('height');
-        assert.equal(
+        assert.strictEqual(
           parseInt(
             this.element.querySelector('img')?.getAttribute('width') ?? '',
             10
