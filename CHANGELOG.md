@@ -1,6 +1,18 @@
 
 
 
+
+## v3.3.1 (2022-03-10)
+
+#### :bug: Bug Fix
+* [#391](https://github.com/kaliber5/ember-responsive-image/pull/391) Fix JPEG URLs for Cloudinary provider ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#392](https://github.com/kaliber5/ember-responsive-image/pull/392) Update to Ember 4.2 ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v3.3.0 (2021-11-30)
 
 #### :rocket: Enhancement
