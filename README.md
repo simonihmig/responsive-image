@@ -1,6 +1,6 @@
 # ember-responsive-image
 
-[![CI](https://github.com/kaliber5/ember-responsive-image/workflows/CI/badge.svg)](https://github.com/kaliber5/ember-responsive-image/actions?query=workflow%3ACI)
+[![CI](https://github.com/kaliber5/ember-responsive-image/actions/workflows/ci.yml/badge.svg)](https://github.com/kaliber5/ember-responsive-image/actions/workflows/ci.yml)
 [![npm version](https://badge.fury.io/js/ember-responsive-image.svg)](https://badge.fury.io/js/ember-responsive-image)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-responsive-image.svg)](https://emberobserver.com/addons/ember-responsive-image)
 
