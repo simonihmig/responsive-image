@@ -2031,13 +2031,14 @@
     "@types/ember__object" "^3"
     "@types/ember__routing" "^3"
 
-"@types/ember__array@*", "@types/ember__array@3.16.5", "@types/ember__array@^3":
-  version "3.16.5"
-  resolved "https://registry.yarnpkg.com/@types/ember__array/-/ember__array-3.16.5.tgz#f30b3e245652ac3b0c7ded84ce33f98c51d171b1"
-  integrity sha512-ud0Q/SVf7M0SOlEt+MMW04/kaUA8fFLz5LG1qy1/Yb7WymZk/D86fSS7XkxySpW9z999YVYsXAM53aSUKHEpZA==
+"@types/ember__array@*", "@types/ember__array@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/ember__array/-/ember__array-4.0.1.tgz#b62126ed080b29351a5633bd28e595a5cfee27ce"
+  integrity sha512-fwrYcYmFbsEnu77Xn9z3WSAp6tqpwn8Wksx8RzGg5pib6VmFD/dkT5jefwoKtlcImsxUNEoP1VgWKrdrpGaQcg==
   dependencies:
-    "@types/ember__array" "^3"
-    "@types/ember__object" "^3"
+    "@types/ember" "*"
+    "@types/ember__array" "*"
+    "@types/ember__object" "*"
 
 "@types/ember__component@*", "@types/ember__component@3.16.7", "@types/ember__component@^3":
   version "3.16.7"
