@@ -2042,7 +2042,19 @@
     "@types/jquery" "*"
     "@types/rsvp" "*"
 
-"@types/ember__application@*", "@types/ember__application@3.16.4", "@types/ember__application@^3":
+"@types/ember__application@*", "@types/ember__application@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/ember__application/-/ember__application-4.0.0.tgz#a4d2fead37845550dad83bb1fd8afd52052563a7"
+  integrity sha512-1Atwevfyu1/vjiezPPdP4s96BxWGelEQlCJRU5ZQV9WlzVuMTuCDPumZ1lQdS4/EYycFZeod030FjE3CT9mZFA==
+  dependencies:
+    "@types/ember" "*"
+    "@types/ember-resolver" "*"
+    "@types/ember__application" "*"
+    "@types/ember__engine" "*"
+    "@types/ember__object" "*"
+    "@types/ember__routing" "*"
+
+"@types/ember__application@^3":
   version "3.16.4"
   resolved "https://registry.yarnpkg.com/@types/ember__application/-/ember__application-3.16.4.tgz#ff6383a108b9e2313037e288feb0d6f4b5b1d581"
   integrity sha512-8J1XXG2Dm5uWyeWDDlx9tg3pF2TZv9KObi/sxOj0N/uTHS5yUcKzNra1JYzgbLSXNE3UkRO0QQq8SqCBe0wHTA==
