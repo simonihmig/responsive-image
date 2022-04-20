@@ -25,13 +25,16 @@ declare global {
   const FastBoot: unknown;
 }
 
-interface ResponsiveImageComponentArgs {
-  src: string | ProviderResult;
-  size?: number;
-  sizes?: string;
-  width?: number;
-  height?: number;
-  cacheBreaker?: string;
+export interface ResponsiveImageComponentSignature {
+  Element: HTMLImageElement;
+  Args: {
+    src: string | ProviderResult;
+    size?: number;
+    sizes?: string;
+    width?: number;
+    height?: number;
+    cacheBreaker?: string;
+  };
 }
 
 interface PictureSource {
@@ -56,7 +59,7 @@ const typeScore = new Map<ImageType, number>([
   ['avif', 3],
 ]);
 
-export default class ResponsiveImageComponent extends Component<ResponsiveImageComponentArgs> {
+export default class ResponsiveImageComponent extends Component<ResponsiveImageComponentSignature> {
   @service
   responsiveImage!: ResponsiveImageService;
 
@@ -66,7 +69,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @tracked
   isRendered = false;
 
-  constructor(owner: unknown, args: ResponsiveImageComponentArgs) {
+  constructor(owner: unknown, args: ResponsiveImageComponentSignature['Args']) {
     super(owner, args);
     assert('No image argument supplied for <ResponsiveImage>', args.src);
   }
@@ -250,5 +253,11 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @action
   setRendered(): void {
     this.isRendered = true;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    ResponsiveImage: typeof ResponsiveImageComponent;
   }
 }

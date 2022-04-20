@@ -5,6 +5,14 @@ import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import { assert } from '@ember/debug';
 import { normalizeSrc } from 'ember-responsive-image/utils/utils';
 
+interface ResponsiveImageImgixProviderSignature {
+  Args: {
+    Positional: [string];
+    Named: ImgixOptions;
+  };
+  Return: ProviderResult;
+}
+
 interface ImgixConfig {
   domain: string;
 }
@@ -59,11 +67,17 @@ export const provider = (
   };
 };
 
-export default class ResponsiveImageCloudinaryProvider extends Helper {
+export default class ResponsiveImageImgixProvider extends Helper<ResponsiveImageImgixProviderSignature> {
   @service
   responsiveImage!: ResponsiveImageService;
 
   compute([image]: [string], options: ImgixOptions): ProviderResult {
     return provider(image, this.responsiveImage, options);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'responsive-image-imgix-provider': typeof ResponsiveImageImgixProvider;
   }
 }

@@ -15,6 +15,14 @@ interface CloudinaryOptions {
   quality?: number;
 }
 
+interface ResponsiveImageCloudinaryProviderSignature {
+  Args: {
+    Positional: [string];
+    Named: CloudinaryOptions;
+  };
+  Return: ProviderResult;
+}
+
 const URL_REGEX = /https?:/;
 
 const formatMap: Record<string, string> = {
@@ -64,11 +72,17 @@ export const provider = (
   };
 };
 
-export default class ResponsiveImageCloudinaryProvider extends Helper {
+export default class ResponsiveImageCloudinaryProvider extends Helper<ResponsiveImageCloudinaryProviderSignature> {
   @service
   responsiveImage!: ResponsiveImageService;
 
   compute([image]: [string], options: CloudinaryOptions): ProviderResult {
     return provider(image, this.responsiveImage, options);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'responsive-image-cloudinary-provider': typeof ResponsiveImageCloudinaryProvider;
   }
 }

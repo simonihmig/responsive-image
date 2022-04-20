@@ -3,6 +3,13 @@ import Helper from '@ember/component/helper';
 import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import ResponsiveImageLocalService from 'ember-responsive-image/services/responsive-image-local';
 
+interface ResponsiveImageLocalProviderSignature {
+  Args: {
+    Positional: [string];
+  };
+  Return: ProviderResult;
+}
+
 export const provider = (
   image: string,
   service: ResponsiveImageLocalService
@@ -19,11 +26,17 @@ export const provider = (
   };
 };
 
-export default class ResponsiveImageLocalProvider extends Helper {
+export default class ResponsiveImageLocalProvider extends Helper<ResponsiveImageLocalProviderSignature> {
   @service
   responsiveImageLocal!: ResponsiveImageLocalService;
 
   compute([image]: [string]): ProviderResult {
     return provider(image, this.responsiveImageLocal);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'responsive-image-local-provider': typeof ResponsiveImageLocalProvider;
   }
 }

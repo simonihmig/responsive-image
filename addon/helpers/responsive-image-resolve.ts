@@ -4,13 +4,24 @@ import Helper from '@ember/component/helper';
 import { ImageType } from 'ember-responsive-image/types';
 import ResponsiveImageLocalService from 'ember-responsive-image/services/responsive-image-local';
 
+interface ResponsiveImageResolveSignature {
+  Args: {
+    Positional: [string];
+    Named: {
+      size?: number;
+      format?: ImageType;
+    };
+  };
+  Return: ReturnType<typeof htmlSafe> | undefined;
+}
+
 /**
  * @class responsiveImageResolve
  * @namespace Helpers
  * @extends Ember.Helper
  * @public
  */
-export default class ResponsiveImageResolve extends Helper {
+export default class ResponsiveImageResolve extends Helper<ResponsiveImageResolveSignature> {
   @service
   responsiveImageLocal!: ResponsiveImageLocalService;
 
@@ -25,5 +36,11 @@ export default class ResponsiveImageResolve extends Helper {
     )?.image;
 
     return responsive ? htmlSafe(responsive) : undefined;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'responsive-image-resolve': typeof ResponsiveImageResolve;
   }
 }
