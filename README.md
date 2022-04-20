@@ -173,7 +173,7 @@ File size: **7KB**.
 ![a dog near the costline](docs/images/dog640w.avif)
 
 > Note: Generating AVIF files can take a lot of time, as it is very CPU-intensive. Therefore and given the limited browser support,
-the format is currently not enabled by default. You would have to opt-in, by defining the `formats` [configuration option](#configuration) to included AVIF.
+the format is currently not enabled by default. You would have to opt-in, by defining the `formats` [configuration option](#configuration) to include AVIF.
 
 ## LQIP
 
@@ -209,7 +209,7 @@ is less suited if you have just a few images, but shines if you need placeholder
 ## Image Providers
 
 So far we have only dealt with local images - static images that are commonly part of your app's git repo and get processed by this addon during the build process.
-But this is addon provides even a more versatile abstraction to use any kind of (remote) images: image providers. 
+But this addon provides even a more versatile abstraction to use any kind of (remote) images: image providers. 
 
 A provider is basically an Ember helper that returns a [`ProviderResult`](addon/types.ts), which contains some meta data for a given image, and
 a function to compute the actual URL for each referenced image, based on its width and type. You can use one of the providers 
