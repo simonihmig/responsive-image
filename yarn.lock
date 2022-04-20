@@ -1099,20 +1099,6 @@
     resolve "^1.8.1"
     semver "^7.3.2"
 
-"@embroider/macros@^0.50.0":
-  version "0.50.2"
-  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.50.2.tgz#9ec7d0bb1fa846410fc6c209a69b782640942b11"
-  integrity sha512-nPRE8fanqbIik4+WBm/roW3sxNkMp6WnuZT/IM8wdmgkYU55uH+eyJXT7XW0UGy9IQv6YJ2QTRz46cq9N0/4qg==
-  dependencies:
-    "@embroider/shared-internals" "0.50.2"
-    assert-never "^1.2.1"
-    babel-import-util "^1.1.0"
-    ember-cli-babel "^7.26.6"
-    find-up "^5.0.0"
-    lodash "^4.17.21"
-    resolve "^1.20.0"
-    semver "^7.3.2"
-
 "@embroider/macros@^1.0.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.5.0.tgz#8c67666359e7814d91cdeac2fd96c896080473b3"
@@ -1126,19 +1112,6 @@
     lodash "^4.17.21"
     resolve "^1.20.0"
     semver "^7.3.2"
-
-"@embroider/shared-internals@0.50.2":
-  version "0.50.2"
-  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-0.50.2.tgz#567c5451db31a1f3edc2f64376ce5a0dcaaabacb"
-  integrity sha512-l3SKn1YdxTFBjY3ylYTLHxFY0dG2XxIsjbtZt7Mm6QyZFssWBDg3oWYwBoUpkw/ysjNJf8IcI7reXhB23WXwDw==
-  dependencies:
-    babel-import-util "^1.1.0"
-    ember-rfc176-data "^0.3.17"
-    fs-extra "^9.1.0"
-    lodash "^4.17.21"
-    resolve-package-path "^4.0.1"
-    semver "^7.3.5"
-    typescript-memoize "^1.0.1"
 
 "@embroider/shared-internals@1.5.0", "@embroider/shared-internals@^1.0.0":
   version "1.5.0"
