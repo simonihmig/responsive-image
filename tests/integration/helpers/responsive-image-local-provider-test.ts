@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 import setupDataDumper from 'dummy/tests/helpers/dump';
 import { ProviderResult } from 'ember-responsive-image/types';
 import config from 'dummy/config/environment';
