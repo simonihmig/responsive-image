@@ -75,9 +75,3 @@ export default class ResponsiveImageImgixProvider extends Helper<ResponsiveImage
     return provider(image, this.responsiveImage, options);
   }
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'responsive-image-imgix-provider': typeof ResponsiveImageImgixProvider;
-  }
-}

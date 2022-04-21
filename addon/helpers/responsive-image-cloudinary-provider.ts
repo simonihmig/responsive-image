@@ -80,9 +80,3 @@ export default class ResponsiveImageCloudinaryProvider extends Helper<Responsive
     return provider(image, this.responsiveImage, options);
   }
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'responsive-image-cloudinary-provider': typeof ResponsiveImageCloudinaryProvider;
-  }
-}

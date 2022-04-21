@@ -255,9 +255,3 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     this.isRendered = true;
   }
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    ResponsiveImage: typeof ResponsiveImageComponent;
-  }
-}
