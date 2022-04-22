@@ -1365,17 +1365,6 @@
     "@glimmer/interfaces" "^0.42.2"
     "@glimmer/util" "^0.42.2"
 
-"@glint/config@^0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@glint/config/-/config-0.7.5.tgz#d57a5ffad227de41d10c6ccd3abd1502b1331434"
-  integrity sha512-97dMOrslKzKtEymlOlJY0QXPuSTLdgcw4D6oWx9FKunL7FO1oViwkWRKP88ilHxIO0XUguDvJM+zjH3fBAYBhQ==
-  dependencies:
-    cosmiconfig "^6.0.0"
-    escape-string-regexp "^4.0.0"
-    minimatch "^3.0.4"
-    resolve "^1.17.0"
-    silent-error "^1.1.1"
-
 "@glint/config@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@glint/config/-/config-0.8.0.tgz#91290a3841ce3b92bb533b15dd3dddd29255e70f"
@@ -1401,18 +1390,18 @@
     vscode-uri "^3.0.2"
     yargs "^15.3.1"
 
-"@glint/environment-ember-loose@0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@glint/environment-ember-loose/-/environment-ember-loose-0.7.5.tgz#9963634405d86305207270d4912606edfaf3a9c8"
-  integrity sha512-6Lr1kpw52ZQH2wDnIUm6ga8NY2rx6axNxN5MEURgdsVqx000L/64f/mc7/AuI5sVEe1KrG4q/qO8GDcodlE+zw==
+"@glint/environment-ember-loose@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@glint/environment-ember-loose/-/environment-ember-loose-0.8.0.tgz#e483f799e979fbda28977bdcff361000f85a520d"
+  integrity sha512-+zf+POTyiiKujGXDGvA2wBLrRvbm1GyOhOPz255SE66qc4alGgtOHq63B5X0gTSqoL1nCJUduGMc/HubvuYHyw==
   dependencies:
-    "@glint/config" "^0.7.5"
-    "@glint/template" "^0.7.5"
+    "@glint/config" "^0.8.0"
+    "@glint/template" "^0.8.0"
 
-"@glint/template@^0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.7.5.tgz#c67a406653c8177348b9b3b62f98b95d3b637632"
-  integrity sha512-T4P8il6N89YU4ut4kqA3phPOmFYgJHa1hV4skPF01/+JEIZInS5WSsCCEp0b4WrUBxhjjzt9CcWRY9YP3Zs0Tw==
+"@glint/template@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.8.0.tgz#30a38a402b68650154468aa4c724bc3956414f92"
+  integrity sha512-q+e71UAe9z5641kGD0dPuc4hghd0ltN/bsiK2U6eZ7o556SDmWCZ3lT8+XkwcTakVDn6Mb4jemwgizb4mqjkaw==
 
 "@glint/transform@^0.8.0":
   version "0.8.0"
