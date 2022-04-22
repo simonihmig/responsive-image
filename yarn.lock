@@ -1376,13 +1376,24 @@
     resolve "^1.17.0"
     silent-error "^1.1.1"
 
-"@glint/core@0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@glint/core/-/core-0.7.5.tgz#d9339deb7e6645caa3125a9b40d4a2ea1b22d66b"
-  integrity sha512-GiQELmu0J3nAL+hieFnPLADgyS9mosCNjwtFd4qmPM7dna3v60ta4p3gUtXD2QsMhRHBZu8SDi8OBLYnSjXuCw==
+"@glint/config@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@glint/config/-/config-0.8.0.tgz#91290a3841ce3b92bb533b15dd3dddd29255e70f"
+  integrity sha512-T4VL7qbvO7t4f4umfXmNd32NcJDzSimkpcfcUakq45ojGByCdIrvk/Q8cTP9pC3SlcRdYZfZTAa39Zeef1nwVg==
   dependencies:
-    "@glint/config" "^0.7.5"
-    "@glint/transform" "^0.7.5"
+    cosmiconfig "^6.0.0"
+    escape-string-regexp "^4.0.0"
+    minimatch "^3.0.4"
+    resolve "^1.17.0"
+    silent-error "^1.1.1"
+
+"@glint/core@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@glint/core/-/core-0.8.0.tgz#c46743d25b3bfb9901dc1dfc5f441969d3092a9a"
+  integrity sha512-PnYj6BUPQiuXzjwy4DldcxCv6b/S6LQS0XjZCfLyHL+VDdKFatuF5NK/2RSKV3A2KCU3wCZT/mtjtP/a6rdo+Q==
+  dependencies:
+    "@glint/config" "^0.8.0"
+    "@glint/transform" "^0.8.0"
     resolve "^1.17.0"
     uuid "^8.3.2"
     vscode-languageserver "^7.0.0"
@@ -1403,13 +1414,13 @@
   resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.7.5.tgz#c67a406653c8177348b9b3b62f98b95d3b637632"
   integrity sha512-T4P8il6N89YU4ut4kqA3phPOmFYgJHa1hV4skPF01/+JEIZInS5WSsCCEp0b4WrUBxhjjzt9CcWRY9YP3Zs0Tw==
 
-"@glint/transform@^0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@glint/transform/-/transform-0.7.5.tgz#c6af8235d2adb180e7c4691dc2d2bdf5c1f070c1"
-  integrity sha512-c3dnNi8YkrwXe0tAg3Xt2gjiZ9IgdBr41mpvXBfocfG8ve9M9O8mQiLx+Z7Am/9dttGiuRmiCfgF7ABrDTk/kw==
+"@glint/transform@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@glint/transform/-/transform-0.8.0.tgz#90f85ad864d92e1038b1e8a7d815ef16ee4cedb2"
+  integrity sha512-0jRbL2Ng9T8oOjdFWFya+C2q+p2cMYQky9UIoVyc4tSUw3vmt07ckVXqZJmeMBhoAyego+flKZ1gDv7jnYr97A==
   dependencies:
     "@glimmer/syntax" "^0.68.1"
-    "@glint/config" "^0.7.5"
+    "@glint/config" "^0.8.0"
 
 "@handlebars/parser@^1.1.0":
   version "1.1.0"
