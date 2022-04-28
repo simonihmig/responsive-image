@@ -22,7 +22,7 @@ An ember-cli addon to automatically generate resized images at build-time, optim
 ⏳  Supports advanced **LQIP** (*Low Quality Image Placeholder*) techniques to show a preview while loading, using different configurable strategies
 like a blurry low-res image, [BlurHash](https://blurha.sh/) or a simple dominant color. 
 
-✨  Octane-based, written mostly in **TypeScript**, using **Glimmer** components, supporting [FastBoot](https://ember-fastboot.com/) and [Embroider](https://github.com/embroider-build/embroider), and fully tested.
+✨  Octane-based, written mostly in **TypeScript** including [Glint](https://github.com/typed-ember/glint) types, using **Glimmer** components, supporting [FastBoot](https://ember-fastboot.com/) and [Embroider](https://github.com/embroider-build/embroider), and fully tested.
 
 ️⚙  Flexible configuration options
 
@@ -52,7 +52,7 @@ ember install ember-responsive-image
 
 ### Add a basic configuration
 
-Add a basic configuration to your `ember-cli-build.js`, to point the addon to where your images are that:
+Add a basic configuration to your `ember-cli-build.js`, to point the addon to where your images are:
 
 ```js
 module.exports = function (defaults) {
@@ -70,6 +70,24 @@ module.exports = function (defaults) {
 ```
 
 Find more details about all available [configuration options](#configuration) below.
+
+### TypeScript usage
+
+All components and helpers have proper [Glint](https://github.com/typed-ember/glint) types, which allow you when using TypeScript to get strict type checking in your templates.
+
+Unless you are using [strict mode](http://emberjs.github.io/rfcs/0496-handlebars-strict-mode.html) templates (via [first class component templates](http://emberjs.github.io/rfcs/0779-first-class-component-templates.html)), 
+Glint needs a [Template Registry](https://typed-ember.gitbook.io/glint/using-glint/ember/template-registry) that contains entries for the components and helpers of this addon. 
+To add these registry entries automatically to your app, you just need to import `ember-responsive-image/glint` from somewhere in your app. When using Glint already, you will likely have a file like 
+`types/glint.d.ts` where you already import glint types, so just add the import there:
+
+```ts
+import '@glint/environment-ember-loose';
+import 'ember-responsive-image/glint';
+```
+
+Should you want to manage the registry by yourself, then omit this import, and instead add the entries in your app by explicitly importing the types of the components and helpers from this addon. 
+
+> Note that Glint itself is still under active development, and as such breaking changes might occur. Therefore, Glint support by this addon is also considered experimental, and not covered by our SemVer contract!
 
 ## Basic Usage
 
@@ -110,7 +128,7 @@ You can also set the attribute like this if your responsive image width is more 
 ### Fixed layout
 
 The example above assumed you wanted a responsive image, i.e. one that automatically takes the whole available width of its parent element.
-This is the default mode, and will automatically the following CSS to you image:
+This is the default mode, and will automatically add the following CSS to you image:
 
 ```css
 img {
