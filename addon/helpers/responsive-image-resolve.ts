@@ -38,9 +38,3 @@ export default class ResponsiveImageResolve extends Helper<ResponsiveImageResolv
     return responsive ? htmlSafe(responsive) : undefined;
   }
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'responsive-image-resolve': typeof ResponsiveImageResolve;
-  }
-}
