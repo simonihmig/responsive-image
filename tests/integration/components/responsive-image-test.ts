@@ -5,6 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import { ProviderResult } from 'ember-responsive-image/types';
 import config from 'dummy/config/environment';
+import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
@@ -227,7 +228,9 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       test('it renders the fallback src next to needed display size', async function (assert) {
-        const service = this.owner.lookup('service:responsive-image');
+        const service = this.owner.lookup(
+          'service:responsive-image'
+        ) as ResponsiveImageService;
         service.set('physicalWidth', 45);
         await render(
           hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`
@@ -755,7 +758,9 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       test('it renders the fallback src next to needed display size', async function (assert) {
-        const service = this.owner.lookup('service:responsive-image');
+        const service = this.owner.lookup(
+          'service:responsive-image'
+        ) as ResponsiveImageService;
         service.set('physicalWidth', 100);
         await render(
           hbs`<ResponsiveImage @src={{this.defaultProviderResult}}/>`

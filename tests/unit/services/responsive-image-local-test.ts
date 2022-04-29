@@ -96,7 +96,11 @@ module('ResponsiveImageLocalService', function (hooks) {
   testCases.forEach(({ moduleTitle, images, imageMetas }) => {
     module(moduleTitle, function (hooks) {
       hooks.beforeEach(function () {
-        this.owner.lookup('service:responsive-image').meta = {
+        (
+          this.owner.lookup(
+            'service:responsive-image'
+          ) as ResponsiveImageService
+        ).meta = {
           ...defaultMeta,
           images,
         };

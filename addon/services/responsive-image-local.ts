@@ -21,8 +21,10 @@ export default class ResponsiveImageLocalService extends Service {
   @service
   responsiveImage!: ResponsiveImageService;
 
-  rootURL = (getOwner(this) as ApplicationInstance).resolveRegistration(
-    'config:environment'
+  rootURL = (
+    (getOwner(this) as ApplicationInstance).resolveRegistration(
+      'config:environment'
+    ) as { rootURL: string }
   ).rootURL;
 
   /**
