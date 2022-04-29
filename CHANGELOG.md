@@ -2,6 +2,21 @@
 
 
 
+
+## v3.4.0 (2022-04-29)
+
+#### :rocket: Enhancement
+* [#401](https://github.com/kaliber5/ember-responsive-image/pull/401) Publish Glint types ([@simonihmig](https://github.com/simonihmig))
+
+#### :memo: Documentation
+* [#405](https://github.com/kaliber5/ember-responsive-image/pull/405) Add Glint docs ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#400](https://github.com/kaliber5/ember-responsive-image/pull/400) Setup Glint ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 1
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+
 ## v3.3.1 (2022-03-10)
 
 #### :bug: Bug Fix
