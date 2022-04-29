@@ -2,6 +2,7 @@ import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
+import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 
 module('Helper: ResponsiveImageResolve', function (hooks) {
   setupRenderingTest(hooks);
@@ -16,7 +17,9 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
   });
 
   test('supports size', async function (assert) {
-    const service = this.owner.lookup('service:responsive-image');
+    const service = this.owner.lookup(
+      'service:responsive-image'
+    ) as ResponsiveImageService;
     service.set('physicalWidth', 100);
     await render(
       hbs`<h1>{{responsive-image-resolve "assets/images/tests/test.png" size=45}}</h1>`

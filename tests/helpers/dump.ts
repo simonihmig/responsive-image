@@ -1,4 +1,4 @@
-import { TestContext } from 'ember-test-helpers';
+import { TestContext } from '@ember/test-helpers';
 import { helper } from '@ember/component/helper';
 
 export default function setupDataDumper(hooks: NestedHooks): () => unknown {
