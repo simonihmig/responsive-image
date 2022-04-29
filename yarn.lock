@@ -2098,15 +2098,7 @@
   resolved "https://registry.yarnpkg.com/@types/ember__error/-/ember__error-4.0.0.tgz#c73037e65c1c3d7060b97f98135ba73c712972b1"
   integrity sha512-1WVMR65/QTqPzMWafK2vKEwGafILxRxItbWJng6eEJyKDHRvvHFCl3XzJ4dQjdFcfOlozsn0mmEYCpjKoyzMqA==
 
-"@types/ember__object@*", "@types/ember__object@^3":
-  version "3.12.8"
-  resolved "https://registry.yarnpkg.com/@types/ember__object/-/ember__object-3.12.8.tgz#09ee156160cec81620d6dab2d5fa836aed212a6c"
-  integrity sha512-xfmJdmkTwPo2gyaVMUgkEZ6w2L/vNTfp/RpI8JG8qJY+b43nEyaxtaSVQ78racfcZMUqXeVfOyH/GGeB7NU1Hg==
-  dependencies:
-    "@types/ember__object" "^3"
-    "@types/rsvp" "*"
-
-"@types/ember__object@4.0.2":
+"@types/ember__object@*", "@types/ember__object@4.0.2":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@types/ember__object/-/ember__object-4.0.2.tgz#070f1a36961f7df777e1fceed2551a648db0fd23"
   integrity sha512-m3xjqjs7bGVT0+QXlgIoDMsp/oqePobnf4IiVoFdXLBpGCICiOAEi7HuUtCLi57WTvx0lYsS9hE1vgGyZn9qnw==
@@ -12041,10 +12033,10 @@ qunit-dom@2.0.0:
     ember-cli-babel "^7.23.0"
     ember-cli-version-checker "^5.1.1"
 
-qunit@2.18.2:
-  version "2.18.2"
-  resolved "https://registry.yarnpkg.com/qunit/-/qunit-2.18.2.tgz#87ed3c85f12feec6ea6bf8dd2f8867b059732cbc"
-  integrity sha512-Ux+x9pIU38/F+r3jOl35QzGHPPupMifUvhczCqHgzYWX76fCjPg6VqM84ox1D57fhAXHtpS4Jl91EV8gDoCHPg==
+qunit@2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/qunit/-/qunit-2.19.0.tgz#f830dc4ff23d11dd92628bc01f4e39212dedbc9d"
+  integrity sha512-rC7U6j4EQkYedaccl9rYEMoHisvzM20XwXgy437Q0Apqav16iZQXSb/nglnFqI91J8P5ANXaljEY6VIT+LaSkg==
   dependencies:
     commander "7.2.0"
     node-watch "0.7.3"
