@@ -8,6 +8,7 @@ import {
   ImageType,
 } from 'ember-responsive-image/types';
 import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import ApplicationInstance from '@ember/application/instance';
 
 const extentionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
 
@@ -20,7 +21,9 @@ export default class ResponsiveImageLocalService extends Service {
   @service
   responsiveImage!: ResponsiveImageService;
 
-  rootURL = getOwner(this).resolveRegistration('config:environment').rootURL;
+  rootURL = (getOwner(this) as ApplicationInstance).resolveRegistration(
+    'config:environment'
+  ).rootURL;
 
   /**
    * return the images with the different widths

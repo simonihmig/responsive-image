@@ -12,6 +12,7 @@ import {
   ProviderResult,
 } from 'ember-responsive-image/types';
 import { getOwner } from '@ember/application';
+import ApplicationInstance from '@ember/application/instance';
 
 declare module '@embroider/macros' {
   export function getOwnConfig(): { usesBlurhash: boolean };
@@ -79,7 +80,9 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return typeof this.args.src === 'string'
       ? localProvider(
           this.args.src,
-          getOwner(this).lookup('service:responsive-image-local')
+          (getOwner(this) as ApplicationInstance).lookup(
+            'service:responsive-image-local'
+          )
         )
       : this.args.src;
   }
