@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "packages": [
+    {
+      "name": "@embroider/addon-blueprint",
+      "version": "1.1.2",
+      "blueprints": [
+        {
+          "name": "@embroider/addon-blueprint",
+          "isBaseBlueprint": true,
+          "options": [
+            "--yarn",
+            "--ci-provider=github",
+            "--release-it"
+          ]
+        }
+      ]
+    }
+  ]
+}
