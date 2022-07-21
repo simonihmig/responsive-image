@@ -1271,6 +1271,16 @@
     resolve "^1.17.0"
     silent-error "^1.1.1"
 
+"@glint/config@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@glint/config/-/config-0.9.1.tgz#0dbce8d03eb7baeef1bfcdef274793a342e16ae4"
+  integrity sha512-ULMxg2gsJBpdF66jb/neOiQU47H84196wryP/VkVxfmBQCmXWMebCfgggMyqAWfYnKOwcxfZLnmH06WVHwfsAw==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+    minimatch "^3.0.4"
+    resolve "^1.17.0"
+    silent-error "^1.1.1"
+
 "@glint/core@0.8.3":
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/@glint/core/-/core-0.8.3.tgz#59ddb2d4f091f9ddfa4fb9b5760d75bf30b00797"
@@ -1285,18 +1295,18 @@
     vscode-uri "^3.0.2"
     yargs "^15.3.1"
 
-"@glint/environment-ember-loose@0.8.3":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@glint/environment-ember-loose/-/environment-ember-loose-0.8.3.tgz#bb8351add5358f037e99d6f7356c095239c1db9c"
-  integrity sha512-I6ft4N0hSsUi26rG81gNGQ23wRLMWgUPthq1XYtHJJG64Bw92NP80UVoL2CoA2/QHPxqu4dV5ZiXhtbdaUlqbA==
+"@glint/environment-ember-loose@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@glint/environment-ember-loose/-/environment-ember-loose-0.9.1.tgz#e34cd5709c5f4024612ef2ed24063ea31878ec64"
+  integrity sha512-/EtLfzdxn5axad4lJmf4V1HuDthb18a52/9nIzHmHDbcTzY+TiHOihCz5Nt8aHOFdQdavSDZ84GEu95WLp7TKw==
   dependencies:
-    "@glint/config" "^0.8.3"
-    "@glint/template" "^0.8.3"
+    "@glint/config" "^0.9.1"
+    "@glint/template" "^0.9.1"
 
-"@glint/template@^0.8.3":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.8.3.tgz#a1106dabade21299fa2842538dc1ea8cb6916824"
-  integrity sha512-oT/ikUtLXgynrhl39C5lNQAFaPdgNAF1qbnWRr2GY4nE/MK9EYqdYFle0uPeyZnIxicTpsMvVEVGF9+AnPybew==
+"@glint/template@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.9.1.tgz#da1cfb97997f52e41eb0869b6d9aaea1d39f35c0"
+  integrity sha512-3Yfx5rgcR8LYRDiCtGI57JwFtyMJvdTH68+ROXopr3NBLTqdXuZEau1NojrveKBmh5NEZfDp6C/RP8UWuhd6nw==
 
 "@glint/transform@^0.8.3":
   version "0.8.3"
@@ -12046,14 +12056,7 @@ qs@6.10.3:
   dependencies:
     side-channel "^1.0.4"
 
-qs@^6.4.0:
-  version "6.10.5"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.5.tgz#974715920a80ff6a262264acd2c7e6c2a53282b4"
-  integrity sha512-O5RlPh0VFtR78y79rgcgKK4wbAI0C5zGVLztOIdpWX6ep368q5Hv6XRxDvXuZ9q3C6v+e3n8UfZZJw7IIG27eQ==
-  dependencies:
-    side-channel "^1.0.4"
-
-qs@^6.9.4:
+qs@^6.4.0, qs@^6.9.4:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
   integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
