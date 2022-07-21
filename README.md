@@ -30,7 +30,7 @@ Advanced optimization techniques inspired amongst others by the blog post [Maxim
 
 ## Compatibility
 
-* Ember.js v3.20 or above
+* Ember.js v3.28 or above
 * Ember CLI v3.20 or above
 * Node.js v12 or above
 
