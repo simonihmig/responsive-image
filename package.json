@@ -132,7 +132,7 @@
     "webpack": "5.73.0"
   },
   "engines": {
-    "node": "12.* || 14.* || >= 16"
+    "node": "14.* || 16.* || >= 18"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -162,6 +162,6 @@
     }
   },
   "volta": {
-    "node": "12.22.12"
+    "node": "14.20.0"
   }
 }
