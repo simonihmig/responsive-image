@@ -28,8 +28,7 @@ like a blurry low-res image, [BlurHash](https://blurha.sh/) or a simple dominant
 
 Advanced optimization techniques inspired amongst others by the blog post [Maximally optimizing image loading for the web in 2021](https://www.industrialempathy.com/posts/image-optimizations/).
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
 * Ember.js v3.20 or above
 * Ember CLI v3.20 or above
@@ -333,13 +332,11 @@ large images for these, so a setting of `widths: [300, 600],` would make sense h
 The addon provides a service and a helper for more advances usages if required. You can also build addons that hook
 into the image precessing pipeline. This is described in detail in the [Advanced Usage documentation](docs/ADVANCED.md).
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
