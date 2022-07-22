@@ -1,13 +1,13 @@
 {
   "name": "ember-responsive-image",
-  "version": "0.0.0",
-  "description": "The default blueprint for Embroider v2 addons.",
+  "version": "3.4.0",
+  "description": "Automatically generate resized images at build-time, optimized for the responsive web, and using components to render them easily as <picture> elements.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "https://github.com/kaliber5/ember-responsive-image",
   "license": "MIT",
-  "author": "",
+  "author": "Simon Ihmig <ihmig@kaliber5.de>",
   "files": [
     "addon-main.js",
     "dist"
@@ -68,6 +68,7 @@
     "@typescript-eslint/eslint-plugin": "5.30.5",
     "@typescript-eslint/parser": "5.30.5",
     "concurrently": "^7.2.1",
+    "ember-modifier": "^3.2.7",
     "ember-template-lint": "^4.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",

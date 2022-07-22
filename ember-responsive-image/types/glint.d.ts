@@ -1,8 +1,9 @@
 import '@glint/environment-ember-loose';
 import '@glint/environment-ember-loose/registry';
 import Modifier from 'ember-modifier';
+import Helper from '@ember/component/helper';
 
-declare class RenderModifier extends Modifier<{
+declare class RenderModifier<Args extends unknown[]> extends Modifier<{
   Element: HTMLElement;
   Args: { Positional: [(element: Element, args: Args) => void, ...Args] };
 }> {}

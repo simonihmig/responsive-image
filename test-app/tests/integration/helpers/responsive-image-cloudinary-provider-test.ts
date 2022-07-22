@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import setupDataDumper from 'dummy/tests/helpers/dump';
+import setupDataDumper from 'test-app/tests/helpers/dump';
 import { ProviderResult } from 'ember-responsive-image/types';
 
 module(
