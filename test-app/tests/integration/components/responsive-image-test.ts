@@ -3,9 +3,9 @@ import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
-import { ProviderResult } from 'ember-responsive-image/types';
+import { ProviderResult } from '@ember-responsive-image/core/types';
 import config from 'test-app/config/environment';
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
 
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);

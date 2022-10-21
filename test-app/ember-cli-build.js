@@ -9,6 +9,30 @@ module.exports = function (defaults) {
     },
   });
 
-  const { maybeEmbroider } = require('@embroider/test-setup');
-  return maybeEmbroider(app);
+  // const { maybeEmbroider } = require('@embroider/test-setup');
+  // return maybeEmbroider(app);
+
+  const { Webpack } = require('@embroider/webpack');
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    packagerOptions: {
+      webpackConfig: {
+        module: {
+          rules: [
+            {
+              test: /\.(png|jpe?g)$/,
+              use: [
+                {
+                  loader: '@ember-responsive-image/loader',
+                  options: {
+                    // Set options for all transforms
+                  },
+                },
+              ],
+              type: 'javascript/auto',
+            },
+          ],
+        },
+      },
+    },
+  });
 };

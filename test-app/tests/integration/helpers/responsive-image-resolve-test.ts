@@ -2,7 +2,7 @@ import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
 
 module('Helper: ResponsiveImageResolve', function (hooks) {
   setupRenderingTest(hooks);

@@ -1,5 +1,5 @@
 import '@glint/environment-ember-loose';
-import 'ember-responsive-image/glint';
+import '@ember-responsive-image/core/glint';
 import type Helper from '@ember/component/helper';
 
 declare module '@glint/environment-ember-loose/registry' {

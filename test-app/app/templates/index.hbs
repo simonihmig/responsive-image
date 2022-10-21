@@ -2,19 +2,43 @@
 
 <h2>Cloudinary</h2>
 
-<ResponsiveImage @src={{responsive-image-cloudinary-provider "https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png" transformations="e_grayscale"}}/>
-<ResponsiveImage @src={{responsive-image-cloudinary-provider "samples/animals/three-dogs" transformations="e_grayscale"}}/>
+{{!-- <ResponsiveImage
+  @src={{responsive-image-cloudinary-provider
+    'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png'
+    transformations='e_grayscale'
+  }}
+/>
+<ResponsiveImage
+  @src={{responsive-image-cloudinary-provider
+    'samples/animals/three-dogs'
+    transformations='e_grayscale'
+  }}
+/>
 
-<ResponsiveImage @src={{responsive-image-cloudinary-provider "samples/animals/three-dogs" formats=(array "webp" "avif")}} @width={{160}}/>
+<ResponsiveImage
+  @src={{responsive-image-cloudinary-provider
+    'samples/animals/three-dogs'
+    formats=(array 'webp' 'avif')
+  }}
+  @width={{160}}
+/>
 
 <h2>imgix</h2>
 
-<ResponsiveImage @src={{responsive-image-imgix-provider "pages/approach/agile_2000x1200.jpg" params=(hash monochrome="44768B")}} @width={{320}}/>
+<ResponsiveImage
+  @src={{responsive-image-imgix-provider
+    'pages/approach/agile_2000x1200.jpg'
+    params=(hash monochrome='44768B')
+  }}
+  @width={{320}}
+/> --}}
 
 <h2>Local</h2>
 
-<ResponsiveImage @src="/assets/images/docs/lqip-blurhash.jpg"/>
+{{! <ResponsiveImage @src="/assets/images/docs/lqip-blurhash.jpg"/> }}
 
-<ResponsiveImage @src="/assets/images/docs/dog.jpg" @width={{320}}/>
-<ResponsiveImage @src="/assets/images/docs/lqip-color.jpg" @width={{320}}/>
-<ResponsiveImage @src="/assets/images/docs/lqip-blurhash.jpg" @width={{320}}/>
+{{log this.dogImage}}
+
+{{!-- <ResponsiveImage @src={{this.dogImage}} @width={{320}} /> --}}
+{{!-- <ResponsiveImage @src="/assets/images/docs/lqip-color.jpg" @width={{320}}/> --}}
+{{!-- <ResponsiveImage @src="/assets/images/docs/lqip-blurhash.jpg" @width={{320}}/> --}}

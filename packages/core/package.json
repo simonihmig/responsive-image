@@ -1,5 +1,5 @@
 {
-  "name": "ember-responsive-image",
+  "name": "@ember-responsive-image/core",
   "version": "3.4.0",
   "description": "Automatically generate resized images at build-time, optimized for the responsive web, and using components to render them easily as <picture> elements.",
   "keywords": [
@@ -43,7 +43,7 @@
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-decorators": "^7.17.0",
     "@babel/plugin-syntax-decorators": "^7.17.0",
-    "@embroider/addon-dev": "^1.0.0",
+    "@embroider/addon-dev": "^2.0.0",
     "@glint/core": "^0.9.1",
     "@glint/environment-ember-loose": "^0.9.1",
     "@tsconfig/ember": "^1.0.0",
@@ -90,7 +90,13 @@
     "type": "addon",
     "main": "addon-main.js",
     "app-js": {
-      "./components/responsive-image.js": "./dist/_app_/components/responsive-image.js"
+      "./components/responsive-image.js": "./dist/_app_/components/responsive-image.js",
+      "./helpers/responsive-image-cloudinary-provider.js": "./dist/_app_/helpers/responsive-image-cloudinary-provider.js",
+      "./helpers/responsive-image-imgix-provider.js": "./dist/_app_/helpers/responsive-image-imgix-provider.js",
+      "./helpers/responsive-image-local-provider.js": "./dist/_app_/helpers/responsive-image-local-provider.js",
+      "./helpers/responsive-image-resolve.js": "./dist/_app_/helpers/responsive-image-resolve.js",
+      "./services/responsive-image-local.js": "./dist/_app_/services/responsive-image-local.js",
+      "./services/responsive-image.js": "./dist/_app_/services/responsive-image.js"
     }
   },
   "exports": {

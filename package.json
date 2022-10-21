@@ -6,16 +6,16 @@
   "license": "MIT",
   "author": "",
   "workspaces": [
-    "ember-responsive-image",
+    "packages/*",
     "test-app"
   ],
   "scripts": {
-    "build": "yarn workspace ember-responsive-image run build",
+    "build": "yarn workspace @ember-responsive-image/core run build",
     "lint": "yarn workspaces run lint",
     "lint:fix": "yarn workspaces run lint:fix",
     "prepare": "yarn build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
-    "start:addon": "yarn workspace ember-responsive-image run start",
+    "start:addon": "yarn workspace @ember-responsive-image/core run start",
     "start:test": "yarn workspace test-app run start",
     "test": "yarn workspaces run test"
   },

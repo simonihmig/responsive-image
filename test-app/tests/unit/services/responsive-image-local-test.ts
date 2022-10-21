@@ -1,8 +1,8 @@
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { Image, ImageMeta } from 'ember-responsive-image/types';
-import ResponsiveImageLocalService from 'ember-responsive-image/services/responsive-image-local';
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import { Image, ImageMeta } from '@ember-responsive-image/core/types';
+import ResponsiveImageLocalService from '@ember-responsive-image/core/services/responsive-image-local';
+import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
 import config from 'test-app/config/environment';
 
 interface TestCase {
