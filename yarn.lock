@@ -2657,6 +2657,13 @@
     "@types/mime" "^1"
     "@types/node" "*"
 
+"@types/sharp@^0.31.0":
+  version "0.31.0"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.31.0.tgz#c4af03a7e1d126f0d428a265e126fabd86ab6d0f"
+  integrity sha512-nwivOU101fYInCwdDcH/0/Ru6yIRXOpORx25ynEOc6/IakuCmjOAGpaO5VfUl4QkDtUC6hj+Z2eCQvgXOioknw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/source-map@^0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@types/source-map/-/source-map-0.5.7.tgz#165eeb583c1ef00196fe4ef4da5d7832b03b275b"
@@ -10102,6 +10109,11 @@ loader-utils@^2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
+loader-utils@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-3.2.0.tgz#bcecc51a7898bee7473d4bc6b845b23af8304d4f"
+  integrity sha512-HVl9ZqccQihZ7JM85dco1MvO9G+ONvxoGa9rkhzFsneGLKSUg1gJf9bWzhRhcvm2qChhWpebQhP44qxjKIUCaQ==
+
 loader.js@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/loader.js/-/loader.js-4.7.0.tgz#a1a52902001c83631efde9688b8ab3799325ef1f"
@@ -13023,6 +13035,20 @@ sharp@^0.30.0:
   version "0.30.7"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.30.7.tgz#7862bda98804fdd1f0d5659c85e3324b90d94c7c"
   integrity sha512-G+MY2YW33jgflKPTXXptVO28HvNOo9G3j0MybYAHeEmby+QuD2U98dT6ueht9cv/XDqZspSpIhoSW+BAKJ7Hig==
+  dependencies:
+    color "^4.2.3"
+    detect-libc "^2.0.1"
+    node-addon-api "^5.0.0"
+    prebuild-install "^7.1.1"
+    semver "^7.3.7"
+    simple-get "^4.0.1"
+    tar-fs "^2.1.1"
+    tunnel-agent "^0.6.0"
+
+sharp@^0.31.1:
+  version "0.31.1"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.31.1.tgz#b2f7076d381a120761aa93700cadefcf90a22458"
+  integrity sha512-GR8M1wBwOiFKLkm9JPun27OQnNRZdHfSf9VwcdZX6UrRmM1/XnOrLFTF0GAil+y/YK4E6qcM/ugxs80QirsHxg==
   dependencies:
     color "^4.2.3"
     detect-libc "^2.0.1"

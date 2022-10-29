@@ -205,11 +205,12 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get hasLqipBlurhash(): boolean {
-    if (macroCondition(getOwnConfig().usesBlurhash)) {
-      return this.providerResult.lqip?.type === 'blurhash';
-    } else {
-      return false;
-    }
+    return false;
+    // if (macroCondition(getOwnConfig().usesBlurhash)) {
+    //   return this.providerResult.lqip?.type === 'blurhash';
+    // } else {
+    //   return false;
+    // }
   }
 
   get showLqipBlurhash(): boolean {
@@ -217,27 +218,29 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get blurhashMeta(): LqipBlurhash | undefined {
-    if (macroCondition(getOwnConfig().usesBlurhash)) {
-      return this.providerResult.lqip?.type === 'blurhash'
-        ? this.providerResult.lqip
-        : undefined;
-    } else {
-      return undefined;
-    }
+    return undefined;
+    // if (macroCondition(getOwnConfig().usesBlurhash)) {
+    //   return this.providerResult.lqip?.type === 'blurhash'
+    //     ? this.providerResult.lqip
+    //     : undefined;
+    // } else {
+    //   return undefined;
+    // }
   }
 
   get lqipBlurhash(): string | undefined {
-    if (macroCondition(getOwnConfig().usesBlurhash)) {
-      if (!this.hasLqipBlurhash) {
-        return undefined;
-      }
-      const { hash, width, height } = this.providerResult.lqip as LqipBlurhash;
-      const uri = __eri_blurhash.bh2url(hash, width, height);
+    return undefined;
+    // if (macroCondition(getOwnConfig().usesBlurhash)) {
+    //   if (!this.hasLqipBlurhash) {
+    //     return undefined;
+    //   }
+    //   const { hash, width, height } = this.providerResult.lqip as LqipBlurhash;
+    //   const uri = __eri_blurhash.bh2url(hash, width, height);
 
-      return `url("${uri}")`;
-    } else {
-      return undefined;
-    }
+    //   return `url("${uri}")`;
+    // } else {
+    //   return undefined;
+    // }
   }
 
   processUrl(url: string): string {
