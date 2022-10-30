@@ -26,7 +26,7 @@ declare global {
 export interface ResponsiveImageComponentSignature {
   Element: HTMLImageElement;
   Args: {
-    src: string | ProviderResult;
+    src: ProviderResult;
     size?: number;
     sizes?: string;
     width?: number;
@@ -72,18 +72,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     assert('No image argument supplied for <ResponsiveImage>', args.src);
   }
 
-  @cached
-  get providerResult(): ProviderResult {
-    return typeof this.args.src === 'string'
-      ? localProvider(
-          this.args.src,
-          (getOwner(this) as ApplicationInstance).lookup(
-            'service:responsive-image-local'
-          ) as ResponsiveImageLocalService
-        )
-      : this.args.src;
-  }
-
   get layout(): Layout {
     return this.args.width === undefined && this.args.height === undefined
       ? Layout.RESPONSIVE
@@ -92,13 +80,13 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   get sources(): PictureSource[] {
     if (this.layout === Layout.RESPONSIVE) {
-      return this.providerResult.imageTypes.map((type) => {
-        let widths = this.providerResult.availableWidths;
+      return this.args.src.imageTypes.map((type) => {
+        let widths = this.args.src.availableWidths;
         if (!widths) {
           widths = this.responsiveImage.meta.deviceWidths;
         }
         const sources: string[] = widths.map((width) => {
-          const url = this.providerResult.imageUrlFor(width, type);
+          const url = this.args.src.imageUrlFor(width, type);
           return `${url}${
             this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
           } ${width}w`;
@@ -119,10 +107,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         return [];
       }
 
-      return this.providerResult.imageTypes.map((type) => {
+      return this.args.src.imageTypes.map((type) => {
         const sources: string[] = PIXEL_DENSITIES.map((density) => {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          const url = this.providerResult.imageUrlFor(width * density, type)!;
+          const url = this.args.src.imageUrlFor(width * density, type)!;
 
           return `${url}${
             this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
@@ -155,7 +143,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return undefined;
     }
 
-    return this.providerResult.imageUrlFor(this.width ?? 640);
+    return this.args.src.imageUrlFor(this.width ?? 640);
   }
 
   @cached
@@ -169,7 +157,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         return this.args.width;
       }
 
-      const ar = this.providerResult.aspectRatio;
+      const ar = this.args.src.aspectRatio;
       if (ar !== undefined && ar !== 0 && this.args.height !== undefined) {
         return this.args.height * ar;
       }
@@ -183,7 +171,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return this.args.height;
     }
 
-    const ar = this.providerResult.aspectRatio;
+    const ar = this.args.src.aspectRatio;
     if (ar !== undefined && ar !== 0 && this.width !== undefined) {
       return this.width / ar;
     }
@@ -193,7 +181,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   get classNames(): string {
     const classNames = [`eri-${this.layout}`];
-    const lqip = this.providerResult.lqip;
+    const lqip = this.args.src.lqip;
     if (lqip && !this.isLoaded) {
       classNames.push(`eri-lqip-${lqip.type}`);
       if (lqip.type === 'color' || lqip.type === 'inline') {
@@ -207,7 +195,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get hasLqipBlurhash(): boolean {
     return false;
     // if (macroCondition(getOwnConfig().usesBlurhash)) {
-    //   return this.providerResult.lqip?.type === 'blurhash';
+    //   return this.args.src.lqip?.type === 'blurhash';
     // } else {
     //   return false;
     // }
@@ -220,8 +208,8 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get blurhashMeta(): LqipBlurhash | undefined {
     return undefined;
     // if (macroCondition(getOwnConfig().usesBlurhash)) {
-    //   return this.providerResult.lqip?.type === 'blurhash'
-    //     ? this.providerResult.lqip
+    //   return this.args.src.lqip?.type === 'blurhash'
+    //     ? this.args.src.lqip
     //     : undefined;
     // } else {
     //   return undefined;
@@ -234,7 +222,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     //   if (!this.hasLqipBlurhash) {
     //     return undefined;
     //   }
-    //   const { hash, width, height } = this.providerResult.lqip as LqipBlurhash;
+    //   const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
     //   const uri = __eri_blurhash.bh2url(hash, width, height);
 
     //   return `url("${uri}")`;

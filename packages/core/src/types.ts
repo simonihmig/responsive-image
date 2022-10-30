@@ -50,3 +50,9 @@ export interface ProviderResult {
   fingerprint?: string;
   lqip?: LqipInline | LqipColor | LqipBlurhash;
 }
+
+export interface ImageOutputResult {
+  url: string;
+  width: number;
+  format: ImageType;
+}

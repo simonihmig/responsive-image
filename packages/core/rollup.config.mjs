@@ -18,6 +18,7 @@ export default {
       'components/**/*.js',
       'helpers/**/*.js',
       'services/**/*.js',
+      'utils/**/*.js',
       'index.js',
       'glint.js',
       'types.js',

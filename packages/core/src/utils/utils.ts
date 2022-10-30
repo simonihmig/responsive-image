@@ -1,6 +1,6 @@
 import Application, { getOwner } from '@ember/application';
 import { assert } from '@ember/debug';
-import { Meta } from '../types';
+import { Image, ImageOutputResult, ImageType, Meta } from '../types';
 
 export function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
@@ -24,4 +24,24 @@ export function extractMeta(context: unknown): Meta {
     script && script.textContent // Cannot use optional chaining due to https://github.com/ember-cli/babel-plugin-debug-macros/issues/89
   );
   return JSON.parse(script.textContent);
+}
+
+export function findMatchingImage(
+  images: ImageOutputResult[],
+  width: number,
+  type: ImageType
+): ImageOutputResult | undefined {
+  const matchingImageWidth = images
+    .map((i) => i.width)
+    .reduce((prevValue: number, w: number) => {
+      if (w >= width && prevValue >= width) {
+        return w >= prevValue ? prevValue : w;
+      } else {
+        return w >= prevValue ? w : prevValue;
+      }
+    }, 0);
+
+  return images.find(
+    (image) => image.width === matchingImageWidth && image.format === type
+  );
 }

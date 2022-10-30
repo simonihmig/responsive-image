@@ -3,8 +3,11 @@ import sharp from 'sharp';
 import type { LoaderContext } from 'webpack';
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
+import type {
+  ImageType,
+  ImageOutputResult,
+} from '@ember-responsive-image/core/types';
 
-export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
 export type OutputImageType = 'original' | ImageType;
 
 export interface LoaderOptions {
@@ -42,14 +45,6 @@ interface ProcessedImageMeta {
 interface ImageProcessingResult {
   data: Buffer;
   width: number;
-  // height: number;
-  format: ImageType;
-}
-
-interface ImageOutputResult {
-  url: string;
-  width: number;
-  // height: number;
   format: ImageType;
 }
 
@@ -125,7 +120,9 @@ async function process(
   const results = await generateResizedImages(image, widths, formats);
   const images = results.map(createFile);
 
-  const result = `const images = [${images
+  const result = `import { findMatchingImage } from '@ember-responsive-image/core/utils/utils';
+
+  const images = [${images
     .map(
       ({ url, width, format }) =>
         `{"url":${url},"width":${String(width)},"format":"${format}"}`
@@ -137,7 +134,7 @@ export default {
   availableWidths: ${JSON.stringify(widths)},
   aspectRatio: ${aspectRatio},
   imageUrlFor(w, f) {
-    return images.find(({width, format}) => width === w && format === f)?.url;
+    return findMatchingImage(images, w, f)?.url;
   }
 }`;
 
