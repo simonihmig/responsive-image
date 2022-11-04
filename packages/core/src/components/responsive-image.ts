@@ -5,11 +5,7 @@ import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { getOwnConfig, macroCondition } from '@embroider/macros';
-import { provider as localProvider } from '../helpers/responsive-image-local-provider';
 import { ImageType, LqipBlurhash, ProviderResult } from '../types';
-import { getOwner } from '@ember/application';
-import ApplicationInstance from '@ember/application/instance';
-import type ResponsiveImageLocalService from '../services/responsive-image-local';
 
 import './responsive-image.css';
 

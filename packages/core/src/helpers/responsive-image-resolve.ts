@@ -1,12 +1,12 @@
 import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Helper from '@ember/component/helper';
-import { ImageType } from '../types';
-import ResponsiveImageLocalService from '../services/responsive-image-local';
+import { ImageType, ProviderResult } from '../types';
+import ResponsiveImageService from '../services/responsive-image';
 
 interface ResponsiveImageResolveSignature {
   Args: {
-    Positional: [string];
+    Positional: [ProviderResult];
     Named: {
       size?: number;
       format?: ImageType;
@@ -23,18 +23,14 @@ interface ResponsiveImageResolveSignature {
  */
 export default class ResponsiveImageResolve extends Helper<ResponsiveImageResolveSignature> {
   @service
-  responsiveImageLocal!: ResponsiveImageLocalService;
+  responsiveImage!: ResponsiveImageService;
 
   compute(
-    [image]: [string],
-    { size, format }: { size?: number; format?: ImageType }
+    [data]: [ProviderResult],
+    { size, format = data.imageTypes[0] }: { size?: number; format?: ImageType }
   ): ReturnType<typeof htmlSafe> | undefined {
-    const responsive = this.responsiveImageLocal.getImageMetaBySize(
-      image,
-      size,
-      format
-    )?.image;
+    const width = this.responsiveImage.getDestinationWidthBySize(size ?? 0);
 
-    return responsive ? htmlSafe(responsive) : undefined;
+    return htmlSafe(data.imageUrlFor(width, format));
   }
 }

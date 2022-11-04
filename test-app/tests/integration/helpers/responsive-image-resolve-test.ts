@@ -2,18 +2,21 @@ import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
+import type ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
+// @ts-expect-error todo how to make TS understand this?
+import testImage from 'test-app/images/tests/test.png';
 
 module('Helper: ResponsiveImageResolve', function (hooks) {
   setupRenderingTest(hooks);
+  hooks.beforeEach(function () {
+    this.set('testImage', testImage);
+  });
 
   test('works without size', async function (assert) {
-    await render(
-      hbs`<h1>{{responsive-image-resolve "assets/images/tests/test.png"}}</h1>`
-    );
+    await render(hbs`<h1>{{responsive-image-resolve this.testImage}}</h1>`);
     assert
       .dom('h1')
-      .hasText(new RegExp('/assets/images/tests/test640w(-\\w+)?.png'));
+      .hasText(new RegExp('/assets/images/test-2048w(-\\w+)?.png'));
   });
 
   test('supports size', async function (assert) {
@@ -22,21 +25,22 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
     ) as ResponsiveImageService;
     service.set('physicalWidth', 100);
     await render(
-      hbs`<h1>{{responsive-image-resolve "assets/images/tests/test.png" size=45}}</h1>`
+      hbs`<h1>{{responsive-image-resolve this.testImage size=45}}</h1>`
     );
 
+    // @todo use custom sizes for loader here
     assert
       .dom('h1')
-      .hasText(new RegExp('/assets/images/tests/test50w(-\\w+)?.png'));
+      .hasText(new RegExp('/assets/images/test-640w(-\\w+)?.png'));
   });
 
   test('supports format', async function (assert) {
     await render(
-      hbs`<h1>{{responsive-image-resolve "assets/images/tests/test.png" format="webp"}}</h1>`
+      hbs`<h1>{{responsive-image-resolve this.testImage format="webp"}}</h1>`
     );
 
     assert
       .dom('h1')
-      .hasText(new RegExp('/assets/images/tests/test640w(-\\w+)?.webp'));
+      .hasText(new RegExp('/assets/images/test-2048w(-\\w+)?.webp'));
   });
 });

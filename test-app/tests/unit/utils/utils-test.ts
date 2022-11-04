@@ -2,7 +2,7 @@ import { ImageOutputResult } from '@ember-responsive-image/core/types';
 import { findMatchingImage } from '@ember-responsive-image/core/utils/utils';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | utils', function (hooks) {
+module('Unit | Utility | utils', function () {
   module('findMatchingImage', function () {
     test('find matching image', function (assert) {
       const images: ImageOutputResult[] = [
