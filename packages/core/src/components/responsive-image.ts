@@ -11,6 +11,8 @@ import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import type ResponsiveImageLocalService from '../services/responsive-image-local';
 
+import './responsive-image.css';
+
 declare module '@embroider/macros' {
   export function getOwnConfig(): { usesBlurhash: boolean };
 }
