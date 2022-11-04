@@ -155,7 +155,7 @@ async function generateResizedImages(
       resizedImage.resize(width, null, { withoutEnlargement: true });
 
       return formats.map(async (format) => {
-        const data = await image.toFormat(format).toBuffer();
+        const data = await resizedImage.toFormat(format).toBuffer();
         return {
           data,
           width,
