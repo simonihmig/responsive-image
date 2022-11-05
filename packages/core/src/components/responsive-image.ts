@@ -67,7 +67,11 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   constructor(owner: unknown, args: ResponsiveImageComponentSignature['Args']) {
     super(owner, args);
-    assert('No image argument supplied for <ResponsiveImage>', args.src);
+    assert('No @src argument supplied for <ResponsiveImage>', args.src);
+    assert(
+      'Image paths as @src argument for <ResponsiveImage> are not supported anymore.',
+      typeof args.src !== 'string'
+    );
   }
 
   get layout(): Layout {
@@ -81,7 +85,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return this.args.src.imageTypes.map((type) => {
         let widths = this.args.src.availableWidths;
         if (!widths) {
-          widths = this.responsiveImage.meta.deviceWidths;
+          widths = this.responsiveImage.deviceWidths;
         }
         const sources: string[] = widths.map((width) => {
           const url = this.args.src.imageUrlFor(width, type);

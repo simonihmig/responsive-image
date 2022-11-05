@@ -1,6 +1,4 @@
 import Service from '@ember/service';
-import { Meta } from '../types';
-import { extractMeta } from '../utils/utils';
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 // const extentionTypeMapping = new Map<string, ImageType>([['jpg', 'jpeg']]);
@@ -21,6 +19,9 @@ export default class ResponsiveImageService extends Service {
    */
   physicalWidth = this.screenWidth * ((window && window.devicePixelRatio) || 1);
 
+  // @todo
+  deviceWidths = [640, 750, 1920];
+
   /**
    *
    * @param size
@@ -33,27 +34,12 @@ export default class ResponsiveImageService extends Service {
     return physicalWidth * factor;
   }
 
-  private _meta?: Meta;
-
   public getProviderConfig<CONFIG = unknown>(
     provider: string
   ): Partial<CONFIG> {
-    return (this.meta.providers?.[provider] as Partial<CONFIG>) ?? {};
-  }
-
-  /**
-   * the meta values from build time
-   */
-  get meta(): Meta {
-    if (!this._meta) {
-      // eslint-disable-next-line ember/no-side-effects
-      this._meta = extractMeta(this);
-    }
-
-    return this._meta;
-  }
-  set meta(meta: Meta) {
-    this._meta = meta;
+    // @todo
+    return {};
+    // return (this.meta.providers?.[provider] as Partial<CONFIG>) ?? {};
   }
 
   // public getType(imageName: string): ImageType {

@@ -4,46 +4,32 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import { ProviderResult } from '@ember-responsive-image/core/types';
-import config from 'test-app/config/environment';
 import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
+// @ts-expect-error TS does not understand this
+import testImage from 'test-app/images/tests/test.png';
+// @ts-expect-error TS does not understand this
+import smallImage from 'test-app/images/tests/small.png';
 
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
     this.set('cacheBreaker', new Date().getTime());
+    this.set('testImage', testImage);
+    this.set('smallImage', smallImage);
   });
 
   module('source from local files', function () {
     module('responsive layout', function () {
       test('it has responsive layout by default', async function (assert) {
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
 
         assert.dom('img').hasClass('eri-responsive');
         assert.dom('img').hasNoClass('eri-fixed');
       });
 
-      test('handles absolute paths', async function (assert) {
-        await render(
-          hbs`<ResponsiveImage @src="/assets/images/tests/test.png"/>`
-        );
-
-        assert
-          .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp(
-              `^${config.rootURL}assets/images/tests/test([0-9])+w(-\\w+)?.png`
-            )
-          );
-      });
-
       test('it renders width and height attributes', async function (assert) {
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
 
         assert.dom('img').hasAttribute('width');
         assert.dom('img').hasAttribute('height');
@@ -61,27 +47,26 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       test('it renders the correct sourceset with width descriptors', async function (assert) {
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
+
         // png
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test640w(-\\w+)?.png 640w')
+            new RegExp('/assets/images/test-640w(-\\w+)?.png 640w')
           );
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.png 100w')
+            new RegExp('/assets/images/test-100w(-\\w+)?.png 100w')
           );
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.png 50w')
+            new RegExp('/assets/images/test-50w(-\\w+)?.png 50w')
           );
 
         // webp
@@ -89,19 +74,19 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test640w(-\\w+)?.webp 640w')
+            new RegExp('/assets/images/test-640w(-\\w+)?.webp 640w')
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.webp 100w')
+            new RegExp('/assets/images/test-100w(-\\w+)?.webp 100w')
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.webp 50w')
+            new RegExp('/assets/images/test-50w(-\\w+)?.webp 50w')
           );
 
         // avif
@@ -109,36 +94,34 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test640w(-\\w+)?.avif 640w')
+            new RegExp('/assets/images/test-640w(-\\w+)?.avif 640w')
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.avif 100w')
+            new RegExp('/assets/images/test-100w(-\\w+)?.avif 100w')
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.avif 50w')
+            new RegExp('/assets/images/test-50w(-\\w+)?.avif 50w')
           );
 
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/small.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.smallImage}} />`);
         // png
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small10w(-\\w+)?.png 10w')
+            new RegExp('/assets/images/small10w(-\\w+)?.png 10w')
           );
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small25w(-\\w+)?.png 25w')
+            new RegExp('/assets/images/small25w(-\\w+)?.png 25w')
           );
 
         // webp
@@ -146,13 +129,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small10w(-\\w+)?.webp 10w')
+            new RegExp('/assets/images/small10w(-\\w+)?.webp 10w')
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small25w(-\\w+)?.webp 25w')
+            new RegExp('/assets/images/small25w(-\\w+)?.webp 25w')
           );
 
         // avif
@@ -160,70 +143,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small10w(-\\w+)?.avif 10w')
+            new RegExp('/assets/images/small10w(-\\w+)?.avif 10w')
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small25w(-\\w+)?.avif 25w')
-          );
-
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/recursive/dir/test.png"/>`
-        );
-        // png
-        assert
-          .dom('picture source[type="image/png"]')
-          .hasAttribute(
-            'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test100w(-\\w+)?.png 100w'
-            )
-          );
-        assert
-          .dom('picture source[type="image/png"]')
-          .hasAttribute(
-            'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test50w(-\\w+)?.png 50w'
-            )
-          );
-
-        // webp
-        assert
-          .dom('picture source[type="image/webp"]')
-          .hasAttribute(
-            'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test100w(-\\w+)?.webp 100w'
-            )
-          );
-        assert
-          .dom('picture source[type="image/webp"]')
-          .hasAttribute(
-            'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test50w(-\\w+)?.webp 50w'
-            )
-          );
-
-        // avif
-        assert
-          .dom('picture source[type="image/avif"]')
-          .hasAttribute(
-            'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test100w(-\\w+)?.avif 100w'
-            )
-          );
-        assert
-          .dom('picture source[type="image/avif"]')
-          .hasAttribute(
-            'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test50w(-\\w+)?.avif 50w'
-            )
+            new RegExp('/assets/images/small25w(-\\w+)?.avif 25w')
           );
       });
 
@@ -232,72 +158,42 @@ module('Integration: Responsive Image Component', function (hooks) {
           'service:responsive-image'
         ) as ResponsiveImageService;
         service.set('physicalWidth', 45);
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.png')
+            new RegExp('/assets/images/test-50w(-\\w+)?.png')
           );
         service.set('physicalWidth', 51);
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.png')
+            new RegExp('/assets/images/test-100w(-\\w+)?.png')
           );
         service.set('physicalWidth', 9);
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/small.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.smallImage}} />`);
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/small10w(-\\w+)?.png')
+            new RegExp('/assets/images/small10w(-\\w+)?.png')
           );
         service.set('physicalWidth', 11);
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/small.png"/>`
-        );
+        await render(hbs`<ResponsiveImage @src={{this.smallImage}} />`);
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/small25w(-\\w+)?.png')
-          );
-        service.set('physicalWidth', 45);
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/recursive/dir/test.png"/>`
-        );
-        assert
-          .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/tests/recursive/dir/test50w(-\\w+)?.png')
-          );
-        service.set('physicalWidth', 51);
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/recursive/dir/test.png"/>`
-        );
-        assert
-          .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test100w(-\\w+)?.png'
-            )
+            new RegExp('/assets/images/small25w(-\\w+)?.png')
           );
       });
 
       test('it renders a given size as sizes', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @size="40"/>`
+          hbs`<ResponsiveImage @src={{this.testImage}} @size="40"/>`
         );
         assert
           .dom('picture source[type="image/png"]')
@@ -309,7 +205,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders with given sizes', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @sizes="(max-width: 767px) 100vw, 50vw"/>`
+          hbs`<ResponsiveImage @src={{this.testImage}} @sizes="(max-width: 767px) 100vw, 50vw"/>`
         );
         assert
           .dom('picture source[type="image/png"]')
@@ -323,14 +219,14 @@ module('Integration: Responsive Image Component', function (hooks) {
     module('fixed layout', function () {
       test('it has fixed layout when width or height is provided', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @width={{100}}/>`
+          hbs`<ResponsiveImage @src={{this.testImage}} @width={{100}}/>`
         );
 
         assert.dom('img').hasClass('eri-fixed');
         assert.dom('img').hasNoClass('eri-responsive');
 
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @height={{100}}/>`
+          hbs`<ResponsiveImage @src={{this.testImage}} @height={{100}}/>`
         );
 
         assert.dom('img').hasClass('eri-fixed');
@@ -339,7 +235,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders width and height when given', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @width={{150}} @height={{50}} />`
+          hbs`<ResponsiveImage @src={{this.testImage}} @width={{150}} @height={{50}} />`
         );
 
         assert.dom('img').hasAttribute('width', '150');
@@ -348,7 +244,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders height when width is given according to aspect ratio', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @width={{150}} />`
+          hbs`<ResponsiveImage @src={{this.testImage}} @width={{150}} />`
         );
 
         assert.dom('img').hasAttribute('width', '150');
@@ -357,7 +253,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders width when height is given according to aspect ratio', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @height={{100}} />`
+          hbs`<ResponsiveImage @src={{this.testImage}} @height={{100}} />`
         );
 
         assert.dom('img').hasAttribute('width', '200');
@@ -366,20 +262,20 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders the correct sourceset with pixel densities', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @width={{50}} @src="assets/images/tests/test.png"/>`
+          hbs`<ResponsiveImage @width={{50}} @src={{this.testImage}}/>`
         );
         // png
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.png 2x')
+            new RegExp('/assets/images/test100w(-\\w+)?.png 2x')
           );
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.png 1x')
+            new RegExp('/assets/images/test50w(-\\w+)?.png 1x')
           );
 
         // webp
@@ -387,13 +283,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.webp 2x')
+            new RegExp('/assets/images/test100w(-\\w+)?.webp 2x')
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.webp 1x')
+            new RegExp('/assets/images/test50w(-\\w+)?.webp 1x')
           );
 
         // avif
@@ -401,13 +297,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.avif 2x')
+            new RegExp('/assets/images/test100w(-\\w+)?.avif 2x')
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.avif 1x')
+            new RegExp('/assets/images/test50w(-\\w+)?.avif 1x')
           );
 
         await render(
@@ -418,13 +314,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small10w(-\\w+)?.png 1x')
+            new RegExp('/assets/images/small10w(-\\w+)?.png 1x')
           );
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small25w(-\\w+)?.png 2x')
+            new RegExp('/assets/images/small25w(-\\w+)?.png 2x')
           );
 
         // webp
@@ -432,13 +328,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small10w(-\\w+)?.webp 1x')
+            new RegExp('/assets/images/small10w(-\\w+)?.webp 1x')
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small25w(-\\w+)?.webp 2x')
+            new RegExp('/assets/images/small25w(-\\w+)?.webp 2x')
           );
 
         // avif
@@ -446,13 +342,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small10w(-\\w+)?.avif 1x')
+            new RegExp('/assets/images/small10w(-\\w+)?.avif 1x')
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/tests/small25w(-\\w+)?.avif 2x')
+            new RegExp('/assets/images/small25w(-\\w+)?.avif 2x')
           );
 
         await render(
@@ -463,17 +359,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test100w(-\\w+)?.png 100w'
-            )
+            new RegExp('/assets/images/recursive/dir/test100w(-\\w+)?.png 100w')
           );
         assert
           .dom('picture source[type="image/png"]')
           .hasAttribute(
             'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test50w(-\\w+)?.png 50w'
-            )
+            new RegExp('/assets/images/recursive/dir/test50w(-\\w+)?.png 50w')
           );
 
         // webp
@@ -482,16 +374,14 @@ module('Integration: Responsive Image Component', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(
-              '/assets/images/tests/recursive/dir/test100w(-\\w+)?.webp 100w'
+              '/assets/images/recursive/dir/test100w(-\\w+)?.webp 100w'
             )
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test50w(-\\w+)?.webp 50w'
-            )
+            new RegExp('/assets/images/recursive/dir/test50w(-\\w+)?.webp 50w')
           );
 
         // avif
@@ -500,68 +390,66 @@ module('Integration: Responsive Image Component', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(
-              '/assets/images/tests/recursive/dir/test100w(-\\w+)?.avif 100w'
+              '/assets/images/recursive/dir/test100w(-\\w+)?.avif 100w'
             )
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp(
-              '/assets/images/tests/recursive/dir/test50w(-\\w+)?.avif 50w'
-            )
+            new RegExp('/assets/images/recursive/dir/test50w(-\\w+)?.avif 50w')
           );
       });
 
       test('it renders the fallback src next to needed display size', async function (assert) {
         await render(
-          hbs`<ResponsiveImage @width={{320}} @src="assets/images/tests/test.png"/>`
+          hbs`<ResponsiveImage @width={{320}} @src={{this.testImage}}/>`
         );
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/test640w(-\\w+)?.png')
+            new RegExp('/assets/images/test640w(-\\w+)?.png')
           );
 
         await render(
-          hbs`<ResponsiveImage @width={{101}} @src="assets/images/tests/test.png"/>`
+          hbs`<ResponsiveImage @width={{101}} @src={{this.testImage}}/>`
         );
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/test640w(-\\w+)?.png')
+            new RegExp('/assets/images/test640w(-\\w+)?.png')
           );
 
         await render(
-          hbs`<ResponsiveImage @width={{100}} @src="assets/images/tests/test.png"/>`
+          hbs`<ResponsiveImage @width={{100}} @src={{this.testImage}}/>`
         );
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.png')
+            new RegExp('/assets/images/test100w(-\\w+)?.png')
           );
 
         await render(
-          hbs`<ResponsiveImage @width={{51}} @src="assets/images/tests/test.png"/>`
+          hbs`<ResponsiveImage @width={{51}} @src={{this.testImage}}/>`
         );
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/test100w(-\\w+)?.png')
+            new RegExp('/assets/images/test100w(-\\w+)?.png')
           );
 
         await render(
-          hbs`<ResponsiveImage @width={{50}} @src="assets/images/tests/test.png"/>`
+          hbs`<ResponsiveImage @width={{50}} @src={{this.testImage}}/>`
         );
         assert
           .dom('img')
           .hasAttribute(
             'src',
-            new RegExp('/assets/images/tests/test50w(-\\w+)?.png')
+            new RegExp('/assets/images/test50w(-\\w+)?.png')
           );
       });
     });
@@ -732,7 +620,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           );
       });
 
-      test('it renders the sourceset based on proved widths', async function (assert) {
+      test('it renders the sourceset based on provided widths', async function (assert) {
         this.set('providerResult', {
           ...defaultProviderResult,
           availableWidths: [320, 640],
@@ -799,13 +687,6 @@ module('Integration: Responsive Image Component', function (hooks) {
       test('it has fixed layout when width or height is provided', async function (assert) {
         await render(
           hbs`<ResponsiveImage @src={{this.defaultProviderResult}} @width={{100}}/>`
-        );
-
-        assert.dom('img').hasClass('eri-fixed');
-        assert.dom('img').hasNoClass('eri-responsive');
-
-        await render(
-          hbs`<ResponsiveImage @src="assets/images/tests/test.png" @height={{100}}/>`
         );
 
         assert.dom('img').hasClass('eri-fixed');
@@ -879,7 +760,7 @@ module('Integration: Responsive Image Component', function (hooks) {
   });
 
   test('it renders a source for every format', async function (assert) {
-    await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`);
+    await render(hbs`<ResponsiveImage @src={{this.testImage}}/>`);
 
     assert.dom('picture').exists({ count: 1 });
     assert.dom('picture source').exists({ count: 3 });
@@ -888,25 +769,25 @@ module('Integration: Responsive Image Component', function (hooks) {
   });
 
   test('it loads lazily by default', async function (assert) {
-    await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png" />`);
+    await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
     assert.dom('img').hasAttribute('loading', 'lazy');
   });
 
   test('it can optionally load eager', async function (assert) {
     await render(
-      hbs`<ResponsiveImage @src="assets/images/tests/test.png" loading="eager" />`
+      hbs`<ResponsiveImage @src={{this.testImage}} loading="eager" />`
     );
     assert.dom('img').hasAttribute('loading', 'eager');
   });
 
   test('it decodes async', async function (assert) {
-    await render(hbs`<ResponsiveImage @src="assets/images/tests/test.png" />`);
+    await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
     assert.dom('img').hasAttribute('decoding', 'async');
   });
 
   test('it renders arbitrary HTML attributes', async function (assert) {
     await render(
-      hbs`<ResponsiveImage @src="assets/images/tests/test.png" class="foo" role="button" data-test-image />`
+      hbs`<ResponsiveImage @src={{this.testImage}} class="foo" role="button" data-test-image />`
     );
     assert.dom('img').hasClass('foo');
     assert.dom('img').hasAttribute('role', 'button');
