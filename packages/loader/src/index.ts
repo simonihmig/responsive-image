@@ -134,7 +134,7 @@ export default {
   availableWidths: ${JSON.stringify(widths)},
   aspectRatio: ${aspectRatio},
   imageUrlFor(w, f) {
-    return findMatchingImage(images, w, f)?.url;
+    return findMatchingImage(images, w, f ?? "${formats[0]}")?.url;
   }
 }`;
 
