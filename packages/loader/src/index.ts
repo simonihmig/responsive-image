@@ -54,9 +54,7 @@ export default function loader(
 ): void {
   const loaderCallback = this.async();
 
-  const parsedResourceQuery = this.resourceQuery
-    ? {} // @todo parseQuery(this.resourceQuery)
-    : {};
+  const parsedResourceQuery = parseQuery(this.resourceQuery);
 
   // Combines defaults, webpack options and query options,
   const options: LoaderOptions = {
@@ -198,4 +196,23 @@ function assertSupportedType(type: unknown): asserts type is ImageType {
   if (!supportedTypes.includes(type)) {
     throw new Error(`Unknown image type "${type}"`);
   }
+}
+
+function parseQuery(query: string) {
+  const params = new URLSearchParams(query);
+  return Object.fromEntries(
+    [...params.entries()].map(([key, value]) => {
+      switch (key) {
+        case 'widths':
+          return [key, value.split(',').map((v) => parseInt(v, 10))];
+        case 'formats':
+          return [key, value.split(',')];
+        case 'quality':
+          return [key, parseInt(value, 10)];
+
+        default:
+          return [key, value];
+      }
+    })
+  );
 }
