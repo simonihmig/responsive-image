@@ -1,13 +1,10 @@
 import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
 import ResponsiveImageService from '../services/responsive-image';
-import { ImageType, ProviderResult } from '../types';
+import { ImageType, OwnConfig, ProviderResult } from '../types';
 import { assert } from '@ember/debug';
 import { normalizeSrc } from '../utils/utils';
-
-interface CloudinaryConfig {
-  cloudName: string;
-}
+import { getOwnConfig } from '@embroider/macros';
 
 interface CloudinaryOptions {
   transformations?: string;
@@ -31,11 +28,11 @@ const formatMap: Record<string, string> = {
 
 export const provider = (
   image: string,
-  service: ResponsiveImageService,
+  _service: ResponsiveImageService,
   options: CloudinaryOptions
 ): ProviderResult => {
-  const cloudName =
-    service.getProviderConfig<CloudinaryConfig>('cloudinary').cloudName;
+  const cloudName = getOwnConfig<OwnConfig | undefined>()?.providers?.cloudinary
+    ?.cloudName;
   assert(
     'cloudName must be set for cloudinary provider!',
     typeof cloudName === 'string'

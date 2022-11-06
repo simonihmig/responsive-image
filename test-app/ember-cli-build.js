@@ -7,6 +7,20 @@ module.exports = function (defaults) {
     autoImport: {
       watchDependencies: ['ember-responsive-image'],
     },
+    '@embroider/macros': {
+      setConfig: {
+        '@ember-responsive-image/core': {
+          providers: {
+            cloudinary: {
+              cloudName: 'kaliber5',
+            },
+            imgix: {
+              domain: 'kaliber5.imgix.net',
+            },
+          },
+        },
+      },
+    },
   });
 
   // const { maybeEmbroider } = require('@embroider/test-setup');

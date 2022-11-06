@@ -56,3 +56,18 @@ export interface ImageOutputResult {
   width: number;
   format: ImageType;
 }
+
+interface CloudinaryConfig {
+  cloudName: string;
+}
+
+interface ImgixConfig {
+  domain: string;
+}
+
+export interface OwnConfig {
+  providers?: {
+    cloudinary?: Partial<CloudinaryConfig>;
+    imgix?: Partial<ImgixConfig>;
+  };
+}
