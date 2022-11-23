@@ -3,6 +3,24 @@
 
 
 
+
+## v4.0.0 (2022-11-23)
+
+#### :boom: Breaking Change
+* [#419](https://github.com/simonihmig/ember-responsive-image/pull/419) Drop support for Ember <3.28 ([@simonihmig](https://github.com/simonihmig))
+* [#418](https://github.com/simonihmig/ember-responsive-image/pull/418) Drop node 12 support ([@simonihmig](https://github.com/simonihmig))
+
+#### :rocket: Enhancement
+* [#431](https://github.com/simonihmig/ember-responsive-image/pull/431) Update to new Glint addon best practices ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#420](https://github.com/simonihmig/ember-responsive-image/pull/420) Update Glint to 0.9.1 ([@simonihmig](https://github.com/simonihmig))
+* [#417](https://github.com/simonihmig/ember-responsive-image/pull/417) Run ember-cli-update ([@simonihmig](https://github.com/simonihmig))
+
+#### Committers: 2
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+- konrad kujawa ([@testrocket](https://github.com/testrocket))
+
 ## v3.4.0 (2022-04-29)
 
 #### :rocket: Enhancement
