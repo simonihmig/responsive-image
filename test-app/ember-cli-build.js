@@ -35,8 +35,15 @@ module.exports = function (defaults) {
             {
               test: /\.(png|jpe?g)$/,
               use: [
+                '@ember-responsive-image/loader/export',
                 {
-                  loader: '@ember-responsive-image/loader',
+                  loader: '@ember-responsive-image/loader/color',
+                  options: {
+                    // Set options for all transforms
+                  },
+                },
+                {
+                  loader: '@ember-responsive-image/loader/images',
                   options: {
                     // Set options for all transforms
                   },

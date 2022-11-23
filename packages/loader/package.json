@@ -8,7 +8,7 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "rollup --config",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
@@ -40,11 +40,19 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "glob": "^8.0.3",
     "rollup": "^2.67.0",
     "rollup-plugin-ts": "^3.0.2",
     "typescript": "^4.7.4"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
   }
 }
