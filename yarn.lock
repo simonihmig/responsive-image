@@ -2309,10 +2309,10 @@
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
   integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
 
-"@types/qunit@*", "@types/qunit@2.19.2":
-  version "2.19.2"
-  resolved "https://registry.yarnpkg.com/@types/qunit/-/qunit-2.19.2.tgz#81404b3c8349594ef25964d532363cd917e60180"
-  integrity sha512-hVOSrAcRtRY2R2iCQopzkiSy6BowuSFuR5llHE9R3FDxBCNP4bMdrPpxkE0jZTknn+cmFMT31RfbZWAdu5Qa1w==
+"@types/qunit@*", "@types/qunit@2.19.3":
+  version "2.19.3"
+  resolved "https://registry.yarnpkg.com/@types/qunit/-/qunit-2.19.3.tgz#16e975469a36092929627f997c3dafca198a1aea"
+  integrity sha512-Vi47qmJ0viJoxW1kRDbhuYXGd2F0RREDfh69Hd4v/nlDV0YIjXPCAy6OebWKCZIZr680bQVQTJTL1OfhQoTvVw==
 
 "@types/range-parser@*":
   version "1.2.4"
@@ -10942,12 +10942,7 @@ minimist@^0.2.1:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.2.1.tgz#827ba4e7593464e7c221e8c5bed930904ee2c455"
   integrity sha512-GY8fANSrTMfBVfInqJAY41QkOM+upUTytK1jZ0c8+3HdHrJxBJ3rF5i9moClXTE8uUSnUo8cAsCoxDXvSY4DHg==
 
-minimist@^1.1.1, minimist@^1.2.3, minimist@^1.2.5, minimist@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
-  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
-
-minimist@^1.2.0:
+minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.7.tgz#daa1c4d91f507390437c6a8bc01078e7000c4d18"
   integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
@@ -12467,10 +12462,10 @@ qunit-dom@2.0.0:
     ember-cli-babel "^7.23.0"
     ember-cli-version-checker "^5.1.1"
 
-qunit@2.19.1:
-  version "2.19.1"
-  resolved "https://registry.yarnpkg.com/qunit/-/qunit-2.19.1.tgz#eb1afd188da9e47f07c13aa70461a1d9c4505490"
-  integrity sha512-gSGuw0vErE/rNjnlBW/JmE7NNubBlGrDPQvsug32ejYhcVFuZec9yoU0+C30+UgeCGwq6Ap89K65dMGo+kDGZQ==
+qunit@2.19.3:
+  version "2.19.3"
+  resolved "https://registry.yarnpkg.com/qunit/-/qunit-2.19.3.tgz#bcf81a2e8d176dc19fe8dd358c4cbd08619af03a"
+  integrity sha512-vEnspSZ37u2oR01OA/IZ1Td5V7BvQYFECdKPv86JaBplDNa5IHg0v7jFSPoP5L5o78Dbi8sl7/ATtpRDAKlSdw==
   dependencies:
     commander "7.2.0"
     node-watch "0.7.3"
