@@ -1,6 +1,6 @@
-import '@glint/environment-ember-loose/native-integration';
-import '@glint/environment-ember-loose/registry';
+import '@glint/environment-ember-loose';
 import Modifier from 'ember-modifier';
+import AddonRegistry from 'ember-responsive-image/template-registry';
 
 declare class RenderModifier extends Modifier<{
   Element: HTMLElement;
@@ -16,7 +16,7 @@ declare class StyleModifier extends Modifier<{
 }> {}
 
 declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
+  export default interface Registry extends AddonRegistry {
     'did-insert': typeof RenderModifier;
     style: typeof StyleModifier;
     dump: new () => Helper<{
