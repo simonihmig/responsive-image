@@ -11,7 +11,7 @@ import { getOptions, normalizeInput } from './utils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
-export default function loader(
+export default function imagesLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
   input: Buffer | ImageLoaderChainedResult
 ): void {
@@ -48,7 +48,7 @@ async function process(
 }
 
 // receive input as Buffer
-loader.raw = true;
+imagesLoader.raw = true;
 
 async function generateResizedImages(
   image: Sharp,

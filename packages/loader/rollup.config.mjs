@@ -1,19 +1,16 @@
 import typescript from 'rollup-plugin-ts';
-import { createRequire } from 'node:module';
 import glob from 'glob';
-
-const require = createRequire(import.meta.url);
-const pkg = require('./package.json');
+import externals from 'rollup-plugin-node-externals';
 
 export default {
   input: glob.sync('src/**/*.ts'),
-  external: Object.keys(pkg.dependencies),
   output: {
     dir: './dist',
     format: 'cjs',
     exports: 'auto',
   },
   plugins: [
+    externals(),
     // compile TypeScript to latest JavaScript, including Babel transpilation
     typescript({
       transpiler: 'babel',
