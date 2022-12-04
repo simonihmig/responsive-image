@@ -1,12 +1,17 @@
 import { LoaderContext } from 'webpack';
 import { ImageLoaderChainedResult, LoaderOptions } from '../types';
-import { normalizeInput } from '../utils';
+import { getOptions, normalizeInput } from '../utils';
 
 export default function lqipColorLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
   input: Buffer | ImageLoaderChainedResult
 ): ImageLoaderChainedResult {
   const data = normalizeInput(input);
+
+  const options = getOptions(this);
+  if (options.lqip?.type !== 'color') {
+    return data;
+  }
 
   const className = 'eri-color-foo'; // @todo
   const importCSS = `${
@@ -21,3 +26,5 @@ export default function lqipColorLoader(
     imports: [...data.imports, importCSS],
   };
 }
+
+lqipColorLoader.raw = true;

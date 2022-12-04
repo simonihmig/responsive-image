@@ -21,6 +21,17 @@ export function parseQuery(query: string): Record<string, unknown> {
           return [key, value.split(',')];
         case 'quality':
           return [key, parseInt(value, 10)];
+        case 'lqip': {
+          const parsedValue =
+            value.charAt(0) === '{' ? JSON.parse(value) : value;
+
+          return [
+            key,
+            typeof parsedValue === 'string'
+              ? { type: parsedValue }
+              : parsedValue,
+          ];
+        }
 
         default:
           return [key, value];
