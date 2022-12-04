@@ -1,6 +1,6 @@
 import { LoaderContext } from 'webpack';
 import { ImageLoaderChainedResult, LoaderOptions } from '../types';
-import { getOptions, normalizeInput } from '../utils';
+import { generateLqipClassName, getOptions, normalizeInput } from '../utils';
 
 export default function lqipColorLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
@@ -13,7 +13,7 @@ export default function lqipColorLoader(
     return data;
   }
 
-  const className = 'eri-color-foo'; // @todo
+  const className = generateLqipClassName(this.resource);
   const importCSS = `${
     this.resourcePath
   }.css!=!@ember-responsive-image/loader/lqip/color-css!${

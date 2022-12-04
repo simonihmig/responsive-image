@@ -184,7 +184,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get classNames(): string {
     const classNames = [`eri-${this.layout}`];
     const lqip = this.args.src.lqip;
-    if (lqip && !this.isLoaded) {
+    if (lqip) {
       classNames.push(`eri-lqip-${lqip.type}`);
       if (lqip.type === 'color' || lqip.type === 'inline') {
         classNames.push(lqip.class);

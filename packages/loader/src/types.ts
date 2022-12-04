@@ -8,27 +8,27 @@ import { Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;
 
-interface LqipBaseLoaderOptions {
+export interface LqipBaseLoaderOptions {
   type: string;
 }
 
-interface LqipColorLoaderOptions extends LqipBaseLoaderOptions {
+export interface LqipColorLoaderOptions extends LqipBaseLoaderOptions {
   type: 'color';
 }
 
-interface LqipInlineLoaderOptions extends LqipBaseLoaderOptions {
+export interface LqipInlineLoaderOptions extends LqipBaseLoaderOptions {
   type: 'inline';
   width: number;
   height: number;
 }
 
-interface LqipBlurhashLoaderOptions extends LqipBaseLoaderOptions {
+export interface LqipBlurhashLoaderOptions extends LqipBaseLoaderOptions {
   type: 'blurhash';
   width: number;
   height: number;
 }
 
-type LqipLoaderOptions =
+export type LqipLoaderOptions =
   | LqipColorLoaderOptions
   | LqipInlineLoaderOptions
   | LqipBlurhashLoaderOptions;

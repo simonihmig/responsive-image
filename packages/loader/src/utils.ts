@@ -1,6 +1,13 @@
 import sharp, { Metadata } from 'sharp';
 import { LoaderContext } from 'webpack';
-import { ImageLoaderChainedResult, LoaderOptions } from './types';
+import {
+  ImageLoaderChainedResult,
+  LoaderOptions,
+  LqipLoaderOptions,
+} from './types';
+import baseN from 'base-n';
+
+const b64 = baseN.create();
 
 const defaultImageConfig: LoaderOptions = {
   quality: 80,
@@ -65,6 +72,20 @@ export function normalizeInput(
   }
 
   return input;
+}
+
+const generatedClassNames = new Map<string, string>();
+
+export function generateLqipClassName(resource: string): string {
+  if (generatedClassNames.has(resource)) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return generatedClassNames.get(resource)!;
+  } else {
+    const className = `eri-dyn-${b64.encode(generatedClassNames.size)}`;
+    generatedClassNames.set(resource, className);
+
+    return className;
+  }
 }
 
 export function getAspectRatio(meta: Metadata): number | undefined {
