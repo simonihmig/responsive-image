@@ -1,6 +1,6 @@
-import type { Compiler, WebpackPluginInstance } from 'webpack';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import type { Compiler, WebpackPluginInstance } from 'webpack';
 
 const _dirname =
   typeof __dirname !== 'undefined'
@@ -9,6 +9,7 @@ const _dirname =
 
 const IMAGES_LOADER = resolve(_dirname, 'images');
 const EXPORT_LOADER = resolve(_dirname, 'export');
+const COLOR_LOADER = resolve(_dirname, 'color');
 
 export default class EmberResponsiveImageWebpackPlugin
   implements WebpackPluginInstance
@@ -16,7 +17,7 @@ export default class EmberResponsiveImageWebpackPlugin
   apply(compiler: Compiler) {
     compiler.options.module.rules.unshift({
       test: /\.(png|jpe?g)$/,
-      use: [EXPORT_LOADER, IMAGES_LOADER],
+      use: [EXPORT_LOADER, COLOR_LOADER, IMAGES_LOADER],
       type: 'javascript/auto',
     });
   }

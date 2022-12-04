@@ -4,8 +4,7 @@ import { LoaderOptions } from '../types';
 import { parseQuery } from '../utils';
 
 export default function lqipColorCssLoader(
-  this: LoaderContext<Partial<LoaderOptions>>,
-  input: Buffer
+  this: LoaderContext<Partial<LoaderOptions>>
 ): void {
   const loaderCallback = this.async();
 
@@ -14,19 +13,17 @@ export default function lqipColorCssLoader(
     throw new Error('Missing className');
   }
 
-  if (!Buffer.isBuffer(input)) {
-    throw new Error('Buffer expected');
-  }
+  const file = this.resourcePath.replace(/\.css$/, '');
 
-  process(input, className)
+  process(file, className)
     .then((result) => {
       loaderCallback(null, result);
     })
     .catch((err) => loaderCallback(err));
 }
 
-async function process(input: Buffer, className: string): Promise<string> {
-  const image = sharp(input);
+async function process(file: string, className: string): Promise<string> {
+  const image = sharp(file);
   const { dominant } = await image.stats();
   const colorHex =
     dominant.r.toString(16) + dominant.g.toString(16) + dominant.b.toString(16);
