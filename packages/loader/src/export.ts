@@ -10,7 +10,7 @@ import {
   ImageProcessingResult,
   LoaderOptions,
 } from './types';
-import { getOptions, onlyUnique } from './utils';
+import { getAspectRatio, getOptions, onlyUnique } from './utils';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
   jpeg: 'jpg',
@@ -64,7 +64,7 @@ export default function exportLoader(
   const availableWidths = input.images.map((i) => i.width).filter(onlyUnique);
   const imageTypes = input.images.map((i) => i.format).filter(onlyUnique);
 
-  const aspectRatio = 1; // @todo !!!
+  const aspectRatio = input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1;
 
   // let cssImport: string | undefined;
 

@@ -4,7 +4,7 @@ import type {
   LqipColor,
   LqipInline,
 } from '@ember-responsive-image/core/types';
-import { Sharp } from 'sharp';
+import { Metadata, Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;
 
@@ -54,4 +54,5 @@ export interface ImageLoaderChainedResult {
   images: ImageProcessingResult[];
   sharp: Sharp;
   imports: string[];
+  sharpMeta?: Metadata;
 }

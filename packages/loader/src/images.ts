@@ -33,15 +33,16 @@ async function process(
   options: LoaderOptions
 ): Promise<ImageLoaderChainedResult> {
   const { sharp, ...rest } = data;
-  const meta = await sharp.metadata();
+  const sharpMeta = await sharp.metadata();
 
-  const formats = effectiveImageFormats(options.formats, meta);
+  const formats = effectiveImageFormats(options.formats, sharpMeta);
   const { widths } = options;
 
   const images = await generateResizedImages(sharp, widths, formats);
 
   return {
     sharp,
+    sharpMeta,
     ...rest,
     images,
   };
