@@ -9,7 +9,7 @@ const _dirname =
 
 const IMAGES_LOADER = resolve(_dirname, 'images');
 const EXPORT_LOADER = resolve(_dirname, 'export');
-const COLOR_LOADER = resolve(_dirname, 'color');
+const COLOR_LOADER = resolve(_dirname, 'lqip/color');
 
 export default class EmberResponsiveImageWebpackPlugin
   implements WebpackPluginInstance

@@ -11,7 +11,7 @@ export default function lqipColorLoader(
   const className = 'eri-color-foo'; // @todo
   const importCSS = `${
     this.resourcePath
-  }.css!=!@ember-responsive-image/loader/color-css!${
+  }.css!=!@ember-responsive-image/loader/lqip/color-css!${
     this.resourcePath
   }?className=${encodeURIComponent(className)}`;
 
