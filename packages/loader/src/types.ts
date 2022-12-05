@@ -18,14 +18,12 @@ export interface LqipColorLoaderOptions extends LqipBaseLoaderOptions {
 
 export interface LqipInlineLoaderOptions extends LqipBaseLoaderOptions {
   type: 'inline';
-  width: number;
-  height: number;
+  targetPixels?: number;
 }
 
 export interface LqipBlurhashLoaderOptions extends LqipBaseLoaderOptions {
   type: 'blurhash';
-  width: number;
-  height: number;
+  targetPixels?: number;
 }
 
 export type LqipLoaderOptions =

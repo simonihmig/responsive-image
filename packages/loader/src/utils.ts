@@ -98,16 +98,19 @@ export function onlyUnique<T>(value: T, index: number, self: T[]): boolean {
   return self.indexOf(value) === index;
 }
 
-// export function normalizeInput(
-//   image: Buffer,
-//   meta?: ImageLoaderChainedResult
-// ): ImageLoaderChainedResult {
-//   if (meta) {
-//     return meta;
-//   }
+export function dataUri(
+  data: string | Buffer,
+  type: string,
+  base64 = false
+): string {
+  return `data:${type};base64,${
+    base64 ? data : Buffer.from(data).toString('base64')
+  }`;
+}
 
-//   return {
-//     images: [],
-//     data: sharp(image),
-//   };
-// }
+export function blurrySvg(src: string, width: number, height: number): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}">
+<filter id="b" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".5"></feGaussianBlur><feComponentTransfer><feFuncA type="discrete" tableValues="1 1"></feFuncA></feComponentTransfer></filter>
+<image filter="url(#b)" preserveAspectRatio="none" height="100%" width="100%" xlink:href="${src}"></image>
+</svg>`;
+}
