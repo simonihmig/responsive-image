@@ -11,6 +11,7 @@ const IMAGES_LOADER = resolve(_dirname, 'images');
 const EXPORT_LOADER = resolve(_dirname, 'export');
 const COLOR_LOADER = resolve(_dirname, 'lqip/color');
 const INLINE_LOADER = resolve(_dirname, 'lqip/inline');
+const BLURHASH_LOADER = resolve(_dirname, 'lqip/blurhash');
 
 export default class EmberResponsiveImageWebpackPlugin
   implements WebpackPluginInstance
@@ -18,7 +19,13 @@ export default class EmberResponsiveImageWebpackPlugin
   apply(compiler: Compiler) {
     compiler.options.module.rules.unshift({
       test: /\.(png|jpe?g)$/,
-      use: [EXPORT_LOADER, COLOR_LOADER, INLINE_LOADER, IMAGES_LOADER],
+      use: [
+        EXPORT_LOADER,
+        COLOR_LOADER,
+        INLINE_LOADER,
+        BLURHASH_LOADER,
+        IMAGES_LOADER,
+      ],
       type: 'javascript/auto',
     });
   }

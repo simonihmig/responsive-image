@@ -195,24 +195,23 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get hasLqipBlurhash(): boolean {
-    return false;
     // if (macroCondition(getOwnConfig().usesBlurhash)) {
-    //   return this.args.src.lqip?.type === 'blurhash';
+    return this.args.src.lqip?.type === 'blurhash';
     // } else {
     //   return false;
     // }
   }
 
   get showLqipBlurhash(): boolean {
-    return !this.isLoaded && this.hasLqipBlurhash;
+    return false;
+    // return !this.isLoaded && this.hasLqipBlurhash;
   }
 
   get blurhashMeta(): LqipBlurhash | undefined {
-    return undefined;
     // if (macroCondition(getOwnConfig().usesBlurhash)) {
-    //   return this.args.src.lqip?.type === 'blurhash'
-    //     ? this.args.src.lqip
-    //     : undefined;
+    return this.args.src.lqip?.type === 'blurhash'
+      ? this.args.src.lqip
+      : undefined;
     // } else {
     //   return undefined;
     // }
