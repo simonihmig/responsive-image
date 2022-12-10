@@ -3,8 +3,13 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import type ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
+import type { ProviderResult } from '@ember-responsive-image/core/types';
 // @ts-expect-error todo how to make TS understand this?
 import testImage from 'test-app/images/tests/test.png';
+
+interface TestContext {
+  testImage: ProviderResult;
+}
 
 module('Helper: ResponsiveImageResolve', function (hooks) {
   setupRenderingTest(hooks);
@@ -13,7 +18,9 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
   });
 
   test('works without size', async function (assert) {
-    await render(hbs`<h1>{{responsive-image-resolve this.testImage}}</h1>`);
+    await render<TestContext>(
+      hbs`<h1>{{responsive-image-resolve this.testImage}}</h1>`
+    );
     assert
       .dom('h1')
       .hasText(new RegExp('/assets/images/test-2048w(-\\w+)?.png'));
@@ -24,7 +31,7 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
       'service:responsive-image'
     ) as ResponsiveImageService;
     service.set('physicalWidth', 100);
-    await render(
+    await render<TestContext>(
       hbs`<h1>{{responsive-image-resolve this.testImage size=45}}</h1>`
     );
 
@@ -35,7 +42,7 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
   });
 
   test('supports format', async function (assert) {
-    await render(
+    await render<TestContext>(
       hbs`<h1>{{responsive-image-resolve this.testImage format="webp"}}</h1>`
     );
 

@@ -20,7 +20,7 @@ export default {
       'services/**/*.js',
       'utils/**/*.js',
       'index.js',
-      'glint.js',
+      'template-registry.js',
       'types.js',
     ]),
 
