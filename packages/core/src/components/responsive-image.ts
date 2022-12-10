@@ -14,9 +14,11 @@ declare module '@embroider/macros' {
 }
 
 declare global {
-  const __eri_blurhash: {
-    bh2url: (hash: string, width: number, height: number) => string | undefined;
-  };
+  const __eri_blurhash2url: (
+    hash: string,
+    width: number,
+    height: number
+  ) => string | undefined;
 
   const FastBoot: unknown;
 }
@@ -195,41 +197,27 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get hasLqipBlurhash(): boolean {
-    // if (macroCondition(getOwnConfig().usesBlurhash)) {
     return this.args.src.lqip?.type === 'blurhash';
-    // } else {
-    //   return false;
-    // }
   }
 
   get showLqipBlurhash(): boolean {
-    return false;
-    // return !this.isLoaded && this.hasLqipBlurhash;
+    return !this.isLoaded && this.hasLqipBlurhash;
   }
 
   get blurhashMeta(): LqipBlurhash | undefined {
-    // if (macroCondition(getOwnConfig().usesBlurhash)) {
     return this.args.src.lqip?.type === 'blurhash'
       ? this.args.src.lqip
       : undefined;
-    // } else {
-    //   return undefined;
-    // }
   }
 
   get lqipBlurhash(): string | undefined {
-    return undefined;
-    // if (macroCondition(getOwnConfig().usesBlurhash)) {
-    //   if (!this.hasLqipBlurhash) {
-    //     return undefined;
-    //   }
-    //   const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
-    //   const uri = __eri_blurhash.bh2url(hash, width, height);
+    if (!this.hasLqipBlurhash) {
+      return undefined;
+    }
+    const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
+    const uri = __eri_blurhash2url(hash, width, height);
 
-    //   return `url("${uri}")`;
-    // } else {
-    //   return undefined;
-    // }
+    return `url("${uri}")`;
   }
 
   processUrl(url: string): string {
