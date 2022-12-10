@@ -1,8 +1,6 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-// Why is this required, but only in CI???
-// eslint-disable-next-line node/no-missing-require
 const EmberResponsiveImageWebpackPlugin = require('@ember-responsive-image/webpack');
 
 module.exports = function (defaults) {
