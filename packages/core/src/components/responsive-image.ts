@@ -14,11 +14,9 @@ declare module '@embroider/macros' {
 }
 
 declare global {
-  const __eri_blurhash2url: (
-    hash: string,
-    width: number,
-    height: number
-  ) => string | undefined;
+  const __eri_blurhash: {
+    bh2url: (hash: string, width: number, height: number) => string | undefined;
+  };
 
   const FastBoot: unknown;
 }
@@ -215,7 +213,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return undefined;
     }
     const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
-    const uri = __eri_blurhash2url(hash, width, height);
+    const uri = __eri_blurhash.bh2url(hash, width, height);
 
     return `url("${uri}")`;
   }

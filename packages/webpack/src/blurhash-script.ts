@@ -54,4 +54,4 @@ if (typeof FastBoot === 'undefined') {
 }
 
 // @ts-expect-error we make the function global, so our component can reuse the already loaded code
-window.__eri_blurhash2url = bh2url;
+window.__eri_blurhash = { bh2url, applySSR };
