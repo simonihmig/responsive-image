@@ -1,7 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const EmberResponsiveImageWebpackPlugin = require('@ember-responsive-image/webpack');
+const EmberResponsiveImageWebpackLoaders = require('@ember-responsive-image/webpack');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
@@ -31,30 +31,14 @@ module.exports = function (defaults) {
   return require('@embroider/compat').compatBuild(app, Webpack, {
     packagerOptions: {
       webpackConfig: {
-        plugins: [new EmberResponsiveImageWebpackPlugin()],
-        // module: {
-        //   rules: [
-        //     {
-        //       test: /\.(png|jpe?g)$/,
-        //       use: [
-        //         '@ember-responsive-image/loader/export',
-        //         {
-        //           loader: '@ember-responsive-image/loader/color',
-        //           options: {
-        //             // Set options for all transforms
-        //           },
-        //         },
-        //         {
-        //           loader: '@ember-responsive-image/loader/images',
-        //           options: {
-        //             // Set options for all transforms
-        //           },
-        //         },
-        //       ],
-        //       type: 'javascript/auto',
-        //     },
-        //   ],
-        // },
+        module: {
+          rules: [
+            {
+              resourceQuery: /responsive/,
+              use: EmberResponsiveImageWebpackLoaders,
+            },
+          ],
+        },
       },
     },
   });

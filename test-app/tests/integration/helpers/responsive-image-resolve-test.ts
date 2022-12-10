@@ -4,8 +4,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import type ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
 import type { ProviderResult } from '@ember-responsive-image/core/types';
-// @ts-expect-error todo how to make TS understand this?
-import testImage from 'test-app/images/tests/test.png';
+import testImage from 'test-app/images/tests/test.png?responsive';
 
 interface TestContext {
   testImage: ProviderResult;

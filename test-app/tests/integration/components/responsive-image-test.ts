@@ -5,16 +5,11 @@ import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import { ProviderResult } from '@ember-responsive-image/core/types';
 import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
-// @ts-expect-error TS does not understand this
-import testImage from 'test-app/images/tests/image.jpg?widths=50,100,640&formats=original,webp,avif';
-// @ts-expect-error TS does not understand this
-import testImageLqipInline from 'test-app/images/tests/image.jpg?lqip=inline&widths=50,100,640';
-// @ts-expect-error TS does not understand this
-import testImageLqipColor from 'test-app/images/tests/image.jpg?lqip=color&widths=50,100,640';
-// @ts-expect-error TS does not understand this
-import testImageLqipBlurhash from 'test-app/images/tests/image.jpg?lqip=blurhash&widths=50,100,640';
-// @ts-expect-error TS does not understand this
-import smallImage from 'test-app/images/tests/image.jpg?widths=10,25&formats=original,webp,avif';
+import testImage from 'test-app/images/tests/image.jpg?widths=50,100,640&formats=original,webp,avif&responsive';
+import testImageLqipInline from 'test-app/images/tests/image.jpg?lqip=inline&widths=50,100,640&responsive';
+import testImageLqipColor from 'test-app/images/tests/image.jpg?lqip=color&widths=50,100,640&responsive';
+import testImageLqipBlurhash from 'test-app/images/tests/image.jpg?lqip=blurhash&widths=50,100,640&responsive';
+import smallImage from 'test-app/images/tests/image.jpg?widths=10,25&formats=original,webp,avif&responsive';
 
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
