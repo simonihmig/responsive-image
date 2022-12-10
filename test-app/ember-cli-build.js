@@ -1,7 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const EmberResponsiveImageWebpackPlugin = require('@ember-responsive-image/loader');
+const EmberResponsiveImageWebpackPlugin = require('@ember-responsive-image/webpack');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
