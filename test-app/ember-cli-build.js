@@ -7,7 +7,17 @@ const EmberResponsiveImageWebpackLoaders =
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
-      watchDependencies: ['ember-responsive-image'],
+      watchDependencies: ['@ember-responsive-image/core'],
+      webpack: {
+        module: {
+          rules: [
+            {
+              resourceQuery: /responsive/,
+              use: EmberResponsiveImageWebpackLoaders,
+            },
+          ],
+        },
+      },
     },
     '@embroider/macros': {
       setConfig: {
@@ -25,11 +35,8 @@ module.exports = function (defaults) {
     },
   });
 
-  // const { maybeEmbroider } = require('@embroider/test-setup');
-  // return maybeEmbroider(app);
-
-  const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
+  const { maybeEmbroider } = require('@embroider/test-setup');
+  return maybeEmbroider(app, {
     packagerOptions: {
       webpackConfig: {
         module: {
@@ -43,4 +50,20 @@ module.exports = function (defaults) {
       },
     },
   });
+
+  // const { Webpack } = require('@embroider/webpack');
+  // return require('@embroider/compat').compatBuild(app, Webpack, {
+  //   packagerOptions: {
+  //     webpackConfig: {
+  //       module: {
+  //         rules: [
+  //           {
+  //             resourceQuery: /responsive/,
+  //             use: EmberResponsiveImageWebpackLoaders,
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   },
+  // });
 };
