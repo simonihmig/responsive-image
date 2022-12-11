@@ -35,7 +35,13 @@
   },
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2"
+    "@glimmer/tracking": "^1.1.2",
+    "@ember-responsive-image/webpack": "^3.4.0"
+  },
+  "peerDependenciesMeta": {
+    "@ember-responsive-image/webpack": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/core": "7.17.0",

@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src/**/*",
+    "types/**/*"
+  ]
+}

@@ -1,0 +1,13 @@
+diff --git a/node_modules/@embroider/webpack/src/ember-webpack.js b/node_modules/@embroider/webpack/src/ember-webpack.js
+index 2a13c1a..1865e98 100644
+--- a/node_modules/@embroider/webpack/src/ember-webpack.js
++++ b/node_modules/@embroider/webpack/src/ember-webpack.js
+@@ -154,7 +154,7 @@ const Webpack = (_a = class Webpack {
+             let entry = {};
+             for (let entrypoint of entrypoints) {
+                 for (let moduleName of entrypoint.modules) {
+-                    entry[moduleName] = './' + moduleName;
++                  entry[moduleName] = require.resolve(moduleName, { paths: [this.pathToVanillaApp] });
+                 }
+             }
+             let { plugins: stylePlugins, loaders: styleLoaders } = this.setupStyleConfig(variant);

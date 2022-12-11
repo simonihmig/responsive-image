@@ -4,7 +4,7 @@ import type ResponsiveImageService from '../services/responsive-image';
 import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { getOwnConfig, macroCondition } from '@embroider/macros';
+import { macroCondition, dependencySatisfies } from '@embroider/macros';
 import { ImageType, LqipBlurhash, ProviderResult } from '../types';
 
 import './responsive-image.css';
@@ -195,20 +195,50 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get hasLqipBlurhash(): boolean {
+    // @todo re-enable this when peer dependency issue is resolved by using pnpm
+    // if (
+    //   macroCondition(
+    //     dependencySatisfies('@ember-responsive-image/blurhash', '*')
+    //   )
+    // ) {
     return this.args.src.lqip?.type === 'blurhash';
+    // } else {
+    //   return false;
+    // }
   }
 
   get showLqipBlurhash(): boolean {
+    // if (
+    //   macroCondition(
+    //     dependencySatisfies('@ember-responsive-image/blurhash', '*')
+    //   )
+    // ) {
     return !this.isLoaded && this.hasLqipBlurhash;
+    // } else {
+    //   return false;
+    // }
   }
 
   get blurhashMeta(): LqipBlurhash | undefined {
+    // if (
+    //   macroCondition(
+    //     dependencySatisfies('@ember-responsive-image/blurhash', '*')
+    //   )
+    // ) {
     return this.args.src.lqip?.type === 'blurhash'
       ? this.args.src.lqip
       : undefined;
+    // } else {
+    //   return undefined;
+    // }
   }
 
   get lqipBlurhash(): string | undefined {
+    // if (
+    //   macroCondition(
+    //     dependencySatisfies('@ember-responsive-image/blurhash', '*')
+    //   )
+    // ) {
     if (!this.hasLqipBlurhash) {
       return undefined;
     }
@@ -216,6 +246,9 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     const uri = __eri_blurhash.bh2url(hash, width, height);
 
     return `url("${uri}")`;
+    // } else {
+    //   return undefined;
+    // }
   }
 
   processUrl(url: string): string {
