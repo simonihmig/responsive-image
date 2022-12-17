@@ -1,10 +1,11 @@
 import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
-import ResponsiveImageService from '../services/responsive-image';
-import { ImageType, OwnConfig, ProviderResult } from '../types';
+import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
+import { ImageType, ProviderResult } from '@ember-responsive-image/core/types';
 import { assert } from '@ember/debug';
-import { normalizeSrc } from '../utils/utils';
+import { normalizeSrc } from '@ember-responsive-image/core/utils/utils';
 import { getOwnConfig } from '@embroider/macros';
+import { ImgixConfig } from '../types';
 
 interface ResponsiveImageImgixProviderSignature {
   Args: {
@@ -29,8 +30,7 @@ export const provider = (
   _service: ResponsiveImageService,
   options: ImgixOptions
 ): ProviderResult => {
-  const domain = getOwnConfig<OwnConfig | undefined>()?.providers?.imgix
-    ?.domain;
+  const domain = getOwnConfig<ImgixConfig | undefined>()?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 
   return {

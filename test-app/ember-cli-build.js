@@ -11,15 +11,11 @@ module.exports = function (defaults) {
     },
     '@embroider/macros': {
       setConfig: {
-        '@ember-responsive-image/core': {
-          providers: {
-            cloudinary: {
-              cloudName: 'kaliber5',
-            },
-            imgix: {
-              domain: 'kaliber5.imgix.net',
-            },
-          },
+        '@ember-responsive-image/cloudinary': {
+          cloudName: 'kaliber5',
+        },
+        '@ember-responsive-image/imgix': {
+          domain: 'kaliber5.imgix.net',
         },
       },
     },

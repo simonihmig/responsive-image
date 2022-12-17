@@ -1,0 +1,17 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      // No paths, no absolute imports, only node_modules imports allowed
+      // But fallback for type-overrides and such
+      "*": ["types/*"]
+    }
+  },
+  "include": ["src/**/*", "types/**/*"],
+  "glint": {
+    "environment": "ember-loose",
+    "transform": {
+      "include": ["src/**"]
+    }
+  }
+}

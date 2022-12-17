@@ -1,7 +1,7 @@
 {
-  "name": "@ember-responsive-image/core",
+  "name": "@ember-responsive-image/imgix",
   "version": "3.4.0",
-  "description": "Automatically generate resized images at build-time, optimized for the responsive web, and using components to render them easily as <picture> elements.",
+  "description": "ember-responsive-image image provider for the Imgix image CDN",
   "keywords": [
     "ember-addon"
   ],
@@ -26,22 +26,13 @@
     "prepublishOnly": "rollup --config"
   },
   "dependencies": {
-    "@ember/render-modifiers": "^2.0.0",
     "@embroider/addon-shim": "^1.0.0",
-    "@embroider/macros": "^1.0.0",
-    "blurhash": "^1.1.3",
-    "ember-cached-decorator-polyfill": "^0.1.4",
-    "ember-style-modifier": "^1.0.0"
+    "@embroider/macros": "^1.0.0"
   },
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@ember-responsive-image/webpack": "^3.4.0"
-  },
-  "peerDependenciesMeta": {
-    "@ember-responsive-image/webpack": {
-      "optional": true
-    }
+    "@ember-responsive-image/core": "^3.4.0"
   },
   "devDependencies": {
     "@babel/core": "7.17.0",
@@ -51,6 +42,7 @@
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "7.20.2",
     "@babel/preset-typescript": "7.18.6",
+    "@ember-responsive-image/core": "^3.4.0",
     "@embroider/addon-dev": "2.0.0",
     "@glimmer/component": "1.1.2",
     "@glimmer/tracking": "1.1.2",
@@ -101,9 +93,7 @@
     "type": "addon",
     "main": "addon-main.js",
     "app-js": {
-      "./components/responsive-image.js": "./dist/_app_/components/responsive-image.js",
-      "./helpers/responsive-image-resolve.js": "./dist/_app_/helpers/responsive-image-resolve.js",
-      "./services/responsive-image.js": "./dist/_app_/services/responsive-image.js"
+      "./helpers/responsive-image-imgix-provider.js": "./dist/_app_/helpers/responsive-image-imgix-provider.js"
     }
   },
   "exports": {
