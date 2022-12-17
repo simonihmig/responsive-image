@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-ts';
+import copy from 'rollup-plugin-copy';
 import glob from 'glob';
 import externals from 'rollup-plugin-node-externals';
 import path from 'node:path';
@@ -30,6 +31,14 @@ export default {
       transpiler: 'babel',
       browserslist: false,
       transpileOnly: false,
+    }),
+
+    // Copy Readme and License into published package
+    copy({
+      targets: [
+        // { src: '../../README.md', dest: '.' },
+        { src: '../../LICENSE.md', dest: '.' },
+      ],
     }),
   ],
 };

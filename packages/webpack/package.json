@@ -15,10 +15,10 @@
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "lint:ts": "tsc --noEmit",
+    "lint:types": "tsc --noEmit",
     "start": "rollup --config --watch",
     "test": "echo 'No tests yet'",
-    "prepublishOnly": "rollup --config"
+    "prepack": "rollup --config"
   },
   "dependencies": {
     "base-n": "^3.0.0",
@@ -43,6 +43,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "glob": "8.0.3",
     "rollup": "2.67.0",
+    "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-node-externals": "5.0.2",
     "rollup-plugin-ts": "3.0.2",
     "typescript": "4.7.4"

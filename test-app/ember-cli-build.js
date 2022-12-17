@@ -7,7 +7,11 @@ const EmberResponsiveImageWebpackLoaders =
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
-      watchDependencies: ['ember-responsive-image'],
+      watchDependencies: [
+        '@ember-responsive-image/core',
+        '@ember-responsive-image/cloudinary',
+        '@ember-responsive-image/imgix',
+      ],
     },
     '@embroider/macros': {
       setConfig: {

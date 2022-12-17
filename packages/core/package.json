@@ -20,10 +20,10 @@
     "lint:js": "eslint . --cache",
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
     "lint:js:fix": "eslint . --fix",
-    "lint:ts": "glint",
+    "lint:types": "glint",
     "start": "rollup --config --watch",
     "test": "echo 'A v2 addon does not have tests, run tests in test-app'",
-    "prepublishOnly": "rollup --config"
+    "prepack": "rollup --config"
   },
   "dependencies": {
     "@ember/render-modifiers": "^2.0.0",
@@ -83,6 +83,7 @@
     "ember-template-lint": "4.18.2",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
+    "rollup-plugin-copy": "3.4.0",
     "eslint-plugin-ember": "10.5.8",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "4.0.0",
