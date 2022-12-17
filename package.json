@@ -10,7 +10,7 @@
     "test-app"
   ],
   "scripts": {
-    "build": "yarn workspace @ember-responsive-image/core run build && yarn workspace @ember-responsive-image/webpack run build && yarn workspace @ember-responsive-image/blurhash run build",
+    "build": "yarn workspace @ember-responsive-image/core run build && yarn workspace @ember-responsive-image/webpack run build && yarn workspace @ember-responsive-image/blurhash run build && yarn workspace @ember-responsive-image/cloudinary run build",
     "lint": "yarn workspaces run lint",
     "lint:fix": "yarn workspaces run lint:fix",
     "prepare": "yarn build",
