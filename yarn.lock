@@ -4186,7 +4186,7 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==
 
-chalk@5.1.2, chalk@^5.0.0, chalk@^5.0.1, chalk@^5.1.2:
+chalk@5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.1.2.tgz#d957f370038b75ac572471e83be4c5ca9f8e8c45"
   integrity sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==
@@ -4218,6 +4218,11 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chalk@^5.0.0, chalk@^5.0.1, chalk@^5.1.2, chalk@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.2.0.tgz#249623b7d66869c673699fb66d65723e54dfcfb3"
+  integrity sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==
 
 char-regex@^1.0.2:
   version "1.0.2"
@@ -5828,14 +5833,14 @@ ember-template-imports@^3.1.1, ember-template-imports@^3.4.0:
     string.prototype.matchall "^4.0.6"
     validate-peer-dependencies "^1.1.0"
 
-ember-template-lint@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-5.2.0.tgz#a1a925957933f9bd677c1a796a3f2fa7baa053ba"
-  integrity sha512-A0wQ1cmaTshIiVhl90QFiaTp1aLw0jy8/uUNWNwD/0PnnaKAi4Oz/wbfjKX/4ZKnhFHgjTFeVyeve1ItoqR7cg==
+ember-template-lint@5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-5.3.0.tgz#da91f704d0055db8e69ff13b5f98488cc76a8322"
+  integrity sha512-P4GsqYDN3bvTgN8+v3LQsBQVfDnu/EJJzZH8LqAYZxFfRQmBeZMcMFjB6I8QS9NYkYKOXO4I4ApiJYtFHRXsUw==
   dependencies:
     "@lint-todo/utils" "^13.0.3"
     aria-query "^5.0.2"
-    chalk "^5.1.2"
+    chalk "^5.2.0"
     ci-info "^3.7.0"
     date-fns "^2.29.2"
     ember-template-imports "^3.4.0"
