@@ -13,3 +13,9 @@ declare module '*responsive' {
   const value: ProviderResult;
   export default value;
 }
+
+declare module '*.jpg' {
+  import { ProviderResult } from '@ember-responsive-image/core/types';
+  const value: ProviderResult;
+  export default value;
+}
