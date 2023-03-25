@@ -130,6 +130,9 @@
     "typescript": "4.9.4",
     "webpack": "5.75.0"
   },
+  "peerDependencies": {
+    "ember-source": ">= 3.28.0"
+  },
   "engines": {
     "node": "14.* || 16.* || >= 18"
   },
