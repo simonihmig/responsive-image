@@ -7,6 +7,8 @@ import { ProviderResult } from 'ember-responsive-image/types';
 import config from 'dummy/config/environment';
 import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 
+import type { RenderingTestContext } from '@ember/test-helpers';
+
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -40,7 +42,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           );
       });
 
-      test('it renders width and height attributes', async function (assert) {
+      test('it renders width and height attributes', async function (this: RenderingTestContext, assert) {
         await render(
           hbs`<ResponsiveImage @src="assets/images/tests/test.png"/>`
         );
@@ -568,7 +570,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     module('LQIP', function () {
       module('inline', function () {
-        test('it sets LQIP SVG as background', async function (assert) {
+        test('it sets LQIP SVG as background', async function (this: RenderingTestContext, assert) {
           let resolve: (v: unknown) => void;
           const waitUntilLoaded = new Promise((r) => {
             resolve = r;
@@ -628,7 +630,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       module('blurhash', function () {
-        test('it sets LQIP from blurhash as background', async function (assert) {
+        test('it sets LQIP from blurhash as background', async function (this: RenderingTestContext, assert) {
           let resolve: (v: unknown) => void;
           const waitUntilLoaded = new Promise((r) => {
             resolve = r;
@@ -688,7 +690,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         assert.dom('img').hasNoClass('eri-fixed');
       });
 
-      test('it renders width and height attributes when aspect ratio is known', async function (assert) {
+      test('it renders width and height attributes when aspect ratio is known', async function (this: RenderingTestContext, assert) {
         this.set('providerResult', {
           ...defaultProviderResult,
           aspectRatio: 2,
