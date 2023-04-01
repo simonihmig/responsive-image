@@ -11,6 +11,8 @@ import testImageLqipColor from 'test-app/images/tests/image.jpg?lqip=color&width
 import testImageLqipBlurhash from 'test-app/images/tests/image.jpg?lqip=blurhash&widths=50,100,640&responsive';
 import smallImage from 'test-app/images/tests/image.jpg?widths=10,25&formats=original,webp,avif&responsive';
 
+import type { RenderingTestContext } from '@ember/test-helpers';
+
 module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -411,7 +413,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
     module('LQIP', function () {
       module('inline', function () {
-        test('it sets LQIP SVG as background', async function (assert) {
+        test('it sets LQIP SVG as background', async function (this: RenderingTestContext, assert) {
           let resolve: (v: unknown) => void;
           const waitUntilLoaded = new Promise((r) => {
             resolve = r;
@@ -471,7 +473,7 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       module('blurhash', function () {
-        test('it sets LQIP from blurhash as background', async function (assert) {
+        test('it sets LQIP from blurhash as background', async function (this: RenderingTestContext, assert) {
           let resolve: (v: unknown) => void;
           const waitUntilLoaded = new Promise((r) => {
             resolve = r;
@@ -531,7 +533,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         assert.dom('img').hasNoClass('eri-fixed');
       });
 
-      test('it renders width and height attributes when aspect ratio is known', async function (assert) {
+      test('it renders width and height attributes when aspect ratio is known', async function (this: RenderingTestContext, assert) {
         this.set('providerResult', {
           ...defaultProviderResult,
           aspectRatio: 2,
