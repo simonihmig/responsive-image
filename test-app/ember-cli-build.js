@@ -12,6 +12,16 @@ module.exports = function (defaults) {
         '@ember-responsive-image/cloudinary',
         '@ember-responsive-image/imgix',
       ],
+      webpack: {
+        module: {
+          rules: [
+            {
+              resourceQuery: /responsive/,
+              use: EmberResponsiveImageWebpackLoaders,
+            },
+          ],
+        },
+      },
     },
     '@embroider/macros': {
       setConfig: {
@@ -25,11 +35,8 @@ module.exports = function (defaults) {
     },
   });
 
-  // const { maybeEmbroider } = require('@embroider/test-setup');
-  // return maybeEmbroider(app);
-
-  const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
+  const { maybeEmbroider } = require('@embroider/test-setup');
+  return maybeEmbroider(app, {
     packagerOptions: {
       webpackConfig: {
         module: {
