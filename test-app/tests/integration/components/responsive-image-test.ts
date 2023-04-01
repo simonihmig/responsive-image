@@ -34,7 +34,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         assert.dom('img').hasNoClass('eri-fixed');
       });
 
-      test('it renders width and height attributes', async function (assert) {
+      test('it renders width and height attributes', async function (this: RenderingTestContext, assert) {
         await render(hbs`<ResponsiveImage @src={{this.testImage}} />`);
 
         assert.dom('img').hasAttribute('width');
