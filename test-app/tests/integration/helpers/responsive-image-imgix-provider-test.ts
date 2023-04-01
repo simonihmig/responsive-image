@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import setupDataDumper from 'test-app/tests/helpers/dump';
-import { ProviderResult } from '@ember-responsive-image/core/types';
+import { ProviderResult } from 'ember-responsive-image/types';
 
 module(
   'Integration | Helper | responsive-image-imgix-provider',

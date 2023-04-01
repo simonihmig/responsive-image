@@ -1,9 +1,9 @@
 import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
-import ResponsiveImageService from '@ember-responsive-image/core/services/responsive-image';
-import { ImageType, ProviderResult } from '@ember-responsive-image/core/types';
+import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import { assert } from '@ember/debug';
-import { normalizeSrc } from '@ember-responsive-image/core/utils/utils';
+import { normalizeSrc } from 'ember-responsive-image/utils/utils';
 import { getOwnConfig } from '@embroider/macros';
 import { CloudinaryConfig } from '../types';
 

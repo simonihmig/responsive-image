@@ -8,7 +8,7 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
       watchDependencies: [
-        '@ember-responsive-image/core',
+        'ember-responsive-image',
         '@ember-responsive-image/cloudinary',
         '@ember-responsive-image/imgix',
       ],

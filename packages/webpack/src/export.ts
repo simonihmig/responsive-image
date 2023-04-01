@@ -1,7 +1,4 @@
-import {
-  ImageOutputResult,
-  ImageType,
-} from '@ember-responsive-image/core/types';
+import { ImageOutputResult, ImageType } from 'ember-responsive-image/types';
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
 import type { LoaderContext } from 'webpack';
@@ -80,7 +77,7 @@ export default function exportLoader(
   // }
 
   const moduleOutput: string[] = [
-    "import { findMatchingImage } from '@ember-responsive-image/core/utils/utils';",
+    "import { findMatchingImage } from 'ember-responsive-image/utils/utils';",
   ];
 
   for (const importedModule of input.imports) {
