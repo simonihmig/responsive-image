@@ -16,6 +16,7 @@ export default {
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
     addon.publicEntrypoints([
+      'index.js',
       'helpers/**/*.js',
       'template-registry.js',
       'types.js',

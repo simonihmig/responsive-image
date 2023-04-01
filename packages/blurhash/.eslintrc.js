@@ -33,7 +33,7 @@ module.exports = {
     },
     // node files
     {
-      files: ['./.eslintrc.js', './.prettierrc.js'],
+      files: ['./.eslintrc.js', './.prettierrc.js', './addon-main.js'],
       parserOptions: {
         sourceType: 'script',
       },
