@@ -4,7 +4,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import type ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 import type { ProviderResult } from 'ember-responsive-image/types';
-import testImage from 'test-app/images/tests/test.png?responsive';
+import testImage from 'test-app/images/tests/test.png?&widths=640,2048&responsive';
 
 interface TestContext {
   testImage: ProviderResult;
