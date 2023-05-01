@@ -1291,14 +1291,15 @@
     resolve "^1.17.0"
     silent-error "^1.1.1"
 
-"@glint/core@0.9.7":
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/@glint/core/-/core-0.9.7.tgz#887dbdfa10d89702549de36197cc2eb0783a5c86"
-  integrity sha512-1YLHNRnuYI1dDUKWq/ue4JqiBt6TVR8e7VQJWy37CKB0tiBhWw/FPvr7/S7XbUxCt6KHO0Kl0x/eqLunu3WiQw==
+"@glint/core@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@glint/core/-/core-1.0.2.tgz#eb684b6b7c830b8e0a8e3ddda550bc269d1cbb5e"
+  integrity sha512-0bVt/lT/NurpD8nBG9RTPKYlcpg51UDGCKgLoBEFOiTXv3aCSxAVKPud1IYaitGBKE0C+s5pl2PHkgptotVS+w==
   dependencies:
-    "@glint/config" "^0.9.7"
-    "@glint/transform" "^0.9.7"
-    resolve "^1.17.0"
+    "@glimmer/syntax" "^0.84.2"
+    escape-string-regexp "^4.0.0"
+    semver "^7.3.8"
+    silent-error "^1.1.1"
     uuid "^8.3.2"
     vscode-languageserver "^8.0.1"
     vscode-languageserver-textdocument "^1.0.5"
@@ -1317,14 +1318,6 @@
   version "0.9.7"
   resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.9.7.tgz#8736f357482841962bc66e75831f189f33677165"
   integrity sha512-MCp8GxQDIbH8ZzfNxHhVqCSKlydBgQfBEwJLDpN81lgFRCldSDPueIbk8sz3EhpGiZJVdNQbpGeYIDsUXe1ocg==
-
-"@glint/transform@^0.9.7":
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/@glint/transform/-/transform-0.9.7.tgz#01c60249c1fe6663955d2acd2cf7625a551fb3f3"
-  integrity sha512-vd0th+Zo4cirYepASpC0fE0ZCqAcI9Y6qHYE0xi4+MY05bFRxBr7Q9ggDoWk+slynTyUrVgzCCeazAYOlZsYcg==
-  dependencies:
-    "@glimmer/syntax" "^0.84.2"
-    "@glint/config" "^0.9.7"
 
 "@handlebars/parser@~2.0.0":
   version "2.0.0"
