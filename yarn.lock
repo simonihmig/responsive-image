@@ -3389,7 +3389,7 @@ body-parser@1.20.1:
     type-is "~1.6.18"
     unpipe "1.0.0"
 
-body-parser@^1.18.3:
+body-parser@^1.20.0:
   version "1.20.2"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.20.2.tgz#6feb0e21c4724d06de7ff38da36dad4f57a747fd"
   integrity sha512-ml9pReCu3M61kGlqoTm2umSXTlRTuGTx0bfYj+uIUKKYycG5NtSbeetV3faSU6R7ajOPw0g/J1PvK4qNy7s5bA==
@@ -5218,7 +5218,7 @@ electron-to-chromium@^1.4.284:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.340.tgz#3a6d7414c1fc2dbf84b6f7af3ec24270606c85b8"
   integrity sha512-zx8hqumOqltKsv/MF50yvdAlPF9S/4PXbyfzJS6ZGhbddGkRegdwImmfSVqCkEziYzrIGZ/TlrzBND4FysfkDg==
 
-ember-auto-import@^2.2.3, ember-auto-import@^2.4.2, ember-auto-import@^2.5.0, ember-auto-import@^2.6.0:
+ember-auto-import@^2.4.2, ember-auto-import@^2.5.0, ember-auto-import@^2.6.0, ember-auto-import@^2.6.1:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-2.6.3.tgz#f18d1b93dd10b08ba5496518436f9d56dd4e000a"
   integrity sha512-uLhrRDJYWCRvQ4JQ1e64XlSrqAKSd6PXaJ9ZsZI6Tlms9T4DtQFxNXasqji2ZRJBVrxEoLCRYX3RTldsQ0vNGQ==
@@ -5335,19 +5335,19 @@ ember-cli-dependency-checker@3.3.2:
     resolve "^1.22.0"
     semver "^5.7.1"
 
-ember-cli-fastboot-testing@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-fastboot-testing/-/ember-cli-fastboot-testing-0.6.0.tgz#69cceecf05a64d79508e0de63166790d4539b46f"
-  integrity sha512-ppZyrb4qKjaF+JqsHgDtSic04V5Ut4i1z3FkT2n0IizzL1duQN3rqQgE0sKa8wR7B4tBd7Fc+JQL3VIkVwzBow==
+ember-cli-fastboot-testing@0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/ember-cli-fastboot-testing/-/ember-cli-fastboot-testing-0.6.1.tgz#6ecfcd6ee96817d90d14c3e72ccb6064d23412f5"
+  integrity sha512-nevPv77Wjk0Mslb0AF0wgHfbjki6Fi3/dapTrFz17WLX6n5maLr/MTL1hZcZdbT+69DHdgckCza8Z1WyxiUbBA==
   dependencies:
-    body-parser "^1.18.3"
-    ember-auto-import "^2.2.3"
-    ember-cli-babel "^7.26.6"
-    fastboot "^3.0.3"
+    body-parser "^1.20.0"
+    ember-auto-import "^2.6.1"
+    ember-cli-babel "^7.26.11"
+    fastboot "^3.0.3 || ^4.1.1"
     json-fn "^1.1.1"
-    minimist "^1.2.0"
-    nock "^13.1.4"
-    resolve "^1.10.0"
+    minimist "^1.2.6"
+    nock "^13.2.4"
+    resolve "^1.22.0"
     whatwg-fetch "^3.0.0"
 
 ember-cli-fastboot@3.3.2:
@@ -6701,10 +6701,23 @@ fastboot-transform@^0.1.3:
     broccoli-stew "^1.5.0"
     convert-source-map "^1.5.1"
 
-fastboot@3.3.2, fastboot@^3.0.3:
+fastboot@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/fastboot/-/fastboot-3.3.2.tgz#bf1ac7b01937846b63423a88138e13eb50406d2e"
   integrity sha512-2NKTW32GvEsDyBrdw1trW1JsbS+9/7sAQuKwkht12mNitimRrSKVLP2AxsM/HSXQE+aiET4XCfKdyeIy0kQbKQ==
+  dependencies:
+    chalk "^4.1.2"
+    cookie "^0.4.1"
+    debug "^4.3.3"
+    jsdom "^19.0.0"
+    resolve "^1.22.0"
+    simple-dom "^1.4.0"
+    source-map-support "^0.5.21"
+
+"fastboot@^3.0.3 || ^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/fastboot/-/fastboot-4.1.1.tgz#b686dc522ef805557ff76ded23328c486991cbaa"
+  integrity sha512-XG7YprsAuAGZrUDhmJ0NFuEP0gpWg9LZwGWSS1I5+f0ETHKPWqb4x59sN2rU1nvCEETBK70z68tLsWsl9daomg==
   dependencies:
     chalk "^4.1.2"
     cookie "^0.4.1"
@@ -10522,10 +10535,10 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
-nock@^13.1.4:
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/nock/-/nock-13.3.0.tgz#b13069c1a03f1ad63120f994b04bfd2556925768"
-  integrity sha512-HHqYQ6mBeiMc+N038w8LkMpDCRquCHWeNmN3v6645P3NhN2+qXOBqvPqo7Rt1VyCMzKhJ733wZqw5B7cQVFNPg==
+nock@^13.2.4:
+  version "13.3.2"
+  resolved "https://registry.yarnpkg.com/nock/-/nock-13.3.2.tgz#bfa6be92d37f744b1b758ea89b1105cdaf5c8b3f"
+  integrity sha512-CwbljitiWJhF1gL83NbanhoKs1l23TDlRioNraPTZrzZIEooPemrHRj5m0FZCPkB1ecdYCSWWGcHysJgX/ngnQ==
   dependencies:
     debug "^4.1.0"
     json-stringify-safe "^5.0.1"
