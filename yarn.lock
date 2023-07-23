@@ -6183,16 +6183,17 @@ eslint-formatter-kakoune@^1.0.0:
   resolved "https://registry.yarnpkg.com/eslint-formatter-kakoune/-/eslint-formatter-kakoune-1.0.0.tgz#a95cc4fe1fbc06b84e0f2397e83f5f0b68340125"
   integrity sha512-Uk/TVLt6Nf6Xoz7C1iYuZjOSdJxe5aaauGRke8JhKeJwD66Y61/pY2FjtLP04Ooq9PwV34bzrkKkU2UZ5FtDRA==
 
-eslint-plugin-ember@11.5.2:
-  version "11.5.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-11.5.2.tgz#0e30ce343c94f67c6366ff99f3dc4e2f717bb351"
-  integrity sha512-OFlBkV0VSemGtq3cZDWOm/kwOipiswvPIVL6VDJjpEv85BDtbGdqoyvaF9d6/MY7u5aDCh62oOgKQFw9JQGadA==
+eslint-plugin-ember@11.10.0:
+  version "11.10.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-11.10.0.tgz#46a696ebabcfefcf8212eb0eb2b11d61360c70fc"
+  integrity sha512-/5VanfpfzIdmWgXWyQ6ylAJWITu8mXivRce06h0uoifVpUoGaBdAkwuto/PLGfDxWdi43xWUFLb5Tpkhx2MoFg==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     "@glimmer/syntax" "^0.84.2"
     css-tree "^2.0.4"
     ember-rfc176-data "^0.3.15"
     ember-template-imports "^3.4.2"
+    ember-template-recast "^6.1.4"
     eslint-utils "^3.0.0"
     estraverse "^5.2.0"
     lodash.camelcase "^4.1.1"
