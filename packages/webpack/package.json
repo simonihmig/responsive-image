@@ -53,6 +53,9 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

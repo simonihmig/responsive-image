@@ -1,13 +1,6 @@
-import sharp, { Metadata, Sharp } from 'sharp';
+import sharp, { Metadata } from 'sharp';
 import { LoaderContext } from 'webpack';
-import { LoaderOptions, LqipInlineLoaderOptions } from '../types';
-import {
-  blurrySvg,
-  dataUri,
-  getAspectRatio,
-  getOptions,
-  parseQuery,
-} from '../utils';
+import { blurrySvg, dataUri, getAspectRatio, parseQuery } from '../utils';
 
 export default function lqipInlineCssLoader(
   this: LoaderContext<unknown>
