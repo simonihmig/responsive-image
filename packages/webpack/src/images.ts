@@ -20,7 +20,7 @@ export default function imagesLoader(
   const options = getOptions(this);
   const data = normalizeInput(input);
 
-  process(data, options)
+  process(data, options, this)
     .then((result) => {
       // @ts-expect-error wrong webpack types
       loaderCallback(null, result);
@@ -30,21 +30,28 @@ export default function imagesLoader(
 
 async function process(
   data: ImageLoaderChainedResult,
-  options: LoaderOptions
+  options: LoaderOptions,
+  context: LoaderContext<Partial<LoaderOptions>>
 ): Promise<ImageLoaderChainedResult> {
   const { sharp } = data;
-  const sharpMeta = await sharp.metadata();
+  try {
+    const sharpMeta = await sharp.metadata();
 
-  const formats = effectiveImageFormats(options.formats, sharpMeta);
-  const { widths } = options;
+    const formats = effectiveImageFormats(options.formats, sharpMeta);
+    const { widths } = options;
 
-  const images = await generateResizedImages(sharp, widths, formats);
+    const images = await generateResizedImages(sharp, widths, formats);
 
-  return {
-    sharpMeta,
-    ...data,
-    images,
-  };
+    return {
+      sharpMeta,
+      ...data,
+      images,
+    };
+  } catch (e) {
+    throw new Error(
+      `Failed to generate image data for ${context.resource}: ${e}`
+    );
+  }
 }
 
 // receive input as Buffer

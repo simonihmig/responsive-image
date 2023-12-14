@@ -12,6 +12,11 @@ module.exports = function (defaults) {
         '@ember-responsive-image/cloudinary',
         '@ember-responsive-image/imgix',
       ],
+      allowAppImports: [
+        'images/**/*.jpg',
+        'images/**/*.jpeg',
+        'images/**/*.png',
+      ],
       webpack: {
         module: {
           rules: [
