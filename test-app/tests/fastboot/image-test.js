@@ -35,10 +35,10 @@ module('FastBoot | image', function (hooks) {
     assert.ok(
       window
         .getComputedStyle(
-          document.querySelector('img[data-test-lqip-image=inline]')
+          document.querySelector('img[data-test-lqip-image=inline]'),
         )
         .backgroundImage?.match(/data:image\/svg/),
-      'it has a background SVG'
+      'it has a background SVG',
     );
   });
 
@@ -56,10 +56,10 @@ module('FastBoot | image', function (hooks) {
     assert.ok(
       window
         .getComputedStyle(
-          document.querySelector('img[data-test-lqip-image=blurhash]')
+          document.querySelector('img[data-test-lqip-image=blurhash]'),
         )
         .backgroundImage?.match(/data:image\/png/),
-      'it has a background PNG'
+      'it has a background PNG',
     );
   });
 });

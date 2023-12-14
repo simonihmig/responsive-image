@@ -18,7 +18,7 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
 
   test('works without size', async function (assert) {
     await render<TestContext>(
-      hbs`<h1>{{responsive-image-resolve this.testImage}}</h1>`
+      hbs`<h1>{{responsive-image-resolve this.testImage}}</h1>`,
     );
     assert
       .dom('h1')
@@ -27,11 +27,11 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
 
   test('supports size', async function (assert) {
     const service = this.owner.lookup(
-      'service:responsive-image'
+      'service:responsive-image',
     ) as ResponsiveImageService;
     service.set('physicalWidth', 100);
     await render<TestContext>(
-      hbs`<h1>{{responsive-image-resolve this.testImage size=45}}</h1>`
+      hbs`<h1>{{responsive-image-resolve this.testImage size=45}}</h1>`,
     );
 
     // @todo use custom sizes for loader here
@@ -42,7 +42,7 @@ module('Helper: ResponsiveImageResolve', function (hooks) {
 
   test('supports format', async function (assert) {
     await render<TestContext>(
-      hbs`<h1>{{responsive-image-resolve this.testImage format="webp"}}</h1>`
+      hbs`<h1>{{responsive-image-resolve this.testImage format="webp"}}</h1>`,
     );
 
     assert

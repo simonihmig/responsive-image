@@ -1,4 +1,4 @@
-import { ImageOutputResult } from 'ember-responsive-image/types';
+import type { ImageOutputResult } from 'ember-responsive-image/types';
 import { findMatchingImage } from 'ember-responsive-image/utils/utils';
 import { module, test } from 'qunit';
 
@@ -20,7 +20,7 @@ module('Unit | Utility | utils', function () {
       assert.strictEqual(findMatchingImage(images, 201, 'jpeg')?.url, 'jpg300');
       assert.strictEqual(
         findMatchingImage(images, 200, 'webp')?.url,
-        'webp200'
+        'webp200',
       );
     });
   });
