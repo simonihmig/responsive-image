@@ -72,5 +72,8 @@
       "types": "./dist/*.d.ts",
       "default": "./dist/*.js"
     }
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }
