@@ -5,30 +5,36 @@ const EmberResponsiveImageWebpackLoaders =
   require('@ember-responsive-image/webpack').loaders;
 
 module.exports = function (defaults) {
+  let usesEmbroider =
+    !!process.env.EMBROIDER_TEST_SETUP_OPTIONS ||
+    process.env.EMBROIDER_TEST_SETUP_FORCE === 'embroider';
+
   let app = new EmberApp(defaults, {
     'ember-cli-babel': { enableTypeScriptTransform: true },
-    autoImport: {
-      watchDependencies: [
-        'ember-responsive-image',
-        '@ember-responsive-image/cloudinary',
-        '@ember-responsive-image/imgix',
-      ],
-      allowAppImports: [
-        'images/**/*.jpg',
-        'images/**/*.jpeg',
-        'images/**/*.png',
-      ],
-      webpack: {
-        module: {
-          rules: [
-            {
-              resourceQuery: /responsive/,
-              use: EmberResponsiveImageWebpackLoaders,
-            },
+    autoImport: usesEmbroider
+      ? {}
+      : {
+          watchDependencies: [
+            'ember-responsive-image',
+            '@ember-responsive-image/cloudinary',
+            '@ember-responsive-image/imgix',
           ],
+          allowAppImports: [
+            'images/**/*.jpg',
+            'images/**/*.jpeg',
+            'images/**/*.png',
+          ],
+          webpack: {
+            module: {
+              rules: [
+                {
+                  resourceQuery: /responsive/,
+                  use: EmberResponsiveImageWebpackLoaders,
+                },
+              ],
+            },
+          },
         },
-      },
-    },
     '@embroider/macros': {
       setConfig: {
         '@ember-responsive-image/cloudinary': {
