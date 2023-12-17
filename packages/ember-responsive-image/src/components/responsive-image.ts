@@ -4,14 +4,14 @@ import type ResponsiveImageService from '../services/responsive-image';
 import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { macroCondition, dependencySatisfies } from '@embroider/macros';
+// import { macroCondition, dependencySatisfies } from '@embroider/macros';
 import { ImageType, LqipBlurhash, ProviderResult } from '../types';
 
 import './responsive-image.css';
 
-declare module '@embroider/macros' {
-  export function getOwnConfig(): { usesBlurhash: boolean };
-}
+// declare module '@embroider/macros' {
+//   export function getOwnConfig(): { usesBlurhash: boolean };
+// }
 
 declare global {
   const __eri_blurhash: {

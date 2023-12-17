@@ -19,8 +19,8 @@ import { dependencySatisfies } from '@embroider/macros';
         .dom('img[data-test-image]')
         .hasAttribute(
           'src',
-          new RegExp('https://res.cloudinary.com/kaliber5/')
+          new RegExp('https://res.cloudinary.com/kaliber5/'),
         );
     });
-  }
+  },
 );

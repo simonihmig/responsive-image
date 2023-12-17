@@ -4,7 +4,7 @@ declare module 'base-n' {
   }
 
   class factory {
-    static create: (options?: any) => BaseN;
+    static create: (options?: unknown) => BaseN;
   }
   export default factory;
 }
