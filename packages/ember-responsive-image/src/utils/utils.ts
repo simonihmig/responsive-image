@@ -1,6 +1,6 @@
 import Application, { getOwner } from '@ember/application';
 import { assert } from '@ember/debug';
-import { Image, ImageOutputResult, ImageType, Meta } from '../types';
+import { ImageOutputResult, ImageType, Meta } from '../types';
 
 export function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;

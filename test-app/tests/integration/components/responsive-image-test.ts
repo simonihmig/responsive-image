@@ -445,7 +445,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           });
           this.set('onload', () => setTimeout(resolve, 0));
 
-          await render<TestContext & { onload: () => {} }>(
+          await render<TestContext & { onload: () => void }>(
             hbs`<ResponsiveImage @src={{this.testImageLqipInline}} @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`,
           );
 
@@ -482,7 +482,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           });
           this.set('onload', () => setTimeout(resolve, 0));
 
-          await render<TestContext & { onload: () => {} }>(
+          await render<TestContext & { onload: () => void }>(
             hbs`<ResponsiveImage @src={{this.testImageLqipColor}} @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`,
           );
 
@@ -505,7 +505,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           });
           this.set('onload', () => setTimeout(resolve, 0));
 
-          await render<TestContext & { onload: () => {} }>(
+          await render<TestContext & { onload: () => void }>(
             hbs`<ResponsiveImage @src={{this.testImageLqipBlurhash}} @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`,
           );
 
