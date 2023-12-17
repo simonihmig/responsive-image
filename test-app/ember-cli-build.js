@@ -49,6 +49,8 @@ module.exports = function (defaults) {
 
   const { maybeEmbroider } = require('@embroider/test-setup');
   return maybeEmbroider(app, {
+    // This breaks with ember-cli-fastboot: https://github.com/ember-fastboot/ember-cli-fastboot/issues/925
+    staticEmberSource: false,
     packagerOptions: {
       webpackConfig: {
         module: {
