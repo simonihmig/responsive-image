@@ -14,7 +14,7 @@ import smallImage from 'test-app/images/tests/image.jpg?widths=10,25&formats=ori
 import type { RenderingTestContext } from '@ember/test-helpers';
 
 interface TestContext extends RenderingTestContext {
-  cacheBreaker: string;
+  cacheBreaker: () => string;
   testImage: ProviderResult;
   testImageLqipInline: ProviderResult;
   testImageLqipColor: ProviderResult;
@@ -26,7 +26,7 @@ module('Integration: Responsive Image Component', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.set('cacheBreaker', new Date().getTime());
+    this.set('cacheBreaker', () => new Date().getTime() + '#' + Math.random());
     this.set('testImage', testImage);
     this.set('testImageLqipInline', testImageLqipInline);
     this.set('testImageLqipColor', testImageLqipColor);
@@ -446,7 +446,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           this.set('onload', () => setTimeout(resolve, 0));
 
           await render<TestContext & { onload: () => void }>(
-            hbs`<ResponsiveImage @src={{this.testImageLqipInline}} @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`,
+            hbs`<ResponsiveImage @src={{this.testImageLqipInline}} @cacheBreaker={{(this.cacheBreaker)}} {{on "load" this.onload}}/>`,
           );
 
           assert.ok(
@@ -483,7 +483,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           this.set('onload', () => setTimeout(resolve, 0));
 
           await render<TestContext & { onload: () => void }>(
-            hbs`<ResponsiveImage @src={{this.testImageLqipColor}} @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`,
+            hbs`<ResponsiveImage @src={{this.testImageLqipColor}} @cacheBreaker={{(this.cacheBreaker)}} {{on "load" this.onload}}/>`,
           );
 
           assert.dom('img').hasStyle({ 'background-color': 'rgb(88, 72, 56)' });
@@ -506,7 +506,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           this.set('onload', () => setTimeout(resolve, 0));
 
           await render<TestContext & { onload: () => void }>(
-            hbs`<ResponsiveImage @src={{this.testImageLqipBlurhash}} @cacheBreaker={{this.cacheBreaker}} {{on "load" this.onload}}/>`,
+            hbs`<ResponsiveImage @src={{this.testImageLqipBlurhash}} @cacheBreaker={{(this.cacheBreaker)}} {{on "load" this.onload}}/>`,
           );
 
           assert.ok(
