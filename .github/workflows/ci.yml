@@ -6,6 +6,7 @@ on:
       - main
       - master
       - v2
+      - renovate/*
   pull_request: {}
 
 concurrency:
