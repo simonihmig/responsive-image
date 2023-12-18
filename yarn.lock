@@ -971,7 +971,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-runtime@^7.13.9", "@babel/plugin-transform-runtime@^7.19.6":
+"@babel/plugin-transform-runtime@7.19.6", "@babel/plugin-transform-runtime@^7.13.9":
   version "7.19.6"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.19.6.tgz#9d2a9dbf4e12644d6f46e5e75bfbf02b5d6e9194"
   integrity sha512-PRH37lz4JU156lYFW1p8OxE5i7d6Sl/zV58ooyr+q1J1lnQPyg5tIiXlIwNVhJaY4W3TmOtdc8jqdXQcB1v5Yw==
@@ -2125,7 +2125,7 @@
     "@pnpm/error" "5.0.2"
     find-up "^5.0.0"
 
-"@rollup/plugin-node-resolve@^15.0.1":
+"@rollup/plugin-node-resolve@15.0.1":
   version "15.0.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-15.0.1.tgz#72be449b8e06f6367168d5b3cd5e2802e0248971"
   integrity sha512-ReY88T7JhJjeRVbfCyNj+NXAG3IIsVMsX9b5/9jC98dRP8/yxlZdz7mHZbHk5zHr24wZZICS5AcXsFZAXYUQEg==
@@ -2137,7 +2137,7 @@
     is-module "^1.0.0"
     resolve "^1.22.1"
 
-"@rollup/plugin-terser@^0.4.0":
+"@rollup/plugin-terser@0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-terser/-/plugin-terser-0.4.0.tgz#4c76249ad337f3eb04ab409332f23717af2c1fbf"
   integrity sha512-Ipcf3LPNerey1q9ZMjiaWHlNPEHNU/B5/uh9zXLltfEQ1lVSLLeZSgAtTPWGyw8Ip1guOeq+mDtdOlEj/wNxQw==
@@ -2419,7 +2419,7 @@
   dependencies:
     "@types/ember__object" "*"
 
-"@types/ember__string@*", "@types/ember__string@^3.16.3":
+"@types/ember__string@*", "@types/ember__string@3.16.3":
   version "3.16.3"
   resolved "https://registry.yarnpkg.com/@types/ember__string/-/ember__string-3.16.3.tgz#6c474d422dfae5c382a3c52bd3c994048d04b72e"
   integrity sha512-0T9ofzm9LL/bSG5u1SxKx/j2h/bHKkl5NKjGCNbFQxEKBw4f2cs6+AMDgWke9z+qrRRIz9vGEtMXnA3yJrO2xA==
@@ -10940,15 +10940,15 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
+prettier@2.8.1, prettier@^2.5.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.1.tgz#4e1fd11c34e2421bc1da9aea9bd8127cd0a35efc"
+  integrity sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==
+
 prettier@3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.3.tgz#432a51f7ba422d1469096c0fdc28e235db8f9643"
   integrity sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==
-
-prettier@^2.5.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.1.tgz#4e1fd11c34e2421bc1da9aea9bd8127cd0a35efc"
-  integrity sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==
 
 printf@^0.6.1:
   version "0.6.1"
@@ -11374,7 +11374,7 @@ regjsparser@^0.9.1:
   dependencies:
     jsesc "~0.5.0"
 
-release-it-lerna-changelog@^3.1.0:
+release-it-lerna-changelog@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/release-it-lerna-changelog/-/release-it-lerna-changelog-3.1.0.tgz#cbcc877b40712e93a99a8b9a14e9e48290a82b9f"
   integrity sha512-VehiRVpIB37XfggFcwMwDZ3ncXmD4npgM2tGGTfa3CN8MFCCJPPIRvaqHySDC/YV8mN7oLZeGSI/exrKXeybmA==
@@ -11386,7 +11386,7 @@ release-it-lerna-changelog@^3.1.0:
     validate-peer-dependencies "^1.0.0"
     which "^2.0.2"
 
-release-it-yarn-workspaces@^2.0.0:
+release-it-yarn-workspaces@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/release-it-yarn-workspaces/-/release-it-yarn-workspaces-2.0.1.tgz#5edef8d499099a7cb3a83d48f090e32ba306e925"
   integrity sha512-dLX/mnvKpwDNvfbRm+ji3NWxVIEFlSac+29y2KkhPORKYgxFPKawhRm9/ESZOdnLIy7bIwtB17MILGhwohzVgw==
@@ -11398,7 +11398,7 @@ release-it-yarn-workspaces@^2.0.0:
     validate-peer-dependencies "^1.0.0"
     walk-sync "^2.0.2"
 
-release-it@^14.2.1:
+release-it@14.14.3:
   version "14.14.3"
   resolved "https://registry.yarnpkg.com/release-it/-/release-it-14.14.3.tgz#f398030bc07d91bf3616b680dcb4140e1023dd9c"
   integrity sha512-CU3ySDOzkcdpaJmzKG7QXhimWVOkh9dVqVMr5tBWXhAd5oWvUdH8Lo4Tq37eYOhcVLxoukRR2vrY8mt7wSULSw==
@@ -11975,7 +11975,7 @@ setprototypeof@1.2.0:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
 
-sharp@^0.31.1:
+sharp@0.31.2, sharp@^0.31.1:
   version "0.31.2"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.31.2.tgz#a8411c80512027f5a452b76d599268760c4e5dfa"
   integrity sha512-DUdNVEXgS5A97cTagSLIIp8dUZ/lZtk78iNVZgHdHbx1qnQR7JAHY0BnXnwwH39Iw+VKhO08CTYhIg0p98vQ5Q==
