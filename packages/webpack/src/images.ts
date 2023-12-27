@@ -1,7 +1,7 @@
 import type { ImageType } from 'ember-responsive-image';
 import type { Metadata, Sharp } from 'sharp';
 import type { LoaderContext } from 'webpack';
-import {
+import type {
   ImageLoaderChainedResult,
   ImageProcessingResult,
   LoaderOptions,

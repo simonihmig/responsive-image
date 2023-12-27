@@ -2,7 +2,7 @@ import type { ImageOutputResult, ImageType } from 'ember-responsive-image';
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
 import type { LoaderContext } from 'webpack';
-import {
+import type {
   ImageLoaderChainedResult,
   ImageProcessingResult,
   LoaderOptions,

@@ -1,5 +1,5 @@
-import { LoaderContext } from 'webpack';
-import { ImageLoaderChainedResult, LoaderOptions } from '../types';
+import type { LoaderContext } from 'webpack';
+import type { ImageLoaderChainedResult, LoaderOptions } from '../types';
 import { generateLqipClassName, getOptions, normalizeInput } from '../utils';
 
 export default function lqipColorLoader(
