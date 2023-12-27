@@ -3,7 +3,6 @@ import Helper from '@ember/component/helper';
 import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
 import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import { assert } from '@ember/debug';
-import { normalizeSrc } from 'ember-responsive-image/utils/utils';
 import { getOwnConfig } from '@embroider/macros';
 import { CloudinaryConfig } from '../types';
 
@@ -26,6 +25,10 @@ const URL_REGEX = /https?:/;
 const formatMap: Record<string, string> = {
   jpeg: 'jpg',
 };
+
+function normalizeSrc(src: string): string {
+  return src[0] === '/' ? src.slice(1) : src;
+}
 
 export const provider = (
   image: string,
