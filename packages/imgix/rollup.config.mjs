@@ -19,7 +19,6 @@ export default {
       'index.js',
       'helpers/**/*.js',
       'template-registry.js',
-      'types.js',
     ]),
 
     // These are the modules that should get reexported into the traditional

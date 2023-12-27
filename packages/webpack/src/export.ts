@@ -1,4 +1,4 @@
-import { ImageOutputResult, ImageType } from 'ember-responsive-image/types';
+import type { ImageOutputResult, ImageType } from 'ember-responsive-image';
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
 import type { LoaderContext } from 'webpack';
@@ -60,24 +60,10 @@ export default function exportLoader(
   const emittedImages = input.images.map(createImageFile);
   const availableWidths = input.images.map((i) => i.width).filter(onlyUnique);
   const imageTypes = input.images.map((i) => i.format).filter(onlyUnique);
-
   const aspectRatio = input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1;
 
-  // let cssImport: string | undefined;
-
-  // if (input.css.length > 0) {
-  //   const css = input.css.join(`\n`);
-  //   const cssFileName = interpolateName(this, '[name]-[hash].css', {
-  //     // context: outputContext,
-  //     content: css,
-  //     // content: data.toString(),
-  //   });
-  //   this.emitFile(cssFileName, css);
-  //   cssImport = cssFileName;
-  // }
-
   const moduleOutput: string[] = [
-    "import { findMatchingImage } from 'ember-responsive-image/utils/utils';",
+    "import { findMatchingImage } from 'ember-responsive-image';",
   ];
 
   for (const importedModule of input.imports) {

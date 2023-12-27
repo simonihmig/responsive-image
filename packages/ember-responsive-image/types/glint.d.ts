@@ -1,5 +1,6 @@
 import Helper from '@ember/component/helper';
 import '@glint/environment-ember-loose';
+import 'ember-cached-decorator-polyfill';
 import Modifier from 'ember-modifier';
 import AddonRegistry from '../src/template-registry';
 

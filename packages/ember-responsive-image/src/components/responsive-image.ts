@@ -5,7 +5,7 @@ import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { macroCondition, dependencySatisfies } from '@embroider/macros';
-import { ImageType, LqipBlurhash, ProviderResult } from '../types';
+import { ImageType, LqipBlurhash, ImageData } from '../types';
 
 import './responsive-image.css';
 
@@ -20,7 +20,7 @@ declare global {
 export interface ResponsiveImageComponentSignature {
   Element: HTMLImageElement;
   Args: {
-    src: ProviderResult;
+    src: ImageData;
     size?: number;
     sizes?: string;
     width?: number;

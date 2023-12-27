@@ -3,7 +3,7 @@ import type {
   LqipBlurhash,
   LqipColor,
   LqipInline,
-} from 'ember-responsive-image/types';
+} from 'ember-responsive-image';
 import { Metadata, Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;

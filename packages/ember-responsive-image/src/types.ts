@@ -21,28 +21,7 @@ export interface LqipBlurhash extends LqipBase {
   height: number;
 }
 
-export interface Image {
-  image: string;
-  width: number;
-  height: number;
-  type: ImageType;
-}
-
-export interface ImageMeta {
-  widths: number[];
-  formats: ImageType[];
-  aspectRatio: number;
-  fingerprint?: string;
-  lqip?: LqipInline | LqipColor | LqipBlurhash;
-}
-
-export interface Meta {
-  deviceWidths: number[];
-  providers?: Record<string, unknown>;
-  images: Record<string, ImageMeta>;
-}
-
-export interface ProviderResult {
+export interface ImageData {
   imageTypes: ImageType[];
   availableWidths?: number[];
   aspectRatio?: number;

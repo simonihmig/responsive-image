@@ -1,5 +1,5 @@
-import type { ImageOutputResult } from 'ember-responsive-image/types';
-import { findMatchingImage } from 'ember-responsive-image/utils/utils';
+import type { ImageOutputResult } from 'ember-responsive-image';
+import { findMatchingImage } from 'ember-responsive-image';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | utils', function () {

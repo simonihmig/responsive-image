@@ -30,7 +30,6 @@
     "@embroider/addon-shim": "^1.0.0",
     "@embroider/macros": "^1.0.0",
     "blurhash": "^2.0.0",
-    "ember-cached-decorator-polyfill": "^1.0.0",
     "ember-style-modifier": "^3.0.0"
   },
   "peerDependencies": {
@@ -82,6 +81,7 @@
     "@typescript-eslint/eslint-plugin": "6.15.0",
     "@typescript-eslint/parser": "6.15.0",
     "concurrently": "8.2.2",
+    "ember-cached-decorator-polyfill": "1.0.2",
     "ember-modifier": "4.1.0",
     "ember-template-lint": "5.13.0",
     "eslint": "8.56.0",

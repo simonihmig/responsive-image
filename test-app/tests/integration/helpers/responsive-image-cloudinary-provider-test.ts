@@ -2,10 +2,10 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, type RenderingTestContext } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import type { ProviderResult } from 'ember-responsive-image/types';
+import type { ImageData } from 'ember-responsive-image';
 
 interface TestContext extends RenderingTestContext {
-  dump: (argument: ProviderResult) => void;
+  dump: (argument: ImageData) => void;
 }
 
 module(
@@ -13,9 +13,9 @@ module(
   function (hooks) {
     setupRenderingTest(hooks);
 
-    let data: ProviderResult | undefined;
+    let data: ImageData | undefined;
     hooks.before(function (this: TestContext) {
-      this.dump = (argument: ProviderResult) => {
+      this.dump = (argument: ImageData) => {
         data = argument;
       };
     });

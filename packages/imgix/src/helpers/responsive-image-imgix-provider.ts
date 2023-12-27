@@ -1,18 +1,21 @@
 import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
-import { ImageType, ProviderResult } from 'ember-responsive-image/types';
 import { assert } from '@ember/debug';
-import { normalizeSrc } from 'ember-responsive-image/utils/utils';
 import { getOwnConfig } from '@embroider/macros';
 import { ImgixConfig } from '../types';
 
-interface ResponsiveImageImgixProviderSignature {
+import type {
+  ResponsiveImageService,
+  ImageType,
+  ImageData,
+} from 'ember-responsive-image';
+
+interface ImgixProviderSignature {
   Args: {
     Positional: [string];
     Named: ImgixOptions;
   };
-  Return: ProviderResult;
+  Return: ImageData;
 }
 
 interface ImgixOptions {
@@ -25,11 +28,15 @@ const formatMap: Record<string, string> = {
   jpeg: 'jpg',
 };
 
+function normalizeSrc(src: string): string {
+  return src[0] === '/' ? src.slice(1) : src;
+}
+
 export const provider = (
   image: string,
   _service: ResponsiveImageService,
   options: ImgixOptions
-): ProviderResult => {
+): ImageData => {
   const domain = getOwnConfig<ImgixConfig | undefined>()?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 
@@ -65,11 +72,11 @@ export const provider = (
   };
 };
 
-export default class ResponsiveImageImgixProvider extends Helper<ResponsiveImageImgixProviderSignature> {
+export default class ImgixProvider extends Helper<ImgixProviderSignature> {
   @service
   responsiveImage!: ResponsiveImageService;
 
-  compute([image]: [string], options: ImgixOptions): ProviderResult {
+  compute([image]: [string], options: ImgixOptions): ImageData {
     return provider(image, this.responsiveImage, options);
   }
 }

@@ -1,5 +1,5 @@
-import type ResponsiveImageCloudinaryProvider from './helpers/responsive-image-cloudinary-provider';
+import type CloudinaryProvider from './helpers/responsive-image-cloudinary-provider';
 
 export default interface Registry {
-  'responsive-image-cloudinary-provider': typeof ResponsiveImageCloudinaryProvider;
+  'responsive-image-cloudinary-provider': typeof CloudinaryProvider;
 }
