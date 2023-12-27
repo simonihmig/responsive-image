@@ -7,7 +7,7 @@ import { ImgixConfig } from '../types';
 import type {
   ResponsiveImageService,
   ImageType,
-  ProviderResult,
+  ImageData,
 } from 'ember-responsive-image';
 
 interface ImgixProviderSignature {
@@ -15,7 +15,7 @@ interface ImgixProviderSignature {
     Positional: [string];
     Named: ImgixOptions;
   };
-  Return: ProviderResult;
+  Return: ImageData;
 }
 
 interface ImgixOptions {
@@ -36,7 +36,7 @@ export const provider = (
   image: string,
   _service: ResponsiveImageService,
   options: ImgixOptions
-): ProviderResult => {
+): ImageData => {
   const domain = getOwnConfig<ImgixConfig | undefined>()?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 
@@ -76,7 +76,7 @@ export default class ImgixProvider extends Helper<ImgixProviderSignature> {
   @service
   responsiveImage!: ResponsiveImageService;
 
-  compute([image]: [string], options: ImgixOptions): ProviderResult {
+  compute([image]: [string], options: ImgixOptions): ImageData {
     return provider(image, this.responsiveImage, options);
   }
 }

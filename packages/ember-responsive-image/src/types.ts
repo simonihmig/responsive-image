@@ -21,7 +21,7 @@ export interface LqipBlurhash extends LqipBase {
   height: number;
 }
 
-export interface ProviderResult {
+export interface ImageData {
   imageTypes: ImageType[];
   availableWidths?: number[];
   aspectRatio?: number;

@@ -7,7 +7,7 @@ import { CloudinaryConfig } from '../types';
 import type {
   ResponsiveImageService,
   ImageType,
-  ProviderResult,
+  ImageData,
 } from 'ember-responsive-image';
 
 interface CloudinaryOptions {
@@ -21,7 +21,7 @@ interface CloudinaryProviderSignature {
     Positional: [string];
     Named: CloudinaryOptions;
   };
-  Return: ProviderResult;
+  Return: ImageData;
 }
 
 const URL_REGEX = /https?:/;
@@ -38,7 +38,7 @@ export const provider = (
   image: string,
   _service: ResponsiveImageService,
   options: CloudinaryOptions
-): ProviderResult => {
+): ImageData => {
   const cloudName = getOwnConfig<CloudinaryConfig | undefined>()?.cloudName;
   assert(
     'cloudName must be set for cloudinary provider!',
@@ -80,7 +80,7 @@ export default class CloudinaryProvider extends Helper<CloudinaryProviderSignatu
   @service
   responsiveImage!: ResponsiveImageService;
 
-  compute([image]: [string], options: CloudinaryOptions): ProviderResult {
+  compute([image]: [string], options: CloudinaryOptions): ImageData {
     return provider(image, this.responsiveImage, options);
   }
 }

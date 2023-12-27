@@ -1,12 +1,12 @@
 import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Helper from '@ember/component/helper';
-import { ImageType, ProviderResult } from '../types';
+import { ImageType, ImageData } from '../types';
 import ResponsiveImageService from '../services/responsive-image';
 
 interface ResponsiveImageResolveSignature {
   Args: {
-    Positional: [ProviderResult];
+    Positional: [ImageData];
     Named: {
       size?: number;
       format?: ImageType;
@@ -26,7 +26,7 @@ export default class ResponsiveImageResolve extends Helper<ResponsiveImageResolv
   responsiveImage!: ResponsiveImageService;
 
   compute(
-    [data]: [ProviderResult],
+    [data]: [ImageData],
     { size, format = data.imageTypes[0] }: { size?: number; format?: ImageType }
   ): ReturnType<typeof htmlSafe> | undefined {
     const width = this.responsiveImage.getDestinationWidthBySize(size ?? 0);
