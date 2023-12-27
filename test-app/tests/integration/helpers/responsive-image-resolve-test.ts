@@ -2,14 +2,11 @@ import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import type {
-  ResponsiveImageService,
-  ProviderResult,
-} from 'ember-responsive-image';
+import type { ResponsiveImageService, ImageData } from 'ember-responsive-image';
 import testImage from 'test-app/images/tests/test.png?&widths=640,2048&responsive';
 
 interface TestContext {
-  testImage: ProviderResult;
+  testImage: ImageData;
 }
 
 module('Helper: ResponsiveImageResolve', function (hooks) {

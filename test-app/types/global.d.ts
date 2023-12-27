@@ -9,7 +9,7 @@ declare module 'test-app/templates/*' {
 // We cannot use something like `*.jpg*` that works with queries, as TS only supports a single wildcard.
 // See https://github.com/microsoft/TypeScript/issues/38638
 declare module '*responsive' {
-  import { ProviderResult } from 'ember-responsive-image';
-  const value: ProviderResult;
+  import { ImageData } from 'ember-responsive-image';
+  const value: ImageData;
   export default value;
 }

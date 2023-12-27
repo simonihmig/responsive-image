@@ -3,10 +3,7 @@ import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
-import type {
-  ResponsiveImageService,
-  ProviderResult,
-} from 'ember-responsive-image';
+import type { ResponsiveImageService, ImageData } from 'ember-responsive-image';
 import testImage from 'test-app/images/tests/image.jpg?widths=50,100,640&formats=original,webp,avif&responsive';
 import testImageLqipInline from 'test-app/images/tests/image.jpg?lqip=inline&widths=50,100,640&responsive';
 import testImageLqipColor from 'test-app/images/tests/image.jpg?lqip=color&widths=50,100,640&responsive';
@@ -17,11 +14,11 @@ import type { RenderingTestContext } from '@ember/test-helpers';
 
 interface TestContext extends RenderingTestContext {
   cacheBreaker: () => string;
-  testImage: ProviderResult;
-  testImageLqipInline: ProviderResult;
-  testImageLqipColor: ProviderResult;
-  testImageLqipBlurhash: ProviderResult;
-  smallImage: ProviderResult;
+  testImage: ImageData;
+  testImageLqipInline: ImageData;
+  testImageLqipColor: ImageData;
+  testImageLqipBlurhash: ImageData;
+  smallImage: ImageData;
 }
 
 module('Integration: Responsive Image Component', function (hooks) {
@@ -539,7 +536,7 @@ module('Integration: Responsive Image Component', function (hooks) {
   });
 
   module('source from provider', function (hooks) {
-    const defaultProviderResult: ProviderResult = {
+    const defaultImageData: ImageData = {
       imageTypes: ['jpeg', 'webp'],
       imageUrlFor(width, type = 'jpeg') {
         return `/provider/w${width}/image.${type}`;
@@ -547,17 +544,17 @@ module('Integration: Responsive Image Component', function (hooks) {
     };
 
     hooks.beforeEach(function () {
-      this.set('defaultProviderResult', defaultProviderResult);
+      this.set('defaultImageData', defaultImageData);
     });
 
     interface TestContextWithDefaultProvider extends TestContext {
-      defaultProviderResult: ProviderResult;
+      defaultImageData: ImageData;
     }
 
     module('responsive layout', function () {
       test('it has responsive layout by default', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @src={{this.defaultProviderResult}}/>`,
+          hbs`<ResponsiveImage @src={{this.defaultImageData}}/>`,
         );
 
         assert.dom('img').hasClass('eri-responsive');
@@ -565,13 +562,13 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       test('it renders width and height attributes when aspect ratio is known', async function (this: RenderingTestContext, assert) {
-        this.set('providerResult', {
-          ...defaultProviderResult,
+        this.set('imageData', {
+          ...defaultImageData,
           aspectRatio: 2,
         });
-        await render<
-          TestContextWithDefaultProvider & { providerResult: ProviderResult }
-        >(hbs`<ResponsiveImage @src={{this.providerResult}}/>`);
+        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+          hbs`<ResponsiveImage @src={{this.imageData}}/>`,
+        );
 
         assert.dom('img').hasAttribute('width');
         assert.dom('img').hasAttribute('height');
@@ -590,7 +587,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders the sourceset based on deviceWidths', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @src={{this.defaultProviderResult}}/>`,
+          hbs`<ResponsiveImage @src={{this.defaultImageData}}/>`,
         );
 
         // webp
@@ -611,14 +608,14 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       test('it renders the sourceset based on provided widths', async function (assert) {
-        this.set('providerResult', {
-          ...defaultProviderResult,
+        this.set('imageData', {
+          ...defaultImageData,
           availableWidths: [320, 640],
         });
 
-        await render<
-          TestContextWithDefaultProvider & { providerResult: ProviderResult }
-        >(hbs`<ResponsiveImage @src={{this.providerResult}}/>`);
+        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+          hbs`<ResponsiveImage @src={{this.imageData}}/>`,
+        );
 
         // webp
         assert
@@ -643,7 +640,7 @@ module('Integration: Responsive Image Component', function (hooks) {
         ) as ResponsiveImageService;
         service.set('physicalWidth', 100);
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @src={{this.defaultProviderResult}}/>`,
+          hbs`<ResponsiveImage @src={{this.defaultImageData}}/>`,
         );
         assert
           .dom('img')
@@ -652,7 +649,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders a given size as sizes', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @src={{this.defaultProviderResult}} @size={{40}}/>`,
+          hbs`<ResponsiveImage @src={{this.defaultImageData}} @size={{40}}/>`,
         );
         assert
           .dom('picture source[type="image/jpeg"]')
@@ -664,7 +661,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders with given sizes', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @src={{this.defaultProviderResult}} @sizes="(max-width: 767px) 100vw, 50vw"/>`,
+          hbs`<ResponsiveImage @src={{this.defaultImageData}} @sizes="(max-width: 767px) 100vw, 50vw"/>`,
         );
         assert
           .dom('picture source[type="image/jpeg"]')
@@ -678,7 +675,7 @@ module('Integration: Responsive Image Component', function (hooks) {
     module('fixed layout', function () {
       test('it has fixed layout when width or height is provided', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @src={{this.defaultProviderResult}} @width={{100}}/>`,
+          hbs`<ResponsiveImage @src={{this.defaultImageData}} @width={{100}}/>`,
         );
 
         assert.dom('img').hasClass('eri-fixed');
@@ -687,7 +684,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders width and height when given', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @src={{this.defaultProviderResult}} @width={{150}} @height={{50}} />`,
+          hbs`<ResponsiveImage @src={{this.defaultImageData}} @width={{150}} @height={{50}} />`,
         );
 
         assert.dom('img').hasAttribute('width', '150');
@@ -695,26 +692,26 @@ module('Integration: Responsive Image Component', function (hooks) {
       });
 
       test('it renders height when width is given according to aspect ratio', async function (assert) {
-        this.set('providerResult', {
-          ...defaultProviderResult,
+        this.set('imageData', {
+          ...defaultImageData,
           aspectRatio: 2,
         });
-        await render<
-          TestContextWithDefaultProvider & { providerResult: ProviderResult }
-        >(hbs`<ResponsiveImage @src={{this.providerResult}} @width={{150}}/>`);
+        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+          hbs`<ResponsiveImage @src={{this.imageData}} @width={{150}}/>`,
+        );
 
         assert.dom('img').hasAttribute('width', '150');
         assert.dom('img').hasAttribute('height', '75');
       });
 
       test('it renders width when height is given according to aspect ratio', async function (assert) {
-        this.set('providerResult', {
-          ...defaultProviderResult,
+        this.set('imageData', {
+          ...defaultImageData,
           aspectRatio: 2,
         });
-        await render<
-          TestContextWithDefaultProvider & { providerResult: ProviderResult }
-        >(hbs`<ResponsiveImage @src={{this.providerResult}} @height={{100}}/>`);
+        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+          hbs`<ResponsiveImage @src={{this.imageData}} @height={{100}}/>`,
+        );
 
         assert.dom('img').hasAttribute('width', '200');
         assert.dom('img').hasAttribute('height', '100');
@@ -722,7 +719,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders the correct sourceset with pixel densities', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @width={{50}} @src={{this.defaultProviderResult}}/>`,
+          hbs`<ResponsiveImage @width={{50}} @src={{this.defaultImageData}}/>`,
         );
 
         // webp
@@ -744,7 +741,7 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       test('it renders the fallback src next to needed display size', async function (assert) {
         await render<TestContextWithDefaultProvider>(
-          hbs`<ResponsiveImage @width={{320}} @src={{this.defaultProviderResult}}/>`,
+          hbs`<ResponsiveImage @width={{320}} @src={{this.defaultImageData}}/>`,
         );
         assert.dom('img').hasAttribute('src', '/provider/w320/image.jpeg');
       });
