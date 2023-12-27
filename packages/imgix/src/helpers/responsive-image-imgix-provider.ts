@@ -7,7 +7,7 @@ import { normalizeSrc } from 'ember-responsive-image/utils/utils';
 import { getOwnConfig } from '@embroider/macros';
 import { ImgixConfig } from '../types';
 
-interface ResponsiveImageImgixProviderSignature {
+interface ImgixProviderSignature {
   Args: {
     Positional: [string];
     Named: ImgixOptions;
@@ -65,7 +65,7 @@ export const provider = (
   };
 };
 
-export default class ResponsiveImageImgixProvider extends Helper<ResponsiveImageImgixProviderSignature> {
+export default class ImgixProvider extends Helper<ImgixProviderSignature> {
   @service
   responsiveImage!: ResponsiveImageService;
 

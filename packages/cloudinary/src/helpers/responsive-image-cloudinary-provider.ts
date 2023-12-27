@@ -13,7 +13,7 @@ interface CloudinaryOptions {
   quality?: number;
 }
 
-interface ResponsiveImageCloudinaryProviderSignature {
+interface CloudinaryProviderSignature {
   Args: {
     Positional: [string];
     Named: CloudinaryOptions;
@@ -69,7 +69,7 @@ export const provider = (
   };
 };
 
-export default class ResponsiveImageCloudinaryProvider extends Helper<ResponsiveImageCloudinaryProviderSignature> {
+export default class CloudinaryProvider extends Helper<CloudinaryProviderSignature> {
   @service
   responsiveImage!: ResponsiveImageService;
 

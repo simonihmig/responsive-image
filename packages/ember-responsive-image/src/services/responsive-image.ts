@@ -33,18 +33,4 @@ export default class ResponsiveImageService extends Service {
 
     return physicalWidth * factor;
   }
-
-  // public getProviderConfig<CONFIG = unknown>(
-  //   provider: string
-  // ): Partial<CONFIG> {
-  //   // @todo
-  //   return {};
-  //   // return (this.meta.providers?.[provider] as Partial<CONFIG>) ?? {};
-  // }
-
-  // public getType(imageName: string): ImageType {
-  //   const extension = imageName.split('.').pop();
-  //   assert(`No extension found for ${imageName}`, extension);
-  //   return extentionTypeMapping.get(extension) ?? (extension as ImageType);
-  // }
 }
