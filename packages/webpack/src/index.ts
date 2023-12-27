@@ -1,8 +1,10 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'node:module';
-export * from './utils';
-export * from './types';
+export { getAspectRatio, getOptions, normalizeInput } from './utils';
+
+import type { LoaderOptions } from './types';
+export type { LoaderOptions, ImageLoaderChainedResult } from './types';
 
 const require = createRequire(import.meta.url);
 
@@ -23,7 +25,7 @@ try {
   // do nothing if package is not available
 }
 
-const loaders: string[] = [
+const defaultLoaders: string[] = [
   EXPORT_LOADER,
   COLOR_LOADER,
   INLINE_LOADER,
@@ -31,4 +33,12 @@ const loaders: string[] = [
   IMAGES_LOADER,
 ].filter(Boolean) as string[];
 
-export { loaders };
+function setupLoaders(options?: LoaderOptions) {
+  if (options) {
+    return defaultLoaders.map((loader) => ({ loader, options }));
+  }
+
+  return defaultLoaders;
+}
+
+export { setupLoaders };

@@ -1,8 +1,9 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const EmberResponsiveImageWebpackLoaders =
-  require('@ember-responsive-image/webpack').loaders;
+const { setupLoaders } = require('@ember-responsive-image/webpack');
+
+const EmberResponsiveImageWebpackLoaders = setupLoaders();
 
 module.exports = function (defaults) {
   let usesEmbroider =
