@@ -3,8 +3,10 @@ import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
-import type { ProviderResult } from 'ember-responsive-image/types';
-import ResponsiveImageService from 'ember-responsive-image/services/responsive-image';
+import type {
+  ResponsiveImageService,
+  ProviderResult,
+} from 'ember-responsive-image';
 import testImage from 'test-app/images/tests/image.jpg?widths=50,100,640&formats=original,webp,avif&responsive';
 import testImageLqipInline from 'test-app/images/tests/image.jpg?lqip=inline&widths=50,100,640&responsive';
 import testImageLqipColor from 'test-app/images/tests/image.jpg?lqip=color&widths=50,100,640&responsive';

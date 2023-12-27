@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, type RenderingTestContext } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import type { ProviderResult } from 'ember-responsive-image/types';
+import type { ProviderResult } from 'ember-responsive-image';
 
 interface TestContext extends RenderingTestContext {
   dump: (argument: ProviderResult) => void;

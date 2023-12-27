@@ -1,4 +1,4 @@
-import { ImageOutputResult, ImageType } from 'ember-responsive-image/types';
+import type { ImageOutputResult, ImageType } from 'ember-responsive-image';
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
 import type { LoaderContext } from 'webpack';
