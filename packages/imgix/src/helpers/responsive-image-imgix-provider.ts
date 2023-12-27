@@ -2,7 +2,7 @@ import { inject as service } from '@ember/service';
 import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
 import { getOwnConfig } from '@embroider/macros';
-import { ImgixConfig } from '../types';
+import type { ImgixConfig } from '../types';
 
 import type {
   ResponsiveImageService,

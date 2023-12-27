@@ -5,7 +5,7 @@ import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { macroCondition, dependencySatisfies } from '@embroider/macros';
-import { ImageType, LqipBlurhash, ImageData } from '../types';
+import type { ImageType, LqipBlurhash, ImageData } from '../types';
 
 import './responsive-image.css';
 

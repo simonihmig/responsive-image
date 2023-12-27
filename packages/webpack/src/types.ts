@@ -4,7 +4,7 @@ import type {
   LqipColor,
   LqipInline,
 } from 'ember-responsive-image';
-import { Metadata, Sharp } from 'sharp';
+import type { Metadata, Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;
 

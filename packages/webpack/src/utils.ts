@@ -1,7 +1,7 @@
 import baseN from 'base-n';
-import sharp, { Metadata } from 'sharp';
-import { LoaderContext } from 'webpack';
-import { ImageLoaderChainedResult, LoaderOptions } from './types';
+import sharp, { type Metadata } from 'sharp';
+import type { LoaderContext } from 'webpack';
+import type { ImageLoaderChainedResult, LoaderOptions } from './types';
 
 const b64 = baseN.create();
 
