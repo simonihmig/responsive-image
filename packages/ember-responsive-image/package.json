@@ -10,6 +10,7 @@
   "author": "Simon Ihmig <ihmig@kaliber5.de>",
   "files": [
     "addon-main.js",
+    "declarations",
     "dist"
   ],
   "scripts": {
@@ -93,7 +94,6 @@
     "eslint-plugin-n": "16.6.0",
     "eslint-plugin-prettier": "4.2.1",
     "rollup": "4.9.2",
-    "rollup-plugin-ts": "3.4.5",
     "typescript": "5.3.3"
   },
   "publishConfig": {
