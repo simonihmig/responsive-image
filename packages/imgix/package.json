@@ -102,9 +102,12 @@
     }
   },
   "exports": {
-    ".": "./dist/index.js",
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./*": {
-      "types": "./dist/*.d.ts",
+      "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
     },
     "./addon-main.js": "./addon-main.js"
@@ -112,7 +115,7 @@
   "typesVersions": {
     "*": {
       "*": [
-        "dist/*"
+        "declarations/*"
       ]
     }
   },
