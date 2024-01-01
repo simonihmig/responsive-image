@@ -1,5 +1,5 @@
-import type ResponsiveImageComponent from './components/responsive-image';
-import type ResponsiveImageResolve from './helpers/responsive-image-resolve';
+import type ResponsiveImageComponent from './components/responsive-image.ts';
+import type ResponsiveImageResolve from './helpers/responsive-image-resolve.ts';
 
 export default interface Registry {
   ResponsiveImage: typeof ResponsiveImageComponent;

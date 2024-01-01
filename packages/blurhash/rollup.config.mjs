@@ -1,4 +1,4 @@
-import typescript from 'rollup-plugin-ts';
+import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import externals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -15,11 +15,9 @@ export default [
     },
     plugins: [
       externals(),
-      // compile TypeScript to latest JavaScript, including Babel transpilation
-      typescript({
-        transpiler: 'babel',
-        browserslist: false,
-        transpileOnly: true,
+      babel({
+        extensions: ['.js', '.gjs', '.ts', '.gts'],
+        babelHelpers: 'bundled',
       }),
     ],
   },
@@ -32,11 +30,9 @@ export default [
     },
     plugins: [
       nodeResolve(),
-      // compile TypeScript to latest JavaScript, including Babel transpilation
-      typescript({
-        transpiler: 'babel',
-        browserslist: false,
-        transpileOnly: true,
+      babel({
+        extensions: ['.js', '.ts'],
+        babelHelpers: 'bundled',
       }),
       terser(),
 

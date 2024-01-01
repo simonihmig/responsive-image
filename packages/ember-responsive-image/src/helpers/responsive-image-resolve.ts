@@ -1,8 +1,8 @@
 import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Helper from '@ember/component/helper';
-import ResponsiveImageService from '../services/responsive-image';
-import type { ImageType, ImageData } from '../types';
+import ResponsiveImageService from '../services/responsive-image.ts';
+import type { ImageType, ImageData } from '../types.ts';
 
 interface ResponsiveImageResolveSignature {
   Args: {

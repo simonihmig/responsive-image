@@ -1,4 +1,4 @@
-import type { ImageOutputResult, ImageType } from '../types';
+import type { ImageOutputResult, ImageType } from '../types.ts';
 
 export function findMatchingImage(
   images: ImageOutputResult[],

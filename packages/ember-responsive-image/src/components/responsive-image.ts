@@ -1,11 +1,11 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import type ResponsiveImageService from '../services/responsive-image';
+import type ResponsiveImageService from '../services/responsive-image.ts';
 import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { macroCondition, dependencySatisfies } from '@embroider/macros';
-import type { ImageType, LqipBlurhash, ImageData } from '../types';
+import type { ImageType, LqipBlurhash, ImageData } from '../types.ts';
 
 import './responsive-image.css';
 
