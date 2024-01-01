@@ -854,7 +854,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-typescript@^7.13.0", "@babel/plugin-transform-typescript@^7.16.8", "@babel/plugin-transform-typescript@^7.20.13", "@babel/plugin-transform-typescript@^7.23.3", "@babel/plugin-transform-typescript@^7.23.6":
+"@babel/plugin-transform-typescript@7.23.6", "@babel/plugin-transform-typescript@^7.13.0", "@babel/plugin-transform-typescript@^7.16.8", "@babel/plugin-transform-typescript@^7.20.13", "@babel/plugin-transform-typescript@^7.23.3":
   version "7.23.6"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.23.6.tgz#aa36a94e5da8d94339ae3a4e22d40ed287feb34c"
   integrity sha512-6cBG5mBvUu4VUD04OHKnYzbuHNP8huDsD3EDqqpIpsswTDoqHCjLoHb6+QgsV1WsT2nipRqCPgxD3LXnEO7XfA==
@@ -1038,14 +1038,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.14.0", "@babel/runtime@^7.21.0", "@babel/runtime@^7.8.4":
-  version "7.23.7"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.7.tgz#dd7c88deeb218a0f8bd34d5db1aa242e0f203193"
-  integrity sha512-w06OXVOFso7LcbzMiDGt+3X7Rh7Ho8MmgPoWU3rarH+8upf+wSU/grlGbWzQyr3DkdN6ZeuMFjpdwW0Q+HxobA==
-  dependencies:
-    regenerator-runtime "^0.14.0"
-
-"@babel/runtime@^7.17.0":
+"@babel/runtime@7.23.7", "@babel/runtime@^7.14.0", "@babel/runtime@^7.21.0", "@babel/runtime@^7.8.4":
   version "7.23.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.7.tgz#dd7c88deeb218a0f8bd34d5db1aa242e0f203193"
   integrity sha512-w06OXVOFso7LcbzMiDGt+3X7Rh7Ho8MmgPoWU3rarH+8upf+wSU/grlGbWzQyr3DkdN6ZeuMFjpdwW0Q+HxobA==
