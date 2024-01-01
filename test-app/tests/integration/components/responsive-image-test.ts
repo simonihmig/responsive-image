@@ -590,12 +590,18 @@ module('Integration: Responsive Image Component', function (hooks) {
           hbs`<ResponsiveImage @src={{this.defaultImageData}}/>`,
         );
 
+        const { deviceWidths } = this.owner.lookup(
+          'service:responsive-image',
+        ) as ResponsiveImageService;
+
         // webp
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            '/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w1920/image.webp 1920w',
+            deviceWidths
+              .map((w) => `/provider/w${w}/image.webp ${w}w`)
+              .join(', '),
           );
 
         // jpeg
@@ -603,7 +609,9 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            '/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w1920/image.jpeg 1920w',
+            deviceWidths
+              .map((w) => `/provider/w${w}/image.jpeg ${w}w`)
+              .join(', '),
           );
       });
 
