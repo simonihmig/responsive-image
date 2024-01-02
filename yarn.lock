@@ -1233,7 +1233,7 @@
     typescript-memoize "^1.0.1"
     walk-sync "^3.0.0"
 
-"@embroider/macros@1.13.4", "@embroider/macros@^1.0.0", "@embroider/macros@^1.10.0", "@embroider/macros@^1.13.1", "@embroider/macros@^1.8.3":
+"@embroider/macros@1.13.4", "@embroider/macros@^1.0.0", "@embroider/macros@^1.10.0", "@embroider/macros@^1.13.1", "@embroider/macros@^1.13.4", "@embroider/macros@^1.8.3":
   version "1.13.4"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.13.4.tgz#4fefb79d68bcfbc4619551572b2ca3040a224fb5"
   integrity sha512-A6tXvfwnscx66QO0R3c2dIJwEltfsTL4ihsYjMtgP9ODCCmQlCaRlZDQYw5Drta0ER9Fj3nXntu4naV5Wt5XLA==
@@ -5035,6 +5035,13 @@ electron-to-chromium@^1.4.601:
   version "1.4.616"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.616.tgz#4bddbc2c76e1e9dbf449ecd5da3d8119826ea4fb"
   integrity sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==
+
+ember-addon-config@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ember-addon-config/-/ember-addon-config-0.1.0.tgz#c4725c4ca77cd85b8e1a714becfd60d6f76ddee4"
+  integrity sha512-d7J9xrWYBuGVght7Tn6ezqChItYXHsVY54N64xjOvIv0ldWxAHKObLZwMtwKjATs4fL76xImUlf+jB+S8viaiQ==
+  dependencies:
+    "@embroider/macros" "^1.13.4"
 
 ember-auto-import@2.7.2, ember-auto-import@^2.5.0, ember-auto-import@^2.6.0, ember-auto-import@^2.6.1, ember-auto-import@^2.6.3:
   version "2.7.2"
