@@ -152,7 +152,20 @@ Should you want to manage the registry by yourself, then omit this import, and i
 
 #### Image imports
 
-TODO
+To make TypeScript understand our image imports, we tag them using a `responsive` query parameter, that has to come _last_!
+
+> We cannot use something like `*.jpg*` that works with queries, as TS only supports a single wildcard.
+> See https://github.com/microsoft/TypeScript/issues/38638
+
+Add this declaration to a file, e.g. your app's `types/global.d.ts`:
+
+```ts
+declare module '*responsive' {
+  import { ImageData } from 'ember-responsive-image';
+  const value: ImageData;
+  export default value;
+}
+```
 
 ## Basic Usage
 
