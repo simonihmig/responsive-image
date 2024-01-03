@@ -345,7 +345,7 @@ File size: **7KB**.
 _Low Quality Image Placeholder_ is a technique to give users a preview of the image while it is loading. This addon supports different types,
 all with their own tradeoffs. Based on the cute hero you saw above, you can see here how these different techniques will look like.
 
-See the [Configuration](#configuration) section for how to configure these.
+See the [Webpack Configuration](./packages/webpack/README.md#configuration) section for how to configure these.
 
 ### Color
 
@@ -354,12 +354,16 @@ The "cost" is basically 7bytes, for the hex code of the color.
 
 ![dominant color LQIP of a hero image](docs/images/lqip-color.png)
 
+See the [Webpack Configuration](./packages/webpack/README.md#configuration) section for how to configure this.
+
 ### Inline
 
 This creates a very small thumbnail of the original image, wraps it into a SVG and applies a blurry filter. This is then
 set as a base64 encoded data-URL as the background of the image while it loads. The example below consumes 348 bytes (uncompressed).
 
 ![blurry LQIP of a hero image](docs/images/lqip-inline.png)
+
+See the [Webpack Configuration](./packages/webpack/README.md#configuration) section for how to configure this.
 
 ### Blurhash
 

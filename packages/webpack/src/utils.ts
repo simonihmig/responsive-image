@@ -7,7 +7,7 @@ const b64 = baseN.create();
 
 const defaultImageConfig: LoaderOptions = {
   quality: 80,
-  widths: [2048, 1536, 1080, 750, 640],
+  widths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   formats: ['original', 'webp'],
   name: '[name]-[width]w-[hash].[ext]',
   outputPath: 'assets/images',
