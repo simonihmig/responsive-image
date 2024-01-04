@@ -4806,10 +4806,10 @@ decompress-response@^6.0.0:
   dependencies:
     mimic-response "^3.1.0"
 
-decorator-transforms@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/decorator-transforms/-/decorator-transforms-1.0.1.tgz#fce844e251f3e02eedb08fe30884195ff4d03f32"
-  integrity sha512-ZOaiw4tqiyhtqiMKCNzjS+nGsYPZltToqRAFc5rOUcc4u8d7MTlgelw1qXfL6ieg2l6xZcz6lTZ5M94Ohnk2xA==
+decorator-transforms@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/decorator-transforms/-/decorator-transforms-1.0.2.tgz#7a713e794c38fc13f03131d50e16a74fee3dec4f"
+  integrity sha512-Pj2U7Pt9SZYNq+FLomhHhEqkVUEIuGTAY18yzeq6jn2O4ryqAp0rlHQvAwBuoAUlsxSr4tZJAaWYqgbMORahAQ==
   dependencies:
     "@babel/plugin-syntax-decorators" "^7.23.3"
     babel-import-util "^2.0.1"
