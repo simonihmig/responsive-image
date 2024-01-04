@@ -38,9 +38,9 @@ async function process(
     const sharpMeta = await sharp.metadata();
 
     const formats = effectiveImageFormats(options.formats, sharpMeta);
-    const { widths } = options;
+    const { widths, quality } = options;
 
-    const images = await generateResizedImages(sharp, widths, formats);
+    const images = await generateResizedImages(sharp, widths, formats, quality);
 
     return {
       sharpMeta,
@@ -60,7 +60,8 @@ imagesLoader.raw = true;
 async function generateResizedImages(
   image: Sharp,
   widths: number[],
-  formats: ImageType[]
+  formats: ImageType[],
+  quality: number
 ): Promise<ImageProcessingResult[]> {
   return Promise.all(
     widths.flatMap((width) => {
@@ -68,7 +69,9 @@ async function generateResizedImages(
       resizedImage.resize(width, null, { withoutEnlargement: true });
 
       return formats.map(async (format) => {
-        const data = await resizedImage.toFormat(format).toBuffer();
+        const data = await resizedImage
+          .toFormat(format, { quality })
+          .toBuffer();
         return {
           data,
           width,
