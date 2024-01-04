@@ -334,29 +334,29 @@ A more detailed analysis can be found on [Jake Archibald's blog](https://jakearc
 Dimensions: 640px &times; 427px
 File size: **16KB**.
 
-![a hero near the costline](docs/images/hero640w.jpg)
+![a dog near the costline](docs/images/dog640w.jpg)
 
 ### WebP
 
 Dimensions: 640px &times; 427px
 File size: **10KB**.
 
-![a hero near the costline](docs/images/hero640w.webp)
+![a dog near the costline](docs/images/dog640w.webp)
 
 ### AVIF
 
 Dimensions: 640px &times; 427px
 File size: **7KB**.
 
-![a hero near the costline](docs/images/hero640w.avif)
+![a dog near the costline](docs/images/dog640w.avif)
 
-> Note: Generating AVIF files can take a lot of time, as it is very CPU-intensive. Therefore and given the limited browser support,
-> the format is currently not enabled by default. You would have to opt-in, by defining the `formats` [configuration option](#configuration) to include AVIF.
+> Note: Generating AVIF files can take a lot of time, as it is very CPU-intensive. Therefore
+> the format is currently not enabled by default. You would have to opt-in, by defining the `formats` [configuration option](./packages/webpack/README.md) to include AVIF.
 
 ## LQIP
 
 _Low Quality Image Placeholder_ is a technique to give users a preview of the image while it is loading. This addon supports different types,
-all with their own tradeoffs. Based on the cute hero you saw above, you can see here how these different techniques will look like.
+all with their own tradeoffs. Based on the cute dog you saw above, you can see here how these different techniques will look like.
 
 See the [Webpack Configuration](./packages/webpack/README.md#configuration) section for how to configure these.
 
@@ -365,7 +365,7 @@ See the [Webpack Configuration](./packages/webpack/README.md#configuration) sect
 This is the most basic technique, calculating the dominant color of the image, and setting it as the background color of the images while it loads.
 The "cost" is basically 7bytes, for the hex code of the color.
 
-![dominant color LQIP of a hero image](docs/images/lqip-color.png)
+![dominant color LQIP of a dog image](docs/images/lqip-color.png)
 
 See the [Webpack Configuration](./packages/webpack/README.md#configuration) section for how to configure this.
 
@@ -374,7 +374,7 @@ See the [Webpack Configuration](./packages/webpack/README.md#configuration) sect
 This creates a very small thumbnail of the original image, wraps it into a SVG and applies a blurry filter. This is then
 set as a base64 encoded data-URL as the background of the image while it loads. The example below consumes 348 bytes (uncompressed).
 
-![blurry LQIP of a hero image](docs/images/lqip-inline.png)
+![blurry LQIP of a dog image](docs/images/lqip-inline.png)
 
 See the [Webpack Configuration](./packages/webpack/README.md#configuration) section for how to configure this.
 
@@ -383,11 +383,10 @@ See the [Webpack Configuration](./packages/webpack/README.md#configuration) sect
 [BlurHash](https://blurha.sh/) is an encoding algorithm and library, dedicated for the very purpose of generating nice looking blurry placeholders, without the
 overhead of a real image format, which was never optimized for that kind of _tiny_ images. This example consumes just 40 bytes (uncompressed).
 
-![blurry LQIP of a hero image](docs/images/lqip-blurhash.png)
+![blurry LQIP of a dog image](docs/images/lqip-blurhash.png)
 
-But the tradeoff here is that it needs a runtime library for decoding, which takes about 4.7KB (1.9KB compressed). Therefore it is less suited if you have just a few images, but shines if you need placeholders for a lot!
-
-BlurHash support is provided by a dedicated additional `@ember-responsive-image/blurhash` package. Please refer to its [documentation](./packages/blurhash/README.md) for additional details!
+But the tradeoff here is that it needs a runtime library for decoding, which takes about 4.7KB (1.9KB compressed). Therefore it
+is less suited if you have just a few images, but shines if you need placeholders for a lot!
 
 ## Image Providers
 
