@@ -5,52 +5,31 @@
   "repository": "https://github.com/kaliber5/ember-responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
-  "workspaces": [
+  "--filters": [
     "packages/*",
     "test-app"
   ],
   "scripts": {
-    "build": "yarn workspace ember-responsive-image run build && yarn workspace @ember-responsive-image/webpack run build && yarn workspace @ember-responsive-image/blurhash run build && yarn workspace @ember-responsive-image/cloudinary run build && yarn workspace @ember-responsive-image/imgix run build",
-    "lint": "yarn workspaces run lint",
-    "lint:fix": "yarn workspaces run lint:fix",
-    "prepare": "yarn build",
+    "build": "pnpm --filter ember-responsive-image run build && pnpm --filter @ember-responsive-image/webpack run build && pnpm --filter @ember-responsive-image/blurhash run build && pnpm --filter @ember-responsive-image/cloudinary run build && pnpm --filter @ember-responsive-image/imgix run build",
+    "lint": "pnpm run -r lint",
+    "lint:fix": "pnpm run -r lint:fix",
+    "prepare": "pnpm build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
-    "start:addon": "yarn workspace ember-responsive-image run start",
-    "start:test": "yarn workspace test-app run start",
-    "test": "yarn workspaces run test"
+    "start:addon": "pnpm --filter ember-responsive-image run start",
+    "start:test": "pnpm --filter test-app run start",
+    "test": "pnpm run -r test"
   },
   "devDependencies": {
     "concurrently": "8.2.2",
-    "prettier": "2.8.8",
-    "release-it": "14.14.3",
-    "release-it-lerna-changelog": "5.0.0",
-    "release-it-yarn-workspaces": "3.0.0"
+    "prettier": "2.8.8"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  },
-  "release-it": {
-    "plugins": {
-      "release-it-lerna-changelog": {
-        "infile": "CHANGELOG.md",
-        "launchEditor": true
-      },
-      "release-it-yarn-workspaces": true
-    },
-    "git": {
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "tokenRef": "GITHUB_AUTH"
-    },
-    "npm": false
   },
   "dependencies": {
     "postinstall-postinstall": "^2.1.0"
   },
   "volta": {
-    "node": "20.10.0",
-    "yarn": "1.22.21"
+    "node": "20.10.0"
   }
 }
