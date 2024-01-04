@@ -414,30 +414,29 @@ This addon comes with additional packages for these image providers, please refe
 
 ## Configuration
 
-TODO
+The configuration of the main `ember-responsive-image` addon is optional. To do so, add the configuration in your app's `config/addons.js` file (create it if not existing yet):
 
-<!-- ### Image Options
+```js
+// config/addons.js
+'use strict';
 
-When using images stored locally, the main configuration happens with the `images` array. There you must define at least one configuration item, with at least `include` defined.
-But you can provide more, to create separate configurations for different images.
+module.exports = {
+  'ember-responsive-image': {
+    deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  },
+};
+```
 
-For example if you have a gallery of logos, of which all will be displayed with a width of max. 300px or less,it makes no sense to create very
-large images for these, so a setting of `widths: [300, 600],` would make sense here (600px for the `2x` version aka "retina").
+Configuration options:
 
-> Make sure you don't have multiple `include` definitions accidentally overlapping! You can use `exclude` in this case to prevent this.
+- **deviceWidths**: an array of widths representing the typical screen widths of your user's devices, used when the available image widths are not known beforehand, like when using an image CDN. Default: `[640, 750, 828, 1080, 1200, 1920, 2048, 3840]`
 
-- **include:** Glob pattern for which images should be processed based on this configuration.
-- **exclude:** Optional pattern which images to exclude, takes precedence over `include`.
-- **widths:** These are the widths of the resized images.
-- **formats:** which image formats to produce. Supported are: `avif`, `webp`, `png` and `jpeg`. `original` is a special keyword here, representing the image format of the original source image. By default: `['original', 'webp']`
-- **quality:** Image quality (JPEG, WebP, AVIF)
-- **lqip:** Let's you opt into generating LQIPs, by setting at the `type`to one of the supported values. Disabled by default!
-- **lqip.type:** `'inline'`, `'color'` or `'blurhash'`. See the [LQIP section](#lqip) for more details.
-- **lqip.targetPixels:** Desired approximate amount of pixels to use for the placeholder (does not apply for `color`).
-- **removeSource:** If true, the (large) source images will be removed from the build.
-- **justCopy:** If true, the images will just be copied without resizing. This can be useful for development builds to speed things up, but should be false for production.
+The options for configuring the processing of local images are handled by the `@ember-responsive-image/webpack` package, and other options related to image CDNs or BlurHash-support are handled by their respective sub-packages as well, so please refer to their documentation for detailed configuration instructions:
 
-**Note:** If the width of your origin image is less than the generated should be, the image will be generated unresized. -->
+- [`@ember-responsive-image/webpack`](./packages/webpack/README.md)
+- [`@ember-responsive-image/blurhash`](./packages/blurhash/README.md)
+- [`@ember-responsive-image/cloudinary`](./packages/cloudinary/README.md)
+- [`@ember-responsive-image/imgix`](./packages/imgix/README.md)
 
 ## Advanced Usage
 
