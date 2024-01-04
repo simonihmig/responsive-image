@@ -35,7 +35,7 @@ function normalizeSrc(src: string): string {
 export const provider = (
   image: string,
   _service: ResponsiveImageService,
-  options: ImgixOptions
+  options: ImgixOptions,
 ): ImageData => {
   const domain = getOwnConfig<ImgixConfig | undefined>()?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
@@ -49,7 +49,7 @@ export const provider = (
         typeof URL === 'function' ? URL : (URL as { URL: typeof URL }).URL;
 
       const url = new URLConstructor(
-        `https://${domain}/${normalizeSrc(image)}`
+        `https://${domain}/${normalizeSrc(image)}`,
       );
       const params = url.searchParams;
 

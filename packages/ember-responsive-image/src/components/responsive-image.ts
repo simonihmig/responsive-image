@@ -66,7 +66,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     assert('No @src argument supplied for <ResponsiveImage>', args.src);
     assert(
       'Image paths as @src argument for <ResponsiveImage> are not supported anymore.',
-      typeof args.src !== 'string'
+      typeof args.src !== 'string',
     );
   }
 
@@ -126,7 +126,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   get sourcesSorted(): PictureSource[] {
     return this.sources.sort(
-      (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0)
+      (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0),
     );
   }
 
@@ -148,7 +148,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get width(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
       return this.responsiveImage.getDestinationWidthBySize(
-        this.args.size ?? 0
+        this.args.size ?? 0,
       );
     } else {
       if (this.args.width) {
@@ -193,7 +193,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get hasLqipBlurhash(): boolean {
     if (
       macroCondition(
-        dependencySatisfies('@ember-responsive-image/blurhash', '*')
+        dependencySatisfies('@ember-responsive-image/blurhash', '*'),
       )
     ) {
       return this.args.src.lqip?.type === 'blurhash';
@@ -205,7 +205,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get showLqipBlurhash(): boolean {
     if (
       macroCondition(
-        dependencySatisfies('@ember-responsive-image/blurhash', '*')
+        dependencySatisfies('@ember-responsive-image/blurhash', '*'),
       )
     ) {
       return !this.isLoaded && this.hasLqipBlurhash;
@@ -217,7 +217,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get blurhashMeta(): LqipBlurhash | undefined {
     if (
       macroCondition(
-        dependencySatisfies('@ember-responsive-image/blurhash', '*')
+        dependencySatisfies('@ember-responsive-image/blurhash', '*'),
       )
     ) {
       return this.args.src.lqip?.type === 'blurhash'
@@ -231,7 +231,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   get lqipBlurhash(): string | undefined {
     if (
       macroCondition(
-        dependencySatisfies('@ember-responsive-image/blurhash', '*')
+        dependencySatisfies('@ember-responsive-image/blurhash', '*'),
       )
     ) {
       if (!this.hasLqipBlurhash) {

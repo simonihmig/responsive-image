@@ -37,12 +37,12 @@ function normalizeSrc(src: string): string {
 export const provider = (
   image: string,
   _service: ResponsiveImageService,
-  options: CloudinaryOptions
+  options: CloudinaryOptions,
 ): ImageData => {
   const cloudName = getOwnConfig<CloudinaryConfig | undefined>()?.cloudName;
   assert(
     'cloudName must be set for cloudinary provider!',
-    typeof cloudName === 'string'
+    typeof cloudName === 'string',
   );
   let imageId: string;
   let deliveryType: 'upload' | 'fetch';

@@ -13,7 +13,7 @@ import blurhash from 'blurhash';
 
 export default function lqipBlurhashLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
-  input: Buffer | ImageLoaderChainedResult
+  input: Buffer | ImageLoaderChainedResult,
 ) {
   const data = normalizeInput(input);
   const options = getOptions(this);
@@ -35,7 +35,7 @@ lqipBlurhashLoader.raw = true;
 
 async function process(
   data: ImageLoaderChainedResult,
-  options: LoaderOptions
+  options: LoaderOptions,
 ): Promise<ImageLoaderChainedResult> {
   const { sharp, sharpMeta } = data;
 

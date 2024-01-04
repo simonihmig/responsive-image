@@ -3,7 +3,7 @@ import type { LoaderContext } from 'webpack';
 import { blurrySvg, dataUri, getAspectRatio, parseQuery } from '../utils';
 
 export default function lqipInlineCssLoader(
-  this: LoaderContext<unknown>
+  this: LoaderContext<unknown>,
 ): void {
   const loaderCallback = this.async();
 
@@ -33,7 +33,7 @@ async function process(context: LoaderContext<unknown>): Promise<string> {
 
   const { width, height } = await getLqipDimensions(
     parseInt(targetPixels, 10),
-    meta
+    meta,
   );
 
   const lqi = await image
@@ -47,9 +47,9 @@ async function process(context: LoaderContext<unknown>): Promise<string> {
     blurrySvg(
       dataUri(await lqi.toBuffer(), 'image/png'),
       meta.width,
-      meta.height
+      meta.height,
     ),
-    'image/svg+xml'
+    'image/svg+xml',
   );
 
   return `.${className} { background-image: url(${uri}); }`;
@@ -57,7 +57,7 @@ async function process(context: LoaderContext<unknown>): Promise<string> {
 
 async function getLqipDimensions(
   targetPixels: number,
-  meta: Metadata
+  meta: Metadata,
 ): Promise<{ width: number; height: number }> {
   const aspectRatio = getAspectRatio(meta) ?? 1;
 

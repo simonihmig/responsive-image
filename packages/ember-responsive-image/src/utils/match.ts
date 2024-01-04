@@ -3,7 +3,7 @@ import type { ImageOutputResult, ImageType } from '../types.ts';
 export function findMatchingImage(
   images: ImageOutputResult[],
   width: number,
-  type: ImageType
+  type: ImageType,
 ): ImageOutputResult | undefined {
   const matchingImageWidth = images
     .map((i) => i.width)
@@ -16,6 +16,6 @@ export function findMatchingImage(
     }, 0);
 
   return images.find(
-    (image) => image.width === matchingImageWidth && image.format === type
+    (image) => image.width === matchingImageWidth && image.format === type,
   );
 }

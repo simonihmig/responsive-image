@@ -4,7 +4,7 @@ import { generateLqipClassName, getOptions, normalizeInput } from '../utils';
 
 export default function lqipColorLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
-  input: Buffer | ImageLoaderChainedResult
+  input: Buffer | ImageLoaderChainedResult,
 ): ImageLoaderChainedResult {
   const data = normalizeInput(input);
 

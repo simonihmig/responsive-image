@@ -4,7 +4,7 @@ import type { LoaderOptions } from '../types';
 import { parseQuery } from '../utils';
 
 export default function lqipColorCssLoader(
-  this: LoaderContext<Partial<LoaderOptions>>
+  this: LoaderContext<Partial<LoaderOptions>>,
 ): void {
   const loaderCallback = this.async();
 
