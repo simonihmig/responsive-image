@@ -9,7 +9,7 @@
           "name": "@embroider/addon-blueprint",
           "isBaseBlueprint": true,
           "options": [
-            "--yarn",
+            "--pnpm",
             "--ci-provider=github",
             "--release-it",
             "--typescript"

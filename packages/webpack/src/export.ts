@@ -15,11 +15,11 @@ const imageExtensions: Partial<Record<ImageType, string>> = {
 
 export default function exportLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
-  input: Buffer | ImageLoaderChainedResult
+  input: Buffer | ImageLoaderChainedResult,
 ): string {
   if (Buffer.isBuffer(input)) {
     throw new Error(
-      'You cannot run the export loader on raw data, at least the images loader is missing in your loader chain!'
+      'You cannot run the export loader on raw data, at least the images loader is missing in your loader chain!',
     );
   }
 
@@ -74,9 +74,9 @@ export default function exportLoader(
     `const images = [${emittedImages
       .map(
         ({ url, width, format }) =>
-          `{"url":${url},"width":${String(width)},"format":"${format}"}`
+          `{"url":${url},"width":${String(width)},"format":"${format}"}`,
       )
-      .join(',')}];`
+      .join(',')}];`,
   );
 
   moduleOutput.push(`export default {

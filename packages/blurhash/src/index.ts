@@ -11,7 +11,7 @@ declare const FastBoot: unknown | undefined;
 function bh2url(
   hash: string,
   width: number,
-  height: number
+  height: number,
 ): string | undefined {
   const blurWidth = width * BLURHASH_SCALE_FACTOR;
   const blurHeight = height * BLURHASH_SCALE_FACTOR;
@@ -32,7 +32,7 @@ function bh2url(
 
 function applySSR(): void {
   const images = document.querySelectorAll<HTMLImageElement>(
-    `img[${BLURHASH_ATTRIBUTE}]`
+    `img[${BLURHASH_ATTRIBUTE}]`,
   );
   images.forEach((image) => {
     const hash = image.getAttribute(BLURHASH_ATTRIBUTE);

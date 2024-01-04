@@ -27,7 +27,10 @@ export default class ResponsiveImageResolve extends Helper<ResponsiveImageResolv
 
   compute(
     [data]: [ImageData],
-    { size, format = data.imageTypes[0] }: { size?: number; format?: ImageType }
+    {
+      size,
+      format = data.imageTypes[0],
+    }: { size?: number; format?: ImageType },
   ): ReturnType<typeof htmlSafe> | undefined {
     const width = this.responsiveImage.getDestinationWidthBySize(size ?? 0);
 

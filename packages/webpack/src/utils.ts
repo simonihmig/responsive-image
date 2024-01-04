@@ -39,12 +39,12 @@ export function parseQuery(query: string): Record<string, unknown> {
         default:
           return [key, value];
       }
-    })
+    }),
   );
 }
 
 export function getOptions(
-  context: LoaderContext<Partial<LoaderOptions>>
+  context: LoaderContext<Partial<LoaderOptions>>,
 ): LoaderOptions {
   const parsedResourceQuery = parseQuery(context.resourceQuery);
 
@@ -57,7 +57,7 @@ export function getOptions(
 }
 
 export function normalizeInput(
-  input: Buffer | ImageLoaderChainedResult
+  input: Buffer | ImageLoaderChainedResult,
 ): ImageLoaderChainedResult {
   if (Buffer.isBuffer(input)) {
     return {
@@ -97,7 +97,7 @@ export function onlyUnique<T>(value: T, index: number, self: T[]): boolean {
 export function dataUri(
   data: string | Buffer,
   type: string,
-  base64 = false
+  base64 = false,
 ): string {
   return `data:${type};base64,${
     base64 ? data : Buffer.from(data).toString('base64')

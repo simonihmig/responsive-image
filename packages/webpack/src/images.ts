@@ -13,7 +13,7 @@ const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
 export default function imagesLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
-  input: Buffer | ImageLoaderChainedResult
+  input: Buffer | ImageLoaderChainedResult,
 ): void {
   const loaderCallback = this.async();
 
@@ -31,7 +31,7 @@ export default function imagesLoader(
 async function process(
   data: ImageLoaderChainedResult,
   options: LoaderOptions,
-  context: LoaderContext<Partial<LoaderOptions>>
+  context: LoaderContext<Partial<LoaderOptions>>,
 ): Promise<ImageLoaderChainedResult> {
   const { sharp } = data;
   try {
@@ -49,7 +49,7 @@ async function process(
     };
   } catch (e) {
     throw new Error(
-      `Failed to generate image data for ${context.resource}: ${e}`
+      `Failed to generate image data for ${context.resource}: ${e}`,
     );
   }
 }
@@ -61,7 +61,7 @@ async function generateResizedImages(
   image: Sharp,
   widths: number[],
   formats: ImageType[],
-  quality: number
+  quality: number,
 ): Promise<ImageProcessingResult[]> {
   return Promise.all(
     widths.flatMap((width) => {
@@ -78,13 +78,13 @@ async function generateResizedImages(
           format,
         };
       });
-    })
+    }),
   );
 }
 
 function effectiveImageFormats(
   formats: OutputImageType[],
-  meta: Metadata
+  meta: Metadata,
 ): ImageType[] {
   return (
     formats
