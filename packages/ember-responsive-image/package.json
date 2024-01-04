@@ -1,6 +1,6 @@
 {
   "name": "ember-responsive-image",
-  "version": "3.4.0",
+  "version": "4.0.0",
   "description": "Automatically generate resized images at build-time, optimized for the responsive web, and using components to render them easily as <picture> elements.",
   "keywords": [
     "ember-addon"
@@ -42,7 +42,7 @@
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@ember-responsive-image/blurhash": "^3.4.0"
+    "@ember-responsive-image/blurhash": "^0.0.0"
   },
   "peerDependenciesMeta": {
     "@ember-responsive-image/blurhash": {

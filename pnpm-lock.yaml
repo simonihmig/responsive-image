@@ -222,7 +222,7 @@ importers:
         specifier: 8.2.2
         version: 8.2.2
       ember-responsive-image:
-        specifier: 3.4.0
+        specifier: workspace:*
         version: link:../ember-responsive-image
       ember-template-lint:
         specifier: 5.13.0
@@ -258,7 +258,7 @@ importers:
   packages/ember-responsive-image:
     dependencies:
       '@ember-responsive-image/blurhash':
-        specifier: ^3.4.0
+        specifier: ^0.0.0
         version: link:../blurhash
       '@ember/render-modifiers':
         specifier: ^2.0.0
@@ -551,7 +551,7 @@ importers:
         specifier: 8.2.2
         version: 8.2.2
       ember-responsive-image:
-        specifier: 3.4.0
+        specifier: workspace:*
         version: link:../ember-responsive-image
       ember-template-lint:
         specifier: 5.13.0
@@ -587,7 +587,7 @@ importers:
   packages/webpack:
     dependencies:
       '@ember-responsive-image/blurhash':
-        specifier: ^3.4.0
+        specifier: ^0.0.0
         version: link:../blurhash
       base-n:
         specifier: ^3.0.0
