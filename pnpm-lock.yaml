@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -567,6 +571,9 @@ importers:
 
   packages/webpack:
     dependencies:
+      '@ember-responsive-image/blurhash':
+        specifier: ^3.4.0
+        version: link:../blurhash
       base-n:
         specifier: ^3.0.0
         version: 3.0.0

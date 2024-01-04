@@ -27,7 +27,13 @@
     "sharp": "^0.31.1"
   },
   "peerDependencies": {
+    "@ember-responsive-image/blurhash": "^3.4.0",
     "webpack": "^5.70.0"
+  },
+  "peerDependenciesMeta": {
+    "@ember-responsive-image/blurhash": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/core": "7.23.7",
