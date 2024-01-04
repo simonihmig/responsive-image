@@ -1,9 +1,4 @@
 
-
-
-
-
-
 ## v4.0.0 (2022-11-23)
 
 #### :boom: Breaking Change
@@ -280,5 +275,3 @@ This is a major new release, with a lot of new features and several breaking cha
 - Gordon Johnston ([@elgordino](https://github.com/elgordino))
 - Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
 - [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
-
-# Changelog
