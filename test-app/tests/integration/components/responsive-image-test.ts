@@ -74,19 +74,19 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-640w(-\\w+)?.jpg 640w'),
+            new RegExp('/images/image-640w(-\\w+)?.jpg 640w'),
           );
         assert
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-100w(-\\w+)?.jpg 100w'),
+            new RegExp('/images/image-100w(-\\w+)?.jpg 100w'),
           );
         assert
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-50w(-\\w+)?.jpg 50w'),
+            new RegExp('/images/image-50w(-\\w+)?.jpg 50w'),
           );
 
         // webp
@@ -94,19 +94,19 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-640w(-\\w+)?.webp 640w'),
+            new RegExp('/images/image-640w(-\\w+)?.webp 640w'),
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-100w(-\\w+)?.webp 100w'),
+            new RegExp('/images/image-100w(-\\w+)?.webp 100w'),
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-50w(-\\w+)?.webp 50w'),
+            new RegExp('/images/image-50w(-\\w+)?.webp 50w'),
           );
 
         // avif
@@ -114,19 +114,19 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-640w(-\\w+)?.avif 640w'),
+            new RegExp('/images/image-640w(-\\w+)?.avif 640w'),
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-100w(-\\w+)?.avif 100w'),
+            new RegExp('/images/image-100w(-\\w+)?.avif 100w'),
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-50w(-\\w+)?.avif 50w'),
+            new RegExp('/images/image-50w(-\\w+)?.avif 50w'),
           );
 
         await render<TestContext>(
@@ -137,13 +137,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-10w(-\\w+)?.jpg 10w'),
+            new RegExp('/images/image-10w(-\\w+)?.jpg 10w'),
           );
         assert
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-25w(-\\w+)?.jpg 25w'),
+            new RegExp('/images/image-25w(-\\w+)?.jpg 25w'),
           );
 
         // webp
@@ -151,13 +151,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-10w(-\\w+)?.webp 10w'),
+            new RegExp('/images/image-10w(-\\w+)?.webp 10w'),
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-25w(-\\w+)?.webp 25w'),
+            new RegExp('/images/image-25w(-\\w+)?.webp 25w'),
           );
 
         // avif
@@ -165,13 +165,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-10w(-\\w+)?.avif 10w'),
+            new RegExp('/images/image-10w(-\\w+)?.avif 10w'),
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-25w(-\\w+)?.avif 25w'),
+            new RegExp('/images/image-25w(-\\w+)?.avif 25w'),
           );
       });
 
@@ -185,40 +185,28 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-50w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-50w(-\\w+)?.jpg'));
         service.set('physicalWidth', 51);
         await render<TestContext>(
           hbs`<ResponsiveImage @src={{this.testImage}} />`,
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-100w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-100w(-\\w+)?.jpg'));
         service.set('physicalWidth', 9);
         await render<TestContext>(
           hbs`<ResponsiveImage @src={{this.smallImage}} />`,
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-10w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-10w(-\\w+)?.jpg'));
         service.set('physicalWidth', 11);
         await render<TestContext>(
           hbs`<ResponsiveImage @src={{this.smallImage}} />`,
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-25w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-25w(-\\w+)?.jpg'));
       });
 
       test('it renders a given size as sizes', async function (assert) {
@@ -299,13 +287,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-100w(-\\w+)?.jpg 2x'),
+            new RegExp('/images/image-100w(-\\w+)?.jpg 2x'),
           );
         assert
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-50w(-\\w+)?.jpg 1x'),
+            new RegExp('/images/image-50w(-\\w+)?.jpg 1x'),
           );
 
         // webp
@@ -313,13 +301,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-100w(-\\w+)?.webp 2x'),
+            new RegExp('/images/image-100w(-\\w+)?.webp 2x'),
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-50w(-\\w+)?.webp 1x'),
+            new RegExp('/images/image-50w(-\\w+)?.webp 1x'),
           );
 
         // avif
@@ -327,13 +315,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-100w(-\\w+)?.avif 2x'),
+            new RegExp('/images/image-100w(-\\w+)?.avif 2x'),
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-50w(-\\w+)?.avif 1x'),
+            new RegExp('/images/image-50w(-\\w+)?.avif 1x'),
           );
 
         await render<TestContext>(
@@ -344,13 +332,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-10w(-\\w+)?.jpg 1x'),
+            new RegExp('/images/image-10w(-\\w+)?.jpg 1x'),
           );
         assert
           .dom('picture source[type="image/jpeg"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-25w(-\\w+)?.jpg 2x'),
+            new RegExp('/images/image-25w(-\\w+)?.jpg 2x'),
           );
 
         // webp
@@ -358,13 +346,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-10w(-\\w+)?.webp 1x'),
+            new RegExp('/images/image-10w(-\\w+)?.webp 1x'),
           );
         assert
           .dom('picture source[type="image/webp"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-25w(-\\w+)?.webp 2x'),
+            new RegExp('/images/image-25w(-\\w+)?.webp 2x'),
           );
 
         // avif
@@ -372,13 +360,13 @@ module('Integration: Responsive Image Component', function (hooks) {
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-10w(-\\w+)?.avif 1x'),
+            new RegExp('/images/image-10w(-\\w+)?.avif 1x'),
           );
         assert
           .dom('picture source[type="image/avif"]')
           .hasAttribute(
             'srcset',
-            new RegExp('/assets/images/image-25w(-\\w+)?.avif 2x'),
+            new RegExp('/images/image-25w(-\\w+)?.avif 2x'),
           );
       });
 
@@ -388,50 +376,35 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-640w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-640w(-\\w+)?.jpg'));
 
         await render<TestContext>(
           hbs`<ResponsiveImage @width={{101}} @src={{this.testImage}}/>`,
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-640w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-640w(-\\w+)?.jpg'));
 
         await render<TestContext>(
           hbs`<ResponsiveImage @width={{100}} @src={{this.testImage}}/>`,
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-100w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-100w(-\\w+)?.jpg'));
 
         await render<TestContext>(
           hbs`<ResponsiveImage @width={{51}} @src={{this.testImage}}/>`,
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-100w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-100w(-\\w+)?.jpg'));
 
         await render<TestContext>(
           hbs`<ResponsiveImage @width={{50}} @src={{this.testImage}}/>`,
         );
         assert
           .dom('img')
-          .hasAttribute(
-            'src',
-            new RegExp('/assets/images/image-50w(-\\w+)?.jpg'),
-          );
+          .hasAttribute('src', new RegExp('/images/image-50w(-\\w+)?.jpg'));
       });
     });
 
