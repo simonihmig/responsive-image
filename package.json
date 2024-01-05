@@ -5,10 +5,6 @@
   "repository": "https://github.com/simonihmig/ember-responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
-  "--filters": [
-    "packages/*",
-    "test-app"
-  ],
   "scripts": {
     "build": "pnpm --filter ember-responsive-image run build && pnpm --filter @ember-responsive-image/webpack run build && pnpm --filter @ember-responsive-image/blurhash run build && pnpm --filter @ember-responsive-image/cloudinary run build && pnpm --filter @ember-responsive-image/imgix run build",
     "lint": "pnpm run -r lint",
