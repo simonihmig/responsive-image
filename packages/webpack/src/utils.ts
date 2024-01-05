@@ -10,7 +10,7 @@ const defaultImageConfig: LoaderOptions = {
   widths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   formats: ['original', 'webp'],
   name: '[name]-[width]w-[hash].[ext]',
-  outputPath: 'assets/images',
+  outputPath: 'images',
 };
 
 export function parseQuery(query: string): Record<string, unknown> {
