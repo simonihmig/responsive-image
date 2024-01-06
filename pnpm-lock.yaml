@@ -264,7 +264,7 @@ importers:
   packages/ember-responsive-image:
     dependencies:
       '@ember-responsive-image/blurhash':
-        specifier: ^0.0.0
+        specifier: ^1.0.0-beta.0
         version: link:../blurhash
       '@ember/render-modifiers':
         specifier: ^2.0.0
@@ -593,7 +593,7 @@ importers:
   packages/webpack:
     dependencies:
       '@ember-responsive-image/blurhash':
-        specifier: ^0.0.0
+        specifier: ^1.0.0-beta.0
         version: link:../blurhash
       base-n:
         specifier: ^3.0.0
