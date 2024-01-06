@@ -43,10 +43,6 @@ For the remainder of this documentation we will assume you will be dealing with 
 
 ## Getting started
 
-### Migration
-
-If you were previously using an older version (<2.x) of this addon, there is a [Migration Guide](docs/MIGRATION.md) to help you go through the (many!) breaking changes.
-
 ### Installation
 
 In your application's directory:
