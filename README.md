@@ -67,7 +67,7 @@ In either case we need to tell Webpack which files it needs to process using the
     rules: [
       {
         resourceQuery: /responsive/,
-        use: require('@ember-responsive-image/webpack').loaders,
+        use: require('@ember-responsive-image/webpack').setupLoaders(),
       },
     ],
   }
@@ -89,7 +89,7 @@ return require('@embroider/compat').compatBuild(app, Webpack, {
         rules: [
           {
             resourceQuery: /responsive/,
-            use: require('@ember-responsive-image/webpack').loaders,
+            use: require('@ember-responsive-image/webpack').setupLoaders(),
           },
         ],
       },
@@ -97,6 +97,8 @@ return require('@embroider/compat').compatBuild(app, Webpack, {
   },
 });
 ```
+
+For more information on how to configure `@ember-responsive-image/webpack` and `setupLoaders()` refer to the [`@ember-responsive-image/webpack` documentation](./packages/webpack/README.md).
 
 #### Classic build with ember-auto-import
 
@@ -111,7 +113,7 @@ let app = new EmberApp(defaults, {
         rules: [
           {
             resourceQuery: /responsive/,
-            use: require('@ember-responsive-image/webpack').loaders,
+            use: require('@ember-responsive-image/webpack').setupLoaders(),
           },
         ],
       },
@@ -119,6 +121,8 @@ let app = new EmberApp(defaults, {
   },
 });
 ```
+
+For more information on how to configure `@ember-responsive-image/webpack` and `setupLoaders()` refer to the [`@ember-responsive-image/webpack` documentation](./packages/webpack/README.md).
 
 Note the use of [`allowAppImports`](https://github.com/embroider-build/ember-auto-import#app-imports) here, which is a way to make the build use ember-auto-import and thus Webpack to handle the files configured by the glob pattern of this configuration option. You can place the images files in a central subfolder under `/app`, like `app/images` as in this example, or even colocate them next to other JavaScript files by targeting specific image extensions instead of certain folders (e.g. `**/*/*.jpg`). Either way make sure that image files you import for use by `ember-responsive-image` are correctly covered by at least one glob pattern passed to `allowAppImports`!
 
