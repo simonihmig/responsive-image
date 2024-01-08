@@ -5353,7 +5353,7 @@ packages:
       '@types/semver': 7.5.6
       '@types/ua-parser-js': 0.7.39
       browserslist: 4.22.2
-      caniuse-lite: 1.0.30001574
+      caniuse-lite: 1.0.30001576
       isbot: 3.8.0
       object-path: 0.11.8
       semver: 7.5.4
@@ -5365,8 +5365,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001574
-      electron-to-chromium: 1.4.622
+      caniuse-lite: 1.0.30001576
+      electron-to-chromium: 1.4.623
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.2)
 
@@ -5477,8 +5477,8 @@ packages:
     dependencies:
       tmp: 0.0.28
 
-  /caniuse-lite@1.0.30001574:
-    resolution: {integrity: sha512-BtYEK4r/iHt/txm81KBudCUcTy7t+s9emrIaHqjYurQ10x71zJ5VQ9x1dYPcz/b+pKSp4y/v1xSI67A+LzpNyg==}
+  /caniuse-lite@1.0.30001576:
+    resolution: {integrity: sha512-ff5BdakGe2P3SQsMsiqmt1Lc8221NR1VzHj5jXN5vBny9A6fpze94HiVV/n7XRosOlsShJcvMv5mdnpjOGCEgg==}
 
   /capture-exit@2.0.0:
     resolution: {integrity: sha512-PiT/hQmTonHhl/HFGN+Lx3JJUznrVYJ3+AQsnthneZbvW7x+f08Tk7yLJTLEOUvBTbduLeeBkxEaYXUOUrRq6g==}
@@ -6518,8 +6518,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: true
 
-  /electron-to-chromium@1.4.622:
-    resolution: {integrity: sha512-GZ47DEy0Gm2Z8RVG092CkFvX7SdotG57c4YZOe8W8qD4rOmk3plgeNmiLVRHP/Liqj1wRiY3uUUod9vb9hnxZA==}
+  /electron-to-chromium@1.4.623:
+    resolution: {integrity: sha512-lKoz10iCYlP1WtRYdh5MvocQPWVRoI7ysp6qf18bmeBgR8abE6+I2CsfyNKztRDZvhdWc+krKT6wS7Neg8sw3A==}
 
   /ember-addon-config@0.1.0(@glint/template@1.2.2):
     resolution: {integrity: sha512-d7J9xrWYBuGVght7Tn6ezqChItYXHsVY54N64xjOvIv0ldWxAHKObLZwMtwKjATs4fL76xImUlf+jB+S8viaiQ==}
