@@ -180,8 +180,8 @@ importers:
         specifier: 4.0.5
         version: 4.0.5
       '@types/ember__helper':
-        specifier: 4.0.5
-        version: 4.0.5(@babel/core@7.23.7)
+        specifier: 4.0.6
+        version: 4.0.6(@babel/core@7.23.7)
       '@types/ember__modifier':
         specifier: 4.0.8
         version: 4.0.8(@babel/core@7.23.7)
@@ -349,8 +349,8 @@ importers:
         specifier: 4.0.5
         version: 4.0.5
       '@types/ember__helper':
-        specifier: 4.0.5
-        version: 4.0.5(@babel/core@7.23.7)
+        specifier: 4.0.6
+        version: 4.0.6(@babel/core@7.23.7)
       '@types/ember__modifier':
         specifier: 4.0.8
         version: 4.0.8(@babel/core@7.23.7)
@@ -509,8 +509,8 @@ importers:
         specifier: 4.0.5
         version: 4.0.5
       '@types/ember__helper':
-        specifier: 4.0.5
-        version: 4.0.5(@babel/core@7.23.7)
+        specifier: 4.0.6
+        version: 4.0.6(@babel/core@7.23.7)
       '@types/ember__modifier':
         specifier: 4.0.8
         version: 4.0.8(@babel/core@7.23.7)
@@ -750,8 +750,8 @@ importers:
         specifier: 4.0.5
         version: 4.0.5
       '@types/ember__helper':
-        specifier: 4.0.5
-        version: 4.0.5(@babel/core@7.23.7)
+        specifier: 4.0.6
+        version: 4.0.6(@babel/core@7.23.7)
       '@types/ember__modifier':
         specifier: 4.0.8
         version: 4.0.8(@babel/core@7.23.7)
@@ -3817,9 +3817,11 @@ packages:
     resolution: {integrity: sha512-TxV6ODYFy6rZM5NweXdraNE/46nJ2Tc7tZWdA2rso3K6oF1Wf9fNlMT0nZ/QVUpMJMkD7ilNt94INnoQKyN/8w==}
     dev: true
 
-  /@types/ember__helper@4.0.5(@babel/core@7.23.7):
-    resolution: {integrity: sha512-WLaEdSEbS+rF43eUIl9+zX6CBB1eYPpPxsSSaYh7TvI7wv945OxztN6XPUqCvElmD1mUwA9aD3mX9pi3Ejkqbw==}
+  /@types/ember__helper@4.0.6(@babel/core@7.23.7):
+    resolution: {integrity: sha512-pQdKn7A3S6S3rzGBwIvqnKohgtrBU8hpzowO7Vl0TZ6J5t0eEcEAqrieid7l4Ohp/42QKrpg8TUiVmEiq/RWtw==}
     dependencies:
+      '@glimmer/manager': 0.84.3
+      '@glimmer/runtime': 0.84.3
       '@types/ember': 4.0.10(@babel/core@7.23.7)
     transitivePeerDependencies:
       - '@babel/core'
