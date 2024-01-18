@@ -207,8 +207,8 @@ importers:
         specifier: 3.16.3
         version: 3.16.3
       '@types/ember__template':
-        specifier: 4.0.5
-        version: 4.0.5
+        specifier: 4.0.6
+        version: 4.0.6
       '@types/ember__test':
         specifier: 4.0.5
         version: 4.0.5(@babel/core@7.23.7)
@@ -376,8 +376,8 @@ importers:
         specifier: 3.16.3
         version: 3.16.3
       '@types/ember__template':
-        specifier: 4.0.5
-        version: 4.0.5
+        specifier: 4.0.6
+        version: 4.0.6
       '@types/ember__test':
         specifier: 4.0.5
         version: 4.0.5(@babel/core@7.23.7)
@@ -536,8 +536,8 @@ importers:
         specifier: 3.16.3
         version: 3.16.3
       '@types/ember__template':
-        specifier: 4.0.5
-        version: 4.0.5
+        specifier: 4.0.6
+        version: 4.0.6
       '@types/ember__test':
         specifier: 4.0.5
         version: 4.0.5(@babel/core@7.23.7)
@@ -777,8 +777,8 @@ importers:
         specifier: 3.16.3
         version: 3.16.3
       '@types/ember__template':
-        specifier: 4.0.5
-        version: 4.0.5
+        specifier: 4.0.6
+        version: 4.0.6
       '@types/ember__test':
         specifier: 4.0.5
         version: 4.0.5(@babel/core@7.23.7)
@@ -3709,7 +3709,7 @@ packages:
       '@types/ember__runloop': 4.0.9(@babel/core@7.23.7)
       '@types/ember__service': 4.0.9(@babel/core@7.23.7)
       '@types/ember__string': 3.16.3
-      '@types/ember__template': 4.0.5
+      '@types/ember__template': 4.0.6
       '@types/ember__test': 4.0.5(@babel/core@7.23.7)
       '@types/ember__utils': 4.0.6(@babel/core@7.23.7)
       '@types/rsvp': 4.0.8
@@ -3861,11 +3861,11 @@ packages:
   /@types/ember__string@3.16.3:
     resolution: {integrity: sha512-0T9ofzm9LL/bSG5u1SxKx/j2h/bHKkl5NKjGCNbFQxEKBw4f2cs6+AMDgWke9z+qrRRIz9vGEtMXnA3yJrO2xA==}
     dependencies:
-      '@types/ember__template': 4.0.5
+      '@types/ember__template': 4.0.6
     dev: true
 
-  /@types/ember__template@4.0.5:
-    resolution: {integrity: sha512-cuyurEDnVX5fEX8P5UAgPYMPJG8WzN5ubdQy+spMNNiEm20vg4teeyzZa1vZLGgai065fYpVy3JTsEjbzskQAg==}
+  /@types/ember__template@4.0.6:
+    resolution: {integrity: sha512-s7yTfDFtdKzxwWi3zzDIlhbMETSB+eGGmvpxhl8cnw2JX8Xj5T66NRACm4q2jJ1kJfIXhECdduw5JnIyny00vw==}
     dev: true
 
   /@types/ember__test@4.0.5(@babel/core@7.23.7):
