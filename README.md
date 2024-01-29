@@ -78,7 +78,7 @@ This is telling Webpack that any import that contains `responsive` in its query 
 
 #### Embroider
 
-To apply this configuration to an Embroider-powered Ember app, edit your `ember-cli-config.js` file and pass the Webpack config using the [options argument of `compatBuild`](https://github.com/embroider-build/embroider?tab=readme-ov-file#options):
+To apply this configuration to an Embroider-powered Ember app, edit your `ember-cli-build.js` file and pass the Webpack config using the [options argument of `compatBuild`](https://github.com/embroider-build/embroider?tab=readme-ov-file#options):
 
 ```js
 const { Webpack } = require('@embroider/webpack');
