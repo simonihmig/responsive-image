@@ -59,8 +59,8 @@ importers:
         specifier: 20.11.30
         version: 20.11.30
       '@types/sharp':
-        specifier: 0.31.1
-        version: 0.31.1
+        specifier: 0.32.0
+        version: 0.32.0
       '@typescript-eslint/eslint-plugin':
         specifier: 7.3.1
         version: 7.3.1(@typescript-eslint/parser@7.3.1)(eslint@8.57.0)(typescript@5.4.3)
@@ -618,8 +618,8 @@ importers:
         specifier: 20.11.30
         version: 20.11.30
       '@types/sharp':
-        specifier: 0.31.1
-        version: 0.31.1
+        specifier: 0.32.0
+        version: 0.32.0
       '@typescript-eslint/eslint-plugin':
         specifier: 7.3.1
         version: 7.3.1(@typescript-eslint/parser@7.3.1)(eslint@8.57.0)(typescript@5.4.3)
@@ -4213,10 +4213,11 @@ packages:
       '@types/node': 20.11.30
     dev: true
 
-  /@types/sharp@0.31.1:
-    resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
+  /@types/sharp@0.32.0:
+    resolution: {integrity: sha512-OOi3kL+FZDnPhVzsfD37J88FNeZh6gQsGcLc95NbeURRGvmSjeXiDcyWzF2o3yh/gQAUn2uhh/e+CPCa5nwAxw==}
+    deprecated: This is a stub types definition. sharp provides its own type definitions, so you do not need this installed.
     dependencies:
-      '@types/node': 20.11.30
+      sharp: 0.33.2
     dev: true
 
   /@types/symlink-or-copy@1.2.2:
