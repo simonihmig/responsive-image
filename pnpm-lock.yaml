@@ -129,8 +129,8 @@ importers:
         specifier: 7.24.4
         version: 7.24.4
       '@embroider/addon-dev':
-        specifier: 4.2.1
-        version: 4.2.1(@glint/template@1.4.0)(rollup@4.14.1)
+        specifier: 4.3.1
+        version: 4.3.1(@glint/template@1.4.0)(rollup@4.14.1)
       '@glimmer/component':
         specifier: 1.1.2
         version: 1.1.2(@babel/core@7.24.4)
@@ -298,8 +298,8 @@ importers:
         specifier: 7.24.4
         version: 7.24.4
       '@embroider/addon-dev':
-        specifier: 4.2.1
-        version: 4.2.1(@glint/template@1.4.0)(rollup@4.14.1)
+        specifier: 4.3.1
+        version: 4.3.1(@glint/template@1.4.0)(rollup@4.14.1)
       '@glimmer/component':
         specifier: 1.1.2
         version: 1.1.2(@babel/core@7.24.4)
@@ -458,8 +458,8 @@ importers:
         specifier: 7.24.4
         version: 7.24.4
       '@embroider/addon-dev':
-        specifier: 4.2.1
-        version: 4.2.1(@glint/template@1.4.0)(rollup@4.14.1)
+        specifier: 4.3.1
+        version: 4.3.1(@glint/template@1.4.0)(rollup@4.14.1)
       '@glimmer/component':
         specifier: 1.1.2
         version: 1.1.2(@babel/core@7.24.4)
@@ -2482,12 +2482,12 @@ packages:
       - supports-color
     dev: true
 
-  /@embroider/addon-dev@4.2.1(@glint/template@1.4.0)(rollup@4.14.1):
-    resolution: {integrity: sha512-oMNlVqsqNjtNu7sFGGgo4igOy+Xa7g1I1aXMf7XRbYKWBCiYKX7C7lDKZ65qgsEpRKV3LtbC+XIYiGfHiqhFAg==}
+  /@embroider/addon-dev@4.3.1(@glint/template@1.4.0)(rollup@4.14.1):
+    resolution: {integrity: sha512-CNZ4Y69PPIZAAGGoERjvDcrwOwWTuUmnRYu+XnmqKk0opdlu/PTssO9YWyxp8AnvGd2l7iLCjEn5mpLFvifstA==}
     engines: {node: 12.* || 14.* || >= 16}
     hasBin: true
     dependencies:
-      '@embroider/core': 3.4.6(@glint/template@1.4.0)
+      '@embroider/core': 3.4.7(@glint/template@1.4.0)
       '@rollup/pluginutils': 4.2.1
       content-tag: 2.0.1
       fs-extra: 10.1.0
@@ -2515,15 +2515,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@embroider/core@3.4.6(@glint/template@1.4.0):
-    resolution: {integrity: sha512-RR+3WHS0l/itoyNYs2n/Fk7YOtpT7j7n9onJJeUo+C1RpocpGYsww/cR1EQaPbWVF8iv1PyRKKlS8kVO4zuipA==}
+  /@embroider/core@3.4.7(@glint/template@1.4.0):
+    resolution: {integrity: sha512-JTXpPBzsIrTdQdv/UdUQVinCxCtcLjHb0CgCksifFyut/JZC+6Dh65eP8KuPuF9eUX0ptxEhr7DQiMNeAD/p7w==}
     engines: {node: 12.* || 14.* || >= 16}
     dependencies:
       '@babel/core': 7.24.4
       '@babel/parser': 7.24.4
       '@babel/traverse': 7.24.1
-      '@embroider/macros': 1.15.0(@glint/template@1.4.0)
-      '@embroider/shared-internals': 2.5.2
+      '@embroider/macros': 1.15.1(@glint/template@1.4.0)
+      '@embroider/shared-internals': 2.6.0
       assert-never: 1.2.1
       babel-plugin-ember-template-compilation: 2.2.1
       broccoli-node-api: 1.7.0
