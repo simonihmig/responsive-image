@@ -265,7 +265,7 @@ importers:
     dependencies:
       '@ember-responsive-image/blurhash':
         specifier: ^1.0.0-beta.0
-        version: 1.0.0-beta.0(@ember-responsive-image/webpack@1.0.0-beta.0)(webpack@5.91.0)
+        version: 1.0.0-beta.0(@ember-responsive-image/webpack@0.0.0)(webpack@5.91.0)
       '@ember/render-modifiers':
         specifier: ^2.0.0
         version: 2.1.0(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))
@@ -282,8 +282,8 @@ importers:
         specifier: ^1.0.2
         version: 1.2.1(@babel/core@7.24.4)
       ember-addon-config:
-        specifier: ^0.1.0
-        version: 0.1.0(@glint/template@1.4.0)
+        specifier: ^0.1.1
+        version: 0.1.1(@glint/template@1.4.0)
       ember-style-modifier:
         specifier: ^4.0.0
         version: 4.3.1(@babel/core@7.24.4)(@ember/string@3.1.1)(ember-source@5.8.0(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))
@@ -594,7 +594,7 @@ importers:
     dependencies:
       '@ember-responsive-image/blurhash':
         specifier: ^1.0.0-beta.0
-        version: 1.0.0-beta.0(@ember-responsive-image/webpack@1.0.0-beta.0)(webpack@5.91.0)
+        version: 1.0.0-beta.0(@ember-responsive-image/webpack@0.0.0)(webpack@5.91.0)
       base-n:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1649,11 +1649,11 @@ packages:
       '@ember-responsive-image/webpack': ^1.0.0-beta.0
       webpack: ^5.70.0
 
-  '@ember-responsive-image/webpack@1.0.0-beta.0':
-    resolution: {integrity: sha512-yWxIa9DYorW8NqBQ4WhwTJveiM2B6t+tWvJfwBOspomyK+qusfOjYZjGPC3tJyORh2os8dqD2AMg+M0LIVBNqA==}
+  '@ember-responsive-image/webpack@0.0.0':
+    resolution: {integrity: sha512-QnywIL8dGJPak+ZLOwNKn81Yf8uue1pJ9mVJ7MPmhc0LWSN8B26B2CPRehlugSAtpk1DjM2H5HnNd3LPwsZq6w==}
     engines: {node: 20.* || >= 22}
     peerDependencies:
-      '@ember-responsive-image/blurhash': ^1.0.0-beta.0
+      '@ember-responsive-image/blurhash': ^0.0.0
       webpack: ^5.70.0
     peerDependenciesMeta:
       '@ember-responsive-image/blurhash':
@@ -3970,6 +3970,10 @@ packages:
 
   ember-addon-config@0.1.0:
     resolution: {integrity: sha512-d7J9xrWYBuGVght7Tn6ezqChItYXHsVY54N64xjOvIv0ldWxAHKObLZwMtwKjATs4fL76xImUlf+jB+S8viaiQ==}
+    engines: {node: '>= 18'}
+
+  ember-addon-config@0.1.1:
+    resolution: {integrity: sha512-Hx5wJynCXreS7HCQ5lHeLhIUICRPCU4xaFj2wO1kNoB3HNbpdSEu/K+t15Dg/t5C2ZwKgTWw7PM6mG77dzv5pg==}
     engines: {node: '>= 18'}
 
   ember-auto-import@2.7.2:
@@ -8807,23 +8811,23 @@ snapshots:
 
   '@ember-data/rfc395-data@0.0.4': {}
 
-  '@ember-responsive-image/blurhash@1.0.0-beta.0(@ember-responsive-image/webpack@1.0.0-beta.0)(webpack@5.91.0)':
+  '@ember-responsive-image/blurhash@1.0.0-beta.0(@ember-responsive-image/webpack@0.0.0)(webpack@5.91.0)':
     dependencies:
-      '@ember-responsive-image/webpack': 1.0.0-beta.0(@ember-responsive-image/blurhash@1.0.0-beta.0)(webpack@5.91.0)
+      '@ember-responsive-image/webpack': 0.0.0(@ember-responsive-image/blurhash@1.0.0-beta.0)(webpack@5.91.0)
       '@embroider/addon-shim': 1.8.7
       blurhash: 2.0.5
       webpack: 5.91.0
     transitivePeerDependencies:
       - supports-color
 
-  '@ember-responsive-image/webpack@1.0.0-beta.0(@ember-responsive-image/blurhash@1.0.0-beta.0)(webpack@5.91.0)':
+  '@ember-responsive-image/webpack@0.0.0(@ember-responsive-image/blurhash@1.0.0-beta.0)(webpack@5.91.0)':
     dependencies:
       base-n: 3.0.0
       loader-utils: 3.2.1
       sharp: 0.33.3
       webpack: 5.91.0
     optionalDependencies:
-      '@ember-responsive-image/blurhash': 1.0.0-beta.0(@ember-responsive-image/webpack@1.0.0-beta.0)(webpack@5.91.0)
+      '@ember-responsive-image/blurhash': 1.0.0-beta.0(@ember-responsive-image/webpack@0.0.0)(webpack@5.91.0)
 
   '@ember/edition-utils@1.2.0': {}
 
@@ -11638,6 +11642,13 @@ snapshots:
   electron-to-chromium@1.4.745: {}
 
   ember-addon-config@0.1.0(@glint/template@1.4.0):
+    dependencies:
+      '@embroider/macros': 1.16.0(@glint/template@1.4.0)
+    transitivePeerDependencies:
+      - '@glint/template'
+      - supports-color
+
+  ember-addon-config@0.1.1(@glint/template@1.4.0):
     dependencies:
       '@embroider/macros': 1.16.0(@glint/template@1.4.0)
     transitivePeerDependencies:
