@@ -20,6 +20,7 @@ export default {
       'helpers/**/*.js',
       'services/**/*.js',
       'index.js',
+      'utils/match.js',
       'template-registry.js',
     ]),
 

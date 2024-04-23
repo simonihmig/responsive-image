@@ -1,0 +1,1080 @@
+(node:29713) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2mtests/[22m[1mindex.test.ts[22m
+  [31m✕[39m [2mit works (539 ms)[22m
+
+[1m[31m  [1m● [22m[1mit works[39m[22m
+
+    thrown: Array [
+      Object {
+        "details": "resolve '@glimmer/application' in '/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src'
+      Parsed request is a module
+      using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/package.json (relative path: ./dist/modules/es2017/src)
+        Field 'browser' doesn't contain a valid alias configuration
+        resolve as module
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/node_modules doesn't exist or is not a directory
+          looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules
+            single file module
+              using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application)
+                no extension
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application doesn't exist
+                .js
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application.js doesn't exist
+                .json
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application.json doesn't exist
+                .wasm
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application.wasm doesn't exist
+            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application doesn't exist
+          looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules
+            single file module
+              using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/.pnpm/node_modules/@glimmer/application)
+                no extension
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application doesn't exist
+                .js
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application.js doesn't exist
+                .json
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application.json doesn't exist
+                .wasm
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application.wasm doesn't exist
+            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application doesn't exist
+          /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/node_modules doesn't exist or is not a directory
+          looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules
+            single file module
+              using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@glimmer/application)
+                no extension
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application doesn't exist
+                .js
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application.js doesn't exist
+                .json
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application.json doesn't exist
+                .wasm
+                  Field 'browser' doesn't contain a valid alias configuration
+                  /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application.wasm doesn't exist
+            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application doesn't exist
+          /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory
+          /Users/simonihmig/node_modules doesn't exist or is not a directory
+          /Users/node_modules doesn't exist or is not a directory
+          /node_modules doesn't exist or is not a directory",
+        "loc": "1:0-52",
+        "message": "Module not found: Error: Can't resolve '@glimmer/application' in '/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src'",
+        "moduleId": null,
+        "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src/component-manager.js",
+        "moduleName": "../../../node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src/component-manager.js",
+        "moduleTrace": Array [
+          [Object],
+          [Object],
+          [Object],
+          [Object],
+          [Object],
+        ],
+        "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@glimmer/application' in '/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src'
+[2m[22m
+[2m    [0m [90m 1 |[39m [36mimport[39m compiler [36mfrom[39m [32m'./compiler'[39m[33m;[39m[22m
+[2m     [90m 2 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 3 |[39m test([32m'it works'[39m[33m,[39m [36masync[39m () [33m=>[39m {[22m
+[2m     [90m   |[39m [31m[1m^[22m[2m[39m[22m
+[2m     [90m 4 |[39m   [36mconst[39m stats [33m=[39m [36mawait[39m compiler([32m'fixtures/image.jpg'[39m[33m,[39m {})[33m;[39m[22m
+[2m     [90m 5 |[39m   [36mconst[39m output [33m=[39m stats[33m.[39mtoJson({ source[33m:[39m [36mtrue[39m })[33m.[39mmodules[33m?[39m[33m.[39m[[35m0[39m][33m?[39m[33m.[39msource[33m;[39m[22m
+[2m     [90m 6 |[39m   expect(output)[33m.[39mtoBe([32m'export default "Hey Alice!\\n"'[39m)[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@glimmer/application' in '/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/package.json (relative path: ./dist/modules/es2017/src)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/application doesn't exist[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/.pnpm/node_modules/@glimmer/application)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/node_modules/@glimmer/application doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@glimmer/application)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@glimmer/application doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "2:0-59",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@glimmer/application' in '/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src/component.js",[22m
+[2m          "moduleName": "../../../node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src/component.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@glimmer/application' in '/Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/.pnpm/@glimmer+component@1.1.2_@babel+core@7.24.4/node_modules/@glimmer/component/dist/modules/es2017/src'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": undefined,[22m
+[2m          "loc": "1:0",[22m
+[2m          "message": "Module parse failed: Unexpected token (1:0)[22m
+[2m      You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders[22m
+[2m      > .eri-responsive {[22m
+[2m      |   width: 100%;[22m
+[2m      |   height: auto;",[22m
+[2m          "moduleId": 463,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/responsive-image.css",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/components/responsive-image.css",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleParseError: Module parse failed: Unexpected token (1:0)[22m
+[2m      You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders[22m
+[2m      > .eri-responsive {[22m
+[2m      |   width: 100%;[22m
+[2m      |   height: auto;[22m
+[2m      [2mat handleParseError ([22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModule.js[2m:1102:19)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModule.js[2m:1243:5[22m[2m[22m
+[2m      [2mat processResult ([22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModule.js[2m:883:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModule.js[2m:966:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/loader-runner@4.3.0/node_modules/loader-runner/lib/LoaderRunner.js[2m:407:3[22m[2m[22m
+[2m      [2mat iterateNormalLoaders ([22m[2m../../node_modules/.pnpm/loader-runner@4.3.0/node_modules/loader-runner/lib/LoaderRunner.js[2m:233:10)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/loader-runner@4.3.0/node_modules/loader-runner/lib/LoaderRunner.js[2m:224:4[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModule.js[2m:920:15[22m[2m[22m
+[2m      [2mat Array.eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:12:1)[22m[2m[22m
+[2m      [2mat runCallbacks ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js[2m:45:15)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js[2m:279:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/graceful-fs.js[2m:123:16[22m[2m[22m
+[2m      [2mat FSReqCallback.readFileAfterClose [as oncomplete] ([22m[2mnode:internal/fs/read/context[2m:68:3)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/components)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/service)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/service)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "2:0-40",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/debug' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/components)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/debug)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/debug doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/debug.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/debug.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/debug.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/debug doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/debug)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/debug doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/debug.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/debug.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/debug.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/debug doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "3:0-38",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/debug' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/debug' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/object' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/components)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/object)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/object doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/object.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/object.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/object.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/object doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/object)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/object doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/object.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/object.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/object.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/object doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "5:0-39",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/object' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/object' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/template-compilation' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/components)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/template-compilation)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template-compilation doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template-compilation.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template-compilation.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template-compilation.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template-compilation doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/template-compilation)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template-compilation doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template-compilation.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template-compilation.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template-compilation.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template-compilation doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "8:0-65",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/template-compilation' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/template-compilation' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/component' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/components)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/component)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/component doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/component.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/component.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/component.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/component doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/component)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/component doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/component.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/component.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/component.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/component doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "10:0-56",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/component' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/components/responsive-image.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/component' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/components'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/helpers)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/service)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/service)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "1:0-40",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers/responsive-image-resolve.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/helpers/responsive-image-resolve.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/template' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/helpers)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/template)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/template doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/template)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/template doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "2:0-43",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/template' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers/responsive-image-resolve.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/helpers/responsive-image-resolve.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/template' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/component/helper' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/helpers)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/component doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/component doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "3:0-45",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/component/helper' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers/responsive-image-resolve.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/helpers/responsive-image-resolve.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/component/helper' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/helpers'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m        Object {[22m
+[2m          "details": "resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/services'[22m
+[2m        Parsed request is a module[22m
+[2m        using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./dist/services)[22m
+[2m          Field 'browser' doesn't contain a valid alias configuration[22m
+[2m          resolve as module[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/services/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/package.json (relative path: ./node_modules/@ember/service)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/ember-responsive-image/packages/node_modules doesn't exist or is not a directory[22m
+[2m            looking for modules in /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules[22m
+[2m              single file module[22m
+[2m                using description file: /Users/simonihmig/Projects/oss/ember-responsive-image/package.json (relative path: ./node_modules/@ember/service)[22m
+[2m                  no extension[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m                  .js[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.js doesn't exist[22m
+[2m                  .json[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.json doesn't exist[22m
+[2m                  .wasm[22m
+[2m                    Field 'browser' doesn't contain a valid alias configuration[22m
+[2m                    /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service.wasm doesn't exist[22m
+[2m              /Users/simonihmig/Projects/oss/ember-responsive-image/node_modules/@ember/service doesn't exist[22m
+[2m            /Users/simonihmig/Projects/oss/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/Projects/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/simonihmig/node_modules doesn't exist or is not a directory[22m
+[2m            /Users/node_modules doesn't exist or is not a directory[22m
+[2m            /node_modules doesn't exist or is not a directory",[22m
+[2m          "loc": "1:0-37",[22m
+[2m          "message": "Module not found: Error: Can't resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/services'",[22m
+[2m          "moduleId": null,[22m
+[2m          "moduleIdentifier": "/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/services/responsive-image.js",[22m
+[2m          "moduleName": "../../ember-responsive-image/dist/services/responsive-image.js",[22m
+[2m          "moduleTrace": Array [[22m
+[2m            [Object],[22m
+[2m            [Object],[22m
+[2m          ],[22m
+[2m          "stack": "ModuleNotFoundError: Module not found: Error: Can't resolve '@ember/service' in '/Users/simonihmig/Projects/oss/ember-responsive-image/packages/ember-responsive-image/dist/services'[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/Compilation.js[2m:2094:28[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:895:13[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:10:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:332:22[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:9:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:509:22[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:151:11[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:767:25[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:979:8[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1109:5[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/neo-async@2.6.2/node_modules/neo-async/async.js[2m:6883:13[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/webpack@5.91.0/node_modules/webpack/lib/NormalModuleFactory.js[2m:1092:45[22m[2m[22m
+[2m      [2mat finishWithoutResolve ([22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:567:11)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:656:15[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:27:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js[2m:89:43[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:16:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/Resolver.js[2m:714:5[22m[2m[22m
+[2m      [2mat eval (eval at create ([22m[2m../../node_modules/.pnpm/tapable@2.2.1/node_modules/tapable/lib/HookCodeFactory.js[2m:33:10), <anonymous>:15:1)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/enhanced-resolve@5.16.0/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js[2m:41:15[22m[2m[22m
+[2m      [2mat processTicksAndRejections ([22m[2mnode:internal/process/task_queues[2m:81:21)",[22m[2m[22m
+[2m        },[22m
+[2m      ][22m
+[2m      [2mat test ([22m[2m[0m[36mtests/index.test.ts[39m[0m[2m:3:1)[22m[2m[22m
+
+[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 total
+[1mTests:       [22m[1m[31m1 failed[39m[22m, 1 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        0.758 s, estimated 1 s
+[2mRan all test suites[22m[2m.[22m
