@@ -1,5 +1,14 @@
 # ember-responsive-image
 
+## 5.0.0-beta.1
+
+### Patch Changes
+
+- [#573](https://github.com/simonihmig/ember-responsive-image/pull/573) [`fed835d`](https://github.com/simonihmig/ember-responsive-image/commit/fed835de43ac86b28d9a5cc80d751adff76df219) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix broken build when no addon config is found
+
+- Updated dependencies [[`f8d3ebb`](https://github.com/simonihmig/ember-responsive-image/commit/f8d3ebb5147878a6c4bbea655756e60600667ce3)]:
+  - @ember-responsive-image/blurhash@1.0.0-beta.1
+
 ## 5.0.0-beta.0
 
 ### Major Changes

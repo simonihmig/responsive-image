@@ -1,5 +1,14 @@
 # @ember-responsive-image/blurhash
 
+## 1.0.0-beta.1
+
+### Patch Changes
+
+- [#571](https://github.com/simonihmig/ember-responsive-image/pull/571) [`f8d3ebb`](https://github.com/simonihmig/ember-responsive-image/commit/f8d3ebb5147878a6c4bbea655756e60600667ce3) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix broken blurhash package
+
+- Updated dependencies []:
+  - @ember-responsive-image/webpack@1.0.0-beta.0
+
 ## 1.0.0-beta.0
 
 ### Major Changes
