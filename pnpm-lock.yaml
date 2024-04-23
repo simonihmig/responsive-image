@@ -891,8 +891,8 @@ importers:
         specifier: 2.20.1
         version: 2.20.1
       qunit-dom:
-        specifier: 3.1.1
-        version: 3.1.1
+        specifier: 3.1.2
+        version: 3.1.2
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -6455,8 +6455,8 @@ packages:
   quick-temp@0.1.8:
     resolution: {integrity: sha512-YsmIFfD9j2zaFwJkzI6eMG7y0lQP7YeWzgtFgNl38pGWZBSXJooZbOWwkcRot7Vt0Fg9L23pX0tqWU3VvLDsiA==}
 
-  qunit-dom@3.1.1:
-    resolution: {integrity: sha512-Ja2NK+LsQM4iDU5QFtkwbLEbETgr6+7wTf7t6DXW3hWhB6GmAtKA2r3eLnmXpSdncMnoBsedXSKfjM0iMTOUGQ==}
+  qunit-dom@3.1.2:
+    resolution: {integrity: sha512-urHvzhDxihYrMBpsT/Fk7So79CPfvS0ZwZw2VPA+0JV1Q1XP2IhDg/PLHTt+r2j7787iQAOpILx2GjwAa6CpnA==}
 
   qunit@2.20.1:
     resolution: {integrity: sha512-scZfyhX8mmP3u/CN2y3CutQb+ppalbpqmm7g/X62M2yOt8ofzsxrRaC+MPmYm/tXxpzs9HGrVeCxZwLoP0tuAA==}
@@ -14977,7 +14977,7 @@ snapshots:
       rimraf: 2.7.1
       underscore.string: 3.3.6
 
-  qunit-dom@3.1.1: {}
+  qunit-dom@3.1.2: {}
 
   qunit@2.20.1:
     dependencies:
