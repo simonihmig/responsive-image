@@ -635,6 +635,9 @@ importers:
       concurrently:
         specifier: 8.2.2
         version: 8.2.2
+      css-loader:
+        specifier: ^7.1.1
+        version: 7.1.1(webpack@5.91.0)
       ember-responsive-image:
         specifier: workspace:*
         version: link:../ember-responsive-image
@@ -674,6 +677,9 @@ importers:
       rollup-plugin-ts:
         specifier: 3.4.5
         version: 3.4.5(@babel/core@7.24.4)(@babel/plugin-transform-runtime@7.24.3(@babel/core@7.24.4))(@babel/preset-env@7.24.4(@babel/core@7.24.4))(@babel/preset-typescript@7.24.1(@babel/core@7.24.4))(@babel/runtime@7.24.4)(rollup@4.16.4)(typescript@5.4.5)
+      style-loader:
+        specifier: ^4.0.0
+        version: 4.0.0(webpack@5.91.0)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -3890,6 +3896,18 @@ packages:
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       webpack: ^4.27.0 || ^5.0.0
+
+  css-loader@7.1.1:
+    resolution: {integrity: sha512-OxIR5P2mjO1PSXk44bWuQ8XtMK4dpEqpIyERCx3ewOo3I8EmbcxMPUc5ScLtQfgXtOojoMv57So4V/C02HQLsw==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      '@rspack/core': 0.x || 1.x
+      webpack: ^5.27.0
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+      webpack:
+        optional: true
 
   css-tree@2.3.1:
     resolution: {integrity: sha512-6Fv1DV/TYw//QF5IzQdqsNDjx/wc8TrMBZsqjL9eW01tWb7R7k/mq+/VXfJCl7SoD5emsJop9cOByJZfs8hYIw==}
@@ -7578,6 +7596,12 @@ packages:
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
+
+  style-loader@4.0.0:
+    resolution: {integrity: sha512-1V4WqhhZZgjVAVJyt7TdDPZoPBPNHbekX4fWnCJL1yQukhCeZhJySUL+gL9y6sNdN95uEOS83Y55SqHcP7MzLA==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      webpack: ^5.27.0
 
   styled_string@0.0.1:
     resolution: {integrity: sha512-DU2KZiB6VbPkO2tGSqQ9n96ZstUPjW7X4sGO6V2m1myIQluX0p1Ol8BrA/l6/EesqhMqXOIXs3cJNOy1UuU2BA==}
@@ -12166,6 +12190,19 @@ snapshots:
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.6.0
+      webpack: 5.91.0
+
+  css-loader@7.1.1(webpack@5.91.0):
+    dependencies:
+      icss-utils: 5.1.0(postcss@8.4.38)
+      postcss: 8.4.38
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.38)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.38)
+      postcss-modules-scope: 3.2.0(postcss@8.4.38)
+      postcss-modules-values: 4.0.0(postcss@8.4.38)
+      postcss-value-parser: 4.2.0
+      semver: 7.6.0
+    optionalDependencies:
       webpack: 5.91.0
 
   css-tree@2.3.1:
@@ -16997,6 +17034,10 @@ snapshots:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
+      webpack: 5.91.0
+
+  style-loader@4.0.0(webpack@5.91.0):
+    dependencies:
       webpack: 5.91.0
 
   styled_string@0.0.1: {}

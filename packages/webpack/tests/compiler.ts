@@ -23,8 +23,12 @@ export default function compiler(
     module: {
       rules: [
         {
-          test: /\.jpg$/,
+          resourceQuery: /responsive/,
           use: setupLoaders(options),
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
         },
       ],
     },
