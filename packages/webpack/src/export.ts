@@ -63,7 +63,7 @@ export default function exportLoader(
   const aspectRatio = input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1;
 
   const moduleOutput: string[] = [
-    "import { findMatchingImage } from 'ember-responsive-image';",
+    "import { findMatchingImage } from 'ember-responsive-image/utils/match';",
   ];
 
   for (const importedModule of input.imports) {

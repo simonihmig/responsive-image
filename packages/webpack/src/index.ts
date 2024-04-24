@@ -33,7 +33,7 @@ const defaultLoaders: string[] = [
   IMAGES_LOADER,
 ].filter(Boolean) as string[];
 
-function setupLoaders(options?: LoaderOptions) {
+function setupLoaders(options?: Partial<LoaderOptions>) {
   if (options) {
     return defaultLoaders.map((loader) => ({ loader, options }));
   }
