@@ -4,13 +4,11 @@ import {
   setupLoaders,
   type LoaderOptions,
 } from '@ember-responsive-image/webpack';
-import path, { join, resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const _dirname = dirname(fileURLToPath(import.meta.url));
+import path, { join, resolve } from 'path';
 
 export default function compiler(
   fixture: string,
+  _dirname: string,
   options: Partial<LoaderOptions> = {},
 ) {
   const compiler = webpack({
