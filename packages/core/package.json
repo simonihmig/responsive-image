@@ -24,7 +24,7 @@
     "start": "concurrently 'npm:start:*'",
     "start:js": "rollup --config --watch --no-watch.clearScreen",
     "start:types": "tsc --emitDeclarationOnly --watch",
-    "test": "No tests available",
+    "test": "echo 'No tests available'",
     "prepack": "rollup --config"
   },
   "devDependencies": {
