@@ -4,11 +4,9 @@ import { assert } from '@ember/debug';
 import { getOwnConfig } from '@embroider/macros';
 import type { CloudinaryConfig } from '../types.ts';
 
-import type {
-  ResponsiveImageService,
-  ImageType,
-  ImageData,
-} from 'ember-responsive-image';
+import type { ResponsiveImageService } from 'ember-responsive-image';
+
+import type { ImageType, ImageData } from '@ember-responsive-image/core';
 
 interface CloudinaryOptions {
   transformations?: string;
