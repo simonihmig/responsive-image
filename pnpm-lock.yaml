@@ -320,6 +320,9 @@ importers:
       '@ember-responsive-image/blurhash':
         specifier: workspace:^
         version: link:../blurhash
+      '@ember-responsive-image/core':
+        specifier: workspace:^
+        version: link:../core
       '@ember/render-modifiers':
         specifier: ^2.0.0
         version: 2.1.0(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(rsvp@4.8.5))
@@ -351,9 +354,6 @@ importers:
       '@babel/runtime':
         specifier: 7.24.4
         version: 7.24.4
-      '@ember-responsive-image/core':
-        specifier: workspace:*
-        version: link:../core
       '@embroider/addon-dev':
         specifier: 4.3.1
         version: 4.3.1(@glint/template@1.4.0)(rollup@4.16.4)
@@ -761,6 +761,9 @@ importers:
       '@ember-responsive-image/cloudinary':
         specifier: workspace:*
         version: link:../packages/cloudinary
+      '@ember-responsive-image/core':
+        specifier: workspace:*
+        version: link:../packages/core
       '@ember-responsive-image/imgix':
         specifier: workspace:*
         version: link:../packages/imgix
