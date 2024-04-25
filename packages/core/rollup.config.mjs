@@ -8,7 +8,9 @@ export default {
   },
 
   plugins: [
-    babel(),
+    babel({
+      extensions: ['.js', '.ts'],
+    }),
 
     // Copy Readme and License into published package
     copy({

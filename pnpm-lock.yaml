@@ -128,6 +128,9 @@ importers:
       '@babel/runtime':
         specifier: 7.24.4
         version: 7.24.4
+      '@ember-responsive-image/core':
+        specifier: workspace:*
+        version: link:../core
       '@embroider/addon-dev':
         specifier: 4.3.1
         version: 4.3.1(@glint/template@1.4.0)(rollup@4.16.4)
@@ -348,6 +351,9 @@ importers:
       '@babel/runtime':
         specifier: 7.24.4
         version: 7.24.4
+      '@ember-responsive-image/core':
+        specifier: workspace:*
+        version: link:../core
       '@embroider/addon-dev':
         specifier: 4.3.1
         version: 4.3.1(@glint/template@1.4.0)(rollup@4.16.4)
@@ -508,6 +514,9 @@ importers:
       '@babel/runtime':
         specifier: 7.24.4
         version: 7.24.4
+      '@ember-responsive-image/core':
+        specifier: workspace:*
+        version: link:../core
       '@embroider/addon-dev':
         specifier: 4.3.1
         version: 4.3.1(@glint/template@1.4.0)(rollup@4.16.4)
@@ -646,6 +655,9 @@ importers:
       '@ember-responsive-image/blurhash':
         specifier: workspace:^
         version: link:../blurhash
+      '@ember-responsive-image/core':
+        specifier: workspace:^
+        version: link:../core
       base-n:
         specifier: ^3.0.0
         version: 3.0.0
