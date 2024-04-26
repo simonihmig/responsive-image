@@ -2,8 +2,8 @@
 import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import type { ResponsiveImageService, ImageData } from 'ember-responsive-image';
+import { module, skip, test } from 'qunit';
+import type { ImageData } from 'ember-responsive-image';
 import testImage from 'test-app/images/tests/image.jpg?widths=50,100,640&formats=original,webp,avif&responsive';
 import testImageLqipInline from 'test-app/images/tests/image.jpg?lqip=inline&widths=50,100,640&responsive';
 import testImageLqipColor from 'test-app/images/tests/image.jpg?lqip=color&widths=50,100,640&responsive';
@@ -11,6 +11,7 @@ import testImageLqipBlurhash from 'test-app/images/tests/image.jpg?lqip=blurhash
 import smallImage from 'test-app/images/tests/image.jpg?widths=10,25&formats=original,webp,avif&responsive';
 
 import type { RenderingTestContext } from '@ember/test-helpers';
+import { env } from '@ember-responsive-image/core';
 
 interface TestContext extends RenderingTestContext {
   cacheBreaker: () => string;
@@ -175,32 +176,30 @@ module('Integration: Responsive Image Component', function (hooks) {
           );
       });
 
-      test('it renders the fallback src next to needed display size', async function (assert) {
-        const service = this.owner.lookup(
-          'service:responsive-image',
-        ) as ResponsiveImageService;
-        service.set('physicalWidth', 45);
+      // Blocked on https://github.com/embroider-build/ember-auto-import/issues/503
+      skip('it renders the fallback src next to needed display size', async function (assert) {
+        env.physicalWidth = 45;
         await render<TestContext>(
           hbs`<ResponsiveImage @src={{this.testImage}} />`,
         );
         assert
           .dom('img')
           .hasAttribute('src', new RegExp('/images/image-50w(-\\w+)?.jpg'));
-        service.set('physicalWidth', 51);
+        env.physicalWidth = 51;
         await render<TestContext>(
           hbs`<ResponsiveImage @src={{this.testImage}} />`,
         );
         assert
           .dom('img')
           .hasAttribute('src', new RegExp('/images/image-100w(-\\w+)?.jpg'));
-        service.set('physicalWidth', 9);
+        env.physicalWidth = 9;
         await render<TestContext>(
           hbs`<ResponsiveImage @src={{this.smallImage}} />`,
         );
         assert
           .dom('img')
           .hasAttribute('src', new RegExp('/images/image-10w(-\\w+)?.jpg'));
-        service.set('physicalWidth', 11);
+        env.physicalWidth = 11;
         await render<TestContext>(
           hbs`<ResponsiveImage @src={{this.smallImage}} />`,
         );
@@ -563,9 +562,7 @@ module('Integration: Responsive Image Component', function (hooks) {
           hbs`<ResponsiveImage @src={{this.defaultImageData}}/>`,
         );
 
-        const { deviceWidths } = this.owner.lookup(
-          'service:responsive-image',
-        ) as ResponsiveImageService;
+        const { deviceWidths } = env;
 
         // webp
         assert
@@ -615,11 +612,9 @@ module('Integration: Responsive Image Component', function (hooks) {
           );
       });
 
-      test('it renders the fallback src next to needed display size', async function (assert) {
-        const service = this.owner.lookup(
-          'service:responsive-image',
-        ) as ResponsiveImageService;
-        service.set('physicalWidth', 100);
+      // Blocked on https://github.com/embroider-build/ember-auto-import/issues/503
+      skip('it renders the fallback src next to needed display size', async function (assert) {
+        env.physicalWidth = 100;
         await render<TestContextWithDefaultProvider>(
           hbs`<ResponsiveImage @src={{this.defaultImageData}}/>`,
         );

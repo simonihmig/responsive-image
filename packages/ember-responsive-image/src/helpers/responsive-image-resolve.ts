@@ -1,39 +1,18 @@
-import { inject as service } from '@ember/service';
+import {
+  getDestinationWidthBySize,
+  type ImageData,
+  type ImageType,
+} from '@ember-responsive-image/core';
 import { htmlSafe } from '@ember/template';
-import Helper from '@ember/component/helper';
-import ResponsiveImageService from '../services/responsive-image.ts';
-import type { ImageType, ImageData } from '@ember-responsive-image/core';
 
-interface ResponsiveImageResolveSignature {
-  Args: {
-    Positional: [ImageData];
-    Named: {
-      size?: number;
-      format?: ImageType;
-    };
-  };
-  Return: ReturnType<typeof htmlSafe> | undefined;
-}
+export default function responsiveImageResolve(
+  data: ImageData,
+  {
+    size,
+    format = data.imageTypes[0],
+  }: { size?: number; format?: ImageType } = {},
+): ReturnType<typeof htmlSafe> | undefined {
+  const width = getDestinationWidthBySize(size);
 
-/**
- * @class responsiveImageResolve
- * @namespace Helpers
- * @extends Ember.Helper
- * @public
- */
-export default class ResponsiveImageResolve extends Helper<ResponsiveImageResolveSignature> {
-  @service
-  responsiveImage!: ResponsiveImageService;
-
-  compute(
-    [data]: [ImageData],
-    {
-      size,
-      format = data.imageTypes[0],
-    }: { size?: number; format?: ImageType },
-  ): ReturnType<typeof htmlSafe> | undefined {
-    const width = this.responsiveImage.getDestinationWidthBySize(size ?? 0);
-
-    return htmlSafe(data.imageUrlFor(width, format));
-  }
+  return htmlSafe(data.imageUrlFor(width, format));
 }

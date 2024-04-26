@@ -35,3 +35,10 @@ export interface ImageOutputResult {
   width: number;
   format: ImageType;
 }
+
+export interface Env {
+  screenWidth: number;
+  physicalWidth: number;
+  devicePixelRatio: number;
+  deviceWidths: number[];
+}
