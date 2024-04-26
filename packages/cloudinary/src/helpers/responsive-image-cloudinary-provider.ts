@@ -1,25 +1,12 @@
-import { inject as service } from '@ember/service';
-import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
 import { getOwnConfig } from '@embroider/macros';
 import type { CloudinaryConfig } from '../types.ts';
-
-import type { ResponsiveImageService } from 'ember-responsive-image';
-
 import type { ImageType, ImageData } from '@ember-responsive-image/core';
 
 interface CloudinaryOptions {
   transformations?: string;
   formats?: ImageType[];
   quality?: number;
-}
-
-interface CloudinaryProviderSignature {
-  Args: {
-    Positional: [string];
-    Named: CloudinaryOptions;
-  };
-  Return: ImageData;
 }
 
 const URL_REGEX = /https?:/;
@@ -32,11 +19,10 @@ function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
-export const provider = (
+export default function CloudinaryProvider(
   image: string,
-  _service: ResponsiveImageService,
-  options: CloudinaryOptions,
-): ImageData => {
+  options: CloudinaryOptions = {},
+): ImageData {
   const cloudName = getOwnConfig<CloudinaryConfig | undefined>()?.cloudName;
   assert(
     'cloudName must be set for cloudinary provider!',
@@ -72,13 +58,4 @@ export const provider = (
       }`;
     },
   };
-};
-
-export default class CloudinaryProvider extends Helper<CloudinaryProviderSignature> {
-  @service
-  responsiveImage!: ResponsiveImageService;
-
-  compute([image]: [string], options: CloudinaryOptions): ImageData {
-    return provider(image, this.responsiveImage, options);
-  }
 }

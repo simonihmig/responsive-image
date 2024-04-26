@@ -1,10 +1,9 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
-import type ResponsiveImageService from '../services/responsive-image.ts';
 import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { macroCondition, dependencySatisfies } from '@embroider/macros';
+import { env, getDestinationWidthBySize } from '@ember-responsive-image/core';
 import type {
   ImageType,
   LqipBlurhash,
@@ -33,7 +32,7 @@ export interface ResponsiveImageComponentSignature {
   };
 }
 
-interface PictureSource {
+interface ImageSource {
   srcset: string;
   type: ImageType;
   mimeType: string;
@@ -56,9 +55,6 @@ const typeScore = new Map<ImageType, number>([
 ]);
 
 export default class ResponsiveImageComponent extends Component<ResponsiveImageComponentSignature> {
-  @service
-  responsiveImage!: ResponsiveImageService;
-
   @tracked
   isLoaded = false;
 
@@ -80,12 +76,12 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       : Layout.FIXED;
   }
 
-  get sources(): PictureSource[] {
+  get sources(): ImageSource[] {
     if (this.layout === Layout.RESPONSIVE) {
       return this.args.src.imageTypes.map((type) => {
         let widths = this.args.src.availableWidths;
         if (!widths) {
-          widths = this.responsiveImage.deviceWidths;
+          widths = env.deviceWidths;
         }
         const sources: string[] = widths.map((width) => {
           const url = this.args.src.imageUrlFor(width, type);
@@ -128,7 +124,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     }
   }
 
-  get sourcesSorted(): PictureSource[] {
+  get sourcesSorted(): ImageSource[] {
     return this.sources.sort(
       (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0),
     );
@@ -151,9 +147,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @cached
   get width(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
-      return this.responsiveImage.getDestinationWidthBySize(
-        this.args.size ?? 0,
-      );
+      return getDestinationWidthBySize(this.args.size);
     } else {
       if (this.args.width) {
         return this.args.width;

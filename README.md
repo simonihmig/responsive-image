@@ -439,7 +439,7 @@ The options for configuring the processing of local images are handled by the `@
 
 ## Advanced Usage
 
-The addon provides a service and a helper for more advances usages if required. This is described in detail in the [Advanced Usage documentation](docs/ADVANCED.md).
+The addon provides a helper for more advances usages if required. This is described in detail in the [Advanced Usage documentation](docs/ADVANCED.md).
 
 ## Contributing
 
