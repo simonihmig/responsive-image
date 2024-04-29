@@ -21,7 +21,7 @@
     "start": "concurrently 'npm:start:*'",
     "start:js": "rollup --config --watch --no-watch.clearScreen",
     "start:types": "tsc --emitDeclarationOnly --watch",
-    "test": "echo 'No tests available'",
+    "test": "vitest",
     "prepack": "rollup --config"
   },
   "devDependencies": {
@@ -40,7 +40,8 @@
     "prettier": "3.2.5",
     "rollup": "4.17.1",
     "rollup-plugin-copy": "3.5.0",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "vitest": "^1.5.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
