@@ -1,13 +1,17 @@
-// import { config } from '../config.ts';
-
+import { getConfig } from './config.ts';
 import type { Env } from './types';
 
+interface EnvConfig {
+  deviceWidths?: number[];
+}
+
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
-const devicePixelRatio = window?.devicePixelRatio ?? 1;
+const devicePixelRatio =
+  typeof window !== 'undefined' ? window?.devicePixelRatio ?? 1 : 1;
 const physicalWidth = screenWidth * devicePixelRatio;
-// TODO: figure out user config
-// const deviceWidths =  config.deviceWidths;
-const deviceWidths = [640, 750, 828, 1080, 1200, 1920, 2048, 3840];
+const deviceWidths = getConfig<EnvConfig>('env')?.deviceWidths ?? [
+  640, 750, 828, 1080, 1200, 1920, 2048, 3840,
+];
 
 export const env: Env = {
   screenWidth,
