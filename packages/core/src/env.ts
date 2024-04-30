@@ -1,7 +1,7 @@
 import { getConfig } from './config.ts';
 import type { Env } from './types';
 
-interface EnvConfig {
+export interface EnvConfig {
   deviceWidths?: number[];
 }
 

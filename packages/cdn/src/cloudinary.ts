@@ -5,7 +5,7 @@ export interface CloudinaryConfig {
   cloudName: string;
 }
 
-interface CloudinaryOptions {
+export interface CloudinaryOptions {
   transformations?: string;
   formats?: ImageType[];
   quality?: number;
@@ -21,7 +21,7 @@ function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
-export default function CloudinaryProvider(
+export function cloudinaryProvider(
   image: string,
   options: CloudinaryOptions = {},
 ): ImageData {

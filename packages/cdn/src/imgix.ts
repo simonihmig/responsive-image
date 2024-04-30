@@ -5,7 +5,7 @@ export interface ImgixConfig {
   domain: string;
 }
 
-interface ImgixOptions {
+export interface ImgixOptions {
   params?: Record<string, string | number>;
   formats?: ImageType[];
   quality?: number;
@@ -19,7 +19,7 @@ function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
-export default function imgixProvider(
+export function imgixProvider(
   image: string,
   options: ImgixOptions = {},
 ): ImageData {

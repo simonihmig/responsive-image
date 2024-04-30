@@ -1,13 +1,20 @@
+import type {
+  CloudinaryConfig,
+  ImgixConfig,
+} from '@ember-responsive-image/cdn';
+import { setConfig, type EnvConfig } from '@ember-responsive-image/core';
 import { getOwnConfig } from '@embroider/macros';
 
-export interface AddonConfig {
-  deviceWidths: number[];
+interface AddonConfig {
+  env: EnvConfig;
+  cloudinary: CloudinaryConfig;
+  imgix: ImgixConfig;
 }
 
-export const userConfig = getOwnConfig<Partial<AddonConfig>>();
+export function applyMacrosConfig(): void {
+  const userConfig = getOwnConfig<Partial<AddonConfig>>();
 
-export const defaultConfig: AddonConfig = {
-  deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-};
-
-export const config: AddonConfig = { ...defaultConfig, ...userConfig };
+  for (const [namespace, config] of Object.entries(userConfig)) {
+    setConfig(namespace, config);
+  }
+}
