@@ -1,2 +1,2 @@
-export { provider as cloudinary } from './cloudinary.ts';
-export { provider as imgix } from './imgix.ts';
+export { default as cloudinary } from './cloudinary.ts';
+export { default as imgix } from './imgix.ts';

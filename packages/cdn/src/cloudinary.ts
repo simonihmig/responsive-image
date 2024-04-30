@@ -1,5 +1,4 @@
-import { assert } from '@ember-responsive-image/core';
-import { getOwnConfig } from '@embroider/macros';
+import { assert, getConfig } from '@ember-responsive-image/core';
 import type { ImageType, ImageData } from '@ember-responsive-image/core';
 
 export interface CloudinaryConfig {
@@ -26,7 +25,7 @@ export default function CloudinaryProvider(
   image: string,
   options: CloudinaryOptions = {},
 ): ImageData {
-  const cloudName = getOwnConfig<CloudinaryConfig | undefined>()?.cloudName;
+  const cloudName = getConfig<CloudinaryConfig>('cloudinary')?.cloudName;
   assert(
     'cloudName must be set for cloudinary provider!',
     typeof cloudName === 'string',
