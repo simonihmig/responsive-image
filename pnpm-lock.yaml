@@ -720,8 +720,8 @@ importers:
         specifier: 29.7.0
         version: 29.7.0(@types/node@20.12.7)(node-notifier@10.0.1)
       memfs:
-        specifier: 4.9.1
-        version: 4.9.1
+        specifier: 4.9.2
+        version: 4.9.2
       prettier:
         specifier: 3.2.5
         version: 3.2.5
@@ -2445,14 +2445,14 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/json-pack@1.0.2':
-    resolution: {integrity: sha512-4KMApTgb1Hvjz9Ue7unziJ1xNy3k6d2erp0hz1iXryXsf6LEM3KwN6YrfbqT0vqkUO8Tu+CSnvMia9cWX6YGVw==}
+  '@jsonjoy.com/json-pack@1.0.3':
+    resolution: {integrity: sha512-Q0SPAdmK6s5Fe3e1kcNvwNyk6e2+CxM8XZdGbf4abZG7nUO05KSie3/iX29loTBuY+75uVP6RixDSPVpotfzmQ==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/util@1.1.0':
-    resolution: {integrity: sha512-Yz+xITJ3Y/w0DBISwPkBETP5/cITHXscjgQNZIkfrVz1V7/ahJY8vw+T+LZy/KtXgKuUWqu4GALAQ3bhGt9J8A==}
+  '@jsonjoy.com/util@1.1.2':
+    resolution: {integrity: sha512-HOGa9wtE6LEz2I5mMQ2pMSjth85PmD71kPbsecs02nEUq3/Kw0wRK3gmZn5BCEB8mFLXByqPxjHgApoMwIPMKQ==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
@@ -6517,8 +6517,8 @@ packages:
     resolution: {integrity: sha512-qvwipnozMohxLXG1pOqoLiZKNkC4r4qqRucSoDwXowsNGDSULiqFTRUF05vcZWnwJSG22qTsynQhxbaMtnX9gw==}
     engines: {node: '>=8'}
 
-  memfs@4.9.1:
-    resolution: {integrity: sha512-36cVYFMaa9HNEYyvkyKCwker8DBmOdjWLrfekE/cHEKJ806fCfKNVhOJNvoyV/CrGSZDtfQPbhn0Zid0gbH0Hw==}
+  memfs@4.9.2:
+    resolution: {integrity: sha512-f16coDZlTG1jskq3mxarwB+fGRrd0uXWt+o1WIhRfOwbXQZqUDsTVxQBFK9JjRQHblg8eAG2JSbprDXKjc7ijQ==}
     engines: {node: '>= 4.0.0'}
 
   memory-streams@0.1.3:
@@ -10793,17 +10793,16 @@ snapshots:
     dependencies:
       tslib: 2.6.2
 
-  '@jsonjoy.com/json-pack@1.0.2(tslib@2.6.2)':
+  '@jsonjoy.com/json-pack@1.0.3(tslib@2.6.2)':
     dependencies:
       '@jsonjoy.com/base64': 1.1.1(tslib@2.6.2)
-      '@jsonjoy.com/util': 1.1.0(tslib@2.6.2)
+      '@jsonjoy.com/util': 1.1.2(tslib@2.6.2)
       hyperdyperid: 1.2.0
       thingies: 1.21.0(tslib@2.6.2)
       tslib: 2.6.2
 
-  '@jsonjoy.com/util@1.1.0(tslib@2.6.2)':
+  '@jsonjoy.com/util@1.1.2(tslib@2.6.2)':
     dependencies:
-      hyperdyperid: 1.2.0
       tslib: 2.6.2
 
   '@lint-todo/utils@13.1.1':
@@ -16288,10 +16287,10 @@ snapshots:
       mimic-fn: 2.1.0
       p-is-promise: 2.1.0
 
-  memfs@4.9.1:
+  memfs@4.9.2:
     dependencies:
-      '@jsonjoy.com/json-pack': 1.0.2(tslib@2.6.2)
-      '@jsonjoy.com/util': 1.1.0(tslib@2.6.2)
+      '@jsonjoy.com/json-pack': 1.0.3(tslib@2.6.2)
+      '@jsonjoy.com/util': 1.1.2(tslib@2.6.2)
       sonic-forest: 1.0.0(tslib@2.6.2)
       tslib: 2.6.2
 
