@@ -406,10 +406,10 @@ is then used to offload all image processing to the Cloud. Moreover, this allows
 available at build-time. For example you could have an `ember-data` model refer to the raw (large, unprocessed) image, and use
 an image CDN as a proxy to scale, optimize and deliver that image as needed, at _runtime_.
 
-This addon comes with additional packages for these image providers, please refer to their documentation for additional details:
+This addon comes with additional helpers for these image providers, please refer to their documentation for additional details:
 
-- [Cloudinary](./packages/cloudinary/README.md)
-- [imgix](./packages/imgix/README.md)
+- [Cloudinary](./docs/cdn/cloudinary.md)
+- [imgix](./docs/cdn/imgix.md)
 
 ## Configuration
 
@@ -421,7 +421,9 @@ The configuration of the main `ember-responsive-image` addon is optional. To do 
 
 module.exports = {
   'ember-responsive-image': {
-    deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    env: {
+      deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    },
   },
 };
 ```
@@ -434,8 +436,8 @@ The options for configuring the processing of local images are handled by the `@
 
 - [`@ember-responsive-image/webpack`](./packages/webpack/README.md)
 - [`@ember-responsive-image/blurhash`](./packages/blurhash/README.md)
-- [`@ember-responsive-image/cloudinary`](./packages/cloudinary/README.md)
-- [`@ember-responsive-image/imgix`](./packages/imgix/README.md)
+- [Cloudinary](./docs/cdn/cloudinary.md)
+- [imgix](./docs/cdn/imgix.md)
 
 ## Advanced Usage
 
