@@ -1,9 +1,11 @@
-import { assert } from '@ember/debug';
-import { getOwnConfig } from '@embroider/macros';
-import type { ImgixConfig } from '../types.ts';
+import { assert, getConfig } from '@ember-responsive-image/core';
 import type { ImageType, ImageData } from '@ember-responsive-image/core';
 
-interface ImgixOptions {
+export interface ImgixConfig {
+  domain: string;
+}
+
+export interface ImgixOptions {
   params?: Record<string, string | number>;
   formats?: ImageType[];
   quality?: number;
@@ -17,11 +19,11 @@ function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
-export default function imgixProvider(
+export function imgixProvider(
   image: string,
   options: ImgixOptions = {},
 ): ImageData {
-  const domain = getOwnConfig<ImgixConfig | undefined>()?.domain;
+  const domain = getConfig<ImgixConfig>('imgix')?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 
   return {

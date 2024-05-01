@@ -19,6 +19,7 @@ export default {
       'components/**/*.js',
       'helpers/**/*.js',
       'services/**/*.js',
+      'initializers/*.js',
       'index.js',
       'utils/match.js',
       'template-registry.js',
@@ -31,6 +32,7 @@ export default {
       'components/**/*.js',
       'helpers/**/*.js',
       'services/**/*.js',
+      'initializers/*.js',
     ]),
 
     // This babel config should *not* apply presets or compile away ES modules.

@@ -1,17 +1,6 @@
-# @ember-responsive-image/imgix
+# imgix
 
-Adds a provider helper for `ember-responsive-image` for the [imgix](https://imgix.com/) image CDN.
-
-## Compatibility
-
-- Ember.js v4.8 or above
-- Embroider or ember-auto-import v2
-
-## Installation
-
-```
-ember install @ember-responsive-image/imgix
-```
+A provider helper for `ember-responsive-image` for the [imgix](https://imgix.com/) image CDN.
 
 ## Usage
 
