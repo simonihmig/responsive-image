@@ -1,4 +1,4 @@
-# @ember-responsive-image/cdn
+# @responsive-image/cdn
 
 Support for image CDNs
 

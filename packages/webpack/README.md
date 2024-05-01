@@ -1,4 +1,4 @@
-# @ember-responsive-image/webpack
+# @responsive-image/webpack
 
 Wepack image loaders, that process and resize images for use with ember-responsive-image.
 
@@ -9,11 +9,11 @@ Wepack image loaders, that process and resize images for use with ember-responsi
 ## Installation
 
 ```
-npm install @ember-responsive-image/webpack
+npm install @responsive-image/webpack
 // or
-yarn add @ember-responsive-image/webpack
+yarn add @responsive-image/webpack
 // or
-pnpm add @ember-responsive-image/webpack
+pnpm add @responsive-image/webpack
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ This package provides several Webpack loaders for specific aspects of image proc
 The easiest and recommended way to set these up is to the provided `setupLoaders` utility function:
 
 ```js
-const { setupLoaders } = require('@ember-responsive-image/webpack');
+const { setupLoaders } = require('@responsive-image/webpack');
 ```
 
 The function will return an array of loaders (so called chained loaders), that you can `use` to set up a Webpack module rule:

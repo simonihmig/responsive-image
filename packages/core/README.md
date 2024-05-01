@@ -1,4 +1,4 @@
-# @ember-responsive-image/core
+# @responsive-image/core
 
 Internal package
 
