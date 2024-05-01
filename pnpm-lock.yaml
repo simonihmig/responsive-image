@@ -213,7 +213,7 @@ importers:
         specifier: 1.5.3
         version: 1.5.3(@types/node@20.12.7)(jsdom@19.0.0)(terser@5.30.4)
 
-  packages/ember-responsive-image:
+  packages/ember:
     dependencies:
       '@ember/render-modifiers':
         specifier: ^2.0.0
@@ -223,7 +223,7 @@ importers:
         version: 1.8.7
       '@embroider/macros':
         specifier: ^1.0.0
-        version: 1.16.0(@glint/template@1.4.0)
+        version: 1.16.1(@glint/template@1.4.0)
       '@responsive-image/blurhash':
         specifier: workspace:^
         version: link:../blurhash
@@ -531,7 +531,7 @@ importers:
         version: link:../packages/core
       '@responsive-image/ember':
         specifier: workspace:*
-        version: link:../packages/ember-responsive-image
+        version: link:../packages/ember
       '@responsive-image/webpack':
         specifier: workspace:*
         version: link:../packages/webpack
@@ -1431,10 +1431,6 @@ packages:
 
   '@babel/template@7.24.0':
     resolution: {integrity: sha512-Bkf2q8lMB0AFpX0NFEqSbx1OkTHf0f+0j82mkw+ZpzBnkk7e9Ql0891vlfgi+kHwOk8tQjiQHpqh4LaSa0fKEA==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/traverse@7.24.1':
-    resolution: {integrity: sha512-xuU6o9m68KeqZbQuDt2TcKSxUw/mrsvavlEqQ1leZ/B+C9tk6E4sRWy97WaXgvq5E+nU3cXMxv3WKOCanVMCmQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/traverse@7.24.5':
@@ -9036,7 +9032,7 @@ snapshots:
   '@babel/plugin-syntax-decorators@7.24.1(@babel/core@7.24.5)':
     dependencies:
       '@babel/core': 7.24.5
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.24.5
 
   '@babel/plugin-syntax-dynamic-import@7.8.3(@babel/core@7.24.5)':
     dependencies:
@@ -9597,21 +9593,6 @@ snapshots:
       '@babel/parser': 7.24.5
       '@babel/types': 7.24.5
 
-  '@babel/traverse@7.24.1':
-    dependencies:
-      '@babel/code-frame': 7.24.2
-      '@babel/generator': 7.24.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
-      '@babel/helper-hoist-variables': 7.22.5
-      '@babel/helper-split-export-declaration': 7.22.6
-      '@babel/parser': 7.24.5
-      '@babel/types': 7.24.5
-      debug: 4.3.4
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
-
   '@babel/traverse@7.24.5':
     dependencies:
       '@babel/code-frame': 7.24.2
@@ -9829,7 +9810,7 @@ snapshots:
 
   '@ember/render-modifiers@2.1.0(@babel/core@7.24.5)(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5))':
     dependencies:
-      '@embroider/macros': 1.16.0(@glint/template@1.4.0)
+      '@embroider/macros': 1.16.1(@glint/template@1.4.0)
       ember-cli-babel: 7.26.11
       ember-modifier-manager-polyfill: 1.2.0(@babel/core@7.24.5)
       ember-source: 5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0)
@@ -9901,8 +9882,8 @@ snapshots:
   '@embroider/core@3.4.8(@glint/template@1.4.0)':
     dependencies:
       '@babel/core': 7.24.5
-      '@babel/parser': 7.24.4
-      '@babel/traverse': 7.24.1
+      '@babel/parser': 7.24.5
+      '@babel/traverse': 7.24.5
       '@embroider/macros': 1.16.0(@glint/template@1.4.0)
       '@embroider/shared-internals': 2.6.0
       assert-never: 1.2.1
@@ -13265,7 +13246,7 @@ snapshots:
 
   ember-addon-config@0.1.1(@glint/template@1.4.0):
     dependencies:
-      '@embroider/macros': 1.16.0(@glint/template@1.4.0)
+      '@embroider/macros': 1.16.1(@glint/template@1.4.0)
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
@@ -13323,7 +13304,7 @@ snapshots:
 
   ember-cached-decorator-polyfill@1.0.2(@babel/core@7.24.5)(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)):
     dependencies:
-      '@embroider/macros': 1.16.0(@glint/template@1.4.0)
+      '@embroider/macros': 1.16.1(@glint/template@1.4.0)
       '@glimmer/tracking': 1.1.2
       babel-import-util: 1.4.1
       ember-cache-primitive-polyfill: 1.0.1(@babel/core@7.24.5)
