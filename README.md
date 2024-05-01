@@ -393,7 +393,7 @@ is less suited if you have just a few images, but shines if you need placeholder
 So far we have only dealt with local images - static images that are commonly part of your app's git repo and get processed by this addon during the build process.
 But this addon provides even a more versatile abstraction to use any kind of (remote) images: image providers.
 
-All the `<ResponsiveImage @src={{imageData}}/>` component needs is an [`ImageData`](./packages/ember-responsive-image/src/types.ts) structure, which contains some meta data for a given image, and a function to compute the actual URL for each referenced image, based on its width and type. This is what importing an image using Webpack loaders returns as explained above, but it is not restricted to that. You could pass that data structure as a static POJO, or generate it more dynamically using a simple function (helper).
+All the `<ResponsiveImage @src={{imageData}}/>` component needs is an [`ImageData`](./packages/ember/src/types.ts) structure, which contains some meta data for a given image, and a function to compute the actual URL for each referenced image, based on its width and type. This is what importing an image using Webpack loaders returns as explained above, but it is not restricted to that. You could pass that data structure as a static POJO, or generate it more dynamically using a simple function (helper).
 
 Simply pass the result of the helper as the `@src` of the component:
 
