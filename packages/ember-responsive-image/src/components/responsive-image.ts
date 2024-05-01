@@ -3,12 +3,12 @@ import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { macroCondition, dependencySatisfies } from '@embroider/macros';
-import { env, getDestinationWidthBySize } from '@ember-responsive-image/core';
+import { env, getDestinationWidthBySize } from '@responsive-image/core';
 import type {
   ImageType,
   LqipBlurhash,
   ImageData,
-} from '@ember-responsive-image/core';
+} from '@responsive-image/core';
 
 import './responsive-image.css';
 

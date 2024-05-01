@@ -161,7 +161,7 @@ Add this declaration to a file, e.g. your app's `types/global.d.ts`:
 
 ```ts
 declare module '*responsive' {
-  import { ImageData } from 'ember-responsive-image';
+  import { ImageData } from '@responsive-image/ember';
   const value: ImageData;
   export default value;
 }

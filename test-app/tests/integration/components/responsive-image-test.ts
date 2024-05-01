@@ -3,7 +3,7 @@ import { render, settled } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, skip, test } from 'qunit';
-import type { ImageData } from 'ember-responsive-image';
+import type { ImageData } from '@responsive-image/ember';
 import testImage from 'test-app/images/tests/image.jpg?widths=50,100,640&formats=original,webp,avif&responsive';
 import testImageLqipInline from 'test-app/images/tests/image.jpg?lqip=inline&widths=50,100,640&responsive';
 import testImageLqipColor from 'test-app/images/tests/image.jpg?lqip=color&widths=50,100,640&responsive';
@@ -11,7 +11,7 @@ import testImageLqipBlurhash from 'test-app/images/tests/image.jpg?lqip=blurhash
 import smallImage from 'test-app/images/tests/image.jpg?widths=10,25&formats=original,webp,avif&responsive';
 
 import type { RenderingTestContext } from '@ember/test-helpers';
-import { env } from '@ember-responsive-image/core';
+import { env } from '@responsive-image/core';
 
 interface TestContext extends RenderingTestContext {
   cacheBreaker: () => string;

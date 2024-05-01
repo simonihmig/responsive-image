@@ -1,9 +1,6 @@
 import webpack from 'webpack';
 import { createFsFromVolume, Volume } from 'memfs';
-import {
-  setupLoaders,
-  type LoaderOptions,
-} from '@ember-responsive-image/webpack';
+import { setupLoaders, type LoaderOptions } from '@responsive-image/webpack';
 import path, { join, resolve } from 'path';
 
 export default function compiler(

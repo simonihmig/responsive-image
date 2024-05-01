@@ -1,8 +1,5 @@
-import type {
-  CloudinaryConfig,
-  ImgixConfig,
-} from '@ember-responsive-image/cdn';
-import { setConfig, type EnvConfig } from '@ember-responsive-image/core';
+import type { CloudinaryConfig, ImgixConfig } from '@responsive-image/cdn';
+import { setConfig, type EnvConfig } from '@responsive-image/core';
 import { getOwnConfig } from '@embroider/macros';
 
 interface AddonConfig {
