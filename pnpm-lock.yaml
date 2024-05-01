@@ -40,7 +40,7 @@ importers:
       '@babel/preset-typescript':
         specifier: 7.24.1
         version: 7.24.1(@babel/core@7.24.5)
-      '@ember-responsive-image/webpack':
+      '@responsive-image/webpack':
         specifier: workspace:*
         version: link:../webpack
       '@rollup/plugin-babel':
@@ -106,7 +106,7 @@ importers:
 
   packages/cdn:
     dependencies:
-      '@ember-responsive-image/core':
+      '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
     devDependencies:
@@ -215,15 +215,6 @@ importers:
 
   packages/ember-responsive-image:
     dependencies:
-      '@ember-responsive-image/blurhash':
-        specifier: workspace:^
-        version: link:../blurhash
-      '@ember-responsive-image/cdn':
-        specifier: workspace:^
-        version: link:../cdn
-      '@ember-responsive-image/core':
-        specifier: workspace:^
-        version: link:../core
       '@ember/render-modifiers':
         specifier: ^2.0.0
         version: 2.1.0(@babel/core@7.24.5)(@glint/template@1.4.0)(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5))
@@ -233,6 +224,15 @@ importers:
       '@embroider/macros':
         specifier: ^1.0.0
         version: 1.16.0(@glint/template@1.4.0)
+      '@responsive-image/blurhash':
+        specifier: workspace:^
+        version: link:../blurhash
+      '@responsive-image/cdn':
+        specifier: workspace:^
+        version: link:../cdn
+      '@responsive-image/core':
+        specifier: workspace:^
+        version: link:../core
       blurhash:
         specifier: ^2.0.0
         version: 2.0.5
@@ -393,10 +393,10 @@ importers:
 
   packages/webpack:
     dependencies:
-      '@ember-responsive-image/blurhash':
+      '@responsive-image/blurhash':
         specifier: workspace:^
         version: link:../blurhash
-      '@ember-responsive-image/core':
+      '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
       base-n:
@@ -442,9 +442,6 @@ importers:
       css-loader:
         specifier: 7.1.1
         version: 7.1.1(webpack@5.91.0)
-      ember-responsive-image:
-        specifier: workspace:*
-        version: link:../ember-responsive-image
       eslint:
         specifier: 8.57.0
         version: 8.57.0
@@ -496,15 +493,6 @@ importers:
       '@babel/core':
         specifier: 7.24.5
         version: 7.24.5
-      '@ember-responsive-image/blurhash':
-        specifier: workspace:*
-        version: link:../packages/blurhash
-      '@ember-responsive-image/core':
-        specifier: workspace:*
-        version: link:../packages/core
-      '@ember-responsive-image/webpack':
-        specifier: workspace:*
-        version: link:../packages/webpack
       '@ember/optional-features':
         specifier: 2.1.0
         version: 2.1.0
@@ -535,6 +523,18 @@ importers:
       '@glint/template':
         specifier: 1.4.0
         version: 1.4.0
+      '@responsive-image/blurhash':
+        specifier: workspace:*
+        version: link:../packages/blurhash
+      '@responsive-image/core':
+        specifier: workspace:*
+        version: link:../packages/core
+      '@responsive-image/ember':
+        specifier: workspace:*
+        version: link:../packages/ember-responsive-image
+      '@responsive-image/webpack':
+        specifier: workspace:*
+        version: link:../packages/webpack
       '@tsconfig/ember':
         specifier: 3.0.6
         version: 3.0.6
@@ -664,9 +664,6 @@ importers:
       ember-resolver:
         specifier: 11.0.1
         version: 11.0.1(ember-source@5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0))
-      ember-responsive-image:
-        specifier: workspace:*
-        version: link:../packages/ember-responsive-image
       ember-source:
         specifier: 5.8.0
         version: 5.8.0(@babel/core@7.24.5)(@glimmer/component@1.1.2(@babel/core@7.24.5))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0)

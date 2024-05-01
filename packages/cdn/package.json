@@ -1,5 +1,5 @@
 {
-  "name": "@ember-responsive-image/cdn",
+  "name": "@responsive-image/cdn",
   "version": "1.0.0-beta.0",
   "description": "Support for image CDNs",
   "repository": "https://github.com/simonihmig/ember-responsive-image",
@@ -25,7 +25,7 @@
     "prepack": "rollup --config"
   },
   "dependencies": {
-    "@ember-responsive-image/core": "workspace:^"
+    "@responsive-image/core": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "7.24.4",
