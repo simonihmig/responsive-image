@@ -16,7 +16,7 @@ export default function lqipColorLoader(
   const className = generateLqipClassName(this.resource);
   const importCSS = `${
     this.resourcePath
-  }.css!=!@ember-responsive-image/webpack/lqip/color-css!${
+  }.css!=!@responsive-image/webpack/lqip/color-css!${
     this.resourcePath
   }?className=${encodeURIComponent(className)}`;
 

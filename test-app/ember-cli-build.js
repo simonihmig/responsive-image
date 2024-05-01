@@ -1,7 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const { setupLoaders } = require('@ember-responsive-image/webpack');
+const { setupLoaders } = require('@responsive-image/webpack');
 
 const EmberResponsiveImageWebpackLoaders = setupLoaders();
 
@@ -16,9 +16,9 @@ module.exports = function (defaults) {
       ? {}
       : {
           watchDependencies: [
-            'ember-responsive-image',
-            '@ember-responsive-image/cloudinary',
-            '@ember-responsive-image/imgix',
+            '@responsive-image/ember',
+            '@responsive-image/cloudinary',
+            '@responsive-image/imgix',
           ],
           allowAppImports: [
             'images/**/*.jpg',

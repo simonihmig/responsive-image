@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LQIP blurhash LQIP is supported 1`] = `
-"import { findMatchingImage } from '@ember-responsive-image/core';
+"import { findMatchingImage } from '@responsive-image/core';
 const images = [{"url":__webpack_public_path__ + "images/image-640w-88d805ca22658da9.jpg","width":640,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-640w-b6cb63c0233da565.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w-88d805ca22658da9.jpg","width":750,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-750w-b6cb63c0233da565.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w-88d805ca22658da9.jpg","width":828,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-828w-b6cb63c0233da565.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w-88d805ca22658da9.jpg","width":1080,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1080w-b6cb63c0233da565.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w-88d805ca22658da9.jpg","width":1200,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1200w-b6cb63c0233da565.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w-88d805ca22658da9.jpg","width":1920,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1920w-b6cb63c0233da565.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w-88d805ca22658da9.jpg","width":2048,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-2048w-b6cb63c0233da565.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w-88d805ca22658da9.jpg","width":3840,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-3840w-b6cb63c0233da565.webp","width":3840,"format":"webp"}];
 export default {
     imageTypes: ["jpeg","webp"],
@@ -15,8 +15,8 @@ export default {
 `;
 
 exports[`LQIP color LQIP is supported 1`] = `
-"import { findMatchingImage } from '@ember-responsive-image/core';
-import '/fixtures/image.jpg.css!=!@ember-responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=eri-dyn-1';
+"import { findMatchingImage } from '@responsive-image/core';
+import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=eri-dyn-1';
 const images = [{"url":__webpack_public_path__ + "images/image-640w-88d805ca22658da9.jpg","width":640,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-640w-b6cb63c0233da565.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w-88d805ca22658da9.jpg","width":750,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-750w-b6cb63c0233da565.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w-88d805ca22658da9.jpg","width":828,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-828w-b6cb63c0233da565.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w-88d805ca22658da9.jpg","width":1080,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1080w-b6cb63c0233da565.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w-88d805ca22658da9.jpg","width":1200,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1200w-b6cb63c0233da565.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w-88d805ca22658da9.jpg","width":1920,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1920w-b6cb63c0233da565.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w-88d805ca22658da9.jpg","width":2048,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-2048w-b6cb63c0233da565.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w-88d805ca22658da9.jpg","width":3840,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-3840w-b6cb63c0233da565.webp","width":3840,"format":"webp"}];
 export default {
     imageTypes: ["jpeg","webp"],
@@ -30,8 +30,8 @@ export default {
 `;
 
 exports[`LQIP inline LQIP is supported 1`] = `
-"import { findMatchingImage } from '@ember-responsive-image/core';
-import '/fixtures/image.jpg.css!=!@ember-responsive-image/webpack/lqip/inline-css!/fixtures/image.jpg?className=eri-dyn-1&targetPixels=60';
+"import { findMatchingImage } from '@responsive-image/core';
+import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/inline-css!/fixtures/image.jpg?className=eri-dyn-1&targetPixels=60';
 const images = [{"url":__webpack_public_path__ + "images/image-640w-88d805ca22658da9.jpg","width":640,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-640w-b6cb63c0233da565.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w-88d805ca22658da9.jpg","width":750,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-750w-b6cb63c0233da565.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w-88d805ca22658da9.jpg","width":828,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-828w-b6cb63c0233da565.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w-88d805ca22658da9.jpg","width":1080,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1080w-b6cb63c0233da565.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w-88d805ca22658da9.jpg","width":1200,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1200w-b6cb63c0233da565.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w-88d805ca22658da9.jpg","width":1920,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1920w-b6cb63c0233da565.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w-88d805ca22658da9.jpg","width":2048,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-2048w-b6cb63c0233da565.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w-88d805ca22658da9.jpg","width":3840,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-3840w-b6cb63c0233da565.webp","width":3840,"format":"webp"}];
 export default {
     imageTypes: ["jpeg","webp"],
@@ -45,7 +45,7 @@ export default {
 `;
 
 exports[`custom loader options are supported 1`] = `
-"import { findMatchingImage } from '@ember-responsive-image/core';
+"import { findMatchingImage } from '@responsive-image/core';
 const images = [{"url":"https:/cdn.example.com/images/test-1000.jpg","width":1000,"format":"jpeg"},{"url":"https:/cdn.example.com/images/test-1000.avif","width":1000,"format":"avif"},{"url":"https:/cdn.example.com/images/test-2000.jpg","width":2000,"format":"jpeg"},{"url":"https:/cdn.example.com/images/test-2000.avif","width":2000,"format":"avif"}];
 export default {
     imageTypes: ["jpeg","avif"],
@@ -59,8 +59,8 @@ export default {
 `;
 
 exports[`custom query params are supported 1`] = `
-"import { findMatchingImage } from '@ember-responsive-image/core';
-import '/fixtures/image.jpg.css!=!@ember-responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=eri-dyn-0';
+"import { findMatchingImage } from '@responsive-image/core';
+import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=eri-dyn-0';
 const images = [{"url":__webpack_public_path__ + "images/image-100w-19932319c3cde13c.webp","width":100,"format":"webp"},{"url":__webpack_public_path__ + "images/image-200w-b6cb63c0233da565.webp","width":200,"format":"webp"}];
 export default {
     imageTypes: ["webp"],
@@ -74,7 +74,7 @@ export default {
 `;
 
 exports[`it produces expected output 1`] = `
-"import { findMatchingImage } from '@ember-responsive-image/core';
+"import { findMatchingImage } from '@responsive-image/core';
 const images = [{"url":__webpack_public_path__ + "images/image-640w-88d805ca22658da9.jpg","width":640,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-640w-b6cb63c0233da565.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w-88d805ca22658da9.jpg","width":750,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-750w-b6cb63c0233da565.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w-88d805ca22658da9.jpg","width":828,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-828w-b6cb63c0233da565.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w-88d805ca22658da9.jpg","width":1080,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1080w-b6cb63c0233da565.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w-88d805ca22658da9.jpg","width":1200,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1200w-b6cb63c0233da565.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w-88d805ca22658da9.jpg","width":1920,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1920w-b6cb63c0233da565.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w-88d805ca22658da9.jpg","width":2048,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-2048w-b6cb63c0233da565.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w-88d805ca22658da9.jpg","width":3840,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-3840w-b6cb63c0233da565.webp","width":3840,"format":"webp"}];
 export default {
     imageTypes: ["jpeg","webp"],
