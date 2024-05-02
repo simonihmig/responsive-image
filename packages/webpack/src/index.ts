@@ -20,7 +20,7 @@ const INLINE_LOADER = resolve(_dirname, 'lqip/inline');
 let BLURHASH_LOADER = undefined;
 
 try {
-  BLURHASH_LOADER = require.resolve('@ember-responsive-image/blurhash/webpack');
+  BLURHASH_LOADER = require.resolve('@responsive-image/blurhash/webpack');
 } catch (e) {
   // do nothing if package is not available
 }

@@ -1,5 +1,5 @@
-import { assert, getConfig } from '@ember-responsive-image/core';
-import type { ImageType, ImageData } from '@ember-responsive-image/core';
+import { assert, getConfig } from '@responsive-image/core';
+import type { ImageType, ImageData } from '@responsive-image/core';
 
 export interface CloudinaryConfig {
   cloudName: string;

@@ -1,4 +1,4 @@
-# ember-responsive-image
+# responsive-image
 
 [![CI](https://github.com/simonihmig/ember-responsive-image/actions/workflows/ci.yml/badge.svg)](https://github.com/simonihmig/ember-responsive-image/actions/workflows/ci.yml)
 [![npm version](https://badge.fury.io/js/ember-responsive-image.svg)](https://badge.fury.io/js/ember-responsive-image)
@@ -37,9 +37,9 @@ Advanced optimization techniques inspired amongst others by the blog post [Maxim
 
 The `<ResponsiveImage/>` component provided with this addon expects to receive image data for the image it is supposed to display. Unlike a simple `<img>` tag, it will need more data than just the URL to a single image: it needs multiple images in different resolutions and image formats, but also some additional meta data like the aspect ratio or data related to more advanced use cases like [Low Quality Image PLaceholders](#lqip).
 
-This data can come from different sources. The most common one is to let the build plugins provided by [`@ember-responsive-image/webpack`](./packages/webpack/README.md) process local images (i.e. static images that you have in your git repo) and provide the necessary data. But you can also have the processed image data come from other sources like Image CDNs, see [Image Providers](#image-providers).
+This data can come from different sources. The most common one is to let the build plugins provided by [`@responsive-image/webpack`](./packages/webpack/README.md) process local images (i.e. static images that you have in your git repo) and provide the necessary data. But you can also have the processed image data come from other sources like Image CDNs, see [Image Providers](#image-providers).
 
-For the remainder of this documentation we will assume you will be dealing with local images using `@ember-responsive-image/webpack`.
+For the remainder of this documentation we will assume you will be dealing with local images using `@responsive-image/webpack`.
 
 ## Getting started
 
@@ -48,16 +48,16 @@ For the remainder of this documentation we will assume you will be dealing with 
 In your application's directory:
 
 ```bash
-npm install ember-responsive-image @ember-responsive-image/webpack
+npm add @responsive-image/ember @responsive-image/webpack
 // or
-yarn add ember-responsive-image @ember-responsive-image/webpack
+yarn add @responsive-image/ember @responsive-image/webpack
 // or
-pnpm add ember-responsive-image @ember-responsive-image/webpack
+pnpm add @responsive-image/ember @responsive-image/webpack
 ```
 
 ### Setting up Webpack
 
-As explained above, `@ember-responsive-image/webpack` is provided for the Webpack-native build integration. Webpack is used in Ember apps, but in different ways depending on whether you are using Embroider already or a classic Ember CLI build with `ember-auto-import`.
+As explained above, `@responsive-image/webpack` is provided for the Webpack-native build integration. Webpack is used in Ember apps, but in different ways depending on whether you are using Embroider already or a classic Ember CLI build with `ember-auto-import`.
 
 In either case we need to tell Webpack which files it needs to process using the addon's custom webpack loaders. We do this by setting up a module rule such as this:
 
@@ -67,7 +67,7 @@ In either case we need to tell Webpack which files it needs to process using the
     rules: [
       {
         resourceQuery: /responsive/,
-        use: require('@ember-responsive-image/webpack').setupLoaders(),
+        use: require('@responsive-image/webpack').setupLoaders(),
       },
     ],
   }
@@ -89,7 +89,7 @@ return require('@embroider/compat').compatBuild(app, Webpack, {
         rules: [
           {
             resourceQuery: /responsive/,
-            use: require('@ember-responsive-image/webpack').setupLoaders(),
+            use: require('@responsive-image/webpack').setupLoaders(),
           },
         ],
       },
@@ -98,7 +98,7 @@ return require('@embroider/compat').compatBuild(app, Webpack, {
 });
 ```
 
-For more information on how to configure `@ember-responsive-image/webpack` and `setupLoaders()` refer to the [`@ember-responsive-image/webpack` documentation](./packages/webpack/README.md).
+For more information on how to configure `@responsive-image/webpack` and `setupLoaders()` refer to the [`@responsive-image/webpack` documentation](./packages/webpack/README.md).
 
 #### Classic build with ember-auto-import
 
@@ -113,7 +113,7 @@ let app = new EmberApp(defaults, {
         rules: [
           {
             resourceQuery: /responsive/,
-            use: require('@ember-responsive-image/webpack').setupLoaders(),
+            use: require('@responsive-image/webpack').setupLoaders(),
           },
         ],
       },
@@ -122,9 +122,9 @@ let app = new EmberApp(defaults, {
 });
 ```
 
-For more information on how to configure `@ember-responsive-image/webpack` and `setupLoaders()` refer to the [`@ember-responsive-image/webpack` documentation](./packages/webpack/README.md).
+For more information on how to configure `@responsive-image/webpack` and `setupLoaders()` refer to the [`@responsive-image/webpack` documentation](./packages/webpack/README.md).
 
-Note the use of [`allowAppImports`](https://github.com/embroider-build/ember-auto-import#app-imports) here, which is a way to make the build use ember-auto-import and thus Webpack to handle the files configured by the glob pattern of this configuration option. You can place the images files in a central subfolder under `/app`, like `app/images` as in this example, or even colocate them next to other JavaScript files by targeting specific image extensions instead of certain folders (e.g. `**/*/*.jpg`). Either way make sure that image files you import for use by `ember-responsive-image` are correctly covered by at least one glob pattern passed to `allowAppImports`!
+Note the use of [`allowAppImports`](https://github.com/embroider-build/ember-auto-import#app-imports) here, which is a way to make the build use ember-auto-import and thus Webpack to handle the files configured by the glob pattern of this configuration option. You can place the images files in a central subfolder under `/app`, like `app/images` as in this example, or even colocate them next to other JavaScript files by targeting specific image extensions instead of certain folders (e.g. `**/*/*.jpg`). Either way make sure that image files you import for use by `@responsive-image/ember` are correctly covered by at least one glob pattern passed to `allowAppImports`!
 
 ### TypeScript usage
 
@@ -138,7 +138,7 @@ you need to import the addon's Glint template registry and `extend` your app's r
 ```ts
 import '@glint/environment-ember-loose';
 
-import type ResponsiveImageRegistry from 'ember-responsive-image/template-registry';
+import type ResponsiveImageRegistry from '@responsive-image/ember/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry
@@ -161,7 +161,7 @@ Add this declaration to a file, e.g. your app's `types/global.d.ts`:
 
 ```ts
 declare module '*responsive' {
-  import { ImageData } from 'ember-responsive-image';
+  import { ImageData } from '@responsive-image/ember';
   const value: ImageData;
   export default value;
 }
@@ -171,7 +171,7 @@ declare module '*responsive' {
 
 ### Importing images
 
-When Webpack is set up correctly as explained above, we can start to import images that are then being processed by `@ember-responsive-image/webpack`:
+When Webpack is set up correctly as explained above, we can start to import images that are then being processed by `@responsive-image/webpack`:
 
 ```js
 import heroImage from './hero.jpg?responsive';
@@ -393,7 +393,7 @@ is less suited if you have just a few images, but shines if you need placeholder
 So far we have only dealt with local images - static images that are commonly part of your app's git repo and get processed by this addon during the build process.
 But this addon provides even a more versatile abstraction to use any kind of (remote) images: image providers.
 
-All the `<ResponsiveImage @src={{imageData}}/>` component needs is an [`ImageData`](./packages/ember-responsive-image/src/types.ts) structure, which contains some meta data for a given image, and a function to compute the actual URL for each referenced image, based on its width and type. This is what importing an image using Webpack loaders returns as explained above, but it is not restricted to that. You could pass that data structure as a static POJO, or generate it more dynamically using a simple function (helper).
+All the `<ResponsiveImage @src={{imageData}}/>` component needs is an [`ImageData`](./packages/ember/src/types.ts) structure, which contains some meta data for a given image, and a function to compute the actual URL for each referenced image, based on its width and type. This is what importing an image using Webpack loaders returns as explained above, but it is not restricted to that. You could pass that data structure as a static POJO, or generate it more dynamically using a simple function (helper).
 
 Simply pass the result of the helper as the `@src` of the component:
 
@@ -413,14 +413,14 @@ This addon comes with additional helpers for these image providers, please refer
 
 ## Configuration
 
-The configuration of the main `ember-responsive-image` addon is optional. To do so, add the configuration in your app's `config/addons.js` file (create it if not existing yet):
+The configuration of the main `@responsive-image/ember` addon is optional. To do so, add the configuration in your app's `config/addons.js` file (create it if not existing yet):
 
 ```js
 // config/addons.js
 'use strict';
 
 module.exports = {
-  'ember-responsive-image': {
+  '@responsive-image/ember': {
     env: {
       deviceWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     },
@@ -432,10 +432,10 @@ Configuration options:
 
 - **deviceWidths**: an array of widths representing the typical screen widths of your user's devices, used when the available image widths are not known beforehand, like when using an image CDN. Default: `[640, 750, 828, 1080, 1200, 1920, 2048, 3840]`
 
-The options for configuring the processing of local images are handled by the `@ember-responsive-image/webpack` package, and other options related to image CDNs or BlurHash-support are handled by their respective sub-packages as well, so please refer to their documentation for detailed configuration instructions:
+The options for configuring the processing of local images are handled by the `@responsive-image/webpack` package, and other options related to image CDNs or BlurHash-support are handled by their respective sub-packages as well, so please refer to their documentation for detailed configuration instructions:
 
-- [`@ember-responsive-image/webpack`](./packages/webpack/README.md)
-- [`@ember-responsive-image/blurhash`](./packages/blurhash/README.md)
+- [`@responsive-image/webpack`](./packages/webpack/README.md)
+- [`@responsive-image/blurhash`](./packages/blurhash/README.md)
 - [Cloudinary](./docs/cdn/cloudinary.md)
 - [imgix](./docs/cdn/imgix.md)
 

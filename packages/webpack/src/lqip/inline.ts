@@ -17,7 +17,7 @@ export default function lqipInlineLoader(
   const targetPixels = options.lqip.targetPixels ?? 60;
   const importCSS = `${
     this.resourcePath
-  }.css!=!@ember-responsive-image/webpack/lqip/inline-css!${
+  }.css!=!@responsive-image/webpack/lqip/inline-css!${
     this.resourcePath
   }?className=${encodeURIComponent(className)}&targetPixels=${targetPixels}`;
 

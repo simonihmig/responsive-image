@@ -1,7 +1,7 @@
 {
-  "name": "@ember-responsive-image/blurhash",
+  "name": "@responsive-image/blurhash",
   "version": "1.0.0-beta.1",
-  "description": "Add support for BlurHash encoded LQIP to ember-responsive-images",
+  "description": "Add support for BlurHash encoded LQIP to @responsive-image/webpack",
   "repository": "https://github.com/simonihmig/ember-responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
@@ -30,13 +30,13 @@
     "blurhash": "^2.0.4"
   },
   "peerDependencies": {
-    "@ember-responsive-image/webpack": "workspace:^",
+    "@responsive-image/webpack": "workspace:^",
     "webpack": "^5.70.0"
   },
   "devDependencies": {
     "@babel/core": "7.24.5",
     "@babel/preset-typescript": "7.24.1",
-    "@ember-responsive-image/webpack": "workspace:*",
+    "@responsive-image/webpack": "workspace:*",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-terser": "0.4.4",

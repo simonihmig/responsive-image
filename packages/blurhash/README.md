@@ -1,20 +1,20 @@
-# @ember-responsive-image/blurhash
+# @responsive-image/blurhash
 
 Add support for [BlurHash](https://blurha.sh/) encoded [Low Quality Image Placeholders](../../README.md#lqip) (LQIP) to ember-responsive-images.
 
 ## Compatibility
 
 - Webpack v5
-- requires using `@ember-responsive-image/webpack`
+- requires using `@responsive-image/webpack`
 
 ## Installation
 
 ```
-npm install @ember-responsive-image/blurhash @ember-responsive-image/webpack
+npm install @responsive-image/blurhash @responsive-image/webpack
 // or
-yarn add @ember-responsive-image/blurhash @ember-responsive-image/webpack
+yarn add @responsive-image/blurhash @responsive-image/webpack
 // or
-pnpm add @ember-responsive-image/blurhash @ember-responsive-image/webpack
+pnpm add @responsive-image/blurhash @responsive-image/webpack
 ```
 
 The setup of this package requires to add an additional script to your `index.html`. It is important to add this _before_ your `vendor.js` script, especially when your app is served in a SSR setup using FastBoot or prember, so that the BlurHash encoded LQIPs are displayed before your app's JavaScript has loaded:

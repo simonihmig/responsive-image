@@ -1,6 +1,6 @@
 # imgix
 
-A provider helper for `ember-responsive-image` for the [imgix](https://imgix.com/) image CDN.
+A provider helper for `responsive-image` for the [imgix](https://imgix.com/) image CDN.
 
 ## Usage
 

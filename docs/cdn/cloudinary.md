@@ -1,6 +1,6 @@
 # Cloudinary
 
-A provider helper for `ember-responsive-image` for the [Cloudinary](https://cloudinary.com) image CDN.
+A provider helper for `responsive-image` for the [Cloudinary](https://cloudinary.com) image CDN.
 
 ## Usage
 

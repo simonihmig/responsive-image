@@ -3,12 +3,12 @@ import type { LoaderContext } from 'webpack';
 import type {
   ImageLoaderChainedResult,
   LoaderOptions,
-} from '@ember-responsive-image/webpack';
+} from '@responsive-image/webpack';
 import {
   getAspectRatio,
   getOptions,
   normalizeInput,
-} from '@ember-responsive-image/webpack';
+} from '@responsive-image/webpack';
 import blurhash from 'blurhash';
 
 export default function lqipBlurhashLoader(

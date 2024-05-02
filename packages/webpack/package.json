@@ -1,7 +1,7 @@
 {
-  "name": "@ember-responsive-image/webpack",
+  "name": "@responsive-image/webpack",
   "version": "1.0.0-beta.0",
-  "description": "Wepack image loaders, that process and resize images for use with ember-responsive-image.",
+  "description": "Wepack image loaders, that process and resize images for use with the responsive-image suite.",
   "repository": "https://github.com/simonihmig/ember-responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
@@ -22,17 +22,17 @@
     "prepack": "rollup --config"
   },
   "dependencies": {
-    "@ember-responsive-image/core": "workspace:^",
+    "@responsive-image/core": "workspace:^",
     "base-n": "^3.0.0",
     "loader-utils": "^3.2.0",
     "sharp": "^0.33.0"
   },
   "peerDependencies": {
-    "@ember-responsive-image/blurhash": "workspace:^",
+    "@responsive-image/blurhash": "workspace:^",
     "webpack": "^5.70.0"
   },
   "peerDependenciesMeta": {
-    "@ember-responsive-image/blurhash": {
+    "@responsive-image/blurhash": {
       "optional": true
     }
   },
@@ -48,7 +48,6 @@
     "babel-jest": "29.7.0",
     "concurrently": "8.2.2",
     "css-loader": "7.1.1",
-    "ember-responsive-image": "workspace:*",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-node": "11.1.0",

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  'ember-responsive-image': {
+  '@responsive-image/ember': {
     cloudinary: {
       cloudName: 'kaliber5',
     },

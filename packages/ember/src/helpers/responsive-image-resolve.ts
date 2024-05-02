@@ -2,7 +2,7 @@ import {
   getDestinationWidthBySize,
   type ImageData,
   type ImageType,
-} from '@ember-responsive-image/core';
+} from '@responsive-image/core';
 import { htmlSafe } from '@ember/template';
 
 export default function responsiveImageResolve(

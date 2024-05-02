@@ -2,7 +2,7 @@ import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import type { ImageData } from 'ember-responsive-image';
+import type { ImageData } from '@responsive-image/ember';
 import testImage from 'test-app/images/tests/test.png?&widths=640,2048&responsive';
 
 interface TestContext {

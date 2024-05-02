@@ -1,17 +1,15 @@
 {
-  "name": "ember-responsive-image",
-  "version": "0.0.0",
   "private": true,
   "repository": "https://github.com/simonihmig/ember-responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "scripts": {
-    "build": "pnpm --filter @ember-responsive-image/core run build && pnpm --filter @ember-responsive-image/cdn run build && pnpm --filter ember-responsive-image run build && pnpm --filter @ember-responsive-image/webpack run build && pnpm --filter @ember-responsive-image/blurhash run build",
+    "build": "pnpm --filter @responsive-image/core run build && pnpm --filter @responsive-image/cdn run build && pnpm --filter @responsive-image/ember run build && pnpm --filter @responsive-image/webpack run build && pnpm --filter @responsive-image/blurhash run build",
     "lint": "pnpm run -r lint",
     "lint:fix": "pnpm run -r lint:fix",
     "prepare": "pnpm build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
-    "start:addon": "pnpm --filter ember-responsive-image run start",
+    "start:addon": "pnpm --filter @responsive-image/ember run start",
     "start:test": "pnpm --filter test-app run start",
     "test": "pnpm run -r test"
   },
