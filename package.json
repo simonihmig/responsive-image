@@ -4,20 +4,18 @@
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "scripts": {
-    "build": "pnpm --filter @responsive-image/core run build && pnpm --filter @responsive-image/cdn run build && pnpm --filter @responsive-image/ember run build && pnpm --filter @responsive-image/webpack run build && pnpm --filter @responsive-image/blurhash run build",
-    "lint": "pnpm run -r lint",
-    "lint:fix": "pnpm run -r lint:fix",
-    "prepare": "pnpm build",
-    "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
-    "start:addon": "pnpm --filter @responsive-image/ember run start",
-    "start:test": "pnpm --filter test-app run start",
-    "test": "pnpm run -r test"
+    "build": "pnpm turbo build",
+    "build:packages": "pnpm turbo --filter='./packages/*' build",
+    "lint": "pnpm turbo lint",
+    "lint:fix": "pnpm run --filter '*' lint:fix",
+    "test": "pnpm turbo test"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.1",
     "concurrently": "8.2.2",
-    "prettier": "3.2.5"
+    "prettier": "3.2.5",
+    "turbo": "^1.13.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

@@ -21,8 +21,9 @@
     "start": "concurrently 'npm:start:*'",
     "start:js": "rollup --config --watch --no-watch.clearScreen",
     "start:types": "tsc --emitDeclarationOnly --watch",
-    "test": "vitest",
-    "prepack": "rollup --config"
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "prepack": "pnpm turbo build"
   },
   "devDependencies": {
     "@babel/core": "7.24.5",

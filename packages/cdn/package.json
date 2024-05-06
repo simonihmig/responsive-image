@@ -22,7 +22,7 @@
     "start:js": "rollup --config --watch --no-watch.clearScreen",
     "start:types": "tsc --emitDeclarationOnly --watch",
     "test": "echo 'No tests available'",
-    "prepack": "rollup --config"
+    "prepack": "pnpm turbo build"
   },
   "dependencies": {
     "@responsive-image/core": "workspace:^"

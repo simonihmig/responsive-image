@@ -19,7 +19,7 @@
     "lint:types": "tsc --noEmit",
     "start": "rollup --config --watch",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "prepack": "rollup --config"
+    "prepack": "pnpm turbo build"
   },
   "dependencies": {
     "@responsive-image/core": "workspace:^",
