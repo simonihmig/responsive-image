@@ -17,11 +17,11 @@
     },
     "lint": {
       "outputs": [],
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"]
     },
     "typecheck": {
       "outputs": [],
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"]
     }
   }
 }
