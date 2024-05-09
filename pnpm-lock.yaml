@@ -237,8 +237,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.5
       decorator-transforms:
-        specifier: ^1.0.2
-        version: 1.2.1(@babel/core@7.24.5)
+        specifier: ^2.0.0
+        version: 2.0.0(@babel/core@7.24.5)
       ember-addon-config:
         specifier: ^0.1.1
         version: 0.1.1(@glint/template@1.4.0)
@@ -3160,6 +3160,10 @@ packages:
     resolution: {integrity: sha512-3qBQWRjzP9NreSH/YrOEU1Lj5F60+pWSLP0kIdCWxjFHH7pX2YPHIxQ67el4gnMNfYoDxSDGcT0zpVlZ+gVtQA==}
     engines: {node: '>= 12.*'}
 
+  babel-import-util@3.0.0:
+    resolution: {integrity: sha512-4YNPkuVsxAW5lnSTa6cn4Wk49RX6GAB6vX+M6LqEtN0YePqoFczv1/x0EyLK/o+4E1j9jEuYj5Su7IEPab5JHQ==}
+    engines: {node: '>= 12.*'}
+
   babel-jest@29.7.0:
     resolution: {integrity: sha512-BrvGY3xZSwEcCzKvKsCi2GgHqDqsYkOP4/by5xCgIwGXQxIEh+8ew3gmrE1y7XRR6LHZIj6yLYnUi/mm2KXKBg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -4184,6 +4188,9 @@ packages:
 
   decorator-transforms@1.2.1:
     resolution: {integrity: sha512-UUtmyfdlHvYoX3VSG1w5rbvBQ2r5TX1JsE4hmKU9snleFymadA3VACjl6SRfi9YgBCSjBbfQvR1bs9PRW9yBKw==}
+
+  decorator-transforms@2.0.0:
+    resolution: {integrity: sha512-ETfQccGcotK01YJsoB0AGTdUp7kS9jI93mBzrRY5Oyo+bOJfa2UKTSjCNf+iRNwAWBmBKlbiCcyL4tkY4C4dZQ==}
 
   dedent@1.5.3:
     resolution: {integrity: sha512-NHQtfOOW68WD8lgypbLA5oT+Bt0xXJhiYvoR6SmmNXZfpzOGXwdKWmcwG8N7PwVVWV3eF/68nmD9BaJSsTBhyQ==}
@@ -11763,6 +11770,8 @@ snapshots:
 
   babel-import-util@2.1.1: {}
 
+  babel-import-util@3.0.0: {}
+
   babel-jest@29.7.0(@babel/core@7.24.5):
     dependencies:
       '@babel/core': 7.24.5
@@ -13010,6 +13019,13 @@ snapshots:
     dependencies:
       '@babel/plugin-syntax-decorators': 7.24.1(@babel/core@7.24.5)
       babel-import-util: 2.1.1
+    transitivePeerDependencies:
+      - '@babel/core'
+
+  decorator-transforms@2.0.0(@babel/core@7.24.5):
+    dependencies:
+      '@babel/plugin-syntax-decorators': 7.24.1(@babel/core@7.24.5)
+      babel-import-util: 3.0.0
     transitivePeerDependencies:
       - '@babel/core'
 
