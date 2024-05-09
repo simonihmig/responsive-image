@@ -92,8 +92,8 @@ importers:
         specifier: 3.5.0
         version: 3.5.0
       rollup-plugin-node-externals:
-        specifier: 6.1.2
-        version: 6.1.2(rollup@4.17.2)
+        specifier: 7.1.2
+        version: 7.1.2(rollup@4.17.2)
       sharp:
         specifier: 0.33.3
         version: 0.33.3
@@ -470,8 +470,8 @@ importers:
         specifier: 3.5.0
         version: 3.5.0
       rollup-plugin-node-externals:
-        specifier: 6.1.2
-        version: 6.1.2(rollup@4.17.2)
+        specifier: 7.1.2
+        version: 7.1.2(rollup@4.17.2)
       rollup-plugin-ts:
         specifier: 3.4.5
         version: 3.4.5(@babel/core@7.24.5)(@babel/plugin-transform-runtime@7.24.3(@babel/core@7.24.5))(@babel/preset-env@7.24.4(@babel/core@7.24.5))(@babel/preset-typescript@7.24.1(@babel/core@7.24.5))(@babel/runtime@7.24.5)(rollup@4.17.2)(typescript@5.4.5)
@@ -7362,9 +7362,9 @@ packages:
     resolution: {integrity: sha512-/VpLMtDy+8wwRlDANuYmDa9ss/knGsAgrDhM+tEwB1npHwNu4DYNmDfUL55csse/GHs9Q+SMT/rw9uiaZ3pnzA==}
     engines: {node: '>=10'}
 
-  rollup-plugin-node-externals@6.1.2:
-    resolution: {integrity: sha512-2TWan0u0/zHcgPrKpIPgKSY8OMqwDAYD380I0hxx7iUQw8mrN34DWwG9sQUMEo5Yy4xd6/5QEAySYgiKN9fdBQ==}
-    engines: {node: '>=16.0.0'}
+  rollup-plugin-node-externals@7.1.2:
+    resolution: {integrity: sha512-cVJFKs+ulZxpMmn/s+oi431d93Jq5+G7Sc5ixWDrL2k+Gj+MqXg0KMNWgKf8Mw5qpaG4jVDpsvuqFfiCvRcGeA==}
+    engines: {node: '>= 21 || ^20.6.0 || ^18.19.0'}
     peerDependencies:
       rollup: ^3.0.0 || ^4.0.0
 
@@ -17330,7 +17330,7 @@ snapshots:
     dependencies:
       del: 5.1.0
 
-  rollup-plugin-node-externals@6.1.2(rollup@4.17.2):
+  rollup-plugin-node-externals@7.1.2(rollup@4.17.2):
     dependencies:
       rollup: 4.17.2
 
