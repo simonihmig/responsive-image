@@ -1,8 +1,6 @@
 # responsive-image
 
-[![CI](https://github.com/simonihmig/ember-responsive-image/actions/workflows/ci.yml/badge.svg)](https://github.com/simonihmig/ember-responsive-image/actions/workflows/ci.yml)
-[![npm version](https://badge.fury.io/js/ember-responsive-image.svg)](https://badge.fury.io/js/ember-responsive-image)
-[![Ember Observer Score](https://emberobserver.com/badges/ember-responsive-image.svg)](https://emberobserver.com/addons/ember-responsive-image)
+[![CI](https://github.com/simonihmig/responsive-image/actions/workflows/ci.yml/badge.svg)](https://github.com/simonihmig/responsive-image/actions/workflows/ci.yml)
 
 An ember addon to automatically generate resized images at build-time, optimized for the responsive web, and using components to render
 them easily as `<picture>` elements.

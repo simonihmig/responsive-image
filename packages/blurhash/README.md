@@ -1,6 +1,6 @@
 # @responsive-image/blurhash
 
-Add support for [BlurHash](https://blurha.sh/) encoded [Low Quality Image Placeholders](../../README.md#lqip) (LQIP) to ember-responsive-images.
+Add support for [BlurHash](https://blurha.sh/) encoded [Low Quality Image Placeholders](../../README.md#lqip) (LQIP) to responsive-image.
 
 ## Compatibility
 
