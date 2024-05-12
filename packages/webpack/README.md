@@ -1,6 +1,6 @@
 # @responsive-image/webpack
 
-Wepack image loaders, that process and resize images for use with ember-responsive-image.
+Wepack image loaders, that process and resize images for use with `responsive-image`.
 
 ## Compatibility
 

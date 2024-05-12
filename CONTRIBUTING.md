@@ -3,7 +3,7 @@
 ## Installation
 
 - `git clone <repository-url>`
-- `cd ember-responsive-image`
+- `cd responsive-image`
 - `pnpm install`
 
 ## Linting
@@ -13,7 +13,7 @@
 
 ## Building the addon
 
-- `cd ember-responsive-image`
+- `cd responsive-image`
 - `pnpm build`
 
 ## Running tests
