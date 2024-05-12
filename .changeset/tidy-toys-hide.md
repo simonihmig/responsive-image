@@ -1,5 +1,5 @@
 ---
-'ember-responsive-image': major
+'@responsive-image/ember': major
 ---
 
 Drop service class
