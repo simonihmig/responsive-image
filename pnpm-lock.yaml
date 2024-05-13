@@ -409,9 +409,9 @@ importers:
         specifier: ^0.33.0
         version: 0.33.3
     devDependencies:
-      '@tsconfig/ember':
-        specifier: 3.0.6
-        version: 3.0.6
+      '@tsconfig/node20':
+        specifier: 20.1.4
+        version: 20.1.4
       '@types/node':
         specifier: 20.12.12
         version: 20.12.12
@@ -2276,6 +2276,9 @@ packages:
 
   '@tsconfig/ember@3.0.6':
     resolution: {integrity: sha512-b1LmFAL5suTpQsaoG5NYpKAU8XfqQcob9gPu4xQlS/sNGD8Pp+vx+jI30Cy01+mxTBsQPig2kOwFpTD2b2qwtw==}
+
+  '@tsconfig/node20@20.1.4':
+    resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -9993,6 +9996,8 @@ snapshots:
   '@tootallnate/once@2.0.0': {}
 
   '@tsconfig/ember@3.0.6': {}
+
+  '@tsconfig/node20@20.1.4': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
