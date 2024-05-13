@@ -2,7 +2,8 @@
   "extends": "@tsconfig/ember/tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "types": ["jest", "node"]
+    // type collision between vitest and @types/chai
+    "skipLibCheck": true
   },
   "include": ["src/**/*", "types/**/*", "tests/**/*"]
 }

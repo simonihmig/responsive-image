@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import { dirname } from 'path';
 import compiler from './compiler';
 import { fileURLToPath } from 'url';
