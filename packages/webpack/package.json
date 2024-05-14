@@ -12,13 +12,75 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
   "exports": {
-    "require": {
-      "types": "./dist/index.d.cts",
-      "default": "./dist/index.cjs"
+    ".": {
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
     },
-    "import": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+    "./images": {
+      "require": {
+        "types": "./dist/images.d.cts",
+        "default": "./dist/images.cjs"
+      },
+      "import": {
+        "types": "./dist/images.d.mts",
+        "default": "./dist/images.mjs"
+      }
+    },
+    "./export": {
+      "require": {
+        "types": "./dist/export.d.cts",
+        "default": "./dist/export.cjs"
+      },
+      "import": {
+        "types": "./dist/export.d.mts",
+        "default": "./dist/export.mjs"
+      }
+    },
+    "./lqip/color": {
+      "require": {
+        "types": "./dist/lqip/color.d.cts",
+        "default": "./dist/lqip/color.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/color.d.mts",
+        "default": "./dist/lqip/color.mjs"
+      }
+    },
+    "./lqip/color-css": {
+      "require": {
+        "types": "./dist/lqip/color-css.d.cts",
+        "default": "./dist/lqip/color-css.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/color-css.d.mts",
+        "default": "./dist/lqip/color-css.mjs"
+      }
+    },
+    "./lqip/inline": {
+      "require": {
+        "types": "./dist/lqip/inline.d.cts",
+        "default": "./dist/lqip/inline.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/inline.d.mts",
+        "default": "./dist/lqip/inline.mjs"
+      }
+    },
+    "./lqip/inline-css": {
+      "require": {
+        "types": "./dist/lqip/inline-css.d.cts",
+        "default": "./dist/lqip/inline-css.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/inline-css.d.mts",
+        "default": "./dist/lqip/inline-css.mjs"
+      }
     }
   },
   "scripts": {
