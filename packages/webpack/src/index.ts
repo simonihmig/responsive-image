@@ -1,5 +1,3 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
 import { createRequire } from 'node:module';
 export { getAspectRatio, getOptions, normalizeInput } from './utils';
 
@@ -8,19 +6,16 @@ export type { LoaderOptions, ImageLoaderChainedResult } from './types';
 
 const require = createRequire(import.meta.url);
 
-const _dirname =
-  typeof __dirname !== 'undefined'
-    ? __dirname
-    : dirname(fileURLToPath(import.meta.url));
-
-const IMAGES_LOADER = resolve(_dirname, 'images');
-const EXPORT_LOADER = resolve(_dirname, 'export');
-const COLOR_LOADER = resolve(_dirname, 'lqip/color');
-const INLINE_LOADER = resolve(_dirname, 'lqip/inline');
+const IMAGES_LOADER = '@responsive-image/webpack/images';
+const EXPORT_LOADER = '@responsive-image/webpack/export';
+const COLOR_LOADER = '@responsive-image/webpack/lqip/color';
+const INLINE_LOADER = '@responsive-image/webpack/lqip/inline';
 let BLURHASH_LOADER = undefined;
 
 try {
-  BLURHASH_LOADER = require.resolve('@responsive-image/blurhash/webpack');
+  BLURHASH_LOADER = require.resolve('@responsive-image/blurhash/webpack')
+    ? '@responsive-image/blurhash/webpack'
+    : undefined;
 } catch (e) {
   // do nothing if package is not available
 }

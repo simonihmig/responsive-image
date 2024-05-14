@@ -8,16 +8,89 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    },
+    "./images": {
+      "require": {
+        "types": "./dist/images.d.cts",
+        "default": "./dist/images.cjs"
+      },
+      "import": {
+        "types": "./dist/images.d.mts",
+        "default": "./dist/images.mjs"
+      }
+    },
+    "./export": {
+      "require": {
+        "types": "./dist/export.d.cts",
+        "default": "./dist/export.cjs"
+      },
+      "import": {
+        "types": "./dist/export.d.mts",
+        "default": "./dist/export.mjs"
+      }
+    },
+    "./lqip/color": {
+      "require": {
+        "types": "./dist/lqip/color.d.cts",
+        "default": "./dist/lqip/color.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/color.d.mts",
+        "default": "./dist/lqip/color.mjs"
+      }
+    },
+    "./lqip/color-css": {
+      "require": {
+        "types": "./dist/lqip/color-css.d.cts",
+        "default": "./dist/lqip/color-css.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/color-css.d.mts",
+        "default": "./dist/lqip/color-css.mjs"
+      }
+    },
+    "./lqip/inline": {
+      "require": {
+        "types": "./dist/lqip/inline.d.cts",
+        "default": "./dist/lqip/inline.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/inline.d.mts",
+        "default": "./dist/lqip/inline.mjs"
+      }
+    },
+    "./lqip/inline-css": {
+      "require": {
+        "types": "./dist/lqip/inline-css.d.cts",
+        "default": "./dist/lqip/inline-css.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/inline-css.d.mts",
+        "default": "./dist/lqip/inline-css.mjs"
+      }
+    }
+  },
   "scripts": {
-    "build": "rollup --config",
+    "build": "pkgroll",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "start": "rollup --config --watch",
+    "start": "pkgroll --watch",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "prepack": "pnpm turbo build"
@@ -38,9 +111,7 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "7.24.5",
-    "@babel/preset-typescript": "7.24.1",
-    "@tsconfig/ember": "3.0.6",
+    "@tsconfig/node20": "20.1.4",
     "@types/node": "20.12.12",
     "@typescript-eslint/eslint-plugin": "7.9.0",
     "@typescript-eslint/parser": "7.9.0",
@@ -52,11 +123,8 @@
     "eslint-plugin-prettier": "5.1.3",
     "glob": "8.1.0",
     "memfs": "4.9.2",
+    "pkgroll": "2.0.2",
     "prettier": "3.2.5",
-    "rollup": "4.17.2",
-    "rollup-plugin-copy": "3.5.0",
-    "rollup-plugin-node-externals": "7.1.2",
-    "rollup-plugin-ts": "3.4.5",
     "style-loader": "4.0.0",
     "typescript": "5.4.5",
     "vitest": "1.6.0",
@@ -67,16 +135,6 @@
   },
   "engines": {
     "node": "20.* || >= 22"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "default": "./dist/*.js"
-    }
   },
   "volta": {
     "extends": "../../package.json"
