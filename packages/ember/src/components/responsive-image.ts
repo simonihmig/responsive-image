@@ -3,6 +3,7 @@ import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { env, getDestinationWidthBySize } from '@responsive-image/core';
+import { TrackedAsyncData } from 'ember-async-data';
 import type {
   ImageType,
   LqipBlurhash,
@@ -192,7 +193,18 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get showLqipBlurhash(): boolean {
-    return !this.isLoaded && this.hasLqipBlurhash;
+    return (
+      !this.isLoaded && this.hasLqipBlurhash && this.blurhashScript.isResolved
+    );
+  }
+
+  @cached
+  get blurhashScript() {
+    const promise = import(
+      /* webpackIgnore: true */
+      `//${window.location.host}/@responsive-image/ember/blurhash.js`
+    );
+    return new TrackedAsyncData<typeof import('../blurhash.ts')>(promise);
   }
 
   get blurhashMeta(): LqipBlurhash | undefined {
@@ -206,10 +218,12 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return undefined;
     }
 
-    // TODO async import
-    return undefined;
+    if (!this.blurhashScript.isResolved) {
+      return undefined;
+    }
+
     const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
-    const uri = __eri_blurhash.bh2url(hash, width, height);
+    const uri = this.blurhashScript.value.bh2url(hash, width, height);
 
     return `url("${uri}")`;
   }

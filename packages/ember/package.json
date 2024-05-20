@@ -31,14 +31,15 @@
     "prepack": "pnpm turbo build"
   },
   "dependencies": {
-    "@responsive-image/cdn": "workspace:^",
-    "@responsive-image/core": "workspace:^",
     "@ember/render-modifiers": "^2.0.0",
     "@embroider/addon-shim": "^1.8.7",
     "@embroider/macros": "^1.0.0",
+    "@responsive-image/cdn": "workspace:^",
+    "@responsive-image/core": "workspace:^",
     "blurhash": "^2.0.0",
     "decorator-transforms": "^2.0.0",
     "ember-addon-config": "^0.1.1",
+    "ember-async-data": "^1.0.3",
     "ember-style-modifier": "^4.0.0"
   },
   "peerDependencies": {
@@ -55,6 +56,9 @@
     "@glint/core": "1.4.0",
     "@glint/environment-ember-loose": "1.4.0",
     "@glint/template": "1.4.0",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-terser": "0.4.4",
     "@tsconfig/ember": "3.0.7",
     "@types/ember": "4.0.11",
     "@types/ember__application": "4.0.11",
@@ -79,9 +83,6 @@
     "@types/ember__utils": "4.0.7",
     "@typescript-eslint/eslint-plugin": "7.10.0",
     "@typescript-eslint/parser": "7.10.0",
-    "@rollup/plugin-babel": "6.0.4",
-    "@rollup/plugin-node-resolve": "15.2.3",
-    "@rollup/plugin-terser": "0.4.4",
     "babel-plugin-ember-template-compilation": "2.2.5",
     "concurrently": "8.2.2",
     "ember-cached-decorator-polyfill": "1.0.2",
