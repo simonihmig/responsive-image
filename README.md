@@ -430,10 +430,10 @@ Configuration options:
 
 - **deviceWidths**: an array of widths representing the typical screen widths of your user's devices, used when the available image widths are not known beforehand, like when using an image CDN. Default: `[640, 750, 828, 1080, 1200, 1920, 2048, 3840]`
 
-The options for configuring the processing of local images are handled by the `@responsive-image/webpack` package, and other options related to image CDNs or BlurHash-support are handled by their respective sub-packages as well, so please refer to their documentation for detailed configuration instructions:
+The options for configuring the processing of local images are handled by the `@responsive-image/webpack` package, and other options related to image CDNs or BlurHash support also have ther own documentation sections:
 
 - [`@responsive-image/webpack`](./packages/webpack/README.md)
-- [`@responsive-image/blurhash`](./packages/blurhash/README.md)
+- [BlurHash](./docs/blurhash.md)
 - [Cloudinary](./docs/cdn/cloudinary.md)
 - [imgix](./docs/cdn/imgix.md)
 

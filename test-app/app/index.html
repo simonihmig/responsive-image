@@ -9,18 +9,17 @@
 
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/test-app.css" />
+    <link
+      rel="prefetch"
+      href="{{rootURL}}@responsive-image/ember/blurhash.js"
+    />
 
     {{content-for "head-footer"}}
   </head>
   <body>
     {{content-for "body"}}
 
-    <script
-      src="{{rootURL}}@responsive-image/ember/blurhash.js"
-      type="module"
-      data-fastboot-ignore
-    ></script>
-    <script type="module">
+    <script type="module" async data-fastboot-ignore>
       import { applySSR } from "{{rootURL}}@responsive-image/ember/blurhash.js";
       applySSR();
     </script>
