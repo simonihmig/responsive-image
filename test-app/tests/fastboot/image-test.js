@@ -48,6 +48,7 @@ module('FastBoot | image', function (hooks) {
     // this is called automatically in a real page, but ember-feastboot-testing does not evaluate our blurhash script,
     // so we need to call it explicitly in our test.
     const { applySSR } = await import(
+      /* webpackIgnore: true */
       `//${window.location.host}/@responsive-image/ember/blurhash.js`
     );
 
