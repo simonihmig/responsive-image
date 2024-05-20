@@ -1,3 +1,4 @@
+import { getOptions, normalizeInput } from './utils';
 import type { ImageType } from '@responsive-image/core';
 import type { Metadata, Sharp } from 'sharp';
 import type { LoaderContext } from 'webpack';
@@ -7,7 +8,6 @@ import type {
   LoaderOptions,
   OutputImageType,
 } from './types';
-import { getOptions, normalizeInput } from './utils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 

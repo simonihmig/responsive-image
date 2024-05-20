@@ -2,7 +2,7 @@ import type { Metadata } from 'sharp';
 import type { LoaderContext } from 'webpack';
 import type { ImageLoaderChainedResult, LoaderOptions } from '../types';
 import { getAspectRatio, getOptions, normalizeInput } from '..';
-import blurhash from 'blurhash';
+import { encode } from 'blurhash';
 
 export default function lqipBlurhashLoader(
   this: LoaderContext<Partial<LoaderOptions>>,
@@ -51,7 +51,7 @@ async function process(
     .raw();
 
   const imageData = new Uint8ClampedArray(await lqi.toBuffer());
-  const hash = blurhash.encode(imageData, rawWidth, rawHeight, width, height);
+  const hash = encode(imageData, rawWidth, rawHeight, width, height);
 
   return {
     ...data,
