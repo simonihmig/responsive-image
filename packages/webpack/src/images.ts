@@ -49,7 +49,7 @@ async function process(
     };
   } catch (e) {
     throw new Error(
-      `Failed to generate image data for ${context.resource}: ${e}`,
+      `@responsive-image/webpack failed to generate image data for ${context.resource}: ${e}`,
     );
   }
 }

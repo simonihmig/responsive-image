@@ -4,11 +4,11 @@ import type { LoaderOptions } from './types';
 export type { LoaderOptions, ImageLoaderChainedResult } from './types';
 
 const defaultLoaders: string[] = [
-  '@responsive-image/webpack/images',
   '@responsive-image/webpack/export',
-  '@responsive-image/webpack/lqip/color',
-  '@responsive-image/webpack/lqip/inline',
   '@responsive-image/webpack/lqip/blurhash',
+  '@responsive-image/webpack/lqip/inline',
+  '@responsive-image/webpack/lqip/color',
+  '@responsive-image/webpack/images',
 ];
 
 function setupLoaders(options?: Partial<LoaderOptions>) {
