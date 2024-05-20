@@ -1,4 +1,3 @@
-import { createRequire } from 'node:module';
 export { getAspectRatio, getOptions, normalizeInput } from './utils';
 
 import type { LoaderOptions } from './types';
