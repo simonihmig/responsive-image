@@ -1,14 +1,7 @@
 import type { Metadata } from 'sharp';
 import type { LoaderContext } from 'webpack';
-import type {
-  ImageLoaderChainedResult,
-  LoaderOptions,
-} from '@responsive-image/webpack';
-import {
-  getAspectRatio,
-  getOptions,
-  normalizeInput,
-} from '@responsive-image/webpack';
+import type { ImageLoaderChainedResult, LoaderOptions } from '../types';
+import { getAspectRatio, getOptions, normalizeInput } from '..';
 import blurhash from 'blurhash';
 
 export default function lqipBlurhashLoader(

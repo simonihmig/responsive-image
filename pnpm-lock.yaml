@@ -224,9 +224,6 @@ importers:
       '@embroider/macros':
         specifier: ^1.0.0
         version: 1.16.1(@glint/template@1.4.0)
-      '@responsive-image/blurhash':
-        specifier: workspace:^
-        version: link:../blurhash
       '@responsive-image/cdn':
         specifier: workspace:^
         version: link:../cdn
@@ -393,15 +390,15 @@ importers:
 
   packages/webpack:
     dependencies:
-      '@responsive-image/blurhash':
-        specifier: workspace:^
-        version: link:../blurhash
       '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
       base-n:
         specifier: ^3.0.0
         version: 3.0.0
+      blurhash:
+        specifier: ^2.0.4
+        version: 2.0.5
       loader-utils:
         specifier: ^3.2.0
         version: 3.2.1
@@ -499,9 +496,6 @@ importers:
       '@glint/template':
         specifier: 1.4.0
         version: 1.4.0
-      '@responsive-image/blurhash':
-        specifier: workspace:*
-        version: link:../packages/blurhash
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../packages/core

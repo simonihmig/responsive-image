@@ -43,13 +43,7 @@
   },
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
-    "@responsive-image/blurhash": "workspace:^"
-  },
-  "peerDependenciesMeta": {
-    "@responsive-image/blurhash": {
-      "optional": true
-    }
+    "@glimmer/tracking": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "7.24.5",
@@ -117,6 +111,9 @@
       "./helpers/responsive-image-imgix-provider.js": "./dist/_app_/helpers/responsive-image-imgix-provider.js",
       "./helpers/responsive-image-resolve.js": "./dist/_app_/helpers/responsive-image-resolve.js",
       "./initializers/responsive-image.js": "./dist/_app_/initializers/responsive-image.js"
+    },
+    "public-assets": {
+      "./dist/blurhash.js": "/assets/blurhash.js"
     }
   },
   "exports": {
