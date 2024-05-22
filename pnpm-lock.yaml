@@ -34,9 +34,9 @@ importers:
         specifier: workspace:^
         version: link:../core
     devDependencies:
-      '@tsconfig/ember':
-        specifier: 3.0.7
-        version: 3.0.7
+      '@tsconfig/strictest':
+        specifier: 2.0.5
+        version: 2.0.5
       '@typescript-eslint/eslint-plugin':
         specifier: 7.10.0
         version: 7.10.0(@typescript-eslint/parser@7.10.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
