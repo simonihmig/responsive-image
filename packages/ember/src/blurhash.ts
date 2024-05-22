@@ -6,9 +6,7 @@ const HEIGHT_ATTRIBUTE = 'data-eri-bh-h';
 
 const BLURHASH_SCALE_FACTOR = 4;
 
-declare const FastBoot: unknown | undefined;
-
-function bh2url(
+export function bh2url(
   hash: string,
   width: number,
   height: number,
@@ -30,7 +28,7 @@ function bh2url(
   return canvas.toDataURL('image/png');
 }
 
-function applySSR(): void {
+export function applySSR(): void {
   const images = document.querySelectorAll<HTMLImageElement>(
     `img[${BLURHASH_ATTRIBUTE}]`,
   );
@@ -48,10 +46,3 @@ function applySSR(): void {
     }
   });
 }
-
-if (typeof FastBoot === 'undefined') {
-  setTimeout(applySSR, 0);
-}
-
-// @ts-expect-error we make the function global, so our component can reuse the already loaded code
-window.__eri_blurhash = { bh2url, applySSR };

@@ -1,7 +1,7 @@
 import sharp from 'sharp';
+import { parseQuery } from '../utils';
 import type { LoaderContext } from 'webpack';
 import type { LoaderOptions } from '../types';
-import { parseQuery } from '../utils';
 
 export default function lqipColorCssLoader(
   this: LoaderContext<Partial<LoaderOptions>>,

@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { macroCondition, dependencySatisfies } from '@embroider/macros';
 import { env, getDestinationWidthBySize } from '@responsive-image/core';
+import { TrackedAsyncData } from 'ember-async-data';
 import type {
   ImageType,
   LqipBlurhash,
@@ -189,51 +189,43 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get hasLqipBlurhash(): boolean {
-    if (
-      macroCondition(dependencySatisfies('@responsive-image/blurhash', '*'))
-    ) {
-      return this.args.src.lqip?.type === 'blurhash';
-    } else {
-      return false;
-    }
+    return this.args.src.lqip?.type === 'blurhash';
   }
 
   get showLqipBlurhash(): boolean {
-    if (
-      macroCondition(dependencySatisfies('@responsive-image/blurhash', '*'))
-    ) {
-      return !this.isLoaded && this.hasLqipBlurhash;
-    } else {
-      return false;
-    }
+    return (
+      !this.isLoaded && this.hasLqipBlurhash && this.blurhashScript.isResolved
+    );
+  }
+
+  @cached
+  get blurhashScript() {
+    const promise = import(
+      /* webpackIgnore: true */
+      `//${window.location.host}/@responsive-image/ember/blurhash.js`
+    );
+    return new TrackedAsyncData<typeof import('../blurhash.ts')>(promise);
   }
 
   get blurhashMeta(): LqipBlurhash | undefined {
-    if (
-      macroCondition(dependencySatisfies('@responsive-image/blurhash', '*'))
-    ) {
-      return this.args.src.lqip?.type === 'blurhash'
-        ? this.args.src.lqip
-        : undefined;
-    } else {
-      return undefined;
-    }
+    return this.args.src.lqip?.type === 'blurhash'
+      ? this.args.src.lqip
+      : undefined;
   }
 
   get lqipBlurhash(): string | undefined {
-    if (
-      macroCondition(dependencySatisfies('@responsive-image/blurhash', '*'))
-    ) {
-      if (!this.hasLqipBlurhash) {
-        return undefined;
-      }
-      const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
-      const uri = __eri_blurhash.bh2url(hash, width, height);
-
-      return `url("${uri}")`;
-    } else {
+    if (!this.hasLqipBlurhash) {
       return undefined;
     }
+
+    if (!this.blurhashScript.isResolved) {
+      return undefined;
+    }
+
+    const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
+    const uri = this.blurhashScript.value.bh2url(hash, width, height);
+
+    return `url("${uri}")`;
   }
 
   processUrl(url: string): string {

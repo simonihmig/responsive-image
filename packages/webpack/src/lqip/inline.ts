@@ -1,6 +1,6 @@
+import { generateLqipClassName, getOptions, normalizeInput } from '../utils';
 import type { LoaderContext } from 'webpack';
 import type { ImageLoaderChainedResult, LoaderOptions } from '../types';
-import { generateLqipClassName, getOptions, normalizeInput } from '../utils';
 
 export default function lqipInlineLoader(
   this: LoaderContext<Partial<LoaderOptions>>,

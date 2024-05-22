@@ -1,4 +1,4 @@
-# @responsive-image/blurhash
+# BlurHash
 
 Add support for [BlurHash](https://blurha.sh/) encoded [Low Quality Image Placeholders](../../README.md#lqip) (LQIP) to responsive-image.
 
@@ -9,19 +9,28 @@ Add support for [BlurHash](https://blurha.sh/) encoded [Low Quality Image Placeh
 
 ## Installation
 
-```
-npm install @responsive-image/blurhash @responsive-image/webpack
-// or
-yarn add @responsive-image/blurhash @responsive-image/webpack
-// or
-pnpm add @responsive-image/blurhash @responsive-image/webpack
-```
+### FastBoot
 
-The setup of this package requires to add an additional script to your `index.html`. It is important to add this _before_ your `vendor.js` script, especially when your app is served in a SSR setup using FastBoot or prember, so that the BlurHash encoded LQIPs are displayed before your app's JavaScript has loaded:
+When your app is served in a SSR setup using FastBoot or prember, it is important to make the BlurHash encoded LQIPs get displayed before your app's JavaScript has loaded, because the latter can take time on a slow network link, and that is exactly the use case where you want your BlurHash based image placeholders used by your prerendered HTML to be already visible.
+
+There is a dedicated scipt available for this to add to your `index.html`. It is important to add this _before_ your `vendor.js` script as shown here:
 
 ```html
+<script type="module" async data-fastboot-ignore>
+  import { applySSR } from '{{rootURL}}@responsive-image/ember/blurhash.js';
+  applySSR();
+</script>
 <script src="{{rootURL}}assets/blurhash.js"></script>
 <script src="{{rootURL}}assets/vendor.js"></script>
+```
+
+For optimal performance, preload that script by putting this link right after the CSS links in your `<head>` section:
+
+```html
+<link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
+<link integrity="" rel="stylesheet" href="{{rootURL}}assets/your-app.css" />
+
+<link rel="prefetch" href="{{rootURL}}@responsive-image/ember/blurhash.js" />
 ```
 
 ## Usage

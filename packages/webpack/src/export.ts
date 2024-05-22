@@ -1,13 +1,13 @@
-import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
+import { getAspectRatio, getOptions, onlyUnique } from './utils';
+import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import type { LoaderContext } from 'webpack';
 import type {
   ImageLoaderChainedResult,
   ImageProcessingResult,
   LoaderOptions,
 } from './types';
-import { getAspectRatio, getOptions, onlyUnique } from './utils';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
   jpeg: 'jpg',
