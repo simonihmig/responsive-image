@@ -10,7 +10,7 @@
     "dist"
   ],
   "type": "module",
-  "sideEffects": "false",
+  "sideEffects": false,
   "scripts": {
     "build": "pkgroll",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
