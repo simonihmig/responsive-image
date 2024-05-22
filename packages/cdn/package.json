@@ -9,18 +9,16 @@
     "declarations",
     "dist"
   ],
+  "type": "module",
+  "sideEffects": false,
   "scripts": {
-    "build": "concurrently 'npm:build:*'",
-    "build:js": "rollup --config",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build": "pkgroll",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "start": "concurrently 'npm:start:*'",
-    "start:js": "rollup --config --watch --no-watch.clearScreen",
-    "start:types": "tsc --emitDeclarationOnly --watch",
+    "start": "pkgroll --watch",
     "test": "echo 'No tests available'",
     "prepack": "pnpm turbo build"
   },
@@ -28,21 +26,16 @@
     "@responsive-image/core": "workspace:^"
   },
   "devDependencies": {
-    "@babel/core": "7.24.5",
-    "@babel/plugin-transform-typescript": "7.24.5",
-    "@babel/runtime": "7.24.5",
-    "@tsconfig/ember": "3.0.7",
+    "@tsconfig/strictest": "2.0.5",
     "@typescript-eslint/eslint-plugin": "7.10.0",
     "@typescript-eslint/parser": "7.10.0",
-    "@rollup/plugin-babel": "6.0.4",
     "concurrently": "8.2.2",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-n": "17.7.0",
     "eslint-plugin-prettier": "5.1.3",
+    "pkgroll": "2.1.1",
     "prettier": "3.2.5",
-    "rollup": "4.18.0",
-    "rollup-plugin-copy": "3.5.0",
     "typescript": "5.4.5"
   },
   "publishConfig": {
@@ -50,14 +43,14 @@
   },
   "exports": {
     ".": {
-      "types": "./declarations/index.d.ts",
+      "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
   },
   "typesVersions": {
     "*": {
       "*": [
-        "declarations/index"
+        "dist/index"
       ]
     }
   },
