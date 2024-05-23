@@ -26,6 +26,17 @@ module.exports = {
       ],
       rules: {},
     },
+    // gts files
+    {
+      files: ['**/*.gts'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:ember/recommended-gts',
+      ],
+    },
     // node files
     {
       files: [

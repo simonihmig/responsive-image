@@ -550,7 +550,7 @@ module("Integration: Responsive Image Component", function (hooks) {
     });
   });
 
-  module("source from provider", function (hooks) {
+  module("source from provider", function () {
     const defaultImageData: ImageData = {
       imageTypes: ["jpeg", "webp"],
       imageUrlFor(width, type = "jpeg") {
