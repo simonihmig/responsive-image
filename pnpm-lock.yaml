@@ -177,8 +177,8 @@ importers:
         specifier: 0.4.4
         version: 0.4.4(rollup@4.18.0)
       '@tsconfig/ember':
-        specifier: 3.0.7
-        version: 3.0.7
+        specifier: 3.0.8
+        version: 3.0.8
       '@types/ember':
         specifier: 4.0.11
         version: 4.0.11(@babel/core@7.24.5)
@@ -412,8 +412,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/webpack
       '@tsconfig/ember':
-        specifier: 3.0.7
-        version: 3.0.7
+        specifier: 3.0.8
+        version: 3.0.8
       '@types/ember':
         specifier: 4.0.11
         version: 4.0.11(@babel/core@7.24.5)
@@ -2153,8 +2153,8 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
 
-  '@tsconfig/ember@3.0.7':
-    resolution: {integrity: sha512-T9H3VNlino2mo3wpAd9EqRwJyERvUKnJnIyiYuL7b3UvV+yQAt7f9np81liHpmBeBQ5z5NzegA5vJGpvCOtYsQ==}
+  '@tsconfig/ember@3.0.8':
+    resolution: {integrity: sha512-OVnIsZIt/8q0VEtcdz3rRryNrm6gdJTxXlxefkGIrkZnME0wqslmwHlUEZ7mvh377df9FqBhNKrYNarhCW8zJA==}
 
   '@tsconfig/node20@20.1.4':
     resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
@@ -5039,6 +5039,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
@@ -9838,7 +9839,7 @@ snapshots:
 
   '@tootallnate/once@2.0.0': {}
 
-  '@tsconfig/ember@3.0.7': {}
+  '@tsconfig/ember@3.0.8': {}
 
   '@tsconfig/node20@20.1.4': {}
 
