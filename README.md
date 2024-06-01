@@ -5,6 +5,10 @@
 An ember addon to automatically generate resized images at build-time, optimized for the responsive web, and using components to render
 them easily as `<picture>` elements.
 
+> [!WARNING]  
+> You are looking on the documentation for the next-generation of the `responsive-image` packages, which are currently in beta status!
+> The documentation for the current stable release v4.0.0 of `ember-responsive-image` can be found [here](https://github.com/simonihmig/responsive-image/tree/release_v4)!
+
 ## Key Features
 
 🌇 Supports basic PNG and JPEG formats, as well as next-gen [**WebP**](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#webp) and [**AVIF**](https://developer.mozilla.org/en-US/Web/Media/Formats/Image_types#avif), for best image quality at low file sizes.
