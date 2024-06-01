@@ -63,12 +63,25 @@ async function generateResizedImages(
   formats: ImageType[],
   quality: number,
 ): Promise<ImageProcessingResult[]> {
+  const imagetools = await import('imagetools-core');
   return Promise.all(
     widths.flatMap((width) => {
-      const resizedImage = image.clone();
-      resizedImage.resize(width, null, { withoutEnlargement: true });
-
       return formats.map(async (format) => {
+        const imagetoolsConfig = {
+          w: String(width),
+          format,
+        };
+        const { transforms } = imagetools.generateTransforms(
+          imagetoolsConfig,
+          imagetools.builtins,
+          new URLSearchParams(),
+        );
+
+        const { image: resizedImage } = await imagetools.applyTransforms(
+          transforms,
+          image,
+        );
+
         const data = await resizedImage
           .toFormat(format, { quality })
           .toBuffer();
