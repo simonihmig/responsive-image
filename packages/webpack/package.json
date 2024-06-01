@@ -100,6 +100,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
+    "prepack": "pnpm turbo build",
     "start": "pkgroll --watch",
     "test": "vitest run",
     "test:watch": "vitest watch"
