@@ -1,5 +1,11 @@
 # @ember-responsive-image/webpack
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- [#604](https://github.com/simonihmig/responsive-image/pull/604) [`63e0336`](https://github.com/simonihmig/responsive-image/commit/63e0336a30b44c58df80b0f873417108cc11b101) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix broken published webpack package
+
 ## 1.0.0-beta.1
 
 ### Major Changes
