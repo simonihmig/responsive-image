@@ -1,27 +1,45 @@
 import baseN from 'base-n';
 import sharp, { type Metadata } from 'sharp';
 import type { LoaderContext } from 'webpack';
-import type { ImageLoaderChainedResult, LoaderOptions } from './types';
+import type {
+  ImageLoaderChainedResult,
+  LoaderOptions,
+  WebpackLoaderOptions,
+} from './types';
+import type { ImageConfig } from 'imagetools-core';
 
 const b64 = baseN.create();
 
 const defaultImageConfig: LoaderOptions = {
   quality: 80,
-  widths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-  formats: ['original', 'webp'],
+  w: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  // TODO: remove this, needs fixing tests
+  allowUpscale: 'true',
+  format: ['original', 'webp'],
   name: '[name]-[width]w-[hash].[ext]',
   outputPath: 'images',
 };
 
-export function parseQuery(query: string): Record<string, unknown> {
+const webpackLoaderKeys: string[] = [
+  'lqip',
+  'name',
+  'outputPath',
+  'webPath',
+] satisfies Array<keyof WebpackLoaderOptions>;
+const queryArraySeparator = /[,;]/;
+
+export function parseQuery(query: string): Partial<LoaderOptions> {
   const params = new URLSearchParams(query);
   return Object.fromEntries(
     [...params.entries()].map(([key, value]) => {
       switch (key) {
-        case 'widths':
-          return [key, value.split(',').map((v) => parseInt(v, 10))];
-        case 'formats':
-          return [key, value.split(',')];
+        case 'w':
+          return [
+            key,
+            value.split(queryArraySeparator).map((v) => parseInt(v, 10)),
+          ];
+        case 'format':
+          return [key, value.split(queryArraySeparator)];
         case 'quality':
           return [key, parseInt(value, 10)];
         case 'lqip': {
@@ -43,6 +61,67 @@ export function parseQuery(query: string): Record<string, unknown> {
   );
 }
 
+// export function parseQuery(query: string): Partial<LoaderOptions> {
+//   const params = new URLSearchParams(query);
+//   const loaderOptions: Partial<LoaderOptions> = {};
+
+//   for (let [key, value] of params) {
+//     let normalizedValue: string | number | object | string[];
+//     if (value.charAt(0) === '{') {
+//       normalizedValue = JSON.parse(value);
+//     } else if (value.includes(';')) {
+//       normalizedValue = value.split(';');
+//     } else {
+//       normalizedValue = value;
+//     }
+
+//       loaderOptions[key]=normalizedValue
+//   }
+
+//   // TODO: parseIn() ?
+
+//   return loaderOptions;
+// }
+
+// export function extractWebpackLoaderOptions(
+//   loaderOptions: LoaderOptions,
+// ): WebpackLoaderOptions {
+//   return Object.fromEntries(
+//     Object.entries(loaderOptions).filter(([key]) =>
+//       webpackLoaderKeys.includes(key),
+//     ),
+//   ) as unknown as WebpackLoaderOptions; // TODO can we avouid the cast?
+// }
+
+// export function extractImageLoaderOptions(
+//   loaderOptions: LoaderOptions,
+// ): ImageLoaderOptions {
+//   return Object.fromEntries(
+//     Object.entries(loaderOptions).filter(
+//       ([key]) => !webpackLoaderKeys.includes(key),
+//     ),
+//   ) as unknown as ImageLoaderOptions; // TODO can we avouid the cast?
+// }
+
+export async function getImagetoolsConfigs(
+  options: LoaderOptions,
+): Promise<ImageConfig[]> {
+  const imagetools = await import('imagetools-core');
+
+  const entries = Object.entries(options)
+    .filter(([key]) => !webpackLoaderKeys.includes(key))
+    .map(([key, value]) => {
+      // imagetools expects this type
+      const stringarrayifiedValue = Array.isArray(value)
+        ? value.map((v) => String(v))
+        : [String(value)];
+
+      return [key, stringarrayifiedValue] satisfies [string, string[]];
+    });
+
+  return imagetools.resolveConfigs(entries, imagetools.builtinOutputFormats);
+}
+
 export function getOptions(
   context: LoaderContext<Partial<LoaderOptions>>,
 ): LoaderOptions {
@@ -53,7 +132,7 @@ export function getOptions(
     ...defaultImageConfig,
     ...context.getOptions(),
     ...parsedResourceQuery,
-  };
+  } as LoaderOptions;
 }
 
 export function normalizeInput(
