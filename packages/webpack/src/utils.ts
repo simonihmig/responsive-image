@@ -61,48 +61,6 @@ export function parseQuery(query: string): Partial<LoaderOptions> {
   );
 }
 
-// export function parseQuery(query: string): Partial<LoaderOptions> {
-//   const params = new URLSearchParams(query);
-//   const loaderOptions: Partial<LoaderOptions> = {};
-
-//   for (let [key, value] of params) {
-//     let normalizedValue: string | number | object | string[];
-//     if (value.charAt(0) === '{') {
-//       normalizedValue = JSON.parse(value);
-//     } else if (value.includes(';')) {
-//       normalizedValue = value.split(';');
-//     } else {
-//       normalizedValue = value;
-//     }
-
-//       loaderOptions[key]=normalizedValue
-//   }
-
-//   // TODO: parseIn() ?
-
-//   return loaderOptions;
-// }
-
-// export function extractWebpackLoaderOptions(
-//   loaderOptions: LoaderOptions,
-// ): WebpackLoaderOptions {
-//   return Object.fromEntries(
-//     Object.entries(loaderOptions).filter(([key]) =>
-//       webpackLoaderKeys.includes(key),
-//     ),
-//   ) as unknown as WebpackLoaderOptions; // TODO can we avouid the cast?
-// }
-
-// export function extractImageLoaderOptions(
-//   loaderOptions: LoaderOptions,
-// ): ImageLoaderOptions {
-//   return Object.fromEntries(
-//     Object.entries(loaderOptions).filter(
-//       ([key]) => !webpackLoaderKeys.includes(key),
-//     ),
-//   ) as unknown as ImageLoaderOptions; // TODO can we avouid the cast?
-// }
-
 export async function getImagetoolsConfigs(
   options: LoaderOptions,
 ): Promise<ImageConfig[]> {

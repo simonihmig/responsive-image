@@ -4,7 +4,6 @@ import type {
   LqipColor,
   LqipInline,
 } from '@responsive-image/core';
-import { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;
