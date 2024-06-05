@@ -26,7 +26,7 @@ const webpackLoaderKeys: string[] = [
   'outputPath',
   'webPath',
 ] satisfies Array<keyof WebpackLoaderOptions>;
-const queryArraySeparator = /[,;]/;
+const queryArraySeparator = ';';
 
 export function parseQuery(query: string): Partial<LoaderOptions> {
   const params = new URLSearchParams(query);
