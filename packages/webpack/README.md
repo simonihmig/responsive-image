@@ -49,8 +49,8 @@ The package comes with reasonable defaults, but if you want to customize these f
 
 ```js
 setupLoaders({
-  widths: [1024, 2048],
-  formats: ['original', 'avif'],
+  w: [1024, 2048],
+  format: ['original', 'avif'],
 });
 ```
 
@@ -59,7 +59,7 @@ setupLoaders({
 Besides globa settings, you can also pass all the supported configuration options as query parameters when importimng an image:
 
 ```js
-import logo from './logo.jpg?responsive&widths=32,64&quality=95';
+import logo from './logo.jpg?responsive&w=32;64&quality=95';
 ```
 
 Query params alwas take precedence of global settings passed to `setupLoaders()`.
@@ -68,8 +68,8 @@ Query params alwas take precedence of global settings passed to `setupLoaders()`
 
 | option       | type                                                                                                             | description                                                                                                                                                                                                                                                                                                                                                     | default                                         |
 | ------------ | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `widths`     | `Array<number>`                                                                                                  | The image widths to be generated. For responsive images this should match the typical device sizes, eventually taking account when the image is not covering the full screen size, like `50vw`. For fixed size images this should be the intended size and twice of it for 2x displays. Pass this as a comma separated list when using query params.            | `[640, 750, 828, 1080, 1200, 1920, 2048, 3840]` |
-| `formats`    | `Array<'original'\|'png'\|'jpeg'\|'webp'\|'avif'>`                                                               | The image formats to generate. `original` refers to whatever the original image's type is. Pass this as a comma separated list when using query params.                                                                                                                                                                                                         | `['original', 'webp']`                          |
+| `w`          | `Array<number>`                                                                                                  | The image widths to be generated. For responsive images this should match the typical device sizes, eventually taking account when the image is not covering the full screen size, like `50vw`. For fixed size images this should be the intended size and twice of it for 2x displays. Pass this as a comma separated list when using query params.            | `[640, 750, 828, 1080, 1200, 1920, 2048, 3840]` |
+| `format`     | `Array<'original'\|'png'\|'jpeg'\|'webp'\|'avif'>`                                                               | The image formats to generate. `original` refers to whatever the original image's type is. Pass this as a comma separated list when using query params.                                                                                                                                                                                                         | `['original', 'webp']`                          |
 | `quality`    | `number`                                                                                                         | The image quality (0 - 100).                                                                                                                                                                                                                                                                                                                                    | 80                                              |
 | `name`       | `string`                                                                                                         | The template for the generated image files. Certains placeholders like `[ext]` and `[width]` and all the common Webpack placeholders are replaced with real values.                                                                                                                                                                                             | [name]-[width]w-[hash].[ext]                    |
 | `webPath`    | `string`                                                                                                         | The public URL the emitted files are referenced from. By default, this matches Webpacks public URL and the path generated from `outputPath`.                                                                                                                                                                                                                    |
