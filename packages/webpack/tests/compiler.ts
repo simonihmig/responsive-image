@@ -3,6 +3,11 @@ import { createFsFromVolume, Volume } from 'memfs';
 import { setupLoaders, type LoaderOptions } from '@responsive-image/webpack';
 import path, { join, resolve } from 'path';
 
+const defaultOptions: Partial<LoaderOptions> = {
+  // Don't use the hash part in tests, to prevent brittle tests when using snapshots
+  name: '[name]-[width]w.[ext]',
+};
+
 export default function compiler(
   fixture: string,
   _dirname: string,
@@ -19,7 +24,7 @@ export default function compiler(
       rules: [
         {
           resourceQuery: /responsive/,
-          use: setupLoaders(options),
+          use: setupLoaders({ ...defaultOptions, ...options }),
         },
         {
           test: /\.css$/,

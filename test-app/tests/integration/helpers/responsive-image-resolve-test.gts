@@ -3,7 +3,7 @@ import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
 import responsiveImageResolve from "@responsive-image/ember/helpers/responsive-image-resolve";
 import type { ImageData } from "@responsive-image/ember";
-import testImage from "test-app/images/tests/test.png?&widths=640,2048&responsive";
+import testImage from "test-app/images/tests/test.png?&w=640;2048&responsive";
 
 interface TestContext {
   testImage: ImageData;

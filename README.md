@@ -184,7 +184,7 @@ Again, when following our conventional setup, we need the `responsive` query par
 In addition to that, we can also pass query params that affect the actual image processing:
 
 ```js
-import heroImage from './hero.jpg?lqip=inline&widths=1920,1280,640&responsive';
+import heroImage from './hero.jpg?lqip=inline&w=1920;1280;640&responsive';
 ```
 
 In this case we are processing this image for only this specific import with different image options than the defaults, as we generate the image variants with specific widths and opt into a [Low Quality Image Placeholder](#lqip) technique of `inline`. This applies only to the image data you get back from this specific import, but does not affect any of the other images or even the same image but with different or just the default image options imported elsewhere!
@@ -200,7 +200,7 @@ In a template you can use the `<ResponsiveImage/>` component. The `@src` argumen
 Note that with components with separate `.js` and `.hbs` files, you would need to assign the image data to the backing component class, so you can access it in your template as in this case as `this.heroImage`:
 
 ```js
-import heroImage from './hero.jpg?lqip=inline&widths=1920,1280,640&responsive';
+import heroImage from './hero.jpg?lqip=inline&w=1920;1280;640&responsive';
 
 export default class HeroImageComponent extends Component {
   heroImage = heroImage;
@@ -210,7 +210,7 @@ export default class HeroImageComponent extends Component {
 With [`<template>` tag](https://github.com/ember-template-imports/ember-template-imports) and `.gjs` (`.gts`) components, this becomes much easier:
 
 ```gjs
-import heroImage from './hero.jpg?lqip=inline&widths=1920,1280,640&responsive';
+import heroImage from './hero.jpg?lqip=inline&w=1920;1280;640&responsive';
 
 <template>
   <ResponsiveImage @src={{heroImage}} />
@@ -285,7 +285,7 @@ img {
 But this addon also supports a _fixed_ layout with fixed image dimensions. Just provide either `@width` or `@height` to opt into that mode. Also make sure that the generated image variants have the appropriate sizes:
 
 ```gjs
-import logoImage from './hero.jpg?lqip=inline&widths=320,640&responsive';
+import logoImage from './hero.jpg?lqip=inline&w=320;640&responsive';
 
 <ResponsiveImage @src={{logoImage}} @width={{320}} />
 ```

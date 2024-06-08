@@ -1,5 +1,5 @@
-import { getOptions, normalizeInput } from './utils';
 import type { ImageType } from '@responsive-image/core';
+import { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
 import type { LoaderContext } from 'webpack';
 import type {
@@ -8,6 +8,7 @@ import type {
   LoaderOptions,
   OutputImageType,
 } from './types';
+import { getImagetoolsConfigs, getOptions, normalizeInput } from './utils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
@@ -37,10 +38,15 @@ async function process(
   try {
     const sharpMeta = await sharp.metadata();
 
-    const formats = effectiveImageFormats(options.formats, sharpMeta);
-    const { widths, quality } = options;
+    const format = effectiveImageFormats(options.format, sharpMeta);
+    const configs = await getImagetoolsConfigs({
+      ...options,
+      format,
+    });
 
-    const images = await generateResizedImages(sharp, widths, formats, quality);
+    const images = await Promise.all(
+      configs.map((config) => generateResizedImage(sharp, config)),
+    );
 
     return {
       sharpMeta,
@@ -57,29 +63,30 @@ async function process(
 // receive input as Buffer
 imagesLoader.raw = true;
 
-async function generateResizedImages(
+async function generateResizedImage(
   image: Sharp,
-  widths: number[],
-  formats: ImageType[],
-  quality: number,
-): Promise<ImageProcessingResult[]> {
-  return Promise.all(
-    widths.flatMap((width) => {
-      const resizedImage = image.clone();
-      resizedImage.resize(width, null, { withoutEnlargement: true });
+  config: ImageConfig,
+): Promise<ImageProcessingResult> {
+  const imagetools = await import('imagetools-core');
 
-      return formats.map(async (format) => {
-        const data = await resizedImage
-          .toFormat(format, { quality })
-          .toBuffer();
-        return {
-          data,
-          width,
-          format,
-        };
-      });
-    }),
+  const { transforms } = imagetools.generateTransforms(
+    config,
+    imagetools.builtins,
+    new URLSearchParams(),
   );
+
+  const { image: resizedImage, metadata } = await imagetools.applyTransforms(
+    transforms,
+    image,
+  );
+
+  const data = await resizedImage.toBuffer();
+
+  return {
+    data,
+    width: metadata.width!,
+    format: metadata.format as ImageType,
+  };
 }
 
 function effectiveImageFormats(

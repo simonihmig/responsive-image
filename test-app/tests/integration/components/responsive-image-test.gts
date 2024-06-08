@@ -5,11 +5,11 @@ import { setupRenderingTest } from "ember-qunit";
 import { module, skip, test } from "qunit";
 import { on } from "@ember/modifier";
 import type { ImageData } from "@responsive-image/ember";
-import testImage from "test-app/images/tests/image.jpg?widths=50,100,640&formats=original,webp,avif&responsive";
-import testImageLqipInline from "test-app/images/tests/image.jpg?lqip=inline&widths=50,100,640&responsive";
-import testImageLqipColor from "test-app/images/tests/image.jpg?lqip=color&widths=50,100,640&responsive";
-import testImageLqipBlurhash from "test-app/images/tests/image.jpg?lqip=blurhash&widths=50,100,640&responsive";
-import smallImage from "test-app/images/tests/image.jpg?widths=10,25&formats=original,webp,avif&responsive";
+import testImage from "test-app/images/tests/image.jpg?w=50;100;640&format=original;webp;avif&responsive";
+import testImageLqipInline from "test-app/images/tests/image.jpg?lqip=inline&w=50;100;640&responsive";
+import testImageLqipColor from "test-app/images/tests/image.jpg?lqip=color&w=50;100;640&responsive";
+import testImageLqipBlurhash from "test-app/images/tests/image.jpg?lqip=blurhash&w=50;100;640&responsive";
+import smallImage from "test-app/images/tests/image.jpg?w=10;25&format=original;webp;avif&responsive";
 
 import type { RenderingTestContext } from "@ember/test-helpers";
 import { env } from "@responsive-image/core";

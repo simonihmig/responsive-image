@@ -31,15 +31,20 @@ export type LqipLoaderOptions =
   | LqipInlineLoaderOptions
   | LqipBlurhashLoaderOptions;
 
-export interface LoaderOptions {
-  widths: number[];
-  formats: OutputImageType[];
-  quality: number;
+export interface WebpackLoaderOptions {
   name: string;
   webPath?: string;
   outputPath: string;
   lqip?: LqipLoaderOptions;
 }
+export interface ImageLoaderOptions {
+  w: number[];
+  quality: number;
+  format: OutputImageType[];
+  [key: string]: unknown;
+}
+
+export type LoaderOptions = WebpackLoaderOptions & ImageLoaderOptions;
 
 export interface ImageProcessingResult {
   data: Buffer;
