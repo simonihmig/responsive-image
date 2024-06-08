@@ -1,27 +1,43 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "pipeline": {
+  "tasks": {
     "start": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "outputs": [],
       "cache": false,
       "persistent": true
     },
     "test": {
-      "dependsOn": ["build"],
-      "env": ["EMBER_TRY_CURRENT_SCENARIO", "EMBROIDER_TEST_SETUP_OPTIONS"]
+      "dependsOn": [
+        "build"
+      ],
+      "env": [
+        "EMBER_TRY_CURRENT_SCENARIO",
+        "EMBROIDER_TEST_SETUP_OPTIONS"
+      ]
     },
     "build": {
-      "outputs": ["dist/**", "declarations/**"],
-      "dependsOn": ["^build"]
+      "outputs": [
+        "dist/**",
+        "declarations/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
     },
     "lint": {
       "outputs": [],
-      "dependsOn": ["build"]
+      "dependsOn": [
+        "build"
+      ]
     },
     "typecheck": {
       "outputs": [],
-      "dependsOn": ["build"]
+      "dependsOn": [
+        "build"
+      ]
     }
   }
 }
