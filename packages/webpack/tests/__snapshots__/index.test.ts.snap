@@ -16,12 +16,12 @@ export default {
 
 exports[`LQIP > color LQIP is supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=eri-dyn-1';
+import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=eri-dyn-0';
 const images = [{"url":__webpack_public_path__ + "images/image-640w.jpg","width":640,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-640w.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w.jpg","width":750,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-750w.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w.jpg","width":828,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-828w.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w.jpg","width":1080,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1080w.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w.jpg","width":1200,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1200w.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w.jpg","width":1920,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1920w.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w.jpg","width":2048,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-2048w.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w.jpg","width":3840,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-3840w.webp","width":3840,"format":"webp"}];
 export default {
     imageTypes: ["jpeg","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
-    lqip: {"type":"color","class":"eri-dyn-1"},
+    lqip: {"type":"color","class":"eri-dyn-0"},
     aspectRatio: 2,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "jpeg")?.url;
@@ -31,12 +31,12 @@ export default {
 
 exports[`LQIP > inline LQIP is supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/inline-css!/fixtures/image.jpg?className=eri-dyn-1&targetPixels=60';
+import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/inline-css!/fixtures/image.jpg?className=eri-dyn-0&targetPixels=60';
 const images = [{"url":__webpack_public_path__ + "images/image-640w.jpg","width":640,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-640w.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w.jpg","width":750,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-750w.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w.jpg","width":828,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-828w.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w.jpg","width":1080,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1080w.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w.jpg","width":1200,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1200w.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w.jpg","width":1920,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1920w.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w.jpg","width":2048,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-2048w.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w.jpg","width":3840,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-3840w.webp","width":3840,"format":"webp"}];
 export default {
     imageTypes: ["jpeg","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
-    lqip: {"type":"inline","class":"eri-dyn-1"},
+    lqip: {"type":"inline","class":"eri-dyn-0"},
     aspectRatio: 2,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "jpeg")?.url;
@@ -46,43 +46,56 @@ export default {
 
 exports[`custom loader options are supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-const images = [{"url":"https:/cdn.example.com/images/test-1000.jpg","width":1000,"format":"jpeg"},{"url":"https:/cdn.example.com/images/test-1000.avif","width":1000,"format":"avif"},{"url":"https:/cdn.example.com/images/test-2000.jpg","width":2000,"format":"jpeg"},{"url":"https:/cdn.example.com/images/test-2000.avif","width":2000,"format":"avif"}];
+const images = [{"url":"https:/cdn.example.com/images/test-100.png","width":100,"format":"png"},{"url":"https:/cdn.example.com/images/test-200.png","width":200,"format":"png"}];
 export default {
-    imageTypes: ["jpeg","avif"],
-    availableWidths: [1000,2000],
+    imageTypes: ["png"],
+    availableWidths: [100,200],
     
     aspectRatio: 2,
     imageUrlFor(w, f) {
-      return findMatchingImage(images, w, f ?? "jpeg")?.url;
+      return findMatchingImage(images, w, f ?? "png")?.url;
     }
   }"
 `;
 
 exports[`custom query params are supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=eri-dyn-0';
-const images = [{"url":__webpack_public_path__ + "images/image-100w.webp","width":100,"format":"webp"},{"url":__webpack_public_path__ + "images/image-200w.webp","width":200,"format":"webp"}];
+const images = [{"url":__webpack_public_path__ + "images/image-100w.png","width":100,"format":"png"},{"url":__webpack_public_path__ + "images/image-200w.png","width":200,"format":"png"}];
 export default {
-    imageTypes: ["webp"],
+    imageTypes: ["png"],
     availableWidths: [100,200],
-    lqip: {"type":"color","class":"eri-dyn-0"},
+    
     aspectRatio: 2,
     imageUrlFor(w, f) {
-      return findMatchingImage(images, w, f ?? "webp")?.url;
+      return findMatchingImage(images, w, f ?? "png")?.url;
+    }
+  }"
+`;
+
+exports[`imagetools params are supported 1`] = `
+"import { findMatchingImage } from '@responsive-image/core';
+const images = [{"url":__webpack_public_path__ + "images/image-100w.png","width":100,"format":"png"},{"url":__webpack_public_path__ + "images/image-200w.png","width":200,"format":"png"}];
+export default {
+    imageTypes: ["png"],
+    availableWidths: [100,200],
+    
+    aspectRatio: 2,
+    imageUrlFor(w, f) {
+      return findMatchingImage(images, w, f ?? "png")?.url;
     }
   }"
 `;
 
 exports[`it produces expected output 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-const images = [{"url":__webpack_public_path__ + "images/image-640w.jpg","width":640,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-640w.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w.jpg","width":750,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-750w.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w.jpg","width":828,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-828w.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w.jpg","width":1080,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1080w.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w.jpg","width":1200,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1200w.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w.jpg","width":1920,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-1920w.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w.jpg","width":2048,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-2048w.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w.jpg","width":3840,"format":"jpeg"},{"url":__webpack_public_path__ + "images/image-3840w.webp","width":3840,"format":"webp"}];
+const images = [{"url":__webpack_public_path__ + "images/image-640w.png","width":640,"format":"png"},{"url":__webpack_public_path__ + "images/image-640w.webp","width":640,"format":"webp"},{"url":__webpack_public_path__ + "images/image-750w.png","width":750,"format":"png"},{"url":__webpack_public_path__ + "images/image-750w.webp","width":750,"format":"webp"},{"url":__webpack_public_path__ + "images/image-828w.png","width":828,"format":"png"},{"url":__webpack_public_path__ + "images/image-828w.webp","width":828,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1080w.png","width":1080,"format":"png"},{"url":__webpack_public_path__ + "images/image-1080w.webp","width":1080,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1200w.png","width":1200,"format":"png"},{"url":__webpack_public_path__ + "images/image-1200w.webp","width":1200,"format":"webp"},{"url":__webpack_public_path__ + "images/image-1920w.png","width":1920,"format":"png"},{"url":__webpack_public_path__ + "images/image-1920w.webp","width":1920,"format":"webp"},{"url":__webpack_public_path__ + "images/image-2048w.png","width":2048,"format":"png"},{"url":__webpack_public_path__ + "images/image-2048w.webp","width":2048,"format":"webp"},{"url":__webpack_public_path__ + "images/image-3840w.png","width":3840,"format":"png"},{"url":__webpack_public_path__ + "images/image-3840w.webp","width":3840,"format":"webp"}];
 export default {
-    imageTypes: ["jpeg","webp"],
+    imageTypes: ["png","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
     
     aspectRatio: 2,
     imageUrlFor(w, f) {
-      return findMatchingImage(images, w, f ?? "jpeg")?.url;
+      return findMatchingImage(images, w, f ?? "png")?.url;
     }
   }"
 `;

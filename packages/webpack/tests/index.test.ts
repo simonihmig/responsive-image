@@ -1,7 +1,10 @@
 import { describe, expect, test } from 'vitest';
-import { dirname } from 'path';
+import { dirname, join } from 'path';
 import compiler from './compiler';
 import { fileURLToPath } from 'url';
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
+
+expect.extend({ toMatchImageSnapshot });
 
 const _dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -11,66 +14,133 @@ function sanitizeOutput(output: string | Buffer | undefined) {
 }
 
 test('it produces expected output', async () => {
-  const stats = (
-    await compiler('fixtures/image.jpg?responsive', _dirname, {})
-  ).toJson({
-    source: true,
-  });
+  const { stats, fs } = await compiler(
+    'fixtures/image.jpg?responsive',
+    _dirname,
+    {
+      format: ['png', 'webp'],
+    },
+  );
 
   expect(stats.modules).toBeDefined();
   expect(stats.modules![0]?.modules).toHaveLength(2);
-  expect(stats.modules![0]?.assets).toHaveLength(2 * 8);
 
   const output = stats.modules?.[0]?.modules?.[0]?.source;
   expect(sanitizeOutput(output)).toMatchSnapshot();
+
+  const imageAssets = stats.modules![0]!.assets!;
+  expect(imageAssets).toEqual([
+    'images/image-640w.png',
+    'images/image-640w.webp',
+    'images/image-750w.png',
+    'images/image-750w.webp',
+    'images/image-828w.png',
+    'images/image-828w.webp',
+    'images/image-1080w.png',
+    'images/image-1080w.webp',
+    'images/image-1200w.png',
+    'images/image-1200w.webp',
+    'images/image-1920w.png',
+    'images/image-1920w.webp',
+    'images/image-2048w.png',
+    'images/image-2048w.webp',
+    'images/image-3840w.png',
+    'images/image-3840w.webp',
+  ]);
+
+  expect(
+    fs.readFileSync(join(_dirname, imageAssets[0] as string)),
+  ).toMatchImageSnapshot();
 });
 
 test('custom loader options are supported', async () => {
-  const stats = (
-    await compiler('fixtures/image.jpg?responsive', _dirname, {
-      w: [1000, 2000],
-      format: ['original', 'avif'],
+  const { stats, fs } = await compiler(
+    'fixtures/image.jpg?responsive',
+    _dirname,
+    {
+      w: [100, 200],
+      format: ['png'],
       name: 'test-[width].[ext]',
       webPath: 'https://cdn.example.com/images',
-    })
-  ).toJson({
-    source: true,
-  });
+    },
+  );
 
   expect(stats.modules).toBeDefined();
   expect(stats.modules![0]?.modules).toHaveLength(2);
 
   const output = stats.modules?.[0]?.modules?.[0]?.source;
   expect(sanitizeOutput(output)).toMatchSnapshot();
+
+  const imageAssets = stats.modules![0]!.assets!;
+  expect(imageAssets).toEqual(['images/test-100.png', 'images/test-200.png']);
+
+  for (const image of imageAssets) {
+    expect(
+      fs.readFileSync(join(_dirname, image as string)),
+    ).toMatchImageSnapshot();
+  }
 });
 
 test('custom query params are supported', async () => {
-  const stats = (
-    await compiler(
-      'fixtures/image.jpg?lqip=color&w=100;200&format=webp&responsive',
-      _dirname,
-      {},
-    )
-  ).toJson({
-    source: true,
-  });
+  const { stats, fs } = await compiler(
+    'fixtures/image.jpg?w=100;200&format=png&responsive',
+    _dirname,
+    {},
+  );
 
   expect(stats.modules).toBeDefined();
   // expect(stats.modules![0]?.modules).toHaveLength(3);
 
   const output = stats.modules?.[0]?.modules?.[0]?.source;
   expect(sanitizeOutput(output)).toMatchSnapshot();
+
+  const imageAssets = stats.modules![0]!.assets!;
+  expect(imageAssets).toEqual([
+    'images/image-100w.png',
+    'images/image-200w.png',
+  ]);
+
+  for (const image of imageAssets) {
+    expect(
+      fs.readFileSync(join(_dirname, image as string)),
+    ).toMatchImageSnapshot();
+  }
+});
+
+test('imagetools params are supported', async () => {
+  const { stats, fs } = await compiler(
+    'fixtures/image.jpg?w=100;200&format=png&grayscale&responsive',
+    _dirname,
+    {},
+  );
+
+  expect(stats.modules).toBeDefined();
+
+  const output = stats.modules?.[0]?.modules?.[0]?.source;
+  expect(sanitizeOutput(output)).toMatchSnapshot();
+
+  const imageAssets = stats.modules![0]!.assets!;
+  expect(imageAssets).toEqual([
+    'images/image-100w.png',
+    'images/image-200w.png',
+  ]);
+
+  for (const image of imageAssets) {
+    expect(
+      fs.readFileSync(join(_dirname, image as string)),
+    ).toMatchImageSnapshot();
+  }
 });
 
 describe('LQIP', function () {
   test('color LQIP is supported', async () => {
-    const stats = (
-      await compiler('fixtures/image.jpg?responsive', _dirname, {
+    const { stats } = await compiler(
+      'fixtures/image.jpg?responsive',
+      _dirname,
+      {
         lqip: { type: 'color' },
-      })
-    ).toJson({
-      source: true,
-    });
+      },
+    );
 
     expect(stats.modules).toBeDefined();
     expect(stats.modules![0]?.modules).toHaveLength(3);
@@ -80,13 +150,13 @@ describe('LQIP', function () {
   });
 
   test('inline LQIP is supported', async () => {
-    const stats = (
-      await compiler('fixtures/image.jpg?responsive', _dirname, {
+    const { stats } = await compiler(
+      'fixtures/image.jpg?responsive',
+      _dirname,
+      {
         lqip: { type: 'inline' },
-      })
-    ).toJson({
-      source: true,
-    });
+      },
+    );
 
     expect(stats.modules).toBeDefined();
     expect(stats.modules![0]?.modules).toHaveLength(3);
@@ -96,13 +166,13 @@ describe('LQIP', function () {
   });
 
   test('blurhash LQIP is supported', async () => {
-    const stats = (
-      await compiler('fixtures/image.jpg?responsive', _dirname, {
+    const { stats } = await compiler(
+      'fixtures/image.jpg?responsive',
+      _dirname,
+      {
         lqip: { type: 'blurhash' },
-      })
-    ).toJson({
-      source: true,
-    });
+      },
+    );
 
     expect(stats.modules).toBeDefined();
     expect(stats.modules![0]?.modules).toHaveLength(2);

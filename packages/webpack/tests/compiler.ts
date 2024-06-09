@@ -34,17 +34,25 @@ export default function compiler(
     },
   });
 
+  const fs = createFsFromVolume(new Volume());
   // @ts-expect-error type mismatch
-  compiler.outputFileSystem = createFsFromVolume(new Volume());
+  compiler.outputFileSystem = fs;
   compiler.outputFileSystem!.join = join.bind(path);
 
-  return new Promise<webpack.Stats>((resolve, reject) => {
-    compiler.run((err, stats) => {
-      if (err) return reject(err);
-      if (!stats) return reject();
-      if (stats.hasErrors()) return reject(stats.toJson().errors);
+  return new Promise<{ stats: webpack.StatsCompilation; fs: typeof fs }>(
+    (resolve, reject) => {
+      compiler.run((err, stats) => {
+        if (err) return reject(err);
+        if (!stats) return reject();
+        if (stats.hasErrors()) return reject(stats.toJson().errors);
 
-      resolve(stats);
-    });
-  });
+        resolve({
+          stats: stats.toJson({
+            source: true,
+          }),
+          fs,
+        });
+      });
+    },
+  );
 }
