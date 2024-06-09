@@ -45,7 +45,7 @@ describe('cloudinary', function () {
 
   test('it returns custom params', function () {
     const result = cloudinaryProvider('foo/bar.jpg', {
-      transformations: 'co_rgb:20a020,e_colorize:50',
+      transformations: { co: 'rgb:20a020', e: 'colorize:50' },
     });
 
     expect(result.imageUrlFor(100, 'jpeg')).toBe(
@@ -55,7 +55,11 @@ describe('cloudinary', function () {
 
   test('it returns custom chained params', function () {
     const result = cloudinaryProvider('foo/bar.jpg', {
-      transformations: 'co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max',
+      transformations: [
+        { co: 'rgb:20a020', e: 'colorize:50' },
+        { ar: '1.0', c: 'fill', w: '150' },
+        { r: 'max' },
+      ],
     });
 
     expect(result.imageUrlFor(100, 'jpeg')).toBe(
