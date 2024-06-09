@@ -67,6 +67,9 @@ importers:
       typescript:
         specifier: 5.4.5
         version: 5.4.5
+      vitest:
+        specifier: 1.6.0
+        version: 1.6.0(@types/node@20.14.2)(jsdom@19.0.0)(terser@5.31.0)
 
   packages/core:
     devDependencies:
