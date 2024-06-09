@@ -24,10 +24,12 @@ you can add your own [Cloudinary transformations](https://cloudinary.com/documen
 <ResponsiveImage
   @src={{responsive-image-cloudinary-provider
     'path/to/uploaded/image.jpg'
-    transformations='e_sharpen:400,e_grayscale'
+    transformations=(hash co='rgb:20a020' e='colorize:50')
   }}
 />
 ```
+
+It accepts an object of transformations, or an array of objects for [chained transformations](https://cloudinary.com/documentation/image_transformations#chained_transformations).
 
 ### Quality
 
