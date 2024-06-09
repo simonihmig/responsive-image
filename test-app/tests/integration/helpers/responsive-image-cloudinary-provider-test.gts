@@ -1,7 +1,7 @@
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
 import { render, type RenderingTestContext } from "@ember/test-helpers";
-import { array } from "@ember/helper";
+import { array, hash } from "@ember/helper";
 import responsiveImageCloudinaryProvider from "@responsive-image/ember/helpers/responsive-image-cloudinary-provider";
 import type { ImageData } from "@responsive-image/ember";
 
@@ -89,7 +89,7 @@ module(
           {{dump
             (responsiveImageCloudinaryProvider
               "samples/animals/three-dogs"
-              transformations="co_rgb:20a020,e_colorize:50"
+              transformations=(hash co="rgb:20a020" e="colorize:50")
             )
           }}
         </template>,
@@ -107,7 +107,11 @@ module(
           {{dump
             (responsiveImageCloudinaryProvider
               "samples/animals/three-dogs"
-              transformations="co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max"
+              transformations=(array
+                (hash co="rgb:20a020" e="colorize:50")
+                (hash ar="1.0" c="fill" w="150")
+                (hash r="max")
+              )
             )
           }}
         </template>,

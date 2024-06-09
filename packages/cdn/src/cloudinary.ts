@@ -5,8 +5,10 @@ export interface CloudinaryConfig {
   cloudName: string;
 }
 
+type CloudinaryTransformation = Record<string, string | number>;
+
 export interface CloudinaryOptions {
-  transformations?: string;
+  transformations?: CloudinaryTransformation | CloudinaryTransformation[];
   formats?: ImageType[];
   quality?: number;
 }
@@ -46,14 +48,30 @@ export function cloudinaryProvider(
   return {
     imageTypes: options.formats ?? ['png', 'jpeg', 'webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
-      let resizeParams = `w_${width},c_limit,q_${options.quality ?? 'auto'}`;
+      const resizeParams: CloudinaryTransformation = {
+        w: width,
+        c: 'limit',
+        q: options.quality ?? 'auto',
+      };
       if (deliveryType !== 'upload') {
-        resizeParams += `,f_${formatMap[type] ?? type}`;
+        resizeParams['f'] = formatMap[type] ?? type;
       }
 
-      const params = options.transformations
-        ? `${options.transformations}/${resizeParams}`
-        : resizeParams;
+      const transformations = options.transformations
+        ? Array.isArray(options.transformations)
+          ? options.transformations
+          : [options.transformations]
+        : [];
+
+      transformations.push(resizeParams);
+
+      const params = transformations
+        .map((transformation) =>
+          Object.entries(transformation)
+            .map(([key, value]) => `${key}_${value}`)
+            .join(','),
+        )
+        .join('/');
 
       return `https://res.cloudinary.com/${cloudName}/image/${deliveryType}/${params}/${imageId}${
         deliveryType === 'upload' ? '.' + type : ''
