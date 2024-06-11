@@ -1,0 +1,82 @@
+{
+  "name": "@responsive-image/vite-plugin",
+  "version": "1.0.0-beta.0",
+  "description": "Vite plugins that process and resize images for use with the responsive-image suite.",
+  "repository": "https://github.com/simonihmig/responsive-image",
+  "license": "MIT",
+  "author": "Simon Ihmig <simon.ihmig@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "vite-plugin",
+    "vite plugin",
+    "vite"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "pkgroll",
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "prepack": "pnpm turbo build",
+    "start": "pkgroll --watch",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
+  "dependencies": {
+    "@responsive-image/core": "workspace:^",
+    "base-n": "^3.0.0",
+    "blurhash": "^2.0.4",
+    "imagetools-core": "^7.0.0",
+    "loader-utils": "^3.2.0",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.4",
+    "@types/jest-image-snapshot": "6.4.0",
+    "@types/node": "20.14.2",
+    "@typescript-eslint/eslint-plugin": "7.13.0",
+    "@typescript-eslint/parser": "7.13.0",
+    "concurrently": "8.2.2",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "glob": "8.1.0",
+    "jest-image-snapshot": "6.4.0",
+    "pkgroll": "2.1.1",
+    "prettier": "3.3.2",
+    "typescript": "5.4.5",
+    "vite": "5.2.13",
+    "vitest": "1.6.0"
+  },
+  "peerDependencies": {
+    "vite": "^5.2.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "engines": {
+    "node": "20.* || >= 22"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
