@@ -1,7 +1,6 @@
 import { describe, expect, test } from 'vitest';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
+import { compile } from './utils';
 
 const customConfig = { threshold: 0.1 };
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
@@ -10,52 +9,39 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
 
 expect.extend({ toMatchImageSnapshot });
 
-const _dirname = dirname(fileURLToPath(import.meta.url));
-
 // make sure we remove any non-deterministic parts from the output
-function sanitizeOutput(output: string | Buffer | undefined) {
-  return String(output).replace(new RegExp(_dirname, 'g'), '');
-}
+// function sanitizeOutput(output: string | Buffer | undefined) {
+//   return String(output).replace(new RegExp(_dirname, 'g'), '');
+// }
 
-// test('it produces expected output', async () => {
-//   const { stats, fs } = await compiler(
-//     'fixtures/image.jpg?responsive',
-//     _dirname,
-//     {
-//       format: ['png', 'webp'],
-//     },
-//   );
+test('it produces expected output', async () => {
+  const { source, assets } = await compile('image.jpg?responsive', {
+    format: ['png', 'webp'],
+  });
 
-//   expect(stats.modules).toBeDefined();
-//   expect(stats.modules![0]?.modules).toHaveLength(2);
+  expect(source).toMatchSnapshot();
 
-//   const output = stats.modules?.[0]?.modules?.[0]?.source;
-//   expect(sanitizeOutput(output)).toMatchSnapshot();
+  expect(assets).toEqual([
+    'images/image-640w.png',
+    'images/image-640w.webp',
+    'images/image-750w.png',
+    'images/image-750w.webp',
+    'images/image-828w.png',
+    'images/image-828w.webp',
+    'images/image-1080w.png',
+    'images/image-1080w.webp',
+    'images/image-1200w.png',
+    'images/image-1200w.webp',
+    'images/image-1920w.png',
+    'images/image-1920w.webp',
+    'images/image-2048w.png',
+    'images/image-2048w.webp',
+    'images/image-3840w.png',
+    'images/image-3840w.webp',
+  ]);
 
-//   const imageAssets = stats.modules![0]!.assets!;
-//   expect(imageAssets).toEqual([
-//     'images/image-640w.png',
-//     'images/image-640w.webp',
-//     'images/image-750w.png',
-//     'images/image-750w.webp',
-//     'images/image-828w.png',
-//     'images/image-828w.webp',
-//     'images/image-1080w.png',
-//     'images/image-1080w.webp',
-//     'images/image-1200w.png',
-//     'images/image-1200w.webp',
-//     'images/image-1920w.png',
-//     'images/image-1920w.webp',
-//     'images/image-2048w.png',
-//     'images/image-2048w.webp',
-//     'images/image-3840w.png',
-//     'images/image-3840w.webp',
-//   ]);
-
-//   expect(
-//     fs.readFileSync(join(_dirname, imageAssets[0] as string)),
-//   ).toMatchImageSnapshot();
-// });
+  expect(assets[0].source).toMatchImageSnapshot();
+});
 
 // test('custom loader options are supported', async () => {
 //   const { stats, fs } = await compiler(
