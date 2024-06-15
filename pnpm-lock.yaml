@@ -302,6 +302,9 @@ importers:
       '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
+      '@rollup/pluginutils':
+        specifier: ^5.1.0
+        version: 5.1.0(rollup@4.18.0)
       base-n:
         specifier: ^3.0.0
         version: 3.0.0
@@ -311,9 +314,6 @@ importers:
       imagetools-core:
         specifier: ^7.0.0
         version: 7.0.0
-      loader-utils:
-        specifier: ^3.2.0
-        version: 3.3.1
       sharp:
         specifier: ^0.33.0
         version: 0.33.4

@@ -15,15 +15,18 @@ function entryFile(source: string): Plugin {
 
   return {
     name: 'test-entry',
-    enforce: 'pre',
     resolveId(source, importer) {
-      if (source === 'index.js') {
-        id = join(dirname(importer || ''), 'index.js');
+      if (source === 'entry.js') {
+        id = join(dirname(importer || ''), 'entry.js');
         return id;
       }
     },
     load(_id) {
-      if (_id === id) return source;
+      if (_id === id)
+        return {
+          code: source,
+          moduleSideEffects: 'no-treeshake',
+        };
     },
   };
 }
@@ -37,12 +40,25 @@ export async function compile(
   image: string,
   options: Partial<Options> = {},
 ): Promise<CompileResult> {
-  const source = `export * from './${image}';`;
+  // we do we need the side-effect of console.log to not tree-shake our import, though we have moduleSideEffects: 'no-treeshake' in test-entry?
+  const source = `import image from './${image}'; console.log(image);`;
 
   let bundle = (await build({
     root: join(_dirname, 'fixtures'),
     logLevel: 'warn',
-    build: { write: false },
+    build: {
+      lib: {
+        entry: 'index.js',
+        formats: ['es'],
+      },
+      write: false,
+      polyfillModulePreload: false,
+      rollupOptions: {
+        output: {
+          assetFileNames: `images/[name].[ext]`,
+        },
+      },
+    },
     plugins: [entryFile(source), setupPlugins(options)],
   })) as RollupOutput | RollupOutput[];
 
@@ -51,7 +67,7 @@ export async function compile(
   }
 
   const module = bundle.output.find((chunk): chunk is OutputChunk =>
-    chunk.fileName.endsWith('.js'),
+    chunk.fileName.endsWith('.mjs'),
   );
 
   if (!module) {

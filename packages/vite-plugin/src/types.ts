@@ -31,10 +31,8 @@ export type LqipOptions =
   | LqipInlineOptions
   | LqipBlurhashOptions;
 
-export interface WebpackOptions {
+export interface ViteOptions {
   name: string;
-  webPath?: string;
-  outputPath: string;
   lqip?: LqipOptions;
 }
 export interface ImageOptions {
@@ -44,7 +42,7 @@ export interface ImageOptions {
   [key: string]: unknown;
 }
 
-export type Options = WebpackOptions & ImageOptions;
+export type Options = ViteOptions & ImageOptions;
 
 export interface ImageProcessingResult {
   data: Buffer;

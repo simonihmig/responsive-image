@@ -21,7 +21,7 @@ test('it produces expected output', async () => {
 
   expect(source).toMatchSnapshot();
 
-  expect(assets).toEqual([
+  expect(assets.map((a) => a.fileName)).toEqual([
     'images/image-640w.png',
     'images/image-640w.webp',
     'images/image-750w.png',

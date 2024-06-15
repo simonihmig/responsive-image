@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`it produces expected output 1`] = `
+"function r(i, a, m) {
+  const w = i.map((e) => e.width).reduce((e, g) => g >= a && e >= a ? g >= e ? e : g : g >= e ? g : e, 0);
+  return i.find(
+    (e) => e.width === w && e.format === m
+  );
+}
+const n = /* @__PURE__ */ new Map();
+function p(i) {
+  return n.get(i);
+}
+var t;
+(t = p("env")) == null || t.deviceWidths;
+const o = [{ url: "/images/image-640w.png", width: 640, format: "png" }, { url: "/images/image-640w.webp", width: 640, format: "webp" }, { url: "/images/image-750w.png", width: 750, format: "png" }, { url: "/images/image-750w.webp", width: 750, format: "webp" }, { url: "/images/image-828w.png", width: 828, format: "png" }, { url: "/images/image-828w.webp", width: 828, format: "webp" }, { url: "/images/image-1080w.png", width: 1080, format: "png" }, { url: "/images/image-1080w.webp", width: 1080, format: "webp" }, { url: "/images/image-1200w.png", width: 1200, format: "png" }, { url: "/images/image-1200w.webp", width: 1200, format: "webp" }, { url: "/images/image-1920w.png", width: 1920, format: "png" }, { url: "/images/image-1920w.webp", width: 1920, format: "webp" }, { url: "/images/image-2048w.png", width: 2048, format: "png" }, { url: "/images/image-2048w.webp", width: 2048, format: "webp" }, { url: "/images/image-3840w.png", width: 3840, format: "png" }, { url: "/images/image-3840w.webp", width: 3840, format: "webp" }], s = {
+  imageTypes: ["png", "webp"],
+  availableWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  aspectRatio: 2,
+  imageUrlFor(i, a) {
+    var m;
+    return (m = r(o, i, a ?? "png")) == null ? void 0 : m.url;
+  }
+};
+console.log(s);
+"
+`;
