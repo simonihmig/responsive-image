@@ -6,8 +6,8 @@
     // work with TypeScript.
     "baseUrl": ".",
     "paths": {
-      "test-app/tests/*": ["tests/*"],
-      "test-app/*": ["app/*"],
+      "ember-classic/tests/*": ["tests/*"],
+      "ember-classic/*": ["app/*"],
       "*": ["types/*"]
     }
   },
