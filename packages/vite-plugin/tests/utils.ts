@@ -52,7 +52,7 @@ export async function compile(
         formats: ['es'],
       },
       write: false,
-      polyfillModulePreload: false,
+      modulePreload: { polyfill: false },
       rollupOptions: {
         output: {
           assetFileNames: `images/[name].[ext]`,

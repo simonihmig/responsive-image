@@ -2,6 +2,7 @@ import * as path from 'path';
 import {
   META_KEY,
   getAspectRatio,
+  getInput,
   getOptions,
   onlyUnique,
   parseURL,
@@ -24,12 +25,11 @@ export default function exportPlugin(
   return {
     name: 'responsive-image/export',
     transform(code, id) {
-      const info = this.getModuleInfo(id);
-      const input: ImageLoaderChainedResult | undefined = info?.meta[META_KEY];
+      const input = getInput(this, id);
 
-      // Bail out if our images loader didn't handle this module
+      // Bail out if our loader didn't handle this module
       if (!input) {
-        return null;
+        return;
       }
 
       const url = parseURL(id);

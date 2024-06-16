@@ -11,34 +11,33 @@ import type {
 import {
   META_KEY,
   getImagetoolsConfigs,
+  getInput,
   getOptions,
   normalizeInput,
   parseURL,
 } from './utils';
-import { createFilter } from '@rollup/pluginutils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
-// TODO split into loader (that normalizes the input) and imagesTransforms?
-export default function imagesLoader(
+export default function resizePlugin(
   userOptions: Partial<Options> = {},
 ): Plugin {
-  const filter = createFilter(userOptions.include, userOptions.exclude);
-
   return {
-    name: 'responsive-image/images',
+    name: 'responsive-image/resize',
     // TODO do we need this?
     enforce: 'pre',
-    async load(id) {
-      if (!filter(id)) {
+    async transform(code, id) {
+      const input = getInput(this, id);
+
+      // Bail out if our loader didn't handle this module
+      if (!input) {
         return;
       }
 
       const url = parseURL(id);
 
       const options = getOptions(url, userOptions);
-      const data = normalizeInput(id);
-      const { sharp } = data;
+      const { sharp } = input;
 
       try {
         const sharpMeta = await sharp.metadata();
@@ -55,14 +54,13 @@ export default function imagesLoader(
 
         const result = {
           sharpMeta,
-          ...data,
+          ...input,
           images,
         } satisfies ImageLoaderChainedResult;
 
         return {
           // Only the export plugin will actually return ESM code
           code: '',
-          moduleSideEffects: false,
           meta: {
             [META_KEY]: result,
           },

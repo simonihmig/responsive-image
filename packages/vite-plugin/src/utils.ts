@@ -2,6 +2,8 @@ import baseN from 'base-n';
 import sharp, { type Metadata } from 'sharp';
 import type { ImageLoaderChainedResult, Options, ViteOptions } from './types';
 import type { ImageConfig } from 'imagetools-core';
+import { Plugin } from 'vite';
+import { PluginContext } from 'rollup';
 
 const b64 = baseN.create();
 
@@ -108,6 +110,14 @@ export function normalizeInput(
   }
 
   return input;
+}
+
+export function getInput(
+  context: PluginContext,
+  id: string,
+): ImageLoaderChainedResult | undefined {
+  const info = context.getModuleInfo(id);
+  return info?.meta[META_KEY];
 }
 
 const generatedClassNames = new Map<string, string>();
