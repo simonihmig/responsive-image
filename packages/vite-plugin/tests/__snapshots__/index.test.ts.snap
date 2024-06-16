@@ -1,5 +1,57 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`custom loader options are supported 1`] = `
+"function s(n, e, g) {
+  const o = n.map((t) => t.width).reduce((t, i) => i >= e && t >= e ? i >= t ? t : i : i >= t ? i : t, 0);
+  return n.find(
+    (t) => t.width === o && t.format === g
+  );
+}
+const r = /* @__PURE__ */ new Map();
+function c(n) {
+  return r.get(n);
+}
+var a;
+(a = c("env")) == null || a.deviceWidths;
+const m = [{ url: "/images/test-100.png", width: 100, format: "png" }, { url: "/images/test-200.png", width: 200, format: "png" }], d = {
+  imageTypes: ["png"],
+  availableWidths: [100, 200],
+  aspectRatio: 2,
+  imageUrlFor(n, e) {
+    var g;
+    return (g = s(m, n, e ?? "png")) == null ? void 0 : g.url;
+  }
+};
+console.log(d);
+"
+`;
+
+exports[`custom query params are supported 1`] = `
+"function r(t, e, g) {
+  const o = t.map((n) => n.width).reduce((n, i) => i >= e && n >= e ? i >= n ? n : i : i >= n ? i : n, 0);
+  return t.find(
+    (n) => n.width === o && n.format === g
+  );
+}
+const c = /* @__PURE__ */ new Map();
+function m(t) {
+  return c.get(t);
+}
+var a;
+(a = m("env")) == null || a.deviceWidths;
+const s = [{ url: "/images/image-100w.png", width: 100, format: "png" }, { url: "/images/image-200w.png", width: 200, format: "png" }], d = {
+  imageTypes: ["png"],
+  availableWidths: [100, 200],
+  aspectRatio: 2,
+  imageUrlFor(t, e) {
+    var g;
+    return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
+  }
+};
+console.log(d);
+"
+`;
+
 exports[`filter > it operates on included assets 1`] = `
 "function r(i, a, m) {
   const w = i.map((e) => e.width).reduce((e, g) => g >= a && e >= a ? g >= e ? e : g : g >= e ? g : e, 0);
@@ -20,6 +72,32 @@ const s = [{ url: "/images/image-640w.jpg", width: 640, format: "jpeg" }, { url:
   imageUrlFor(i, a) {
     var m;
     return (m = r(s, i, a ?? "jpeg")) == null ? void 0 : m.url;
+  }
+};
+console.log(d);
+"
+`;
+
+exports[`imagetools params are supported 1`] = `
+"function r(t, e, g) {
+  const o = t.map((n) => n.width).reduce((n, i) => i >= e && n >= e ? i >= n ? n : i : i >= n ? i : n, 0);
+  return t.find(
+    (n) => n.width === o && n.format === g
+  );
+}
+const c = /* @__PURE__ */ new Map();
+function m(t) {
+  return c.get(t);
+}
+var a;
+(a = m("env")) == null || a.deviceWidths;
+const s = [{ url: "/images/image-100w.png", width: 100, format: "png" }, { url: "/images/image-200w.png", width: 200, format: "png" }], d = {
+  imageTypes: ["png"],
+  availableWidths: [100, 200],
+  aspectRatio: 2,
+  imageUrlFor(t, e) {
+    var g;
+    return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
   }
 };
 console.log(d);

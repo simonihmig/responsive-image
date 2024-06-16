@@ -9,11 +9,6 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
 
 expect.extend({ toMatchImageSnapshot });
 
-// make sure we remove any non-deterministic parts from the output
-// function sanitizeOutput(output: string | Buffer | undefined) {
-//   return String(output).replace(new RegExp(_dirname, 'g'), '');
-// }
-
 describe('filter', () => {
   test('it operates on included assets', async () => {
     const { source } = await compile('image.jpg', {
@@ -73,84 +68,62 @@ test('it produces expected output', async () => {
   expect(assets[0].source).toMatchImageSnapshot();
 });
 
-// test('custom loader options are supported', async () => {
-//   const { stats, fs } = await compiler(
-//     'fixtures/image.jpg?responsive',
-//     _dirname,
-//     {
-//       w: [100, 200],
-//       format: ['png'],
-//       name: 'test-[width].[ext]',
-//       webPath: 'https://cdn.example.com/images',
-//     },
-//   );
+test('custom loader options are supported', async () => {
+  const { source, assets } = await compile('image.jpg', {
+    w: [100, 200],
+    format: ['png'],
+    name: 'test-[width].[ext]',
+    include: '**/*.jpg',
+  });
 
-//   expect(stats.modules).toBeDefined();
-//   expect(stats.modules![0]?.modules).toHaveLength(2);
+  expect(source).toMatchSnapshot();
 
-//   const output = stats.modules?.[0]?.modules?.[0]?.source;
-//   expect(sanitizeOutput(output)).toMatchSnapshot();
+  expect(assets.map((a) => a.fileName)).toEqual([
+    'images/test-100.png',
+    'images/test-200.png',
+  ]);
 
-//   const imageAssets = stats.modules![0]!.assets!;
-//   expect(imageAssets).toEqual(['images/test-100.png', 'images/test-200.png']);
+  for (const image of assets) {
+    expect(image.source).toMatchImageSnapshot();
+  }
+});
 
-//   for (const image of imageAssets) {
-//     expect(
-//       fs.readFileSync(join(_dirname, image as string)),
-//     ).toMatchImageSnapshot();
-//   }
-// });
+test('custom query params are supported', async () => {
+  const { source, assets } = await compile('image.jpg?w=100;200&format=png', {
+    include: /^[^?]+\.jpg(\?.*)?$/,
+  });
 
-// test('custom query params are supported', async () => {
-//   const { stats, fs } = await compiler(
-//     'fixtures/image.jpg?w=100;200&format=png&responsive',
-//     _dirname,
-//     {},
-//   );
+  expect(source).toMatchSnapshot();
 
-//   expect(stats.modules).toBeDefined();
-//   // expect(stats.modules![0]?.modules).toHaveLength(3);
+  expect(assets.map((a) => a.fileName)).toEqual([
+    'images/image-100w.png',
+    'images/image-200w.png',
+  ]);
 
-//   const output = stats.modules?.[0]?.modules?.[0]?.source;
-//   expect(sanitizeOutput(output)).toMatchSnapshot();
+  for (const image of assets) {
+    expect(image.source).toMatchImageSnapshot();
+  }
+});
 
-//   const imageAssets = stats.modules![0]!.assets!;
-//   expect(imageAssets).toEqual([
-//     'images/image-100w.png',
-//     'images/image-200w.png',
-//   ]);
+test('imagetools params are supported', async () => {
+  const { source, assets } = await compile(
+    'image.jpg?w=100;200&format=png&grayscale',
+    {
+      include: /^[^?]+\.jpg(\?.*)?$/,
+    },
+  );
 
-//   for (const image of imageAssets) {
-//     expect(
-//       fs.readFileSync(join(_dirname, image as string)),
-//     ).toMatchImageSnapshot();
-//   }
-// });
+  expect(source).toMatchSnapshot();
 
-// test('imagetools params are supported', async () => {
-//   const { stats, fs } = await compiler(
-//     'fixtures/image.jpg?w=100;200&format=png&grayscale&responsive',
-//     _dirname,
-//     {},
-//   );
+  expect(assets.map((a) => a.fileName)).toEqual([
+    'images/image-100w.png',
+    'images/image-200w.png',
+  ]);
 
-//   expect(stats.modules).toBeDefined();
-
-//   const output = stats.modules?.[0]?.modules?.[0]?.source;
-//   expect(sanitizeOutput(output)).toMatchSnapshot();
-
-//   const imageAssets = stats.modules![0]!.assets!;
-//   expect(imageAssets).toEqual([
-//     'images/image-100w.png',
-//     'images/image-200w.png',
-//   ]);
-
-//   for (const image of imageAssets) {
-//     expect(
-//       fs.readFileSync(join(_dirname, image as string)),
-//     ).toMatchImageSnapshot();
-//   }
-// });
+  for (const image of assets) {
+    expect(image.source).toMatchImageSnapshot();
+  }
+});
 
 // describe('LQIP', function () {
 //   test('color LQIP is supported', async () => {
