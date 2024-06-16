@@ -15,7 +15,7 @@ import {
   normalizeInput,
   parseURL,
 } from './utils';
-import { extname } from 'path';
+import { createFilter } from '@rollup/pluginutils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
@@ -23,21 +23,18 @@ const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 export default function imagesLoader(
   userOptions: Partial<Options> = {},
 ): Plugin {
+  const filter = createFilter(userOptions.include, userOptions.exclude);
+
   return {
     name: 'responsive-image/images',
     // TODO do we need this?
     enforce: 'pre',
     async load(id) {
-      const url = parseURL(id);
-
-      // TODO add filter options
-      if (
-        ![...supportedTypes, 'jpg'].some(
-          (type: string) => type === extname(url.pathname).substring(1),
-        )
-      ) {
-        return null;
+      if (!filter(id)) {
+        return;
       }
+
+      const url = parseURL(id);
 
       const options = getOptions(url, userOptions);
       const data = normalizeInput(id);

@@ -14,9 +14,39 @@ expect.extend({ toMatchImageSnapshot });
 //   return String(output).replace(new RegExp(_dirname, 'g'), '');
 // }
 
+describe('filter', () => {
+  test('it operates on included assets', async () => {
+    const { source } = await compile('image.jpg', {
+      include: '**/*.jpg',
+    });
+
+    expect(source).toMatchSnapshot();
+  });
+
+  test('it skips non-matches', async () => {
+    const { source, assets } = await compile('image.jpg', {
+      include: '**/*.png',
+    });
+
+    expect(source).not.toContain('imageUrlFor');
+    expect(assets).toHaveLength(0);
+  });
+
+  test('it skips excluded assets', async () => {
+    const { source, assets } = await compile('image.jpg', {
+      include: '**/*.jpg',
+      exclude: '**/image.jpg',
+    });
+
+    expect(source).not.toContain('imageUrlFor');
+    expect(assets).toHaveLength(0);
+  });
+});
+
 test('it produces expected output', async () => {
-  const { source, assets } = await compile('image.jpg?responsive', {
+  const { source, assets } = await compile('image.jpg', {
     format: ['png', 'webp'],
+    include: '**/*.jpg',
   });
 
   expect(source).toMatchSnapshot();
