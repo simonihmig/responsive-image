@@ -455,7 +455,7 @@ importers:
         specifier: 5.92.1
         version: 5.92.1
 
-  test-app:
+  test-apps/ember-classic:
     devDependencies:
       '@babel/core':
         specifier: 7.24.7
@@ -495,13 +495,13 @@ importers:
         version: 1.4.0
       '@responsive-image/core':
         specifier: workspace:*
-        version: link:../packages/core
+        version: link:../../packages/core
       '@responsive-image/ember':
         specifier: workspace:*
-        version: link:../packages/ember
+        version: link:../../packages/ember
       '@responsive-image/webpack':
         specifier: workspace:*
-        version: link:../packages/webpack
+        version: link:../../packages/webpack
       '@tsconfig/ember':
         specifier: 3.0.8
         version: 3.0.8
