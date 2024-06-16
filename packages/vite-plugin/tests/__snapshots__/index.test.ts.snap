@@ -1,5 +1,32 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`LQIP > blurhash LQIP is supported 1`] = `
+"function r(i, a, g) {
+  const m = i.map((e) => e.width).reduce((e, t) => t >= a && e >= a ? t >= e ? e : t : t >= e ? t : e, 0);
+  return i.find(
+    (e) => e.width === m && e.format === g
+  );
+}
+const o = /* @__PURE__ */ new Map();
+function s(i) {
+  return o.get(i);
+}
+var n;
+(n = s("env")) == null || n.deviceWidths;
+const h = [{ url: "/images/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/images/image-100w.webp", width: 100, format: "webp" }, { url: "/images/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/images/image-200w.webp", width: 200, format: "webp" }], p = {
+  imageTypes: ["jpeg", "webp"],
+  availableWidths: [100, 200],
+  lqip: { type: "blurhash", hash: "NYGkgjIp9b%1f6Iq~UaeV@WYWVs,%MoJWBWCjZbH", width: 6, height: 3 },
+  aspectRatio: 2,
+  imageUrlFor(i, a) {
+    var g;
+    return (g = r(h, i, a ?? "jpeg")) == null ? void 0 : g.url;
+  }
+};
+console.log(p);
+"
+`;
+
 exports[`custom loader options are supported 1`] = `
 "function s(n, e, g) {
   const o = n.map((t) => t.width).reduce((t, i) => i >= e && t >= e ? i >= t ? t : i : i >= t ? i : t, 0);

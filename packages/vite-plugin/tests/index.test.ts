@@ -125,52 +125,46 @@ test('imagetools params are supported', async () => {
   }
 });
 
-// describe('LQIP', function () {
-//   test('color LQIP is supported', async () => {
-//     const { stats } = await compiler(
-//       'fixtures/image.jpg?responsive',
-//       _dirname,
-//       {
-//         lqip: { type: 'color' },
-//       },
-//     );
+describe('LQIP', function () {
+  //   test('color LQIP is supported', async () => {
+  //     const { stats } = await compiler(
+  //       'fixtures/image.jpg?responsive',
+  //       _dirname,
+  //       {
+  //         lqip: { type: 'color' },
+  //       },
+  //     );
 
-//     expect(stats.modules).toBeDefined();
-//     expect(stats.modules![0]?.modules).toHaveLength(3);
+  //     expect(stats.modules).toBeDefined();
+  //     expect(stats.modules![0]?.modules).toHaveLength(3);
 
-//     const output = stats.modules?.[0]?.modules?.[0]?.source;
-//     expect(sanitizeOutput(output)).toMatchSnapshot();
-//   });
+  //     const output = stats.modules?.[0]?.modules?.[0]?.source;
+  //     expect(sanitizeOutput(output)).toMatchSnapshot();
+  //   });
 
-//   test('inline LQIP is supported', async () => {
-//     const { stats } = await compiler(
-//       'fixtures/image.jpg?responsive',
-//       _dirname,
-//       {
-//         lqip: { type: 'inline' },
-//       },
-//     );
+  //   test('inline LQIP is supported', async () => {
+  //     const { stats } = await compiler(
+  //       'fixtures/image.jpg?responsive',
+  //       _dirname,
+  //       {
+  //         lqip: { type: 'inline' },
+  //       },
+  //     );
 
-//     expect(stats.modules).toBeDefined();
-//     expect(stats.modules![0]?.modules).toHaveLength(3);
+  //     expect(stats.modules).toBeDefined();
+  //     expect(stats.modules![0]?.modules).toHaveLength(3);
 
-//     const output = stats.modules?.[0]?.modules?.[0]?.source;
-//     expect(sanitizeOutput(output)).toMatchSnapshot();
-//   });
+  //     const output = stats.modules?.[0]?.modules?.[0]?.source;
+  //     expect(sanitizeOutput(output)).toMatchSnapshot();
+  //   });
 
-//   test('blurhash LQIP is supported', async () => {
-//     const { stats } = await compiler(
-//       'fixtures/image.jpg?responsive',
-//       _dirname,
-//       {
-//         lqip: { type: 'blurhash' },
-//       },
-//     );
+  test('blurhash LQIP is supported', async () => {
+    const { source, assets } = await compile('image.jpg', {
+      include: '**/*.jpg',
+      w: [100, 200],
+      lqip: { type: 'blurhash' },
+    });
 
-//     expect(stats.modules).toBeDefined();
-//     expect(stats.modules![0]?.modules).toHaveLength(2);
-
-//     const output = stats.modules?.[0]?.modules?.[0]?.source;
-//     expect(sanitizeOutput(output)).toMatchSnapshot();
-//   });
-// });
+    expect(source).toMatchSnapshot();
+  });
+});

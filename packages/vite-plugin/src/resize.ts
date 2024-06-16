@@ -34,9 +34,7 @@ export default function resizePlugin(
         return;
       }
 
-      const url = parseURL(id);
-
-      const options = getOptions(url, userOptions);
+      const options = getOptions(id, userOptions);
       const { sharp } = input;
 
       try {
