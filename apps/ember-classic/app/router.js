@@ -6,8 +6,4 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-Router.map(function () {
-  this.route('image');
-  this.route('cloudinary');
-  this.route('imgix');
-});
+Router.map(function () {});
