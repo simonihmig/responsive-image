@@ -33,8 +33,8 @@ export type LqipOptions =
 
 export interface ViteOptions {
   name: string;
-  include: string | RegExp | Array<string | RegExp>;
-  exclude: string | RegExp | Array<string | RegExp>;
+  include?: string | RegExp | Array<string | RegExp>;
+  exclude?: string | RegExp | Array<string | RegExp>;
   lqip?: LqipOptions;
 }
 export interface ImageOptions {

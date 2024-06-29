@@ -159,7 +159,7 @@ describe('LQIP', function () {
   //   });
 
   test('blurhash LQIP is supported', async () => {
-    const { source, assets } = await compile('image.jpg', {
+    const { source } = await compile('image.jpg', {
       include: '**/*.jpg',
       w: [100, 200],
       lqip: { type: 'blurhash' },

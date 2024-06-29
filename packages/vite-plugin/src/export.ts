@@ -1,6 +1,5 @@
 import * as path from 'path';
 import {
-  META_KEY,
   getAspectRatio,
   getInput,
   getOptions,
@@ -8,11 +7,7 @@ import {
   parseURL,
 } from './utils';
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
-import type {
-  ImageLoaderChainedResult,
-  ImageProcessingResult,
-  Options,
-} from './types';
+import type { ImageProcessingResult, Options } from './types';
 import { Plugin } from 'rollup';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {

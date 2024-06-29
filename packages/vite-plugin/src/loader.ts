@@ -3,7 +3,6 @@ import { Plugin } from 'vite';
 import type { Options } from './types';
 import { META_KEY, normalizeInput } from './utils';
 
-// TODO split into loader (that normalizes the input) and imagesTransforms?
 export default function loaderPlugin(
   userOptions: Partial<Options> = {},
 ): Plugin {

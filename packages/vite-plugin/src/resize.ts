@@ -8,14 +8,7 @@ import type {
   Options,
   OutputImageType,
 } from './types';
-import {
-  META_KEY,
-  getImagetoolsConfigs,
-  getInput,
-  getOptions,
-  normalizeInput,
-  parseURL,
-} from './utils';
+import { META_KEY, getImagetoolsConfigs, getInput, getOptions } from './utils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
