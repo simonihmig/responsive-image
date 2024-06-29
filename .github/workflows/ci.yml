@@ -118,4 +118,4 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup --- pnpm turbo test
-        working-directory: test-app
+        working-directory: test-apps/ember-classic
