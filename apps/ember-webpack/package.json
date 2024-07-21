@@ -1,8 +1,8 @@
 {
-  "name": "ember-classic",
+  "name": "ember-webpack",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for ember-classic goes here",
+  "description": "Demo app using Embroider + Webpack",
   "repository": "",
   "license": "MIT",
   "author": "",
@@ -27,8 +27,10 @@
     "@ember/optional-features": "2.1.0",
     "@ember/string": "3.1.1",
     "@ember/test-helpers": "3.3.0",
+    "@embroider/compat": "^3.4.4",
+    "@embroider/core": "^3.4.4",
     "@embroider/macros": "1.16.5",
-    "@embroider/test-setup": "4.0.0",
+    "@embroider/webpack": "^3.2.2",
     "@glimmer/component": "1.1.2",
     "@glimmer/tracking": "1.1.2",
     "@glint/core": "1.4.0",
@@ -63,7 +65,6 @@
     "@types/qunit": "2.19.10",
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.1",
-    "broccoli-asset-rev": "3.0.0",
     "ember-auto-import": "2.7.4",
     "ember-cli": "5.10.0",
     "ember-cli-app-version": "7.0.0",
@@ -84,7 +85,6 @@
     "ember-source-channel-url": "3.0.0",
     "ember-template-imports": "4.1.1",
     "ember-template-lint": "5.13.0",
-    "ember-try": "3.0.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-ember": "12.1.1",
@@ -98,7 +98,7 @@
     "qunit": "2.21.1",
     "qunit-dom": "3.2.0",
     "typescript": "5.5.3",
-    "webpack": "5.93.0"
+    "webpack": "^5.90.2"
   },
   "engines": {
     "node": "20.* || >= 22"
