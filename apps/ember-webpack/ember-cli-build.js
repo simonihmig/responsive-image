@@ -6,40 +6,15 @@ const { setupLoaders } = require('@responsive-image/webpack');
 const EmberResponsiveImageWebpackLoaders = setupLoaders();
 
 module.exports = function (defaults) {
-  let usesEmbroider =
-    !!process.env.EMBROIDER_TEST_SETUP_OPTIONS ||
-    process.env.EMBROIDER_TEST_SETUP_FORCE === 'embroider';
+  let app = new EmberApp(defaults, {});
 
-  let app = new EmberApp(defaults, {
-    'ember-cli-babel': { enableTypeScriptTransform: true },
-    autoImport: usesEmbroider
-      ? {}
-      : {
-          watchDependencies: [
-            '@responsive-image/ember',
-            '@responsive-image/cloudinary',
-            '@responsive-image/imgix',
-          ],
-          allowAppImports: [
-            'images/**/*.jpg',
-            'images/**/*.jpeg',
-            'images/**/*.png',
-          ],
-          webpack: {
-            module: {
-              rules: [
-                {
-                  resourceQuery: /responsive/,
-                  use: EmberResponsiveImageWebpackLoaders,
-                },
-              ],
-            },
-          },
-        },
-  });
-
-  const { maybeEmbroider } = require('@embroider/test-setup');
-  return maybeEmbroider(app, {
+  const { Webpack } = require('@embroider/webpack');
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    skipBabel: [
+      {
+        package: 'qunit',
+      },
+    ],
     // This breaks with ember-cli-fastboot: https://github.com/ember-fastboot/ember-cli-fastboot/issues/925
     staticEmberSource: false,
     packagerOptions: {
