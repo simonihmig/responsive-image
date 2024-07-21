@@ -417,9 +417,6 @@ importers:
       '@embroider/macros':
         specifier: 1.16.5
         version: 1.16.5(@glint/template@1.4.0)
-      '@embroider/test-setup':
-        specifier: 4.0.0
-        version: 4.0.0(@embroider/compat@3.6.0(@embroider/core@3.4.14(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.14(@glint/template@1.4.0))(@embroider/webpack@3.2.3(@embroider/core@3.4.14(@glint/template@1.4.0))(webpack@5.93.0))
       '@embroider/webpack':
         specifier: ^3.2.2
         version: 3.2.3(@embroider/core@3.4.14(@glint/template@1.4.0))(webpack@5.93.0)
@@ -525,9 +522,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.16.1
         version: 7.16.1(eslint@8.57.0)(typescript@5.5.3)
-      broccoli-asset-rev:
-        specifier: 3.0.0
-        version: 3.0.0
       ember-auto-import:
         specifier: 2.7.4
         version: 2.7.4(@glint/template@1.4.0)(webpack@5.93.0)
