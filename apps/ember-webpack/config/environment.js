@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'ember-classic',
+    modulePrefix: 'ember-webpack',
     environment,
     rootURL: '/',
     locationType: 'history',
