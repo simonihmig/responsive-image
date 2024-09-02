@@ -46,16 +46,21 @@ export interface ImageOptions {
 
 export type Options = ViteOptions & ImageOptions;
 
-export interface ImageProcessingResult {
-  data: Buffer;
+export interface LazyImageProcessingResult {
+  data: () => Promise<Buffer>;
   width: number;
   format: ImageType;
 }
 
 export interface ImageLoaderChainedResult {
   lqip?: LqipInline | LqipColor | LqipBlurhash;
-  images: ImageProcessingResult[];
+  images: LazyImageProcessingResult[];
   sharp: Sharp;
   imports: string[];
   sharpMeta?: Metadata;
+}
+
+export interface ServedImageData {
+  data: () => Promise<Buffer>;
+  format: ImageType;
 }

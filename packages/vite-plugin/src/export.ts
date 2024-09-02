@@ -1,14 +1,19 @@
+import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import * as path from 'path';
+import type { Plugin, ResolvedConfig } from 'vite';
+import type {
+  LazyImageProcessingResult,
+  Options,
+  ServedImageData,
+} from './types';
 import {
   getAspectRatio,
   getInput,
   getOptions,
+  getViteBasePath,
   onlyUnique,
   parseURL,
 } from './utils';
-import type { ImageOutputResult, ImageType } from '@responsive-image/core';
-import type { ImageProcessingResult, Options } from './types';
-import { Plugin } from 'rollup';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
   jpeg: 'jpg',
@@ -17,9 +22,26 @@ const imageExtensions: Partial<Record<ImageType, string>> = {
 export default function exportPlugin(
   userOptions: Partial<Options> = {},
 ): Plugin {
+  let viteConfig: ResolvedConfig;
+  let basePath: string;
+
+  const servedImages = new Map<string, ServedImageData>();
+
   return {
     name: 'responsive-image/export',
-    transform(code, id) {
+
+    api: {
+      getServedImageData(url: string): ServedImageData | undefined {
+        return servedImages.get(url);
+      },
+    },
+
+    configResolved(config) {
+      viteConfig = config;
+      basePath = getViteBasePath(config);
+    },
+
+    async transform(code, id) {
       const input = getInput(this, id);
 
       // Bail out if our loader didn't handle this module
@@ -30,11 +52,11 @@ export default function exportPlugin(
       const url = parseURL(id);
       const options = getOptions(url, userOptions);
 
-      const createImageFile = ({
+      const createImageFile = async ({
         data,
         width,
         format,
-      }: ImageProcessingResult): ImageOutputResult => {
+      }: LazyImageProcessingResult): Promise<ImageOutputResult> => {
         const fileName = options.name
           .replace(
             /\[name\]/gi,
@@ -43,20 +65,40 @@ export default function exportPlugin(
           .replace(/\[ext\]/gi, imageExtensions[format] ?? format)
           .replace(/\[width\]/gi, width + '');
 
-        const referenceId = this.emitFile({
-          type: 'asset',
-          name: fileName,
-          source: data,
-        });
+        let imageUrl: string;
+
+        if (viteConfig.command === 'serve') {
+          const moduleId = id.startsWith(viteConfig.root)
+            ? id.substring(viteConfig.root.length)
+            : id;
+
+          const imagePath = `${format}/${width}${moduleId}`;
+
+          imageUrl = `${viteConfig.server.origin ?? ''}${basePath}${imagePath}`;
+
+          servedImages.set(imagePath, { data, format });
+        } else {
+          const source = await data();
+
+          const referenceId = this.emitFile({
+            type: 'asset',
+            name: fileName,
+            source,
+          });
+
+          imageUrl = `__VITE_ASSET__${referenceId}__`;
+        }
 
         return {
-          url: `__VITE_ASSET__${referenceId}__`,
+          url: imageUrl,
           width,
           format,
         };
       };
 
-      const emittedImages = input.images.map(createImageFile);
+      const emittedImages = await Promise.all(
+        input.images.map(createImageFile),
+      );
       const availableWidths = input.images
         .map((i) => i.width)
         .filter(onlyUnique);

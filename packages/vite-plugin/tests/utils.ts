@@ -74,9 +74,11 @@ export async function compile(
     throw new Error('No js chunk found in test output');
   }
 
-  const assets = bundle.output.filter((chunk): chunk is OutputAsset =>
-    imageExtensions.some((ext) => chunk.fileName.endsWith(ext)),
-  );
+  const assets = bundle.output
+    .filter((chunk): chunk is OutputAsset =>
+      imageExtensions.some((ext) => chunk.fileName.endsWith(ext)),
+    )
+    .toSorted((a, b) => a.fileName.localeCompare(b.fileName));
 
   return {
     source: module.code,
