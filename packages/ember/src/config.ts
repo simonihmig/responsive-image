@@ -9,7 +9,7 @@ interface AddonConfig {
 }
 
 export function applyMacrosConfig(): void {
-  const userConfig = getOwnConfig<Partial<AddonConfig>>();
+  const userConfig = getOwnConfig<Partial<AddonConfig>>() ?? {};
 
   for (const [namespace, config] of Object.entries(userConfig)) {
     setConfig(namespace, config);
