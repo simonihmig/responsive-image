@@ -46,12 +46,6 @@ export interface ImageOptions {
 
 export type Options = ViteOptions & ImageOptions;
 
-export interface ImageProcessingResult {
-  data: Buffer;
-  width: number;
-  format: ImageType;
-}
-
 export interface LazyImageProcessingResult {
   data: () => Promise<Buffer>;
   width: number;

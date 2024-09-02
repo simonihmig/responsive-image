@@ -46,11 +46,7 @@ test('it produces expected output', async () => {
 
   expect(source).toMatchSnapshot();
 
-  const sortedAssets = assets.toSorted((a, b) =>
-    a.fileName.localeCompare(b.fileName),
-  );
-
-  expect(sortedAssets.map((a) => a.fileName)).toEqual(
+  expect(assets.map((a) => a.fileName)).toEqual(
     [
       'images/image-640w.png',
       'images/image-640w.webp',
@@ -86,7 +82,7 @@ test('custom loader options are supported', async () => {
 
   expect(source).toMatchSnapshot();
 
-  expect(assets.map((a) => a.fileName)).toEqual([
+  expect(assets.toSorted().map((a) => a.fileName)).toEqual([
     'images/test-100.png',
     'images/test-200.png',
   ]);

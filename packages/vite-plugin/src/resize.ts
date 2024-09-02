@@ -4,7 +4,6 @@ import type { Metadata, Sharp } from 'sharp';
 import { Plugin } from 'vite';
 import type {
   ImageLoaderChainedResult,
-  ImageProcessingResult,
   LazyImageProcessingResult,
   Options,
   OutputImageType,
