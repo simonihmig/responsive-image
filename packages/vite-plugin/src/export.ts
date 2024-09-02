@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { Readable } from 'stream';
 import {
   getAspectRatio,
   getInput,
@@ -8,7 +9,7 @@ import {
 } from './utils';
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import type { ImageProcessingResult, Options } from './types';
-import { Plugin } from 'rollup';
+import type { ResolvedConfig, Plugin } from 'vite';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
   jpeg: 'jpg',
@@ -17,8 +18,48 @@ const imageExtensions: Partial<Record<ImageType, string>> = {
 export default function exportPlugin(
   userOptions: Partial<Options> = {},
 ): Plugin {
+  let viteConfig: ResolvedConfig;
+  let basePath: string;
+
+  const servedImages = new Map<string, { data: Buffer; format: ImageType }>();
+
   return {
     name: 'responsive-image/export',
+
+    configResolved(config) {
+      viteConfig = config;
+
+      basePath = `${
+        viteConfig.base.endsWith('/')
+          ? viteConfig.base.slice(0, -1)
+          : viteConfig.base
+      }/@responsive-image/vite-plugin/`;
+    },
+
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.url?.startsWith(basePath)) {
+          let [, id] = req.url.split(basePath);
+          id = decodeURI(id);
+
+          const imageEntry = servedImages.get(id);
+
+          if (!imageEntry) {
+            throw new Error(
+              `No responsive image found for ID "${id}". Known IDs: ${[...servedImages.keys()].join(', ')}`,
+            );
+          }
+
+          const { data, format } = imageEntry;
+
+          res.setHeader('Content-Type', `image/${format}`);
+          return Readable.from(data).pipe(res);
+        }
+
+        next();
+      });
+    },
+
     transform(code, id) {
       const input = getInput(this, id);
 
@@ -43,14 +84,30 @@ export default function exportPlugin(
           .replace(/\[ext\]/gi, imageExtensions[format] ?? format)
           .replace(/\[width\]/gi, width + '');
 
-        const referenceId = this.emitFile({
-          type: 'asset',
-          name: fileName,
-          source: data,
-        });
+        let imageUrl: string;
+
+        if (viteConfig.command === 'serve') {
+          const moduleId = id.startsWith(viteConfig.root)
+            ? id.substring(viteConfig.root.length)
+            : id;
+
+          const imagePath = `${format}/${width}${moduleId}`;
+
+          imageUrl = `${viteConfig.server.origin ?? ''}${basePath}${imagePath}`;
+
+          servedImages.set(imagePath, { data, format });
+        } else {
+          const referenceId = this.emitFile({
+            type: 'asset',
+            name: fileName,
+            source: data,
+          });
+
+          imageUrl = `__VITE_ASSET__${referenceId}__`;
+        }
 
         return {
-          url: `__VITE_ASSET__${referenceId}__`,
+          url: imageUrl,
           width,
           format,
         };
