@@ -3,6 +3,7 @@ import sharp, { type Metadata } from 'sharp';
 import type { ImageLoaderChainedResult, Options, ViteOptions } from './types';
 import type { ImageConfig } from 'imagetools-core';
 import { PluginContext } from 'rollup';
+import { ResolvedConfig } from 'vite';
 
 const b64 = baseN.create();
 
@@ -158,4 +159,12 @@ export function blurrySvg(src: string, width: number, height: number): string {
 <filter id="b" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".5"></feGaussianBlur><feComponentTransfer><feFuncA type="discrete" tableValues="1 1"></feFuncA></feComponentTransfer></filter>
 <image filter="url(#b)" preserveAspectRatio="none" height="100%" width="100%" xlink:href="${src}"></image>
 </svg>`;
+}
+
+export function getViteBasePath(viteConfig: ResolvedConfig): string {
+  return `${
+    viteConfig.base.endsWith('/')
+      ? viteConfig.base.slice(0, -1)
+      : viteConfig.base
+  }/@responsive-image/vite-plugin/`;
 }

@@ -1,15 +1,15 @@
+import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import * as path from 'path';
-import { Readable } from 'stream';
+import type { Plugin, ResolvedConfig } from 'vite';
+import type { ImageProcessingResult, Options, ServedImageData } from './types';
 import {
   getAspectRatio,
   getInput,
   getOptions,
+  getViteBasePath,
   onlyUnique,
   parseURL,
 } from './utils';
-import type { ImageOutputResult, ImageType } from '@responsive-image/core';
-import type { ImageProcessingResult, Options } from './types';
-import type { ResolvedConfig, Plugin } from 'vite';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
   jpeg: 'jpg',
@@ -21,43 +21,20 @@ export default function exportPlugin(
   let viteConfig: ResolvedConfig;
   let basePath: string;
 
-  const servedImages = new Map<string, { data: Buffer; format: ImageType }>();
+  const servedImages = new Map<string, ServedImageData>();
 
   return {
     name: 'responsive-image/export',
 
-    configResolved(config) {
-      viteConfig = config;
-
-      basePath = `${
-        viteConfig.base.endsWith('/')
-          ? viteConfig.base.slice(0, -1)
-          : viteConfig.base
-      }/@responsive-image/vite-plugin/`;
+    api: {
+      getServedImageData(url: string): ServedImageData | undefined {
+        return servedImages.get(url);
+      },
     },
 
-    configureServer(server) {
-      server.middlewares.use((req, res, next) => {
-        if (req.url?.startsWith(basePath)) {
-          let [, id] = req.url.split(basePath);
-          id = decodeURI(id);
-
-          const imageEntry = servedImages.get(id);
-
-          if (!imageEntry) {
-            throw new Error(
-              `No responsive image found for ID "${id}". Known IDs: ${[...servedImages.keys()].join(', ')}`,
-            );
-          }
-
-          const { data, format } = imageEntry;
-
-          res.setHeader('Content-Type', `image/${format}`);
-          return Readable.from(data).pipe(res);
-        }
-
-        next();
-      });
+    configResolved(config) {
+      viteConfig = config;
+      basePath = getViteBasePath(config);
     },
 
     transform(code, id) {

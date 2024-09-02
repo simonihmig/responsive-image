@@ -59,3 +59,8 @@ export interface ImageLoaderChainedResult {
   imports: string[];
   sharpMeta?: Metadata;
 }
+
+export interface ServedImageData {
+  data: Buffer;
+  format: ImageType;
+}
