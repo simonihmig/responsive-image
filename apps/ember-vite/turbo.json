@@ -3,7 +3,12 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "outputs": ["dist/**", "declarations/**", "node_modules/.embroider"]
+      "outputs": [
+        "dist/**",
+        "declarations/**",
+        "node_modules/.embroider",
+        "tmp"
+      ]
     }
   }
 }
