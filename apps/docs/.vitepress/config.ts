@@ -10,18 +10,18 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Getting started', link: '/getting-started' },
+      { text: 'Usage', link: '/usage/concepts' },
       {
         text: 'Frameworks',
-        link: '/frameworks',
+        link: '/frameworks/',
       },
       {
         text: 'Build plugins',
-        link: '/build',
+        link: '/build/',
       },
       {
         text: 'Image CDNs',
-        link: '/cdn',
+        link: '/cdn/',
       },
     ],
 
@@ -31,28 +31,58 @@ export default defineConfig({
         link: '/getting-started',
       },
       {
-        text: 'Core concepts',
-        link: '/concepts',
+        text: 'Usage',
+        base: '/usage',
+        // link: '/usage/concepts',
+        items: [
+          {
+            text: 'Core concepts',
+            link: '/concepts',
+          },
+          {
+            text: 'Image component',
+            link: '/component',
+          },
+          {
+            text: 'Local images',
+            link: '/local-images',
+          },
+          {
+            text: 'Remote images',
+            link: '/remote-images',
+          },
+          {
+            text: 'Image formats',
+            link: '/image-formats',
+          },
+          {
+            text: 'LQIP',
+            link: '/lqip',
+          },
+        ],
       },
       {
         text: 'Frameworks',
-        link: '/frameworks',
-        items: [{ text: 'Ember', link: '/frameworks/ember' }],
+        link: '/',
+        base: '/frameworks',
+        items: [{ text: 'Ember', link: '/ember' }],
       },
       {
         text: 'Build plugins',
-        link: '/build',
+        link: '/',
+        base: '/build',
         items: [
-          { text: 'Vite', link: '/build/vite' },
-          { text: 'Webpack', link: '/build/webpack' },
+          { text: 'Vite', link: '/vite' },
+          { text: 'Webpack', link: '/webpack' },
         ],
       },
       {
         text: 'Image CDNs',
-        link: '/cdn',
+        link: '/',
+        base: '/cdn',
         items: [
-          { text: 'Cloudinary', link: '/cdn/cloudinary' },
-          { text: 'Imgix', link: '/cdn/imgix' },
+          { text: 'Cloudinary', link: '/cloudinary' },
+          { text: 'Imgix', link: '/imgix' },
         ],
       },
     ],
@@ -63,5 +93,11 @@ export default defineConfig({
         link: 'https://github.com/simonihmig/responsive-image',
       },
     ],
+
+    footer: {
+      message: 'Made with ❤︎ for OSS - Support 🇺🇦',
+      copyright:
+        'Copyright © 2024 <a href="https://github.com/simonihmig">Simon Ihmig</a>',
+    },
   },
 });
