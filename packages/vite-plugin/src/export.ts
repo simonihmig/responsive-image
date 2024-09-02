@@ -1,7 +1,11 @@
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import * as path from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
-import type { ImageProcessingResult, Options, ServedImageData } from './types';
+import type {
+  LazyImageProcessingResult,
+  Options,
+  ServedImageData,
+} from './types';
 import {
   getAspectRatio,
   getInput,
@@ -37,7 +41,7 @@ export default function exportPlugin(
       basePath = getViteBasePath(config);
     },
 
-    transform(code, id) {
+    async transform(code, id) {
       const input = getInput(this, id);
 
       // Bail out if our loader didn't handle this module
@@ -48,11 +52,11 @@ export default function exportPlugin(
       const url = parseURL(id);
       const options = getOptions(url, userOptions);
 
-      const createImageFile = ({
+      const createImageFile = async ({
         data,
         width,
         format,
-      }: ImageProcessingResult): ImageOutputResult => {
+      }: LazyImageProcessingResult): Promise<ImageOutputResult> => {
         const fileName = options.name
           .replace(
             /\[name\]/gi,
@@ -74,10 +78,12 @@ export default function exportPlugin(
 
           servedImages.set(imagePath, { data, format });
         } else {
+          const source = await data();
+
           const referenceId = this.emitFile({
             type: 'asset',
             name: fileName,
-            source: data,
+            source,
           });
 
           imageUrl = `__VITE_ASSET__${referenceId}__`;
@@ -90,7 +96,9 @@ export default function exportPlugin(
         };
       };
 
-      const emittedImages = input.images.map(createImageFile);
+      const emittedImages = await Promise.all(
+        input.images.map(createImageFile),
+      );
       const availableWidths = input.images
         .map((i) => i.width)
         .filter(onlyUnique);

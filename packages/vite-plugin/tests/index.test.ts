@@ -46,26 +46,34 @@ test('it produces expected output', async () => {
 
   expect(source).toMatchSnapshot();
 
-  expect(assets.map((a) => a.fileName)).toEqual([
-    'images/image-640w.png',
-    'images/image-640w.webp',
-    'images/image-750w.png',
-    'images/image-750w.webp',
-    'images/image-828w.png',
-    'images/image-828w.webp',
-    'images/image-1080w.png',
-    'images/image-1080w.webp',
-    'images/image-1200w.png',
-    'images/image-1200w.webp',
-    'images/image-1920w.png',
-    'images/image-1920w.webp',
-    'images/image-2048w.png',
-    'images/image-2048w.webp',
-    'images/image-3840w.png',
-    'images/image-3840w.webp',
-  ]);
+  const sortedAssets = assets.toSorted((a, b) =>
+    a.fileName.localeCompare(b.fileName),
+  );
 
-  expect(assets[0].source).toMatchImageSnapshot();
+  expect(sortedAssets.map((a) => a.fileName)).toEqual(
+    [
+      'images/image-640w.png',
+      'images/image-640w.webp',
+      'images/image-750w.png',
+      'images/image-750w.webp',
+      'images/image-828w.png',
+      'images/image-828w.webp',
+      'images/image-1080w.png',
+      'images/image-1080w.webp',
+      'images/image-1200w.png',
+      'images/image-1200w.webp',
+      'images/image-1920w.png',
+      'images/image-1920w.webp',
+      'images/image-2048w.png',
+      'images/image-2048w.webp',
+      'images/image-3840w.png',
+      'images/image-3840w.webp',
+    ].sort(),
+  );
+
+  expect(
+    assets.find((a) => a.fileName === 'images/image-640w.png')?.source,
+  ).toMatchImageSnapshot();
 });
 
 test('custom loader options are supported', async () => {

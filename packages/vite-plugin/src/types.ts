@@ -52,15 +52,21 @@ export interface ImageProcessingResult {
   format: ImageType;
 }
 
+export interface LazyImageProcessingResult {
+  data: () => Promise<Buffer>;
+  width: number;
+  format: ImageType;
+}
+
 export interface ImageLoaderChainedResult {
   lqip?: LqipInline | LqipColor | LqipBlurhash;
-  images: ImageProcessingResult[];
+  images: LazyImageProcessingResult[];
   sharp: Sharp;
   imports: string[];
   sharpMeta?: Metadata;
 }
 
 export interface ServedImageData {
-  data: Buffer;
+  data: () => Promise<Buffer>;
   format: ImageType;
 }

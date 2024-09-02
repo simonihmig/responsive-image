@@ -28,7 +28,7 @@ export default function servePlugin(
     },
 
     configureServer(server) {
-      server.middlewares.use((req, res, next) => {
+      server.middlewares.use(async (req, res, next) => {
         if (req.url?.startsWith(basePath)) {
           let [, id] = req.url.split(basePath);
           id = decodeURI(id);
@@ -36,13 +36,13 @@ export default function servePlugin(
           const imageEntry = getServedImageData(id);
 
           if (!imageEntry) {
-            throw new Error(`No responsive image found for ID "${id}".`);
+            return next(new Error(`No responsive image found for ID "${id}".`));
           }
 
           const { data, format } = imageEntry;
 
           res.setHeader('Content-Type', `image/${format}`);
-          return Readable.from(data).pipe(res);
+          return Readable.from(await data()).pipe(res);
         }
 
         next();

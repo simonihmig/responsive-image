@@ -5,6 +5,7 @@ import { Plugin } from 'vite';
 import type {
   ImageLoaderChainedResult,
   ImageProcessingResult,
+  LazyImageProcessingResult,
   Options,
   OutputImageType,
 } from './types';
@@ -68,26 +69,42 @@ export default function resizePlugin(
 async function generateResizedImage(
   image: Sharp,
   config: ImageConfig,
-): Promise<ImageProcessingResult> {
-  const imagetools = await import('imagetools-core');
+): Promise<LazyImageProcessingResult> {
+  const { w, format } = config;
 
-  const { transforms } = imagetools.generateTransforms(
-    config,
-    imagetools.builtins,
-    new URLSearchParams(),
-  );
+  if (typeof w !== 'string') {
+    throw new Error(
+      'Expected width to be in image config. Looks like an internal bug in @responsive-image/vite-plugin.',
+    );
+  }
 
-  const { image: resizedImage, metadata } = await imagetools.applyTransforms(
-    transforms,
-    image,
-  );
+  if (typeof format !== 'string') {
+    throw new Error(
+      'Expected format to be in image config. Looks like an internal bug in @responsive-image/vite-plugin.',
+    );
+  }
 
-  const data = await resizedImage.toBuffer();
+  const data = async () => {
+    const imagetools = await import('imagetools-core');
+
+    const { transforms } = imagetools.generateTransforms(
+      config,
+      imagetools.builtins,
+      new URLSearchParams(),
+    );
+
+    const { image: resizedImage } = await imagetools.applyTransforms(
+      transforms,
+      image,
+    );
+
+    return resizedImage.toBuffer();
+  };
 
   return {
     data,
-    width: metadata.width!,
-    format: metadata.format as ImageType,
+    width: parseInt(w, 10),
+    format: format as ImageType,
   };
 }
 
