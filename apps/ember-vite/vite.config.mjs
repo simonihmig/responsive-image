@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 import {
   resolver,
   hbs,
@@ -8,26 +8,27 @@ import {
   compatPrebuild,
   assets,
   contentFor,
-} from '@embroider/vite';
-import { resolve } from 'path';
-import { babel } from '@rollup/plugin-babel';
+} from "@embroider/vite";
+import { resolve } from "path";
+import { setupPlugins } from "@responsive-image/vite-plugin";
+import { babel } from "@rollup/plugin-babel";
 
-const root = 'tmp/rewritten-app';
+const root = "tmp/rewritten-app";
 const extensions = [
-  '.mjs',
-  '.gjs',
-  '.js',
-  '.mts',
-  '.gts',
-  '.ts',
-  '.hbs',
-  '.json',
+  ".mjs",
+  ".gjs",
+  ".js",
+  ".mts",
+  ".gts",
+  ".ts",
+  ".hbs",
+  ".json",
 ];
 
 export default defineConfig(({ mode }) => {
   return {
     root,
-    cacheDir: resolve('node_modules', '.vite'),
+    cacheDir: resolve("node_modules", ".vite"),
     resolve: {
       extensions,
     },
@@ -41,25 +42,29 @@ export default defineConfig(({ mode }) => {
       contentFor(),
 
       babel({
-        babelHelpers: 'runtime',
+        babelHelpers: "runtime",
         extensions,
+      }),
+
+      setupPlugins({
+        include: /^[^?]+\.jpg(\?.*)?$/,
       }),
     ],
     optimizeDeps: optimizeDeps(),
-    publicDir: resolve(process.cwd(), 'public'),
+    publicDir: resolve(process.cwd(), "public"),
     server: {
       port: 4200,
       watch: {
-        ignored: ['!**/tmp/rewritten-app/**'],
+        ignored: ["!**/tmp/rewritten-app/**"],
       },
     },
     build: {
-      outDir: resolve(process.cwd(), 'dist'),
+      outDir: resolve(process.cwd(), "dist"),
       rollupOptions: {
         input: {
-          main: resolve(root, 'index.html'),
+          main: resolve(root, "index.html"),
           ...(shouldBuildTests(mode)
-            ? { tests: resolve(root, 'tests/index.html') }
+            ? { tests: resolve(root, "tests/index.html") }
             : undefined),
         },
       },
@@ -68,5 +73,5 @@ export default defineConfig(({ mode }) => {
 });
 
 function shouldBuildTests(mode) {
-  return mode !== 'production' || process.env.FORCE_BUILD_TESTS;
+  return mode !== "production" || process.env.FORCE_BUILD_TESTS;
 }
