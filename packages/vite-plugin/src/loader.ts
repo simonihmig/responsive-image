@@ -1,5 +1,5 @@
 import { createFilter } from '@rollup/pluginutils';
-import { Plugin } from 'vite';
+import type { Plugin } from 'vite';
 import type { Options } from './types';
 import { META_KEY, normalizeInput } from './utils';
 
