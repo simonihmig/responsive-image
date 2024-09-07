@@ -18,8 +18,9 @@ export default function lqipColorCssPlugin(
         return null;
       }
 
+      // return the same module id to make vite think this file exists and is a .css file
+      // we will load the actually existing file without .css in the load hook
       return source;
-      // return source.replace(/\.css\?/, '?');
     },
     async load(id) {
       const { className, _plugin } = parseQuery(parseURL(id).searchParams);
