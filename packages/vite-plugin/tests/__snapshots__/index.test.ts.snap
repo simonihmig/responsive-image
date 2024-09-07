@@ -54,6 +54,33 @@ console.log(s);
 "
 `;
 
+exports[`LQIP > inline LQIP is supported 1`] = `
+"function o(t, n, a) {
+  const r = t.map((e) => e.width).reduce((e, i) => i >= n && e >= n ? i >= e ? e : i : i >= e ? i : e, 0);
+  return t.find(
+    (e) => e.width === r && e.format === a
+  );
+}
+const m = /* @__PURE__ */ new Map();
+function c(t) {
+  return m.get(t);
+}
+var g;
+(g = c("env")) == null || g.deviceWidths;
+const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], s = {
+  imageTypes: ["jpeg", "webp"],
+  availableWidths: [100, 200],
+  lqip: { type: "inline", class: "eri-dyn-0" },
+  aspectRatio: 2,
+  imageUrlFor(t, n) {
+    var a;
+    return (a = o(p, t, n ?? "jpeg")) == null ? void 0 : a.url;
+  }
+};
+console.log(s);
+"
+`;
+
 exports[`custom loader options are supported 1`] = `
 "function a(n, e, g) {
   const r = n.map((t) => t.width).reduce((t, i) => i >= e && t >= e ? i >= t ? t : i : i >= t ? i : t, 0);
