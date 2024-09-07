@@ -7,6 +7,7 @@ import {
   getOptions,
   getPathname,
 } from '../utils';
+import { name as colorCssPluginName } from './color-css';
 
 export default function lqipColorPlugin(
   userOptions: Partial<Options> = {},
@@ -31,7 +32,7 @@ export default function lqipColorPlugin(
       const className = generateLqipClassName(id);
       const importCSS = `${
         pathname
-      }.css?_plugin=@responsive-image/webpack/lqip/color-css&className=${encodeURIComponent(className)}`;
+      }.css?_plugin=${colorCssPluginName}&className=${encodeURIComponent(className)}`;
 
       const result = {
         ...input,
