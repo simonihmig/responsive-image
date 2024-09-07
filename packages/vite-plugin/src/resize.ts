@@ -1,7 +1,7 @@
 import type { ImageType } from '@responsive-image/core';
 import { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
-import { Plugin } from 'vite';
+import type { Plugin } from 'vite';
 import type {
   ImageLoaderChainedResult,
   LazyImageProcessingResult,

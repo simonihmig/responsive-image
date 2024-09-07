@@ -8,8 +8,6 @@ import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup';
 
 const _dirname = dirname(fileURLToPath(import.meta.url));
 
-const imageExtensions = ['.jps', '.jpeg', '.png', '.webp', '.avif'];
-
 function entryFile(source: string): Plugin {
   let id: string;
 
@@ -53,11 +51,6 @@ export async function compile(
       },
       write: false,
       modulePreload: { polyfill: false },
-      rollupOptions: {
-        output: {
-          assetFileNames: `images/[name].[ext]`,
-        },
-      },
     },
     plugins: [entryFile(source), setupPlugins(options)],
   })) as RollupOutput | RollupOutput[];
@@ -75,9 +68,7 @@ export async function compile(
   }
 
   const assets = bundle.output
-    .filter((chunk): chunk is OutputAsset =>
-      imageExtensions.some((ext) => chunk.fileName.endsWith(ext)),
-    )
+    .filter((chunk): chunk is OutputAsset => chunk.type === 'asset')
     .toSorted((a, b) => a.fileName.localeCompare(b.fileName));
 
   return {

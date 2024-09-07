@@ -1,6 +1,6 @@
 import { encode } from 'blurhash';
 import type { Metadata } from 'sharp';
-import { Plugin } from 'vite';
+import type { Plugin } from 'vite';
 import type { Options } from '../types';
 import { META_KEY, getAspectRatio, getInput, getOptions } from '../utils';
 

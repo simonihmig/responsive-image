@@ -27,6 +27,11 @@ export function parseURL(id: string) {
   return new URL(id, 'file://');
 }
 
+export function getPathname(id: string) {
+  const url = parseURL(id);
+  return decodeURIComponent(url.pathname);
+}
+
 export function parseQuery(query: string | URLSearchParams): Partial<Options> {
   const params =
     query instanceof URLSearchParams ? query : new URLSearchParams(query);
@@ -99,12 +104,9 @@ export function normalizeInput(
   input: string | ImageLoaderChainedResult,
 ): ImageLoaderChainedResult {
   if (typeof input === 'string') {
-    const url = parseURL(input);
-    const pathname = decodeURIComponent(url.pathname);
-
     return {
       images: [],
-      sharp: sharp(pathname),
+      sharp: sharp(getPathname(input)),
       imports: [],
     };
   }
