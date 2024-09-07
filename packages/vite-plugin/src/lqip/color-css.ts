@@ -1,7 +1,7 @@
 import sharp from 'sharp';
 import type { Plugin } from 'vite';
 import type { Options } from '../types';
-import { parseQuery, parseURL } from '../utils';
+import { getPathname, parseQuery, parseURL } from '../utils';
 
 export const name = 'responsive-image/lqip/color-css';
 
@@ -32,7 +32,7 @@ export default function lqipColorCssPlugin(
         throw new Error('Missing className');
       }
 
-      const file = id.replace(/\.css$/, '');
+      const file = getPathname(id).replace(/\.css$/, '');
       const image = sharp(file);
       const { dominant } = await image.stats();
       const colorHex =

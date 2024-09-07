@@ -48,27 +48,27 @@ test('it produces expected output', async () => {
 
   expect(assets.map((a) => a.fileName)).toEqual(
     [
-      'images/image-640w.png',
-      'images/image-640w.webp',
-      'images/image-750w.png',
-      'images/image-750w.webp',
-      'images/image-828w.png',
-      'images/image-828w.webp',
-      'images/image-1080w.png',
-      'images/image-1080w.webp',
-      'images/image-1200w.png',
-      'images/image-1200w.webp',
-      'images/image-1920w.png',
-      'images/image-1920w.webp',
-      'images/image-2048w.png',
-      'images/image-2048w.webp',
-      'images/image-3840w.png',
-      'images/image-3840w.webp',
+      'image-640w.png',
+      'image-640w.webp',
+      'image-750w.png',
+      'image-750w.webp',
+      'image-828w.png',
+      'image-828w.webp',
+      'image-1080w.png',
+      'image-1080w.webp',
+      'image-1200w.png',
+      'image-1200w.webp',
+      'image-1920w.png',
+      'image-1920w.webp',
+      'image-2048w.png',
+      'image-2048w.webp',
+      'image-3840w.png',
+      'image-3840w.webp',
     ].sort(),
   );
 
   expect(
-    assets.find((a) => a.fileName === 'images/image-640w.png')?.source,
+    assets.find((a) => a.fileName === 'image-640w.png')?.source,
   ).toMatchImageSnapshot();
 });
 
@@ -83,8 +83,8 @@ test('custom loader options are supported', async () => {
   expect(source).toMatchSnapshot();
 
   expect(assets.toSorted().map((a) => a.fileName)).toEqual([
-    'images/test-100.png',
-    'images/test-200.png',
+    'test-100.png',
+    'test-200.png',
   ]);
 
   for (const image of assets) {
@@ -100,8 +100,8 @@ test('custom query params are supported', async () => {
   expect(source).toMatchSnapshot();
 
   expect(assets.map((a) => a.fileName)).toEqual([
-    'images/image-100w.png',
-    'images/image-200w.png',
+    'image-100w.png',
+    'image-200w.png',
   ]);
 
   for (const image of assets) {
@@ -120,8 +120,8 @@ test('imagetools params are supported', async () => {
   expect(source).toMatchSnapshot();
 
   expect(assets.map((a) => a.fileName)).toEqual([
-    'images/image-100w.png',
-    'images/image-200w.png',
+    'image-100w.png',
+    'image-200w.png',
   ]);
 
   for (const image of assets) {
@@ -129,22 +129,30 @@ test('imagetools params are supported', async () => {
   }
 });
 
-describe('LQIP', function () {
-  //   test('color LQIP is supported', async () => {
-  //     const { stats } = await compiler(
-  //       'fixtures/image.jpg?responsive',
-  //       _dirname,
-  //       {
-  //         lqip: { type: 'color' },
-  //       },
-  //     );
+describe('LQIP', async () => {
+  test('color LQIP is supported', async () => {
+    const { source, assets } = await compile('image.jpg', {
+      include: '**/*.jpg',
+      w: [100, 200],
+      lqip: { type: 'color' },
+    });
 
-  //     expect(stats.modules).toBeDefined();
-  //     expect(stats.modules![0]?.modules).toHaveLength(3);
+    expect(assets.map((a) => a.fileName)).toEqual([
+      'image-100w.jpg',
+      'image-100w.webp',
+      'image-200w.jpg',
+      'image-200w.webp',
+      'style.css',
+    ]);
 
-  //     const output = stats.modules?.[0]?.modules?.[0]?.source;
-  //     expect(sanitizeOutput(output)).toMatchSnapshot();
-  //   });
+    expect(source).toMatchSnapshot();
+
+    const style = assets.find((a) => a.fileName === 'style.css');
+    expect(style?.source).toMatchInlineSnapshot(`
+      ".eri-dyn-0{background-color:#584838}
+      "
+    `);
+  });
 
   //   test('inline LQIP is supported', async () => {
   //     const { stats } = await compiler(
