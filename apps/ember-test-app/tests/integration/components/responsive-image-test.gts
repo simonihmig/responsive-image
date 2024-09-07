@@ -14,15 +14,6 @@ import smallImage from "ember-test-app/images/tests/image.jpg?w=10;25&format=ori
 import type { RenderingTestContext } from "@ember/test-helpers";
 import { env } from "@responsive-image/core";
 
-interface TestContext extends RenderingTestContext {
-  cacheBreaker: () => string;
-  testImage: ImageData;
-  testImageLqipInline: ImageData;
-  testImageLqipColor: ImageData;
-  testImageLqipBlurhash: ImageData;
-  smallImage: ImageData;
-}
-
 const cacheBreaker = () => new Date().getTime() + "#" + Math.random();
 
 module("Integration: Responsive Image Component", function (hooks) {
@@ -31,7 +22,7 @@ module("Integration: Responsive Image Component", function (hooks) {
   module("source from local files", function () {
     module("responsive layout", function () {
       test("it has responsive layout by default", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{testImage}} /></template>,
         );
 
@@ -40,7 +31,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders width and height attributes", async function (this: RenderingTestContext, assert) {
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{testImage}} /></template>,
         );
 
@@ -60,7 +51,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders the correct sourceset with width descriptors", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{testImage}} /></template>,
         );
 
@@ -124,7 +115,7 @@ module("Integration: Responsive Image Component", function (hooks) {
             new RegExp("/images/image-50w(-\\w+)?.avif 50w"),
           );
 
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{smallImage}} /></template>,
         );
         // png
@@ -173,28 +164,28 @@ module("Integration: Responsive Image Component", function (hooks) {
       // Blocked on https://github.com/embroider-build/ember-auto-import/issues/503
       skip("it renders the fallback src next to needed display size", async function (assert) {
         env.physicalWidth = 45;
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{testImage}} /></template>,
         );
         assert
           .dom("img")
           .hasAttribute("src", new RegExp("/images/image-50w(-\\w+)?.jpg"));
         env.physicalWidth = 51;
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{testImage}} /></template>,
         );
         assert
           .dom("img")
           .hasAttribute("src", new RegExp("/images/image-100w(-\\w+)?.jpg"));
         env.physicalWidth = 9;
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{smallImage}} /></template>,
         );
         assert
           .dom("img")
           .hasAttribute("src", new RegExp("/images/image-10w(-\\w+)?.jpg"));
         env.physicalWidth = 11;
-        await render<TestContext>(
+        await render(
           <template><ResponsiveImage @src={{smallImage}} /></template>,
         );
         assert
@@ -203,7 +194,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders a given size as sizes", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @src={{testImage}} @size={{40}} />
           </template>,
@@ -217,7 +208,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders with given sizes", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage
               @src={{testImage}}
@@ -236,7 +227,7 @@ module("Integration: Responsive Image Component", function (hooks) {
 
     module("fixed layout", function () {
       test("it has fixed layout when width or height is provided", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @src={{testImage}} @width={{100}} />
           </template>,
@@ -245,7 +236,7 @@ module("Integration: Responsive Image Component", function (hooks) {
         assert.dom("img").hasClass("eri-fixed");
         assert.dom("img").hasNoClass("eri-responsive");
 
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @src={{testImage}} @height={{100}} />
           </template>,
@@ -256,7 +247,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders width and height when given", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @src={{testImage}} @width={{150}} @height={{50}} />
           </template>,
@@ -267,7 +258,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders height when width is given according to aspect ratio", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @src={{testImage}} @width={{150}} />
           </template>,
@@ -278,7 +269,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders width when height is given according to aspect ratio", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @src={{testImage}} @height={{100}} />
           </template>,
@@ -289,7 +280,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders the correct sourceset with pixel densities", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @width={{50}} @src={{testImage}} />
           </template>,
@@ -336,7 +327,7 @@ module("Integration: Responsive Image Component", function (hooks) {
             new RegExp("/images/image-50w(-\\w+)?.avif 1x"),
           );
 
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @width={{10}} @src={{smallImage}} />
           </template>,
@@ -385,7 +376,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders the fallback src next to needed display size", async function (assert) {
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @width={{320}} @src={{testImage}} />
           </template>,
@@ -394,7 +385,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           .dom("img")
           .hasAttribute("src", new RegExp("/images/image-640w(-\\w+)?.jpg"));
 
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @width={{101}} @src={{testImage}} />
           </template>,
@@ -403,7 +394,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           .dom("img")
           .hasAttribute("src", new RegExp("/images/image-640w(-\\w+)?.jpg"));
 
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @width={{100}} @src={{testImage}} />
           </template>,
@@ -412,7 +403,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           .dom("img")
           .hasAttribute("src", new RegExp("/images/image-100w(-\\w+)?.jpg"));
 
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @width={{51}} @src={{testImage}} />
           </template>,
@@ -421,7 +412,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           .dom("img")
           .hasAttribute("src", new RegExp("/images/image-100w(-\\w+)?.jpg"));
 
-        await render<TestContext>(
+        await render(
           <template>
             <ResponsiveImage @width={{50}} @src={{testImage}} />
           </template>,
@@ -787,9 +778,7 @@ module("Integration: Responsive Image Component", function (hooks) {
   });
 
   test("it renders a source for every format", async function (assert) {
-    await render<TestContext>(
-      <template><ResponsiveImage @src={{testImage}} /></template>,
-    );
+    await render(<template><ResponsiveImage @src={{testImage}} /></template>);
 
     assert.dom("picture").exists({ count: 1 });
     assert.dom("picture source").exists({ count: 3 });
@@ -798,14 +787,12 @@ module("Integration: Responsive Image Component", function (hooks) {
   });
 
   test("it loads lazily by default", async function (assert) {
-    await render<TestContext>(
-      <template><ResponsiveImage @src={{testImage}} /></template>,
-    );
+    await render(<template><ResponsiveImage @src={{testImage}} /></template>);
     assert.dom("img").hasAttribute("loading", "lazy");
   });
 
   test("it can optionally load eager", async function (assert) {
-    await render<TestContext>(
+    await render(
       <template>
         <ResponsiveImage @src={{testImage}} loading="eager" />
       </template>,
@@ -814,14 +801,12 @@ module("Integration: Responsive Image Component", function (hooks) {
   });
 
   test("it decodes async", async function (assert) {
-    await render<TestContext>(
-      <template><ResponsiveImage @src={{testImage}} /></template>,
-    );
+    await render(<template><ResponsiveImage @src={{testImage}} /></template>);
     assert.dom("img").hasAttribute("decoding", "async");
   });
 
   test("it renders arbitrary HTML attributes", async function (assert) {
-    await render<TestContext>(
+    await render(
       <template>
         <ResponsiveImage
           @src={{testImage}}

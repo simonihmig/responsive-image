@@ -1,13 +1,9 @@
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
-import { render, type RenderingTestContext } from "@ember/test-helpers";
+import { render } from "@ember/test-helpers";
 import { array, hash } from "@ember/helper";
 import responsiveImageImgixProvider from "@responsive-image/ember/helpers/responsive-image-imgix-provider";
 import type { ImageData } from "@responsive-image/ember";
-
-interface TestContext extends RenderingTestContext {
-  dump: (argument: ImageData) => void;
-}
 
 module(
   "Integration | Helper | responsive-image-imgix-provider",
@@ -19,7 +15,7 @@ module(
     };
 
     test("it supports jpg, png and webp image types", async function (assert) {
-      await render<TestContext>(
+      await render(
         <template>
           {{dump (responsiveImageImgixProvider "foo/bar.jpg")}}
         </template>,
@@ -29,7 +25,7 @@ module(
     });
 
     test("it returns correct image URLs", async function (assert) {
-      await render<TestContext>(
+      await render(
         <template>
           {{dump (responsiveImageImgixProvider "foo/bar.jpg")}}
         </template>,
@@ -52,7 +48,7 @@ module(
     });
 
     test("it supports custom params", async function (assert) {
-      await render<TestContext>(
+      await render(
         <template>
           {{dump
             (responsiveImageImgixProvider
@@ -69,7 +65,7 @@ module(
     });
 
     test("it supports custom image formats", async function (assert) {
-      await render<TestContext>(
+      await render(
         <template>
           {{dump
             (responsiveImageImgixProvider
@@ -83,7 +79,7 @@ module(
     });
 
     test("it supports custom quality setting", async function (assert) {
-      await render<TestContext>(
+      await render(
         <template>
           {{dump (responsiveImageImgixProvider "foo/bar.jpg" quality=50)}}
         </template>,
