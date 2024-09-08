@@ -28,5 +28,12 @@
     "node": "20.17.0",
     "pnpm": "9.0.4"
   },
-  "packageManager": "pnpm@9.0.4"
+  "packageManager": "pnpm@9.0.4",
+  "packageExtensions": {
+    "ember-cli-fastboot-testing": {
+      "peerDependencies": {
+        "@ember/test-helpers": "^4.0.4"
+      }
+    }
+  }
 }
