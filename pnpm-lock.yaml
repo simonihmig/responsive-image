@@ -296,7 +296,7 @@ importers:
         version: 4.0.1-unstable.eb93cd5(@embroider/compat@3.5.7-unstable.eb93cd5(@embroider/core@3.4.15-unstable.eb93cd5(@glint/template@1.4.0))(@glint/template@1.4.0))(@embroider/core@3.4.15-unstable.eb93cd5(@glint/template@1.4.0))(@embroider/webpack@3.2.3(@embroider/core@3.4.15-unstable.eb93cd5(@glint/template@1.4.0))(webpack@5.94.0))
       '@embroider/vite':
         specifier: 0.2.1-unstable.eb93cd5
-        version: 0.2.1-unstable.eb93cd5(@embroider/core@3.4.15-unstable.eb93cd5(@glint/template@1.4.0))(@glint/template@1.4.0)(vite@5.4.2(@types/node@20.16.5)(terser@5.31.1))
+        version: 0.2.1-unstable.eb93cd5(@embroider/core@3.4.15-unstable.eb93cd5(@glint/template@1.4.0))(@glint/template@1.4.0)(vite@5.4.3(@types/node@20.16.5)(terser@5.31.1))
       '@glimmer/component':
         specifier: 1.1.2
         version: 1.1.2(@babel/core@7.25.2)
@@ -397,8 +397,8 @@ importers:
         specifier: 3.3.0
         version: 3.3.0
       vite:
-        specifier: 5.4.2
-        version: 5.4.2(@types/node@20.16.5)(terser@5.31.1)
+        specifier: 5.4.3
+        version: 5.4.3(@types/node@20.16.5)(terser@5.31.1)
       webpack:
         specifier: 5.94.0
         version: 5.94.0
@@ -973,8 +973,8 @@ importers:
         specifier: 5.5.4
         version: 5.5.4
       vite:
-        specifier: 5.4.2
-        version: 5.4.2(@types/node@20.16.5)(terser@5.31.1)
+        specifier: 5.4.3
+        version: 5.4.3(@types/node@20.16.5)(terser@5.31.1)
       vitest:
         specifier: 1.6.0
         version: 1.6.0(@types/node@20.16.5)(jsdom@19.0.0)(terser@5.31.1)
@@ -9065,8 +9065,8 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite@5.4.2:
-    resolution: {integrity: sha512-dDrQTRHp5C1fTFzcSaMxjk6vdpKvT+2/mIdE07Gw2ykehT49O0z/VHS3zZ8iV/Gh8BJJKHWOe5RjaNrW5xf/GA==}
+  vite@5.4.3:
+    resolution: {integrity: sha512-IH+nl64eq9lJjFqU+/yrRnrHPVTlgy42/+IzbOdaFDVlyLgI/wDlf+FCobXLX1cT0X5+7LMyH1mIy2xJdLfo8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -11039,7 +11039,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@0.2.1-unstable.eb93cd5(@embroider/core@3.4.15-unstable.eb93cd5(@glint/template@1.4.0))(@glint/template@1.4.0)(vite@5.4.2(@types/node@20.16.5)(terser@5.31.1))':
+  '@embroider/vite@0.2.1-unstable.eb93cd5(@embroider/core@3.4.15-unstable.eb93cd5(@glint/template@1.4.0))(@glint/template@1.4.0)(vite@5.4.3(@types/node@20.16.5)(terser@5.31.1))':
     dependencies:
       '@babel/core': 7.25.2
       '@embroider/core': 3.4.15-unstable.eb93cd5(@glint/template@1.4.0)
@@ -11055,7 +11055,7 @@ snapshots:
       send: 0.18.0
       source-map-url: 0.4.1
       terser: 5.31.1
-      vite: 5.4.2(@types/node@20.16.5)(terser@5.31.1)
+      vite: 5.4.3(@types/node@20.16.5)(terser@5.31.1)
     transitivePeerDependencies:
       - '@glint/template'
       - bufferutil
@@ -19719,7 +19719,7 @@ snapshots:
     dependencies:
       browserslist: 4.23.1
       escalade: 3.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   uri-js@4.4.1:
     dependencies:
@@ -19768,7 +19768,7 @@ snapshots:
       debug: 4.3.5(supports-color@8.1.1)
       pathe: 1.1.2
       picocolors: 1.0.1
-      vite: 5.4.2(@types/node@20.16.5)(terser@5.31.1)
+      vite: 5.4.3(@types/node@20.16.5)(terser@5.31.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -19780,7 +19780,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.2(@types/node@20.16.5)(terser@5.31.1):
+  vite@5.4.3(@types/node@20.16.5)(terser@5.31.1):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.44
@@ -19809,7 +19809,7 @@ snapshots:
       strip-literal: 2.1.0
       tinybench: 2.8.0
       tinypool: 0.8.4
-      vite: 5.4.2(@types/node@20.16.5)(terser@5.31.1)
+      vite: 5.4.3(@types/node@20.16.5)(terser@5.31.1)
       vite-node: 1.6.0(@types/node@20.16.5)(terser@5.31.1)
       why-is-node-running: 2.2.2
     optionalDependencies:
