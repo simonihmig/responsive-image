@@ -13,10 +13,10 @@ module.exports = {
       root: __dirname,
     },
   },
-  plugins: ['ember'],
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   env: {
-    browser: true,
+    browser: false,
+    node: true,
   },
   rules: {},
   overrides: [
@@ -31,18 +31,13 @@ module.exports = {
         // Add any custom rules here
       },
     },
-    // node files
+    // config files
     {
       files: ['./.eslintrc.js', './.prettierrc.js', 'jest.config.js'],
       parserOptions: {
         sourceType: 'script',
       },
-      env: {
-        browser: false,
-        node: true,
-      },
-      plugins: ['node'],
-      extends: ['plugin:node/recommended'],
+      extends: ['plugin:n/recommended'],
     },
   ],
 };
