@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index d78ba4f5f3c634e281fc772d1c915845a726e6cb..228684d1e5c4240f61e71aa9ac873ba6ec8eb856 100644
+--- a/package.json
++++ b/package.json
+@@ -92,6 +92,7 @@
+     "webpack": "^5.75.0"
+   },
+   "peerDependencies": {
++    "@ember/test-helpers": "^4.0.4",
+     "ember-source": "^3.28.0 || ^4.0.0 || ^5.0.0"
+   },
+   "engines": {
