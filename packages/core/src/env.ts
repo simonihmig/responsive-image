@@ -7,7 +7,7 @@ export interface EnvConfig {
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 const devicePixelRatio =
-  typeof window !== 'undefined' ? window?.devicePixelRatio ?? 1 : 1;
+  typeof window !== 'undefined' ? (window?.devicePixelRatio ?? 1) : 1;
 const physicalWidth = screenWidth * devicePixelRatio;
 const deviceWidths = getConfig<EnvConfig>('env')?.deviceWidths ?? [
   640, 750, 828, 1080, 1200, 1920, 2048, 3840,
