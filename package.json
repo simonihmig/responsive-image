@@ -29,11 +29,16 @@
     "pnpm": "9.0.4"
   },
   "packageManager": "pnpm@9.0.4",
-  "packageExtensions": {
-    "ember-cli-fastboot-testing": {
-      "peerDependencies": {
-        "@ember/test-helpers": "^4.0.4"
+  "pnpm": {
+    "packageExtensions": {
+      "ember-cli-fastboot-testing": {
+        "peerDependencies": {
+          "@ember/test-helpers": "^4.0.4"
+        }
       }
+    },
+    "patchedDependencies": {
+      "ember-cli-fastboot-testing@0.6.1": "patches/ember-cli-fastboot-testing@0.6.1.patch"
     }
   }
 }
