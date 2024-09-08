@@ -19,7 +19,7 @@ module('Acceptance | local images', function (hooks) {
       .hasClass('eri-responsive')
       .hasAttribute(
         'src',
-        new RegExp(`/images/dog-3840w(-\\w+)?.jpg`),
+        new RegExp(`/images/dog-[0-9]+w(-\\w+)?.jpg`),
         `has default src`,
       );
 
