@@ -15,7 +15,7 @@ module(
       data = argument;
     };
 
-    test("it supports all image types", async function (this: TestContext, assert) {
+    test("it supports all image types", async function (assert) {
       await render(
         <template>
           {{dump
@@ -27,7 +27,7 @@ module(
       assert.deepEqual(data?.imageTypes, ["png", "jpeg", "webp", "avif"]);
     });
 
-    test("it returns correct upload image URLs", async function (this: TestContext, assert) {
+    test("it returns correct upload image URLs", async function (assert) {
       await render(
         <template>
           {{dump
@@ -52,7 +52,7 @@ module(
       );
     });
 
-    test("it returns correct fetch image URLs", async function (this: TestContext, assert) {
+    test("it returns correct fetch image URLs", async function (assert) {
       await render(
         <template>
           {{dump
@@ -79,7 +79,7 @@ module(
       );
     });
 
-    test("it supports custom transformations", async function (this: TestContext, assert) {
+    test("it supports custom transformations", async function (assert) {
       await render(
         <template>
           {{dump
@@ -97,7 +97,7 @@ module(
       );
     });
 
-    test("it supports custom chained transformations", async function (this: TestContext, assert) {
+    test("it supports custom chained transformations", async function (assert) {
       await render(
         <template>
           {{dump
@@ -119,7 +119,7 @@ module(
       );
     });
 
-    test("it supports custom image formats", async function (this: TestContext, assert) {
+    test("it supports custom image formats", async function (assert) {
       await render(
         <template>
           {{dump
@@ -133,7 +133,7 @@ module(
       assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
     });
 
-    test("it supports custom quality setting", async function (this: TestContext, assert) {
+    test("it supports custom quality setting", async function (assert) {
       await render(
         <template>
           {{dump
@@ -150,7 +150,7 @@ module(
       );
     });
 
-    test("it supports remote fetching", async function (this: TestContext, assert) {
+    test("it supports remote fetching", async function (assert) {
       await render(
         <template>
           {{dump

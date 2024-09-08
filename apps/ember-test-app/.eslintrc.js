@@ -32,8 +32,10 @@ module.exports = {
       parser: 'ember-eslint-parser',
       plugins: ['ember'],
       extends: [
+        'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:ember/recommended',
         'plugin:ember/recommended-gts',
       ],
     },

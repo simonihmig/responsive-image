@@ -432,7 +432,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           });
           const onload = () => setTimeout(resolve, 0);
 
-          await render<TestContext & { onload: () => void }>(
+          await render(
             <template>
               <ResponsiveImage
                 @src={{testImageLqipInline}}
@@ -475,7 +475,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           });
           const onload = () => setTimeout(resolve, 0);
 
-          await render<TestContext & { onload: () => void }>(
+          await render(
             <template>
               <ResponsiveImage
                 @src={{testImageLqipColor}}
@@ -504,7 +504,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           });
           const onload = () => setTimeout(resolve, 0);
 
-          await render<TestContext & { onload: () => void }>(
+          await render(
             <template>
               <ResponsiveImage
                 @src={{testImageLqipBlurhash}}
@@ -549,13 +549,9 @@ module("Integration: Responsive Image Component", function (hooks) {
       },
     };
 
-    interface TestContextWithDefaultProvider extends TestContext {
-      defaultImageData: ImageData;
-    }
-
     module("responsive layout", function () {
       test("it has responsive layout by default", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template><ResponsiveImage @src={{defaultImageData}} /></template>,
         );
 
@@ -568,7 +564,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           ...defaultImageData,
           aspectRatio: 2,
         };
-        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+        await render(
           <template><ResponsiveImage @src={{imageData}} /></template>,
         );
 
@@ -588,7 +584,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders the sourceset based on deviceWidths", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template><ResponsiveImage @src={{defaultImageData}} /></template>,
         );
 
@@ -621,7 +617,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           availableWidths: [320, 640],
         };
 
-        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+        await render(
           <template><ResponsiveImage @src={{imageData}} /></template>,
         );
 
@@ -645,7 +641,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       // Blocked on https://github.com/embroider-build/ember-auto-import/issues/503
       skip("it renders the fallback src next to needed display size", async function (assert) {
         env.physicalWidth = 100;
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template><ResponsiveImage @src={{defaultImageData}} /></template>,
         );
         assert
@@ -654,7 +650,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders a given size as sizes", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template>
             <ResponsiveImage @src={{defaultImageData}} @size={{40}} />
           </template>,
@@ -668,7 +664,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders with given sizes", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template>
             <ResponsiveImage
               @src={{defaultImageData}}
@@ -687,7 +683,7 @@ module("Integration: Responsive Image Component", function (hooks) {
 
     module("fixed layout", function () {
       test("it has fixed layout when width or height is provided", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template>
             <ResponsiveImage @src={{defaultImageData}} @width={{100}} />
           </template>,
@@ -698,7 +694,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders width and height when given", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template>
             <ResponsiveImage
               @src={{defaultImageData}}
@@ -717,7 +713,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           ...defaultImageData,
           aspectRatio: 2,
         };
-        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+        await render(
           <template>
             <ResponsiveImage @src={{imageData}} @width={{150}} />
           </template>,
@@ -732,7 +728,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           ...defaultImageData,
           aspectRatio: 2,
         };
-        await render<TestContextWithDefaultProvider & { imageData: ImageData }>(
+        await render(
           <template>
             <ResponsiveImage @src={{imageData}} @height={{100}} />
           </template>,
@@ -743,7 +739,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders the correct sourceset with pixel densities", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template>
             <ResponsiveImage @width={{50}} @src={{defaultImageData}} />
           </template>,
@@ -767,7 +763,7 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       test("it renders the fallback src next to needed display size", async function (assert) {
-        await render<TestContextWithDefaultProvider>(
+        await render(
           <template>
             <ResponsiveImage @width={{320}} @src={{defaultImageData}} />
           </template>,
