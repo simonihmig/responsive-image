@@ -10,5 +10,3 @@ export default class IndexController extends Controller {
   dogImageLqipInline = dogImageLqipInline;
   dogImageLqipBlurhash = dogImageLqipBlurhash;
 }
-
-export const raw = true;

@@ -1,13 +1,9 @@
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
-import { render, type RenderingTestContext } from "@ember/test-helpers";
+import { render } from "@ember/test-helpers";
 import { array, hash } from "@ember/helper";
 import responsiveImageCloudinaryProvider from "@responsive-image/ember/helpers/responsive-image-cloudinary-provider";
 import type { ImageData } from "@responsive-image/ember";
-
-interface TestContext extends RenderingTestContext {
-  dump: (argument: ImageData) => void;
-}
 
 module(
   "Integration | Helper | responsive-image-cloudinary-provider",
@@ -19,8 +15,8 @@ module(
       data = argument;
     };
 
-    test("it supports all image types", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it supports all image types", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider "samples/animals/three-dogs")
@@ -31,8 +27,8 @@ module(
       assert.deepEqual(data?.imageTypes, ["png", "jpeg", "webp", "avif"]);
     });
 
-    test("it returns correct upload image URLs", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it returns correct upload image URLs", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider "samples/animals/three-dogs")
@@ -56,8 +52,8 @@ module(
       );
     });
 
-    test("it returns correct fetch image URLs", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it returns correct fetch image URLs", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider
@@ -83,8 +79,8 @@ module(
       );
     });
 
-    test("it supports custom transformations", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it supports custom transformations", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider
@@ -101,8 +97,8 @@ module(
       );
     });
 
-    test("it supports custom chained transformations", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it supports custom chained transformations", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider
@@ -123,8 +119,8 @@ module(
       );
     });
 
-    test("it supports custom image formats", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it supports custom image formats", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider
@@ -137,8 +133,8 @@ module(
       assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
     });
 
-    test("it supports custom quality setting", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it supports custom quality setting", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider
@@ -154,8 +150,8 @@ module(
       );
     });
 
-    test("it supports remote fetching", async function (this: TestContext, assert) {
-      await render<TestContext>(
+    test("it supports remote fetching", async function (assert) {
+      await render(
         <template>
           {{dump
             (responsiveImageCloudinaryProvider
