@@ -108,50 +108,9 @@ export default defineConfig({
 
 Multiple image provider helpers are provided to support [remote images](../usage/remote-images.md) served from different image CDNs for use with the `<ResponsiveImage/>` component.
 
-::: code-group
+The `@responsive-image/ember` addon exposes these as globally available helpers (app-js) for use in classic `.hbs` files. When using template tag (`.gjs`/`.gts`) you can import there directly from the `@responsive-image/cdn` package.
 
-```hbs [Cloudinary]
-<ResponsiveImage
-  @src={{responsive-image-cloudinary-provider 'path/to/image.jpg'}}
-/>
-```
-
-```hbs [Imgix]
-<ResponsiveImage @src={{responsive-image-imgix-provider 'path/to/image.jpg'}} />
-```
-
-:::
-
-The helpers all expect the path to the image (as referred to by the CDN) as the first positional argument. The different _optional_ parameters supported by the respective CDN can be passed as named arguments to the helper:
-
-::: code-group
-
-```hbs [Cloudinary]
-<ResponsiveImage
-  @src={{responsive-image-cloudinary-provider
-    'path/to/uploaded/image.jpg'
-    transformations=(hash co='rgb:20a020' e='colorize:50')
-    quality=50
-    formats=(array 'webp' 'avif')
-  }}
-/>
-```
-
-```hbs [Imgix]
-<ResponsiveImage
-  @src={{responsive-image-imgix-provider
-    'path/to/image.jpg'
-    params=(hash monochrome='44768B' px=10)
-    quality=50
-    formats=(array 'webp' 'avif')
-  }}
-/>
-```
-
-:::
-
-> [!IMPORTANT]
-> Please refer to the [image CDN](../cdn/index.md) guide for details on all supported options of the respective image CDN.
+Please refer to the [image CDN](../cdn/index.md) guide for details on all supported options and examples of the respective image CDN.
 
 ### Configuration
 
@@ -163,8 +122,10 @@ Image CDNs will require some config like your basic account information to be se
 use strict';
 
 module.exports = {
-  '@responsive-image/cloudinary': {
-    cloudName: 'my-org',
+'@responsive-image/ember': {
+    cloudinary: {
+      cloudName: 'my-org',
+    },
   },
 };
 ```
@@ -173,8 +134,10 @@ module.exports = {
 'use strict';
 
 module.exports = {
-  '@responsive-image/imgix': {
-    domain: 'my-org.imgix.net',
+  '@responsive-image/ember': {
+    imgix: {
+      domain: 'my-org.imgix.net',
+    },
   },
 };
 ```
