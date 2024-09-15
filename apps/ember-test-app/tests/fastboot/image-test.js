@@ -13,7 +13,7 @@ module('FastBoot | image', function (hooks) {
     assert.dom('img[data-test-simple-image]').exists();
     assert
       .dom('img[data-test-simple-image]')
-      .hasAttribute('src', new RegExp('/images/image-640w(-\\w+)?.jpg'));
+      .hasAttribute('src', new RegExp('/images/aurora-640w(-\\w+)?.jpg'));
   });
 
   test('it renders lqip color', async function (assert) {
@@ -22,7 +22,7 @@ module('FastBoot | image', function (hooks) {
     assert.dom('img[data-test-lqip-image=color]').exists();
     assert
       .dom('img[data-test-lqip-image=color]')
-      .hasStyle({ 'background-color': 'rgb(88, 72, 56)' });
+      .hasStyle({ 'background-color': 'rgb(8, 56, 56)' });
   });
 
   test('it renders lqip inline', async function (assert) {
