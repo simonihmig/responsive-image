@@ -6,6 +6,7 @@ export default defineConfig({
   description: 'Documentation for the Responsive Image project',
   srcDir: './src',
   cleanUrls: true,
+  appearance: 'dark',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
