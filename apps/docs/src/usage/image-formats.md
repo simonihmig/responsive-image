@@ -12,23 +12,23 @@ A more detailed analysis can be found on [Jake Archibald's blog](https://jakearc
 ### JPEG
 
 Dimensions: 640px &times; 427px
-File size: **16KB**.
+File size: **30KB**.
 
-![a dog near the costline](../assets/dog640w.jpg)
+![Aurora Borealis](../assets/formats/aurora.jpg)
 
 ### WebP
 
 Dimensions: 640px &times; 427px
-File size: **10KB**.
+File size: **18KB**.
 
-![a dog near the costline](../assets/dog640w.webp)
+![Aurora Borealis](../assets/formats/aurora.webp)
 
 ### AVIF
 
 Dimensions: 640px &times; 427px
-File size: **7KB**.
+File size: **8KB**.
 
-![a dog near the costline](../assets/dog640w.avif)
+![Aurora Borealis](../assets/formats/aurora.avif)
 
 > [!WARNING]
 > Generating AVIF files can take a lot of time, as it is very CPU-intensive. Therefore

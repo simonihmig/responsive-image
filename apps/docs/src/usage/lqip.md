@@ -1,6 +1,8 @@
 # Low Quality Image Placeholders
 
-_Low Quality Image Placeholder_ is a technique to give users a preview of the image while it is loading. This library supports different types, all with their own tradeoffs. Based on the cute dog you saw before, you can see here how these different techniques will look like.
+_Low Quality Image Placeholder_ is a technique to give users a preview of the image while it is loading. This library supports different types, all with their own tradeoffs. Based on the image below, you can see here how these different techniques will look like.
+
+![original image](../assets/lqip/original.png)
 
 > [!NOTE]
 > This library only supports LQIP for [local images](./local-images.md). While you could also load a placeholder from a [remote](./remote-images.md) source like an image CDN, due to the additional network roundtrip the placeholder image will likely come too late to make a difference. The additional network connection might even delay loading the actual images.
@@ -10,7 +12,7 @@ _Low Quality Image Placeholder_ is a technique to give users a preview of the im
 This is the most basic technique, calculating the dominant color of the image, and setting it as the background color of the images while it loads.
 The "cost" is basically just a few bytes, for the CSS and the hex code of the color.
 
-![dominant color LQIP of a dog image](../assets/lqip-color.png)
+![dominant color LQIP](../assets/lqip/color.png)
 
 ### Usage
 
@@ -39,9 +41,9 @@ setupPlugins({
 ## Inline image
 
 This creates a very small thumbnail of the original image, wraps it into a SVG and applies a blurry filter. This is then
-set as a base64 encoded data-URL as the background of the image while it loads. The example below consumes 348 bytes (uncompressed).
+set as a base64 encoded data-URL as the background of the image while it loads. The example below consumes 624 bytes (uncompressed).
 
-![blurry LQIP of a dog image](../assets/lqip-inline.png)
+![blurry LQIP](../assets/lqip/inline.png)
 
 ### Usage
 
@@ -91,9 +93,9 @@ setupPlugins({
 
 ## BlurHash
 
-[BlurHash](https://blurha.sh/) is an encoding algorithm and library, dedicated for the very purpose of generating nice looking blurry placeholders, without the overhead of a real image format, which was never optimized for that kind of _tiny_ images. This example consumes just 40 bytes (uncompressed).
+[BlurHash](https://blurha.sh/) is an encoding algorithm and library, dedicated for the very purpose of generating nice looking blurry placeholders, without the overhead of a real image format, which was never optimized for that kind of _tiny_ images. This example consumes just 34 bytes (uncompressed).
 
-![blurry LQIP of a dog image](../assets/lqip-blurhash.png)
+![blurry LQIP](../assets/lqip/blurhash.png)
 
 But the tradeoff here is that it needs a runtime library for decoding, which takes about 4.7KB (1.9KB compressed). Therefore it
 is less suited if you have just a few images, but shines if you need placeholders for a lot!
