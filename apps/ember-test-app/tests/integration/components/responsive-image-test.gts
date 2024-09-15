@@ -38,6 +38,7 @@ module("Integration: Responsive Image Component", function (hooks) {
 
         assert.dom("img").hasAttribute("width");
         assert.dom("img").hasAttribute("height");
+        // @ts-expect-error closeTo is not types yet
         assert.closeTo(
           parseInt(
             this.element.querySelector("img")?.getAttribute("width") ?? "",
