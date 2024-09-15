@@ -32,4 +32,4 @@ File size: **8KB**.
 
 > [!WARNING]
 > Generating AVIF files can take a lot of time, as it is very CPU-intensive. Therefore
-> the format is currently not enabled by default in [build plugins](../build) for local images.
+> the format is currently not enabled by default in [build plugins](../build/index.md) for local images.
