@@ -23,7 +23,7 @@ The following example is using a `200px` wide [fixed layout](./component.md#fixe
 
 ```gjs [Ember]
 import { ResponsiveImage } from '@responsive-image/ember';
-import image from './image.jpg?responsive&w=200,400&quality=90&lqip=inline';
+import image from './image.jpg?w=200;400&quality=90&lqip=inline&responsive';
 
 <template>
   <ResponsiveImage @width={{200}} @src={{image}} />

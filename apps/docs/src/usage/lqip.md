@@ -74,7 +74,7 @@ The size of that placeholder image will be automatically calculated (taking into
 ::: code-group
 
 ```js [Import query params]
-import heroImage from './hero.jpg?responsive&lqip={"type":"inline","targetPixels":120}';
+import heroImage from './hero.jpg?lqip={"type":"inline","targetPixels":120}&responsive';
 ```
 
 ```js [Webpack global options]
@@ -107,7 +107,7 @@ You can opt into this LQIP mode either on a case by case basis by adding query p
 ::: code-group
 
 ```js [Import query params]
-import heroImage from './hero.jpg?responsive&lqip=blurhash';
+import heroImage from './hero.jpg?lqip=blurhash&responsive';
 ```
 
 ```js [Webpack global options]
