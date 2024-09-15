@@ -7,8 +7,8 @@ hero:
   text: 'The multi-framework JavaScript library for responsive images.'
   tagline: Responsive images made easy.
   image:
-    src: ./assets/aurora-home.webp
-    alt: VitePress
+    src: /aurora-home.webp
+    alt: Aurora Borealis
   actions:
     - theme: brand
       text: Getting started
