@@ -1,0 +1,19 @@
+{
+  "name": "docs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "VitePress app powering the docs",
+  "type": "module",
+  "scripts": {
+    "test": "vitepress build",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.3.1"
+  }
+}

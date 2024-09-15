@@ -2,7 +2,7 @@ import { render } from "@ember/test-helpers";
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
 import responsiveImageResolve from "@responsive-image/ember/helpers/responsive-image-resolve";
-import testImage from "ember-test-app/images/tests/test.png?&w=640;2048&responsive";
+import testImage from "ember-test-app/images/aurora.jpg?&w=640;2048&responsive";
 
 module("Helper: responsive-image-resolve", function (hooks) {
   setupRenderingTest(hooks);
@@ -13,7 +13,7 @@ module("Helper: responsive-image-resolve", function (hooks) {
         <h1>{{responsiveImageResolve testImage}}</h1>
       </template>,
     );
-    assert.dom("h1").hasText(new RegExp("/images/test-2048w(-\\w+)?.png"));
+    assert.dom("h1").hasText(new RegExp("/images/aurora-2048w(-\\w+)?.jpg"));
   });
 
   test("supports size", async function (assert) {
@@ -23,8 +23,7 @@ module("Helper: responsive-image-resolve", function (hooks) {
       </template>,
     );
 
-    // @todo use custom sizes for loader here
-    assert.dom("h1").hasText(new RegExp("/images/test-640w(-\\w+)?.png"));
+    assert.dom("h1").hasText(new RegExp("/images/aurora-640w(-\\w+)?.jpg"));
   });
 
   test("supports format", async function (assert) {
@@ -34,6 +33,6 @@ module("Helper: responsive-image-resolve", function (hooks) {
       </template>,
     );
 
-    assert.dom("h1").hasText(new RegExp("/images/test-2048w(-\\w+)?.webp"));
+    assert.dom("h1").hasText(new RegExp("/images/aurora-2048w(-\\w+)?.webp"));
   });
 });

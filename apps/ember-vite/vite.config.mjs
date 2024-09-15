@@ -47,7 +47,7 @@ export default defineConfig(({ mode }) => {
       }),
 
       setupPlugins({
-        include: /^[^?]+\.jpg(\?.*)?$/,
+        include: /^[^?]+\.jpg\?.*responsive.*$/,
       }),
     ],
     optimizeDeps: optimizeDeps(),

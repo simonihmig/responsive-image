@@ -26,7 +26,9 @@ async function process(file: string, className: string): Promise<string> {
   const image = sharp(file);
   const { dominant } = await image.stats();
   const colorHex =
-    dominant.r.toString(16) + dominant.g.toString(16) + dominant.b.toString(16);
+    dominant.r.toString(16).padStart(2, '0') +
+    dominant.g.toString(16).padStart(2, '0') +
+    dominant.b.toString(16).padStart(2, '0');
   const color = '#' + colorHex;
 
   const cssRule = `.${className} { background-color: ${color}; }`;
