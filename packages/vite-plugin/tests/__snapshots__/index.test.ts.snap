@@ -1,29 +1,29 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`LQIP > blurhash LQIP is supported 1`] = `
-"function o(t, a, g) {
-  const r = t.map((e) => e.width).reduce((e, i) => i >= a && e >= a ? i >= e ? e : i : i >= e ? i : e, 0);
-  return t.find(
-    (e) => e.width === r && e.format === g
+"function r(e, n, a) {
+  const o = e.map((t) => t.width).reduce((t, i) => i >= n && t >= n ? i >= t ? t : i : i >= t ? i : t, 0);
+  return e.find(
+    (t) => t.width === o && t.format === a
   );
 }
 const h = /* @__PURE__ */ new Map();
-function m(t) {
-  return h.get(t);
+function m(e) {
+  return h.get(e);
 }
-var n;
-(n = m("env")) == null || n.deviceWidths;
-const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], s = {
+var g;
+(g = m("env")) == null || g.deviceWidths;
+const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], c = {
   imageTypes: ["jpeg", "webp"],
   availableWidths: [100, 200],
-  lqip: { type: "blurhash", hash: "NYGkgjIp9b%1f6Iq~UaeV@WYWVs,%MoJWBWCjZbH", width: 6, height: 3 },
-  aspectRatio: 2,
-  imageUrlFor(t, a) {
-    var g;
-    return (g = o(p, t, a ?? "jpeg")) == null ? void 0 : g.url;
+  lqip: { type: "blurhash", hash: "M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu", width: 5, height: 3 },
+  aspectRatio: 1.5,
+  imageUrlFor(e, n) {
+    var a;
+    return (a = r(p, e, n ?? "jpeg")) == null ? void 0 : a.url;
   }
 };
-console.log(s);
+console.log(c);
 "
 `;
 
@@ -44,7 +44,7 @@ const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/imag
   imageTypes: ["jpeg", "webp"],
   availableWidths: [100, 200],
   lqip: { type: "color", class: "eri-dyn-0" },
-  aspectRatio: 2,
+  aspectRatio: 1.5,
   imageUrlFor(t, n) {
     var a;
     return (a = o(p, t, n ?? "jpeg")) == null ? void 0 : a.url;
@@ -71,7 +71,7 @@ const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/imag
   imageTypes: ["jpeg", "webp"],
   availableWidths: [100, 200],
   lqip: { type: "inline", class: "eri-dyn-0" },
-  aspectRatio: 2,
+  aspectRatio: 1.5,
   imageUrlFor(t, n) {
     var a;
     return (a = o(p, t, n ?? "jpeg")) == null ? void 0 : a.url;
@@ -97,7 +97,7 @@ var o;
 const d = [{ url: "/test-100.png", width: 100, format: "png" }, { url: "/test-200.png", width: 200, format: "png" }], f = {
   imageTypes: ["png"],
   availableWidths: [100, 200],
-  aspectRatio: 2,
+  aspectRatio: 1.5,
   imageUrlFor(n, e) {
     var g;
     return (g = a(d, n, e ?? "png")) == null ? void 0 : g.url;
@@ -123,7 +123,7 @@ var a;
 const s = [{ url: "/image-100w.png", width: 100, format: "png" }, { url: "/image-200w.png", width: 200, format: "png" }], d = {
   imageTypes: ["png"],
   availableWidths: [100, 200],
-  aspectRatio: 2,
+  aspectRatio: 1.5,
   imageUrlFor(t, e) {
     var g;
     return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
@@ -149,7 +149,7 @@ var a;
 const d = [{ url: "/image-640w.jpg", width: 640, format: "jpeg" }, { url: "/image-640w.webp", width: 640, format: "webp" }, { url: "/image-750w.jpg", width: 750, format: "jpeg" }, { url: "/image-750w.webp", width: 750, format: "webp" }, { url: "/image-828w.jpg", width: 828, format: "jpeg" }, { url: "/image-828w.webp", width: 828, format: "webp" }, { url: "/image-1080w.jpg", width: 1080, format: "jpeg" }, { url: "/image-1080w.webp", width: 1080, format: "webp" }, { url: "/image-1200w.jpg", width: 1200, format: "jpeg" }, { url: "/image-1200w.webp", width: 1200, format: "webp" }, { url: "/image-1920w.jpg", width: 1920, format: "jpeg" }, { url: "/image-1920w.webp", width: 1920, format: "webp" }, { url: "/image-2048w.jpg", width: 2048, format: "jpeg" }, { url: "/image-2048w.webp", width: 2048, format: "webp" }, { url: "/image-3840w.jpg", width: 3840, format: "jpeg" }, { url: "/image-3840w.webp", width: 3840, format: "webp" }], f = {
   imageTypes: ["jpeg", "webp"],
   availableWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-  aspectRatio: 2,
+  aspectRatio: 1.5,
   imageUrlFor(t, w) {
     var g;
     return (g = m(d, t, w ?? "jpeg")) == null ? void 0 : g.url;
@@ -175,7 +175,7 @@ var a;
 const s = [{ url: "/image-100w.png", width: 100, format: "png" }, { url: "/image-200w.png", width: 200, format: "png" }], d = {
   imageTypes: ["png"],
   availableWidths: [100, 200],
-  aspectRatio: 2,
+  aspectRatio: 1.5,
   imageUrlFor(t, e) {
     var g;
     return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
@@ -201,7 +201,7 @@ var a;
 const o = [{ url: "/image-640w.png", width: 640, format: "png" }, { url: "/image-640w.webp", width: 640, format: "webp" }, { url: "/image-750w.png", width: 750, format: "png" }, { url: "/image-750w.webp", width: 750, format: "webp" }, { url: "/image-828w.png", width: 828, format: "png" }, { url: "/image-828w.webp", width: 828, format: "webp" }, { url: "/image-1080w.png", width: 1080, format: "png" }, { url: "/image-1080w.webp", width: 1080, format: "webp" }, { url: "/image-1200w.png", width: 1200, format: "png" }, { url: "/image-1200w.webp", width: 1200, format: "webp" }, { url: "/image-1920w.png", width: 1920, format: "png" }, { url: "/image-1920w.webp", width: 1920, format: "webp" }, { url: "/image-2048w.png", width: 2048, format: "png" }, { url: "/image-2048w.webp", width: 2048, format: "webp" }, { url: "/image-3840w.png", width: 3840, format: "png" }, { url: "/image-3840w.webp", width: 3840, format: "webp" }], d = {
   imageTypes: ["png", "webp"],
   availableWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-  aspectRatio: 2,
+  aspectRatio: 1.5,
   imageUrlFor(e, w) {
     var g;
     return (g = m(o, e, w ?? "png")) == null ? void 0 : g.url;

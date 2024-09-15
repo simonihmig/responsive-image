@@ -6,8 +6,8 @@ const images = [{"url":__webpack_public_path__ + "images/image-640w.jpg","width"
 export default {
     imageTypes: ["jpeg","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
-    lqip: {"type":"blurhash","hash":"NYGkgjIp9b%1f6Iq~UaeV@WYWVs,%MoJWBWCjZbH","width":6,"height":3},
-    aspectRatio: 2,
+    lqip: {"type":"blurhash","hash":"M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu","width":5,"height":3},
+    aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "jpeg")?.url;
     }
@@ -22,7 +22,7 @@ export default {
     imageTypes: ["jpeg","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
     lqip: {"type":"color","class":"eri-dyn-0"},
-    aspectRatio: 2,
+    aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "jpeg")?.url;
     }
@@ -37,7 +37,7 @@ export default {
     imageTypes: ["jpeg","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
     lqip: {"type":"inline","class":"eri-dyn-0"},
-    aspectRatio: 2,
+    aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "jpeg")?.url;
     }
@@ -51,7 +51,7 @@ export default {
     imageTypes: ["png"],
     availableWidths: [100,200],
     
-    aspectRatio: 2,
+    aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
     }
@@ -65,7 +65,7 @@ export default {
     imageTypes: ["png"],
     availableWidths: [100,200],
     
-    aspectRatio: 2,
+    aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
     }
@@ -79,7 +79,7 @@ export default {
     imageTypes: ["png"],
     availableWidths: [100,200],
     
-    aspectRatio: 2,
+    aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
     }
@@ -93,7 +93,7 @@ export default {
     imageTypes: ["png","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
     
-    aspectRatio: 2,
+    aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
     }
