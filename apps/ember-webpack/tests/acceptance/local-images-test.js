@@ -19,7 +19,7 @@ module('Acceptance | local images', function (hooks) {
       .hasClass('eri-responsive')
       .hasAttribute(
         'src',
-        new RegExp(`/images/dog-[0-9]+w(-\\w+)?.jpg`),
+        new RegExp(`/images/aurora-[0-9]+w(-\\w+)?.jpg`),
         `has default src`,
       );
 
@@ -33,7 +33,7 @@ module('Acceptance | local images', function (hooks) {
           .dom(`source[type="image/${type}"]`, picture)
           .hasAttribute(
             'srcset',
-            new RegExp(`/images/dog-${size}w(-\\w+)?.${ext} ${size}w`),
+            new RegExp(`/images/aurora-${size}w(-\\w+)?.${ext} ${size}w`),
             `has ${type} with a width of ${size}`,
           );
       }
@@ -48,7 +48,7 @@ module('Acceptance | local images', function (hooks) {
       .hasClass('eri-fixed')
       .hasAttribute(
         'src',
-        new RegExp(`/images/dog-640w(-\\w+)?.jpg`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
         `has default src`,
       );
 
@@ -60,7 +60,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/images/dog-640w(-\\w+)?.${ext} 1x`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -68,7 +68,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/images/dog-640w(-\\w+)?.${ext} 2x`),
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }
@@ -84,7 +84,7 @@ module('Acceptance | local images', function (hooks) {
         // .hasClass('eri-lqip-color')
         .hasAttribute(
           'src',
-          new RegExp(`/images/dog-640w(-\\w+)?.jpg`),
+          new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
           `has default src`,
         );
 
@@ -96,7 +96,7 @@ module('Acceptance | local images', function (hooks) {
         assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
           'srcset',
           // 640px is the smallest size for our defaults
-          new RegExp(`/images/dog-640w(-\\w+)?.${ext} 1x`),
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
           `has ${type} with a width of 1x`,
         );
 
@@ -104,7 +104,7 @@ module('Acceptance | local images', function (hooks) {
           .dom(`source[type="image/${type}"]`, picture)
           .hasAttribute(
             'srcset',
-            new RegExp(`/images/dog-640w(-\\w+)?.${ext} 2x`),
+            new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
             `has ${type} with a width of 1x`,
           );
       }
@@ -121,7 +121,7 @@ module('Acceptance | local images', function (hooks) {
       // .hasClass('eri-dyn-0')
       .hasAttribute(
         'src',
-        new RegExp(`/images/dog-640w(-\\w+)?.jpg`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
         `has default src`,
       );
 
@@ -133,7 +133,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/images/dog-640w(-\\w+)?.${ext} 1x`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -141,7 +141,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/images/dog-640w(-\\w+)?.${ext} 2x`),
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }
@@ -157,7 +157,7 @@ module('Acceptance | local images', function (hooks) {
       // .hasClass('eri-dyn-1')
       .hasAttribute(
         'src',
-        new RegExp(`/images/dog-640w(-\\w+)?.jpg`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
         `has default src`,
       );
 
@@ -169,7 +169,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/images/dog-640w(-\\w+)?.${ext} 1x`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -177,7 +177,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/images/dog-640w(-\\w+)?.${ext} 2x`),
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }
@@ -192,7 +192,7 @@ module('Acceptance | local images', function (hooks) {
       // .hasClass('eri-lqip-blurhash')
       .hasAttribute(
         'src',
-        new RegExp(`/images/dog-640w(-\\w+)?.jpg`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
         `has default src`,
       );
 
@@ -204,7 +204,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/images/dog-640w(-\\w+)?.${ext} 1x`),
+        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -212,7 +212,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/images/dog-640w(-\\w+)?.${ext} 2x`),
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }

@@ -19,7 +19,7 @@ module('Acceptance | local images', function (hooks) {
       .hasClass('eri-responsive')
       .hasAttribute(
         'src',
-        new RegExp(`/assets/dog-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
+        new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
         `has default src`,
       );
 
@@ -34,7 +34,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(
-              `/assets/dog-${size}w(-[a-zA-Z0-9-_]+)?.${ext} ${size}w`,
+              `/assets/aurora-${size}w(-[a-zA-Z0-9-_]+)?.${ext} ${size}w`,
             ),
             `has ${type} with a width of ${size}`,
           );
@@ -50,7 +50,7 @@ module('Acceptance | local images', function (hooks) {
       .hasClass('eri-fixed')
       .hasAttribute(
         'src',
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.jpg`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
         `has default src`,
       );
 
@@ -62,7 +62,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -70,7 +70,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }
@@ -86,7 +86,7 @@ module('Acceptance | local images', function (hooks) {
         // .hasClass('eri-lqip-color')
         .hasAttribute(
           'src',
-          new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.jpg`),
+          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
           `has default src`,
         );
 
@@ -98,7 +98,7 @@ module('Acceptance | local images', function (hooks) {
         assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
           'srcset',
           // 640px is the smallest size for our defaults
-          new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
           `has ${type} with a width of 1x`,
         );
 
@@ -106,7 +106,7 @@ module('Acceptance | local images', function (hooks) {
           .dom(`source[type="image/${type}"]`, picture)
           .hasAttribute(
             'srcset',
-            new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+            new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
             `has ${type} with a width of 1x`,
           );
       }
@@ -123,7 +123,7 @@ module('Acceptance | local images', function (hooks) {
       // .hasClass('eri-dyn-0')
       .hasAttribute(
         'src',
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.jpg`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
         `has default src`,
       );
 
@@ -135,7 +135,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -143,7 +143,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }
@@ -159,7 +159,7 @@ module('Acceptance | local images', function (hooks) {
       // .hasClass('eri-dyn-1')
       .hasAttribute(
         'src',
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.jpg`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
         `has default src`,
       );
 
@@ -171,7 +171,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -179,7 +179,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }
@@ -194,7 +194,7 @@ module('Acceptance | local images', function (hooks) {
       // .hasClass('eri-lqip-blurhash')
       .hasAttribute(
         'src',
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.jpg`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
         `has default src`,
       );
 
@@ -206,7 +206,7 @@ module('Acceptance | local images', function (hooks) {
       assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
         'srcset',
         // 640px is the smallest size for our defaults
-        new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
         `has ${type} with a width of 1x`,
       );
 
@@ -214,7 +214,7 @@ module('Acceptance | local images', function (hooks) {
         .dom(`source[type="image/${type}"]`, picture)
         .hasAttribute(
           'srcset',
-          new RegExp(`/assets/dog-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
           `has ${type} with a width of 1x`,
         );
     }
