@@ -38,7 +38,7 @@ importers:
   apps/docs:
     devDependencies:
       vitepress:
-        specifier: ^1.3.1
+        specifier: 1.3.1
         version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.16.5)(fuse.js@7.0.0)(postcss@8.4.44)(search-insights@2.15.0)(terser@5.31.3)(typescript@5.6.2)
 
   apps/ember-test-app:
@@ -8983,34 +8983,6 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite@5.3.4:
-    resolution: {integrity: sha512-Cw+7zL3ZG9/NZBB8C+8QbQZmR54GwqIz+WMI4b3JgdYJvX+ny9AjJXqkGQlDXSXRP9rP0B4tbciRMOVEKulVOA==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-
   vite@5.4.5:
     resolution: {integrity: sha512-pXqR0qtb2bTwLkev4SE3r4abCNioP3GkjvIDLlzziPpXtHgiJIjuKl+1GN6ESOT3wMjG3JTeARopj2SwYaHTOA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -12795,20 +12767,40 @@ snapshots:
     dependencies:
       '@types/node': 20.16.5
 
+  '@types/ember@4.0.11':
+    dependencies:
+      '@types/ember__application': 4.0.11(@babel/core@7.25.2)
+      '@types/ember__array': 4.0.10
+      '@types/ember__component': 4.0.22
+      '@types/ember__controller': 4.0.12
+      '@types/ember__debug': 4.0.8
+      '@types/ember__engine': 4.0.11
+      '@types/ember__error': 4.0.6
+      '@types/ember__object': 4.0.12
+      '@types/ember__polyfills': 4.0.6
+      '@types/ember__routing': 4.0.22
+      '@types/ember__runloop': 4.0.10
+      '@types/ember__service': 4.0.9
+      '@types/ember__string': 3.16.3
+      '@types/ember__template': 4.0.7
+      '@types/ember__test': 4.0.6(@babel/core@7.25.2)
+      '@types/ember__utils': 4.0.7
+      '@types/rsvp': 4.0.9
+
   '@types/ember@4.0.11(@babel/core@7.25.2)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.25.2)
       '@types/ember__array': 4.0.10(@babel/core@7.25.2)
       '@types/ember__component': 4.0.22(@babel/core@7.25.2)
-      '@types/ember__controller': 4.0.12(@babel/core@7.25.2)
-      '@types/ember__debug': 4.0.8(@babel/core@7.25.2)
-      '@types/ember__engine': 4.0.11(@babel/core@7.25.2)
+      '@types/ember__controller': 4.0.12
+      '@types/ember__debug': 4.0.8
+      '@types/ember__engine': 4.0.11
       '@types/ember__error': 4.0.6
       '@types/ember__object': 4.0.12(@babel/core@7.25.2)
       '@types/ember__polyfills': 4.0.6
       '@types/ember__routing': 4.0.22(@babel/core@7.25.2)
       '@types/ember__runloop': 4.0.10(@babel/core@7.25.2)
-      '@types/ember__service': 4.0.9(@babel/core@7.25.2)
+      '@types/ember__service': 4.0.9
       '@types/ember__string': 3.16.3
       '@types/ember__template': 4.0.7
       '@types/ember__test': 4.0.6(@babel/core@7.25.2)
@@ -12821,30 +12813,44 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.25.2)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.25.2)
-      '@types/ember': 4.0.11(@babel/core@7.25.2)
-      '@types/ember__engine': 4.0.11(@babel/core@7.25.2)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.2)
+      '@types/ember': 4.0.11
+      '@types/ember__engine': 4.0.11
+      '@types/ember__object': 4.0.12
       '@types/ember__owner': 4.0.9
-      '@types/ember__routing': 4.0.22(@babel/core@7.25.2)
+      '@types/ember__routing': 4.0.22
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__array@4.0.10':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/ember__object': 4.0.12
 
   '@types/ember__array@4.0.10(@babel/core@7.25.2)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.2)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.2)
+      '@types/ember__object': 4.0.12
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
 
+  '@types/ember__component@4.0.22':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/ember__object': 4.0.12
+
   '@types/ember__component@4.0.22(@babel/core@7.25.2)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.2)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.2)
+      '@types/ember__object': 4.0.12
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__controller@4.0.12':
+    dependencies:
+      '@types/ember__object': 4.0.12
 
   '@types/ember__controller@4.0.12(@babel/core@7.25.2)':
     dependencies:
@@ -12852,6 +12858,11 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__debug@4.0.8':
+    dependencies:
+      '@types/ember__object': 4.0.12
+      '@types/ember__owner': 4.0.9
 
   '@types/ember__debug@4.0.8(@babel/core@7.25.2)':
     dependencies:
@@ -12862,6 +12873,11 @@ snapshots:
       - supports-color
 
   '@types/ember__destroyable@4.0.5': {}
+
+  '@types/ember__engine@4.0.11':
+    dependencies:
+      '@types/ember__object': 4.0.12
+      '@types/ember__owner': 4.0.9
 
   '@types/ember__engine@4.0.11(@babel/core@7.25.2)':
     dependencies:
@@ -12890,6 +12906,11 @@ snapshots:
       - '@babel/core'
       - supports-color
 
+  '@types/ember__object@4.0.12':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/rsvp': 4.0.9
+
   '@types/ember__object@4.0.12(@babel/core@7.25.2)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.2)
@@ -12902,15 +12923,26 @@ snapshots:
 
   '@types/ember__polyfills@4.0.6': {}
 
+  '@types/ember__routing@4.0.22':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/ember__controller': 4.0.12
+      '@types/ember__object': 4.0.12
+      '@types/ember__service': 4.0.9
+
   '@types/ember__routing@4.0.22(@babel/core@7.25.2)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.2)
-      '@types/ember__controller': 4.0.12(@babel/core@7.25.2)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.2)
-      '@types/ember__service': 4.0.9(@babel/core@7.25.2)
+      '@types/ember__controller': 4.0.12
+      '@types/ember__object': 4.0.12
+      '@types/ember__service': 4.0.9
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__runloop@4.0.10':
+    dependencies:
+      '@types/ember': 4.0.11
 
   '@types/ember__runloop@4.0.10(@babel/core@7.25.2)':
     dependencies:
@@ -12918,6 +12950,10 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__service@4.0.9':
+    dependencies:
+      '@types/ember__object': 4.0.12
 
   '@types/ember__service@4.0.9(@babel/core@7.25.2)':
     dependencies:
@@ -12938,6 +12974,10 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__utils@4.0.7':
+    dependencies:
+      '@types/ember': 4.0.11
 
   '@types/ember__utils@4.0.7(@babel/core@7.25.2)':
     dependencies:
@@ -13174,9 +13214,9 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-vue@5.0.5(vite@5.3.4(@types/node@20.16.5)(terser@5.31.3))(vue@3.4.33(typescript@5.6.2))':
+  '@vitejs/plugin-vue@5.0.5(vite@5.4.5(@types/node@20.16.5)(terser@5.31.3))(vue@3.4.33(typescript@5.6.2))':
     dependencies:
-      vite: 5.3.4(@types/node@20.16.5)(terser@5.31.3)
+      vite: 5.4.5(@types/node@20.16.5)(terser@5.31.3)
       vue: 3.4.33(typescript@5.6.2)
 
   '@vitest/expect@1.6.0':
@@ -13210,7 +13250,7 @@ snapshots:
 
   '@vue/compiler-core@3.4.33':
     dependencies:
-      '@babel/parser': 7.24.8
+      '@babel/parser': 7.25.6
       '@vue/shared': 3.4.33
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -13223,14 +13263,14 @@ snapshots:
 
   '@vue/compiler-sfc@3.4.33':
     dependencies:
-      '@babel/parser': 7.24.8
+      '@babel/parser': 7.25.6
       '@vue/compiler-core': 3.4.33
       '@vue/compiler-dom': 3.4.33
       '@vue/compiler-ssr': 3.4.33
       '@vue/shared': 3.4.33
       estree-walker: 2.0.2
       magic-string: 0.30.10
-      postcss: 8.4.39
+      postcss: 8.4.44
       source-map-js: 1.2.0
 
   '@vue/compiler-ssr@3.4.33':
@@ -20045,16 +20085,6 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.3.4(@types/node@20.16.5)(terser@5.31.3):
-    dependencies:
-      esbuild: 0.21.5
-      postcss: 8.4.44
-      rollup: 4.21.3
-    optionalDependencies:
-      '@types/node': 20.16.5
-      fsevents: 2.3.3
-      terser: 5.31.3
-
   vite@5.4.5(@types/node@20.16.5)(terser@5.31.3):
     dependencies:
       esbuild: 0.21.5
@@ -20072,7 +20102,7 @@ snapshots:
       '@shikijs/core': 1.10.3
       '@shikijs/transformers': 1.10.3
       '@types/markdown-it': 14.1.1
-      '@vitejs/plugin-vue': 5.0.5(vite@5.3.4(@types/node@20.16.5)(terser@5.31.3))(vue@3.4.33(typescript@5.6.2))
+      '@vitejs/plugin-vue': 5.0.5(vite@5.4.5(@types/node@20.16.5)(terser@5.31.3))(vue@3.4.33(typescript@5.6.2))
       '@vue/devtools-api': 7.3.6
       '@vue/shared': 3.4.33
       '@vueuse/core': 10.11.0(vue@3.4.33(typescript@5.6.2))
@@ -20081,7 +20111,7 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 7.0.2
       shiki: 1.10.3
-      vite: 5.3.4(@types/node@20.16.5)(terser@5.31.3)
+      vite: 5.4.5(@types/node@20.16.5)(terser@5.31.3)
       vue: 3.4.33(typescript@5.6.2)
     optionalDependencies:
       postcss: 8.4.44
@@ -20104,6 +20134,7 @@ snapshots:
       - react
       - react-dom
       - sass
+      - sass-embedded
       - search-insights
       - sortablejs
       - stylus
