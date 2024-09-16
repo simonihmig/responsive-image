@@ -203,8 +203,8 @@ importers:
         specifier: 1.1.3
         version: 1.1.3
       ember-eslint-parser:
-        specifier: 0.5.0
-        version: 0.5.0(@babel/core@7.25.2)(@typescript-eslint/parser@8.5.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)
+        specifier: 0.5.1
+        version: 0.5.1(@babel/core@7.25.2)(@typescript-eslint/parser@8.5.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)
       ember-load-initializers:
         specifier: 2.1.2
         version: 2.1.2(@babel/core@7.25.2)
@@ -578,8 +578,8 @@ importers:
         specifier: 1.1.3
         version: 1.1.3
       ember-eslint-parser:
-        specifier: 0.5.0
-        version: 0.5.0(@babel/core@7.25.2)(@typescript-eslint/parser@8.5.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)
+        specifier: 0.5.1
+        version: 0.5.1(@babel/core@7.25.2)(@typescript-eslint/parser@8.5.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)
       ember-load-initializers:
         specifier: 2.1.2
         version: 2.1.2(@babel/core@7.25.2)
@@ -5188,8 +5188,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  ember-eslint-parser@0.5.0:
-    resolution: {integrity: sha512-6zLZwa6t9lhEgSkhwhoG/xsjif9FR00aOMXfj/DGuYbncyeeNrU+0ZNvg1FDRec8Zs/1Ow9CVMPwmiwlu6rOQQ==}
+  ember-eslint-parser@0.5.1:
+    resolution: {integrity: sha512-+1UhJYYL5fnlCXbfVqtjg+CHpxZROWzAQUoMGyWHlncHCBJ6CscBcyX5EbtZ+EFozre4/me1Wia7zBW/Ocud0Q==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@babel/core': ^7.23.6
@@ -11876,7 +11876,7 @@ snapshots:
   '@glimmer/compiler@0.92.0':
     dependencies:
       '@glimmer/interfaces': 0.92.0
-      '@glimmer/syntax': 0.92.0
+      '@glimmer/syntax': 0.92.3
       '@glimmer/util': 0.92.0
       '@glimmer/vm': 0.92.0
       '@glimmer/wire-format': 0.92.3
@@ -15447,10 +15447,10 @@ snapshots:
     transitivePeerDependencies:
       - eslint
 
-  ember-eslint-parser@0.5.0(@babel/core@7.25.2)(@typescript-eslint/parser@8.5.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0):
+  ember-eslint-parser@0.5.1(@babel/core@7.25.2)(@typescript-eslint/parser@8.5.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0):
     dependencies:
       '@babel/core': 7.25.2
-      '@babel/eslint-parser': 7.23.10(@babel/core@7.25.2)(eslint@8.57.0)
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@8.57.0)
       '@glimmer/syntax': 0.92.3
       content-tag: 2.0.1
       eslint-scope: 7.2.2
