@@ -167,8 +167,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       ember-auto-import:
-        specifier: 2.7.4
-        version: 2.7.4(@glint/template@1.4.0)(webpack@5.94.0)
+        specifier: 2.8.0
+        version: 2.8.0(@glint/template@1.4.0)(webpack@5.94.0)
       ember-cli:
         specifier: 5.11.0
         version: 5.11.0(handlebars@4.7.8)(underscore@1.13.7)
@@ -332,8 +332,8 @@ importers:
         specifier: 9.0.1
         version: 9.0.1
       ember-auto-import:
-        specifier: 2.7.4
-        version: 2.7.4(@glint/template@1.4.0)(webpack@5.94.0)
+        specifier: 2.8.0
+        version: 2.8.0(@glint/template@1.4.0)(webpack@5.94.0)
       ember-cli:
         specifier: 5.11.0
         version: 5.11.0(handlebars@4.7.8)(underscore@1.13.7)
@@ -545,8 +545,8 @@ importers:
         specifier: 8.5.0
         version: 8.5.0(eslint@8.57.0)(typescript@5.6.2)
       ember-auto-import:
-        specifier: 2.7.4
-        version: 2.7.4(@glint/template@1.4.0)(webpack@5.94.0)
+        specifier: 2.8.0
+        version: 2.8.0(@glint/template@1.4.0)(webpack@5.94.0)
       ember-cli:
         specifier: 5.11.0
         version: 5.11.0(handlebars@4.7.8)(underscore@1.13.7)
@@ -5039,8 +5039,8 @@ packages:
     peerDependencies:
       ember-source: '>=4.8.4'
 
-  ember-auto-import@2.7.4:
-    resolution: {integrity: sha512-6CdXSegJJc8nwwK7+1lIcBUnMVrJRNd4ZdMgcKbCAwPvcGxMgRVBddSzrX/+q/UuflvTEO26Dk1g7Z6KHMXUhw==}
+  ember-auto-import@2.8.0:
+    resolution: {integrity: sha512-0GNLkVQOzDGYygybqKXJDOQRComIbkrptX1l7ptk6tapCKFgqYEZWkJH4t+EmefGWOtKfvvqos6HQ5GtsdH4pg==}
     engines: {node: 12.* || 14.* || >= 16}
 
   ember-cache-primitive-polyfill@1.0.1:
@@ -7577,6 +7577,9 @@ packages:
   pkg-dir@7.0.0:
     resolution: {integrity: sha512-Ie9z/WINcxxLp27BKOCHGde4ITq9UklYKDzVo1nhk5sqGEXU3FpkwP5GM2voTGJkGd9B3Otl+Q4uwSOeSUtOBA==}
     engines: {node: '>=14.16'}
+
+  pkg-entry-points@1.1.0:
+    resolution: {integrity: sha512-9vL2T/he5Kb97GVY+V3Ih4jCC1lF3PQGIDUJIUqKM4Q6twmhrUSAa0OFj+kb8IEs4wYzEgB6kcc4oYy21kZnQw==}
 
   pkg-types@1.2.0:
     resolution: {integrity: sha512-+ifYuSSqOQ8CqP4MbZA5hDpb97n3E8SVWdJe+Wms9kj745lmd3b7EZJiqvmLwAlmRfjrI7Hi5z3kdBJ93lFNPA==}
@@ -14918,7 +14921,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-auto-import@2.7.4(@glint/template@1.4.0)(webpack@5.94.0):
+  ember-auto-import@2.8.0(@glint/template@1.4.0)(webpack@5.94.0):
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.25.2)
@@ -14943,11 +14946,13 @@ snapshots:
       fs-extra: 10.1.0
       fs-tree-diff: 2.0.1
       handlebars: 4.7.8
+      is-subdir: 1.2.0
       js-string-escape: 1.0.1
       lodash: 4.17.21
       mini-css-extract-plugin: 2.9.1(webpack@5.94.0)
       minimatch: 3.1.2
       parse5: 6.0.1
+      pkg-entry-points: 1.1.0
       resolve: 1.22.8
       resolve-package-path: 4.0.3
       semver: 7.6.3
@@ -15076,7 +15081,7 @@ snapshots:
     dependencies:
       '@ember/test-helpers': 4.0.4(@babel/core@7.25.2)(@glint/template@1.4.0)(ember-source@5.11.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.94.0))
       body-parser: 1.20.3
-      ember-auto-import: 2.7.4(@glint/template@1.4.0)(webpack@5.94.0)
+      ember-auto-import: 2.8.0(@glint/template@1.4.0)(webpack@5.94.0)
       ember-cli-babel: 7.26.11
       ember-source: 5.11.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.94.0)
       fastboot: 4.1.5
@@ -15553,7 +15558,7 @@ snapshots:
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 4.2.0
       chalk: 4.1.2
-      ember-auto-import: 2.7.4(@glint/template@1.4.0)(webpack@5.94.0)
+      ember-auto-import: 2.8.0(@glint/template@1.4.0)(webpack@5.94.0)
       ember-cli-babel: 8.2.0(@babel/core@7.25.2)
       ember-cli-get-component-path-option: 1.0.0
       ember-cli-is-package-missing: 1.0.0
@@ -18418,6 +18423,8 @@ snapshots:
   pkg-dir@7.0.0:
     dependencies:
       find-up: 6.3.0
+
+  pkg-entry-points@1.1.0: {}
 
   pkg-types@1.2.0:
     dependencies:
