@@ -1,6 +1,6 @@
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
-import { getWebpackOptions, onlyUnique } from './utils';
+import { assertInput, getWebpackOptions, onlyUnique } from './utils';
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import type { LoaderContext } from 'webpack';
 import type { Options } from './types';
@@ -16,13 +16,9 @@ const imageExtensions: Partial<Record<ImageType, string>> = {
 
 export default function exportLoader(
   this: LoaderContext<Partial<Options>>,
-  input: Buffer | ImageLoaderChainedResult,
+  input: string | Buffer | ImageLoaderChainedResult,
 ): string {
-  if (Buffer.isBuffer(input)) {
-    throw new Error(
-      'You cannot run the export loader on raw data, at least the images loader is missing in your loader chain!',
-    );
-  }
+  assertInput(input);
 
   const options = getWebpackOptions(this);
   const { name } = options;

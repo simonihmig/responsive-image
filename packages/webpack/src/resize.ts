@@ -1,29 +1,29 @@
+import {
+  getImagetoolsConfigs,
+  ImageLoaderChainedResult,
+  ImageProcessingResult,
+  OutputImageType,
+} from '@responsive-image/build-utils';
 import type { ImageType } from '@responsive-image/core';
 import { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
 import type { LoaderContext } from 'webpack';
 import type { Options } from './types';
-import { getWebpackOptions, webpackOptionKeys } from './utils';
-import {
-  getImagetoolsConfigs,
-  ImageLoaderChainedResult,
-  ImageProcessingResult,
-  normalizeInput,
-  OutputImageType,
-} from '@responsive-image/build-utils';
+import { assertInput, getWebpackOptions, webpackOptionKeys } from './utils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
-export default function imagesLoader(
+export default function resizeLoader(
   this: LoaderContext<Partial<Options>>,
-  input: Buffer | ImageLoaderChainedResult,
+  input: ImageLoaderChainedResult,
 ): void {
+  assertInput(input);
+
   const loaderCallback = this.async();
 
   const options = getWebpackOptions(this);
-  const data = normalizeInput(input);
 
-  process(data, options, this)
+  process(input, options, this)
     .then((result) => {
       // @ts-expect-error wrong webpack types
       loaderCallback(null, result);
@@ -64,9 +64,6 @@ async function process(
     );
   }
 }
-
-// receive input as Buffer
-imagesLoader.raw = true;
 
 async function generateResizedImage(
   image: Sharp,

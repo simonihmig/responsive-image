@@ -22,14 +22,24 @@
         "default": "./dist/index.mjs"
       }
     },
-    "./images": {
+    "./loader": {
       "require": {
-        "types": "./dist/images.d.cts",
-        "default": "./dist/images.cjs"
+        "types": "./dist/loader.d.cts",
+        "default": "./dist/loader.cjs"
       },
       "import": {
-        "types": "./dist/images.d.mts",
-        "default": "./dist/images.mjs"
+        "types": "./dist/loader.d.mts",
+        "default": "./dist/loader.mjs"
+      }
+    },
+    "./resize": {
+      "require": {
+        "types": "./dist/resize.d.cts",
+        "default": "./dist/resize.cjs"
+      },
+      "import": {
+        "types": "./dist/resize.d.mts",
+        "default": "./dist/resize.mjs"
       }
     },
     "./export": {
