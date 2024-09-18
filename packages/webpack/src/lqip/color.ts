@@ -1,14 +1,19 @@
-import { generateLqipClassName, getOptions, normalizeInput } from '../utils';
+import { getWebpackOptions } from '../utils';
 import type { LoaderContext } from 'webpack';
-import type { ImageLoaderChainedResult, LoaderOptions } from '../types';
+import type { Options } from '../types';
+import {
+  generateLqipClassName,
+  ImageLoaderChainedResult,
+  normalizeInput,
+} from '@responsive-image/build-utils';
 
 export default function lqipColorLoader(
-  this: LoaderContext<Partial<LoaderOptions>>,
+  this: LoaderContext<Partial<Options>>,
   input: Buffer | ImageLoaderChainedResult,
 ): ImageLoaderChainedResult {
   const data = normalizeInput(input);
 
-  const options = getOptions(this);
+  const options = getWebpackOptions(this);
   if (options.lqip?.type !== 'color') {
     return data;
   }

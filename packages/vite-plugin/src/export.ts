@@ -1,19 +1,13 @@
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import * as path from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
-import type {
-  LazyImageProcessingResult,
-  Options,
-  ServedImageData,
-} from './types';
+import type { Options, ServedImageData } from './types';
+import { getInput, getViteBasePath, getViteOptions, onlyUnique } from './utils';
 import {
   getAspectRatio,
-  getInput,
-  getOptions,
-  getViteBasePath,
-  onlyUnique,
+  LazyImageProcessingResult,
   parseURL,
-} from './utils';
+} from '@responsive-image/build-utils';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
   jpeg: 'jpg',
@@ -50,7 +44,7 @@ export default function exportPlugin(
       }
 
       const url = parseURL(id);
-      const options = getOptions(url, userOptions);
+      const options = getViteOptions(url, userOptions);
 
       const createImageFile = async ({
         data,

@@ -8,7 +8,7 @@ import {
   getPathname,
   parseQuery,
   parseURL,
-} from '../utils';
+} from '@responsive-image/build-utils';
 
 export const name = 'responsive-image/lqip/inline-css';
 

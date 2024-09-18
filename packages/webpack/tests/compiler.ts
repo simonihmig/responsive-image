@@ -1,9 +1,10 @@
 import webpack from 'webpack';
 import { createFsFromVolume, Volume } from 'memfs';
-import { setupLoaders, type LoaderOptions } from '@responsive-image/webpack';
+import { setupLoaders } from '../src';
 import path, { join, resolve } from 'path';
+import type { Options } from '../src/types';
 
-const defaultOptions: Partial<LoaderOptions> = {
+const defaultOptions: Partial<Options> = {
   // Don't use the hash part in tests, to prevent brittle tests when using snapshots
   name: '[name]-[width]w.[ext]',
 };
@@ -11,7 +12,7 @@ const defaultOptions: Partial<LoaderOptions> = {
 export default function compiler(
   fixture: string,
   _dirname: string,
-  options: Partial<LoaderOptions> = {},
+  options: Partial<Options> = {},
 ) {
   const compiler = webpack({
     context: _dirname,

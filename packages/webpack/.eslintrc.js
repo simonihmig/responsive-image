@@ -6,9 +6,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    ecmaFeatures: {
-      legacyDecorators: true,
-    },
     babelOptions: {
       root: __dirname,
     },
@@ -33,7 +30,7 @@ module.exports = {
     },
     // config files
     {
-      files: ['./.eslintrc.js', './.prettierrc.js', 'jest.config.js'],
+      files: ['./.eslintrc.js', './.prettierrc.js'],
       parserOptions: {
         sourceType: 'script',
       },

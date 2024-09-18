@@ -1,6 +1,11 @@
 import sharp, { type Metadata } from 'sharp';
-import { blurrySvg, dataUri, getAspectRatio, parseQuery } from '../utils';
 import type { LoaderContext } from 'webpack';
+import {
+  blurrySvg,
+  dataUri,
+  getAspectRatio,
+  parseQuery,
+} from '@responsive-image/build-utils';
 
 export default function lqipInlineCssLoader(
   this: LoaderContext<unknown>,

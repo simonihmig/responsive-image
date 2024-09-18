@@ -2,7 +2,8 @@ import { encode } from 'blurhash';
 import type { Metadata } from 'sharp';
 import type { Plugin } from 'vite';
 import type { Options } from '../types';
-import { META_KEY, getAspectRatio, getInput, getOptions } from '../utils';
+import { META_KEY, getInput, getViteOptions } from '../utils';
+import { getAspectRatio } from '@responsive-image/build-utils';
 
 export default function lqipBlurhashPlugin(
   userOptions: Partial<Options> = {},
@@ -17,7 +18,7 @@ export default function lqipBlurhashPlugin(
         return;
       }
 
-      const options = getOptions(id, userOptions);
+      const options = getViteOptions(id, userOptions);
 
       if (options.lqip?.type !== 'blurhash') {
         return;

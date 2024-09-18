@@ -2,13 +2,14 @@ import type { ImageType } from '@responsive-image/core';
 import { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
 import type { Plugin } from 'vite';
+import type { Options } from './types';
+import { META_KEY, getInput, getViteOptions, viteOptionKeys } from './utils';
+import { getImagetoolsConfigs } from '@responsive-image/build-utils';
 import type {
-  ImageLoaderChainedResult,
+  LazyImageLoaderChainedResult,
   LazyImageProcessingResult,
-  Options,
   OutputImageType,
-} from './types';
-import { META_KEY, getImagetoolsConfigs, getInput, getOptions } from './utils';
+} from '@responsive-image/build-utils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
@@ -27,17 +28,20 @@ export default function resizePlugin(
         return;
       }
 
-      const options = getOptions(id, userOptions);
+      const options = getViteOptions(id, userOptions);
       const { sharp } = input;
 
       try {
         const sharpMeta = await sharp.metadata();
 
         const format = effectiveImageFormats(options.format, sharpMeta);
-        const configs = await getImagetoolsConfigs({
-          ...options,
-          format,
-        });
+        const configs = await getImagetoolsConfigs(
+          {
+            ...options,
+            format,
+          },
+          viteOptionKeys,
+        );
 
         const images = await Promise.all(
           configs.map((config) => generateResizedImage(sharp, config)),
@@ -47,7 +51,7 @@ export default function resizePlugin(
           sharpMeta,
           ...input,
           images,
-        } satisfies ImageLoaderChainedResult;
+        } satisfies LazyImageLoaderChainedResult;
 
         return {
           // Only the export plugin will actually return ESM code

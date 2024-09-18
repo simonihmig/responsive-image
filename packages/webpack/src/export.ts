@@ -1,29 +1,26 @@
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
-import { getAspectRatio, getOptions, onlyUnique } from './utils';
+import { assertInput, getWebpackOptions, onlyUnique } from './utils';
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import type { LoaderContext } from 'webpack';
+import type { Options } from './types';
+import { getAspectRatio } from '@responsive-image/build-utils';
 import type {
   ImageLoaderChainedResult,
   ImageProcessingResult,
-  LoaderOptions,
-} from './types';
+} from '@responsive-image/build-utils';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
   jpeg: 'jpg',
 };
 
 export default function exportLoader(
-  this: LoaderContext<Partial<LoaderOptions>>,
-  input: Buffer | ImageLoaderChainedResult,
+  this: LoaderContext<Partial<Options>>,
+  input: string | Buffer | ImageLoaderChainedResult,
 ): string {
-  if (Buffer.isBuffer(input)) {
-    throw new Error(
-      'You cannot run the export loader on raw data, at least the images loader is missing in your loader chain!',
-    );
-  }
+  assertInput(input);
 
-  const options = getOptions(this);
+  const options = getWebpackOptions(this);
   const { name } = options;
 
   const createImageFile = ({

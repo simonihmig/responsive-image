@@ -1,27 +1,29 @@
+import {
+  getImagetoolsConfigs,
+  ImageLoaderChainedResult,
+  ImageProcessingResult,
+  OutputImageType,
+} from '@responsive-image/build-utils';
 import type { ImageType } from '@responsive-image/core';
 import { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
 import type { LoaderContext } from 'webpack';
-import type {
-  ImageLoaderChainedResult,
-  ImageProcessingResult,
-  LoaderOptions,
-  OutputImageType,
-} from './types';
-import { getImagetoolsConfigs, getOptions, normalizeInput } from './utils';
+import type { Options } from './types';
+import { assertInput, getWebpackOptions, webpackOptionKeys } from './utils';
 
 const supportedTypes: ImageType[] = ['png', 'jpeg', 'webp', 'avif'];
 
-export default function imagesLoader(
-  this: LoaderContext<Partial<LoaderOptions>>,
-  input: Buffer | ImageLoaderChainedResult,
+export default function resizeLoader(
+  this: LoaderContext<Partial<Options>>,
+  input: ImageLoaderChainedResult,
 ): void {
+  assertInput(input);
+
   const loaderCallback = this.async();
 
-  const options = getOptions(this);
-  const data = normalizeInput(input);
+  const options = getWebpackOptions(this);
 
-  process(data, options, this)
+  process(input, options, this)
     .then((result) => {
       // @ts-expect-error wrong webpack types
       loaderCallback(null, result);
@@ -31,18 +33,21 @@ export default function imagesLoader(
 
 async function process(
   data: ImageLoaderChainedResult,
-  options: LoaderOptions,
-  context: LoaderContext<Partial<LoaderOptions>>,
+  options: Options,
+  context: LoaderContext<Partial<Options>>,
 ): Promise<ImageLoaderChainedResult> {
   const { sharp } = data;
   try {
     const sharpMeta = await sharp.metadata();
 
     const format = effectiveImageFormats(options.format, sharpMeta);
-    const configs = await getImagetoolsConfigs({
-      ...options,
-      format,
-    });
+    const configs = await getImagetoolsConfigs(
+      {
+        ...options,
+        format,
+      },
+      webpackOptionKeys,
+    );
 
     const images = await Promise.all(
       configs.map((config) => generateResizedImage(sharp, config)),
@@ -59,9 +64,6 @@ async function process(
     );
   }
 }
-
-// receive input as Buffer
-imagesLoader.raw = true;
 
 async function generateResizedImage(
   image: Sharp,

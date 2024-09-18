@@ -1,10 +1,10 @@
 import sharp from 'sharp';
-import { parseQuery } from '../utils';
 import type { LoaderContext } from 'webpack';
-import type { LoaderOptions } from '../types';
+import type { Options } from '../types';
+import { parseQuery } from '@responsive-image/build-utils';
 
 export default function lqipColorCssLoader(
-  this: LoaderContext<Partial<LoaderOptions>>,
+  this: LoaderContext<Partial<Options>>,
 ): void {
   const loaderCallback = this.async();
 

@@ -1,13 +1,11 @@
 import type { Plugin } from 'vite';
 import type { Options } from '../types';
-import {
-  META_KEY,
-  generateLqipClassName,
-  getInput,
-  getOptions,
-  getPathname,
-} from '../utils';
+import { META_KEY, getInput, getViteOptions } from '../utils';
 import { name as colorCssPluginName } from './color-css';
+import {
+  generateLqipClassName,
+  getPathname,
+} from '@responsive-image/build-utils';
 
 export default function lqipColorPlugin(
   userOptions: Partial<Options> = {},
@@ -22,7 +20,7 @@ export default function lqipColorPlugin(
         return;
       }
 
-      const options = getOptions(id, userOptions);
+      const options = getViteOptions(id, userOptions);
 
       if (options.lqip?.type !== 'color') {
         return;

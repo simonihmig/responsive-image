@@ -1,35 +1,5 @@
-import type {
-  ImageType,
-  LqipBlurhash,
-  LqipColor,
-  LqipInline,
-} from '@responsive-image/core';
-import type { Metadata, Sharp } from 'sharp';
-
-export type OutputImageType = 'original' | ImageType;
-
-export interface LqipBaseOptions {
-  type: string;
-}
-
-export interface LqipColorOptions extends LqipBaseOptions {
-  type: 'color';
-}
-
-export interface LqipInlineOptions extends LqipBaseOptions {
-  type: 'inline';
-  targetPixels?: number;
-}
-
-export interface LqipBlurhashOptions extends LqipBaseOptions {
-  type: 'blurhash';
-  targetPixels?: number;
-}
-
-export type LqipOptions =
-  | LqipColorOptions
-  | LqipInlineOptions
-  | LqipBlurhashOptions;
+import type { ImageOptions, LqipOptions } from '@responsive-image/build-utils';
+import type { ImageType } from '@responsive-image/core';
 
 export interface ViteOptions {
   name: string;
@@ -37,28 +7,8 @@ export interface ViteOptions {
   exclude?: string | RegExp | Array<string | RegExp>;
   lqip?: LqipOptions;
 }
-export interface ImageOptions {
-  w: number[];
-  quality: number;
-  format: OutputImageType[];
-  [key: string]: unknown;
-}
 
 export type Options = ViteOptions & ImageOptions;
-
-export interface LazyImageProcessingResult {
-  data: () => Promise<Buffer>;
-  width: number;
-  format: ImageType;
-}
-
-export interface ImageLoaderChainedResult {
-  lqip?: LqipInline | LqipColor | LqipBlurhash;
-  images: LazyImageProcessingResult[];
-  sharp: Sharp;
-  imports: string[];
-  sharpMeta?: Metadata;
-}
 
 export interface ServedImageData {
   data: () => Promise<Buffer>;
