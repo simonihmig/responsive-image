@@ -5521,6 +5521,12 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
+  eslint-plugin-n@17.10.2:
+    resolution: {integrity: sha512-e+s4eAf5NtJaxPhTNu3qMO0Iz40WANS93w9LQgYcvuljgvDmWi/a3rh+OrNyMHeng6aOWGJO0rCg5lH4zi8yTw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: '>=8.23.0'
+
   eslint-plugin-n@17.10.3:
     resolution: {integrity: sha512-ySZBfKe49nQZWR1yFaA0v/GsH6Fgp8ah6XV0WDz6CN8WO0ek4McMzb7A2xnf4DCYV43frjCygvb9f/wx7UUxRw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -15990,6 +15996,18 @@ snapshots:
       '@eslint-community/regexpp': 4.11.1
       eslint: 8.57.1
       eslint-compat-utils: 0.5.1(eslint@8.57.1)
+
+  eslint-plugin-n@17.10.2(eslint@8.57.1):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.1)
+      enhanced-resolve: 5.17.1
+      eslint: 8.57.1
+      eslint-plugin-es-x: 7.8.0(eslint@8.57.1)
+      get-tsconfig: 4.8.1
+      globals: 15.9.0
+      ignore: 5.3.2
+      minimatch: 9.0.5
+      semver: 7.6.3
 
   eslint-plugin-n@17.10.3(eslint@8.57.1):
     dependencies:
