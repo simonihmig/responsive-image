@@ -1,6 +1,10 @@
 import baseN from 'base-n';
 import sharp, { type Metadata } from 'sharp';
-import type { ImageLoaderChainedResult, ImageOptions } from './types';
+import type {
+  ImageLoaderChainedResult,
+  ImageOptions,
+  LazyImageLoaderChainedResult,
+} from './types';
 import type { ImageConfig } from 'imagetools-core';
 
 const b64 = baseN.create();
@@ -102,12 +106,30 @@ export function getOptions<BUILDOPTIONS>(
 }
 
 export function normalizeInput(
-  input: string | ImageLoaderChainedResult,
-): ImageLoaderChainedResult {
+  input: string | Buffer | LazyImageLoaderChainedResult,
+): LazyImageLoaderChainedResult;
+export function normalizeInput(
+  input: string | Buffer | ImageLoaderChainedResult,
+): ImageLoaderChainedResult;
+export function normalizeInput(
+  input:
+    | string
+    | Buffer
+    | ImageLoaderChainedResult
+    | LazyImageLoaderChainedResult,
+): ImageLoaderChainedResult | LazyImageLoaderChainedResult {
   if (typeof input === 'string') {
     return {
       images: [],
       sharp: sharp(getPathname(input)),
+      imports: [],
+    };
+  }
+
+  if (Buffer.isBuffer(input)) {
+    return {
+      images: [],
+      sharp: sharp(input),
       imports: [],
     };
   }

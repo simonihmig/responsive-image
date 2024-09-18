@@ -1,15 +1,20 @@
 import type { Metadata } from 'sharp';
 import type { LoaderContext } from 'webpack';
-import type { ImageLoaderChainedResult, LoaderOptions } from '../types';
-import { getAspectRatio, getOptions, normalizeInput } from '..';
+import type { Options } from '../types';
+import { getWebpackOptions } from '../utils';
 import { encode } from 'blurhash';
+import {
+  getAspectRatio,
+  ImageLoaderChainedResult,
+  normalizeInput,
+} from '@responsive-image/build-utils';
 
 export default function lqipBlurhashLoader(
-  this: LoaderContext<Partial<LoaderOptions>>,
+  this: LoaderContext<Partial<Options>>,
   input: Buffer | ImageLoaderChainedResult,
 ) {
   const data = normalizeInput(input);
-  const options = getOptions(this);
+  const options = getWebpackOptions(this);
   if (options.lqip?.type !== 'blurhash') {
     return data;
   }
@@ -28,7 +33,7 @@ lqipBlurhashLoader.raw = true;
 
 async function process(
   data: ImageLoaderChainedResult,
-  options: LoaderOptions,
+  options: Options,
 ): Promise<ImageLoaderChainedResult> {
   const { sharp, sharpMeta } = data;
 

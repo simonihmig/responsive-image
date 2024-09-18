@@ -6,7 +6,7 @@ import type { Options } from './types';
 import { META_KEY, getInput, getViteOptions, viteOptionKeys } from './utils';
 import { getImagetoolsConfigs } from '@responsive-image/build-utils';
 import type {
-  ImageLoaderChainedResult,
+  LazyImageLoaderChainedResult,
   LazyImageProcessingResult,
   OutputImageType,
 } from '@responsive-image/build-utils';
@@ -51,7 +51,7 @@ export default function resizePlugin(
           sharpMeta,
           ...input,
           images,
-        } satisfies ImageLoaderChainedResult;
+        } satisfies LazyImageLoaderChainedResult;
 
         return {
           // Only the export plugin will actually return ESM code

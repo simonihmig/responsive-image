@@ -1,7 +1,4 @@
-export { getAspectRatio, getOptions, normalizeInput } from './utils';
-
-import type { LoaderOptions } from './types';
-export type { LoaderOptions, ImageLoaderChainedResult } from './types';
+import type { Options } from './types';
 
 const defaultLoaders: string[] = [
   '@responsive-image/webpack/export',
@@ -11,7 +8,7 @@ const defaultLoaders: string[] = [
   '@responsive-image/webpack/images',
 ];
 
-function setupLoaders(options?: Partial<LoaderOptions>) {
+function setupLoaders(options?: Partial<Options>) {
   if (options) {
     return defaultLoaders.map((loader) => ({ loader, options }));
   }

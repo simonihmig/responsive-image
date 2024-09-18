@@ -1,11 +1,11 @@
-import type { PluginContext } from 'rollup';
-import type { ResolvedConfig } from 'vite';
 import {
   getOptions,
-  type ImageLoaderChainedResult,
+  LazyImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
+import type { PluginContext } from 'rollup';
+import type { ResolvedConfig } from 'vite';
 
-import type { ViteOptions, Options } from './types';
+import type { Options, ViteOptions } from './types';
 
 export const META_KEY = 'responsive-image';
 
@@ -13,12 +13,12 @@ export const defaultViteOptions = {
   name: '[name]-[width]w.[ext]',
 };
 
-export const viteOptionKeys: Array<keyof ViteOptions> = [
+export const viteOptionKeys = [
   'exclude',
   'include',
   'lqip',
   'name',
-];
+] satisfies Array<keyof ViteOptions>;
 
 export function getViteOptions(
   id: string | URL,
@@ -30,7 +30,7 @@ export function getViteOptions(
 export function getInput(
   context: PluginContext,
   id: string,
-): ImageLoaderChainedResult | undefined {
+): LazyImageLoaderChainedResult | undefined {
   const info = context.getModuleInfo(id);
   return info?.meta[META_KEY];
 }

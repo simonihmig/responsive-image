@@ -1064,12 +1064,12 @@ importers:
 
   packages/webpack:
     dependencies:
+      '@responsive-image/build-utils':
+        specifier: workspace:^
+        version: link:../build-utils
       '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
-      base-n:
-        specifier: ^3.0.0
-        version: 3.0.0
       blurhash:
         specifier: ^2.0.4
         version: 2.0.5
