@@ -33,7 +33,7 @@ export type LqipOptions =
 
 export interface ImageOptions {
   w: number[];
-  quality: number;
+  quality?: number;
   format: OutputImageType[];
   [key: string]: unknown;
 }
