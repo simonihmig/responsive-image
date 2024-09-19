@@ -50,7 +50,7 @@ const images = [{"url":"https:/cdn.example.com/images/test-100.png","width":100,
 export default {
     imageTypes: ["png"],
     availableWidths: [100,200],
-
+    
     aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
@@ -64,7 +64,7 @@ const images = [{"url":__webpack_public_path__ + "images/image-100w.png","width"
 export default {
     imageTypes: ["png"],
     availableWidths: [100,200],
-
+    
     aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
@@ -78,7 +78,7 @@ const images = [{"url":__webpack_public_path__ + "images/image-100w.png","width"
 export default {
     imageTypes: ["png"],
     availableWidths: [100,200],
-
+    
     aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
@@ -92,7 +92,7 @@ const images = [{"url":__webpack_public_path__ + "images/image-640w.png","width"
 export default {
     imageTypes: ["png","webp"],
     availableWidths: [640,750,828,1080,1200,1920,2048,3840],
-
+    
     aspectRatio: 1.5,
     imageUrlFor(w, f) {
       return findMatchingImage(images, w, f ?? "png")?.url;
