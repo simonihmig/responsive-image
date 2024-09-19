@@ -1,8 +1,8 @@
 import { decode } from 'blurhash';
 
-const BLURHASH_ATTRIBUTE = 'data-eri-bh';
-const WIDTH_ATTRIBUTE = 'data-eri-bh-w';
-const HEIGHT_ATTRIBUTE = 'data-eri-bh-h';
+const BLURHASH_ATTRIBUTE = 'data-ri-bh';
+const WIDTH_ATTRIBUTE = 'data-ri-bh-w';
+const HEIGHT_ATTRIBUTE = 'data-ri-bh-h';
 
 const BLURHASH_SCALE_FACTOR = 4;
 
