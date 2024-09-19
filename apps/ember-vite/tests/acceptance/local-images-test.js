@@ -16,7 +16,7 @@ module('Acceptance | local images', function (hooks) {
 
     assert
       .dom('[data-test-local-image="responsive"]')
-      .hasClass('eri-responsive')
+      .hasClass('ri-responsive')
       .hasAttribute(
         'src',
         new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
@@ -47,7 +47,7 @@ module('Acceptance | local images', function (hooks) {
 
     assert
       .dom('[data-test-local-image="fixed"]')
-      .hasClass('eri-fixed')
+      .hasClass('ri-fixed')
       .hasAttribute(
         'src',
         new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
@@ -82,8 +82,8 @@ module('Acceptance | local images', function (hooks) {
 
       assert
         .dom('[data-test-local-image="fixed,lqip-color"]')
-        .hasClass('eri-fixed')
-        // .hasClass('eri-lqip-color')
+        .hasClass('ri-fixed')
+        // .hasClass('ri-lqip-color')
         .hasAttribute(
           'src',
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
@@ -118,9 +118,9 @@ module('Acceptance | local images', function (hooks) {
 
     assert
       .dom('[data-test-local-image="fixed,lqip-color"]')
-      .hasClass('eri-fixed')
-      // .hasClass('eri-lqip-color')
-      // .hasClass('eri-dyn-0')
+      .hasClass('ri-fixed')
+      // .hasClass('ri-lqip-color')
+      // .hasClass('ri-dyn-0')
       .hasAttribute(
         'src',
         new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
@@ -154,9 +154,9 @@ module('Acceptance | local images', function (hooks) {
 
     assert
       .dom('[data-test-local-image="fixed,lqip-inline"]')
-      .hasClass('eri-fixed')
-      // .hasClass('eri-lqip-inline')
-      // .hasClass('eri-dyn-1')
+      .hasClass('ri-fixed')
+      // .hasClass('ri-lqip-inline')
+      // .hasClass('ri-dyn-1')
       .hasAttribute(
         'src',
         new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
@@ -190,8 +190,8 @@ module('Acceptance | local images', function (hooks) {
 
     assert
       .dom('[data-test-local-image="fixed,lqip-blurhash"]')
-      // .hasClass('eri-fixed')
-      // .hasClass('eri-lqip-blurhash')
+      // .hasClass('ri-fixed')
+      // .hasClass('ri-lqip-blurhash')
       .hasAttribute(
         'src',
         new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),

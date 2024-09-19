@@ -143,7 +143,7 @@ export function generateLqipClassName(resource: string): string {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return generatedClassNames.get(resource)!;
   } else {
-    const className = `eri-dyn-${b64.encode(generatedClassNames.size)}`;
+    const className = `ri-dyn-${b64.encode(generatedClassNames.size)}`;
     generatedClassNames.set(resource, className);
 
     return className;

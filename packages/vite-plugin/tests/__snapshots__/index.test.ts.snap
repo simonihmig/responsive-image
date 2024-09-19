@@ -43,7 +43,7 @@ var g;
 const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], s = {
   imageTypes: ["jpeg", "webp"],
   availableWidths: [100, 200],
-  lqip: { type: "color", class: "eri-dyn-0" },
+  lqip: { type: "color", class: "ri-dyn-0" },
   aspectRatio: 1.5,
   imageUrlFor(t, n) {
     var a;
@@ -70,7 +70,7 @@ var g;
 const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], s = {
   imageTypes: ["jpeg", "webp"],
   availableWidths: [100, 200],
-  lqip: { type: "inline", class: "eri-dyn-0" },
+  lqip: { type: "inline", class: "ri-dyn-0" },
   aspectRatio: 1.5,
   imageUrlFor(t, n) {
     var a;

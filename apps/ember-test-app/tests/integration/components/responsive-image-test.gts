@@ -27,8 +27,8 @@ module("Integration: Responsive Image Component", function (hooks) {
           <template><ResponsiveImage @src={{testImage}} /></template>,
         );
 
-        assert.dom("img").hasClass("eri-responsive");
-        assert.dom("img").hasNoClass("eri-fixed");
+        assert.dom("img").hasClass("ri-responsive");
+        assert.dom("img").hasNoClass("ri-fixed");
       });
 
       test("it renders width and height attributes", async function (this: RenderingTestContext, assert) {
@@ -236,8 +236,8 @@ module("Integration: Responsive Image Component", function (hooks) {
           </template>,
         );
 
-        assert.dom("img").hasClass("eri-fixed");
-        assert.dom("img").hasNoClass("eri-responsive");
+        assert.dom("img").hasClass("ri-fixed");
+        assert.dom("img").hasNoClass("ri-responsive");
 
         await render(
           <template>
@@ -245,8 +245,8 @@ module("Integration: Responsive Image Component", function (hooks) {
           </template>,
         );
 
-        assert.dom("img").hasClass("eri-fixed");
-        assert.dom("img").hasNoClass("eri-responsive");
+        assert.dom("img").hasClass("ri-fixed");
+        assert.dom("img").hasNoClass("ri-responsive");
       });
 
       test("it renders width and height when given", async function (assert) {
@@ -558,8 +558,8 @@ module("Integration: Responsive Image Component", function (hooks) {
           <template><ResponsiveImage @src={{defaultImageData}} /></template>,
         );
 
-        assert.dom("img").hasClass("eri-responsive");
-        assert.dom("img").hasNoClass("eri-fixed");
+        assert.dom("img").hasClass("ri-responsive");
+        assert.dom("img").hasNoClass("ri-fixed");
       });
 
       test("it renders width and height attributes when aspect ratio is known", async function (this: RenderingTestContext, assert) {
@@ -692,8 +692,8 @@ module("Integration: Responsive Image Component", function (hooks) {
           </template>,
         );
 
-        assert.dom("img").hasClass("eri-fixed");
-        assert.dom("img").hasNoClass("eri-responsive");
+        assert.dom("img").hasClass("ri-fixed");
+        assert.dom("img").hasNoClass("ri-responsive");
       });
 
       test("it renders width and height when given", async function (assert) {

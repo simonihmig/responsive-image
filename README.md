@@ -248,7 +248,7 @@ Rendering this component will generate an `<img>` element wrapped in `<picture>`
   <img
     src="1920"
     height="1280"
-    class="eri-responsive"
+    class="ri-responsive"
     loading="lazy"
     decoding="async"
   />
@@ -311,7 +311,7 @@ and additionally a `2x` variant for devices with high pixel densities:
     src="/assets/images/hero320w.jpg"
     width="320"
     height="213"
-    class="eri-fixed"
+    class="ri-fixed"
     loading="lazy"
     decoding="async"
   />
