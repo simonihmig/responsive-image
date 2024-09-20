@@ -1,4 +1,4 @@
-# Responsive Image
+# ResponsiveImage
 
 [![CI](https://github.com/simonihmig/responsive-image/actions/workflows/ci.yml/badge.svg)](https://github.com/simonihmig/responsive-image/actions/workflows/ci.yml)
 
