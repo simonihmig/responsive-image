@@ -34,8 +34,6 @@ Lazy rendering by default, with optimized content-visibility and decoding settin
 ✨ **High Quality**:
 Engineered with quality in mind, all functionality is fully tested (unit and integration tests), packages ship with native TypeScript types.
 
-Advanced optimization techniques inspired amongst others by the blog post [Maximally optimizing image loading for the web in 2021](https://www.industrialempathy.com/posts/image-optimizations/).
-
 ## Documentation
 
 Visit [responsive-images.com](https://responsive-images.com) for our complete documentation site.

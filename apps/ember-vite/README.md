@@ -1,7 +1,6 @@
 # ember-vite
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Demo app and acceptance tests for Ember + Embroider + Vite.
 
 ## Prerequisites
 
@@ -16,7 +15,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 - `git clone <repository-url>` this repository
-- `cd ember-vite`
+- `cd apps/ember-vite`
 - `pnpm install`
 
 ## Running / Development
@@ -43,10 +42,6 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 - `pnpm ember build` (development)
 - `pnpm build` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
 
 ## Further Reading / Useful Links
 
