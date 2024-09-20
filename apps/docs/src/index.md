@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: 'Responsive Image'
+  name: 'ResponsiveImage'
   text: 'The multi-framework JavaScript library for responsive images.'
   tagline: Responsive images made easy.
   image:

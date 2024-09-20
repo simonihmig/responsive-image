@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'Responsive Image',
+  title: 'ResponsiveImage',
   description: 'Documentation for the Responsive Image project',
   srcDir: './src',
   cleanUrls: true,

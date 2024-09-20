@@ -1,6 +1,10 @@
 # @responsive-image/core
 
-Internal package
+Internal package for shared runtime code.
+
+## Documentation
+
+Visit [responsive-images.com](https://responsive-images.com) for our complete documentation site.
 
 ## License
 
