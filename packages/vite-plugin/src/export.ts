@@ -5,7 +5,7 @@ import type { Options, ServedImageData } from './types';
 import { getInput, getViteBasePath, getViteOptions, onlyUnique } from './utils';
 import {
   getAspectRatio,
-  LazyImageProcessingResult,
+  ImageProcessingResult,
   parseURL,
 } from '@responsive-image/build-utils';
 
@@ -50,7 +50,7 @@ export default function exportPlugin(
         data,
         width,
         format,
-      }: LazyImageProcessingResult): Promise<ImageOutputResult> => {
+      }: ImageProcessingResult): Promise<ImageOutputResult> => {
         const fileName = options.name
           .replace(
             /\[name\]/gi,

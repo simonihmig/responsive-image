@@ -2,7 +2,7 @@ import {
   effectiveImageFormats,
   generateResizedImage,
   getImagetoolsConfigs,
-  type LazyImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
 import type { LoaderContext } from 'webpack';
 import type { Options } from './types';
@@ -10,7 +10,7 @@ import { assertInput, getWebpackOptions, webpackOptionKeys } from './utils';
 
 export default function resizeLoader(
   this: LoaderContext<Partial<Options>>,
-  input: LazyImageLoaderChainedResult,
+  input: ImageLoaderChainedResult,
 ): void {
   assertInput(input);
 
@@ -27,10 +27,10 @@ export default function resizeLoader(
 }
 
 async function process(
-  data: LazyImageLoaderChainedResult,
+  data: ImageLoaderChainedResult,
   options: Options,
   context: LoaderContext<Partial<Options>>,
-): Promise<LazyImageLoaderChainedResult> {
+): Promise<ImageLoaderChainedResult> {
   const { sharp } = data;
   try {
     const sharpMeta = await sharp.metadata();

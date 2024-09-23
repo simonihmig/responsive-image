@@ -1,5 +1,5 @@
 import {
-  LazyImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
   effectiveImageFormats,
   generateResizedImage,
   getImagetoolsConfigs,
@@ -46,7 +46,7 @@ export default function resizePlugin(
           sharpMeta,
           ...input,
           images,
-        } satisfies LazyImageLoaderChainedResult;
+        } satisfies ImageLoaderChainedResult;
 
         return {
           // Only the export plugin will actually return ESM code

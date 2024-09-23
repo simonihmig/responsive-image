@@ -6,8 +6,8 @@ import type { LoaderContext } from 'webpack';
 import type { Options } from './types';
 import { getAspectRatio } from '@responsive-image/build-utils';
 import type {
-  LazyImageLoaderChainedResult,
-  LazyImageProcessingResult,
+  ImageLoaderChainedResult,
+  ImageProcessingResult,
 } from '@responsive-image/build-utils';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {
@@ -16,7 +16,7 @@ const imageExtensions: Partial<Record<ImageType, string>> = {
 
 export default function exportLoader(
   this: LoaderContext<Partial<Options>>,
-  input: LazyImageLoaderChainedResult,
+  input: ImageLoaderChainedResult,
 ): void {
   assertInput(input);
 
@@ -32,7 +32,7 @@ export default function exportLoader(
 }
 
 async function process(
-  input: LazyImageLoaderChainedResult,
+  input: ImageLoaderChainedResult,
   options: Options,
   context: LoaderContext<Partial<Options>>,
 ): Promise<string> {
@@ -42,7 +42,7 @@ async function process(
     data,
     width,
     format,
-  }: LazyImageProcessingResult): Promise<ImageOutputResult> => {
+  }: ImageProcessingResult): Promise<ImageOutputResult> => {
     let fileName = name
       .replace(/\[ext\]/gi, imageExtensions[format] ?? format)
       .replace(/\[width\]/gi, width + '');

@@ -1,12 +1,12 @@
 import type { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
-import type { LazyImageProcessingResult, OutputImageType } from './types';
+import type { ImageProcessingResult, OutputImageType } from './types';
 import type { ImageType } from '@responsive-image/core';
 
 export async function generateResizedImage(
   image: Sharp,
   config: ImageConfig,
-): Promise<LazyImageProcessingResult> {
+): Promise<ImageProcessingResult> {
   const { w, format } = config;
 
   if (typeof w !== 'string') {

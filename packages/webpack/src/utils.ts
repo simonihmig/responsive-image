@@ -2,7 +2,7 @@ import type { LoaderContext } from 'webpack';
 import type { Options, WebpackLoaderOptions } from './types';
 import {
   getOptions,
-  LazyImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
 
 export const defaultWebpackOptions = {
@@ -32,8 +32,8 @@ export function onlyUnique<T>(value: T, index: number, self: T[]): boolean {
 }
 
 export function assertInput(
-  input: string | Buffer | LazyImageLoaderChainedResult,
-): asserts input is LazyImageLoaderChainedResult {
+  input: string | Buffer | ImageLoaderChainedResult,
+): asserts input is ImageLoaderChainedResult {
   if (Buffer.isBuffer(input) || typeof input === 'string') {
     throw new Error(
       'You cannot run this webpack loader on raw data, at least @responsive-image/loader is missing in the loader chain!',
