@@ -35,10 +35,6 @@ export function getInput(
   return info?.meta[META_KEY];
 }
 
-export function onlyUnique<T>(value: T, index: number, self: T[]): boolean {
-  return self.indexOf(value) === index;
-}
-
 export function getViteBasePath(viteConfig: ResolvedConfig): string {
   return `${
     viteConfig.base.endsWith('/')

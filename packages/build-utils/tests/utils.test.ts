@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { generateLqipClassName } from '../src/utils';
+import { generateLqipClassName } from '../src';
 
 describe('generateLqipClassName', () => {
   test('it generates unique class names', () => {

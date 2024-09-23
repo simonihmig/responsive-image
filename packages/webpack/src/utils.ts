@@ -27,10 +27,6 @@ export function getWebpackOptions(
   );
 }
 
-export function onlyUnique<T>(value: T, index: number, self: T[]): boolean {
-  return self.indexOf(value) === index;
-}
-
 export function assertInput(
   input: string | Buffer | ImageLoaderChainedResult,
 ): asserts input is ImageLoaderChainedResult {

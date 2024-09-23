@@ -1,6 +1,10 @@
 import type { ImageConfig } from 'imagetools-core';
 import type { Metadata, Sharp } from 'sharp';
-import type { ImageProcessingResult, OutputImageType } from './types';
+import type {
+  ImageOptions,
+  ImageProcessingResult,
+  OutputImageType,
+} from './types';
 import type { ImageType } from '@responsive-image/core';
 
 export async function generateResizedImage(
@@ -73,4 +77,26 @@ function assertSupportedType(type: unknown): asserts type is ImageType {
   if (!supportedTypes.includes(type)) {
     throw new Error(`Unknown image type "${type}"`);
   }
+}
+
+export async function getImagetoolsConfigs<
+  BUILDOPTIONS extends Record<string, unknown>,
+>(
+  options: ImageOptions & BUILDOPTIONS,
+  buildKeys: Array<keyof BUILDOPTIONS>,
+): Promise<ImageConfig[]> {
+  const imagetools = await import('imagetools-core');
+
+  const entries = Object.entries(options)
+    .filter(([key]) => !buildKeys.includes(key))
+    .map(([key, value]) => {
+      // imagetools expects this type
+      const stringarrayifiedValue = Array.isArray(value)
+        ? value.map((v) => String(v))
+        : [String(value)];
+
+      return [key, stringarrayifiedValue] satisfies [string, string[]];
+    });
+
+  return imagetools.resolveConfigs(entries, imagetools.builtinOutputFormats);
 }

@@ -2,11 +2,12 @@ import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import * as path from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
 import type { Options, ServedImageData } from './types';
-import { getInput, getViteBasePath, getViteOptions, onlyUnique } from './utils';
+import { getInput, getViteBasePath, getViteOptions } from './utils';
 import {
   getAspectRatio,
   ImageProcessingResult,
   parseURL,
+  onlyUnique,
 } from '@responsive-image/build-utils';
 
 const imageExtensions: Partial<Record<ImageType, string>> = {

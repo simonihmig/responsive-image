@@ -1,10 +1,10 @@
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
-import { assertInput, getWebpackOptions, onlyUnique } from './utils';
+import { assertInput, getWebpackOptions } from './utils';
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import type { LoaderContext } from 'webpack';
 import type { Options } from './types';
-import { getAspectRatio } from '@responsive-image/build-utils';
+import { getAspectRatio, onlyUnique } from '@responsive-image/build-utils';
 import type {
   ImageLoaderChainedResult,
   ImageProcessingResult,
