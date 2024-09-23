@@ -1,9 +1,11 @@
+import type { ImageLoaderChainedResult } from '@responsive-image/build-utils';
 import {
-  type ImageLoaderChainedResult,
   effectiveImageFormats,
   generateResizedImage,
   getImagetoolsConfigs,
 } from '@responsive-image/build-utils';
+import { mkdir } from 'node:fs/promises';
+import { join } from 'node:path';
 import type { Plugin } from 'vite';
 import type { Options } from './types';
 import { META_KEY, getInput, getViteOptions, viteOptionKeys } from './utils';
@@ -11,10 +13,25 @@ import { META_KEY, getInput, getViteOptions, viteOptionKeys } from './utils';
 export default function resizePlugin(
   userOptions: Partial<Options> = {},
 ): Plugin {
+  let cacheDir: string;
+
   return {
     name: 'responsive-image/resize',
     // TODO do we need this?
     enforce: 'pre',
+
+    configResolved(config) {
+      cacheDir = join(config.cacheDir, '.responsive-image');
+    },
+
+    async buildStart() {
+      if (!cacheDir) {
+        throw new Error('Expected cacheDir to exist.');
+      }
+
+      await mkdir(cacheDir, { recursive: true });
+    },
+
     async transform(code, id) {
       const input = getInput(this, id);
 
@@ -39,7 +56,12 @@ export default function resizePlugin(
         );
 
         const images = await Promise.all(
-          configs.map((config) => generateResizedImage(sharp, config)),
+          configs.map((config) =>
+            generateResizedImage(input, config, {
+              cache: options.cache,
+              cacheDir,
+            }),
+          ),
         );
 
         const result = {

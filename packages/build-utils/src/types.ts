@@ -50,4 +50,5 @@ export interface ImageLoaderChainedResult {
   sharp: Sharp;
   imports: string[];
   sharpMeta?: Metadata;
+  hash?: string;
 }

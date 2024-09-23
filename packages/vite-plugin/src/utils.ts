@@ -11,6 +11,7 @@ export const META_KEY = 'responsive-image';
 
 export const defaultViteOptions = {
   name: '[name]-[width]w.[ext]',
+  cache: true,
 };
 
 export const viteOptionKeys = [
