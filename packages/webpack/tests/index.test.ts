@@ -56,7 +56,12 @@ test('it produces expected output', async () => {
   );
 
   expect(
-    fs.readFileSync(join(_dirname, imageAssets[0] as string)),
+    fs.readFileSync(
+      join(
+        _dirname,
+        imageAssets.find((fileName) => fileName === 'images/image-640w.png')!,
+      ),
+    ),
   ).toMatchImageSnapshot();
 });
 
