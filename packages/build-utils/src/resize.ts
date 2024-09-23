@@ -1,4 +1,6 @@
+import type { ImageType } from '@responsive-image/core';
 import type { ImageConfig } from 'imagetools-core';
+import { readFile, writeFile } from 'node:fs/promises';
 import type { Metadata } from 'sharp';
 import type {
   ImageLoaderChainedResult,
@@ -6,10 +8,7 @@ import type {
   ImageProcessingResult,
   OutputImageType,
 } from './types';
-import type { ImageType } from '@responsive-image/core';
-import { readFile, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import { hash } from './utils';
+import { getCacheFilename } from './utils';
 
 export async function generateResizedImage(
   input: ImageLoaderChainedResult,
@@ -34,9 +33,11 @@ export async function generateResizedImage(
     let cacheFile: string | undefined = undefined;
 
     if (options.cache && input.hash) {
-      cacheFile = join(
+      cacheFile = getCacheFilename(
+        input,
+        config,
+        format,
         options.cacheDir ?? './node_modules/.cache',
-        hash([config, input.hash]),
       );
 
       try {
@@ -44,6 +45,7 @@ export async function generateResizedImage(
         // console.log(`file read from cache: ${cacheFile}`);
 
         return buffer;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
         // do nothing
       }

@@ -2,6 +2,8 @@ import sharp, { type Metadata } from 'sharp';
 import type { ImageOptions, ImageLoaderChainedResult } from './types';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
+import type { ImageConfig } from 'imagetools-core';
+import { join } from 'node:path';
 
 const defaultImageConfig: ImageOptions = {
   w: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -78,6 +80,7 @@ export function getOptions<BUILDOPTIONS>(
 
 export function normalizeInput(
   input: string | Buffer | ImageLoaderChainedResult,
+  options: { generateHash?: boolean } = {},
 ): ImageLoaderChainedResult {
   if (typeof input === 'string') {
     const filename = getPathname(input);
@@ -89,7 +92,7 @@ export function normalizeInput(
       images: [],
       sharp: sharp(input),
       imports: [],
-      hash: hash([input]),
+      hash: options.generateHash ? hash([input]) : undefined,
     };
   }
 
@@ -128,4 +131,17 @@ export function hash(datas: Array<string | object | Buffer>): string {
   }
 
   return hash.digest('hex');
+}
+
+export function getCacheFilename(
+  input: ImageLoaderChainedResult,
+  config: ImageConfig,
+  extension: string,
+  cacheDir: string,
+): string {
+  if (!input.hash) {
+    throw new Error('Expected hash to be availiable');
+  }
+
+  return join(cacheDir, `${hash([config, input.hash])}.${extension}`);
 }

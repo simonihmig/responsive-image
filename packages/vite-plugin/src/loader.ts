@@ -1,7 +1,7 @@
 import { createFilter } from '@rollup/pluginutils';
 import type { Plugin } from 'vite';
 import type { Options } from './types';
-import { META_KEY } from './utils';
+import { getViteOptions, META_KEY } from './utils';
 import { normalizeInput } from '@responsive-image/build-utils';
 
 export default function loaderPlugin(
@@ -18,7 +18,8 @@ export default function loaderPlugin(
         return;
       }
 
-      const data = normalizeInput(id);
+      const options = getViteOptions(id, userOptions);
+      const data = normalizeInput(id, { generateHash: options.cache });
 
       return {
         // Only the export plugin will actually return ESM code
