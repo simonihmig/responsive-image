@@ -5,13 +5,13 @@ import { getWebpackOptions } from '../utils';
 import { encode } from 'blurhash';
 import {
   getAspectRatio,
-  ImageLoaderChainedResult,
+  LazyImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
 
 export default function lqipBlurhashLoader(
   this: LoaderContext<Partial<Options>>,
-  input: Buffer | ImageLoaderChainedResult,
+  input: Buffer | LazyImageLoaderChainedResult,
 ) {
   const data = normalizeInput(input);
   const options = getWebpackOptions(this);
@@ -32,9 +32,9 @@ export default function lqipBlurhashLoader(
 lqipBlurhashLoader.raw = true;
 
 async function process(
-  data: ImageLoaderChainedResult,
+  data: LazyImageLoaderChainedResult,
   options: Options,
-): Promise<ImageLoaderChainedResult> {
+): Promise<LazyImageLoaderChainedResult> {
   const { sharp, sharpMeta } = data;
 
   if (!sharpMeta) {

@@ -1,11 +1,11 @@
 import {
-  ImageLoaderChainedResult,
+  LazyImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
 
 export default function loader(
-  input: Buffer | ImageLoaderChainedResult,
-): ImageLoaderChainedResult {
+  input: Buffer | LazyImageLoaderChainedResult,
+): LazyImageLoaderChainedResult {
   const data = normalizeInput(input);
 
   return data;

@@ -3,14 +3,14 @@ import type { LoaderContext } from 'webpack';
 import type { Options } from '../types';
 import {
   generateLqipClassName,
-  ImageLoaderChainedResult,
+  LazyImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
 
 export default function lqipColorLoader(
   this: LoaderContext<Partial<Options>>,
-  input: Buffer | ImageLoaderChainedResult,
-): ImageLoaderChainedResult {
+  input: Buffer | LazyImageLoaderChainedResult,
+): LazyImageLoaderChainedResult {
   const data = normalizeInput(input);
 
   const options = getWebpackOptions(this);
