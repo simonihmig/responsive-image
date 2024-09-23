@@ -38,24 +38,10 @@ export interface ImageOptions {
   [key: string]: unknown;
 }
 
-export interface LazyImageProcessingResult {
+export interface ImageProcessingResult {
   data: () => Promise<Buffer>;
   width: number;
   format: ImageType;
-}
-
-export interface ImageProcessingResult {
-  data: Buffer;
-  width: number;
-  format: ImageType;
-}
-
-export interface LazyImageLoaderChainedResult {
-  lqip?: LqipInline | LqipColor | LqipBlurhash;
-  images: LazyImageProcessingResult[];
-  sharp: Sharp;
-  imports: string[];
-  sharpMeta?: Metadata;
 }
 
 export interface ImageLoaderChainedResult {

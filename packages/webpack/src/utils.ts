@@ -2,7 +2,7 @@ import type { LoaderContext } from 'webpack';
 import type { Options, WebpackLoaderOptions } from './types';
 import {
   getOptions,
-  ImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
 
 export const defaultWebpackOptions = {
@@ -25,10 +25,6 @@ export function getWebpackOptions(
     defaultWebpackOptions,
     context.getOptions(),
   );
-}
-
-export function onlyUnique<T>(value: T, index: number, self: T[]): boolean {
-  return self.indexOf(value) === index;
 }
 
 export function assertInput(

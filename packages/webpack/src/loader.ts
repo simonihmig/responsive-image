@@ -1,5 +1,5 @@
 import {
-  ImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
 

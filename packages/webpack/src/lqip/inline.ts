@@ -3,7 +3,7 @@ import type { LoaderContext } from 'webpack';
 import type { Options } from '../types';
 import {
   generateLqipClassName,
-  ImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
 

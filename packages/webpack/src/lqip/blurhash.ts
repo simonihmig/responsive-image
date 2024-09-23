@@ -5,7 +5,7 @@ import { getWebpackOptions } from '../utils';
 import { encode } from 'blurhash';
 import {
   getAspectRatio,
-  ImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
 

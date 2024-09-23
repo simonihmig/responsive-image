@@ -1,13 +1,5 @@
-import baseN from 'base-n';
 import sharp, { type Metadata } from 'sharp';
-import type {
-  ImageLoaderChainedResult,
-  ImageOptions,
-  LazyImageLoaderChainedResult,
-} from './types';
-import type { ImageConfig } from 'imagetools-core';
-
-const b64 = baseN.create();
+import type { ImageOptions, ImageLoaderChainedResult } from './types';
 
 const defaultImageConfig: ImageOptions = {
   w: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -65,28 +57,6 @@ export function parseQuery(
   );
 }
 
-export async function getImagetoolsConfigs<
-  BUILDOPTIONS extends Record<string, unknown>,
->(
-  options: ImageOptions & BUILDOPTIONS,
-  buildKeys: Array<keyof BUILDOPTIONS>,
-): Promise<ImageConfig[]> {
-  const imagetools = await import('imagetools-core');
-
-  const entries = Object.entries(options)
-    .filter(([key]) => !buildKeys.includes(key))
-    .map(([key, value]) => {
-      // imagetools expects this type
-      const stringarrayifiedValue = Array.isArray(value)
-        ? value.map((v) => String(v))
-        : [String(value)];
-
-      return [key, stringarrayifiedValue] satisfies [string, string[]];
-    });
-
-  return imagetools.resolveConfigs(entries, imagetools.builtinOutputFormats);
-}
-
 export function getOptions<BUILDOPTIONS>(
   id: string | URL,
   defaultOptions: BUILDOPTIONS,
@@ -105,18 +75,14 @@ export function getOptions<BUILDOPTIONS>(
 }
 
 export function normalizeInput(
-  input: string | Buffer | LazyImageLoaderChainedResult,
-): LazyImageLoaderChainedResult;
+  input: string | Buffer | ImageLoaderChainedResult,
+): ImageLoaderChainedResult;
 export function normalizeInput(
   input: string | Buffer | ImageLoaderChainedResult,
 ): ImageLoaderChainedResult;
 export function normalizeInput(
-  input:
-    | string
-    | Buffer
-    | ImageLoaderChainedResult
-    | LazyImageLoaderChainedResult,
-): ImageLoaderChainedResult | LazyImageLoaderChainedResult {
+  input: string | Buffer | ImageLoaderChainedResult | ImageLoaderChainedResult,
+): ImageLoaderChainedResult | ImageLoaderChainedResult {
   if (typeof input === 'string') {
     return {
       images: [],
@@ -134,20 +100,6 @@ export function normalizeInput(
   }
 
   return input;
-}
-
-const generatedClassNames = new Map<string, string>();
-
-export function generateLqipClassName(resource: string): string {
-  if (generatedClassNames.has(resource)) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return generatedClassNames.get(resource)!;
-  } else {
-    const className = `ri-dyn-${b64.encode(generatedClassNames.size)}`;
-    generatedClassNames.set(resource, className);
-
-    return className;
-  }
 }
 
 export function getAspectRatio(meta: Metadata): number | undefined {
@@ -168,11 +120,4 @@ export function dataUri(
   return `data:${type};base64,${
     base64 ? data : Buffer.from(data).toString('base64')
   }`;
-}
-
-export function blurrySvg(src: string, width: number, height: number): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}">
-<filter id="b" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".5"></feGaussianBlur><feComponentTransfer><feFuncA type="discrete" tableValues="1 1"></feFuncA></feComponentTransfer></filter>
-<image filter="url(#b)" preserveAspectRatio="none" height="100%" width="100%" xlink:href="${src}"></image>
-</svg>`;
 }

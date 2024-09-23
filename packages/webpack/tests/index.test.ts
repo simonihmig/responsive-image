@@ -34,27 +34,34 @@ test('it produces expected output', async () => {
   expect(sanitizeOutput(output)).toMatchSnapshot();
 
   const imageAssets = stats.modules![0]!.assets!;
-  expect(imageAssets).toEqual([
-    'images/image-640w.png',
-    'images/image-640w.webp',
-    'images/image-750w.png',
-    'images/image-750w.webp',
-    'images/image-828w.png',
-    'images/image-828w.webp',
-    'images/image-1080w.png',
-    'images/image-1080w.webp',
-    'images/image-1200w.png',
-    'images/image-1200w.webp',
-    'images/image-1920w.png',
-    'images/image-1920w.webp',
-    'images/image-2048w.png',
-    'images/image-2048w.webp',
-    'images/image-3840w.png',
-    'images/image-3840w.webp',
-  ]);
+  expect(imageAssets.toSorted()).toEqual(
+    [
+      'images/image-640w.png',
+      'images/image-640w.webp',
+      'images/image-750w.png',
+      'images/image-750w.webp',
+      'images/image-828w.png',
+      'images/image-828w.webp',
+      'images/image-1080w.png',
+      'images/image-1080w.webp',
+      'images/image-1200w.png',
+      'images/image-1200w.webp',
+      'images/image-1920w.png',
+      'images/image-1920w.webp',
+      'images/image-2048w.png',
+      'images/image-2048w.webp',
+      'images/image-3840w.png',
+      'images/image-3840w.webp',
+    ].toSorted(),
+  );
 
   expect(
-    fs.readFileSync(join(_dirname, imageAssets[0] as string)),
+    fs.readFileSync(
+      join(
+        _dirname,
+        imageAssets.find((fileName) => fileName === 'images/image-640w.png')!,
+      ),
+    ),
   ).toMatchImageSnapshot();
 });
 

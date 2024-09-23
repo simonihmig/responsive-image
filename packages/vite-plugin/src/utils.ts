@@ -1,6 +1,6 @@
 import {
   getOptions,
-  LazyImageLoaderChainedResult,
+  type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
 import type { PluginContext } from 'rollup';
 import type { ResolvedConfig } from 'vite';
@@ -30,13 +30,9 @@ export function getViteOptions(
 export function getInput(
   context: PluginContext,
   id: string,
-): LazyImageLoaderChainedResult | undefined {
+): ImageLoaderChainedResult | undefined {
   const info = context.getModuleInfo(id);
   return info?.meta[META_KEY];
-}
-
-export function onlyUnique<T>(value: T, index: number, self: T[]): boolean {
-  return self.indexOf(value) === index;
 }
 
 export function getViteBasePath(viteConfig: ResolvedConfig): string {

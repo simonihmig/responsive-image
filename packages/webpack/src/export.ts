@@ -1,10 +1,10 @@
 import { interpolateName } from 'loader-utils';
 import * as path from 'path';
-import { assertInput, getWebpackOptions, onlyUnique } from './utils';
+import { assertInput, getWebpackOptions } from './utils';
 import type { ImageOutputResult, ImageType } from '@responsive-image/core';
 import type { LoaderContext } from 'webpack';
 import type { Options } from './types';
-import { getAspectRatio } from '@responsive-image/build-utils';
+import { getAspectRatio, onlyUnique } from '@responsive-image/build-utils';
 import type {
   ImageLoaderChainedResult,
   ImageProcessingResult,
@@ -16,32 +16,48 @@ const imageExtensions: Partial<Record<ImageType, string>> = {
 
 export default function exportLoader(
   this: LoaderContext<Partial<Options>>,
-  input: string | Buffer | ImageLoaderChainedResult,
-): string {
+  input: ImageLoaderChainedResult,
+): void {
   assertInput(input);
 
+  const loaderCallback = this.async();
+
   const options = getWebpackOptions(this);
+
+  process(input, options, this)
+    .then((result) => {
+      loaderCallback(null, result);
+    })
+    .catch((err) => loaderCallback(err));
+}
+
+async function process(
+  input: ImageLoaderChainedResult,
+  options: Options,
+  context: LoaderContext<Partial<Options>>,
+): Promise<string> {
   const { name } = options;
 
-  const createImageFile = ({
+  const createImageFile = async ({
     data,
     width,
     format,
-  }: ImageProcessingResult): ImageOutputResult => {
+  }: ImageProcessingResult): Promise<ImageOutputResult> => {
     let fileName = name
       .replace(/\[ext\]/gi, imageExtensions[format] ?? format)
       .replace(/\[width\]/gi, width + '');
-    fileName = interpolateName(this, fileName, {
-      // context: outputContext,
-      content: data,
-      // content: data.toString(),
+
+    const content = await data();
+
+    fileName = interpolateName(context, fileName, {
+      content,
     });
 
     const outputPath = options.outputPath
       ? path.posix.join(options.outputPath, fileName)
       : fileName;
 
-    this.emitFile(outputPath, data);
+    context.emitFile(outputPath, content);
 
     const url = options.webPath
       ? JSON.stringify(path.posix.join(options.webPath, fileName))
@@ -54,7 +70,7 @@ export default function exportLoader(
     };
   };
 
-  const emittedImages = input.images.map(createImageFile);
+  const emittedImages = await Promise.all(input.images.map(createImageFile));
   const availableWidths = input.images.map((i) => i.width).filter(onlyUnique);
   const imageTypes = input.images.map((i) => i.format).filter(onlyUnique);
   const aspectRatio = input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1;
