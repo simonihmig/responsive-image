@@ -4,7 +4,6 @@ import {
   generateResizedImage,
   getImagetoolsConfigs,
 } from '@responsive-image/build-utils';
-import { mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { Plugin } from 'vite';
 import type { Options } from './types';
@@ -22,14 +21,6 @@ export default function resizePlugin(
 
     configResolved(config) {
       cacheDir = join(config.cacheDir, '.responsive-image');
-    },
-
-    async buildStart() {
-      if (!cacheDir) {
-        throw new Error('Expected cacheDir to exist.');
-      }
-
-      await mkdir(cacheDir, { recursive: true });
     },
 
     async transform(code, id) {

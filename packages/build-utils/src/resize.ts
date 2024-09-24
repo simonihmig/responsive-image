@@ -1,6 +1,6 @@
 import type { ImageType } from '@responsive-image/core';
 import type { ImageConfig } from 'imagetools-core';
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import type { Metadata } from 'sharp';
 import type {
   ImageLoaderChainedResult,
@@ -33,12 +33,11 @@ export async function generateResizedImage(
     let cacheFile: string | undefined = undefined;
 
     if (options.cache && input.hash) {
-      cacheFile = getCacheFilename(
-        input,
-        config,
-        format,
-        options.cacheDir ?? './node_modules/.cache',
-      );
+      const cacheDir = options.cacheDir ?? './node_modules/.cache';
+
+      cacheFile = getCacheFilename(input, config, format, cacheDir);
+
+      await mkdir(cacheDir, { recursive: true });
 
       try {
         const buffer = await readFile(cacheFile);

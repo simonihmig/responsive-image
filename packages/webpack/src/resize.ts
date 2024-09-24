@@ -45,7 +45,7 @@ async function process(
     );
 
     const images = await Promise.all(
-      configs.map((config) => generateResizedImage(sharp, config)),
+      configs.map((config) => generateResizedImage(data, config, options)),
     );
 
     return {
