@@ -3,6 +3,7 @@ import type { ImageType } from '@responsive-image/core';
 
 export interface ViteOptions {
   name: string;
+  cache: boolean;
   include?: string | RegExp | Array<string | RegExp>;
   exclude?: string | RegExp | Array<string | RegExp>;
   lqip?: LqipOptions;

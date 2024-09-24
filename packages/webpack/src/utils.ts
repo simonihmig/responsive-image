@@ -8,6 +8,7 @@ import {
 export const defaultWebpackOptions = {
   name: '[name]-[width]w-[hash].[ext]',
   outputPath: 'images',
+  cache: true,
 };
 
 export const webpackOptionKeys = [

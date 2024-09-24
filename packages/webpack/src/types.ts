@@ -5,6 +5,7 @@ export interface WebpackLoaderOptions {
   webPath?: string;
   outputPath: string;
   lqip?: LqipOptions;
+  cache: boolean;
 }
 
 export type Options = WebpackLoaderOptions & ImageOptions;

@@ -1,15 +1,19 @@
+import type { ImageType } from '@responsive-image/core';
 import type { ImageConfig } from 'imagetools-core';
-import type { Metadata, Sharp } from 'sharp';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import type { Metadata } from 'sharp';
 import type {
+  ImageLoaderChainedResult,
   ImageOptions,
   ImageProcessingResult,
   OutputImageType,
 } from './types';
-import type { ImageType } from '@responsive-image/core';
+import { getCacheFilename } from './utils';
 
 export async function generateResizedImage(
-  image: Sharp,
+  input: ImageLoaderChainedResult,
   config: ImageConfig,
+  options: { cache?: boolean; cacheDir?: string } = {},
 ): Promise<ImageProcessingResult> {
   const { w, format } = config;
 
@@ -26,6 +30,26 @@ export async function generateResizedImage(
   }
 
   const data = async () => {
+    let cacheFile: string | undefined = undefined;
+
+    if (options.cache && input.hash) {
+      const cacheDir = options.cacheDir ?? './node_modules/.cache';
+
+      cacheFile = getCacheFilename(input, config, format, cacheDir);
+
+      await mkdir(cacheDir, { recursive: true });
+
+      try {
+        const buffer = await readFile(cacheFile);
+        // console.log(`file read from cache: ${cacheFile}`);
+
+        return buffer;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (e) {
+        // do nothing
+      }
+    }
+
     const imagetools = await import('imagetools-core');
 
     const { transforms } = imagetools.generateTransforms(
@@ -36,10 +60,19 @@ export async function generateResizedImage(
 
     const { image: resizedImage } = await imagetools.applyTransforms(
       transforms,
-      image,
+      input.sharp,
     );
 
-    return resizedImage.toBuffer();
+    const resizedImageData = await resizedImage.toBuffer();
+
+    if (options.cache && cacheFile) {
+      // console.log(
+      //   `writing to cache file ${cacheFile} for ${JSON.stringify(config)}`,
+      // );
+      await writeFile(cacheFile, resizedImageData);
+    }
+
+    return resizedImageData;
   };
 
   return {

@@ -1,5 +1,9 @@
 import sharp, { type Metadata } from 'sharp';
 import type { ImageOptions, ImageLoaderChainedResult } from './types';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import type { ImageConfig } from 'imagetools-core';
+import { join } from 'node:path';
 
 const defaultImageConfig: ImageOptions = {
   w: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -76,19 +80,11 @@ export function getOptions<BUILDOPTIONS>(
 
 export function normalizeInput(
   input: string | Buffer | ImageLoaderChainedResult,
-): ImageLoaderChainedResult;
-export function normalizeInput(
-  input: string | Buffer | ImageLoaderChainedResult,
-): ImageLoaderChainedResult;
-export function normalizeInput(
-  input: string | Buffer | ImageLoaderChainedResult | ImageLoaderChainedResult,
-): ImageLoaderChainedResult | ImageLoaderChainedResult {
+  options: { generateHash?: boolean } = {},
+): ImageLoaderChainedResult {
   if (typeof input === 'string') {
-    return {
-      images: [],
-      sharp: sharp(getPathname(input)),
-      imports: [],
-    };
+    const filename = getPathname(input);
+    input = readFileSync(filename);
   }
 
   if (Buffer.isBuffer(input)) {
@@ -96,6 +92,7 @@ export function normalizeInput(
       images: [],
       sharp: sharp(input),
       imports: [],
+      hash: options.generateHash ? hash([input]) : undefined,
     };
   }
 
@@ -120,4 +117,31 @@ export function dataUri(
   return `data:${type};base64,${
     base64 ? data : Buffer.from(data).toString('base64')
   }`;
+}
+
+export function hash(datas: Array<string | object | Buffer>): string {
+  const hash = createHash('md5');
+
+  for (let data of datas) {
+    if (typeof data === 'object') {
+      data = JSON.stringify(data);
+    }
+
+    hash.update(data);
+  }
+
+  return hash.digest('hex');
+}
+
+export function getCacheFilename(
+  input: ImageLoaderChainedResult,
+  config: ImageConfig,
+  extension: string,
+  cacheDir: string,
+): string {
+  if (!input.hash) {
+    throw new Error('Expected hash to be availiable');
+  }
+
+  return join(cacheDir, `${hash([config, input.hash])}.${extension}`);
 }

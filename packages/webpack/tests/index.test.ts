@@ -83,7 +83,7 @@ test('custom loader options are supported', async () => {
   const output = stats.modules?.[0]?.modules?.[0]?.source;
   expect(sanitizeOutput(output)).toMatchSnapshot();
 
-  const imageAssets = stats.modules![0]!.assets!;
+  const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual(['images/test-100.png', 'images/test-200.png']);
 
   for (const image of imageAssets) {
@@ -106,7 +106,7 @@ test('custom query params are supported', async () => {
   const output = stats.modules?.[0]?.modules?.[0]?.source;
   expect(sanitizeOutput(output)).toMatchSnapshot();
 
-  const imageAssets = stats.modules![0]!.assets!;
+  const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
     'images/image-100w.png',
     'images/image-200w.png',
@@ -131,7 +131,7 @@ test('imagetools params are supported', async () => {
   const output = stats.modules?.[0]?.modules?.[0]?.source;
   expect(sanitizeOutput(output)).toMatchSnapshot();
 
-  const imageAssets = stats.modules![0]!.assets!;
+  const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
     'images/image-100w.png',
     'images/image-200w.png',
