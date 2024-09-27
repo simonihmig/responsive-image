@@ -1,6 +1,6 @@
 # Frontend frameworks
 
-The [image component](../usage/component.md) and other utilities are proved with framework specific packages:
+The [image component](../usage/component.md) and other utilities are provided with framework specific packages:
 
 - [Ember](./ember.md)
 
