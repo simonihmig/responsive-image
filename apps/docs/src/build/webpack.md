@@ -60,7 +60,7 @@ const config = {
 
 ### Global configuration
 
-The package comes with reasonable defaults, but if you want to customize these for all image imports globally, then you can pass an optional configuration object to `setupLoaders()`:
+The package comes with reasonable defaults, but if you want to customize these for all image imports globally, then you can pass an optional object with [configuration options](#configuration-options) to `setupLoaders()`:
 
 ```js
 setupLoaders({
@@ -71,24 +71,44 @@ setupLoaders({
 
 ### Query params
 
-Besides global settings, you can also pass all the supported configuration options as query parameters when importimng an image:
+Besides global settings, you can also pass all the supported [configuration options](#configuration-options) as query parameters when importing an image:
 
 ```js
-import logo from './logo.jpg?responsive&w=32,64&quality=95';
+import logo from './logo.jpg?&w=32;64&quality=95&responsive';
 ```
 
-Query params alwas take precedence of global settings passed to `setupLoaders()`.
+Query params always take precedence over global settings passed to `setupLoaders()`.
 
 ### Configuration options
 
-| option       | type                                                                                                             | description                                                                                                                                                                                                                                                                                                                                                 | default                                       |
-| ------------ | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `w`          | `Array<number>`                                                                                                  | The image widths to be generated. For responsive images this should match the typical device sizes, eventually taking account when the image is not covering the full screen size, like `50vw`. For fixed size images this should be the intended size and twice of it for 2x displays. Pass this as a comma separated list when using query params.        | `640, 750, 828, 1080, 1200, 1920, 2048, 3840` |
-| `format`     | `Array<'original' \| 'png' \| 'jpeg' \| 'webp'\|'avif'>`                                                         | The image formats to generate. `original` refers to whatever the original image's type is. Pass this as a comma separated list when using query params.                                                                                                                                                                                                     | `['original', 'webp']`                        |
-| `quality`    | `number`                                                                                                         | The image quality (0 - 100).                                                                                                                                                                                                                                                                                                                                | 80                                            |
-| `name`       | `string`                                                                                                         | The template for the generated image files. Certains placeholders like `[ext]` and `[width]` and all the common Webpack placeholders are replaced with real values.                                                                                                                                                                                         | [name]-[width]w-[hash].[ext]                  |
-| `webPath`    | `string`                                                                                                         | The public URL the emitted files are referenced from. By default, this matches Webpacks public URL and the path generated from `outputPath`.                                                                                                                                                                                                                |
-| `outputPath` | `string`                                                                                                         | The file path where the public image files are emitted to. This is relative to the default folder configured for public asset files in Webpack.                                                                                                                                                                                                             | images                                        |
-| `lqip`       | `{ type: 'color' } \| {type: 'inline'; targetPixels?: number; } \| { type: 'blurhash'; targetPixels?: number; }` | Configuration for [Low Quality Image Placeholders](../usage/lqip.md). For passing this as a query param to your import, you can pass this as a string when you don't need to set anything beyond `type` (e.g. `image.jpg?responsive&lqip=inline`), or as a JSON stringified value (e.g. `image.jpg?responsive&lqip={"type":"blurhash","targetPixels":16}`). |
+All the general [image parameters](../usage/local-images.md#image-parameters-reference) for local images can be specified both as global options or as query params, as explained above.
 
----
+On top of that, there are the following webpack specific options, that you can customize the same way. In most cses, the existing defaults should be sufficient though.
+
+#### `name: string`
+
+The template for the generated image files. Certains placeholders like `[ext]` and `[width]` and all the common Webpack placeholders are replaced with real values.
+
+Default: `[name]-[width]w-[hash].[ext]`
+
+```js
+setupLoaders({
+  name: '[name]_[width].[hash].[ext]',
+});
+```
+
+#### `webPath: string`
+
+The public URL the emitted files are referenced from. By default, this matches Webpacks public URL and the path generated from `outputPath`.
+
+```js
+setupLoaders({
+  webPath: 'https://images.example.com/',
+});
+```
+
+#### `outputPath: string`
+
+The file path where the public image files are emitted to. This is relative to the default folder configured for public asset files in Webpack.
+
+Default: `images`

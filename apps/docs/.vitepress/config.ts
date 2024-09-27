@@ -24,6 +24,29 @@ export default defineConfig({
         text: 'Image CDNs',
         link: '/cdn/',
       },
+
+      {
+        text: 'About',
+        // link: '/usage/concepts',
+        items: [
+          {
+            text: 'Releases',
+            link: 'https://github.com/simonihmig/responsive-image/releases',
+          },
+          {
+            text: 'Me',
+            link: '/me',
+          },
+          {
+            text: 'History',
+            link: '/history',
+          },
+          {
+            text: 'Credits',
+            link: '/credits',
+          },
+        ],
+      },
     ],
 
     sidebar: [

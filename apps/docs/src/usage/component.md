@@ -104,7 +104,7 @@ A fixed layout will render the image with the specific dimensions as specified. 
 ::: code-group
 
 ```gjs [Ember]
-import logoImage from './hero.jpg?responsive&w=320;640';
+import logoImage from './hero.jpg?w=320;640&responsive';
 
 <template>
   <ResponsiveImage @src={{logoImage}} @width={{320}} />
