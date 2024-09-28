@@ -1,5 +1,11 @@
 # ember-responsive-image
 
+## 1.0.0-beta.3
+
+### Minor Changes
+
+- [#664](https://github.com/simonihmig/responsive-image/pull/664) [`bab7cae`](https://github.com/simonihmig/responsive-image/commit/bab7cae77fa4d5d2bd6f46ccec91f4ba327be492) Thanks [@simonihmig](https://github.com/simonihmig)! - Rename all `eri-*` attributes and classes to `ri-*` for consistency
+
 ## 1.0.0-beta.2
 
 ### Major Changes
