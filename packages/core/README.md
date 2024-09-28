@@ -4,7 +4,7 @@ Internal package for shared runtime code.
 
 ## Documentation
 
-Visit [responsive-image.com](https://responsive-image.com) for our complete documentation site.
+Visit [responsive-image.dev](https://responsive-image.dev) for our complete documentation site.
 
 ## License
 
