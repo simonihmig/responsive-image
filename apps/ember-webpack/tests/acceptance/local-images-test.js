@@ -11,67 +11,86 @@ const imageTypes = [
 module('Acceptance | local images', function (hooks) {
   setupApplicationTest(hooks);
 
-  test('responsive layout', async function (assert) {
-    await visit('/');
+  module('layout', function () {
+    test('responsive layout', async function (assert) {
+      await visit('/');
 
-    assert
-      .dom('[data-test-local-image="responsive"]')
-      .hasClass('ri-responsive')
-      .hasAttribute(
-        'src',
-        new RegExp(`/images/aurora-[0-9]+w(-\\w+)?.jpg`),
-        `has default src`,
-      );
+      assert
+        .dom('[data-test-local-image="responsive"]')
+        .hasClass('ri-responsive')
+        .hasAttribute(
+          'src',
+          new RegExp(`/images/aurora-[0-9]+w(-\\w+)?.jpg`),
+          `has default src`,
+        );
 
-    const picture = this.element.querySelector(
-      '[data-test-local-image="responsive"]',
-    ).parentNode;
+      const picture = this.element.querySelector(
+        '[data-test-local-image="responsive"]',
+      ).parentNode;
 
-    for (const [type, ext] of imageTypes) {
-      for (const size of sizes) {
+      for (const [type, ext] of imageTypes) {
+        for (const size of sizes) {
+          assert
+            .dom(`source[type="image/${type}"]`, picture)
+            .hasAttribute(
+              'srcset',
+              new RegExp(`/images/aurora-${size}w(-\\w+)?.${ext} ${size}w`),
+              `has ${type} with a width of ${size}`,
+            );
+        }
+      }
+    });
+
+    test('fixed layout', async function (assert) {
+      await visit('/');
+
+      assert
+        .dom('[data-test-local-image="fixed"]')
+        .hasClass('ri-fixed')
+        .hasAttribute(
+          'src',
+          new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
+          `has default src`,
+        )
+        .hasAttribute('width', '320')
+        .hasAttribute('height', '213');
+
+      const picture = this.element.querySelector(
+        '[data-test-local-image="fixed"]',
+      ).parentNode;
+
+      for (const [type, ext] of imageTypes) {
+        assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
+          'srcset',
+          // 640px is the smallest size for our defaults
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
+          `has ${type} with a width of 1x`,
+        );
+
         assert
           .dom(`source[type="image/${type}"]`, picture)
           .hasAttribute(
             'srcset',
-            new RegExp(`/images/aurora-${size}w(-\\w+)?.${ext} ${size}w`),
-            `has ${type} with a width of ${size}`,
+            new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
+            `has ${type} with a width of 1x`,
           );
       }
-    }
-  });
+    });
 
-  test('fixed layout', async function (assert) {
-    await visit('/');
-
-    assert
-      .dom('[data-test-local-image="fixed"]')
-      .hasClass('ri-fixed')
-      .hasAttribute(
-        'src',
-        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
-        `has default src`,
-      );
-
-    const picture = this.element.querySelector(
-      '[data-test-local-image="fixed"]',
-    ).parentNode;
-
-    for (const [type, ext] of imageTypes) {
-      assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
-        'srcset',
-        // 640px is the smallest size for our defaults
-        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
-        `has ${type} with a width of 1x`,
-      );
+    test('fixed layout w/ aspect', async function (assert) {
+      await visit('/');
 
       assert
-        .dom(`source[type="image/${type}"]`, picture)
+        .dom('[data-test-local-image="fixed,aspect"]')
+        .hasClass('ri-fixed')
         .hasAttribute(
-          'srcset',
-          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
-          `has ${type} with a width of 1x`,
-        );
-    }
+          'src',
+          new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
+          `has default src`,
+        )
+        .hasAttribute('width', '320')
+        .hasAttribute('height', '480');
+    });
   });
 
   module('LQIP', function () {
@@ -109,112 +128,112 @@ module('Acceptance | local images', function (hooks) {
           );
       }
     });
-  });
 
-  test('color', async function (assert) {
-    await visit('/');
-
-    assert
-      .dom('[data-test-local-image="fixed,lqip-color"]')
-      .hasClass('ri-fixed')
-      // .hasClass('ri-lqip-color')
-      // .hasClass('ri-dyn-0')
-      .hasAttribute(
-        'src',
-        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
-        `has default src`,
-      );
-
-    const picture = this.element.querySelector(
-      '[data-test-local-image="fixed,lqip-color"]',
-    ).parentNode;
-
-    for (const [type, ext] of imageTypes) {
-      assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
-        'srcset',
-        // 640px is the smallest size for our defaults
-        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
-        `has ${type} with a width of 1x`,
-      );
+    test('color', async function (assert) {
+      await visit('/');
 
       assert
-        .dom(`source[type="image/${type}"]`, picture)
+        .dom('[data-test-local-image="fixed,lqip-color"]')
+        .hasClass('ri-fixed')
+        // .hasClass('ri-lqip-color')
+        // .hasClass('ri-dyn-0')
         .hasAttribute(
+          'src',
+          new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
+          `has default src`,
+        );
+
+      const picture = this.element.querySelector(
+        '[data-test-local-image="fixed,lqip-color"]',
+      ).parentNode;
+
+      for (const [type, ext] of imageTypes) {
+        assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
           'srcset',
-          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
+          // 640px is the smallest size for our defaults
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
           `has ${type} with a width of 1x`,
         );
-    }
-  });
 
-  test('inline', async function (assert) {
-    await visit('/');
+        assert
+          .dom(`source[type="image/${type}"]`, picture)
+          .hasAttribute(
+            'srcset',
+            new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
+            `has ${type} with a width of 1x`,
+          );
+      }
+    });
 
-    assert
-      .dom('[data-test-local-image="fixed,lqip-inline"]')
-      .hasClass('ri-fixed')
-      // .hasClass('ri-lqip-inline')
-      // .hasClass('ri-dyn-1')
-      .hasAttribute(
-        'src',
-        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
-        `has default src`,
-      );
-
-    const picture = this.element.querySelector(
-      '[data-test-local-image="fixed,lqip-inline"]',
-    ).parentNode;
-
-    for (const [type, ext] of imageTypes) {
-      assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
-        'srcset',
-        // 640px is the smallest size for our defaults
-        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
-        `has ${type} with a width of 1x`,
-      );
+    test('inline', async function (assert) {
+      await visit('/');
 
       assert
-        .dom(`source[type="image/${type}"]`, picture)
+        .dom('[data-test-local-image="fixed,lqip-inline"]')
+        .hasClass('ri-fixed')
+        // .hasClass('ri-lqip-inline')
+        // .hasClass('ri-dyn-1')
         .hasAttribute(
+          'src',
+          new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
+          `has default src`,
+        );
+
+      const picture = this.element.querySelector(
+        '[data-test-local-image="fixed,lqip-inline"]',
+      ).parentNode;
+
+      for (const [type, ext] of imageTypes) {
+        assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
           'srcset',
-          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
+          // 640px is the smallest size for our defaults
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
           `has ${type} with a width of 1x`,
         );
-    }
-  });
 
-  test('blurhash', async function (assert) {
-    await visit('/');
+        assert
+          .dom(`source[type="image/${type}"]`, picture)
+          .hasAttribute(
+            'srcset',
+            new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
+            `has ${type} with a width of 1x`,
+          );
+      }
+    });
 
-    assert
-      .dom('[data-test-local-image="fixed,lqip-blurhash"]')
-      // .hasClass('ri-fixed')
-      // .hasClass('ri-lqip-blurhash')
-      .hasAttribute(
-        'src',
-        new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
-        `has default src`,
-      );
-
-    const picture = this.element.querySelector(
-      '[data-test-local-image="fixed,lqip-blurhash"]',
-    ).parentNode;
-
-    for (const [type, ext] of imageTypes) {
-      assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
-        'srcset',
-        // 640px is the smallest size for our defaults
-        new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
-        `has ${type} with a width of 1x`,
-      );
+    test('blurhash', async function (assert) {
+      await visit('/');
 
       assert
-        .dom(`source[type="image/${type}"]`, picture)
+        .dom('[data-test-local-image="fixed,lqip-blurhash"]')
+        // .hasClass('ri-fixed')
+        // .hasClass('ri-lqip-blurhash')
         .hasAttribute(
+          'src',
+          new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
+          `has default src`,
+        );
+
+      const picture = this.element.querySelector(
+        '[data-test-local-image="fixed,lqip-blurhash"]',
+      ).parentNode;
+
+      for (const [type, ext] of imageTypes) {
+        assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
           'srcset',
-          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
+          // 640px is the smallest size for our defaults
+          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
           `has ${type} with a width of 1x`,
         );
-    }
+
+        assert
+          .dom(`source[type="image/${type}"]`, picture)
+          .hasAttribute(
+            'srcset',
+            new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
+            `has ${type} with a width of 1x`,
+          );
+      }
+    });
   });
 });
