@@ -133,6 +133,32 @@ console.log(d);
 "
 `;
 
+exports[`different aspect ratio 1`] = `
+"function r(t, e, g) {
+  const o = t.map((n) => n.width).reduce((n, i) => i >= e && n >= e ? i >= n ? n : i : i >= n ? i : n, 0);
+  return t.find(
+    (n) => n.width === o && n.format === g
+  );
+}
+const c = /* @__PURE__ */ new Map();
+function m(t) {
+  return c.get(t);
+}
+var a;
+(a = m("env")) == null || a.deviceWidths;
+const s = [{ url: "/image-100w.png", width: 100, format: "png" }, { url: "/image-200w.png", width: 200, format: "png" }], d = {
+  imageTypes: ["png"],
+  availableWidths: [100, 200],
+  aspectRatio: 0.6666666666666666,
+  imageUrlFor(t, e) {
+    var g;
+    return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
+  }
+};
+console.log(d);
+"
+`;
+
 exports[`filter > it operates on included assets 1`] = `
 "function m(t, w, g) {
   const r = t.map((e) => e.width).reduce((e, i) => i >= w && e >= w ? i >= e ? e : i : i >= e ? i : e, 0);

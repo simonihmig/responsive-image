@@ -144,6 +144,31 @@ test('imagetools params are supported', async () => {
   }
 });
 
+test('different aspect ratio', async () => {
+  const { stats, fs } = await compiler(
+    'fixtures/image.jpg?w=100;200&format=png&aspect=2:3&responsive',
+    _dirname,
+    {},
+  );
+
+  expect(stats.modules).toBeDefined();
+
+  const output = stats.modules?.[0]?.modules?.[0]?.source;
+  expect(sanitizeOutput(output)).toMatchSnapshot();
+
+  const imageAssets = stats.modules![0]!.assets!.toSorted();
+  expect(imageAssets).toEqual([
+    'images/image-100w.png',
+    'images/image-200w.png',
+  ]);
+
+  for (const image of imageAssets) {
+    expect(
+      fs.readFileSync(join(_dirname, image as string)),
+    ).toMatchImageSnapshot();
+  }
+});
+
 describe('LQIP', function () {
   test('color LQIP is supported', async () => {
     const { stats } = await compiler(
