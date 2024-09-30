@@ -83,7 +83,7 @@ module('Acceptance | local images', function (hooks) {
       await visit('/');
 
       assert
-        .dom('[data-test-local-image="fixed"]')
+        .dom('[data-test-local-image="fixed,aspect"]')
         .hasClass('ri-fixed')
         .hasAttribute(
           'src',
