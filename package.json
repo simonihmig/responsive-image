@@ -9,6 +9,7 @@
     "build:packages": "pnpm turbo --filter='./packages/*' build",
     "lint": "pnpm turbo lint",
     "lint:fix": "pnpm run --filter '*' lint:fix",
+    "prebuild": "pnpm turbo build --filter='./packages/*'",
     "test": "pnpm turbo test"
   },
   "devDependencies": {
