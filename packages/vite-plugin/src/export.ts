@@ -98,7 +98,9 @@ export default function exportPlugin(
         .map((i) => i.width)
         .filter(onlyUnique);
       const imageTypes = input.images.map((i) => i.format).filter(onlyUnique);
-      const aspectRatio = input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1;
+      const aspectRatio =
+        options.aspect ??
+        (input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1);
 
       const moduleOutput: string[] = [
         "import { findMatchingImage } from '@responsive-image/core';",

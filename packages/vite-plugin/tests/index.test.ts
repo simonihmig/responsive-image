@@ -129,6 +129,26 @@ test('imagetools params are supported', async () => {
   }
 });
 
+test('different aspect ratio', async () => {
+  const { source, assets } = await compile(
+    'image.jpg?w=100;200&format=png&aspect=2:3',
+    {
+      include: /^[^?]+\.jpg(\?.*)?$/,
+    },
+  );
+
+  expect(source).toMatchSnapshot();
+
+  expect(assets.map((a) => a.fileName)).toEqual([
+    'image-100w.png',
+    'image-200w.png',
+  ]);
+
+  for (const image of assets) {
+    expect(image.source).toMatchImageSnapshot();
+  }
+});
+
 describe('LQIP', async () => {
   test('color LQIP is supported', async () => {
     const { source, assets } = await compile('image.jpg', {

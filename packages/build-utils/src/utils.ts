@@ -42,6 +42,8 @@ export function parseQuery(
           return [key, value.split(queryArraySeparator)];
         case 'quality':
           return [key, parseInt(value, 10)];
+        case 'aspect':
+          return [key, parseAspect(value)];
         case 'lqip': {
           const parsedValue =
             value.charAt(0) === '{' ? JSON.parse(value) : value;
@@ -97,6 +99,26 @@ export function normalizeInput(
   }
 
   return input;
+}
+
+// taken from imagetools, which we cannot reuse since it is not exported
+export function parseAspect(aspect: string): number | undefined {
+  const parts = aspect.split(':');
+
+  let aspectRatio;
+  if (parts.length === 1) {
+    // the string was a float
+    aspectRatio = parseFloat(parts[0]);
+  } else if (parts.length === 2) {
+    // the string was a colon delimited aspect ratio
+    const [width, height] = parts.map((str) => parseInt(str));
+
+    if (!width || !height) return undefined;
+
+    aspectRatio = width / height;
+  }
+  if (!aspectRatio || aspectRatio <= 0) return undefined;
+  return aspectRatio;
 }
 
 export function getAspectRatio(meta: Metadata): number | undefined {

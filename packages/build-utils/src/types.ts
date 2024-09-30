@@ -35,6 +35,7 @@ export interface ImageOptions {
   w: number[];
   quality?: number;
   format: OutputImageType[];
+  aspect?: number;
   [key: string]: unknown;
 }
 

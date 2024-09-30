@@ -72,6 +72,20 @@ export default {
   }"
 `;
 
+exports[`different aspect ratio 1`] = `
+"import { findMatchingImage } from '@responsive-image/core';
+const images = [{"url":__webpack_public_path__ + "images/image-100w.png","width":100,"format":"png"},{"url":__webpack_public_path__ + "images/image-200w.png","width":200,"format":"png"}];
+export default {
+    imageTypes: ["png"],
+    availableWidths: [100,200],
+    
+    aspectRatio: 0.6666666666666666,
+    imageUrlFor(w, f) {
+      return findMatchingImage(images, w, f ?? "png")?.url;
+    }
+  }"
+`;
+
 exports[`imagetools params are supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
 const images = [{"url":__webpack_public_path__ + "images/image-100w.png","width":100,"format":"png"},{"url":__webpack_public_path__ + "images/image-200w.png","width":200,"format":"png"}];

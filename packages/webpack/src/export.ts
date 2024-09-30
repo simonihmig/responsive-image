@@ -36,7 +36,7 @@ async function process(
   options: Options,
   context: LoaderContext<Partial<Options>>,
 ): Promise<string> {
-  const { name } = options;
+  const { name, aspect } = options;
 
   const createImageFile = async ({
     data,
@@ -73,7 +73,8 @@ async function process(
   const emittedImages = await Promise.all(input.images.map(createImageFile));
   const availableWidths = input.images.map((i) => i.width).filter(onlyUnique);
   const imageTypes = input.images.map((i) => i.format).filter(onlyUnique);
-  const aspectRatio = input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1;
+  const aspectRatio =
+    aspect ?? (input.sharpMeta ? getAspectRatio(input.sharpMeta) : 1);
 
   const moduleOutput: string[] = [
     "import { findMatchingImage } from '@responsive-image/core';",

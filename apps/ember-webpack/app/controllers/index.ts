@@ -1,12 +1,16 @@
 import Controller from '@ember/controller';
-import dogImage from '../images/aurora.jpg?responsive';
-import dogImageLqipColor from '../images/aurora.jpg?lqip=color&responsive';
-import dogImageLqipInline from '../images/aurora.jpg?lqip={"type":"inline","targetPixels":16}&responsive';
-import dogImageLqipBlurhash from '../images/aurora.jpg?lqip={"type":"blurhash","targetPixels":16}&responsive';
+import image from '../images/aurora.jpg?responsive';
+import imageLqipColor from '../images/aurora.jpg?lqip=color&responsive';
+import imageLqipInline from '../images/aurora.jpg?lqip={"type":"inline","targetPixels":16}&responsive';
+import imageLqipBlurhash from '../images/aurora.jpg?lqip={"type":"blurhash","targetPixels":16}&responsive';
+import imagePortrait from '../images/aurora.jpg?aspect=2:3&responsive';
+import imageGray from '../images/aurora.jpg?grayscale&responsive';
 
 export default class IndexController extends Controller {
-  dogImage = dogImage;
-  dogImageLqipColor = dogImageLqipColor;
-  dogImageLqipInline = dogImageLqipInline;
-  dogImageLqipBlurhash = dogImageLqipBlurhash;
+  image = image;
+  imageLqipColor = imageLqipColor;
+  imageLqipInline = imageLqipInline;
+  imageLqipBlurhash = imageLqipBlurhash;
+  imagePortrait = imagePortrait;
+  imageGray = imageGray;
 }

@@ -1,4 +1,4 @@
-<h1>Ember Responsive Image</h1>
+<h1>ResponsiveImage for Ember</h1>
 
 <h2>Cloudinary</h2>
 
@@ -16,24 +16,34 @@
 
 <h2>Local</h2>
 
-<ResponsiveImage @src={{this.dogImage}} data-test-local-image="responsive" />
+<ResponsiveImage @src={{this.image}} data-test-local-image="responsive" />
 <ResponsiveImage
-  @src={{this.dogImage}}
+  @src={{this.image}}
   @width={{320}}
   data-test-local-image="fixed"
 />
 <ResponsiveImage
-  @src={{this.dogImageLqipColor}}
+  @src={{this.imageLqipColor}}
   @width={{320}}
   data-test-local-image="fixed,lqip-color"
 />
 <ResponsiveImage
-  @src={{this.dogImageLqipInline}}
+  @src={{this.imageLqipInline}}
   @width={{320}}
   data-test-local-image="fixed,lqip-inline"
 />
 <ResponsiveImage
-  @src={{this.dogImageLqipBlurhash}}
+  @src={{this.imageLqipBlurhash}}
   @width={{320}}
   data-test-local-image="fixed,lqip-blurhash"
+/>
+<ResponsiveImage
+  @src={{this.imageGray}}
+  @width={{320}}
+  data-test-local-image="fixed,grayscale"
+/>
+<ResponsiveImage
+  @src={{this.imagePortrait}}
+  @width={{320}}
+  data-test-local-image="fixed,aspect"
 />
