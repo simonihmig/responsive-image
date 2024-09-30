@@ -30,18 +30,20 @@
     "@ember/optional-features": "2.1.0",
     "@ember/string": "4.0.0",
     "@ember/test-helpers": "4.0.4",
-    "@embroider/compat": "3.5.7-unstable.eb93cd5",
-    "@embroider/config-meta-loader": "0.0.1-unstable.eb93cd5",
-    "@embroider/core": "3.4.15-unstable.eb93cd5",
-    "@embroider/test-setup": "4.0.1-unstable.eb93cd5",
-    "@embroider/vite": "0.2.1-unstable.eb93cd5",
+    "@embroider/compat": "3.6.2-unstable.f33728f",
+    "@embroider/config-meta-loader": "0.0.1-unstable.f33728f",
+    "@embroider/core": "3.4.16-unstable.f33728f",
+    "@embroider/test-setup": "4.0.1-unstable.f33728f",
+    "@embroider/vite": "0.2.1-unstable.f33728f",
     "@glimmer/component": "1.1.2",
     "@glimmer/tracking": "1.1.2",
     "@responsive-image/core": "workspace:*",
     "@responsive-image/ember": "workspace:*",
     "@responsive-image/vite-plugin": "workspace:*",
     "@rollup/plugin-babel": "6.0.4",
+    "babel-plugin-ember-template-compilation": "2.3.0",
     "concurrently": "9.0.1",
+    "decorator-transforms": "^2.2.0",
     "ember-auto-import": "2.8.1",
     "ember-cli": "5.11.0",
     "ember-cli-babel": "8.2.0",
@@ -54,14 +56,16 @@
     "ember-resolver": "13.0.2",
     "ember-source": "5.11.1",
     "ember-template-lint": "6.0.0",
-    "eslint": "8.57.1",
+    "eslint": "9.11.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-ember": "12.2.1",
     "eslint-plugin-n": "17.10.3",
     "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-qunit": "8.1.2",
+    "globals": "^15.9.0",
     "loader.js": "4.7.0",
     "prettier": "3.3.3",
+    "prettier-plugin-ember-template-tag": "2.0.2",
     "qunit": "2.22.0",
     "qunit-dom": "3.2.1",
     "stylelint": "16.9.0",
@@ -76,6 +80,14 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "ember-addon": {
+    "type": "app",
+    "version": 2
+  },
+  "exports": {
+    "./tests/*": "./tests/*",
+    "./*": "./app/*"
   },
   "volta": {
     "extends": "../../package.json"
