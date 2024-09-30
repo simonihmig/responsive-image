@@ -22,6 +22,8 @@ export default [
   prettier,
   {
     ignores: ["dist/", "node_modules/", "coverage/", "!**/.*"],
+  },
+  {
     linterOptions: {
       reportUnusedDisableDirectives: "error",
     },
@@ -75,7 +77,7 @@ export default [
       "config/**/*.js",
       "testem.js",
       "testem*.js",
-      ".prettierrc.js",
+      ".prettierrc.cjs",
       ".stylelintrc.js",
       ".template-lintrc.js",
       "ember-cli-build.js",
