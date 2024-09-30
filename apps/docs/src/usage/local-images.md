@@ -96,7 +96,7 @@ import image from 'image.jpg?blur=100&responsive';
 
 #### `fit: 'cover' | 'contain' | 'fill' | 'inside' | 'outside'`
 
-When both width and height are provided, this parameter specifies the method to fit the image into the given dimensions.
+When `aspect` is provided (which adjust the height, while width is always given implicitly), then this parameter specifies the method to fit the image into the given dimensions.
 
 ```js
 import image from 'image.jpg?fit=cover&responsive';
@@ -178,10 +178,9 @@ import image from 'image.jpg?normalize&responsive';
 
 #### `position: string`
 
-When both `width` and `height` are provided AND the fit is one of `fit` of `cover` or `contain`, this parameter can be
-used to set the position of the image.
+When `aspect` is provided and `fit` is one of `cover` or `contain`, then this parameter can be used to set the position of the image.
 
-See sharps [resize options](https://sharp.pixelplumbing.com/api-resize#resize) for a detailed explanation of each.
+See sharp's [resize options](https://sharp.pixelplumbing.com/api-resize#resize) for a detailed explanation of each.
 
 #### `quality: number`
 
@@ -198,7 +197,7 @@ Resizes the image to be the specified amount of pixels wide. If not given the he
 ```js
 import image from 'image.jpg?w=200&responsive';
 import image from 'image.jpg?w=200;400;700&responsive';
-``` -->
+```
 
 #### `h: number`
 
@@ -207,22 +206,16 @@ Set the height explicitly. Usually this is derived from the image's aspect ratio
 ```js
 import image from 'image.jpg?h=200&responsive';
 import image from 'image.jpg?h=200;400;700&responsive';
-```
+``` -->
 
-<!-- #### `aspect: _string_ \| _number_`
+#### `aspect: string | number`
 
-Resizes the image to be the specified aspect ratio. Aspect ratio can be defined with a string in the form `16:9` or a
-positive number representing the width divided by height (e.g., `1.5` for a `3:2` aspect ratio) If height and width are
-both provided, this will be ignored. If height is provided, the width will be scaled accordingly. If width is provided,
-the height will be scaled accordingly. If neither height nor width are provided, the image will be cropped to the given
-aspect ratio.
+Adjust the height of the image (width is always given implicitly) to match the specified aspect ratio. The value can be a string in the form `16:9` or a positive number representing the width/height ratio.
 
 ```js
 import image from 'image.jpg?aspect=16:9&responsive';
-import image from 'image.jpg?aspect=16:9&h=200&responsive';
-import image from 'image.jpg?aspect=16:9&w=200&responsive';
-import Images from 'image.jpg?aspect=16:9&h=200;400;700&responsive';
-``` -->
+import image from 'image.jpg?aspect=1.5&responsive';
+```
 
 <!-- ### Without# `withoutEnlargement: boolean`
 
