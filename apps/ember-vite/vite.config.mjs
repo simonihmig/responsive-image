@@ -10,6 +10,7 @@ import {
   contentFor,
 } from "@embroider/vite";
 import { babel } from "@rollup/plugin-babel";
+import { setupPlugins } from "@responsive-image/vite-plugin";
 
 const extensions = [
   ".mjs",
@@ -39,6 +40,10 @@ export default defineConfig(({ mode }) => {
       babel({
         babelHelpers: "runtime",
         extensions,
+      }),
+
+      setupPlugins({
+        include: /^[^?]+\.jpg\?.*responsive.*$/,
       }),
     ],
     optimizeDeps: optimizeDeps(),
