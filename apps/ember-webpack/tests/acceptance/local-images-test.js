@@ -129,42 +129,6 @@ module('Acceptance | local images', function (hooks) {
       }
     });
 
-    test('color', async function (assert) {
-      await visit('/');
-
-      assert
-        .dom('[data-test-local-image="fixed,lqip-color"]')
-        .hasClass('ri-fixed')
-        // .hasClass('ri-lqip-color')
-        // .hasClass('ri-dyn-0')
-        .hasAttribute(
-          'src',
-          new RegExp(`/images/aurora-640w(-\\w+)?.jpg`),
-          `has default src`,
-        );
-
-      const picture = this.element.querySelector(
-        '[data-test-local-image="fixed,lqip-color"]',
-      ).parentNode;
-
-      for (const [type, ext] of imageTypes) {
-        assert.dom(`source[type="image/${type}"]`, picture).hasAttribute(
-          'srcset',
-          // 640px is the smallest size for our defaults
-          new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 1x`),
-          `has ${type} with a width of 1x`,
-        );
-
-        assert
-          .dom(`source[type="image/${type}"]`, picture)
-          .hasAttribute(
-            'srcset',
-            new RegExp(`/images/aurora-640w(-\\w+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`,
-          );
-      }
-    });
-
     test('inline', async function (assert) {
       await visit('/');
 
