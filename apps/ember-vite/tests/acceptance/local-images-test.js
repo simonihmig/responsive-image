@@ -21,11 +21,11 @@ module('Acceptance | local images', function (hooks) {
         .hasAttribute(
           'src',
           new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
-          `has default src`,
+          `has default src`
         );
 
       const picture = this.element.querySelector(
-        '[data-test-local-image="responsive"]',
+        '[data-test-local-image="responsive"]'
       ).parentNode;
 
       for (const [type, ext] of imageTypes) {
@@ -35,9 +35,9 @@ module('Acceptance | local images', function (hooks) {
             .hasAttribute(
               'srcset',
               new RegExp(
-                `/assets/aurora-${size}w(-[a-zA-Z0-9-_]+)?.${ext} ${size}w`,
+                `/assets/aurora-${size}w(-[a-zA-Z0-9-_]+)?.${ext} ${size}w`
               ),
-              `has ${type} with a width of ${size}`,
+              `has ${type} with a width of ${size}`
             );
         }
       }
@@ -52,13 +52,13 @@ module('Acceptance | local images', function (hooks) {
         .hasAttribute(
           'src',
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
-          `has default src`,
+          `has default src`
         )
         .hasAttribute('width', '320')
         .hasAttribute('height', '213');
 
       const picture = this.element.querySelector(
-        '[data-test-local-image="fixed"]',
+        '[data-test-local-image="fixed"]'
       ).parentNode;
 
       for (const [type, ext] of imageTypes) {
@@ -66,7 +66,7 @@ module('Acceptance | local images', function (hooks) {
           'srcset',
           // 640px is the smallest size for our defaults
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-          `has ${type} with a width of 1x`,
+          `has ${type} with a width of 1x`
         );
 
         assert
@@ -74,7 +74,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`,
+            `has ${type} with a width of 1x`
           );
       }
     });
@@ -88,13 +88,13 @@ module('Acceptance | local images', function (hooks) {
         .hasAttribute(
           'src',
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
-          `has default src`,
+          `has default src`
         )
         .hasAttribute('width', '320')
         .hasAttribute('height', '480');
 
       const picture = this.element.querySelector(
-        '[data-test-local-image="fixed"]',
+        '[data-test-local-image="fixed"]'
       ).parentNode;
 
       for (const [type, ext] of imageTypes) {
@@ -102,7 +102,7 @@ module('Acceptance | local images', function (hooks) {
           'srcset',
           // 640px is the smallest size for our defaults
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-          `has ${type} with a width of 1x`,
+          `has ${type} with a width of 1x`
         );
 
         assert
@@ -110,7 +110,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`,
+            `has ${type} with a width of 1x`
           );
       }
     });
@@ -127,11 +127,11 @@ module('Acceptance | local images', function (hooks) {
         .hasAttribute(
           'src',
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
-          `has default src`,
+          `has default src`
         );
 
       const picture = this.element.querySelector(
-        '[data-test-local-image="fixed,lqip-color"]',
+        '[data-test-local-image="fixed,lqip-color"]'
       ).parentNode;
 
       for (const [type, ext] of imageTypes) {
@@ -139,7 +139,7 @@ module('Acceptance | local images', function (hooks) {
           'srcset',
           // 640px is the smallest size for our defaults
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-          `has ${type} with a width of 1x`,
+          `has ${type} with a width of 1x`
         );
 
         assert
@@ -147,7 +147,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`,
+            `has ${type} with a width of 1x`
           );
       }
     });
@@ -163,11 +163,11 @@ module('Acceptance | local images', function (hooks) {
         .hasAttribute(
           'src',
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
-          `has default src`,
+          `has default src`
         );
 
       const picture = this.element.querySelector(
-        '[data-test-local-image="fixed,lqip-inline"]',
+        '[data-test-local-image="fixed,lqip-inline"]'
       ).parentNode;
 
       for (const [type, ext] of imageTypes) {
@@ -175,7 +175,7 @@ module('Acceptance | local images', function (hooks) {
           'srcset',
           // 640px is the smallest size for our defaults
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-          `has ${type} with a width of 1x`,
+          `has ${type} with a width of 1x`
         );
 
         assert
@@ -183,7 +183,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`,
+            `has ${type} with a width of 1x`
           );
       }
     });
@@ -198,11 +198,11 @@ module('Acceptance | local images', function (hooks) {
         .hasAttribute(
           'src',
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.jpg`),
-          `has default src`,
+          `has default src`
         );
 
       const picture = this.element.querySelector(
-        '[data-test-local-image="fixed,lqip-blurhash"]',
+        '[data-test-local-image="fixed,lqip-blurhash"]'
       ).parentNode;
 
       for (const [type, ext] of imageTypes) {
@@ -210,7 +210,7 @@ module('Acceptance | local images', function (hooks) {
           'srcset',
           // 640px is the smallest size for our defaults
           new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-          `has ${type} with a width of 1x`,
+          `has ${type} with a width of 1x`
         );
 
         assert
@@ -218,7 +218,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`,
+            `has ${type} with a width of 1x`
           );
       }
     });
