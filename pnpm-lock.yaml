@@ -330,8 +330,8 @@ importers:
         specifier: 9.0.1
         version: 9.0.1
       decorator-transforms:
-        specifier: 2.2.0
-        version: 2.2.0(@babel/core@7.25.2)
+        specifier: 2.2.2
+        version: 2.2.2(@babel/core@7.25.2)
       ember-auto-import:
         specifier: 2.8.1
         version: 2.8.1(@glint/template@1.4.0)(webpack@5.95.0)
@@ -4941,6 +4941,9 @@ packages:
 
   decorator-transforms@2.2.0:
     resolution: {integrity: sha512-o+NZXfBpRQJCWZzdVN6nB0Bf4KnD0gZO8hSk80OktIoClvB1YmBZC6js2k34EFAwF+c+P3Q6vYmiDzGoXwp1OQ==}
+
+  decorator-transforms@2.2.2:
+    resolution: {integrity: sha512-NHCSJXOUQ29YFli1QzstXWo72EyASpoVx+s0YdkMwswpovf/iAJP580nD1tB0Ph9exvtbfWdVrSAloXrWVo1Xg==}
 
   deep-eql@4.1.4:
     resolution: {integrity: sha512-SUwdGfqdKOwxCPeVYjwSyRpJ7Z+fhpwIAtmCUdZIWZ/YP5R9WAsyuSgpLVDi9bjWoN2LXHNss/dk3urXtdQxGg==}
@@ -14805,6 +14808,13 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
 
+  decorator-transforms@2.2.2(@babel/core@7.25.2):
+    dependencies:
+      '@babel/plugin-syntax-decorators': 7.24.7(@babel/core@7.25.2)
+      babel-import-util: 3.0.0
+    transitivePeerDependencies:
+      - '@babel/core'
+
   deep-eql@4.1.4:
     dependencies:
       type-detect: 4.1.0
@@ -15477,7 +15487,7 @@ snapshots:
   ember-modifier@4.2.0(@babel/core@7.25.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)):
     dependencies:
       '@embroider/addon-shim': 1.8.9
-      decorator-transforms: 2.2.0(@babel/core@7.25.2)
+      decorator-transforms: 2.2.2(@babel/core@7.25.2)
       ember-cli-normalize-entity-name: 1.0.0
       ember-cli-string-utils: 1.1.0
     optionalDependencies:
@@ -15586,7 +15596,7 @@ snapshots:
       '@ember/string': 4.0.0
       '@embroider/addon-shim': 1.8.9
       csstype: 3.1.3
-      decorator-transforms: 2.2.0(@babel/core@7.25.2)
+      decorator-transforms: 2.2.2(@babel/core@7.25.2)
       ember-modifier: 4.2.0(@babel/core@7.25.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5))
       ember-source: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)
     transitivePeerDependencies:
