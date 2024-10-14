@@ -1,5 +1,13 @@
 # @responsive-image/vite-plugin
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#681](https://github.com/simonihmig/responsive-image/pull/681) [`4b08662`](https://github.com/simonihmig/responsive-image/commit/4b086620f9d1347fc26d21c6ca076775046bd547) Thanks [@simonihmig](https://github.com/simonihmig)! - Support `aspect` ratio parameter correctly
+
+  When `aspect` is given (via import query params), the height of the image is adjusted to match when resizing, and the image component will correctly render with the new aspect ratio, rather than that of the original image.
+
 ## 1.0.0-beta.2
 
 ### Minor Changes
