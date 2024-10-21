@@ -85,9 +85,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         }
         const sources: string[] = widths.map((width) => {
           const url = this.args.src.imageUrlFor(width, type);
-          return `${url}${
-            this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
-          } ${width}w`;
+          return `${this.processUrl(url)} ${width}w`;
         });
 
         return {
@@ -110,9 +108,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           const url = this.args.src.imageUrlFor(width * density, type)!;
 
-          return `${url}${
-            this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
-          } ${density}x`;
+          return `${this.processUrl(url)} ${density}x`;
         }).filter((source) => source !== undefined);
 
         return {
@@ -141,7 +137,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return undefined;
     }
 
-    return this.args.src.imageUrlFor(this.width ?? 640);
+    return this.processUrl(this.args.src.imageUrlFor(this.width ?? 640));
   }
 
   @cached

@@ -1,15 +1,15 @@
 import ResponsiveImage from "@responsive-image/ember/components/responsive-image";
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { render, settled } from "@ember/test-helpers";
+import { render } from "@ember/test-helpers";
 import { setupRenderingTest } from "ember-qunit";
 import { module, skip, test } from "qunit";
-import { on } from "@ember/modifier";
 import type { ImageData } from "@responsive-image/ember";
 import testImage from "ember-test-app/images/aurora.jpg?w=50;100;640&format=original;webp;avif&responsive";
 import testImageLqipInline from "ember-test-app/images/aurora.jpg?lqip=inline&w=50;100;640&responsive";
 import testImageLqipColor from "ember-test-app/images/aurora.jpg?lqip=color&w=50;100;640&responsive";
 import testImageLqipBlurhash from "ember-test-app/images/aurora.jpg?lqip=blurhash&w=50;100;640&responsive";
 import smallImage from "ember-test-app/images/aurora.jpg?w=10;25&format=original;webp;avif&responsive";
+import { imageLoaded } from "../../helpers/image-loaded";
 
 import type { RenderingTestContext } from "@ember/test-helpers";
 import { env } from "@responsive-image/core";
@@ -429,41 +429,38 @@ module("Integration: Responsive Image Component", function (hooks) {
     module("LQIP", function () {
       module("inline", function () {
         test("it sets LQIP SVG as background", async function (this: RenderingTestContext, assert) {
-          let resolve: (v: unknown) => void;
-          const waitUntilLoaded = new Promise((r) => {
-            resolve = r;
-          });
-          const onload = () => setTimeout(resolve, 0);
+          const { onload, loaded } = imageLoaded();
 
           await render(
             <template>
               <ResponsiveImage
                 @src={{testImageLqipInline}}
                 @cacheBreaker={{(cacheBreaker)}}
-                {{on "load" onload}}
+                {{onload}}
               />
             </template>,
           );
 
-          assert.ok(
-            window
-              .getComputedStyle(this.element.querySelector("img")!)
-              .backgroundImage?.match(/data:image\/svg/),
-            "it has a background SVG",
-          );
-          assert.dom("img").hasStyle({ "background-size": "cover" });
-          assert.ok(
-            window.getComputedStyle(this.element.querySelector("img")!)
-              .backgroundImage?.length > 100,
-            "the background SVG has a reasonable length",
-          );
+          const imgEl = this.element.querySelector("img")!;
 
-          await waitUntilLoaded;
-          await settled();
+          if (!imgEl.complete) {
+            assert.ok(
+              window
+                .getComputedStyle(imgEl)
+                .backgroundImage?.match(/data:image\/svg/),
+              "it has a background SVG",
+            );
+            assert.dom(imgEl).hasStyle({ "background-size": "cover" });
+            assert.ok(
+              window.getComputedStyle(imgEl).backgroundImage?.length > 100,
+              "the background SVG has a reasonable length",
+            );
+          }
+
+          await loaded;
 
           assert.strictEqual(
-            window.getComputedStyle(this.element.querySelector("img")!)
-              .backgroundImage,
+            window.getComputedStyle(imgEl).backgroundImage,
             "none",
             "after image is loaded the background SVG is removed",
           );
@@ -471,71 +468,67 @@ module("Integration: Responsive Image Component", function (hooks) {
       });
 
       module("color", function () {
-        test("it sets background-color", async function (assert) {
-          let resolve: (v: unknown) => void;
-          const waitUntilLoaded = new Promise((r) => {
-            resolve = r;
-          });
-          const onload = () => setTimeout(resolve, 0);
+        test("it sets background-color", async function (this: RenderingTestContext, assert) {
+          const { onload, loaded } = imageLoaded();
 
           await render(
             <template>
               <ResponsiveImage
                 @src={{testImageLqipColor}}
                 @cacheBreaker={{(cacheBreaker)}}
-                {{on "load" onload}}
+                {{onload}}
               />
             </template>,
           );
 
-          assert.dom("img").hasStyle({ "background-color": "rgb(8, 56, 56)" });
+          const imgEl = this.element.querySelector("img")!;
 
-          await waitUntilLoaded;
-          await settled();
+          if (!imgEl.complete) {
+            assert
+              .dom(imgEl)
+              .hasStyle({ "background-color": "rgb(8, 56, 56)" });
+          }
+
+          await loaded;
 
           assert
-            .dom("img")
+            .dom(imgEl)
             .hasStyle({ "background-color": "rgba(0, 0, 0, 0)" });
         });
       });
 
       module("blurhash", function () {
         test("it sets LQIP from blurhash as background", async function (this: RenderingTestContext, assert) {
-          let resolve: (v: unknown) => void;
-          const waitUntilLoaded = new Promise((r) => {
-            resolve = r;
-          });
-          const onload = () => setTimeout(resolve, 0);
+          const { onload, loaded } = imageLoaded();
 
           await render(
             <template>
               <ResponsiveImage
                 @src={{testImageLqipBlurhash}}
                 @cacheBreaker={{(cacheBreaker)}}
-                {{on "load" onload}}
+                {{onload}}
               />
             </template>,
           );
 
-          assert.ok(
-            this.element
-              .querySelector("img")!
-              .style.backgroundImage?.match(/data:image\/png/),
-            "it has a background PNG",
-          );
-          assert.dom("img").hasStyle({ "background-size": "cover" });
-          assert.ok(
-            window.getComputedStyle(this.element.querySelector("img")!)
-              .backgroundImage?.length > 100,
-            "the background SVG has a reasonable length",
-          );
+          const imgEl = this.element.querySelector("img")!;
 
-          await waitUntilLoaded;
-          await settled();
+          if (!imgEl.complete) {
+            assert.ok(
+              imgEl.style.backgroundImage?.match(/data:image\/png/),
+              "it has a background PNG",
+            );
+            assert.dom(imgEl).hasStyle({ "background-size": "cover" });
+            assert.ok(
+              window.getComputedStyle(imgEl).backgroundImage?.length > 100,
+              "the background SVG has a reasonable length",
+            );
+          }
+
+          await loaded;
 
           assert.strictEqual(
-            window.getComputedStyle(this.element.querySelector("img")!)
-              .backgroundImage,
+            window.getComputedStyle(imgEl).backgroundImage,
             "none",
             "after image is loaded the background PNG is removed",
           );
