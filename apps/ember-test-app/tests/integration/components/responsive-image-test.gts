@@ -398,7 +398,7 @@ module("Integration: Responsive Image Component", function (hooks) {
         const imageData: ImageData = {
           imageTypes: ["jpeg", "webp"],
           // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => "/test-image.jpg",
+          imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
           lqip: {
             type: "inline",
             class: "lqip-inline-test-class",
@@ -407,11 +407,7 @@ module("Integration: Responsive Image Component", function (hooks) {
 
         await render(
           <template>
-            <ResponsiveImage
-              @src={{imageData}}
-              @cacheBreaker={{(cacheBreaker)}}
-              {{onload}}
-            />
+            <ResponsiveImage @src={{imageData}} {{onload}} />
           </template>,
         );
 
@@ -433,7 +429,7 @@ module("Integration: Responsive Image Component", function (hooks) {
         const imageData: ImageData = {
           imageTypes: ["jpeg", "webp"],
           // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => "/test-image.jpg",
+          imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
           lqip: {
             type: "color",
             class: "lqip-color-test-class",
@@ -442,11 +438,7 @@ module("Integration: Responsive Image Component", function (hooks) {
 
         await render(
           <template>
-            <ResponsiveImage
-              @src={{imageData}}
-              @cacheBreaker={{(cacheBreaker)}}
-              {{onload}}
-            />
+            <ResponsiveImage @src={{imageData}} {{onload}} />
           </template>,
         );
 
@@ -468,7 +460,7 @@ module("Integration: Responsive Image Component", function (hooks) {
         const imageData: ImageData = {
           imageTypes: ["jpeg", "webp"],
           // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => "/test-image.jpg",
+          imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
           lqip: {
             type: "blurhash",
             hash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
@@ -479,11 +471,7 @@ module("Integration: Responsive Image Component", function (hooks) {
 
         await render(
           <template>
-            <ResponsiveImage
-              @src={{imageData}}
-              @cacheBreaker={{(cacheBreaker)}}
-              {{onload}}
-            />
+            <ResponsiveImage @src={{imageData}} {{onload}} />
           </template>,
         );
 

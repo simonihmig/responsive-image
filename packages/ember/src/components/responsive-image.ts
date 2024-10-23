@@ -28,7 +28,6 @@ export interface ResponsiveImageComponentSignature {
     sizes?: string;
     width?: number;
     height?: number;
-    cacheBreaker?: string;
   };
 }
 
@@ -85,7 +84,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         }
         const sources: string[] = widths.map((width) => {
           const url = this.args.src.imageUrlFor(width, type);
-          return `${this.processUrl(url)} ${width}w`;
+          return `${url} ${width}w`;
         });
 
         return {
@@ -108,7 +107,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           const url = this.args.src.imageUrlFor(width * density, type)!;
 
-          return `${this.processUrl(url)} ${density}x`;
+          return `${url} ${density}x`;
         }).filter((source) => source !== undefined);
 
         return {
@@ -137,7 +136,9 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       return undefined;
     }
 
-    return this.processUrl(this.args.src.imageUrlFor(this.width ?? 640));
+    const url = this.args.src.imageUrlFor(this.width ?? 640);
+    console.log(url);
+    return url;
   }
 
   @cached
@@ -222,12 +223,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     const uri = this.blurhashScript.value.bh2url(hash, width, height);
 
     return `url("${uri}")`;
-  }
-
-  processUrl(url: string): string {
-    return `${url}${
-      this.args.cacheBreaker ? '?' + this.args.cacheBreaker : ''
-    }`;
   }
 
   @action
