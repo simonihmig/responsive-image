@@ -12,7 +12,7 @@ export default function responsiveImageResolve(
     format = data.imageTypes[0],
   }: { size?: number; format?: ImageType } = {},
 ): ReturnType<typeof htmlSafe> | undefined {
-  const width = getDestinationWidthBySize(size);
+  const url = data.imageUrlFor(getDestinationWidthBySize(size), format);
 
-  return htmlSafe(data.imageUrlFor(width, format));
+  return url ? htmlSafe(url) : undefined;
 }
