@@ -25,7 +25,7 @@ export interface ImageData {
   imageTypes: ImageType[];
   availableWidths?: number[];
   aspectRatio?: number;
-  imageUrlFor(width: number, type?: ImageType): string;
+  imageUrlFor(width: number, type?: ImageType): string | undefined;
   fingerprint?: string;
   lqip?: LqipInline | LqipColor | LqipBlurhash;
 }
