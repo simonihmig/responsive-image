@@ -237,8 +237,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(eslint@8.57.1)
       eslint-plugin-ember:
-        specifier: 12.3.0
-        version: 12.3.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)
+        specifier: 12.3.1
+        version: 12.3.1(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)
       eslint-plugin-n:
         specifier: 17.11.1
         version: 17.11.1(eslint@8.57.1)
@@ -378,8 +378,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(eslint@9.13.0)
       eslint-plugin-ember:
-        specifier: 12.3.0
-        version: 12.3.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@9.13.0)(typescript@5.6.3))(eslint@9.13.0)
+        specifier: 12.3.1
+        version: 12.3.1(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@9.13.0)(typescript@5.6.3))(eslint@9.13.0)
       eslint-plugin-n:
         specifier: 17.11.1
         version: 17.11.1(eslint@9.13.0)
@@ -621,8 +621,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(eslint@8.57.1)
       eslint-plugin-ember:
-        specifier: 12.3.0
-        version: 12.3.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)
+        specifier: 12.3.1
+        version: 12.3.1(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)
       eslint-plugin-n:
         specifier: 17.11.1
         version: 17.11.1(eslint@8.57.1)
@@ -972,8 +972,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(eslint@8.57.1)
       eslint-plugin-ember:
-        specifier: 12.3.0
-        version: 12.3.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)
+        specifier: 12.3.1
+        version: 12.3.1(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)
       eslint-plugin-n:
         specifier: 17.11.1
         version: 17.11.1(eslint@8.57.1)
@@ -5564,8 +5564,8 @@ packages:
   eslint-formatter-kakoune@1.0.0:
     resolution: {integrity: sha512-Uk/TVLt6Nf6Xoz7C1iYuZjOSdJxe5aaauGRke8JhKeJwD66Y61/pY2FjtLP04Ooq9PwV34bzrkKkU2UZ5FtDRA==}
 
-  eslint-plugin-ember@12.3.0:
-    resolution: {integrity: sha512-e+YKwercYYRpkkP6MK+ir5Ol5itOXvbXCy8SEO6HO+ySJ+6TuWUIEaSV5/D1YkJUfuhNf7RJ/xgbTXmJMu25+g==}
+  eslint-plugin-ember@12.3.1:
+    resolution: {integrity: sha512-Ew8E7R0inU7HSQZ7ChixLvv4y3wtyC++9DYBmAYyjtRoM+p/PwP2kUkyKYJTLi5v5IuSR+fS3IWtbswoq9bPyQ==}
     engines: {node: 18.* || 20.* || >= 21}
     peerDependencies:
       '@typescript-eslint/parser': '*'
@@ -16160,7 +16160,7 @@ snapshots:
 
   eslint-formatter-kakoune@1.0.0: {}
 
-  eslint-plugin-ember@12.3.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1):
+  eslint-plugin-ember@12.3.1(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1):
     dependencies:
       '@ember-data/rfc395-data': 0.0.4
       css-tree: 2.3.1
@@ -16178,7 +16178,7 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
 
-  eslint-plugin-ember@12.3.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@9.13.0)(typescript@5.6.3))(eslint@9.13.0):
+  eslint-plugin-ember@12.3.1(@babel/core@7.25.9)(@typescript-eslint/parser@8.11.0(eslint@9.13.0)(typescript@5.6.3))(eslint@9.13.0):
     dependencies:
       '@ember-data/rfc395-data': 0.0.4
       css-tree: 2.3.1
