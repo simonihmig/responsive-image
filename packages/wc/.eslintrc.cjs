@@ -7,11 +7,16 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  extends: ['@open-wc', 'prettier'],
+  extends: [
+    '@open-wc',
+    'prettier',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   plugins: ['@typescript-eslint'],
   rules: {
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
+    'no-shadow': 'off', // causes enum false positives
     'import/no-unresolved': 'off',
     'import/extensions': [
       'error',
