@@ -1,30 +1,25 @@
 <!doctype html>
 <html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <style>
-    body {
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
-  <div id="demo"></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <style>
+      body {
+        background: #fafafa;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
 
-  <script type="module">
-    import { html, render } from 'lit';
-    import '../dist/src/responsive-image.js';
+    <script type="module">
+      import { html, render } from 'lit';
+      import '../dist/src/responsive-image.js';
 
-    const header = 'Hello owc World!';
-    render(
-      html`
-        <responsive-image .header=${header}>
-          some light-dom
-        </responsive-image>
-      `,
-      document.querySelector('#demo')
-    );
-  </script>
-</body>
+      render(html` <responsive-image /> `, document.querySelector('#demo'));
+    </script>
+  </body>
 </html>
