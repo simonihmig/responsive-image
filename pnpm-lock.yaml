@@ -659,6 +659,9 @@ importers:
 
   apps/wc-lit:
     dependencies:
+      '@responsive-image/cdn':
+        specifier: workspace:*
+        version: link:../../packages/cdn
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../../packages/core
