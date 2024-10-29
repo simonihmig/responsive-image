@@ -659,10 +659,19 @@ importers:
 
   apps/wc-lit:
     dependencies:
+      '@responsive-image/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@responsive-image/wc':
+        specifier: workspace:*
+        version: link:../../packages/wc
       lit:
         specifier: ^3.2.1
         version: 3.2.1
     devDependencies:
+      '@responsive-image/vite-plugin':
+        specifier: workspace:*
+        version: link:../../packages/vite-plugin
       typescript:
         specifier: ~5.6.2
         version: 5.6.3

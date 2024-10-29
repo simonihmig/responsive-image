@@ -9,9 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@responsive-image/core": "workspace:*",
+    "@responsive-image/wc": "workspace:*",
     "lit": "^3.2.1"
   },
   "devDependencies": {
+    "@responsive-image/vite-plugin": "workspace:*",
     "typescript": "~5.6.2",
     "vite": "^5.4.9"
   }
