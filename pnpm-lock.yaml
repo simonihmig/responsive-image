@@ -657,6 +657,31 @@ importers:
         specifier: 5.95.0
         version: 5.95.0
 
+  apps/wc-lit:
+    dependencies:
+      '@responsive-image/cdn':
+        specifier: workspace:*
+        version: link:../../packages/cdn
+      '@responsive-image/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@responsive-image/wc':
+        specifier: workspace:*
+        version: link:../../packages/wc
+      lit:
+        specifier: ^3.2.1
+        version: 3.2.1
+    devDependencies:
+      '@responsive-image/vite-plugin':
+        specifier: workspace:*
+        version: link:../../packages/vite-plugin
+      typescript:
+        specifier: ~5.6.2
+        version: 5.6.3
+      vite:
+        specifier: ^5.4.9
+        version: 5.4.10(@types/node@22.8.4)(terser@5.36.0)
+
   packages/build-utils:
     dependencies:
       '@responsive-image/core':
