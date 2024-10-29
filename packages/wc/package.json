@@ -13,12 +13,12 @@
   },
   "scripts": {
     "analyze": "cem analyze --litelement",
-    "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"web-dev-server\"",
+    "start": "tsc --watch",
     "build": "tsc && npm run analyze -- --exclude dist",
-    "prepublish": "tsc && npm run analyze -- --exclude dist",
+    "prepack": "pnpm turbo build",
     "lint": "eslint --ext .ts . && prettier \"**/*.ts\" --check",
     "format": "eslint --ext .ts,.html . --fix && prettier \"**/*.ts\" --write",
-    "test": "tsc && wtr --coverage",
+    "test": "wtr --coverage",
     "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\""
   },
   "dependencies": {
@@ -32,12 +32,11 @@
     "@types/mocha": "^10.0.7",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
-    "@web/dev-server": "^0.4.6",
     "@web/test-runner": "^0.19.0",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.3.2",
+    "prettier": "3.3.3",
     "tslib": "^2.6.3",
     "typescript": "^5.5.3"
   },
