@@ -1099,9 +1099,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.16.0
         version: 7.18.0(eslint@8.57.1)(typescript@5.6.3)
-      '@web/dev-server':
-        specifier: ^0.4.6
-        version: 0.4.6
       '@web/test-runner':
         specifier: ^0.19.0
         version: 0.19.0
@@ -1115,7 +1112,7 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0(eslint@8.57.1)
       prettier:
-        specifier: ^3.3.2
+        specifier: 3.3.3
         version: 3.3.3
       tslib:
         specifier: ^2.6.3
