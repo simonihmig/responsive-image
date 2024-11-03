@@ -4,6 +4,9 @@ import { env, type ImageData } from '@responsive-image/core';
 
 import type { ResponsiveImage } from '../src/responsive-image.js';
 import '../src/responsive-image.js';
+import { imageLoaded } from './image-loaded.helper.js';
+
+const cacheBreaker = () => `${new Date().getTime()}#${Math.random()}`;
 
 describe('ResponsiveImage', () => {
   const defaultImageData: ImageData = {
@@ -381,6 +384,111 @@ describe('ResponsiveImage', () => {
         'src',
         '/provider/w100/image.jpeg',
       );
+    });
+  });
+
+  describe('LQIP', () => {
+    describe('inline', () => {
+      it('it sets LQIP SVG as background', async () => {
+        const { onload, loaded } = imageLoaded();
+        const imageData: ImageData = {
+          imageTypes: ['jpeg', 'webp'],
+          // to replicate the loading timing, we need to load a real existing image
+          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+          lqip: {
+            type: 'inline',
+            class: 'lqip-inline-test-class',
+          },
+        };
+
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image .src=${imageData} />`,
+        );
+        onload(el);
+
+        const imgEl = el.shadowRoot?.querySelector('img');
+
+        if (!imgEl?.complete) {
+          expect(imgEl).to.have.class('lqip-inline-test-class');
+        }
+
+        await loaded;
+
+        expect(imgEl).to.not.have.class('lqip-inline-test-class');
+      });
+    });
+
+    describe('color', () => {
+      it('it sets background-color', async () => {
+        const { onload, loaded } = imageLoaded();
+        const imageData: ImageData = {
+          imageTypes: ['jpeg', 'webp'],
+          // to replicate the loading timing, we need to load a real existing image
+          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+          lqip: {
+            type: 'color',
+            class: 'lqip-color-test-class',
+          },
+        };
+
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image .src=${imageData} />`,
+        );
+        onload(el);
+
+        const imgEl = el.shadowRoot?.querySelector('img');
+
+        if (!imgEl?.complete) {
+          expect(imgEl).to.have.class('lqip-color-test-class');
+        }
+
+        await loaded;
+
+        expect(imgEl).to.not.have.class('lqip-color-test-class');
+      });
+    });
+
+    describe.skip('blurhash', () => {
+      it('it sets LQIP from blurhash as background', async () => {
+        const { onload, loaded } = imageLoaded();
+        const imageData: ImageData = {
+          imageTypes: ['jpeg', 'webp'],
+          // to replicate the loading timing, we need to load a real existing image
+          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+          lqip: {
+            type: 'blurhash',
+            hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+            width: 4,
+            height: 3,
+          },
+        };
+
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image .src=${imageData} />`,
+        );
+        onload(el);
+
+        const imgEl = el.shadowRoot?.querySelector('img');
+
+        if (!imgEl?.complete) {
+          expect(
+            imgEl?.style.backgroundImage,
+            'it has a background PNG',
+          ).to.match(/data:image\/png/);
+          expect(imgEl).to.have.style('background-size', 'cover');
+          expect(
+            window.getComputedStyle(imgEl!).backgroundImage,
+            'the background SVG has a reasonable length',
+          ).to.have.length.greaterThan(100);
+        }
+
+        await loaded;
+
+        expect(
+          window.getComputedStyle(imgEl!).backgroundImage,
+          'after image is loaded the background PNG is removed',
+        ).to.be('none');
+      });
     });
   });
 });

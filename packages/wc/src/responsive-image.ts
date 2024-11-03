@@ -1,5 +1,5 @@
 import { html, css, LitElement, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import {
   type ImageType,
   // type LqipBlurhash,
@@ -7,7 +7,7 @@ import {
   env,
   getDestinationWidthBySize,
 } from '@responsive-image/core';
-import { classMap } from 'lit/directives/class-map.js';
+import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 interface ImageSource {
@@ -63,6 +63,9 @@ export class ResponsiveImage extends LitElement {
   @property({ type: String }) loading: 'lazy' | 'eager' = 'lazy';
 
   @property({ type: String }) alt = '';
+
+  @state()
+  private isLoaded = false;
 
   get layout(): Layout {
     return this.width === undefined && this.height === undefined
@@ -151,9 +154,16 @@ export class ResponsiveImage extends LitElement {
   }
 
   render() {
-    const classes = {
+    const { lqip } = this.src;
+
+    const classes: ClassInfo = {
       'ri-responsive': this.layout === Layout.RESPONSIVE,
       'ri-fixed': this.layout === Layout.FIXED,
+      'ri-lqip-inline': lqip?.type === 'inline' && !this.isLoaded,
+      'ri-lqip-color': lqip?.type === 'color' && !this.isLoaded,
+      'ri-lqip-blurhash': lqip?.type === 'blurhash' && !this.isLoaded,
+      [lqip?.type === 'color' || lqip?.type === 'inline' ? lqip.class : '']:
+        (lqip?.type === 'color' || lqip?.type === 'inline') && !this.isLoaded,
     };
 
     return html`
@@ -174,6 +184,9 @@ export class ResponsiveImage extends LitElement {
           alt=${this.alt}
           loading=${this.loading}
           decoding="async"
+          @load=${() => {
+            this.isLoaded = true;
+          }}
         />
       </picture>
     `;
