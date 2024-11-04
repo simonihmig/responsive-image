@@ -390,8 +390,8 @@ importers:
         specifier: 8.1.2
         version: 8.1.2(eslint@9.14.0)
       globals:
-        specifier: 15.11.0
-        version: 15.11.0
+        specifier: 15.12.0
+        version: 15.12.0
       loader.js:
         specifier: 4.7.0
         version: 4.7.0
@@ -6809,6 +6809,10 @@ packages:
 
   globals@15.11.0:
     resolution: {integrity: sha512-yeyNSjdbyVaWurlwCpcA6XNBrHTMIeDdj0/hnvX/OLJ9ekOXYbLsLinH/MucQyGvNnXhidTdNhTtJaffL2sMfw==}
+    engines: {node: '>=18'}
+
+  globals@15.12.0:
+    resolution: {integrity: sha512-1+gLErljJFhbOVyaetcwJiJ4+eLe45S2E7P5UiZ9xGfeq3ATQf5DOv9G7MH3gGbKQLkzmNh2DxfZwLdw+j6oTQ==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -17777,7 +17781,7 @@ snapshots:
       eslint: 9.14.0
       eslint-plugin-es-x: 7.8.0(eslint@9.14.0)
       get-tsconfig: 4.8.1
-      globals: 15.11.0
+      globals: 15.12.0
       ignore: 5.3.2
       minimatch: 9.0.5
       semver: 7.6.3
@@ -18746,6 +18750,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@15.11.0: {}
+
+  globals@15.12.0: {}
 
   globalthis@1.0.4:
     dependencies:
