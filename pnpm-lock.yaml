@@ -21,8 +21,8 @@ importers:
         specifier: 2.27.9
         version: 2.27.9
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       prettier:
         specifier: 3.3.3
         version: 3.3.3
@@ -330,8 +330,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       decorator-transforms:
         specifier: 2.2.2
         version: 2.2.2(@babel/core@7.25.9)
@@ -719,8 +719,8 @@ importers:
         specifier: 8.12.2
         version: 8.12.2(eslint@8.57.1)(typescript@5.6.3)
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -771,8 +771,8 @@ importers:
         specifier: 8.12.2
         version: 8.12.2(eslint@8.57.1)(typescript@5.6.3)
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -810,8 +810,8 @@ importers:
         specifier: 8.12.2
         version: 8.12.2(eslint@8.57.1)(typescript@5.6.3)
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -979,8 +979,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       ember-cached-decorator-polyfill:
         specifier: 1.0.2
         version: 1.0.2(@babel/core@7.25.9)(@glint/template@1.5.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.5.0)(rsvp@4.8.5))
@@ -1058,8 +1058,8 @@ importers:
         specifier: 8.12.2
         version: 8.12.2(eslint@8.57.1)(typescript@5.6.3)
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -1128,8 +1128,8 @@ importers:
         specifier: 0.19.0
         version: 0.19.0
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -1183,8 +1183,8 @@ importers:
         specifier: 8.12.2
         version: 8.12.2(eslint@8.57.1)(typescript@5.6.3)
       concurrently:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 9.1.0
+        version: 9.1.0
       css-loader:
         specifier: 7.1.2
         version: 7.1.2(webpack@5.96.1)
@@ -5058,8 +5058,8 @@ packages:
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
-  concurrently@9.0.1:
-    resolution: {integrity: sha512-wYKvCd/f54sTXJMSfV6Ln/B8UrfLBKOYa+lzc6CHay3Qek+LorVSBdMVfyewFhRbH0Rbabsk4D+3PL/VjQ5gzg==}
+  concurrently@9.1.0:
+    resolution: {integrity: sha512-VxkzwMAn4LP7WyMnJNbHN5mKV9L2IbyDjpzemKr99sXNR3GqRNMMHdm7prV1ws9wg7ETj6WUkNOigZVsptwbgg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -16159,7 +16159,7 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  concurrently@9.0.1:
+  concurrently@9.1.0:
     dependencies:
       chalk: 4.1.2
       lodash: 4.17.21
