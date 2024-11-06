@@ -2,13 +2,15 @@ import { html, css, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import {
   type ImageType,
-  // type LqipBlurhash,
+  type LqipBlurhash,
   type ImageData,
   env,
   getDestinationWidthBySize,
 } from '@responsive-image/core';
 import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { bh2url } from '@responsive-image/core/blurhash';
+import { StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
   srcset: string;
@@ -153,6 +155,25 @@ export class ResponsiveImage extends LitElement {
     return this.src.imageUrlFor(this.imgWidth ?? 640);
   }
 
+  get hasLqipBlurhash(): boolean {
+    return this.src.lqip?.type === 'blurhash';
+  }
+
+  get showLqipBlurhash(): boolean {
+    return !this.isLoaded && this.hasLqipBlurhash;
+  }
+
+  get lqipBlurhash(): string | undefined {
+    if (!this.hasLqipBlurhash) {
+      return undefined;
+    }
+
+    const { hash, width, height } = this.src.lqip as LqipBlurhash;
+    const uri = bh2url(hash, width, height);
+
+    return `url("${uri}")`;
+  }
+
   render() {
     const { lqip } = this.src;
 
@@ -165,6 +186,13 @@ export class ResponsiveImage extends LitElement {
       [lqip?.type === 'color' || lqip?.type === 'inline' ? lqip.class : '']:
         (lqip?.type === 'color' || lqip?.type === 'inline') && !this.isLoaded,
     };
+
+    const styles: StyleInfo = this.showLqipBlurhash
+      ? {
+          backgroundImage: this.lqipBlurhash,
+          backgroundSize: 'cover',
+        }
+      : {};
 
     return html`
       <picture>
@@ -180,6 +208,7 @@ export class ResponsiveImage extends LitElement {
           width=${ifDefined(this.imgWidth)}
           height=${ifDefined(this.imgHeight)}
           class=${classMap(classes)}
+          style=${styleMap(styles)}
           src=${ifDefined(this.imgSrc)}
           alt=${this.alt}
           loading=${this.loading}

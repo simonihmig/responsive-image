@@ -137,7 +137,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     }
 
     const url = this.args.src.imageUrlFor(this.width ?? 640);
-    console.log(url);
     return url;
   }
 
