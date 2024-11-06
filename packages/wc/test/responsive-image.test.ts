@@ -448,7 +448,7 @@ describe('ResponsiveImage', () => {
       });
     });
 
-    describe.skip('blurhash', () => {
+    describe('blurhash', () => {
       it('it sets LQIP from blurhash as background', async () => {
         const { onload, loaded } = imageLoaded();
         const imageData: ImageData = {
@@ -487,7 +487,7 @@ describe('ResponsiveImage', () => {
         expect(
           window.getComputedStyle(imgEl!).backgroundImage,
           'after image is loaded the background PNG is removed',
-        ).to.be('none');
+        ).to.equal('none');
       });
     });
   });
