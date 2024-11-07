@@ -1,6 +1,6 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, afterEach } from 'vitest';
 import { html } from 'lit';
-import { fixture } from '@open-wc/testing-helpers';
+import { fixture, fixtureCleanup } from '@open-wc/testing-helpers';
 import { env, type ImageData } from '@responsive-image/core';
 
 import type { ResponsiveImage } from '../src/responsive-image.js';
@@ -8,6 +8,8 @@ import '../src/responsive-image.js';
 import { imageLoaded } from './image-loaded.helper.js';
 
 const cacheBreaker = () => `${new Date().getTime()}#${Math.random()}`;
+
+afterEach(() => fixtureCleanup());
 
 describe('ResponsiveImage', () => {
   const defaultImageData: ImageData = {
