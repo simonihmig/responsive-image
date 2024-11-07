@@ -1,5 +1,6 @@
+import { describe, expect, test } from 'vitest';
 import { html } from 'lit';
-import { fixture, expect } from '@open-wc/testing';
+import { fixture } from '@open-wc/testing-helpers';
 import { env, type ImageData } from '@responsive-image/core';
 
 import type { ResponsiveImage } from '../src/responsive-image.js';
@@ -17,7 +18,7 @@ describe('ResponsiveImage', () => {
   };
 
   describe('basics', () => {
-    it('it renders a source for every format', async () => {
+    test('it renders a source for every format', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} />`,
       );
@@ -32,45 +33,45 @@ describe('ResponsiveImage', () => {
         .exist;
     });
 
-    it('it loads lazily by default', async () => {
+    test('it loads lazily by default', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.attribute(
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'loading',
         'lazy',
       );
     });
 
-    it('it can optionally load eager', async () => {
+    test('it can optionally load eager', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} loading="eager" />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.attribute(
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'loading',
         'eager',
       );
     });
 
-    it('it decodes async', async () => {
+    test('it decodes async', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.attribute(
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'decoding',
         'async',
       );
     });
 
-    it('it can customize alt attribute', async () => {
+    test('it can customize alt attribute', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} alt="some" />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.attribute(
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'alt',
         'some',
       );
@@ -78,18 +79,16 @@ describe('ResponsiveImage', () => {
   });
 
   describe('responsive layout', () => {
-    it('it has responsive layout by default', async () => {
+    test('it has responsive layout by default', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.class(
-        'ri-responsive',
-      );
-      expect(el.shadowRoot?.querySelector('img')).to.not.have.class('ri-fixed');
+      expect(el.shadowRoot?.querySelector('img')).toHaveClass('ri-responsive');
+      expect(el.shadowRoot?.querySelector('img')).not.toHaveClass('ri-fixed');
     });
 
-    it('it renders width and height attributes when aspect ratio is known', async () => {
+    test('it renders width and height attributes when aspect ratio is known', async () => {
       const imageData = {
         ...defaultImageData,
         aspectRatio: 2,
@@ -99,15 +98,15 @@ describe('ResponsiveImage', () => {
       );
       const imgEl = el.shadowRoot?.querySelector('img');
 
-      expect(imgEl).to.have.attribute('width');
-      expect(imgEl).to.have.attribute('height');
+      expect(imgEl).toHaveAttribute('width');
+      expect(imgEl).toHaveAttribute('height');
       expect(
         parseInt(imgEl?.getAttribute('width') ?? '', 10) /
           parseInt(imgEl?.getAttribute('height') ?? '', 10),
       ).to.equal(2);
     });
 
-    it('it renders the correct sourceset with width descriptors when availableWidths is available', async () => {
+    test('it renders the correct sourceset with width descriptors when availableWidths is available', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         availableWidths: [50, 100, 640],
@@ -119,7 +118,7 @@ describe('ResponsiveImage', () => {
       // png
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w50/image.jpeg 50w, /provider/w100/image.jpeg 100w, /provider/w640/image.jpeg 640w',
       );
@@ -127,7 +126,7 @@ describe('ResponsiveImage', () => {
       // webp
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w50/image.webp 50w, /provider/w100/image.webp 100w, /provider/w640/image.webp 640w',
       );
@@ -135,7 +134,7 @@ describe('ResponsiveImage', () => {
       // avif
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/avif"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w50/image.avif 50w, /provider/w100/image.avif 100w, /provider/w640/image.avif 640w',
       );
@@ -152,7 +151,7 @@ describe('ResponsiveImage', () => {
       // png
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w10/image.jpeg 10w, /provider/w25/image.jpeg 25w',
       );
@@ -160,7 +159,7 @@ describe('ResponsiveImage', () => {
       // webp
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w10/image.webp 10w, /provider/w25/image.webp 25w',
       );
@@ -168,13 +167,13 @@ describe('ResponsiveImage', () => {
       // avif
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/avif"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w10/image.avif 10w, /provider/w25/image.avif 25w',
       );
     });
 
-    it('it renders the sourceset based on deviceWidths when availableWidths is not available', async () => {
+    test('it renders the sourceset based on deviceWidths when availableWidths is not available', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} />`,
       );
@@ -184,7 +183,7 @@ describe('ResponsiveImage', () => {
       // webp
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         deviceWidths.map((w) => `/provider/w${w}/image.webp ${w}w`).join(', '),
       );
@@ -192,37 +191,37 @@ describe('ResponsiveImage', () => {
       // jpeg
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         deviceWidths.map((w) => `/provider/w${w}/image.jpeg ${w}w`).join(', '),
       );
     });
 
     // TODO: figure out why this is not working
-    it.skip('it renders the fallback src next to needed display size', async () => {
+    test.skip('it renders the fallback src next to needed display size', async () => {
       env.physicalWidth = 100;
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} />`,
       );
-      expect(el.shadowRoot?.querySelector('img')).to.have.attribute(
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'src',
         '/provider/w100/image.jpeg',
       );
     });
 
-    it('it renders a given size as sizes', async () => {
+    test('it renders a given size as sizes', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image size="40" .src=${defaultImageData} />`,
       );
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
-      ).to.have.attribute('sizes', '40vw');
+      ).toHaveAttribute('sizes', '40vw');
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
-      ).to.have.attribute('sizes', '40vw');
+      ).toHaveAttribute('sizes', '40vw');
     });
 
-    it('it renders with given sizes', async () => {
+    test('it renders with given sizes', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image
           sizes="(max-width: 767px) 100vw, 50vw"
@@ -231,21 +230,21 @@ describe('ResponsiveImage', () => {
       );
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
-      ).to.have.attribute('sizes', '(max-width: 767px) 100vw, 50vw');
+      ).toHaveAttribute('sizes', '(max-width: 767px) 100vw, 50vw');
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
-      ).to.have.attribute('sizes', '(max-width: 767px) 100vw, 50vw');
+      ).toHaveAttribute('sizes', '(max-width: 767px) 100vw, 50vw');
     });
   });
 
   describe('fixed layout', () => {
-    it('it has fixed layout when width or height is provided', async () => {
+    test('it has fixed layout when width or height is provided', async () => {
       let el = await fixture<ResponsiveImage>(
         html`<responsive-image width="100" .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.class('ri-fixed');
-      expect(el.shadowRoot?.querySelector('img')).to.not.have.class(
+      expect(el.shadowRoot?.querySelector('img')).toHaveClass('ri-fixed');
+      expect(el.shadowRoot?.querySelector('img')).not.toHaveClass(
         'ri-responsive',
       );
 
@@ -253,13 +252,13 @@ describe('ResponsiveImage', () => {
         html`<responsive-image height="100" .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.class('ri-fixed');
-      expect(el.shadowRoot?.querySelector('img')).to.not.have.class(
+      expect(el.shadowRoot?.querySelector('img')).toHaveClass('ri-fixed');
+      expect(el.shadowRoot?.querySelector('img')).not.toHaveClass(
         'ri-responsive',
       );
     });
 
-    it('it renders width and height when given', async () => {
+    test('it renders width and height when given', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image
           width="150"
@@ -270,11 +269,11 @@ describe('ResponsiveImage', () => {
 
       const imgEl = el.shadowRoot?.querySelector('img');
 
-      expect(imgEl).to.have.attribute('width', '150');
-      expect(imgEl).to.have.attribute('height', '50');
+      expect(imgEl).toHaveAttribute('width', '150');
+      expect(imgEl).toHaveAttribute('height', '50');
     });
 
-    it('it renders height when width is given according to aspect ratio', async () => {
+    test('it renders height when width is given according to aspect ratio', async () => {
       const imageData = {
         ...defaultImageData,
         aspectRatio: 2,
@@ -285,11 +284,11 @@ describe('ResponsiveImage', () => {
 
       const imgEl = el.shadowRoot?.querySelector('img');
 
-      expect(imgEl).to.have.attribute('width', '150');
-      expect(imgEl).to.have.attribute('height', '75');
+      expect(imgEl).toHaveAttribute('width', '150');
+      expect(imgEl).toHaveAttribute('height', '75');
     });
 
-    it('it renders width when height is given according to aspect ratio', async () => {
+    test('it renders width when height is given according to aspect ratio', async () => {
       const imageData = {
         ...defaultImageData,
         aspectRatio: 2,
@@ -300,11 +299,11 @@ describe('ResponsiveImage', () => {
 
       const imgEl = el.shadowRoot?.querySelector('img');
 
-      expect(imgEl).to.have.attribute('width', '200');
-      expect(imgEl).to.have.attribute('height', '100');
+      expect(imgEl).toHaveAttribute('width', '200');
+      expect(imgEl).toHaveAttribute('height', '100');
     });
 
-    it('it renders the correct sourceset with pixel densities', async () => {
+    test('it renders the correct sourceset with pixel densities', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         availableWidths: [50, 100],
@@ -317,7 +316,7 @@ describe('ResponsiveImage', () => {
       // jpeg
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w50/image.jpeg 1x, /provider/w100/image.jpeg 2x',
       );
@@ -325,7 +324,7 @@ describe('ResponsiveImage', () => {
       // webp
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w50/image.webp 1x, /provider/w100/image.webp 2x',
       );
@@ -333,7 +332,7 @@ describe('ResponsiveImage', () => {
       // avif
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/avif"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w50/image.avif 1x, /provider/w100/image.avif 2x',
       );
@@ -344,7 +343,7 @@ describe('ResponsiveImage', () => {
       // jpeg
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w10/image.jpeg 1x, /provider/w20/image.jpeg 2x',
       );
@@ -352,7 +351,7 @@ describe('ResponsiveImage', () => {
       // webp
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w10/image.webp 1x, /provider/w20/image.webp 2x',
       );
@@ -360,18 +359,18 @@ describe('ResponsiveImage', () => {
       // avif
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/avif"]'),
-      ).to.have.attribute(
+      ).toHaveAttribute(
         'srcset',
         '/provider/w10/image.avif 1x, /provider/w20/image.avif 2x',
       );
     });
 
-    it('it renders the fallback src', async () => {
+    test('it renders the fallback src', async () => {
       let el = await fixture<ResponsiveImage>(
         html`<responsive-image width="320" .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.attribute(
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'src',
         '/provider/w320/image.jpeg',
       );
@@ -380,7 +379,7 @@ describe('ResponsiveImage', () => {
         html`<responsive-image width="100" .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('img')).to.have.attribute(
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'src',
         '/provider/w100/image.jpeg',
       );
@@ -389,7 +388,7 @@ describe('ResponsiveImage', () => {
 
   describe('LQIP', () => {
     describe('inline', () => {
-      it('it sets LQIP SVG as background', async () => {
+      test('it sets LQIP SVG as background', async () => {
         const { onload, loaded } = imageLoaded();
         const imageData: ImageData = {
           imageTypes: ['jpeg', 'webp'],
@@ -409,17 +408,17 @@ describe('ResponsiveImage', () => {
         const imgEl = el.shadowRoot?.querySelector('img');
 
         if (!imgEl?.complete) {
-          expect(imgEl).to.have.class('lqip-inline-test-class');
+          expect(imgEl).toHaveClass('lqip-inline-test-class');
         }
 
         await loaded;
 
-        expect(imgEl).to.not.have.class('lqip-inline-test-class');
+        expect(imgEl).not.toHaveClass('lqip-inline-test-class');
       });
     });
 
     describe('color', () => {
-      it('it sets background-color', async () => {
+      test('it sets background-color', async () => {
         const { onload, loaded } = imageLoaded();
         const imageData: ImageData = {
           imageTypes: ['jpeg', 'webp'],
@@ -439,17 +438,17 @@ describe('ResponsiveImage', () => {
         const imgEl = el.shadowRoot?.querySelector('img');
 
         if (!imgEl?.complete) {
-          expect(imgEl).to.have.class('lqip-color-test-class');
+          expect(imgEl).toHaveClass('lqip-color-test-class');
         }
 
         await loaded;
 
-        expect(imgEl).to.not.have.class('lqip-color-test-class');
+        expect(imgEl).not.toHaveClass('lqip-color-test-class');
       });
     });
 
     describe('blurhash', () => {
-      it('it sets LQIP from blurhash as background', async () => {
+      test('it sets LQIP from blurhash as background', async () => {
         const { onload, loaded } = imageLoaded();
         const imageData: ImageData = {
           imageTypes: ['jpeg', 'webp'],
@@ -475,7 +474,7 @@ describe('ResponsiveImage', () => {
             imgEl?.style.backgroundImage,
             'it has a background PNG',
           ).to.match(/data:image\/png/);
-          expect(imgEl).to.have.style('background-size', 'cover');
+          expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
           expect(
             window.getComputedStyle(imgEl!).backgroundImage,
             'the background SVG has a reasonable length',
