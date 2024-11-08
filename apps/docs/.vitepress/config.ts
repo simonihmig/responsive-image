@@ -89,7 +89,10 @@ export default defineConfig({
         text: 'Frameworks',
         link: '/',
         base: '/frameworks',
-        items: [{ text: 'Ember', link: '/ember' }],
+        items: [
+          { text: 'Ember', link: '/ember' },
+          { text: 'Web Component (Lit)', link: '/wc' },
+        ],
       },
       {
         text: 'Build plugins',

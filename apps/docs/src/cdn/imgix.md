@@ -37,6 +37,14 @@ module.exports = {
 };
 ```
 
+```js [Lit]
+import { setConfig } from '@responsive-image/core';
+
+setConfig('imgix', {
+  domain: 'my-org.imgix.net',
+});
+```
+
 :::
 
 ## Usage
@@ -61,6 +69,22 @@ import { imgixProvider } from '@responsive-image/cdn';
 <ResponsiveImage
   @src={{responsive-image-imgix-provider 'path/to/uploaded/image.jpg'}}
 />
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { imgixProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${imgixProvider('path/to/uploaded/image.jpg')}
+    ></responsive-image>`;
+  }
+}
 ```
 
 :::
@@ -95,6 +119,25 @@ import { imgixProvider } from '@responsive-image/cdn';
 />
 ```
 
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { imgixProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${imgixProvider('path/to/uploaded/image.jpg', {
+        monochrome: '44768B',
+        px: 10,
+      })}
+    ></responsive-image>`;
+  }
+}
+```
+
 :::
 
 ### Quality
@@ -127,6 +170,24 @@ import { imgixProvider } from '@responsive-image/cdn';
 />
 ```
 
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { imgixProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${imgixProvider('path/to/uploaded/image.jpg', {
+        quality: 50,
+      })}
+    ></responsive-image>`;
+  }
+}
+```
+
 :::
 
 ### Image formats
@@ -157,6 +218,24 @@ import { imgixProvider } from '@responsive-image/cdn';
     formats=(array 'webp' 'avif')
   }}
 />
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { imgixProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${imgixProvider('path/to/uploaded/image.jpg', {
+        formats: ['webp', 'avif'],
+      })}
+    ></responsive-image>`;
+  }
+}
 ```
 
 :::

@@ -26,8 +26,22 @@ import { ResponsiveImage } from '@responsive-image/ember';
 import image from './image.jpg?w=200;400&quality=90&lqip=inline&responsive';
 
 <template>
-  <ResponsiveImage @width={{200}} @src={{image}} />
+  <ResponsiveImage @src={{image}} @width={{200}} />
 </template>
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import image from './image.jpg?w=200;400&quality=90&lqip=inline&responsive';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image .src=${image} with="200"></responsive-image>`;
+  }
+}
 ```
 
 :::
