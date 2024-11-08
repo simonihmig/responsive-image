@@ -37,6 +37,14 @@ module.exports = {
 };
 ```
 
+```js [Lit]
+import { setConfig } from '@responsive-image/core';
+
+setConfig('cloudinary', {
+  cloudName: 'my-org',
+});
+```
+
 :::
 
 ## Usage
@@ -61,6 +69,22 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 <ResponsiveImage
   @src={{responsive-image-cloudinary-provider 'path/to/uploaded/image.jpg'}}
 />
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { cloudinaryProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${cloudinaryProvider('path/to/uploaded/image.jpg')}
+    ></responsive-image>`;
+  }
+}
 ```
 
 :::
@@ -96,6 +120,27 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 />
 ```
 
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { cloudinaryProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${cloudinaryProvider('path/to/uploaded/image.jpg', {
+        co: 'rgb:20a020',
+        e: 'colorize:50',
+      })}
+    ></responsive-image>`;
+  }
+}
+```
+
+:::
+
 :::
 
 It accepts an object of transformations, or an array of objects for [chained transformations](https://cloudinary.com/documentation/image_transformations#chained_transformations).
@@ -130,6 +175,24 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 />
 ```
 
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { cloudinaryProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${cloudinaryProvider('path/to/uploaded/image.jpg', {
+        quality: 50,
+      })}
+    ></responsive-image>`;
+  }
+}
+```
+
 :::
 
 ### Image formats
@@ -162,6 +225,24 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 />
 ```
 
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { cloudinaryProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${cloudinaryProvider('path/to/uploaded/image.jpg', {
+        formats: ['webp', 'avif'],
+      })}
+    ></responsive-image>`;
+  }
+}
+```
+
 :::
 
 ### Remote source
@@ -189,6 +270,24 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
     'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png'
   }}
 />
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { cloudinaryProvider } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${cloudinaryProvider(
+        'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
+      )}
+    ></responsive-image>`;
+  }
+}
 ```
 
 :::

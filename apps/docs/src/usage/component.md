@@ -2,9 +2,6 @@
 
 The `ResponsiveImage` component is provided by one of the packages for the supported [frontend frameworks](../frameworks/index.md).
 
-> [!NOTE]
-> Support for other frameworks than Ember.js is planned but still WIP...
-
 The only required argument is `src`, which expect an `ImageData` structure coming from an import or an [Image CDN](../cdn/index.md) (see [Core concepts](./concepts.md#image-source)):
 
 ::: code-group
@@ -16,6 +13,20 @@ import heroImage from './hero.jpg?responsive';
 <template>
   <ResponsiveImage @src={{heroImage}} />
 </template>
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import heroImage from './hero.jpg?responsive';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image .src=${heroImage}></responsive-image>`;
+  }
+}
 ```
 
 :::
@@ -83,6 +94,10 @@ If your image width is not `100vw`, say `70vw` for example, you can specify this
 <ResponsiveImage @src={{heroImage}} @size={{70}} />
 ```
 
+```ts [Lit]
+html`<responsive-image .src=${heroImage} size="70"></responsive-image>`;
+```
+
 :::
 
 This will render the corresponding [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-sizes) on all `<source>` elements.
@@ -93,6 +108,13 @@ You can also set the attribute like this if your responsive image width is more 
 
 ```hbs [Ember]
 <ResponsiveImage @src={{heroImage}} @sizes='(min-width: 800px) 800px, 100vw' />
+```
+
+```ts [Lit]
+html`<responsive-image
+  .src=${heroImage}
+  sizes="(min-width: 800px) 800px, 100vw"
+></responsive-image>`;
 ```
 
 :::
@@ -109,6 +131,10 @@ import logoImage from './hero.jpg?w=320;640&responsive';
 <template>
   <ResponsiveImage @src={{logoImage}} @width={{320}} />
 </template>
+```
+
+```ts [Lit]
+html`<responsive-image .src=${logoImage} with="320"></responsive-image>`;
 ```
 
 :::
