@@ -41,7 +41,7 @@ export class MyApp extends LitElement {
 
       <h2>Local</h2>
 
-      <responsive-image .src=${image}></responsive-image>
+      <responsive-image .src=${image} data-test-local-image="responsive"></responsive-image>
       <responsive-image
         .src=${image}
         width=320
@@ -73,6 +73,11 @@ export class MyApp extends LitElement {
         data-test-local-image="fixed,aspect"
       /></responsive-image>
     `;
+  }
+
+  // no shadow DOM needed
+  protected createRenderRoot() {
+    return this;
   }
 
   static styles = css``;
