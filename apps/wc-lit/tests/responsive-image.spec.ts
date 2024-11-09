@@ -16,6 +16,7 @@ test('responsive layout', async ({ page }) => {
     'src',
     new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
   );
+  await expect(img).toHaveScreenshot();
 
   const picture = page.locator('[data-test-local-image="responsive"] picture');
 
@@ -44,6 +45,7 @@ test('fixed layout', async ({ page }) => {
   );
   await expect(img).toHaveAttribute('width', '320');
   await expect(img).toHaveAttribute('height', /213/);
+  await expect(img).toHaveScreenshot();
 
   const picture = page.locator('[data-test-local-image="fixed"] picture');
 
@@ -80,6 +82,7 @@ test('fixed layout w/ aspect', async ({ page }) => {
   );
   await expect(img).toHaveAttribute('width', '320');
   await expect(img).toHaveAttribute('height', '480');
+  await expect(img).toHaveScreenshot();
 
   const picture = page.locator('[data-test-local-image="fixed"] picture');
 
