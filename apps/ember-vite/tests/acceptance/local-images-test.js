@@ -74,7 +74,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`
+            `has ${type} with a width of 2x`
           );
       }
     });
@@ -147,7 +147,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`
+            `has ${type} with a width of 2x`
           );
       }
     });
@@ -183,7 +183,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`
+            `has ${type} with a width of 2x`
           );
       }
     });
@@ -218,7 +218,7 @@ module('Acceptance | local images', function (hooks) {
           .hasAttribute(
             'srcset',
             new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-            `has ${type} with a width of 1x`
+            `has ${type} with a width of 2x`
           );
       }
     });
