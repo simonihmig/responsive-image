@@ -36,7 +36,7 @@ import '@responsive-image/wc';
 ```
 
 > [!Important]
-> As the `src` input is an `ImageData` object, you cannot pass this as an HTML _attribute_. Web components only support string based attributes. So make sure to set it as a _property_ using JavaScript. In case of [Lit](https://lit.dev/), you would use the dot prefix notation for [property expressions](https://lit.dev/docs/templates/expressions/#property-expressions): ``html`<responsive-image .src=${image} />\` ``.
+> As the `src` input is an `ImageData` object, you cannot pass this as an HTML _attribute_. Web components only support string based attributes. So make sure to set it as a _property_ using JavaScript. In case of [Lit](https://lit.dev/), you would use the dot prefix notation for [property expressions](https://lit.dev/docs/templates/expressions/#property-expressions): ``html`<responsive-image .src=${image} ></responsive-image>\` ``.
 
 ## Local images
 
