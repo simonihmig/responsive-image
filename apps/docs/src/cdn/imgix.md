@@ -40,8 +40,10 @@ module.exports = {
 ```js [Lit]
 import { setConfig } from '@responsive-image/core';
 
-setConfig('imgix', {
-  domain: 'my-org.imgix.net',
+setConfig('cdn', {
+  imgix: {
+    domain: 'my-org.imgix.net',
+  },
 });
 ```
 
