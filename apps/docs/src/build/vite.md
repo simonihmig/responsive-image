@@ -25,7 +25,7 @@ pnpm add @responsive-image/vite-plugin @responsive-image/core
 
 ## Usage
 
-This package provides several Vite plugins for specific aspects of image processing and transforming an import of an image into an ES module whose exported value you can pass to the `<ResponsiveImage/>` component.
+This package provides several Vite plugins for specific aspects of image processing and transforming an import of a [local image](../usage/local-images.md) into an ES module whose exported value you can pass to the [image component](../usage/component.md).
 
 The easiest and recommended way to set these up is to use the provided `setupPlugins` utility function:
 

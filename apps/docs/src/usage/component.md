@@ -134,6 +134,8 @@ import logoImage from './hero.jpg?w=320;640&responsive';
 ```
 
 ```ts [Lit]
+import logoImage from './hero.jpg?w=320;640&responsive';
+
 html`<responsive-image .src=${logoImage} with="320"></responsive-image>`;
 ```
 
