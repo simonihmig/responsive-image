@@ -3,6 +3,7 @@ import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from 'ember-test-app/config/environment';
 import { setConfig } from '@responsive-image/core';
+import type { Config } from '@responsive-image/cdn';
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;
@@ -10,11 +11,13 @@ export default class App extends Application {
   Resolver = Resolver;
 }
 
-setConfig('cloudinary', {
-  cloudName: 'kaliber5',
-});
-setConfig('imgix', {
-  domain: 'kaliber5.imgix.net',
+setConfig<Config>('cdn', {
+  cloudinary: {
+    cloudName: 'kaliber5',
+  },
+  imgix: {
+    domain: 'kaliber5.imgix.net',
+  },
 });
 
 loadInitializers(App, config.modulePrefix);

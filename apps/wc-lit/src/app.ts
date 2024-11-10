@@ -10,13 +10,15 @@ import imageLqipBlurhash from './images/aurora.jpg?lqip={"type":"blurhash","targ
 import imagePortrait from './images/aurora.jpg?aspect=2:3&responsive';
 import imageGray from './images/aurora.jpg?grayscale&responsive';
 
-import type { CloudinaryConfig, ImgixConfig } from '@responsive-image/cdn';
+import type { Config } from '@responsive-image/cdn';
 
-setConfig<CloudinaryConfig>('cloudinary', {
-  cloudName: 'kaliber5',
-});
-setConfig<ImgixConfig>('imgix', {
-  domain: 'kaliber5.imgix.net',
+setConfig<Config>('cdn', {
+  cloudinary: {
+    cloudName: 'kaliber5',
+  },
+  imgix: {
+    domain: 'kaliber5.imgix.net',
+  },
 });
 
 @customElement('my-app')

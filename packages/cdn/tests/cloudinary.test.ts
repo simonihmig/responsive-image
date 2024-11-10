@@ -1,10 +1,10 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { CloudinaryConfig, cloudinaryProvider } from '../src';
+import { cloudinaryProvider, Config } from '../src';
 import { setConfig } from '@responsive-image/core';
 
 describe('cloudinary', function () {
   beforeAll(() => {
-    setConfig<CloudinaryConfig>('cloudinary', { cloudName: 'dummy' });
+    setConfig<Config>('cdn', { cloudinary: { cloudName: 'dummy' } });
   });
 
   test('it supports jpg, png, webp, avif image types by default', function () {

@@ -74,6 +74,9 @@ importers:
       '@glint/template':
         specifier: 1.5.0
         version: 1.5.0
+      '@responsive-image/cdn':
+        specifier: workspace:*
+        version: link:../../packages/cdn
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../../packages/core

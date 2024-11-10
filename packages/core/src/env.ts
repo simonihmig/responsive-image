@@ -1,9 +1,5 @@
 import { getConfig } from './config.ts';
-import type { Env } from './types';
-
-export interface EnvConfig {
-  deviceWidths?: number[];
-}
+import type { Env, EnvConfig } from './types';
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;
 const devicePixelRatio =

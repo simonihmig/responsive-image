@@ -11,11 +11,13 @@ export default class App extends Application {
   Resolver = Resolver.withModules(compatModules);
 }
 
-setConfig('cloudinary', {
-  cloudName: 'kaliber5',
-});
-setConfig('imgix', {
-  domain: 'kaliber5.imgix.net',
+setConfig('cdn', {
+  cloudinary: {
+    cloudName: 'kaliber5',
+  },
+  imgix: {
+    domain: 'kaliber5.imgix.net',
+  },
 });
 
 loadInitializers(App, config.modulePrefix, compatModules);

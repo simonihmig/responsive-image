@@ -1,5 +1,6 @@
 import { assert, getConfig } from '@responsive-image/core';
 import type { ImageType, ImageData } from '@responsive-image/core';
+import { Config } from './types';
 
 export interface CloudinaryConfig {
   cloudName: string;
@@ -27,7 +28,7 @@ export function cloudinaryProvider(
   image: string,
   options: CloudinaryOptions = {},
 ): ImageData {
-  const cloudName = getConfig<CloudinaryConfig>('cloudinary')?.cloudName;
+  const cloudName = getConfig<Config>('cdn')?.cloudinary?.cloudName;
   assert(
     'cloudName must be set for cloudinary provider!',
     typeof cloudName === 'string',
