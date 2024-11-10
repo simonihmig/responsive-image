@@ -10,15 +10,15 @@
 ::: code-group
 
 ```bash [npm]
-npm install @responsive-image/webpack
+npm install @responsive-image/webpack @responsive-image/core
 ```
 
 ```bash [yarn]
-yarn add @responsive-image/webpack
+yarn add @responsive-image/webpack @responsive-image/core
 ```
 
 ```bash [pnpm]
-pnpm add @responsive-image/webpack
+pnpm add @responsive-image/webpack @responsive-image/core
 ```
 
 :::
@@ -30,13 +30,17 @@ This package provides several webpack loaders for specific aspects of image proc
 The easiest and recommended way to set these up is to use the provided `setupLoaders` utility function:
 
 ```js
-const { setupLoaders } = require('@responsive-image/webpack');
+const {
+  setupLoaders,
+} = require('@responsive-image/webpack @responsive-image/core');
 ```
 
 The function will return an array of loaders (so called chained loaders), that you can `use` to set up a webpack module rule. In your webpack config file (`webpack.config.js`) add such a module rule that tells webpack to use the provided loaders for importing images:
 
 ```js
-const { setupLoaders } = require('@responsive-image/webpack');
+const {
+  setupLoaders,
+} = require('@responsive-image/webpack @responsive-image/core');
 
 const config = {
   entry: './src/index.ts',

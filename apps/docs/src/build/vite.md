@@ -10,15 +10,15 @@
 ::: code-group
 
 ```bash [npm]
-npm install @responsive-image/vite-plugin
+npm install @responsive-image/vite-plugin @responsive-image/core
 ```
 
 ```bash [yarn]
-yarn add @responsive-image/vite-plugin
+yarn add @responsive-image/vite-plugin @responsive-image/core
 ```
 
 ```bash [pnpm]
-pnpm add @responsive-image/vite-plugin
+pnpm add @responsive-image/vite-plugin @responsive-image/core
 ```
 
 :::
@@ -30,14 +30,14 @@ This package provides several Vite plugins for specific aspects of image process
 The easiest and recommended way to set these up is to use the provided `setupPlugins` utility function:
 
 ```js
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { setupPlugins } from '@responsive-image/vite-plugin @responsive-image/core';
 ```
 
 The function will return an array of plugins, that you can add to the list of other plugins inside your `vite.config.js`:
 
 ```js
 import { defineConfig } from 'vite';
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { setupPlugins } from '@responsive-image/vite-plugin @responsive-image/core';
 
 export default defineConfig({
   plugins: [

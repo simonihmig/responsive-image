@@ -130,7 +130,7 @@ As mentioned earlier, this LQIP mode needs an additional runtime script to suppo
 
 When your app is served in a SSR setup, it is important to make the BlurHash encoded LQIPs get displayed before your app's JavaScript has loaded, because the latter can take time on a slow network link, and that is exactly the use case where you want your BlurHash based image placeholders used by your prerendered HTML to be already visible.
 
-There is a dedicated scipt available for this to add to your `index.html`. It is important to add this _before_ your actual app's scripts. For optimal performance, preload that script using a `<link rel="prefetch">` element after the CSS links in your `<head>` section.
+There is a dedicated script available for this to add to your `index.html`. It is important to add this _before_ your actual app's scripts. For optimal performance, preload that script using a `<link rel="prefetch">` element after the CSS links in your `<head>` section.
 
 The exact setup can vary slightly depending on the chosen [frontend framework](../frameworks/index.md):
 
