@@ -145,7 +145,7 @@ export class ResponsiveImage extends LitElement {
 
     const ar = this.src.aspectRatio;
     if (ar !== undefined && ar !== 0 && this.imgWidth !== undefined) {
-      return this.imgWidth / ar;
+      return Math.round(this.imgWidth / ar);
     }
 
     return undefined;
