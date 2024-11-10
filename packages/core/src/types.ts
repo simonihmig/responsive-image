@@ -42,3 +42,6 @@ export interface Env {
   devicePixelRatio: number;
   deviceWidths: number[];
 }
+export interface EnvConfig {
+  deviceWidths?: number[];
+}

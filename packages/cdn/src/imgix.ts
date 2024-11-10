@@ -1,5 +1,6 @@
 import { assert, getConfig } from '@responsive-image/core';
 import type { ImageType, ImageData } from '@responsive-image/core';
+import { Config } from './types';
 
 export interface ImgixConfig {
   domain: string;
@@ -23,7 +24,7 @@ export function imgixProvider(
   image: string,
   options: ImgixOptions = {},
 ): ImageData {
-  const domain = getConfig<ImgixConfig>('imgix')?.domain;
+  const domain = getConfig<Config>('cdn')?.imgix?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 
   return {

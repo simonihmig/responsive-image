@@ -40,8 +40,10 @@ module.exports = {
 ```js [Lit]
 import { setConfig } from '@responsive-image/core';
 
-setConfig('cloudinary', {
-  cloudName: 'my-org',
+setConfig('cdn', {
+  cloudinary: {
+    cloudName: 'my-org',
+  },
 });
 ```
 

@@ -1,10 +1,10 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { ImgixConfig, imgixProvider } from '../src';
+import { Config, imgixProvider } from '../src';
 import { setConfig } from '@responsive-image/core';
 
 describe('imgix', function () {
   beforeAll(() => {
-    setConfig<ImgixConfig>('imgix', { domain: 'dummy.imgix.net' });
+    setConfig<Config>('cdn', { imgix: { domain: 'dummy.imgix.net' } });
   });
 
   test('it supports jpg, png and webp image types by default', function () {

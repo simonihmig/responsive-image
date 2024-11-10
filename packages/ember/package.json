@@ -37,7 +37,6 @@
     "@responsive-image/core": "workspace:^",
     "blurhash": "^2.0.0",
     "decorator-transforms": "^2.0.0",
-    "ember-addon-config": "^0.1.1",
     "ember-async-data": "^1.0.3",
     "ember-style-modifier": "^4.0.0"
   },
@@ -112,8 +111,7 @@
       "./components/responsive-image.js": "./dist/_app_/components/responsive-image.js",
       "./helpers/responsive-image-cloudinary-provider.js": "./dist/_app_/helpers/responsive-image-cloudinary-provider.js",
       "./helpers/responsive-image-imgix-provider.js": "./dist/_app_/helpers/responsive-image-imgix-provider.js",
-      "./helpers/responsive-image-resolve.js": "./dist/_app_/helpers/responsive-image-resolve.js",
-      "./initializers/responsive-image.js": "./dist/_app_/initializers/responsive-image.js"
+      "./helpers/responsive-image-resolve.js": "./dist/_app_/helpers/responsive-image-resolve.js"
     },
     "public-assets": {
       "./dist/blurhash.js": "/@responsive-image/ember/blurhash.js"
