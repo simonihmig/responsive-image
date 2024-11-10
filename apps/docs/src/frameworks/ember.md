@@ -164,20 +164,4 @@ declare module '@glint/environment-ember-loose/registry' {
 }
 ```
 
-### Image imports
-
-To make TypeScript understand your image imports, we tag them using a `responsive` query parameter, that has to come _last_!
-
-> [!NOTE]
-> We cannot use something like `*.jpg*` that works with queries, as TS only supports a single wildcard.
-> See https://github.com/microsoft/TypeScript/issues/38638
-
-Add this declaration to a file, e.g. your app's `types/global.d.ts`:
-
-```ts
-declare module '*responsive' {
-  import type { ImageData } from '@responsive-image/core';
-  const value: ImageData;
-  export default value;
-}
-```
+If you are using one of the [build plugins](../build/index.md), also make sure to have the necessary ambient declaration for image imports in place as described [here](../usage/local-images.md#typescript)!
