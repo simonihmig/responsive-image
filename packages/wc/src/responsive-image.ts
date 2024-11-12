@@ -9,7 +9,7 @@ import {
 } from '@responsive-image/core';
 import { ClassInfo, classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { bh2url } from '@responsive-image/core/blurhash';
+import { decode2url } from '@responsive-image/core/blurhash/decode';
 import { StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
@@ -169,7 +169,7 @@ export class ResponsiveImage extends LitElement {
     }
 
     const { hash, width, height } = this.src.lqip as LqipBlurhash;
-    const uri = bh2url(hash, width, height);
+    const uri = decode2url(hash, width, height);
 
     return `url("${uri}")`;
   }

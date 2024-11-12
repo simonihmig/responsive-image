@@ -1,1 +1,1 @@
-export * from '@responsive-image/core/blurhash';
+export { applySSR } from '@responsive-image/core/blurhash/ssr';

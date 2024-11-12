@@ -21,13 +21,15 @@ export interface LqipBlurhash extends LqipBase {
   height: number;
 }
 
+export type Lqip = LqipInline | LqipColor | LqipBlurhash;
+
 export interface ImageData {
   imageTypes: ImageType[];
   availableWidths?: number[];
   aspectRatio?: number;
   imageUrlFor(width: number, type?: ImageType): string | undefined;
   fingerprint?: string;
-  lqip?: LqipInline | LqipColor | LqipBlurhash;
+  lqip?: Lqip;
 }
 
 export interface ImageOutputResult {

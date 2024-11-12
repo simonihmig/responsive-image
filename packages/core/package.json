@@ -54,9 +54,13 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./blurhash": {
-      "types": "./dist/blurhash.d.ts",
-      "default": "./dist/blurhash.js"
+    "./blurhash/decode": {
+      "types": "./dist/blurhash/decode.d.ts",
+      "default": "./dist/blurhash/decode.js"
+    },
+    "./blurhash/ssr": {
+      "types": "./dist/blurhash/ssr.d.ts",
+      "default": "./dist/blurhash/ssr.js"
     }
   },
   "typesVersions": {

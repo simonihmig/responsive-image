@@ -2,7 +2,11 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { env, getDestinationWidthBySize } from '@responsive-image/core';
+import {
+  env,
+  getDestinationWidthBySize,
+  isLqipBlurhash,
+} from '@responsive-image/core';
 import { TrackedAsyncData } from 'ember-async-data';
 import type {
   ImageType,
@@ -184,42 +188,34 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return classNames.join(' ');
   }
 
-  get hasLqipBlurhash(): boolean {
-    return this.args.src.lqip?.type === 'blurhash';
-  }
-
   get showLqipBlurhash(): boolean {
     return (
-      !this.isLoaded && this.hasLqipBlurhash && this.blurhashScript.isResolved
+      !this.isLoaded &&
+      isLqipBlurhash(this.args.src.lqip) &&
+      this.blurhashScript.isResolved
     );
+  }
+
+  get blurhashMeta(): LqipBlurhash | undefined {
+    return isLqipBlurhash(this.args.src.lqip) ? this.args.src.lqip : undefined;
   }
 
   @cached
   get blurhashScript() {
-    const promise = import(
-      /* webpackIgnore: true */
-      `//${window.location.host}/@responsive-image/ember/blurhash.js`
-    );
-    return new TrackedAsyncData<typeof import('../blurhash.ts')>(promise);
-  }
-
-  get blurhashMeta(): LqipBlurhash | undefined {
-    return this.args.src.lqip?.type === 'blurhash'
-      ? this.args.src.lqip
-      : undefined;
+    const promise = import('@responsive-image/core/blurhash/decode');
+    return new TrackedAsyncData(promise);
   }
 
   get lqipBlurhash(): string | undefined {
-    if (!this.hasLqipBlurhash) {
+    if (
+      !isLqipBlurhash(this.args.src.lqip) ||
+      !this.blurhashScript.isResolved
+    ) {
       return undefined;
     }
 
-    if (!this.blurhashScript.isResolved) {
-      return undefined;
-    }
-
-    const { hash, width, height } = this.args.src.lqip as LqipBlurhash;
-    const uri = this.blurhashScript.value.bh2url(hash, width, height);
+    const { hash, width, height } = this.args.src.lqip;
+    const uri = this.blurhashScript.value.decode2url(hash, width, height);
 
     return `url("${uri}")`;
   }
