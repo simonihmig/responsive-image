@@ -13,6 +13,7 @@ import type {
   LqipBlurhash,
   ImageData,
 } from '@responsive-image/core';
+import type Owner from '@ember/owner';
 
 import './responsive-image.css';
 
@@ -64,7 +65,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @tracked
   isRendered = false;
 
-  constructor(owner: unknown, args: ResponsiveImageComponentSignature['Args']) {
+  constructor(owner: Owner, args: ResponsiveImageComponentSignature['Args']) {
     super(owner, args);
     assert('No @src argument supplied for <ResponsiveImage>', args.src);
     assert(
