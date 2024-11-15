@@ -2,6 +2,8 @@
 
 Internal package for shared runtime code.
 
+Part of the [ResponsiveImage](https://github.com/simonihmig/responsive-image) project.
+
 ## Documentation
 
 Visit [responsive-image.dev](https://responsive-image.dev) for our complete documentation site.
