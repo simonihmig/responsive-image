@@ -8,7 +8,7 @@ Part of the ResponsiveImage project.
 
 ## Compatibility
 
-- Ember.js v4.8 or above
+- Ember.js v4.12 or above
 
 ## Documentation
 
