@@ -1,10 +1,8 @@
 # @responsive-image/ember
 
-[![CI](https://github.com/simonihmig/responsive-image/actions/workflows/ci.yml/badge.svg)](https://github.com/simonihmig/responsive-image/actions/workflows/ci.yml)
-
 Ember addon to render responsive images, provided as locally processed images or loaded remotely from Image CDNs.
 
-Part of the ResponsiveImage project.
+Part of the [ResponsiveImage](https://github.com/simonihmig/responsive-image) project.
 
 ## Compatibility
 

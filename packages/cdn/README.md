@@ -2,7 +2,7 @@
 
 Support for loading remote images from Image CDNs.
 
-Part of the ResponsiveImage project.
+Part of the [ResponsiveImage](https://github.com/simonihmig/responsive-image) project.
 
 ## Documentation
 

@@ -2,7 +2,7 @@
 
 Internal package for shared build-related code.
 
-Part of the ResponsiveImage project.
+Part of the [ResponsiveImage](https://github.com/simonihmig/responsive-image) project.
 
 ## License
 
