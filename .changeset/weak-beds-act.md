@@ -1,8 +1,6 @@
 ---
 '@responsive-image/ember': major
-'@responsive-image/core': major
 '@responsive-image/cdn': major
-'@responsive-image/wc': major
 ---
 
 Refactor the way to set config
