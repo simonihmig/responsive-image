@@ -78,6 +78,17 @@ describe('ResponsiveImage', () => {
         'some',
       );
     });
+
+    test('it exposes img with part', async () => {
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${defaultImageData} />`,
+      );
+
+      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
+        'part',
+        'img',
+      );
+    });
   });
 
   describe('responsive layout', () => {
