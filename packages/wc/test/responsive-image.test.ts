@@ -46,17 +46,6 @@ describe('ResponsiveImage', () => {
       );
     });
 
-    test('it can optionally load eager', async () => {
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} loading="eager" />`,
-      );
-
-      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
-        'loading',
-        'eager',
-      );
-    });
-
     test('it decodes async', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData} />`,
@@ -65,17 +54,6 @@ describe('ResponsiveImage', () => {
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'decoding',
         'async',
-      );
-    });
-
-    test('it can customize alt attribute', async () => {
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} alt="some" />`,
-      );
-
-      expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
-        'alt',
-        'some',
       );
     });
 
@@ -88,6 +66,83 @@ describe('ResponsiveImage', () => {
         'part',
         'img',
       );
+    });
+
+    describe('HTML attributes', () => {
+      test('it can optionally load eager', async () => {
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image .src=${defaultImageData} loading="eager" />`,
+        );
+
+        expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
+          'loading',
+          'eager',
+        );
+      });
+
+      test('it can optionally decode sync', async () => {
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image .src=${defaultImageData} decoding="sync" />`,
+        );
+
+        expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
+          'decoding',
+          'sync',
+        );
+      });
+
+      test('it can customize alt attribute', async () => {
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image .src=${defaultImageData} alt="some" />`,
+        );
+
+        expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
+          'alt',
+          'some',
+        );
+      });
+
+      test('it can customize fetchPriority attribute', async () => {
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image
+            .src=${defaultImageData}
+            fetchPriority="high"
+          />`,
+        );
+
+        expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
+          'fetchPriority',
+          'high',
+        );
+      });
+
+      test('it can customize crossOrigin attribute', async () => {
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image
+            .src=${defaultImageData}
+            crossOrigin="use-credentials"
+          />`,
+        );
+
+        expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
+          'crossOrigin',
+          'use-credentials',
+        );
+      });
+
+      test('it can customize referrerPolicy attribute', async () => {
+        const el = await fixture<ResponsiveImage>(
+          html`<responsive-image
+            .src=${defaultImageData}
+            referrerPolicy="no-referrer"
+          />`,
+        );
+
+        expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
+          'referrerPolicy',
+          'no-referrer',
+        );
+      });
     });
   });
 
