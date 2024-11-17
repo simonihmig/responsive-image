@@ -234,8 +234,15 @@ export class ResponsiveImage extends LitElement {
           crossorigin=${ifDefined(this.crossOrigin)}
           fetchpriority=${ifDefined(this.fetchPriority)}
           referrerpolicy=${ifDefined(this.referrerPolicy)}
-          @load=${() => {
+          @load=${(event: Event) => {
             this.isLoaded = true;
+            this.dispatchEvent(new Event(event.type, event));
+          }}
+          @error=${(event: Event) => {
+            this.dispatchEvent(new ErrorEvent(event.type, event));
+          }}
+          @abort=${(event: Event) => {
+            this.dispatchEvent(new Event(event.type, event));
           }}
         />
       </picture>
