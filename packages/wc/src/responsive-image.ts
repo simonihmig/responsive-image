@@ -62,7 +62,24 @@ export class ResponsiveImage extends LitElement {
 
   @property({ type: Number }) height?: number;
 
-  @property({ type: String }) loading: 'lazy' | 'eager' = 'lazy';
+  @property({ type: String }) loading: 'eager' | 'lazy' = 'lazy';
+
+  @property({ type: String }) decoding: 'async' | 'sync' | 'auto' = 'async';
+
+  @property({ type: String }) fetchPriority?: 'high' | 'low' | 'auto';
+
+  @property({ type: String }) crossOrigin?: 'anonymous' | 'use-credentials';
+
+  @property({ type: String })
+  referrerPolicy?:
+    | 'no-referrer'
+    | 'no-referrer-when-downgrade'
+    | 'origin'
+    | 'origin-when-cross-origin'
+    | 'same-origin'
+    | 'strict-origin'
+    | 'strict-origin-when-cross-origin'
+    | 'unsafe-url';
 
   @property({ type: String }) alt = '';
 
@@ -213,7 +230,10 @@ export class ResponsiveImage extends LitElement {
           src=${ifDefined(this.imgSrc)}
           alt=${this.alt}
           loading=${this.loading}
-          decoding="async"
+          decoding=${this.decoding}
+          crossorigin=${ifDefined(this.crossOrigin)}
+          fetchpriority=${ifDefined(this.fetchPriority)}
+          referrerpolicy=${ifDefined(this.referrerPolicy)}
           @load=${() => {
             this.isLoaded = true;
           }}

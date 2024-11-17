@@ -38,6 +38,10 @@ import '@responsive-image/wc';
 > [!Important]
 > As the `src` input is an `ImageData` object, you cannot pass this as an HTML _attribute_. Web components only support string based attributes. So make sure to set it as a _property_ using JavaScript. In case of [Lit](https://lit.dev/), you would use the dot prefix notation for [property expressions](https://lit.dev/docs/templates/expressions/#property-expressions): ``html`<responsive-image .src=${image} ></responsive-image>\` ``.
 
+### HTML attributes
+
+Attributes used for image loading and rendering like `src`, `width` and `height` will be automatically set by the web component. Some attributes like `loading` and `decoding` have defaults applied which can be customized. All other common `HTMLImageElement` attributes can be set on the web component and will be proxied to the underlying `<img />` element.
+
 ### Styling
 
 To style the `<img>` element which is within the web component's Shadow DOM, you can use the [::part(img) selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part):
