@@ -1,5 +1,17 @@
 # @ember-responsive-image/webpack
 
+## 1.0.0-beta.5
+
+### Patch Changes
+
+- [#681](https://github.com/simonihmig/responsive-image/pull/681) [`4b08662`](https://github.com/simonihmig/responsive-image/commit/4b086620f9d1347fc26d21c6ca076775046bd547) Thanks [@simonihmig](https://github.com/simonihmig)! - Support `aspect` ratio parameter correctly
+
+  When `aspect` is given (via import query params), the height of the image is adjusted to match when resizing, and the image component will correctly render with the new aspect ratio, rather than that of the original image.
+
+- Updated dependencies [[`92f957f`](https://github.com/simonihmig/responsive-image/commit/92f957fcc18fa9485a3f9591b77ca61ff3dd48dc)]:
+  - @responsive-image/core@1.0.0-beta.2
+  - @responsive-image/build-utils@1.0.0-beta.2
+
 ## 1.0.0-beta.4
 
 ### Minor Changes
