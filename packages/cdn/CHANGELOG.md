@@ -1,5 +1,18 @@
 # @responsive-image/cdn
 
+## 1.0.0-beta.3
+
+### Major Changes
+
+- [#737](https://github.com/simonihmig/responsive-image/pull/737) [`55c502c`](https://github.com/simonihmig/responsive-image/commit/55c502c7da6e0fe86e0ffb2c5ec2f3d39e82679d) Thanks [@simonihmig](https://github.com/simonihmig)! - Refactor the way to set config
+
+  The `ember` package does not read from `config/addons.js` anymore. Instead an explicit runtime call to `setConfig()` is needed, same as for the `wc` package. The `cdn` package reads its config from the `cdn` namespace.
+
+### Patch Changes
+
+- Updated dependencies [[`92f957f`](https://github.com/simonihmig/responsive-image/commit/92f957fcc18fa9485a3f9591b77ca61ff3dd48dc)]:
+  - @responsive-image/core@1.0.0-beta.2
+
 ## 1.0.0-beta.2
 
 ### Major Changes

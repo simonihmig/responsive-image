@@ -1,5 +1,27 @@
 # ember-responsive-image
 
+## 1.0.0-beta.4
+
+### Major Changes
+
+- [#752](https://github.com/simonihmig/responsive-image/pull/752) [`9f6c96e`](https://github.com/simonihmig/responsive-image/commit/9f6c96eb4b63b6ce97fdb218befa3e9e064c564a) Thanks [@simonihmig](https://github.com/simonihmig)! - Drop support for Ember < 4.12
+
+- [#737](https://github.com/simonihmig/responsive-image/pull/737) [`55c502c`](https://github.com/simonihmig/responsive-image/commit/55c502c7da6e0fe86e0ffb2c5ec2f3d39e82679d) Thanks [@simonihmig](https://github.com/simonihmig)! - Refactor the way to set config
+
+  The `ember` package does not read from `config/addons.js` anymore. Instead an explicit runtime call to `setConfig()` is needed, same as for the `wc` package. The `cdn` package reads its config from the `cdn` namespace.
+
+### Patch Changes
+
+- [#744](https://github.com/simonihmig/responsive-image/pull/744) [`b370ed6`](https://github.com/simonihmig/responsive-image/commit/b370ed63f81d4d37a63f0b1f8117992d49aada6f) Thanks [@simonihmig](https://github.com/simonihmig)! - Refactor BlurHash usage in Ember
+
+  Use dynamic import of local blurhash module instead of public asset, to let the bundler produce more robust output (e.g. custom publicPath)
+
+- [#726](https://github.com/simonihmig/responsive-image/pull/726) [`92f957f`](https://github.com/simonihmig/responsive-image/commit/92f957fcc18fa9485a3f9591b77ca61ff3dd48dc) Thanks [@simonihmig](https://github.com/simonihmig)! - Extract BlurHash utils onto core
+
+- Updated dependencies [[`92f957f`](https://github.com/simonihmig/responsive-image/commit/92f957fcc18fa9485a3f9591b77ca61ff3dd48dc), [`55c502c`](https://github.com/simonihmig/responsive-image/commit/55c502c7da6e0fe86e0ffb2c5ec2f3d39e82679d)]:
+  - @responsive-image/core@1.0.0-beta.2
+  - @responsive-image/cdn@1.0.0-beta.3
+
 ## 1.0.0-beta.3
 
 ### Minor Changes

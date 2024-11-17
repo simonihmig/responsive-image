@@ -1,5 +1,12 @@
 # @responsive-image/build-utils
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- Updated dependencies [[`92f957f`](https://github.com/simonihmig/responsive-image/commit/92f957fcc18fa9485a3f9591b77ca61ff3dd48dc)]:
+  - @responsive-image/core@1.0.0-beta.2
+
 ## 1.0.0-beta.1
 
 ### Minor Changes
