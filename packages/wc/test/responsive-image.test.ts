@@ -1,6 +1,6 @@
 import { describe, expect, test, afterEach } from 'vitest';
 import { html } from 'lit';
-import { fixture, fixtureCleanup } from '@open-wc/testing-helpers';
+import { fixture, fixtureCleanup, waitUntil } from '@open-wc/testing-helpers';
 import { env, type ImageData } from '@responsive-image/core';
 
 import type { ResponsiveImage } from '../src/responsive-image.js';
@@ -143,6 +143,65 @@ describe('ResponsiveImage', () => {
           'no-referrer',
         );
       });
+    });
+  });
+
+  describe('events', () => {
+    test('it redispatches load event', async () => {
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp'],
+        // to replicate the loading timing, we need to load a real existing image
+        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+      };
+
+      let triggeredEvent: Event | undefined;
+      await fixture<ResponsiveImage>(
+        html`<responsive-image
+          .src=${imageData}
+          @load=${(e: Event) => {
+            triggeredEvent = e;
+          }}
+        />`,
+      );
+
+      await waitUntil(() => triggeredEvent);
+      expect(triggeredEvent).toBeInstanceOf(Event);
+      expect(triggeredEvent?.type).toBe('load');
+    });
+
+    test('it redispatches error event', async () => {
+      let triggeredEvent: Event | undefined;
+      await fixture<ResponsiveImage>(
+        html`<responsive-image
+          .src=${defaultImageData}
+          @error=${(e: Event) => {
+            triggeredEvent = e;
+          }}
+        />`,
+      );
+
+      await waitUntil(() => triggeredEvent);
+      expect(triggeredEvent).toBeInstanceOf(ErrorEvent);
+      expect(triggeredEvent?.type).toBe('error');
+    });
+
+    test('it exposes complete property', async () => {
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp'],
+        // to replicate the loading timing, we need to load a real existing image
+        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+      };
+      const { onload, loaded } = imageLoaded();
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData} />`,
+      );
+      onload(el);
+
+      expect(el.complete).toBe(false);
+
+      await loaded;
+      expect(el.complete).toBe(true);
     });
   });
 
