@@ -184,6 +184,25 @@ describe('ResponsiveImage', () => {
       expect(triggeredEvent).toBeInstanceOf(ErrorEvent);
       expect(triggeredEvent?.type).toBe('error');
     });
+
+    test('it exposes complete property', async () => {
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp'],
+        // to replicate the loading timing, we need to load a real existing image
+        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+      };
+      const { onload, loaded } = imageLoaded();
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData} />`,
+      );
+      onload(el);
+
+      expect(el.complete).toBe(false);
+
+      await loaded;
+      expect(el.complete).toBe(true);
+    });
   });
 
   describe('responsive layout', () => {

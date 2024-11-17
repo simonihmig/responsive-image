@@ -84,7 +84,7 @@ export class ResponsiveImage extends LitElement {
   @property({ type: String }) alt = '';
 
   @state()
-  private isLoaded = false;
+  public complete = false;
 
   get layout(): Layout {
     return this.width === undefined && this.height === undefined
@@ -177,7 +177,7 @@ export class ResponsiveImage extends LitElement {
   }
 
   get showLqipBlurhash(): boolean {
-    return !this.isLoaded && this.hasLqipBlurhash;
+    return !this.complete && this.hasLqipBlurhash;
   }
 
   get lqipBlurhash(): string | undefined {
@@ -197,11 +197,11 @@ export class ResponsiveImage extends LitElement {
     const classes: ClassInfo = {
       'ri-responsive': this.layout === Layout.RESPONSIVE,
       'ri-fixed': this.layout === Layout.FIXED,
-      'ri-lqip-inline': lqip?.type === 'inline' && !this.isLoaded,
-      'ri-lqip-color': lqip?.type === 'color' && !this.isLoaded,
-      'ri-lqip-blurhash': lqip?.type === 'blurhash' && !this.isLoaded,
+      'ri-lqip-inline': lqip?.type === 'inline' && !this.complete,
+      'ri-lqip-color': lqip?.type === 'color' && !this.complete,
+      'ri-lqip-blurhash': lqip?.type === 'blurhash' && !this.complete,
       [lqip?.type === 'color' || lqip?.type === 'inline' ? lqip.class : '']:
-        (lqip?.type === 'color' || lqip?.type === 'inline') && !this.isLoaded,
+        (lqip?.type === 'color' || lqip?.type === 'inline') && !this.complete,
     };
 
     const styles: StyleInfo = this.showLqipBlurhash
@@ -235,7 +235,7 @@ export class ResponsiveImage extends LitElement {
           fetchpriority=${ifDefined(this.fetchPriority)}
           referrerpolicy=${ifDefined(this.referrerPolicy)}
           @load=${(event: Event) => {
-            this.isLoaded = true;
+            this.complete = true;
             this.dispatchEvent(new Event(event.type, event));
           }}
           @error=${(event: Event) => {
