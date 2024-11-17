@@ -205,6 +205,7 @@ export class ResponsiveImage extends LitElement {
             />`,
         )}
         <img
+          part="img"
           width=${ifDefined(this.imgWidth)}
           height=${ifDefined(this.imgHeight)}
           class=${classMap(classes)}
