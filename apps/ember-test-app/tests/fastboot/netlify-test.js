@@ -14,6 +14,9 @@ module('FastBoot | Netlify', function (hooks) {
     assert.dom('img[data-test-image]').exists();
     assert
       .dom('img[data-test-image]')
-      .hasAttribute('src', new RegExp('https://res.cloudinary.com/kaliber5/'));
+      .hasAttribute(
+        'src',
+        'https://responsive-image.dev/.netlify/images?url=%2Faurora-home.webp&w=320&fm=jpg',
+      );
   });
 });

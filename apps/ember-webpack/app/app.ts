@@ -18,6 +18,9 @@ setConfig<Config>('cdn', {
   imgix: {
     domain: 'kaliber5.imgix.net',
   },
+  netlify: {
+    domain: 'responsive-image.dev',
+  },
 });
 
 loadInitializers(App, config.modulePrefix);

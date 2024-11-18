@@ -1,6 +1,10 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { cloudinaryProvider, imgixProvider } from '@responsive-image/cdn';
+import {
+  cloudinaryProvider,
+  imgixProvider,
+  netlifyProvider,
+} from '@responsive-image/cdn';
 import { setConfig } from '@responsive-image/core';
 import '@responsive-image/wc';
 import image from './images/aurora.jpg?responsive';
@@ -19,6 +23,9 @@ setConfig<Config>('cdn', {
   imgix: {
     domain: 'kaliber5.imgix.net',
   },
+  netlify: {
+    domain: 'responsive-image.dev',
+  },
 });
 
 @customElement('my-app')
@@ -26,6 +33,13 @@ export class MyApp extends LitElement {
   render() {
     return html`
       <h1>ResponsiveImage for Lit</h1>
+
+      <h2>Netlify</h2>
+
+      <responsive-image
+        .src=${netlifyProvider('/aurora-home.webp')}
+        data-test-netlify-image
+      ></responsive-image>
 
       <h2>Cloudinary</h2>
 
