@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('image');
   this.route('cloudinary');
   this.route('imgix');
+  this.route('netlify');
 });
