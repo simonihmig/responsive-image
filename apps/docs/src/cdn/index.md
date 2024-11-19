@@ -7,4 +7,5 @@ With image CDNs the image processing is offloaded to the Cloud. This allows for 
 The following image CDNs are supported by the `@responsive-image/cdn` package out of the box:
 
 - [Cloudinary](./cloudinary.md)
-- [imgix](./imgix.md)
+- [Imgix](./imgix.md)
+- [Netlify](./netlify.md)
