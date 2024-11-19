@@ -22,22 +22,9 @@ pnpm add @responsive-image/cdn
 
 :::
 
-You need to specify the `cloudName` in your configuration, which can vary across the supported frameworks:
+You need to specify the `cloudName` in your configuration, which you can set up in your application (e.g. `app.js`):
 
-::: code-group
-
-```js [Ember]
-// config/addons.js
-module.exports = {
-  '@responsive-image/ember': {
-    cloudinary: {
-      cloudName: 'my-org',
-    },
-  },
-};
-```
-
-```js [Lit]
+```js
 import { setConfig } from '@responsive-image/core';
 
 setConfig('cdn', {
@@ -46,8 +33,6 @@ setConfig('cdn', {
   },
 });
 ```
-
-:::
 
 ## Usage
 

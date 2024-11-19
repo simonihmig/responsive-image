@@ -22,22 +22,9 @@ pnpm add @responsive-image/cdn
 
 :::
 
-You need to specify your imgix `domain` in your configuration, which can vary across the supported frameworks:
+You need to specify your imgix `domain` in your configuration, which you can set up in your application (e.g. `app.js`):
 
-::: code-group
-
-```js [Ember]
-// config/addons.js
-module.exports = {
-  '@responsive-image/ember': {
-    imgix: {
-      domain: 'my-org.imgix.net',
-    },
-  },
-};
-```
-
-```js [Lit]
+```js
 import { setConfig } from '@responsive-image/core';
 
 setConfig('cdn', {
@@ -46,8 +33,6 @@ setConfig('cdn', {
   },
 });
 ```
-
-:::
 
 ## Usage
 
