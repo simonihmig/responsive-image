@@ -4,7 +4,6 @@ import {
   visit /* mockServer */,
 } from 'ember-cli-fastboot-testing/test-support';
 
-// FastBoot does not not suppport Ember 5 yet :-(
 module('FastBoot | Cloudinary', function (hooks) {
   setup(hooks);
 
