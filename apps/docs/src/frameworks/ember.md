@@ -165,3 +165,21 @@ declare module '@glint/environment-ember-loose/registry' {
 ```
 
 If you are using one of the [build plugins](../build/index.md), also make sure to have the necessary ambient declaration for image imports in place as described [here](../usage/local-images.md#typescript)!
+
+## FastBoot
+
+Server-side rendering using FastBoot is fully supported, but might require some tweaks.
+
+If you are using [remote images](../usage/remote-images.md) using some of the providers for [image CDNs](../cdn/index.md), they require exposing some browser globals to the FastBoot sandbox. FastBoot does not allow access to globals that are available in both browser and node.js environments by default, like `fetch` or `URLSearchParams`, and `URL` has some [known issue](https://github.com/ember-fastboot/ember-cli-fastboot/issues/816). To workaround these deficiencies, you need to explicitly expose some needed globals by creating a `config/fastboot.js` file in your app:
+
+```js
+'use strict';
+
+module.exports = function () {
+  return {
+    buildSandboxGlobals(defaultGlobals) {
+      return { ...defaultGlobals, URL, URLSearchParams };
+    },
+  };
+};
+```
