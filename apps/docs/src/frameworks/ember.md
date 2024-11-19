@@ -112,38 +112,6 @@ The `@responsive-image/ember` addon exposes these as globally available helpers 
 
 Please refer to the [image CDN](../cdn/index.md) guide for details on all supported options and examples of the respective image CDN.
 
-### Configuration
-
-Image CDNs will require some config like your basic account information to be set up globally in in your app's `config/addons.js` (create that if it does not exist yet!) file:
-
-::: code-group
-
-```js [Cloudinary]
-use strict';
-
-module.exports = {
-'@responsive-image/ember': {
-    cloudinary: {
-      cloudName: 'my-org',
-    },
-  },
-};
-```
-
-```js [Imgix]
-'use strict';
-
-module.exports = {
-  '@responsive-image/ember': {
-    imgix: {
-      domain: 'my-org.imgix.net',
-    },
-  },
-};
-```
-
-:::
-
 ## TypeScript and Glint
 
 All components and helpers have proper [Glint](https://github.com/typed-ember/glint) types, which allow you to get strict type checking in your templates.
