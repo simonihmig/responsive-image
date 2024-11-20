@@ -110,6 +110,7 @@ export default defineConfig({
         items: [
           { text: 'Cloudinary', link: '/cloudinary' },
           { text: 'Imgix', link: '/imgix' },
+          { text: 'Netlify', link: '/netlify' },
         ],
       },
     ],
