@@ -45,30 +45,28 @@ Use the imgix provider function passing the reference to the image on the CDN an
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 
 <template>
-  <ResponsiveImage @src={{imgixProvider 'path/to/uploaded/image.jpg'}} />
+  <ResponsiveImage @src={{imgix 'path/to/uploaded/image.jpg'}} />
 </template>
 ```
 
 ```hbs [Ember .hbs]
-<ResponsiveImage
-  @src={{responsive-image-imgix-provider 'path/to/uploaded/image.jpg'}}
-/>
+<ResponsiveImage @src={{responsive-image-imgix 'path/to/uploaded/image.jpg'}} />
 ```
 
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${imgixProvider('path/to/uploaded/image.jpg')}
+      .src=${imgix('path/to/uploaded/image.jpg')}
     ></responsive-image>`;
   }
 }
@@ -85,11 +83,11 @@ you can add your own [imgix parameters](https://docs.imgix.com/apis/rendering) b
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{imgixProvider
+    @src={{imgix
       'path/to/uploaded/image.jpg'
       params=(hash monochrome='44768B' px=10)
     }}
@@ -99,7 +97,7 @@ import { imgixProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-imgix-provider
+  @src={{responsive-image-imgix
     'path/to/uploaded/image.jpg'
     params=(hash monochrome='44768B' px=10)
   }}
@@ -109,14 +107,14 @@ import { imgixProvider } from '@responsive-image/cdn';
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${imgixProvider('path/to/uploaded/image.jpg', {
+      .src=${imgix('path/to/uploaded/image.jpg', {
         monochrome: '44768B',
         px: 10,
       })}
@@ -136,11 +134,11 @@ instead of the default `auto`:
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{imgixProvider
+    @src={{imgix
       'path/to/uploaded/image.jpg'
       quality=50
     }}
@@ -150,24 +148,21 @@ import { imgixProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-imgix-provider
-    'path/to/uploaded/image.jpg'
-    quality=50
-  }}
+  @src={{responsive-image-imgix 'path/to/uploaded/image.jpg' quality=50}}
 />
 ```
 
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${imgixProvider('path/to/uploaded/image.jpg', {
+      .src=${imgix('path/to/uploaded/image.jpg', {
         quality: 50,
       })}
     ></responsive-image>`;
@@ -186,11 +181,11 @@ You can tweak that using the `formats` argument:
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{imgixProvider
+    @src={{imgix
       'path/to/uploaded/image.jpg'
       formats=(array 'webp' 'avif')
     }}
@@ -200,7 +195,7 @@ import { imgixProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-imgix-provider
+  @src={{responsive-image-imgix
     'path/to/uploaded/image.jpg'
     formats=(array 'webp' 'avif')
   }}
@@ -210,14 +205,14 @@ import { imgixProvider } from '@responsive-image/cdn';
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { imgixProvider } from '@responsive-image/cdn';
+import { imgix } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${imgixProvider('path/to/uploaded/image.jpg', {
+      .src=${imgix('path/to/uploaded/image.jpg', {
         formats: ['webp', 'avif'],
       })}
     ></responsive-image>`;

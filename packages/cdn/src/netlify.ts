@@ -18,7 +18,7 @@ const formatMap: Record<string, string> = {
   jpeg: 'jpg',
 };
 
-export function netlifyProvider(
+export function netlify(
   image: string,
   options: NetlifyOptions = {},
 ): ImageData {

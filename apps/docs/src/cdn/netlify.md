@@ -45,30 +45,28 @@ Use the Netlify provider function passing the path to your image, and pass the r
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 
 <template>
-  <ResponsiveImage @src={{netlifyProvider '/path/to/image.jpg'}} />
+  <ResponsiveImage @src={{netlify '/path/to/image.jpg'}} />
 </template>
 ```
 
 ```hbs [Ember .hbs]
-<ResponsiveImage
-  @src={{responsive-image-netlify-provider '/path/to/image.jpg'}}
-/>
+<ResponsiveImage @src={{responsive-image-netlify '/path/to/image.jpg'}} />
 ```
 
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${netlifyProvider('/path/to/image.jpg')}
+      .src=${netlify('/path/to/image.jpg')}
     ></responsive-image>`;
   }
 }
@@ -86,11 +84,11 @@ Use the `quality` parameter to pass a custom [quality](https://cloudinary.com/do
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{netlifyProvider
+    @src={{netlify
       '/path/to/image.jpg'
       quality=50
     }}
@@ -100,21 +98,21 @@ import { netlifyProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-netlify-provider '/path/to/image.jpg' quality=50}}
+  @src={{responsive-image-netlify '/path/to/image.jpg' quality=50}}
 />
 ```
 
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${netlifyProvider('/path/to/image.jpg', {
+      .src=${netlify('/path/to/image.jpg', {
         quality: 50,
       })}
     ></responsive-image>`;
@@ -133,11 +131,11 @@ You can tweak that using the `formats` argument:
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{netlifyProvider
+    @src={{netlify
       '/path/to/image.jpg'
       formats=(array 'webp' 'avif')
     }}
@@ -147,7 +145,7 @@ import { netlifyProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-netlify-provider
+  @src={{responsive-image-netlify
     '/path/to/image.jpg'
     formats=(array 'webp' 'avif')
   }}
@@ -157,14 +155,14 @@ import { netlifyProvider } from '@responsive-image/cdn';
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${netlifyProvider('/path/to/image.jpg', {
+      .src=${netlify('/path/to/image.jpg', {
         formats: ['webp', 'avif'],
       })}
     ></responsive-image>`;
@@ -182,11 +180,11 @@ The provider supports Netlify's [`remote path`](https://docs.netlify.com/image-c
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{netlifyProvider
+    @src={{netlify
       'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png'
     }}
   />
@@ -195,7 +193,7 @@ import { netlifyProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-netlify-provider
+  @src={{responsive-image-netlify
     'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png'
   }}
 />
@@ -204,14 +202,14 @@ import { netlifyProvider } from '@responsive-image/cdn';
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { netlifyProvider } from '@responsive-image/cdn';
+import { netlify } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${netlifyProvider(
+      .src=${netlify(
         'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
       )}
     ></responsive-image>`;

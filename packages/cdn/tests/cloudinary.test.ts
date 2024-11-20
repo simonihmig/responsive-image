@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { cloudinaryProvider, Config } from '../src';
+import { cloudinary, Config } from '../src';
 import { setConfig } from '@responsive-image/core';
 
 describe('cloudinary', function () {
@@ -8,13 +8,13 @@ describe('cloudinary', function () {
   });
 
   test('it supports webp, avif image types by default', function () {
-    const result = cloudinaryProvider('foo/bar.jpg');
+    const result = cloudinary('foo/bar.jpg');
 
     expect(result?.imageTypes).toEqual(['webp', 'avif']);
   });
 
   test('it supports custom image types', function () {
-    const result = cloudinaryProvider('foo/bar.jpg', {
+    const result = cloudinary('foo/bar.jpg', {
       formats: ['jpeg', 'webp'],
     });
 
@@ -22,7 +22,7 @@ describe('cloudinary', function () {
   });
 
   test('it returns correct fetch image URLs', function () {
-    const result = cloudinaryProvider('https://via.placeholder.com/150');
+    const result = cloudinary('https://via.placeholder.com/150');
 
     expect(result.imageUrlFor(100, 'jpeg')).toBe(
       'https://res.cloudinary.com/dummy/image/fetch/w_100,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150',
@@ -34,7 +34,7 @@ describe('cloudinary', function () {
   });
 
   test('it returns correct upload image URLs', function () {
-    const result = cloudinaryProvider('foo/bar.jpg');
+    const result = cloudinary('foo/bar.jpg');
 
     expect(result.imageUrlFor(100, 'jpeg')).toBe(
       'https://res.cloudinary.com/dummy/image/upload/w_100,c_limit,q_auto/foo/bar.jpeg',
@@ -46,7 +46,7 @@ describe('cloudinary', function () {
   });
 
   test('it returns custom params', function () {
-    const result = cloudinaryProvider('foo/bar.jpg', {
+    const result = cloudinary('foo/bar.jpg', {
       transformations: { co: 'rgb:20a020', e: 'colorize:50' },
     });
 
@@ -56,7 +56,7 @@ describe('cloudinary', function () {
   });
 
   test('it returns custom chained params', function () {
-    const result = cloudinaryProvider('foo/bar.jpg', {
+    const result = cloudinary('foo/bar.jpg', {
       transformations: [
         { co: 'rgb:20a020', e: 'colorize:50' },
         { ar: '1.0', c: 'fill', w: '150' },
@@ -70,7 +70,7 @@ describe('cloudinary', function () {
   });
 
   test('it supports custom quality setting', function () {
-    const result = cloudinaryProvider('foo/bar.jpg', {
+    const result = cloudinary('foo/bar.jpg', {
       quality: 50,
     });
 
