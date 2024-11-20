@@ -7,16 +7,16 @@ describe('imgix', function () {
     setConfig<Config>('cdn', { imgix: { domain: 'dummy.imgix.net' } });
   });
 
-  test('it supports jpg, png and webp image types by default', function () {
+  test('it supports webp, avif image types by default', function () {
     const result = imgixProvider('foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['png', 'jpeg', 'webp']);
+    expect(result?.imageTypes).toEqual(['webp', 'avif']);
   });
 
   test('it supports custom image types', function () {
-    const result = imgixProvider('foo/bar.jpg', { formats: ['webp'] });
+    const result = imgixProvider('foo/bar.jpg', { formats: ['jpeg', 'webp'] });
 
-    expect(result?.imageTypes).toEqual(['webp']);
+    expect(result?.imageTypes).toEqual(['jpeg', 'webp']);
   });
 
   test('it returns correct image URLs', function () {

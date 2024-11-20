@@ -14,14 +14,14 @@ module(
       data = argument;
     };
 
-    test("it supports jpg, png and webp image types", async function (assert) {
+    test("it supports default image types", async function (assert) {
       await render(
         <template>
           {{dump (responsiveImageImgixProvider "foo/bar.jpg")}}
         </template>,
       );
 
-      assert.deepEqual(data?.imageTypes, ["png", "jpeg", "webp"]);
+      assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
     });
 
     test("it returns correct image URLs", async function (assert) {

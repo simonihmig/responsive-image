@@ -15,7 +15,7 @@ module(
       data = argument;
     };
 
-    test("it supports all image types", async function (assert) {
+    test("it supports default image types", async function (assert) {
       await render(
         <template>
           {{dump
@@ -24,7 +24,7 @@ module(
         </template>,
       );
 
-      assert.deepEqual(data?.imageTypes, ["png", "jpeg", "webp", "avif"]);
+      assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
     });
 
     test("it returns correct upload image URLs", async function (assert) {

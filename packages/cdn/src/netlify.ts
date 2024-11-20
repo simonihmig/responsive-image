@@ -27,7 +27,7 @@ export function netlifyProvider(
   const url = image;
 
   return {
-    imageTypes: options.formats ?? ['png', 'jpeg', 'webp', 'avif'],
+    imageTypes: options.formats ?? ['webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
       const params = new URLSearchParams({
         url,

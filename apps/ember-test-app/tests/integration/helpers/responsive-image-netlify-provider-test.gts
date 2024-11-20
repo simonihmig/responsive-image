@@ -21,14 +21,14 @@ module(
       setConfig<Config>("cdn", { netlify: { domain: "dummy.netlify.app" } });
     });
 
-    test("it supports all image types", async function (assert) {
+    test("it supports default image types", async function (assert) {
       await render(
         <template>
           {{dump (responsiveImageNetlifyProvider "/foo/bar.jpg")}}
         </template>,
       );
 
-      assert.deepEqual(data?.imageTypes, ["png", "jpeg", "webp", "avif"]);
+      assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
     });
 
     test("it returns correct relative image URLs", async function (assert) {
