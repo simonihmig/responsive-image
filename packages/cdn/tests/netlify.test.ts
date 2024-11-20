@@ -7,16 +7,18 @@ describe('netlify', function () {
     setConfig<Config>('cdn', { netlify: { domain: 'dummy.netlify.app' } });
   });
 
-  test('it supports jpg, png, webp, avif image types by default', function () {
+  test('it supports webp, avif image types by default', function () {
     const result = netlifyProvider('/foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['png', 'jpeg', 'webp', 'avif']);
+    expect(result?.imageTypes).toEqual(['webp', 'avif']);
   });
 
   test('it supports custom image types', function () {
-    const result = netlifyProvider('/foo/bar.jpg', { formats: ['webp'] });
+    const result = netlifyProvider('/foo/bar.jpg', {
+      formats: ['jpeg', 'webp'],
+    });
 
-    expect(result?.imageTypes).toEqual(['webp']);
+    expect(result?.imageTypes).toEqual(['jpeg', 'webp']);
   });
 
   test('it returns correct relative image URLs', function () {

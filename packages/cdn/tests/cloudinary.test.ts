@@ -7,16 +7,18 @@ describe('cloudinary', function () {
     setConfig<Config>('cdn', { cloudinary: { cloudName: 'dummy' } });
   });
 
-  test('it supports jpg, png, webp, avif image types by default', function () {
+  test('it supports webp, avif image types by default', function () {
     const result = cloudinaryProvider('foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['png', 'jpeg', 'webp', 'avif']);
+    expect(result?.imageTypes).toEqual(['webp', 'avif']);
   });
 
   test('it supports custom image types', function () {
-    const result = cloudinaryProvider('foo/bar.jpg', { formats: ['webp'] });
+    const result = cloudinaryProvider('foo/bar.jpg', {
+      formats: ['jpeg', 'webp'],
+    });
 
-    expect(result?.imageTypes).toEqual(['webp']);
+    expect(result?.imageTypes).toEqual(['jpeg', 'webp']);
   });
 
   test('it returns correct fetch image URLs', function () {
