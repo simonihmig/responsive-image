@@ -45,30 +45,30 @@ Use the cloudinary provider function passing the reference to the image on the C
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 
 <template>
-  <ResponsiveImage @src={{cloudinaryProvider 'path/to/uploaded/image.jpg'}} />
+  <ResponsiveImage @src={{cloudinary 'path/to/uploaded/image.jpg'}} />
 </template>
 ```
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-cloudinary-provider 'path/to/uploaded/image.jpg'}}
+  @src={{responsive-image-cloudinary 'path/to/uploaded/image.jpg'}}
 />
 ```
 
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${cloudinaryProvider('path/to/uploaded/image.jpg')}
+      .src=${cloudinary('path/to/uploaded/image.jpg')}
     ></responsive-image>`;
   }
 }
@@ -86,11 +86,11 @@ you can add your own [Cloudinary transformations](https://cloudinary.com/documen
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{cloudinaryProvider
+    @src={{cloudinary
       'path/to/uploaded/image.jpg'
       transformations=(hash co='rgb:20a020' e='colorize:50')
     }}
@@ -100,7 +100,7 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-cloudinary-provider
+  @src={{responsive-image-cloudinary
     'path/to/uploaded/image.jpg'
     transformations=(hash co='rgb:20a020' e='colorize:50')
   }}
@@ -110,14 +110,14 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${cloudinaryProvider('path/to/uploaded/image.jpg', {
+      .src=${cloudinary('path/to/uploaded/image.jpg', {
         co: 'rgb:20a020',
         e: 'colorize:50',
       })}
@@ -141,11 +141,11 @@ instead of the default `auto`:
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{cloudinaryProvider
+    @src={{cloudinary
       'path/to/uploaded/image.jpg'
       quality=50
     }}
@@ -155,24 +155,21 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-cloudinary-provider
-    'path/to/uploaded/image.jpg'
-    quality=50
-  }}
+  @src={{responsive-image-cloudinary 'path/to/uploaded/image.jpg' quality=50}}
 />
 ```
 
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${cloudinaryProvider('path/to/uploaded/image.jpg', {
+      .src=${cloudinary('path/to/uploaded/image.jpg', {
         quality: 50,
       })}
     ></responsive-image>`;
@@ -191,11 +188,11 @@ You can tweak that using the `formats` argument:
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{cloudinaryProvider
+    @src={{cloudinary
       'path/to/uploaded/image.jpg'
       formats=(array 'webp' 'avif')
     }}
@@ -205,7 +202,7 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-cloudinary-provider
+  @src={{responsive-image-cloudinary
     'path/to/uploaded/image.jpg'
     formats=(array 'webp' 'avif')
   }}
@@ -215,14 +212,14 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${cloudinaryProvider('path/to/uploaded/image.jpg', {
+      .src=${cloudinary('path/to/uploaded/image.jpg', {
         formats: ['webp', 'avif'],
       })}
     ></responsive-image>`;
@@ -240,11 +237,11 @@ The provider supports Cloudinary's [`fetch`](https://cloudinary.com/documentatio
 
 ```gjs [Ember .gjs]
 import { ResponsiveImage } from '@responsive-image/ember';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 
 <template>
   <ResponsiveImage
-    @src={{cloudinaryProvider
+    @src={{cloudinary
       'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png'
     }}
   />
@@ -253,7 +250,7 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 
 ```hbs [Ember .hbs]
 <ResponsiveImage
-  @src={{responsive-image-cloudinary-provider
+  @src={{responsive-image-cloudinary
     'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png'
   }}
 />
@@ -262,14 +259,14 @@ import { cloudinaryProvider } from '@responsive-image/cdn';
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { cloudinaryProvider } from '@responsive-image/cdn';
+import { cloudinary } from '@responsive-image/cdn';
 import '@responsive-image/wc';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
   render() {
     return html`<responsive-image
-      .src=${cloudinaryProvider(
+      .src=${cloudinary(
         'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
       )}
     ></responsive-image>`;
