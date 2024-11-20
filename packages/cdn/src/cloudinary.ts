@@ -24,7 +24,7 @@ function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
-export function cloudinaryProvider(
+export function cloudinary(
   image: string,
   options: CloudinaryOptions = {},
 ): ImageData {

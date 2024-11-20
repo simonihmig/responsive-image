@@ -20,10 +20,7 @@ function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
-export function imgixProvider(
-  image: string,
-  options: ImgixOptions = {},
-): ImageData {
+export function imgix(image: string, options: ImgixOptions = {}): ImageData {
   const domain = getConfig<Config>('cdn')?.imgix?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 

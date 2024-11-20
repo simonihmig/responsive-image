@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { Config, imgixProvider } from '../src';
+import { Config, imgix } from '../src';
 import { setConfig } from '@responsive-image/core';
 
 describe('imgix', function () {
@@ -8,19 +8,19 @@ describe('imgix', function () {
   });
 
   test('it supports webp, avif image types by default', function () {
-    const result = imgixProvider('foo/bar.jpg');
+    const result = imgix('foo/bar.jpg');
 
     expect(result?.imageTypes).toEqual(['webp', 'avif']);
   });
 
   test('it supports custom image types', function () {
-    const result = imgixProvider('foo/bar.jpg', { formats: ['jpeg', 'webp'] });
+    const result = imgix('foo/bar.jpg', { formats: ['jpeg', 'webp'] });
 
     expect(result?.imageTypes).toEqual(['jpeg', 'webp']);
   });
 
   test('it returns correct image URLs', function () {
-    const result = imgixProvider('foo/bar.jpg');
+    const result = imgix('foo/bar.jpg');
 
     expect(result.imageUrlFor(100, 'jpeg')).toBe(
       'https://dummy.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max',
@@ -32,7 +32,7 @@ describe('imgix', function () {
   });
 
   test('it returns custom params', function () {
-    const result = imgixProvider('foo/bar.jpg', {
+    const result = imgix('foo/bar.jpg', {
       params: {
         monochrome: '44768B',
         px: 10,
@@ -45,7 +45,7 @@ describe('imgix', function () {
   });
 
   test('it supports custom quality setting', function () {
-    const result = imgixProvider('foo/bar.jpg', {
+    const result = imgix('foo/bar.jpg', {
       quality: 50,
     });
 
