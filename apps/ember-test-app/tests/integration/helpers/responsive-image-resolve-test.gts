@@ -16,6 +16,16 @@ module("Helper: responsive-image-resolve", function (hooks) {
     assert.dom("h1").hasText(new RegExp("/images/aurora-2048w(-\\w+)?.jpg"));
   });
 
+  test("supports sidth", async function (assert) {
+    await render(
+      <template>
+        <h1>{{responsiveImageResolve testImage width=2048}}</h1>
+      </template>,
+    );
+
+    assert.dom("h1").hasText(new RegExp("/images/aurora-2048w(-\\w+)?.jpg"));
+  });
+
   test("supports size", async function (assert) {
     await render(
       <template>
