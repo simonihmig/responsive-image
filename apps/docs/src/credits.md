@@ -9,3 +9,5 @@ I would like to thank the following people for their direct or indirect contribu
 - [Lovell Fuller](https://github.com/lovell) for [sharp](https://github.com/lovell/sharp), the library that is powering all image processing of local images.
 
 - [Jonas Kruckenberg](https://github.com/JonasKruckenberg) for [imagetools](https://github.com/JonasKruckenberg/imagetools) to support (query) parameter based image adjustments and effects.
+
+- Key visual by [Jonatan Pie](https://unsplash.com/@r3dmax?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on <a href="https://unsplash.com/photos/snow-mountain-with-aurora-borealis-EvKBHBGgaUo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
