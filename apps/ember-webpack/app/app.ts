@@ -13,10 +13,10 @@ export default class App extends Application {
 
 setConfig<Config>('cdn', {
   cloudinary: {
-    cloudName: 'kaliber5',
+    cloudName: 'responsive-image',
   },
   imgix: {
-    domain: 'kaliber5.imgix.net',
+    domain: 'responsive-image.imgix.net',
   },
   netlify: {
     domain: 'responsive-image.dev',

@@ -14,10 +14,10 @@ import type { Config } from '@responsive-image/cdn';
 
 setConfig<Config>('cdn', {
   cloudinary: {
-    cloudName: 'kaliber5',
+    cloudName: 'responsive-image',
   },
   imgix: {
-    domain: 'kaliber5.imgix.net',
+    domain: 'responsive-image.imgix.net',
   },
   netlify: {
     domain: 'responsive-image.dev',
@@ -33,21 +33,21 @@ export class MyApp extends LitElement {
       <h2>Netlify</h2>
 
       <responsive-image
-        .src=${netlify('/aurora-home.webp')}
+        .src=${netlify('aurora-original.jpg')}
         data-test-netlify-image
       ></responsive-image>
 
       <h2>Cloudinary</h2>
 
       <responsive-image
-        .src=${cloudinary('samples/animals/three-dogs')}
+        .src=${cloudinary('aurora-original_w0sk6h')}
         data-test-cloudinary-image
       ></responsive-image>
 
       <h2>imgix</h2>
 
       <responsive-image
-        .src=${imgix('pages/approach/agile_2000x1200.jpg')}
+        .src=${imgix('aurora-original.jpg')}
         data-test-imgix-image
       ></responsive-image>
 

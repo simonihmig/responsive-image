@@ -13,6 +13,9 @@ module('FastBoot | Cloudinary', function (hooks) {
     assert.dom('img[data-test-image]').exists();
     assert
       .dom('img[data-test-image]')
-      .hasAttribute('src', new RegExp('https://res.cloudinary.com/kaliber5/'));
+      .hasAttribute(
+        'src',
+        new RegExp('https://res.cloudinary.com/responsive-image/'),
+      );
   });
 });
