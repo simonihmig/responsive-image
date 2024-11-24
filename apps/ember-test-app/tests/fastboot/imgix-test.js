@@ -13,6 +13,6 @@ module('FastBoot | Imgix', function (hooks) {
     assert.dom('img[data-test-image]').exists();
     assert
       .dom('img[data-test-image]')
-      .hasAttribute('src', new RegExp('https://kaliber5.imgix.net/'));
+      .hasAttribute('src', new RegExp('https://responsive-image.imgix.net/'));
   });
 });

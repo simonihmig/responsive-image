@@ -16,7 +16,7 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
   test("it supports default image types", async function (assert) {
     await render(
       <template>
-        {{dump (responsiveImageCloudinary "samples/animals/three-dogs")}}
+        {{dump (responsiveImageCloudinary "aurora-original_w0sk6h")}}
       </template>,
     );
 
@@ -26,23 +26,23 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
   test("it returns correct upload image URLs", async function (assert) {
     await render(
       <template>
-        {{dump (responsiveImageCloudinary "samples/animals/three-dogs")}}
+        {{dump (responsiveImageCloudinary "aurora-original_w0sk6h")}}
       </template>,
     );
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_auto/samples/animals/three-dogs.jpeg",
+      "https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
     );
 
     assert.strictEqual(
       data?.imageUrlFor(1000, "jpeg"),
-      "https://res.cloudinary.com/kaliber5/image/upload/w_1000,c_limit,q_auto/samples/animals/three-dogs.jpeg",
+      "https://res.cloudinary.com/responsive-image/image/upload/w_1000,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
     );
 
     assert.strictEqual(
       data?.imageUrlFor(100, "webp"),
-      "https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_auto/samples/animals/three-dogs.webp",
+      "https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_auto/aurora-original_w0sk6h.webp",
     );
   });
 
@@ -55,17 +55,17 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/kaliber5/image/fetch/w_100,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150",
+      "https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150",
     );
 
     assert.strictEqual(
       data?.imageUrlFor(1000, "jpeg"),
-      "https://res.cloudinary.com/kaliber5/image/fetch/w_1000,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150",
+      "https://res.cloudinary.com/responsive-image/image/fetch/w_1000,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150",
     );
 
     assert.strictEqual(
       data?.imageUrlFor(100, "webp"),
-      "https://res.cloudinary.com/kaliber5/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fvia.placeholder.com%2F150",
+      "https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fvia.placeholder.com%2F150",
     );
   });
 
@@ -74,7 +74,7 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
       <template>
         {{dump
           (responsiveImageCloudinary
-            "samples/animals/three-dogs"
+            "aurora-original_w0sk6h"
             transformations=(hash co="rgb:20a020" e="colorize:50")
           )
         }}
@@ -83,7 +83,7 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/kaliber5/image/upload/co_rgb:20a020,e_colorize:50/w_100,c_limit,q_auto/samples/animals/three-dogs.jpeg",
+      "https://res.cloudinary.com/responsive-image/image/upload/co_rgb:20a020,e_colorize:50/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
     );
   });
 
@@ -92,7 +92,7 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
       <template>
         {{dump
           (responsiveImageCloudinary
-            "samples/animals/three-dogs"
+            "aurora-original_w0sk6h"
             transformations=(array
               (hash co="rgb:20a020" e="colorize:50")
               (hash ar="1.0" c="fill" w="150")
@@ -105,7 +105,7 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/kaliber5/image/upload/co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max/w_100,c_limit,q_auto/samples/animals/three-dogs.jpeg",
+      "https://res.cloudinary.com/responsive-image/image/upload/co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
     );
   });
 
@@ -114,7 +114,7 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
       <template>
         {{dump
           (responsiveImageCloudinary
-            "samples/animals/three-dogs" formats=(array "webp" "avif")
+            "aurora-original_w0sk6h" formats=(array "webp" "avif")
           )
         }}
       </template>,
@@ -126,15 +126,13 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
   test("it supports custom quality setting", async function (assert) {
     await render(
       <template>
-        {{dump
-          (responsiveImageCloudinary "samples/animals/three-dogs" quality=50)
-        }}
+        {{dump (responsiveImageCloudinary "aurora-original_w0sk6h" quality=50)}}
       </template>,
     );
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/kaliber5/image/upload/w_100,c_limit,q_50/samples/animals/three-dogs.jpeg",
+      "https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_50/aurora-original_w0sk6h.jpeg",
     );
   });
 
@@ -147,7 +145,7 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
 
     assert.strictEqual(
       data?.imageUrlFor(100, "webp"),
-      "https://res.cloudinary.com/kaliber5/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fwww.example.com%2Fimage.jpg",
+      "https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fwww.example.com%2Fimage.jpg",
     );
   });
 });

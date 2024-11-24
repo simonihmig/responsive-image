@@ -15,7 +15,7 @@ module('FastBoot | Netlify', function (hooks) {
       .dom('img[data-test-image]')
       .hasAttribute(
         'src',
-        'https://responsive-image.dev/.netlify/images?url=%2Faurora-home.webp&w=320&fm=jpg',
+        'https://responsive-image.dev/.netlify/images?url=aurora-original.jpg&w=320&fm=jpg',
       );
   });
 });

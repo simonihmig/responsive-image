@@ -14,7 +14,9 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
 
   test("it supports default image types", async function (assert) {
     await render(
-      <template>{{dump (responsiveImageImgix "foo/bar.jpg")}}</template>,
+      <template>
+        {{dump (responsiveImageImgix "aurora-original.jpg")}}
+      </template>,
     );
 
     assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
@@ -22,22 +24,24 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
 
   test("it returns correct image URLs", async function (assert) {
     await render(
-      <template>{{dump (responsiveImageImgix "foo/bar.jpg")}}</template>,
+      <template>
+        {{dump (responsiveImageImgix "aurora-original.jpg")}}
+      </template>,
     );
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max",
+      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max",
     );
 
     assert.strictEqual(
       data?.imageUrlFor(1000, "jpeg"),
-      "https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=1000&fit=max",
+      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=1000&fit=max",
     );
 
     assert.strictEqual(
       data?.imageUrlFor(100, "webp"),
-      "https://kaliber5.imgix.net/foo/bar.jpg?fm=webp&w=100&fit=max",
+      "https://responsive-image.imgix.net/aurora-original.jpg?fm=webp&w=100&fit=max",
     );
   });
 
@@ -46,7 +50,7 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
       <template>
         {{dump
           (responsiveImageImgix
-            "foo/bar.jpg" params=(hash monochrome="44768B" px=10)
+            "aurora-original.jpg" params=(hash monochrome="44768B" px=10)
           )
         }}
       </template>,
@@ -54,7 +58,7 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max&monochrome=44768B&px=10",
+      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max&monochrome=44768B&px=10",
     );
   });
 
@@ -62,7 +66,9 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
     await render(
       <template>
         {{dump
-          (responsiveImageImgix "foo/bar.jpg" formats=(array "webp" "jpeg"))
+          (responsiveImageImgix
+            "aurora-original.jpg" formats=(array "webp" "jpeg")
+          )
         }}
       </template>,
     );
@@ -73,13 +79,13 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
   test("it supports custom quality setting", async function (assert) {
     await render(
       <template>
-        {{dump (responsiveImageImgix "foo/bar.jpg" quality=50)}}
+        {{dump (responsiveImageImgix "aurora-original.jpg" quality=50)}}
       </template>,
     );
 
     assert.strictEqual(
       data?.imageUrlFor(100, "jpeg"),
-      "https://kaliber5.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max&q=50",
+      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max&q=50",
     );
   });
 });
