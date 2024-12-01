@@ -3,7 +3,7 @@
 The `@responsive-image/wc` package provides a standard browser-native [web component](https://developer.mozilla.org/en-US/docs/Web/Web_Components), that you can use with any [framework supporting web component](https://custom-elements-everywhere.com/), or none at all.
 
 > [!Note]
-> This package is implemented using [Lit](https://lit.dev/), and while you can use Lit as well to build your app with web components, this is not a requirement at all!
+> This package is implemented using [Lit](https://lit.dev/), and while you can use Lit as well to build your app with web components, this is not a requirement at all! You can use it with any framework supporting web components, or none at all.
 
 ## Installation
 

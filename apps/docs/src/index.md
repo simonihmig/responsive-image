@@ -11,15 +11,15 @@ hero:
     alt: Aurora Borealis
   actions:
     - theme: brand
+      text: What is it?
+      link: /intro/what
+    - theme: brand
       text: Getting started
-      link: /getting-started
-    # - theme: alt
-    #   text: API Examples
-    #   link: /api-examples
+      link: /intro/getting-started
 
 features:
   - title: Multi Framework
-    details: 'Supports Vite and Webpack for local image processing, a framework-agnostic core and components for multiple frontend frameworks: Ember.js and more in the future.'
+    details: 'Supports Vite and Webpack for local image processing, a framework-agnostic core and components for multiple frontend frameworks: Ember.js and web component (more to come)'
   - title: Next-gen image formats
     details: Supports basic PNG and JPEG formats, as well as next-gen WebP and AVIF, for increased performance with optimal image quality at small file sizes.
   - title: Local image processing

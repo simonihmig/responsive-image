@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'ResponsiveImage',
-  description: 'Documentation for the Responsive Image project',
+  description: 'The multi-framework JavaScript library for responsive images.',
   srcDir: './src',
   cleanUrls: true,
   appearance: 'dark',
@@ -11,20 +11,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Usage', link: '/usage/concepts' },
-      {
-        text: 'Frameworks',
-        link: '/frameworks/',
-      },
-      {
-        text: 'Build plugins',
-        link: '/build/',
-      },
-      {
-        text: 'Image CDNs',
-        link: '/cdn/',
-      },
-
+      { text: 'Docs', link: '/intro/what' },
       {
         text: 'About',
         // link: '/usage/concepts',
@@ -51,8 +38,18 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Getting started',
-        link: '/getting-started',
+        text: 'Intro',
+        base: '/intro',
+        items: [
+          {
+            text: 'What is it?',
+            link: '/what',
+          },
+          {
+            text: 'Getting started',
+            link: '/getting-started',
+          },
+        ],
       },
       {
         text: 'Usage',
