@@ -310,7 +310,7 @@ importers:
         version: 4.0.1-unstable.f33728f(@embroider/compat@3.6.2-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0))(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@embroider/webpack@4.0.5(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(webpack@5.96.1))
       '@embroider/vite':
         specifier: 0.2.1-unstable.f33728f
-        version: 0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.28.0)(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))
+        version: 0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.28.0)(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))
       '@glimmer/component':
         specifier: 2.0.0
         version: 2.0.0
@@ -423,8 +423,8 @@ importers:
         specifier: 3.3.0
         version: 3.3.0
       vite:
-        specifier: 6.0.1
-        version: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+        specifier: 6.0.2
+        version: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
       webpack:
         specifier: 5.96.1
         version: 5.96.1
@@ -691,8 +691,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.1
-        version: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+        specifier: 6.0.2
+        version: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
 
   packages/build-utils:
     dependencies:
@@ -1103,8 +1103,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.1
-        version: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+        specifier: 6.0.2
+        version: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
       vitest:
         specifier: 2.1.6
         version: 2.1.6(@types/node@22.10.1)(@vitest/browser@2.1.6)(jsdom@25.0.1)(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(terser@5.36.0)
@@ -1138,7 +1138,7 @@ importers:
         version: 7.18.0(eslint@8.57.1)(typescript@5.7.2)
       '@vitest/browser':
         specifier: 2.1.6
-        version: 2.1.6(@types/node@22.10.1)(playwright@1.49.0)(typescript@5.7.2)(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))(vitest@2.1.6)
+        version: 2.1.6(@types/node@22.10.1)(playwright@1.49.0)(typescript@5.7.2)(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))(vitest@2.1.6)
       concurrently:
         specifier: 9.1.0
         version: 9.1.0
@@ -1161,8 +1161,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.1
-        version: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+        specifier: 6.0.2
+        version: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
       vitest:
         specifier: 2.1.6
         version: 2.1.6(@types/node@22.10.1)(@vitest/browser@2.1.6)(jsdom@25.0.1)(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(terser@5.36.0)
@@ -9895,8 +9895,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.0.1:
-    resolution: {integrity: sha512-Ldn6gorLGr4mCdFnmeAOLweJxZ34HjKnDm4HGo6P66IEqTxQb36VEdFJQENKxWjupNfoIjvRUnswjn1hpYEpjQ==}
+  vite@6.0.2:
+    resolution: {integrity: sha512-XdQ+VsY2tJpBsKGs0wf3U/+azx8BBpYRHFAyKm5VeEZNOJZRB63q7Sc8Iup3k0TrN3KO6QgyzFf+opSbfY1y0g==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -12413,7 +12413,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.28.0)(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))':
+  '@embroider/vite@0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.28.0)(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))':
     dependencies:
       '@babel/core': 7.25.9
       '@embroider/core': 3.4.16-unstable.f33728f(@glint/template@1.5.0)
@@ -12430,7 +12430,7 @@ snapshots:
       send: 0.18.0
       source-map-url: 0.4.1
       terser: 5.36.0
-      vite: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+      vite: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
     transitivePeerDependencies:
       - '@glint/template'
       - bufferutil
@@ -14335,11 +14335,11 @@ snapshots:
       vite: 5.4.11(@types/node@22.10.1)(terser@5.36.0)
       vue: 3.5.13(typescript@5.7.2)
 
-  '@vitest/browser@2.1.6(@types/node@22.10.1)(playwright@1.49.0)(typescript@5.7.2)(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))(vitest@2.1.6)':
+  '@vitest/browser@2.1.6(@types/node@22.10.1)(playwright@1.49.0)(typescript@5.7.2)(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))(vitest@2.1.6)':
     dependencies:
       '@testing-library/dom': 10.4.0
       '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
-      '@vitest/mocker': 2.1.6(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))
+      '@vitest/mocker': 2.1.6(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))
       '@vitest/utils': 2.1.6
       magic-string: 0.30.14
       msw: 2.6.6(@types/node@22.10.1)(typescript@5.7.2)
@@ -14363,14 +14363,14 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.6(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))':
+  '@vitest/mocker@2.1.6(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))':
     dependencies:
       '@vitest/spy': 2.1.6
       estree-walker: 3.0.3
       magic-string: 0.30.14
     optionalDependencies:
       msw: 2.6.6(@types/node@22.10.1)(typescript@5.7.2)
-      vite: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+      vite: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
 
   '@vitest/pretty-format@2.1.6':
     dependencies:
@@ -21835,7 +21835,7 @@ snapshots:
       debug: 4.3.7(supports-color@8.1.1)
       es-module-lexer: 1.5.4
       pathe: 1.1.2
-      vite: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+      vite: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -21860,7 +21860,7 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.36.0
 
-  vite@6.0.1(@types/node@22.10.1)(terser@5.36.0):
+  vite@6.0.2(@types/node@22.10.1)(terser@5.36.0):
     dependencies:
       esbuild: 0.24.0
       postcss: 8.4.49
@@ -21923,7 +21923,7 @@ snapshots:
   vitest@2.1.6(@types/node@22.10.1)(@vitest/browser@2.1.6)(jsdom@25.0.1)(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(terser@5.36.0):
     dependencies:
       '@vitest/expect': 2.1.6
-      '@vitest/mocker': 2.1.6(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))
+      '@vitest/mocker': 2.1.6(msw@2.6.6(@types/node@22.10.1)(typescript@5.7.2))(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))
       '@vitest/pretty-format': 2.1.6
       '@vitest/runner': 2.1.6
       '@vitest/snapshot': 2.1.6
@@ -21939,12 +21939,12 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.2
       tinyrainbow: 1.2.0
-      vite: 6.0.1(@types/node@22.10.1)(terser@5.36.0)
+      vite: 6.0.2(@types/node@22.10.1)(terser@5.36.0)
       vite-node: 2.1.6(@types/node@22.10.1)(terser@5.36.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.10.1
-      '@vitest/browser': 2.1.6(@types/node@22.10.1)(playwright@1.49.0)(typescript@5.7.2)(vite@6.0.1(@types/node@22.10.1)(terser@5.36.0))(vitest@2.1.6)
+      '@vitest/browser': 2.1.6(@types/node@22.10.1)(playwright@1.49.0)(typescript@5.7.2)(vite@6.0.2(@types/node@22.10.1)(terser@5.36.0))(vitest@2.1.6)
       jsdom: 25.0.1
     transitivePeerDependencies:
       - jiti
