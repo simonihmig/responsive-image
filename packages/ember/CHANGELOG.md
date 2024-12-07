@@ -1,5 +1,25 @@
 # ember-responsive-image
 
+## 1.0.0-beta.5
+
+### Major Changes
+
+- [#771](https://github.com/simonihmig/responsive-image/pull/771) [`b5dacfe`](https://github.com/simonihmig/responsive-image/commit/b5dacfebb10224f60bc763105c0a212c313f67b9) Thanks [@simonihmig](https://github.com/simonihmig)! - Remove FastBoot related workarounds in `imgix` image CDN provider
+
+  Instead of working around a [known issue](https://github.com/ember-fastboot/ember-cli-fastboot/issues/816) in the actual runtime code, users need to add a FastBoot config to expose needed globals like `URL` or `URLSearchParams`, as documented in the [Ember guide](https://responsive-image.dev/frameworks/ember#fastboot).
+
+- [#783](https://github.com/simonihmig/responsive-image/pull/783) [`fe2fe11`](https://github.com/simonihmig/responsive-image/commit/fe2fe11727685a6726034b00dc0cd108d1d54e3f) Thanks [@simonihmig](https://github.com/simonihmig)! - Rename image CDN functions, dropping -provider suffix
+
+### Minor Changes
+
+- [#773](https://github.com/simonihmig/responsive-image/pull/773) [`b09549c`](https://github.com/simonihmig/responsive-image/commit/b09549cac9796bac0033ad5ff8e5f05e616989f3) Thanks [@simonihmig](https://github.com/simonihmig)! - Add support for Netlify image CDN
+
+### Patch Changes
+
+- Updated dependencies [[`1f3b3d9`](https://github.com/simonihmig/responsive-image/commit/1f3b3d9f952047b5bd3e8a9b67598b50a8ea1a64), [`b5dacfe`](https://github.com/simonihmig/responsive-image/commit/b5dacfebb10224f60bc763105c0a212c313f67b9), [`b09549c`](https://github.com/simonihmig/responsive-image/commit/b09549cac9796bac0033ad5ff8e5f05e616989f3), [`7cef8c6`](https://github.com/simonihmig/responsive-image/commit/7cef8c6a743c9ce6fa3879378705437cff11a22c), [`fe2fe11`](https://github.com/simonihmig/responsive-image/commit/fe2fe11727685a6726034b00dc0cd108d1d54e3f)]:
+  - @responsive-image/cdn@1.0.0-beta.4
+  - @responsive-image/core@1.0.0-beta.3
+
 ## 1.0.0-beta.4
 
 ### Major Changes
