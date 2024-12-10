@@ -1,5 +1,11 @@
 # @responsive-image/core
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- [#794](https://github.com/simonihmig/responsive-image/pull/794) [`7cef8c6`](https://github.com/simonihmig/responsive-image/commit/7cef8c6a743c9ce6fa3879378705437cff11a22c) Thanks [@simonihmig](https://github.com/simonihmig)! - Add resolveImage utility
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
