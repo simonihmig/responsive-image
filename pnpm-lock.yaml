@@ -1122,8 +1122,8 @@ importers:
         version: 3.2.1
     devDependencies:
       '@custom-elements-manifest/analyzer':
-        specifier: 0.10.3
-        version: 0.10.3
+        specifier: 0.10.4
+        version: 0.10.4
       '@open-wc/eslint-config':
         specifier: 12.0.3
         version: 12.0.3(@babel/core@7.25.9)(eslint-plugin-html@7.1.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint-plugin-lit-a11y@4.1.4(eslint@8.57.1))(eslint-plugin-lit@1.15.0(eslint@8.57.1))(eslint-plugin-no-only-tests@3.3.0)(eslint-plugin-wc@1.5.0(eslint@8.57.1))(eslint@8.57.1)
@@ -2003,8 +2003,8 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.0.0
 
-  '@custom-elements-manifest/analyzer@0.10.3':
-    resolution: {integrity: sha512-e2Ax59vK9sNedmDlPqZS11L54iAlKSjOJuv5etpTy5SygLBW3GcUtocHZm8wO013L0griTPpgWB0tuV7/JXy5A==}
+  '@custom-elements-manifest/analyzer@0.10.4':
+    resolution: {integrity: sha512-hse8o20Jd82BwWank29/J9OC4PmSTwUoEmll3LEjDF3WLY/Lc8g3TUYSib/3GARCS8Q5myT2RPqEWfRa+6bkIg==}
     hasBin: true
 
   '@custom-elements-manifest/find-dependencies@0.0.5':
@@ -11958,7 +11958,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.0.0
 
-  '@custom-elements-manifest/analyzer@0.10.3':
+  '@custom-elements-manifest/analyzer@0.10.4':
     dependencies:
       '@custom-elements-manifest/find-dependencies': 0.0.5
       '@github/catalyst': 1.7.0
