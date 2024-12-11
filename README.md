@@ -4,10 +4,6 @@
 
 The multi-framework JavaScript library for responsive images.
 
-> [!WARNING]  
-> You are looking on the documentation for the next-generation of the `responsive-image` packages, which are currently in beta status!
-> The documentation for the current stable release v4.0.0 of `ember-responsive-image` can be found [here](https://github.com/simonihmig/responsive-image/tree/release_v4)!
-
 ## Key Features
 
 📦 **Multi Framework**:
