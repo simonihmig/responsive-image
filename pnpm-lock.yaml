@@ -1059,6 +1059,9 @@ importers:
 
   packages/solid:
     devDependencies:
+      '@tsconfig/strictest':
+        specifier: 2.0.5
+        version: 2.0.5
       '@types/node':
         specifier: 22.10.2
         version: 22.10.2

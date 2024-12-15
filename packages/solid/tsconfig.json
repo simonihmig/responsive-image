@@ -1,22 +1,14 @@
 {
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "include": ["src/**/*", "./*.ts"],
   "compilerOptions": {
-    "strict": true,
-    "target": "ESNext",
     "module": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
     "noEmit": true,
-    "isolatedModules": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "noUncheckedIndexedAccess": true,
+    "allowImportingTsExtensions": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": [],
-    "baseUrl": "."
-  },
-  "exclude": ["node_modules", "dist", "./dev"]
+    "types": []
+  }
 }
