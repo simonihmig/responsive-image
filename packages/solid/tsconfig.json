@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/strictest/tsconfig.json",
-  "include": ["src/**/*", "./*.ts"],
+  "include": ["src/**/*", "test/**/*", "./*.ts"],
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Bundler",

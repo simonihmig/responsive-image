@@ -16,23 +16,28 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     test: {
+      browser: {
+        enabled: !testSSR,
+        provider: 'playwright',
+        name: 'chromium',
+      },
       watch: false,
       isolate: !testSSR,
       env: {
         NODE_ENV: testSSR ? 'production' : 'development',
         DEV: testSSR ? '' : '1',
-        // SSR: testSSR ? '1' : '',
-        // PROD: testSSR ? '1' : '',
+        SSR: testSSR ? '1' : '',
+        PROD: testSSR ? '1' : '',
       },
       environment: testSSR ? 'node' : 'jsdom',
       transformMode: { web: [/\.[jt]sx$/] },
       ...(testSSR
         ? {
-            include: ['test/server.test.{ts,tsx}'],
+            include: ['tests/server.test.{ts,tsx}'],
           }
         : {
-            include: ['test/*.test.{ts,tsx}'],
-            exclude: ['test/server.test.{ts,tsx}'],
+            include: ['tests/*.test.{ts,tsx}'],
+            exclude: ['tests/server.test.{ts,tsx}'],
           }),
     },
     resolve: {
