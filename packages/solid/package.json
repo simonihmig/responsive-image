@@ -37,12 +37,9 @@
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
-    "prepublishOnly": "pnpm build",
-    "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
-    "lint": "concurrently pnpm:lint:*",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
-    "lint:types": "tsc --noEmit",
-    "update-deps": "pnpm up -Li"
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:js": "eslint . --cache",
+    "lint:types": "tsc --noEmit"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0"
@@ -65,7 +62,7 @@
     "typescript": "5.7.2",
     "vite": "6.0.3",
     "vite-plugin-solid": "2.11.0",
-    "vitest": "^2.1.8"
+    "vitest": "2.1.6"
   },
   "keywords": [
     "solid"
