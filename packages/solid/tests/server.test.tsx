@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { isServer, renderToString } from 'solid-js/web';
-import { Hello, createHello } from '../src';
+import { ResponsiveImage } from '../src';
+import { type ImageData } from '@responsive-image/core';
 
 describe('environment', () => {
   it('runs on server', () => {
@@ -9,22 +10,18 @@ describe('environment', () => {
   });
 });
 
-describe('createHello', () => {
-  it('Returns a Hello World signal', () => {
-    const [hello] = createHello();
-    expect(hello()).toBe('Hello World!');
-  });
+describe('ResponsiveImage', () => {
+  const defaultImageData: ImageData = {
+    imageTypes: ['jpeg', 'webp', 'avif'],
+    imageUrlFor(width, type = 'jpeg') {
+      return `/provider/w${width}/image.${type}`;
+    },
+  };
 
-  it('Changes the hello target', () => {
-    const [hello, setHello] = createHello();
-    setHello('Solid');
-    expect(hello()).toBe('Hello Solid!');
-  });
-});
-
-describe('Hello', () => {
   it('renders a hello component', () => {
-    const string = renderToString(() => <Hello />);
-    expect(string).toBe('<div>Hello World!</div>');
+    const string = renderToString(() => (
+      <ResponsiveImage src={defaultImageData} />
+    ));
+    expect(string).toMatchInlineSnapshot(`"<picture></picture>"`);
   });
 });
