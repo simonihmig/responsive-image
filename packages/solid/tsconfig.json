@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/strictest/tsconfig.json",
-  "include": ["src/**/*", "test/**/*", "./*.ts"],
+  "include": ["src/**/*", "tests/**/*", "./*.ts"],
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -9,6 +9,6 @@
     "allowImportingTsExtensions": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": []
+    "types": ["@vitest/browser/providers/playwright"]
   }
 }
