@@ -1058,7 +1058,17 @@ importers:
         version: 5.7.2
 
   packages/solid:
+    dependencies:
+      '@responsive-image/core':
+        specifier: workspace:^
+        version: link:../core
+      blurhash:
+        specifier: ^2.0.0
+        version: 2.0.5
     devDependencies:
+      '@solidjs/testing-library':
+        specifier: 0.8.10
+        version: 0.8.10(@solidjs/router@0.15.2(solid-js@1.9.3))(solid-js@1.9.3)
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -3934,6 +3944,16 @@ packages:
 
   '@solidjs/start@1.0.10':
     resolution: {integrity: sha512-3yg4KraSxc4rXs9dy/3kkqjDhU0JCPsZFLmDl5n6hHRPwtLLac6WUhs2k5VxGzitHaaJM/ZQCfT7i544Mf+4tw==}
+
+  '@solidjs/testing-library@0.8.10':
+    resolution: {integrity: sha512-qdeuIerwyq7oQTIrrKvV0aL9aFeuwTd86VYD3afdq5HYEwoox1OBTJy4y8A3TFZr8oAR0nujYgCzY/8wgHGfeQ==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      '@solidjs/router': '>=0.9.0'
+      solid-js: '>=1.0.0'
+    peerDependenciesMeta:
+      '@solidjs/router':
+        optional: true
 
   '@szmarczak/http-timer@1.1.2':
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
@@ -15416,6 +15436,13 @@ snapshots:
       - supports-color
       - vinxi
       - vite
+
+  '@solidjs/testing-library@0.8.10(@solidjs/router@0.15.2(solid-js@1.9.3))(solid-js@1.9.3)':
+    dependencies:
+      '@testing-library/dom': 10.4.0
+      solid-js: 1.9.3
+    optionalDependencies:
+      '@solidjs/router': 0.15.2(solid-js@1.9.3)
 
   '@szmarczak/http-timer@1.1.2':
     dependencies:

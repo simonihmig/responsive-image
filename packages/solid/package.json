@@ -36,16 +36,21 @@
     "build": "tsup",
     "test": "concurrently 'pnpm:test:*(!watch)'",
     "test:client": "vitest",
-    "test:ssr": "pnpm run test:client --mode ssr",
+    "test:server": "pnpm run test:client --mode ssr",
     "test:watch": "vitest watch",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:js": "eslint . --cache",
     "lint:types": "tsc --noEmit"
   },
+  "dependencies": {
+    "@responsive-image/core": "workspace:^",
+    "blurhash": "^2.0.0"
+  },
   "peerDependencies": {
     "solid-js": "^1.6.0"
   },
   "devDependencies": {
+    "@solidjs/testing-library": "0.8.10",
     "@tsconfig/strictest": "2.0.5",
     "@types/node": "22.10.2",
     "@typescript-eslint/eslint-plugin": "8.18.0",
