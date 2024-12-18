@@ -7,7 +7,7 @@ import type { ResponsiveImage } from '../src/responsive-image.js';
 import '../src/responsive-image.js';
 import { imageLoaded } from './image-loaded.helper.js';
 
-const cacheBreaker = () => `${new Date().getTime()}#${Math.random()}`;
+const cacheBreaker = () => `${new Date().getTime()}-${Math.random()}`;
 
 afterEach(() => fixtureCleanup());
 

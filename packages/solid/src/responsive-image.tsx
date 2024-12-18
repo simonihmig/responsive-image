@@ -3,8 +3,15 @@ import {
   type ImageData,
   getDestinationWidthBySize,
   env,
+  isLqipBlurhash,
 } from '@responsive-image/core';
-import { Component, type JSX, splitProps } from 'solid-js';
+import {
+  Component,
+  createResource,
+  createSignal,
+  type JSX,
+  splitProps,
+} from 'solid-js';
 import { isServer } from 'solid-js/web';
 
 export interface ResponsiveImageArgs {
@@ -52,8 +59,7 @@ const typeScore = new Map<ImageType, number>([
 ]);
 
 export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
-  // TODO this needs to be a signal
-  const isLoaded = false;
+  const [isLoaded, setLoaded] = createSignal(false);
 
   // TODO effect
   const isRendered = true;
@@ -142,13 +148,47 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0),
   );
 
-  const classNames = [`ri-${layout}`];
-  const lqip = args.src.lqip;
-  if (lqip && !isLoaded) {
-    classNames.push(`ri-lqip-${lqip.type}`);
-    if (lqip.type === 'color' || lqip.type === 'inline') {
-      classNames.push(lqip.class);
+  const classNames = () => {
+    const classNames = [`ri-${layout}`];
+    const lqip = args.src.lqip;
+    if (lqip && !isLoaded()) {
+      classNames.push(`ri-lqip-${lqip.type}`);
+      if (lqip.type === 'color' || lqip.type === 'inline') {
+        classNames.push(lqip.class);
+      }
     }
+
+    return classNames;
+  };
+
+  const blurhashMeta = isLqipBlurhash(args.src.lqip)
+    ? args.src.lqip
+    : undefined;
+  let blurhashStyles: (() => JSX.CSSProperties | undefined) | undefined =
+    undefined;
+
+  if (blurhashMeta) {
+    const [blurhashLib] = createResource(() => {
+      return import('@responsive-image/core/blurhash/decode');
+    });
+
+    blurhashStyles = () => {
+      if (isLoaded()) {
+        return undefined;
+      }
+
+      const { hash, width, height } = blurhashMeta;
+      const uri = blurhashLib()?.decode2url(hash, width, height);
+
+      if (!uri) {
+        return undefined;
+      }
+
+      return {
+        'background-image': `url("${uri}")`,
+        'background-size': 'cover',
+      };
+    };
   }
 
   return (
@@ -160,10 +200,15 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         src={src}
         width={width}
         height={height}
+        class={classNames().join(' ')}
         loading="lazy"
         decoding="async"
-        class={classNames.join(' ')}
         {...attributes}
+        data-ri-bh={blurhashMeta?.hash}
+        data-ri-bh-w={blurhashMeta?.width}
+        data-ri-bh-h={blurhashMeta?.height}
+        style={blurhashStyles?.()}
+        on:load={() => setLoaded(true)}
       />
     </picture>
   );
