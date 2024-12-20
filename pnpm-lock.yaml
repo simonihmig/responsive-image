@@ -673,13 +673,13 @@ importers:
         version: 0.15.2(solid-js@1.9.3)
       '@solidjs/start':
         specifier: ^1.0.10
-        version: 1.0.10(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.4(@types/node@22.10.2)(jiti@2.4.1)(terser@5.37.0))
+        version: 1.0.10(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.4(@types/node@22.10.2)(jiti@2.4.1)(terser@5.37.0))
       solid-js:
         specifier: ^1.9.2
         version: 1.9.3
       vinxi:
-        specifier: ^0.5.1
-        version: 0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)
+        specifier: ^0.4.3
+        version: 0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2)
 
   apps/wc-lit:
     dependencies:
@@ -5839,6 +5839,14 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
+  crossws@0.2.4:
+    resolution: {integrity: sha512-DAxroI2uSOgUKLz00NX6A8U/8EE3SZHmIND+10jkVSaypvyt57J5JEOxAQOL6lQxyzi/wZbTIwssU1uy69h5Vg==}
+    peerDependencies:
+      uWebSockets.js: '*'
+    peerDependenciesMeta:
+      uWebSockets.js:
+        optional: true
+
   crossws@0.3.1:
     resolution: {integrity: sha512-HsZgeVYaG+b5zA+9PbIPGq4+J/CJynJuearykPsXx4V/eMhyQ5EDVg3Ak2FBZtVXCiOLu/U7IiwDHTr9MA+IKw==}
 
@@ -7448,6 +7456,9 @@ packages:
   gzip-size@7.0.0:
     resolution: {integrity: sha512-O1Ld7Dr+nqPnmGpdhzLmMTQ4vAsD+rHwMm1NLUmoUFFymBOMKxCCrtDxqdBRYXdeEPEi3SyoR4TizJLQrnKBNA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  h3@1.11.1:
+    resolution: {integrity: sha512-AbaH6IDnZN6nmbnJOH72y3c5Wwh9P97soSVdGSBbcDACRdkC0FEWf25pzx4f/NuOCK6quHmW18yF2Wx+G4Zi1A==}
 
   h3@1.13.0:
     resolution: {integrity: sha512-vFEAu/yf8UMUcB4s43OaDaigcqpQd14yanmOsn+NcRX3/guSKncyE2rOYhq8RIchgJrPSs/QiIddnTTR1ddiAg==}
@@ -10968,8 +10979,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vinxi@0.5.1:
-    resolution: {integrity: sha512-jvl2hJ0fyWwfDVQdDDHCJiVxqU4k0A6kFAnljS0kIjrGfhdTvKEWIoj0bcJgMyrKhxNMoZZGmHZsstQgjDIL3g==}
+  vinxi@0.4.3:
+    resolution: {integrity: sha512-RgJz7RWftML5h/qfPsp3QKVc2FSlvV4+HevpE0yEY2j+PS/I2ULjoSsZDXaR8Ks2WYuFFDzQr8yrox7v8aqkng==}
     hasBin: true
 
   vite-node@2.1.6:
@@ -15057,11 +15068,11 @@ snapshots:
     dependencies:
       solid-js: 1.9.3
 
-  '@solidjs/start@1.0.10(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.4(@types/node@22.10.2)(jiti@2.4.1)(terser@5.37.0))':
+  '@solidjs/start@1.0.10(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.4(@types/node@22.10.2)(jiti@2.4.1)(terser@5.37.0))':
     dependencies:
-      '@vinxi/plugin-directives': 0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))
-      '@vinxi/server-components': 0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))
-      '@vinxi/server-functions': 0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))
+      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))
+      '@vinxi/server-components': 0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))
+      '@vinxi/server-functions': 0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))
       defu: 6.1.4
       error-stack-parser: 2.1.4
       html-to-image: 1.11.11
@@ -15163,40 +15174,20 @@ snapshots:
     dependencies:
       '@types/node': 22.10.2
 
-  '@types/ember@4.0.11':
-    dependencies:
-      '@types/ember__application': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__array': 4.0.10
-      '@types/ember__component': 4.0.22
-      '@types/ember__controller': 4.0.12
-      '@types/ember__debug': 4.0.8
-      '@types/ember__engine': 4.0.11
-      '@types/ember__error': 4.0.6
-      '@types/ember__object': 4.0.12
-      '@types/ember__polyfills': 4.0.6
-      '@types/ember__routing': 4.0.22
-      '@types/ember__runloop': 4.0.10
-      '@types/ember__service': 4.0.9
-      '@types/ember__string': 3.16.3
-      '@types/ember__template': 4.0.7
-      '@types/ember__test': 4.0.6(@babel/core@7.25.9)
-      '@types/ember__utils': 4.0.7
-      '@types/rsvp': 4.0.9
-
   '@types/ember@4.0.11(@babel/core@7.25.9)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.25.9)
       '@types/ember__array': 4.0.10(@babel/core@7.25.9)
       '@types/ember__component': 4.0.22(@babel/core@7.25.9)
-      '@types/ember__controller': 4.0.12
-      '@types/ember__debug': 4.0.8
-      '@types/ember__engine': 4.0.11
+      '@types/ember__controller': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__debug': 4.0.8(@babel/core@7.25.9)
+      '@types/ember__engine': 4.0.11(@babel/core@7.25.9)
       '@types/ember__error': 4.0.6
       '@types/ember__object': 4.0.12(@babel/core@7.25.9)
       '@types/ember__polyfills': 4.0.6
       '@types/ember__routing': 4.0.22(@babel/core@7.25.9)
       '@types/ember__runloop': 4.0.10(@babel/core@7.25.9)
-      '@types/ember__service': 4.0.9
+      '@types/ember__service': 4.0.9(@babel/core@7.25.9)
       '@types/ember__string': 3.16.3
       '@types/ember__template': 4.0.7
       '@types/ember__test': 4.0.6(@babel/core@7.25.9)
@@ -15209,44 +15200,30 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.25.9)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.25.9)
-      '@types/ember': 4.0.11
-      '@types/ember__engine': 4.0.11
-      '@types/ember__object': 4.0.12
+      '@types/ember': 4.0.11(@babel/core@7.25.9)
+      '@types/ember__engine': 4.0.11(@babel/core@7.25.9)
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
       '@types/ember__owner': 4.0.9
-      '@types/ember__routing': 4.0.22
+      '@types/ember__routing': 4.0.22(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__array@4.0.10':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/ember__object': 4.0.12
 
   '@types/ember__array@4.0.10(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__component@4.0.22':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/ember__object': 4.0.12
 
   '@types/ember__component@4.0.22(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__controller@4.0.12':
-    dependencies:
-      '@types/ember__object': 4.0.12
 
   '@types/ember__controller@4.0.12(@babel/core@7.25.9)':
     dependencies:
@@ -15254,11 +15231,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__debug@4.0.8':
-    dependencies:
-      '@types/ember__object': 4.0.12
-      '@types/ember__owner': 4.0.9
 
   '@types/ember__debug@4.0.8(@babel/core@7.25.9)':
     dependencies:
@@ -15269,11 +15241,6 @@ snapshots:
       - supports-color
 
   '@types/ember__destroyable@4.0.5': {}
-
-  '@types/ember__engine@4.0.11':
-    dependencies:
-      '@types/ember__object': 4.0.12
-      '@types/ember__owner': 4.0.9
 
   '@types/ember__engine@4.0.11(@babel/core@7.25.9)':
     dependencies:
@@ -15302,11 +15269,6 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@types/ember__object@4.0.12':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/rsvp': 4.0.9
-
   '@types/ember__object@4.0.12(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
@@ -15319,26 +15281,15 @@ snapshots:
 
   '@types/ember__polyfills@4.0.6': {}
 
-  '@types/ember__routing@4.0.22':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/ember__controller': 4.0.12
-      '@types/ember__object': 4.0.12
-      '@types/ember__service': 4.0.9
-
   '@types/ember__routing@4.0.22(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__controller': 4.0.12
-      '@types/ember__object': 4.0.12
-      '@types/ember__service': 4.0.9
+      '@types/ember__controller': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__service': 4.0.9(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__runloop@4.0.10':
-    dependencies:
-      '@types/ember': 4.0.11
 
   '@types/ember__runloop@4.0.10(@babel/core@7.25.9)':
     dependencies:
@@ -15346,10 +15297,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__service@4.0.9':
-    dependencies:
-      '@types/ember__object': 4.0.12
 
   '@types/ember__service@4.0.9(@babel/core@7.25.9)':
     dependencies:
@@ -15370,10 +15317,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__utils@4.0.7':
-    dependencies:
-      '@types/ember': 4.0.11
 
   '@types/ember__utils@4.0.7(@babel/core@7.25.9)':
     dependencies:
@@ -15771,7 +15714,7 @@ snapshots:
       untun: 0.1.3
       uqr: 0.1.2
 
-  '@vinxi/plugin-directives@0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))':
+  '@vinxi/plugin-directives@0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))':
     dependencies:
       '@babel/parser': 7.26.3
       acorn: 8.14.0
@@ -15782,29 +15725,29 @@ snapshots:
       magicast: 0.2.11
       recast: 0.23.9
       tslib: 2.8.1
-      vinxi: 0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)
+      vinxi: 0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2)
 
-  '@vinxi/server-components@0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))':
+  '@vinxi/server-components@0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))':
     dependencies:
-      '@vinxi/plugin-directives': 0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))
+      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))
       acorn: 8.14.0
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.14.0)
       astring: 1.9.0
       magicast: 0.2.11
       recast: 0.23.9
-      vinxi: 0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)
+      vinxi: 0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2)
 
-  '@vinxi/server-functions@0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))':
+  '@vinxi/server-functions@0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))':
     dependencies:
-      '@vinxi/plugin-directives': 0.4.3(vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2))
+      '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2))
       acorn: 8.14.0
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.14.0)
       astring: 1.9.0
       magicast: 0.2.11
       recast: 0.23.9
-      vinxi: 0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)
+      vinxi: 0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2)
 
   '@vitejs/plugin-vue@5.2.1(vite@5.4.11(@types/node@22.10.2)(terser@5.37.0))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
@@ -17638,6 +17581,8 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  crossws@0.2.4: {}
 
   crossws@0.3.1:
     dependencies:
@@ -20265,6 +20210,21 @@ snapshots:
   gzip-size@7.0.0:
     dependencies:
       duplexer: 0.1.2
+
+  h3@1.11.1:
+    dependencies:
+      cookie-es: 1.2.2
+      crossws: 0.2.4
+      defu: 6.1.4
+      destr: 2.0.3
+      iron-webcrypto: 1.2.1
+      ohash: 1.1.4
+      radix3: 1.1.2
+      ufo: 1.5.4
+      uncrypto: 0.1.3
+      unenv: 1.10.0
+    transitivePeerDependencies:
+      - uWebSockets.js
 
   h3@1.13.0:
     dependencies:
@@ -24295,7 +24255,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vinxi@0.5.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2):
+  vinxi@0.4.3(@types/node@22.10.2)(ioredis@5.4.1)(terser@5.37.0)(typescript@5.7.2):
     dependencies:
       '@babel/core': 7.25.9
       '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.25.9)
@@ -24306,14 +24266,14 @@ snapshots:
       chokidar: 3.6.0
       citty: 0.1.6
       consola: 3.2.3
-      crossws: 0.3.1
+      crossws: 0.2.4
       dax-sh: 0.39.2
       defu: 6.1.4
       es-module-lexer: 1.5.4
       esbuild: 0.20.2
       fast-glob: 3.3.2
       get-port-please: 3.1.2
-      h3: 1.13.0
+      h3: 1.11.1
       hookable: 5.5.3
       http-proxy: 1.18.1
       micromatch: 4.0.8
@@ -24329,7 +24289,7 @@ snapshots:
       unctx: 2.4.0
       unenv: 1.10.0
       unstorage: 1.13.1(ioredis@5.4.1)
-      vite: 6.0.4(@types/node@22.10.2)(jiti@2.4.1)(terser@5.37.0)
+      vite: 5.4.11(@types/node@22.10.2)(terser@5.37.0)
       zod: 3.24.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -24352,7 +24312,6 @@ snapshots:
       - encoding
       - idb-keyval
       - ioredis
-      - jiti
       - less
       - lightningcss
       - mysql2
@@ -24362,10 +24321,9 @@ snapshots:
       - sugarss
       - supports-color
       - terser
-      - tsx
       - typescript
+      - uWebSockets.js
       - xml2js
-      - yaml
 
   vite-node@2.1.6(@types/node@22.10.2)(jiti@2.4.1)(terser@5.37.0):
     dependencies:
