@@ -665,6 +665,18 @@ importers:
 
   apps/solid-start:
     dependencies:
+      '@responsive-image/cdn':
+        specifier: workspace:*
+        version: link:../../packages/cdn
+      '@responsive-image/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@responsive-image/solid':
+        specifier: workspace:*
+        version: link:../../packages/solid
+      '@responsive-image/vite-plugin':
+        specifier: workspace:*
+        version: link:../../packages/vite-plugin
       '@solidjs/meta':
         specifier: ^0.29.4
         version: 0.29.4(solid-js@1.9.3)

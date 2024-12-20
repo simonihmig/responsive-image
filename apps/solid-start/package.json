@@ -12,6 +12,10 @@
     "version": "vinxi version"
   },
   "dependencies": {
+    "@responsive-image/cdn": "workspace:*",
+    "@responsive-image/core": "workspace:*",
+    "@responsive-image/solid": "workspace:*",
+    "@responsive-image/vite-plugin": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.0.10",
