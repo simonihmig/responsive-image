@@ -665,6 +665,9 @@ importers:
 
   apps/solid-start:
     dependencies:
+      '@playwright/test':
+        specifier: 1.49.1
+        version: 1.49.1
       '@responsive-image/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn

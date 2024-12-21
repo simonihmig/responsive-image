@@ -94,7 +94,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
 
   const ar = args.src.aspectRatio;
   if (ar !== undefined && ar !== 0 && width !== undefined) {
-    height = width / ar;
+    height = Math.round(width / ar);
   }
 
   // We *must not* set the src attribute before the <img> is actually rendered, and a child of <picture>
