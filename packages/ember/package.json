@@ -49,6 +49,7 @@
     "@glimmer/tracking": "1.1.2",
     "@glint/core": "1.5.0",
     "@glint/environment-ember-loose": "1.5.0",
+    "@glint/environment-ember-template-imports": "1.5.0",
     "@glint/template": "1.5.0",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-node-resolve": "16.0.0",
@@ -88,6 +89,7 @@
     "eslint-plugin-n": "17.15.1",
     "eslint-plugin-prettier": "5.2.1",
     "prettier": "3.4.2",
+    "prettier-plugin-ember-template-tag": "2.0.4",
     "rollup": "4.29.1",
     "rollup-plugin-copy": "3.5.0",
     "rollup-plugin-node-externals": "8.0.0",
@@ -102,7 +104,7 @@
   "ember-addon": {
     "version": 2,
     "type": "addon",
-    "main": "addon-main.js",
+    "main": "addon-main.cjs",
     "app-js": {
       "./components/responsive-image.js": "./dist/_app_/components/responsive-image.js",
       "./helpers/responsive-image-cloudinary.js": "./dist/_app_/helpers/responsive-image-cloudinary.js",
@@ -123,7 +125,7 @@
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
     },
-    "./addon-main.js": "./addon-main.js"
+    "./addon-main.js": "./addon-main.cjs"
   },
   "typesVersions": {
     "*": {
