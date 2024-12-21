@@ -1,4 +1,4 @@
-import type ResponsiveImageComponent from './components/responsive-image.ts';
+import type ResponsiveImageComponent from './components/responsive-image.gts';
 import type ResponsiveImageResolve from './helpers/responsive-image-resolve.ts';
 import type CloudinaryProvider from './helpers/responsive-image-cloudinary';
 import type NetlifyProvider from './helpers/responsive-image-netlify';
