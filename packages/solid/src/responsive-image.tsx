@@ -14,6 +14,8 @@ import {
 } from 'solid-js';
 import { isServer } from 'solid-js/web';
 
+import './responsive-image.css';
+
 export interface ResponsiveImageArgs {
   src: ImageData;
   size?: number;

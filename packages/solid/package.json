@@ -32,7 +32,7 @@
   },
   "typesVersions": {},
   "scripts": {
-    "dev": "vite serve dev",
+    "start": "tsup --watch",
     "build": "tsup",
     "test": "concurrently 'pnpm:test:*(!watch)'",
     "test:client": "vitest",
