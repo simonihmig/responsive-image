@@ -167,7 +167,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   let blurhashStyles: (() => JSX.CSSProperties | undefined) | undefined =
     undefined;
 
-  if (blurhashMeta) {
+  if (!isServer && blurhashMeta) {
     const [blurhashLib] = createResource(() => {
       return import('@responsive-image/core/blurhash/decode');
     });
