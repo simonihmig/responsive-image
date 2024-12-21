@@ -14,9 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "concurrently 'npm:build:*'",
-    "build:js": "rollup --config",
-    "build:types": "glint --declaration",
+    "build": "rollup --config",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
@@ -24,9 +22,7 @@
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "glint",
-    "start": "concurrently 'npm:start:*'",
-    "start:js": "rollup --config --watch --no-watch.clearScreen",
-    "start:types": "glint --declaration --watch",
+    "start": "rollup --config --watch --no-watch.clearScreen",
     "test": "echo 'A v2 addon does not have tests, run tests in test-app'",
     "prepack": "pnpm turbo build"
   },
@@ -48,11 +44,12 @@
     "@babel/core": "7.25.9",
     "@babel/plugin-transform-typescript": "7.25.9",
     "@babel/runtime": "7.25.9",
-    "@embroider/addon-dev": "7.0.0",
+    "@embroider/addon-dev": "7.1.1",
     "@glimmer/component": "2.0.0",
     "@glimmer/tracking": "1.1.2",
     "@glint/core": "1.5.0",
     "@glint/environment-ember-loose": "1.5.0",
+    "@glint/environment-ember-template-imports": "1.5.0",
     "@glint/template": "1.5.0",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-node-resolve": "16.0.0",
@@ -92,6 +89,7 @@
     "eslint-plugin-n": "17.15.1",
     "eslint-plugin-prettier": "5.2.1",
     "prettier": "3.4.2",
+    "prettier-plugin-ember-template-tag": "2.0.4",
     "rollup": "4.29.1",
     "rollup-plugin-copy": "3.5.0",
     "rollup-plugin-node-externals": "8.0.0",
@@ -106,7 +104,7 @@
   "ember-addon": {
     "version": 2,
     "type": "addon",
-    "main": "addon-main.js",
+    "main": "addon-main.cjs",
     "app-js": {
       "./components/responsive-image.js": "./dist/_app_/components/responsive-image.js",
       "./helpers/responsive-image-cloudinary.js": "./dist/_app_/helpers/responsive-image-cloudinary.js",
@@ -127,7 +125,7 @@
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
     },
-    "./addon-main.js": "./addon-main.js"
+    "./addon-main.js": "./addon-main.cjs"
   },
   "typesVersions": {
     "*": {

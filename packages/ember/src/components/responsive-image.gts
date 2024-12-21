@@ -16,6 +16,9 @@ import type {
 import type Owner from '@ember/owner';
 
 import './responsive-image.css';
+import { on } from '@ember/modifier';
+import style from 'ember-style-modifier';
+import { hash } from '@ember/helper';
 
 declare global {
   const __eri_blurhash: {
@@ -230,4 +233,33 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   setRendered(): void {
     this.isRendered = true;
   }
+
+  <template>
+    <picture>
+      {{#each this.sourcesSorted as |s|}}
+        <source srcset={{s.srcset}} type={{s.mimeType}} sizes={{s.sizes}} />
+      {{/each}}
+      <img
+        src={{this.src}}
+        width={{this.width}}
+        height={{this.height}}
+        class={{this.classNames}}
+        loading="lazy"
+        decoding="async"
+        ...attributes
+        data-ri-bh={{this.blurhashMeta.hash}}
+        data-ri-bh-w={{this.blurhashMeta.width}}
+        data-ri-bh-h={{this.blurhashMeta.height}}
+        {{style
+          (if
+            this.showLqipBlurhash
+            (hash background-image=this.lqipBlurhash background-size="cover")
+          )
+        }}
+        {{on "load" this.onLoad}}
+        {{! @glint-expect-error }}
+        {{(this.setRendered)}}
+      />
+    </picture>
+  </template>
 }
