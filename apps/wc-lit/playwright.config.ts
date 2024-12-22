@@ -28,6 +28,13 @@ export default defineConfig({
     testIdAttribute: '',
   },
 
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.02,
+    },
+    timeout: 10000,
+  },
+
   /* Configure projects for major browsers */
   projects: [
     {

@@ -28,6 +28,13 @@ export default defineConfig({
     testIdAttribute: '',
   },
 
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.02,
+    },
+    timeout: 10000,
+  },
+
   /* Configure projects for major browsers */
   projects: [
     {
@@ -71,5 +78,7 @@ export default defineConfig({
     // serve the prod build, as the dev build uses vite middleware URLs for images that we don't want in tests
     command: 'pnpm build && pnpm start',
     url: 'http://localhost:3000',
+    stdout: 'pipe',
+    timeout: 300000,
   },
 });

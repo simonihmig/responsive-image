@@ -399,6 +399,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           imageTypes: ["jpeg", "webp"],
           // to replicate the loading timing, we need to load a real existing image
           imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
+          aspectRatio: 1.5,
           lqip: {
             type: "inline",
             class: "lqip-inline-test-class",
@@ -430,6 +431,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           imageTypes: ["jpeg", "webp"],
           // to replicate the loading timing, we need to load a real existing image
           imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
+          aspectRatio: 1.5,
           lqip: {
             type: "color",
             class: "lqip-color-test-class",
@@ -461,6 +463,7 @@ module("Integration: Responsive Image Component", function (hooks) {
           imageTypes: ["jpeg", "webp"],
           // to replicate the loading timing, we need to load a real existing image
           imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
+          aspectRatio: 1.5,
           lqip: {
             type: "blurhash",
             hash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",

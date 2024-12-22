@@ -62,10 +62,6 @@ const typeScore = new Map<ImageType, number>([
 
 export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   const [isLoaded, setLoaded] = createSignal(false);
-
-  // TODO effect
-  const isRendered = true;
-
   const [args, attributes] = splitProps(props, responsiveImageArgs);
 
   const layout =
@@ -99,12 +95,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     height = Math.round(width / ar);
   }
 
-  // We *must not* set the src attribute before the <img> is actually rendered, and a child of <picture>
-  // Otherwise some browsers (FF, Safari) will eagerly load it, although the image isn't the one the browser
-  // should load given the other source/srcset variants. Also prevents native lazy loading.
-  const src =
-    isRendered || isServer ? args.src.imageUrlFor(width ?? 640) : undefined;
-
+  const src = args.src.imageUrlFor(width ?? 640);
   let sources: ImageSource[];
 
   if (layout === Layout.RESPONSIVE) {
@@ -199,12 +190,12 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         <source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
       ))}
       <img
-        src={src}
         width={width}
         height={height}
         class={classNames().join(' ')}
         loading="lazy"
         decoding="async"
+        src={src}
         {...attributes}
         data-ri-bh={blurhashMeta?.hash}
         data-ri-bh-w={blurhashMeta?.width}

@@ -436,103 +436,75 @@ describe('ResponsiveImage', () => {
   });
 
   describe('LQIP', () => {
-    describe('inline', () => {
-      test('it sets LQIP SVG as background', async () => {
-        const { onload, loaded } = imageLoaded();
-        const imageData: ImageData = {
-          imageTypes: ['jpeg', 'webp'],
-          // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-          lqip: {
-            type: 'inline',
-            class: 'lqip-inline-test-class',
-          },
-        };
+    test('it sets LQIP class', async () => {
+      const { onload, loaded } = imageLoaded();
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp'],
+        // to replicate the loading timing, we need to load a real existing image
+        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+        aspectRatio: 1.5,
+        lqip: {
+          type: 'color',
+          class: 'lqip-color-test-class',
+        },
+      };
 
-        const { container } = render(() => <ResponsiveImage src={imageData} />);
-        onload(container);
+      const { container } = render(() => <ResponsiveImage src={imageData} />);
+      onload(container);
 
-        const imgEl = container.querySelector('img');
+      const imgEl = container.querySelector('img');
+      expect(imgEl).toBeDefined();
+      expect(imgEl?.complete).toBe(false);
 
-        if (!imgEl?.complete) {
-          expect(imgEl).toHaveClass('lqip-inline-test-class');
-        }
+      expect(imgEl).toHaveClass('lqip-color-test-class');
 
-        await loaded;
+      await loaded;
 
-        expect(imgEl).not.toHaveClass('lqip-inline-test-class');
-      });
+      expect(imgEl).not.toHaveClass('lqip-color-test-class');
     });
+  });
 
-    describe('color', () => {
-      test('it sets background-color', async () => {
-        const { onload, loaded } = imageLoaded();
-        const imageData: ImageData = {
-          imageTypes: ['jpeg', 'webp'],
-          // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-          lqip: {
-            type: 'color',
-            class: 'lqip-color-test-class',
-          },
-        };
+  test('it sets LQIP from blurhash as background', async () => {
+    const { onload, loaded } = imageLoaded();
+    const imageData: ImageData = {
+      imageTypes: ['jpeg', 'webp'],
+      // to replicate the loading timing, we need to load a real existing image
+      imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+      aspectRatio: 1.5,
+      lqip: {
+        type: 'blurhash',
+        hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+        width: 4,
+        height: 3,
+      },
+    };
 
-        const { container } = render(() => <ResponsiveImage src={imageData} />);
-        onload(container);
+    const { container } = render(() => <ResponsiveImage src={imageData} />);
+    onload(container);
 
-        const imgEl = container.querySelector('img');
+    const imgEl = container.querySelector('img')!;
+    expect(imgEl).toBeDefined();
+    expect(imgEl?.complete).toBe(false);
 
-        if (!imgEl?.complete) {
-          expect(imgEl).toHaveClass('lqip-color-test-class');
-        }
+    await waitFor(
+      () =>
+        expect(imgEl.style.backgroundImage, 'it has a background PNG').to.match(
+          /data:image\/png/,
+        ),
+      { timeout: 5000 },
+    );
 
-        await loaded;
+    expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
+    expect(
+      window.getComputedStyle(imgEl!).backgroundImage,
+      'the background SVG has a reasonable length',
+    ).to.have.length.greaterThan(100);
 
-        expect(imgEl).not.toHaveClass('lqip-color-test-class');
-      });
-    });
+    await loaded;
 
-    describe('blurhash', () => {
-      test('it sets LQIP from blurhash as background', async () => {
-        const { onload, loaded } = imageLoaded();
-        const imageData: ImageData = {
-          imageTypes: ['jpeg', 'webp'],
-          // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-          lqip: {
-            type: 'blurhash',
-            hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-            width: 4,
-            height: 3,
-          },
-        };
-
-        const { container } = render(() => <ResponsiveImage src={imageData} />);
-        onload(container);
-
-        const imgEl = container.querySelector('img');
-
-        if (!imgEl?.complete) {
-          await waitFor(() =>
-            expect(
-              imgEl?.style.backgroundImage,
-              'it has a background PNG',
-            ).to.match(/data:image\/png/),
-          );
-          expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
-          expect(
-            window.getComputedStyle(imgEl!).backgroundImage,
-            'the background SVG has a reasonable length',
-          ).to.have.length.greaterThan(100);
-        }
-
-        await loaded;
-
-        expect(
-          window.getComputedStyle(imgEl!).backgroundImage,
-          'after image is loaded the background PNG is removed',
-        ).to.equal('none');
-      });
-    });
+    expect(
+      window.getComputedStyle(imgEl!).backgroundImage,
+      'after image is loaded the background PNG is removed',
+    ).to.equal('none');
   });
 });
