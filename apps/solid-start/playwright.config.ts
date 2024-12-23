@@ -77,5 +77,6 @@ export default defineConfig({
     // serve the prod build, as the dev build uses vite middleware URLs for images that we don't want in tests
     command: 'pnpm build && pnpm start',
     url: 'http://localhost:3000',
+    stdout: 'pipe',
   },
 });
