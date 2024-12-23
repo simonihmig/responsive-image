@@ -88,6 +88,7 @@ export default defineConfig({
         base: '/frameworks',
         items: [
           { text: 'Ember', link: '/ember' },
+          { text: 'Solid', link: '/solid' },
           { text: 'Web Component (Lit)', link: '/wc' },
         ],
       },
