@@ -3,6 +3,7 @@
 The [image component](../usage/component.md) and other utilities are provided with framework specific packages:
 
 - [Ember](./ember.md)
+- [Solid](./solid.md)
 - [Web Component](./wc.md) (built with Lit, but usable with any framework)
 
 > [!NOTE]
