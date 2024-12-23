@@ -513,12 +513,20 @@ describe('ResponsiveImage', () => {
         const imgEl = container.querySelector('img');
 
         if (!imgEl?.complete) {
-          await waitFor(() =>
+          if (imgEl?.style.backgroundImage) {
             expect(
               imgEl?.style.backgroundImage,
               'it has a background PNG',
-            ).to.match(/data:image\/png/),
-          );
+            ).to.match(/data:image\/png/);
+          } else {
+            await waitFor(() =>
+              expect(
+                imgEl?.style.backgroundImage,
+                'it has a background PNG',
+              ).to.match(/data:image\/png/),
+            );
+          }
+
           expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
           expect(
             window.getComputedStyle(imgEl!).backgroundImage,
