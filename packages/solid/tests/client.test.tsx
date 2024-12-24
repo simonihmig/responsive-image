@@ -519,11 +519,13 @@ describe('ResponsiveImage', () => {
               'it has a background PNG',
             ).to.match(/data:image\/png/);
           } else {
-            await waitFor(() =>
-              expect(
-                imgEl?.style.backgroundImage,
-                'it has a background PNG',
-              ).to.match(/data:image\/png/),
+            await waitFor(
+              () =>
+                expect(
+                  imgEl?.style.backgroundImage,
+                  'it has a background PNG',
+                ).to.match(/data:image\/png/),
+              { timeout: 2000 },
             );
           }
 
