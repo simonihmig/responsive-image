@@ -9,7 +9,7 @@ import { imageLoaded } from "../../helpers/image-loaded";
 import type { RenderingTestContext } from "@ember/test-helpers";
 import { env } from "@responsive-image/core";
 
-const cacheBreaker = () => new Date().getTime() + "#" + Math.random();
+const cacheBreaker = () => `${new Date().getTime()}-${Math.random()}`;
 
 module("Integration: Responsive Image Component", function (hooks) {
   setupRenderingTest(hooks);

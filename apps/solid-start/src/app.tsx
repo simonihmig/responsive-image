@@ -3,6 +3,21 @@ import { Router } from '@solidjs/router';
 import { FileRoutes } from '@solidjs/start/router';
 import { Suspense } from 'solid-js';
 import './app.css';
+import { setConfig } from '@responsive-image/core';
+
+import type { Config } from '@responsive-image/cdn';
+
+setConfig<Config>('cdn', {
+  cloudinary: {
+    cloudName: 'responsive-image',
+  },
+  imgix: {
+    domain: 'responsive-image.imgix.net',
+  },
+  netlify: {
+    domain: 'responsive-image.dev',
+  },
+});
 
 export default function App() {
   return (

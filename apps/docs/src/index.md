@@ -19,7 +19,7 @@ hero:
 
 features:
   - title: Multi Framework
-    details: 'Supports Vite and Webpack for local image processing, a framework-agnostic core and components for multiple frontend frameworks: Ember.js and web component (more to come)'
+    details: 'Supports Vite and Webpack for local image processing, a framework-agnostic core and components for multiple frontend frameworks: Ember, Solid and web component (more to come)'
   - title: Next-gen image formats
     details: Supports basic PNG and JPEG formats, as well as next-gen WebP and AVIF, for increased performance with optimal image quality at small file sizes.
   - title: Local image processing

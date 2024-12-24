@@ -9,9 +9,16 @@
     "dev": "vinxi dev",
     "build": "vinxi build",
     "start": "vinxi start",
-    "version": "vinxi version"
+    "version": "vinxi version",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
   },
   "dependencies": {
+    "@playwright/test": "1.49.1",
+    "@responsive-image/cdn": "workspace:*",
+    "@responsive-image/core": "workspace:*",
+    "@responsive-image/solid": "workspace:*",
+    "@responsive-image/vite-plugin": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.0.10",

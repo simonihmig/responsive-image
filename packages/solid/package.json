@@ -1,0 +1,74 @@
+{
+  "name": "@responsive-image/solid",
+  "version": "0.0.0",
+  "description": "Solid.js component to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+  "license": "MIT",
+  "author": "Simon Ihmig <simon.ihmig@gmail.com>",
+  "repository": "https://github.com/simonihmig/responsive-image",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "browser": {},
+  "exports": {
+    "solid": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.jsx"
+    },
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "typesVersions": {},
+  "scripts": {
+    "start": "tsup --watch",
+    "build": "rollup --config",
+    "test": "concurrently 'pnpm:test:*(!watch)'",
+    "test:client": "vitest",
+    "test:server": "pnpm run test:client --mode ssr",
+    "test:watch": "vitest watch",
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:js": "eslint . --cache",
+    "lint:types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@responsive-image/core": "workspace:^",
+    "blurhash": "^2.0.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "7.26.0",
+    "@embroider/addon-dev": "7.1.1",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-node-resolve": "16.0.0",
+    "@solidjs/testing-library": "0.8.10",
+    "@tsconfig/strictest": "2.0.5",
+    "@types/node": "22.10.2",
+    "@typescript-eslint/eslint-plugin": "8.18.0",
+    "@typescript-eslint/parser": "8.18.0",
+    "@vitest/browser": "2.1.6",
+    "babel-preset-solid": "1.9.3",
+    "concurrently": "9.1.0",
+    "eslint": "8.57.1",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "playwright": "1.49.1",
+    "prettier": "3.4.2",
+    "rollup": "4.29.1",
+    "rollup-plugin-node-externals": "8.0.0",
+    "solid-js": "1.9.3",
+    "typescript": "5.7.2",
+    "vite-plugin-solid": "2.11.0",
+    "vitest": "2.1.6"
+  },
+  "keywords": [
+    "solid"
+  ]
+}
