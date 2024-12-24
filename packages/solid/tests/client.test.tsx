@@ -510,19 +510,19 @@ describe('ResponsiveImage', () => {
         const { container } = render(() => <ResponsiveImage src={imageData} />);
         onload(container);
 
-        const imgEl = container.querySelector('img');
+        const imgEl = container.querySelector('img')!;
 
-        if (!imgEl?.complete) {
-          if (imgEl?.style.backgroundImage) {
+        if (!imgEl.complete) {
+          if (imgEl.style.backgroundImage) {
             expect(
-              imgEl?.style.backgroundImage,
+              imgEl.style.backgroundImage,
               'it has a background PNG',
             ).to.match(/data:image\/png/);
           } else {
             await waitFor(
               () =>
                 expect(
-                  imgEl?.style.backgroundImage,
+                  imgEl.style.backgroundImage,
                   'it has a background PNG',
                 ).to.match(/data:image\/png/),
               { timeout: 2000 },

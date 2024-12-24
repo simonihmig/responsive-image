@@ -211,6 +211,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         data-ri-bh-h={blurhashMeta?.height}
         style={blurhashStyles?.()}
         on:load={() => setLoaded(true)}
+        data-loaded={isLoaded()}
       />
     </picture>
   );
