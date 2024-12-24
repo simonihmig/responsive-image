@@ -1,5 +1,11 @@
 # ember-responsive-image
 
+## 1.0.1
+
+### Patch Changes
+
+- [#866](https://github.com/simonihmig/responsive-image/pull/866) [`2203965`](https://github.com/simonihmig/responsive-image/commit/220396501332b4235e665072f4d23b4a2102628e) Thanks [@simonihmig](https://github.com/simonihmig)! - Migrate component to gts format
+
 ## 1.0.0
 
 ### Major Changes
