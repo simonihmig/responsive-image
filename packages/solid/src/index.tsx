@@ -1,1 +1,1 @@
-export { ResponsiveImage } from './responsive-image.js';
+export { ResponsiveImage } from './responsive-image.tsx';

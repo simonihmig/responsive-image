@@ -16,14 +16,8 @@
   "browser": {},
   "exports": {
     "solid": {
-      "development": "./dist/dev.jsx",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.jsx"
-    },
-    "development": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/dev.js"
-      }
     },
     "import": {
       "types": "./dist/index.d.ts",
@@ -33,7 +27,7 @@
   "typesVersions": {},
   "scripts": {
     "start": "tsup --watch",
-    "build": "tsup",
+    "build": "rollup --config",
     "test": "concurrently 'pnpm:test:*(!watch)'",
     "test:client": "vitest",
     "test:server": "pnpm run test:client --mode ssr",
@@ -50,25 +44,27 @@
     "solid-js": "^1.6.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "7.26.0",
+    "@embroider/addon-dev": "7.1.1",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-node-resolve": "16.0.0",
     "@solidjs/testing-library": "0.8.10",
     "@tsconfig/strictest": "2.0.5",
     "@types/node": "22.10.2",
     "@typescript-eslint/eslint-plugin": "8.18.0",
     "@typescript-eslint/parser": "8.18.0",
     "@vitest/browser": "2.1.6",
+    "babel-preset-solid": "1.9.3",
     "concurrently": "9.1.0",
-    "esbuild": "0.24.0",
-    "esbuild-plugin-solid": "0.6.0",
     "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
     "playwright": "1.49.1",
     "prettier": "3.4.2",
+    "rollup": "4.29.1",
+    "rollup-plugin-node-externals": "8.0.0",
     "solid-js": "1.9.3",
-    "tsup": "8.3.5",
-    "tsup-preset-solid": "2.2.0",
     "typescript": "5.7.2",
-    "vite": "6.0.3",
     "vite-plugin-solid": "2.11.0",
     "vitest": "2.1.6"
   },
