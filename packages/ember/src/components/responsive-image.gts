@@ -65,9 +65,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @tracked
   isLoaded = false;
 
-  @tracked
-  isRendered = false;
-
   constructor(owner: Owner, args: ResponsiveImageComponentSignature['Args']) {
     super(owner, args);
     assert('No @src argument supplied for <ResponsiveImage>', args.src);
@@ -137,13 +134,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
    * the image source which fits at best for the size and screen
    */
   get src(): string | undefined {
-    // We *must not* set the src attribute before the <img> is actually rendered, and a child of <picture>
-    // Otherwise some browsers (FF, Safari) will eagerly load it, although the image isn't the one the browser
-    // should load given the other source/srcset variants. Also prevents native lazy loading.
-    if (!this.isRendered && typeof FastBoot === 'undefined') {
-      return undefined;
-    }
-
     const url = this.args.src.imageUrlFor(this.width ?? 640);
     return url;
   }
@@ -229,22 +219,18 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     this.isLoaded = true;
   }
 
-  @action
-  setRendered(): void {
-    this.isRendered = true;
-  }
-
   <template>
     <picture>
       {{#each this.sourcesSorted as |s|}}
         <source srcset={{s.srcset}} type={{s.mimeType}} sizes={{s.sizes}} />
       {{/each}}
       <img
+        {{! set loading before src, otherwise FF will always load eagerly! }}
+        loading="lazy"
         src={{this.src}}
         width={{this.width}}
         height={{this.height}}
         class={{this.classNames}}
-        loading="lazy"
         decoding="async"
         ...attributes
         data-ri-bh={{this.blurhashMeta.hash}}
@@ -257,8 +243,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
           )
         }}
         {{on "load" this.onLoad}}
-        {{! @glint-expect-error }}
-        {{(this.setRendered)}}
       />
     </picture>
   </template>
