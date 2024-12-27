@@ -91,7 +91,12 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   }
 
   const ar = args.src.aspectRatio;
-  if (ar !== undefined && ar !== 0 && width !== undefined) {
+  if (
+    height === undefined &&
+    ar !== undefined &&
+    ar !== 0 &&
+    width !== undefined
+  ) {
     height = Math.round(width / ar);
   }
 
