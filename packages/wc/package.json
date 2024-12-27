@@ -1,16 +1,29 @@
 {
   "name": "@responsive-image/wc",
-  "description": "Webcomponent to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+  "version": "1.0.0",
+  "description": "Web component to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+  "keywords": [
+    "responsive image",
+    "responsive images",
+    "lit",
+    "web component"
+  ],
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
-  "version": "1.0.0",
   "repository": "https://github.com/simonihmig/responsive-image",
   "type": "module",
-  "main": "dist/src/index.js",
-  "module": "dist/src/index.js",
+  "main": "./dist/src/index.js",
+  "module": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
   "exports": {
-    ".": "./dist/src/index.js"
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "analyze": "cem analyze --litelement",
     "start": "tsc --watch",

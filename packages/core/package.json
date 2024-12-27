@@ -2,15 +2,35 @@
   "name": "@responsive-image/core",
   "version": "1.0.0",
   "description": "Internal core functions and config for the ResponsiveImage project",
+  "keywords": [
+    "responsive image",
+    "responsive images"
+  ],
   "repository": "https://github.com/simonihmig/responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "files": [
-    "declarations",
     "dist"
   ],
   "type": "module",
   "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./blurhash/decode": {
+      "types": "./dist/blurhash/decode.d.ts",
+      "default": "./dist/blurhash/decode.js"
+    },
+    "./blurhash/ssr": {
+      "types": "./dist/blurhash/ssr.d.ts",
+      "default": "./dist/blurhash/ssr.js"
+    }
+  },
   "scripts": {
     "build": "pkgroll",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
@@ -48,27 +68,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./blurhash/decode": {
-      "types": "./dist/blurhash/decode.d.ts",
-      "default": "./dist/blurhash/decode.js"
-    },
-    "./blurhash/ssr": {
-      "types": "./dist/blurhash/ssr.d.ts",
-      "default": "./dist/blurhash/ssr.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/index"
-      ]
-    }
   },
   "volta": {
     "extends": "../../package.json"

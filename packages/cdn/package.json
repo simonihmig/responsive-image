@@ -1,16 +1,30 @@
 {
   "name": "@responsive-image/cdn",
   "version": "1.0.0",
-  "description": "Support for loading remote images from Image CDNs as part of the ResponsiveImage project",
+  "description": "Support for loading remote images from Image CDNs",
+  "keywords": [
+    "responsive image",
+    "responsive images",
+    "cdn",
+    "image cdn"
+  ],
   "repository": "https://github.com/simonihmig/responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "files": [
-    "declarations",
     "dist"
   ],
   "type": "module",
   "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "pkgroll",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
@@ -42,19 +56,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/index"
-      ]
-    }
   },
   "volta": {
     "extends": "../../package.json"

@@ -2,6 +2,11 @@
   "name": "@responsive-image/solid",
   "version": "0.0.0",
   "description": "Solid.js component to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+  "keywords": [
+    "responsive image",
+    "responsive images",
+    "solid"
+  ],
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "repository": "https://github.com/simonihmig/responsive-image",
@@ -13,7 +18,6 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "browser": {},
   "exports": {
     "solid": {
       "types": "./dist/index.d.ts",
@@ -24,7 +28,6 @@
       "default": "./dist/index.js"
     }
   },
-  "typesVersions": {},
   "scripts": {
     "start": "tsup --watch",
     "build": "rollup --config",
@@ -67,8 +70,5 @@
     "typescript": "5.7.2",
     "vite-plugin-solid": "2.11.0",
     "vitest": "2.1.8"
-  },
-  "keywords": [
-    "solid"
-  ]
+  }
 }
