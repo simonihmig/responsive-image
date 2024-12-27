@@ -22,6 +22,7 @@ describe('ResponsiveImage', () => {
     imageUrlFor(width, type = 'jpeg') {
       return `/provider/w${width}/image.${type}`;
     },
+    aspectRatio: 2,
   };
 
   describe('basics', () => {
@@ -110,27 +111,6 @@ describe('ResponsiveImage', () => {
         );
       });
     });
-
-    // it('renders a hello component', () => {
-    //   createRoot(() => {
-    //     const container = (<Hello />) as HTMLDivElement;
-    //     expect(container.outerHTML).toBe('<div>Hello World!</div>');
-    //   });
-    // });
-
-    // it('changes the hello target', () =>
-    //   createRoot((dispose) => {
-    //     const [to, setTo] = createSignal('Solid');
-    //     const container = (<Hello to={to()} />) as HTMLDivElement;
-    //     expect(container.outerHTML).toBe('<div>Hello Solid!</div>');
-    //     setTo('Tests');
-
-    //     // rendering is async
-    //     queueMicrotask(() => {
-    //       expect(container.outerHTML).toBe('<div>Hello Tests!</div>');
-    //       dispose();
-    //     });
-    //   }));
   });
 
   describe('responsive layout', () => {
@@ -139,8 +119,9 @@ describe('ResponsiveImage', () => {
         <ResponsiveImage src={defaultImageData} />
       ));
 
-      expect(container.querySelector('img')).toHaveClass('ri-responsive');
-      expect(container.querySelector('img')).not.toHaveClass('ri-fixed');
+      const imgEl = container.querySelector('img');
+      expect(imgEl).toHaveClass('ri-responsive');
+      expect(imgEl).not.toHaveClass('ri-fixed');
     });
 
     test('it renders width and height attributes when aspect ratio is known', async () => {
@@ -493,12 +474,10 @@ describe('ResponsiveImage', () => {
         ),
       { timeout: 5000 },
     );
-
     expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
-    expect(
-      window.getComputedStyle(imgEl!).backgroundImage,
-      'the background SVG has a reasonable length',
-    ).to.have.length.greaterThan(100);
+    expect(imgEl.style.backgroundImage).toMatchInlineSnapshot(
+      `"url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAAXNSR0IArs4c6QAAAbBJREFUOE890k9rHDEMh+FXtsf2bvKBG8gh0NJct7QlkEOgTSn0UEo+XGbG/6Qys5scfsinB8mS3P96MQdED4f3GNEpwRmCogZdoQxhVccyPEUd1Rzy+fnFnEAUuwBbvQCiCIaa0UyoO+BZ9Ay0Dfj449/eQRIjO+XglCxKlEHYAUWBbkIxz2qBomF/Nzxy9/TXHEZEyQwynWydKI3AgDdAPJWJsifutW/A7eOfHZhskEfjoJWklWgFbw1EMRG6m6guUVymStrTJSA3D7/NmTKNTh6V1FdyX5jGgreKyECdY/hEDQeqP57jEkMm5MO3nxegkVohtYXUXoljxuuKbB14Rw+ZFq6o4fqCZIZE5ObL0zsQeyG3mdRfmfpMsA0YmPeMN8BfU/wV1eV9LLk9PZozI2gjjULqC2ksRJ0JVJwMcH4fofkjxR1Z5UiRRNtGuDs9nIHt57WSrZBsJVEI26JEYfsDmaiSKWQWMiuRagH5dPq+b2FbWaSTqGSpJGlM0s+AOAaeZpHVIrNGFp32W5D701cTIMggbXGd7Npet2PyzgBhmKdqYNXAPCbm/Zw9/wGowBAcO1H/agAAAABJRU5ErkJggg==")"`,
+    );
 
     await loaded;
 
