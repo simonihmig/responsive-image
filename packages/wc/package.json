@@ -17,6 +17,9 @@
   "exports": {
     ".": "./dist/src/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "analyze": "cem analyze --litelement",
     "start": "tsc --watch",
