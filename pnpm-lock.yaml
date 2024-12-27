@@ -21,8 +21,8 @@ importers:
         specifier: 2.27.11
         version: 2.27.11
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       prettier:
         specifier: 3.4.2
         version: 3.4.2
@@ -333,8 +333,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       decorator-transforms:
         specifier: 2.3.0
         version: 2.3.0(@babel/core@7.25.9)
@@ -764,8 +764,8 @@ importers:
         specifier: 8.18.2
         version: 8.18.2(eslint@8.57.1)(typescript@5.7.2)
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -816,8 +816,8 @@ importers:
         specifier: 8.18.2
         version: 8.18.2(eslint@8.57.1)(typescript@5.7.2)
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -858,8 +858,8 @@ importers:
         specifier: 2.0.5
         version: 2.0.5
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -1027,8 +1027,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       ember-cached-decorator-polyfill:
         specifier: 1.0.2
         version: 1.0.2(@babel/core@7.25.9)(@glint/template@1.5.0)(ember-source@6.0.1(@glimmer/component@2.0.0)(@glint/template@1.5.0)(rsvp@4.8.5))
@@ -1115,8 +1115,8 @@ importers:
         specifier: 1.9.3
         version: 1.9.3(@babel/core@7.25.9)
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -1188,8 +1188,8 @@ importers:
         specifier: 8.18.2
         version: 8.18.2(eslint@8.57.1)(typescript@5.7.2)
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -1258,8 +1258,8 @@ importers:
         specifier: 2.1.6
         version: 2.1.6(@types/node@22.10.2)(playwright@1.49.1)(typescript@5.7.2)(vite@6.0.6(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0))(vitest@2.1.6)
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -1322,8 +1322,8 @@ importers:
         specifier: 8.18.2
         version: 8.18.2(eslint@8.57.1)(typescript@5.7.2)
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       css-loader:
         specifier: 7.1.2
         version: 7.1.2(webpack@5.97.1)
@@ -5707,8 +5707,8 @@ packages:
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
-  concurrently@9.1.0:
-    resolution: {integrity: sha512-VxkzwMAn4LP7WyMnJNbHN5mKV9L2IbyDjpzemKr99sXNR3GqRNMMHdm7prV1ws9wg7ETj6WUkNOigZVsptwbgg==}
+  concurrently@9.1.1:
+    resolution: {integrity: sha512-6VX8lrBIycgZKTwBsWS+bLrmkGRkDmvtGsYylRN9b93CygN6CbK46HmnQ3rdSOR8HRjdahDrxb5MqD9cEFOg5Q==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -15385,20 +15385,40 @@ snapshots:
     dependencies:
       '@types/node': 22.10.2
 
+  '@types/ember@4.0.11':
+    dependencies:
+      '@types/ember__application': 4.0.11(@babel/core@7.25.9)
+      '@types/ember__array': 4.0.10
+      '@types/ember__component': 4.0.22
+      '@types/ember__controller': 4.0.12
+      '@types/ember__debug': 4.0.8
+      '@types/ember__engine': 4.0.11
+      '@types/ember__error': 4.0.6
+      '@types/ember__object': 4.0.12
+      '@types/ember__polyfills': 4.0.6
+      '@types/ember__routing': 4.0.22
+      '@types/ember__runloop': 4.0.10
+      '@types/ember__service': 4.0.9
+      '@types/ember__string': 3.16.3
+      '@types/ember__template': 4.0.7
+      '@types/ember__test': 4.0.6(@babel/core@7.25.9)
+      '@types/ember__utils': 4.0.7
+      '@types/rsvp': 4.0.9
+
   '@types/ember@4.0.11(@babel/core@7.25.9)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.25.9)
       '@types/ember__array': 4.0.10(@babel/core@7.25.9)
       '@types/ember__component': 4.0.22(@babel/core@7.25.9)
-      '@types/ember__controller': 4.0.12(@babel/core@7.25.9)
-      '@types/ember__debug': 4.0.8(@babel/core@7.25.9)
-      '@types/ember__engine': 4.0.11(@babel/core@7.25.9)
+      '@types/ember__controller': 4.0.12
+      '@types/ember__debug': 4.0.8
+      '@types/ember__engine': 4.0.11
       '@types/ember__error': 4.0.6
       '@types/ember__object': 4.0.12(@babel/core@7.25.9)
       '@types/ember__polyfills': 4.0.6
       '@types/ember__routing': 4.0.22(@babel/core@7.25.9)
       '@types/ember__runloop': 4.0.10(@babel/core@7.25.9)
-      '@types/ember__service': 4.0.9(@babel/core@7.25.9)
+      '@types/ember__service': 4.0.9
       '@types/ember__string': 3.16.3
       '@types/ember__template': 4.0.7
       '@types/ember__test': 4.0.6(@babel/core@7.25.9)
@@ -15411,30 +15431,44 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.25.9)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.25.9)
-      '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__engine': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
+      '@types/ember': 4.0.11
+      '@types/ember__engine': 4.0.11
+      '@types/ember__object': 4.0.12
       '@types/ember__owner': 4.0.9
-      '@types/ember__routing': 4.0.22(@babel/core@7.25.9)
+      '@types/ember__routing': 4.0.22
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__array@4.0.10':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/ember__object': 4.0.12
 
   '@types/ember__array@4.0.10(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__object': 4.0.12
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
 
+  '@types/ember__component@4.0.22':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/ember__object': 4.0.12
+
   '@types/ember__component@4.0.22(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__object': 4.0.12
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__controller@4.0.12':
+    dependencies:
+      '@types/ember__object': 4.0.12
 
   '@types/ember__controller@4.0.12(@babel/core@7.25.9)':
     dependencies:
@@ -15442,6 +15476,11 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__debug@4.0.8':
+    dependencies:
+      '@types/ember__object': 4.0.12
+      '@types/ember__owner': 4.0.9
 
   '@types/ember__debug@4.0.8(@babel/core@7.25.9)':
     dependencies:
@@ -15452,6 +15491,11 @@ snapshots:
       - supports-color
 
   '@types/ember__destroyable@4.0.5': {}
+
+  '@types/ember__engine@4.0.11':
+    dependencies:
+      '@types/ember__object': 4.0.12
+      '@types/ember__owner': 4.0.9
 
   '@types/ember__engine@4.0.11(@babel/core@7.25.9)':
     dependencies:
@@ -15480,6 +15524,11 @@ snapshots:
       - '@babel/core'
       - supports-color
 
+  '@types/ember__object@4.0.12':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/rsvp': 4.0.9
+
   '@types/ember__object@4.0.12(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
@@ -15492,15 +15541,26 @@ snapshots:
 
   '@types/ember__polyfills@4.0.6': {}
 
+  '@types/ember__routing@4.0.22':
+    dependencies:
+      '@types/ember': 4.0.11
+      '@types/ember__controller': 4.0.12
+      '@types/ember__object': 4.0.12
+      '@types/ember__service': 4.0.9
+
   '@types/ember__routing@4.0.22(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__controller': 4.0.12(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
-      '@types/ember__service': 4.0.9(@babel/core@7.25.9)
+      '@types/ember__controller': 4.0.12
+      '@types/ember__object': 4.0.12
+      '@types/ember__service': 4.0.9
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__runloop@4.0.10':
+    dependencies:
+      '@types/ember': 4.0.11
 
   '@types/ember__runloop@4.0.10(@babel/core@7.25.9)':
     dependencies:
@@ -15508,6 +15568,10 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__service@4.0.9':
+    dependencies:
+      '@types/ember__object': 4.0.12
 
   '@types/ember__service@4.0.9(@babel/core@7.25.9)':
     dependencies:
@@ -15528,6 +15592,10 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  '@types/ember__utils@4.0.7':
+    dependencies:
+      '@types/ember': 4.0.11
 
   '@types/ember__utils@4.0.7(@babel/core@7.25.9)':
     dependencies:
@@ -17734,7 +17802,7 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  concurrently@9.1.0:
+  concurrently@9.1.1:
     dependencies:
       chalk: 4.1.2
       lodash: 4.17.21
