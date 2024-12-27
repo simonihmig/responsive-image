@@ -78,4 +78,12 @@ describe('cloudinary', function () {
       'https://res.cloudinary.com/dummy/image/upload/w_100,c_limit,q_50/foo/bar.jpeg',
     );
   });
+
+  test('it supports custom aspectRatio', function () {
+    const result = cloudinary('foo/bar.jpg', {
+      aspectRatio: 2,
+    });
+
+    expect(result.aspectRatio).toBe(2);
+  });
 });

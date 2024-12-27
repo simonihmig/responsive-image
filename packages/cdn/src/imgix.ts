@@ -1,15 +1,13 @@
 import { assert, getConfig } from '@responsive-image/core';
 import type { ImageType, ImageData } from '@responsive-image/core';
-import { Config } from './types';
+import { Config, CoreOptions } from './types';
 
 export interface ImgixConfig {
   domain: string;
 }
 
-export interface ImgixOptions {
+export interface ImgixOptions extends CoreOptions {
   params?: Record<string, string | number>;
-  formats?: ImageType[];
-  quality?: number;
 }
 
 const formatMap: Record<string, string> = {
@@ -24,7 +22,7 @@ export function imgix(image: string, options: ImgixOptions = {}): ImageData {
   const domain = getConfig<Config>('cdn')?.imgix?.domain;
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 
-  return {
+  const imageData: ImageData = {
     imageTypes: options.formats ?? ['webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
       const url = new URL(`https://${domain}/${normalizeSrc(image)}`);
@@ -47,4 +45,10 @@ export function imgix(image: string, options: ImgixOptions = {}): ImageData {
       return url.toString();
     },
   };
+
+  if (options.aspectRatio) {
+    imageData.aspectRatio = options.aspectRatio;
+  }
+
+  return imageData;
 }

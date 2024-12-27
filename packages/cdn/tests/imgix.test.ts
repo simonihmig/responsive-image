@@ -53,4 +53,12 @@ describe('imgix', function () {
       'https://dummy.imgix.net/foo/bar.jpg?fm=jpg&w=100&fit=max&q=50',
     );
   });
+
+  test('it supports custom aspectRatio', function () {
+    const result = imgix('foo/bar.jpg', {
+      aspectRatio: 2,
+    });
+
+    expect(result.aspectRatio).toBe(2);
+  });
 });

@@ -54,4 +54,12 @@ describe('netlify', function () {
       'https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100&fm=jpg&q=50',
     );
   });
+
+  test('it supports custom aspectRatio', function () {
+    const result = netlify('foo/bar.jpg', {
+      aspectRatio: 2,
+    });
+
+    expect(result.aspectRatio).toBe(2);
+  });
 });

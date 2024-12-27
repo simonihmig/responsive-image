@@ -1,6 +1,6 @@
 import { getConfig } from '@responsive-image/core';
 import type { ImageType, ImageData } from '@responsive-image/core';
-import { Config } from './types';
+import { Config, CoreOptions } from './types';
 
 export interface NetlifyConfig {
   /**
@@ -9,10 +9,7 @@ export interface NetlifyConfig {
   domain?: string;
 }
 
-export interface NetlifyOptions {
-  formats?: ImageType[];
-  quality?: number;
-}
+export type NetlifyOptions = CoreOptions;
 
 const formatMap: Record<string, string> = {
   jpeg: 'jpg',
@@ -26,7 +23,7 @@ export function netlify(
   const origin = domain ? `https://${domain}` : '';
   const url = image;
 
-  return {
+  const imageData: ImageData = {
     imageTypes: options.formats ?? ['webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
       const params = new URLSearchParams({
@@ -42,4 +39,10 @@ export function netlify(
       return `${origin}/.netlify/images?${params}`;
     },
   };
+
+  if (options.aspectRatio) {
+    imageData.aspectRatio = options.aspectRatio;
+  }
+
+  return imageData;
 }

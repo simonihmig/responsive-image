@@ -1,6 +1,6 @@
 import { assert, getConfig } from '@responsive-image/core';
 import type { ImageType, ImageData } from '@responsive-image/core';
-import { Config } from './types';
+import { Config, CoreOptions } from './types';
 
 export interface CloudinaryConfig {
   cloudName: string;
@@ -8,10 +8,8 @@ export interface CloudinaryConfig {
 
 type CloudinaryTransformation = Record<string, string | number>;
 
-export interface CloudinaryOptions {
+export interface CloudinaryOptions extends CoreOptions {
   transformations?: CloudinaryTransformation | CloudinaryTransformation[];
-  formats?: ImageType[];
-  quality?: number;
 }
 
 const URL_REGEX = /https?:/;
@@ -46,7 +44,7 @@ export function cloudinary(
     deliveryType = 'upload';
   }
 
-  return {
+  const imageData: ImageData = {
     imageTypes: options.formats ?? ['webp', 'avif'],
     imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
       const resizeParams: CloudinaryTransformation = {
@@ -79,4 +77,10 @@ export function cloudinary(
       }`;
     },
   };
+
+  if (options.aspectRatio) {
+    imageData.aspectRatio = options.aspectRatio;
+  }
+
+  return imageData;
 }

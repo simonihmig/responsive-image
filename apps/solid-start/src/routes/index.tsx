@@ -12,17 +12,19 @@ export default function Home() {
     <main>
       <h2>Netlify</h2>
       <ResponsiveImage
-        src={netlify('aurora-original.jpg')}
+        src={netlify('aurora-original.jpg', { aspectRatio: 1.4971927636 })}
         data-test-netlify-image
       />
       <h2>Cloudinary</h2>
       <ResponsiveImage
-        src={cloudinary('aurora-original_w0sk6h')}
+        src={cloudinary('aurora-original_w0sk6h', {
+          aspectRatio: 1.4971927636,
+        })}
         data-test-cloudinary-image
       />
       <h2>imgix</h2>
       <ResponsiveImage
-        src={imgix('aurora-original.jpg')}
+        src={imgix('aurora-original.jpg', { aspectRatio: 1.4971927636 })}
         data-test-imgix-image
       />
       <h2>Local</h2>

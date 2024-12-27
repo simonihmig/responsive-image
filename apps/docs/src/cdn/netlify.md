@@ -76,6 +76,52 @@ export class MyApp extends LitElement {
 
 This assumes that your application itself is also served from Netlify, so that `/path/to/image.jpg` is an image in your repo that is also deployed to Netlify. If your application containing that image is not on Netlify, you can still make Netlify process and serve it, you just need to point to it with an absolue URL to make use of Netlify's [remote source](#remote-source) support.
 
+### Aspect Ratio
+
+For the image component to be able to render `width` and `height` attributes to prevent layout shifts after loading has completed, it needs to know the aspect ratio of the source image. Unlike [local images](../usage/local-images.md) it cannot know this upfront for remote images, that's why it is recommended to supply the `aspectRatio` parameter if possible:
+
+::: code-group
+
+```gjs [Ember .gjs]
+import { ResponsiveImage } from '@responsive-image/ember';
+import { netlify } from '@responsive-image/cdn';
+
+<template>
+  <ResponsiveImage
+    @src={{netlify
+      '/path/to/image.jpg'
+      aspectRatio=1.5
+    }}
+  />
+</template>
+```
+
+```hbs [Ember .hbs]
+<ResponsiveImage
+  @src={{responsive-image-netlify '/path/to/image.jpg' aspectRatio=1.5}}
+/>
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { netlify } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${netlify('/path/to/image.jpg', {
+        aspectRatio: 1.5,
+      })}
+    ></responsive-image>`;
+  }
+}
+```
+
+:::
+
 ### Quality
 
 Use the `quality` parameter to pass a custom [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) setting instead of the default `auto`:
@@ -124,7 +170,7 @@ export class MyApp extends LitElement {
 
 ### Image formats
 
-By default, all supported image formats (PNG, JPEG, WEBP, AVIF) are referenced in the generated `<source>` tags.
+By default, modern image formats (webp, avif) are referenced in the generated `<source>` tags.
 You can tweak that using the `formats` argument:
 
 ::: code-group
