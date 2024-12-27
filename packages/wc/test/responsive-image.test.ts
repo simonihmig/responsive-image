@@ -514,110 +514,75 @@ describe('ResponsiveImage', () => {
   });
 
   describe('LQIP', () => {
-    describe('inline', () => {
-      test('it sets LQIP SVG as background', async () => {
-        const { onload, loaded } = imageLoaded();
-        const imageData: ImageData = {
-          imageTypes: ['jpeg', 'webp'],
-          // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-          aspectRatio: 1.5,
-          lqip: {
-            type: 'inline',
-            class: 'lqip-inline-test-class',
-          },
-        };
+    test('it sets LQIP class', async () => {
+      const { onload, loaded } = imageLoaded();
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp'],
+        // to replicate the loading timing, we need to load a real existing image
+        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+        aspectRatio: 1.5,
+        lqip: {
+          type: 'inline',
+          class: 'lqip-inline-test-class',
+        },
+      };
 
-        const el = await fixture<ResponsiveImage>(
-          html`<responsive-image .src=${imageData} />`,
-        );
-        onload(el);
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData} />`,
+      );
+      onload(el);
 
-        const imgEl = el.shadowRoot?.querySelector('img');
+      const imgEl = el.shadowRoot?.querySelector('img');
 
-        if (!imgEl?.complete) {
-          expect(imgEl).toHaveClass('lqip-inline-test-class');
-        }
+      if (!imgEl?.complete) {
+        expect(imgEl).toHaveClass('lqip-inline-test-class');
+      }
 
-        await loaded;
+      await loaded;
 
-        expect(imgEl).not.toHaveClass('lqip-inline-test-class');
-      });
+      expect(imgEl).not.toHaveClass('lqip-inline-test-class');
     });
 
-    describe('color', () => {
-      test('it sets background-color', async () => {
-        const { onload, loaded } = imageLoaded();
-        const imageData: ImageData = {
-          imageTypes: ['jpeg', 'webp'],
-          // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-          aspectRatio: 1.5,
-          lqip: {
-            type: 'color',
-            class: 'lqip-color-test-class',
-          },
-        };
+    test('it sets LQIP from blurhash as background', async () => {
+      const { onload, loaded } = imageLoaded();
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp'],
+        // to replicate the loading timing, we need to load a real existing image
+        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
+        aspectRatio: 1.5,
+        lqip: {
+          type: 'blurhash',
+          hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+          width: 4,
+          height: 3,
+        },
+      };
 
-        const el = await fixture<ResponsiveImage>(
-          html`<responsive-image .src=${imageData} />`,
-        );
-        onload(el);
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData} />`,
+      );
+      onload(el);
 
-        const imgEl = el.shadowRoot?.querySelector('img');
+      const imgEl = el.shadowRoot?.querySelector('img');
 
-        if (!imgEl?.complete) {
-          expect(imgEl).toHaveClass('lqip-color-test-class');
-        }
-
-        await loaded;
-
-        expect(imgEl).not.toHaveClass('lqip-color-test-class');
-      });
-    });
-
-    describe('blurhash', () => {
-      test('it sets LQIP from blurhash as background', async () => {
-        const { onload, loaded } = imageLoaded();
-        const imageData: ImageData = {
-          imageTypes: ['jpeg', 'webp'],
-          // to replicate the loading timing, we need to load a real existing image
-          imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-          aspectRatio: 1.5,
-          lqip: {
-            type: 'blurhash',
-            hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-            width: 4,
-            height: 3,
-          },
-        };
-
-        const el = await fixture<ResponsiveImage>(
-          html`<responsive-image .src=${imageData} />`,
-        );
-        onload(el);
-
-        const imgEl = el.shadowRoot?.querySelector('img');
-
-        if (!imgEl?.complete) {
-          expect(
-            imgEl?.style.backgroundImage,
-            'it has a background PNG',
-          ).to.match(/data:image\/png/);
-          expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
-          expect(
-            window.getComputedStyle(imgEl!).backgroundImage,
-            'the background SVG has a reasonable length',
-          ).to.have.length.greaterThan(100);
-        }
-
-        await loaded;
-
+      if (!imgEl?.complete) {
+        expect(
+          imgEl?.style.backgroundImage,
+          'it has a background PNG',
+        ).to.match(/data:image\/png/);
+        expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
         expect(
           window.getComputedStyle(imgEl!).backgroundImage,
-          'after image is loaded the background PNG is removed',
-        ).to.equal('none');
-      });
+          'the background SVG has a reasonable length',
+        ).to.have.length.greaterThan(100);
+      }
+
+      await loaded;
+
+      expect(
+        window.getComputedStyle(imgEl!).backgroundImage,
+        'after image is loaded the background PNG is removed',
+      ).to.equal('none');
     });
   });
 });
