@@ -74,6 +74,52 @@ export class MyApp extends LitElement {
 
 :::
 
+### Aspect Ratio
+
+For the image component to be able to render `width` and `height` attributes to prevent layout shifts after loading has completed, it needs to know the aspect ratio of the source image. Unlike [local images](../usage/local-images.md) it cannot know this upfront for remote images, that's why it is recommended to supply the `aspectRatio` parameter if possible:
+
+::: code-group
+
+```gjs [Ember .gjs]
+import { ResponsiveImage } from '@responsive-image/ember';
+import { imgix } from '@responsive-image/cdn';
+
+<template>
+  <ResponsiveImage
+    @src={{imgix
+      '/path/to/image.jpg'
+      aspectRatio=1.5
+    }}
+  />
+</template>
+```
+
+```hbs [Ember .hbs]
+<ResponsiveImage
+  @src={{responsive-image-imgix '/path/to/image.jpg' aspectRatio=1.5}}
+/>
+```
+
+```ts [Lit]
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { imgix } from '@responsive-image/cdn';
+import '@responsive-image/wc';
+
+@customElement('my-app')
+export class MyApp extends LitElement {
+  render() {
+    return html`<responsive-image
+      .src=${imgix('/path/to/image.jpg', {
+        aspectRatio: 1.5,
+      })}
+    ></responsive-image>`;
+  }
+}
+```
+
+:::
+
 ### Custom parameters
 
 Besides the transformations that the addon itself implicitly adds (related to resizing images)
@@ -174,7 +220,7 @@ export class MyApp extends LitElement {
 
 ### Image formats
 
-By default, all supported image formats (PNG, JPEG, WEBP, AVIF) are referenced in the generated `<source>` tags.
+By default, modern image formats (webp, avif) are referenced in the generated `<source>` tags.
 You can tweak that using the `formats` argument:
 
 ::: code-group
