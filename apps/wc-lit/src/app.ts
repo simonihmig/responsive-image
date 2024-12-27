@@ -33,21 +33,21 @@ export class MyApp extends LitElement {
       <h2>Netlify</h2>
 
       <responsive-image
-        .src=${netlify('aurora-original.jpg')}
+        .src=${netlify('aurora-original.jpg', { aspectRatio: 1.4971927636 })}
         data-test-netlify-image
       ></responsive-image>
 
       <h2>Cloudinary</h2>
 
       <responsive-image
-        .src=${cloudinary('aurora-original_w0sk6h')}
+        .src=${cloudinary('aurora-original_w0sk6h', { aspectRatio: 1.4971927636 })}
         data-test-cloudinary-image
       ></responsive-image>
 
       <h2>imgix</h2>
 
       <responsive-image
-        .src=${imgix('aurora-original.jpg')}
+        .src=${imgix('aurora-original.jpg', { aspectRatio: 1.4971927636 })}
         data-test-imgix-image
       ></responsive-image>
 
