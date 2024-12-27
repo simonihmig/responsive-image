@@ -19,6 +19,7 @@ module("Integration: Responsive Image Component", function (hooks) {
     imageUrlFor(width, type = "jpeg") {
       return `/provider/w${width}/image.${type}`;
     },
+    aspectRatio: 2,
   };
 
   module("basics", function () {

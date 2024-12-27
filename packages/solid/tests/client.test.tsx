@@ -22,6 +22,7 @@ describe('ResponsiveImage', () => {
     imageUrlFor(width, type = 'jpeg') {
       return `/provider/w${width}/image.${type}`;
     },
+    aspectRatio: 2,
   };
 
   describe('basics', () => {
@@ -118,8 +119,9 @@ describe('ResponsiveImage', () => {
         <ResponsiveImage src={defaultImageData} />
       ));
 
-      expect(container.querySelector('img')).toHaveClass('ri-responsive');
-      expect(container.querySelector('img')).not.toHaveClass('ri-fixed');
+      const imgEl = container.querySelector('img');
+      expect(imgEl).toHaveClass('ri-responsive');
+      expect(imgEl).not.toHaveClass('ri-fixed');
     });
 
     test('it renders width and height attributes when aspect ratio is known', async () => {
