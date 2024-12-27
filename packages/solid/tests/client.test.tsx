@@ -110,27 +110,6 @@ describe('ResponsiveImage', () => {
         );
       });
     });
-
-    // it('renders a hello component', () => {
-    //   createRoot(() => {
-    //     const container = (<Hello />) as HTMLDivElement;
-    //     expect(container.outerHTML).toBe('<div>Hello World!</div>');
-    //   });
-    // });
-
-    // it('changes the hello target', () =>
-    //   createRoot((dispose) => {
-    //     const [to, setTo] = createSignal('Solid');
-    //     const container = (<Hello to={to()} />) as HTMLDivElement;
-    //     expect(container.outerHTML).toBe('<div>Hello Solid!</div>');
-    //     setTo('Tests');
-
-    //     // rendering is async
-    //     queueMicrotask(() => {
-    //       expect(container.outerHTML).toBe('<div>Hello Tests!</div>');
-    //       dispose();
-    //     });
-    //   }));
   });
 
   describe('responsive layout', () => {
