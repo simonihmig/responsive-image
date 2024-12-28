@@ -21,7 +21,12 @@ export interface LqipBlurhash extends LqipBase {
   height: number;
 }
 
-export type Lqip = LqipInline | LqipColor | LqipBlurhash;
+export interface LqipThumbhash extends LqipBase {
+  type: 'thumbhash';
+  hash: string;
+}
+
+export type Lqip = LqipInline | LqipColor | LqipBlurhash | LqipThumbhash;
 
 export interface ImageData {
   imageTypes: ImageType[];

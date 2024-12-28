@@ -1,9 +1,4 @@
-import type {
-  ImageType,
-  LqipBlurhash,
-  LqipColor,
-  LqipInline,
-} from '@responsive-image/core';
+import type { ImageType, Lqip } from '@responsive-image/core';
 import type { Metadata, Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;
@@ -26,10 +21,15 @@ export interface LqipBlurhashOptions extends LqipBaseOptions {
   targetPixels?: number;
 }
 
+export interface LqipThumbhashOptions extends LqipBaseOptions {
+  type: 'thumbhash';
+}
+
 export type LqipOptions =
   | LqipColorOptions
   | LqipInlineOptions
-  | LqipBlurhashOptions;
+  | LqipBlurhashOptions
+  | LqipThumbhashOptions;
 
 export interface ImageOptions {
   w: number[];
@@ -46,7 +46,7 @@ export interface ImageProcessingResult {
 }
 
 export interface ImageLoaderChainedResult {
-  lqip?: LqipInline | LqipColor | LqipBlurhash;
+  lqip?: Lqip;
   images: ImageProcessingResult[];
   sharp: Sharp;
   imports: string[];
