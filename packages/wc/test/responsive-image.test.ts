@@ -26,14 +26,17 @@ describe('ResponsiveImage', () => {
         html`<responsive-image .src=${defaultImageData} />`,
       );
 
-      expect(el.shadowRoot?.querySelector('picture')).to.exist;
+      expect(el.shadowRoot?.querySelector('picture')).toBeInTheDocument();
       expect(el.shadowRoot?.querySelectorAll('source')).to.have.length(3);
-      expect(el.shadowRoot?.querySelector('source[type="image/jpeg"]')).to
-        .exist;
-      expect(el.shadowRoot?.querySelector('source[type="image/webp"]')).to
-        .exist;
-      expect(el.shadowRoot?.querySelector('source[type="image/avif"]')).to
-        .exist;
+      expect(
+        el.shadowRoot?.querySelector('source[type="image/jpeg"]'),
+      ).toBeInTheDocument();
+      expect(
+        el.shadowRoot?.querySelector('source[type="image/webp"]'),
+      ).toBeInTheDocument();
+      expect(
+        el.shadowRoot?.querySelector('source[type="image/avif"]'),
+      ).toBeInTheDocument();
     });
 
     test('it loads lazily by default', async () => {
