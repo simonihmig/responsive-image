@@ -4,6 +4,7 @@ import { encode } from 'blurhash';
 import { META_KEY, getInput, getViteOptions } from '../utils';
 
 import type { Options } from '../types';
+import type { ImageLoaderChainedResult } from '@responsive-image/build-utils';
 import type { Metadata } from 'sharp';
 import type { Plugin } from 'vite';
 
@@ -61,7 +62,7 @@ export default function lqipBlurhashPlugin(
           width,
           height,
         },
-      };
+      } satisfies ImageLoaderChainedResult;
 
       return {
         // Only the export plugin will actually return ESM code

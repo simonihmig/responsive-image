@@ -1,6 +1,7 @@
 import exportPlugin from './export';
 import loaderPlugin from './loader';
 import lqipBlurhashPlugin from './lqip/blurhash';
+import lqipThumbhashPlugin from './lqip/thumbhash';
 import lqipColorPlugin from './lqip/color';
 import lqipColorCssPlugin from './lqip/color-css';
 import lqipInlinePlugin from './lqip/inline';
@@ -15,6 +16,7 @@ function setupPlugins(options?: Partial<Options>) {
     loaderPlugin(options),
     resizePlugin(options),
     lqipBlurhashPlugin(options),
+    lqipThumbhashPlugin(options),
     lqipColorPlugin(options),
     lqipColorCssPlugin(options),
     lqipInlinePlugin(options),
