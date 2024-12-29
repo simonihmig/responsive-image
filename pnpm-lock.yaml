@@ -944,6 +944,10 @@ importers:
         version: 2.1.9(@types/node@22.13.1)(@vitest/browser@3.0.5)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.13.1)(typescript@5.7.3))(terser@5.37.0)
 
   packages/core:
+    dependencies:
+      base64-arraybuffer:
+        specifier: ^1.0.2
+        version: 1.0.2
     devDependencies:
       '@responsive-image/internals':
         specifier: workspace:*
@@ -966,6 +970,9 @@ importers:
       prettier:
         specifier: 3.4.2
         version: 3.4.2
+      thumbhash:
+        specifier: 0.1.1
+        version: 0.1.1
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -5181,6 +5188,10 @@ packages:
     resolution: {integrity: sha512-u+HQjUyXwqZLbDDlunZUoFlWSZWIwIpNpDErBMOCkBU/VOMpVYMLYih/+FRFCkfrgXrdnbI46fTkUIu1C22v7Q==}
     engines: {node: '>= 10.0.0'}
     hasBin: true
+
+  base64-arraybuffer@1.0.2:
+    resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
+    engines: {node: '>= 0.6.0'}
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -16955,6 +16966,8 @@ snapshots:
   base-n@3.0.0:
     dependencies:
       dashdash: 1.14.1
+
+  base64-arraybuffer@1.0.2: {}
 
   base64-js@1.5.1: {}
 
