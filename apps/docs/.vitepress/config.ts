@@ -117,6 +117,11 @@ export default defineConfig({
         icon: 'github',
         link: 'https://github.com/simonihmig/responsive-image',
       },
+      {
+        icon: 'bluesky',
+        link: 'https://bsky.app/profile/simonihmig.bsky.social',
+      },
+      { icon: 'mastodon', link: 'https://fosstodon.org/@simonihmig' },
     ],
 
     footer: {
