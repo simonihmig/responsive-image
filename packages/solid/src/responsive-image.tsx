@@ -4,6 +4,7 @@ import {
   getDestinationWidthBySize,
   env,
   isLqipBlurhash,
+  isLqipThumbhash,
 } from '@responsive-image/core';
 import { createResource, createSignal, type JSX, splitProps } from 'solid-js';
 import { isServer } from 'solid-js/web';
@@ -174,6 +175,27 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     };
   };
 
+  const thumbhashMeta = () =>
+    isLqipThumbhash(args.src.lqip) ? args.src.lqip : undefined;
+  const thumbhashStyles = (): JSX.CSSProperties | undefined => {
+    const meta = thumbhashMeta();
+    if (isServer || !meta || isLoaded()) {
+      return undefined;
+    }
+
+    const { hash } = meta;
+    const uri = blurhashLib()?.decode2url(hash);
+
+    if (!uri) {
+      return undefined;
+    }
+
+    return {
+      'background-image': `url("${uri}")`,
+      'background-size': 'cover',
+    };
+  };
+
   return (
     <picture>
       {sourcesSorted().map((s) => (
@@ -190,7 +212,8 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         data-ri-bh={blurhashMeta()?.hash}
         data-ri-bh-w={blurhashMeta()?.width}
         data-ri-bh-h={blurhashMeta()?.height}
-        style={blurhashStyles()}
+        data-ri-th={thumbhashMeta()?.hash}
+        style={blurhashStyles() ?? thumbhashStyles()}
         on:load={() => setLoaded(true)}
       />
     </picture>
