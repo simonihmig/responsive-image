@@ -1,17 +1,18 @@
 import {
-  type ImageType,
-  type ImageData,
   getDestinationWidthBySize,
   env,
   isLqipBlurhash,
   isLqipThumbhash,
 } from '@responsive-image/core';
-import { createResource, createSignal, type JSX, splitProps } from 'solid-js';
+import { createSignal, type JSX, splitProps } from 'solid-js';
 import { isServer } from 'solid-js/web';
 
-import type { Component } from 'solid-js';
-
 import './responsive-image.css';
+import { LqipBlurhashProvider } from './lqip-hash/blurhash.ts';
+import { LqipThumbhashProvider } from './lqip-hash/thumbhash.ts';
+
+import type { ImageType, ImageData } from '@responsive-image/core';
+import type { Component } from 'solid-js';
 
 export interface ResponsiveImageArgs {
   src: ImageData;
@@ -153,48 +154,31 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
 
   const blurhashMeta = () =>
     isLqipBlurhash(args.src.lqip) ? args.src.lqip : undefined;
-  const [blurhashLib] = createResource(() => {
-    return import('@responsive-image/core/blurhash/decode');
-  });
-  const blurhashStyles = (): JSX.CSSProperties | undefined => {
-    const meta = blurhashMeta();
-    if (isServer || !meta || isLoaded()) {
-      return undefined;
-    }
-
-    const { hash, width, height } = meta;
-    const uri = blurhashLib()?.decode2url(hash, width, height);
-
-    if (!uri) {
-      return undefined;
-    }
-
-    return {
-      'background-image': `url("${uri}")`,
-      'background-size': 'cover',
-    };
-  };
-
   const thumbhashMeta = () =>
     isLqipThumbhash(args.src.lqip) ? args.src.lqip : undefined;
-  const thumbhashStyles = (): JSX.CSSProperties | undefined => {
-    const meta = thumbhashMeta();
-    if (isServer || !meta || isLoaded()) {
-      return undefined;
+
+  let hashStyles: (() => JSX.CSSProperties | undefined) | undefined = undefined;
+
+  if (!isServer) {
+    const hashProvider = blurhashMeta()
+      ? new LqipBlurhashProvider(blurhashMeta())
+      : thumbhashMeta
+        ? new LqipThumbhashProvider(thumbhashMeta())
+        : undefined;
+
+    if (hashProvider) {
+      hashStyles = () => {
+        if (isLoaded() || !hashProvider.available) {
+          return undefined;
+        }
+
+        return {
+          'background-image': `${hashProvider.imageUrl}`,
+          'background-size': 'cover',
+        };
+      };
     }
-
-    const { hash } = meta;
-    const uri = blurhashLib()?.decode2url(hash);
-
-    if (!uri) {
-      return undefined;
-    }
-
-    return {
-      'background-image': `url("${uri}")`,
-      'background-size': 'cover',
-    };
-  };
+  }
 
   return (
     <picture>
@@ -213,7 +197,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         data-ri-bh-w={blurhashMeta()?.width}
         data-ri-bh-h={blurhashMeta()?.height}
         data-ri-th={thumbhashMeta()?.hash}
-        style={blurhashStyles() ?? thumbhashStyles()}
+        style={hashStyles?.()}
         on:load={() => setLoaded(true)}
       />
     </picture>
