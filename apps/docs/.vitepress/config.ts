@@ -2,12 +2,14 @@ import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'ResponsiveImage',
-  description: 'The multi-framework JavaScript library for responsive images.',
+  title: 'ResponsiveImage - the JavaScript library for responsive images.',
+  description:
+    'Responsive images made easy. Supporting multiple frameworks, WebP, AVIF, placeholders (LQIP), Image CDNs and much more.',
   srcDir: './src',
   cleanUrls: true,
   appearance: 'dark',
   themeConfig: {
+    siteTitle: 'ResponsiveImage',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
