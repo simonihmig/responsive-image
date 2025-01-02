@@ -310,7 +310,7 @@ importers:
         version: 4.0.1-unstable.f33728f(@embroider/compat@3.6.2-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0))(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@embroider/webpack@4.0.5(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(webpack@5.97.1))
       '@embroider/vite':
         specifier: 0.2.1-unstable.f33728f
-        version: 0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.29.1)(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
+        version: 0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.29.1)(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
       '@glimmer/component':
         specifier: 2.0.0
         version: 2.0.0
@@ -423,8 +423,8 @@ importers:
         specifier: 3.4.0
         version: 3.4.0(@babel/core@7.25.9)
       vite:
-        specifier: 6.0.6
-        version: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+        specifier: 6.0.7
+        version: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
       webpack:
         specifier: 5.97.1
         version: 5.97.1
@@ -688,7 +688,7 @@ importers:
         version: 0.15.2(solid-js@1.9.3)
       '@solidjs/start':
         specifier: ^1.0.10
-        version: 1.0.10(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.3)(db0@0.2.1)(ioredis@5.4.2)(jiti@2.4.2)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
+        version: 1.0.10(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.3)(db0@0.2.1)(ioredis@5.4.2)(jiti@2.4.2)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
       solid-js:
         specifier: ^1.9.2
         version: 1.9.3
@@ -724,8 +724,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.6
-        version: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+        specifier: 6.0.7
+        version: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
 
   packages/build-utils:
     dependencies:
@@ -1221,8 +1221,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.6
-        version: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+        specifier: 6.0.7
+        version: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.3)(@vitest/browser@2.1.8)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.3)(typescript@5.7.2))(terser@5.37.0)
@@ -1256,7 +1256,7 @@ importers:
         version: 8.19.0(eslint@8.57.1)(typescript@5.7.2)
       '@vitest/browser':
         specifier: 2.1.8
-        version: 2.1.8(@types/node@22.10.3)(playwright@1.49.1)(typescript@5.7.2)(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))(vitest@2.1.8)
+        version: 2.1.8(@types/node@22.10.3)(playwright@1.49.1)(typescript@5.7.2)(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))(vitest@2.1.8)
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -1279,8 +1279,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.6
-        version: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+        specifier: 6.0.7
+        version: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.3)(@vitest/browser@2.1.8)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.3)(typescript@5.7.2))(terser@5.37.0)
@@ -10939,8 +10939,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.0.6:
-    resolution: {integrity: sha512-NSjmUuckPmDU18bHz7QZ+bTYhRR0iA72cs2QAxCqDpafJ0S6qetco0LB3WW2OxlMHS0JmAv+yZ/R3uPmMyGTjQ==}
+  vite@6.0.7:
+    resolution: {integrity: sha512-RDt8r/7qx9940f8FcOIAH9PTViRrghKaK2K1jY3RaAURrEUbm9Du1mJ72G+jlhtG3WwodnfzY8ORQZbBavZEAQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -13605,7 +13605,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.29.1)(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))':
+  '@embroider/vite@0.2.1-unstable.f33728f(@embroider/core@3.4.16-unstable.f33728f(@glint/template@1.5.0))(@glint/template@1.5.0)(rollup@4.29.1)(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))':
     dependencies:
       '@babel/core': 7.25.9
       '@embroider/core': 3.4.16-unstable.f33728f(@glint/template@1.5.0)
@@ -13622,7 +13622,7 @@ snapshots:
       send: 0.18.0
       source-map-url: 0.4.1
       terser: 5.37.0
-      vite: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+      vite: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
     transitivePeerDependencies:
       - '@glint/template'
       - bufferutil
@@ -14954,7 +14954,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.3
 
-  '@solidjs/start@1.0.10(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.3)(db0@0.2.1)(ioredis@5.4.2)(jiti@2.4.2)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))':
+  '@solidjs/start@1.0.10(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.3)(db0@0.2.1)(ioredis@5.4.2)(jiti@2.4.2)(terser@5.37.0)(typescript@5.7.2))(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))':
     dependencies:
       '@vinxi/plugin-directives': 0.4.3(vinxi@0.5.1(@types/node@22.10.3)(db0@0.2.1)(ioredis@5.4.2)(jiti@2.4.2)(terser@5.37.0)(typescript@5.7.2))
       '@vinxi/server-components': 0.4.3(vinxi@0.5.1(@types/node@22.10.3)(db0@0.2.1)(ioredis@5.4.2)(jiti@2.4.2)(terser@5.37.0)(typescript@5.7.2))
@@ -14969,7 +14969,7 @@ snapshots:
       source-map-js: 1.2.1
       terracotta: 1.0.6(solid-js@1.9.3)
       tinyglobby: 0.2.10
-      vite-plugin-solid: 2.11.0(solid-js@1.9.3)(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
+      vite-plugin-solid: 2.11.0(solid-js@1.9.3)(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - solid-js
@@ -15655,11 +15655,11 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@vitest/browser@2.1.8(@types/node@22.10.3)(playwright@1.49.1)(typescript@5.7.2)(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))(vitest@2.1.8)':
+  '@vitest/browser@2.1.8(@types/node@22.10.3)(playwright@1.49.1)(typescript@5.7.2)(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))(vitest@2.1.8)':
     dependencies:
       '@testing-library/dom': 10.4.0
       '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
-      '@vitest/mocker': 2.1.8(msw@2.7.0(@types/node@22.10.3)(typescript@5.7.2))(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
+      '@vitest/mocker': 2.1.8(msw@2.7.0(@types/node@22.10.3)(typescript@5.7.2))(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
       '@vitest/utils': 2.1.8
       magic-string: 0.30.17
       msw: 2.7.0(@types/node@22.10.3)(typescript@5.7.2)
@@ -15692,14 +15692,14 @@ snapshots:
       msw: 2.7.0(@types/node@22.10.3)(typescript@5.7.2)
       vite: 5.4.11(@types/node@22.10.3)(terser@5.37.0)
 
-  '@vitest/mocker@2.1.8(msw@2.7.0(@types/node@22.10.3)(typescript@5.7.2))(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))':
+  '@vitest/mocker@2.1.8(msw@2.7.0(@types/node@22.10.3)(typescript@5.7.2))(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))':
     dependencies:
       '@vitest/spy': 2.1.8
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
       msw: 2.7.0(@types/node@22.10.3)(typescript@5.7.2)
-      vite: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+      vite: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
 
   '@vitest/pretty-format@2.1.8':
     dependencies:
@@ -24172,7 +24172,7 @@ snapshots:
       unctx: 2.4.1
       unenv: 1.10.0
       unstorage: 1.14.4(db0@0.2.1)(ioredis@5.4.2)
-      vite: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+      vite: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
       zod: 3.24.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -24247,7 +24247,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-solid@2.11.0(solid-js@1.9.3)(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)):
+  vite-plugin-solid@2.11.0(solid-js@1.9.3)(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)):
     dependencies:
       '@babel/core': 7.25.9
       '@types/babel__core': 7.20.5
@@ -24255,8 +24255,8 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.3
       solid-refresh: 0.6.3(solid-js@1.9.3)
-      vite: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
-      vitefu: 1.0.4(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
+      vite: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+      vitefu: 1.0.4(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -24270,7 +24270,7 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.37.0
 
-  vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0):
+  vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
@@ -24285,9 +24285,9 @@ snapshots:
     optionalDependencies:
       vite: 5.4.11(@types/node@22.10.3)(terser@5.37.0)
 
-  vitefu@1.0.4(vite@6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)):
+  vitefu@1.0.4(vite@6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)):
     optionalDependencies:
-      vite: 6.0.6(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
+      vite: 6.0.7(@types/node@22.10.3)(jiti@2.4.2)(terser@5.37.0)
 
   vitepress@1.5.0(@algolia/client-search@5.18.0)(@types/node@22.10.3)(change-case@5.4.4)(fuse.js@7.0.0)(postcss@8.4.49)(search-insights@2.17.3)(terser@5.37.0)(typescript@5.7.2):
     dependencies:
