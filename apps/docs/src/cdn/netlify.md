@@ -72,6 +72,15 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [Solid]
+import { ResponsiveImage } from '@responsive-image/solid';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return <ResponsiveImage src={netlify('path/to/uploaded/image.jpg')} />;
+}
+```
+
 :::
 
 This assumes that your application itself is also served from Netlify, so that `/path/to/image.jpg` is an image in your repo that is also deployed to Netlify. If your application containing that image is not on Netlify, you can still make Netlify process and serve it, you just need to point to it with an absolue URL to make use of Netlify's [remote source](#remote-source) support.
@@ -120,11 +129,26 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [Solid]
+import { ResponsiveImage } from '@responsive-image/solid';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify('path/to/uploaded/image.jpg', {
+        aspectRatio: 1.5,
+      })}
+    />
+  );
+}
+```
+
 :::
 
 ### Quality
 
-Use the `quality` parameter to pass a custom [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) setting instead of the default `auto`:
+Use the `quality` parameter to pass a custom [quality](https://netlify.com/documentation/transformation_reference#q_quality) setting instead of the default `auto`:
 
 ::: code-group
 
@@ -163,6 +187,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [Solid]
+import { ResponsiveImage } from '@responsive-image/solid';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify('path/to/uploaded/image.jpg', {
+        quality: 50,
+      })}
+    />
+  );
 }
 ```
 
@@ -216,6 +255,21 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [Solid]
+import { ResponsiveImage } from '@responsive-image/solid';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify('path/to/uploaded/image.jpg', {
+        formats: ['webp', 'avif'],
+      })}
+    />
+  );
+}
+```
+
 :::
 
 ### Remote source
@@ -260,6 +314,21 @@ export class MyApp extends LitElement {
       )}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [Solid]
+import { ResponsiveImage } from '@responsive-image/solid';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify(
+        'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
+      )}
+    />
+  );
 }
 ```
 
