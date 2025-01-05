@@ -1168,6 +1168,9 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
         version: 4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))
+      concurrently:
+        specifier: 9.1.2
+        version: 9.1.2
       eslint:
         specifier: ^9.7.0
         version: 9.18.0(jiti@2.4.2)
