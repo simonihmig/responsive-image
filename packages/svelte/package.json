@@ -1,5 +1,14 @@
 {
-	"name": "svelte",
+	"name": "@responsive-image/svelte",
+	"description": "Svelte component to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+	"keywords": [
+		"responsive image",
+		"responsive images",
+		"svelte"
+	],
+	"license": "MIT",
+	"author": "Simon Ihmig <simon.ihmig@gmail.com>",
+	"repository": "https://github.com/simonihmig/responsive-image",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
