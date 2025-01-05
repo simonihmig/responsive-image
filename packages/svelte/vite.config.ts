@@ -5,6 +5,11 @@ export default defineConfig({
 	plugins: [sveltekit()],
 
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
+		include: ['tests/**/*.{test,spec}.{js,ts}'],
+		browser: {
+			provider: 'playwright', // or 'webdriverio'
+			enabled: true,
+			name: 'chromium' // browser name is required
+		}
 	}
 });
