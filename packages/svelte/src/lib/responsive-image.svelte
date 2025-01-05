@@ -2,7 +2,7 @@
 	import type { ImageType, ImageData } from '@responsive-image/core';
 	import type { HTMLImgAttributes } from 'svelte/elements';
 
-	let { src }: ResponsiveImageProps = $props();
+	let { src, size, sizes, width, height, ...htmlAttributes }: ResponsiveImageProps = $props();
 
 	interface ResponsiveImageArgs {
 		src: ImageData;
@@ -23,14 +23,6 @@
 
 	type Layout = 'responsive' | 'fixed';
 
-	const responsiveImageArgs: Array<keyof ResponsiveImageArgs> = [
-		'src',
-		'size',
-		'sizes',
-		'width',
-		'height'
-	];
-
 	const PIXEL_DENSITIES = [1, 2];
 
 	// determines the order of sources, prefereing next-gen formats over legacy
@@ -43,5 +35,5 @@
 </script>
 
 <picture>
-	<img alt="" />
+	<img loading="lazy" decoding="async" src="" alt="" {...htmlAttributes} />
 </picture>

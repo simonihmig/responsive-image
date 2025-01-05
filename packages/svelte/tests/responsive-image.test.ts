@@ -32,64 +32,41 @@ describe('ResponsiveImage', () => {
 		// 	expect(container.querySelector('source[type="image/webp"]')).toBeInTheDocument();
 		// 	expect(container.querySelector('source[type="image/avif"]')).toBeInTheDocument();
 		// });
-		//   describe('HTML attributes', () => {
-		//     test('it loads lazily by default', async () => {
-		//       const { container } = render(() => (
-		//         <ResponsiveImage src={defaultImageData} />
-		//       ));
-		//       expect(container.querySelector('img')).toHaveAttribute(
-		//         'loading',
-		//         'lazy',
-		//       );
-		//     });
-		//     test('it decodes async', async () => {
-		//       const { container } = render(() => (
-		//         <ResponsiveImage src={defaultImageData} />
-		//       ));
-		//       expect(container.querySelector('img')).toHaveAttribute(
-		//         'decoding',
-		//         'async',
-		//       );
-		//     });
-		//     test('it can optionally load eager', async () => {
-		//       const { container } = render(() => (
-		//         <ResponsiveImage src={defaultImageData} loading="eager" />
-		//       ));
-		//       expect(container.querySelector('img')).toHaveAttribute(
-		//         'loading',
-		//         'eager',
-		//       );
-		//     });
-		//     test('it can optionally decode sync', async () => {
-		//       const { container } = render(() => (
-		//         <ResponsiveImage src={defaultImageData} decoding="sync" />
-		//       ));
-		//       expect(container.querySelector('img')).toHaveAttribute(
-		//         'decoding',
-		//         'sync',
-		//       );
-		//     });
-		//     test('it renders arbitrary HTML attributes', async function () {
-		//       const { container } = render(() => (
-		//         <ResponsiveImage
-		//           src={defaultImageData}
-		//           alt="some"
-		//           class="foo"
-		//           role="button"
-		//           data-test-image
-		//         />
-		//       ));
-		//       expect(container.querySelector('img')).toHaveAttribute('alt', 'some');
-		//       expect(container.querySelector('img')).toHaveClass('foo');
-		//       expect(container.querySelector('img')).toHaveAttribute(
-		//         'role',
-		//         'button',
-		//       );
-		//       expect(container.querySelector('img')).toHaveAttribute(
-		//         'data-test-image',
-		//       );
-		//     });
-		//   });
+		describe('HTML attributes', () => {
+			test('it loads lazily by default', async () => {
+				const { container } = render(ResponsiveImage, { src: defaultImageData });
+
+				// in handle-lazy-load svelte delays adding src and loading to img elements to after they are appended to DOM
+				// so we need to delay our assertion. See https://github.com/sveltejs/svelte/blob/a91308d9db2f37f91b7c7e379c638fe6cd814d0c/packages/svelte/src/internal/client/dom/elements/attributes.js#L508
+				await new Promise((r) => requestAnimationFrame(r));
+				expect(container.querySelector('img')).toHaveAttribute('loading', 'lazy');
+			});
+			test('it decodes async', async () => {
+				const { container } = render(ResponsiveImage, { src: defaultImageData });
+				expect(container.querySelector('img')).toHaveAttribute('decoding', 'async');
+			});
+			test('it can optionally load eager', async () => {
+				const { container } = render(ResponsiveImage, { src: defaultImageData, loading: 'eager' });
+				expect(container.querySelector('img')).toHaveAttribute('loading', 'eager');
+			});
+			test('it can optionally decode sync', async () => {
+				const { container } = render(ResponsiveImage, { src: defaultImageData, decoding: 'sync' });
+				expect(container.querySelector('img')).toHaveAttribute('decoding', 'sync');
+			});
+			test('it renders arbitrary HTML attributes', async function () {
+				const { container } = render(ResponsiveImage, {
+					src: defaultImageData,
+					alt: 'some',
+					class: 'foo',
+					role: 'button',
+					'data-test-image': true
+				});
+				expect(container.querySelector('img')).toHaveAttribute('alt', 'some');
+				expect(container.querySelector('img')).toHaveClass('foo');
+				expect(container.querySelector('img')).toHaveAttribute('role', 'button');
+				expect(container.querySelector('img')).toHaveAttribute('data-test-image');
+			});
+		});
 	});
 	// describe('responsive layout', () => {
 	//   test('it has responsive layout by default', async () => {
