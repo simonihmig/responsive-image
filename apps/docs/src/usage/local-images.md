@@ -44,6 +44,15 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [Solid]
+import { ResponsiveImage } from '@responsive-image/solid';
+import image from './image.jpg?w=200;400&quality=90&lqip=inline&responsive';
+
+export default function MyApp() {
+  return <ResponsiveImage src={image} width={200} />;
+}
+```
+
 :::
 
 ## Image parameters reference
