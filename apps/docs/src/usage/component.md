@@ -198,3 +198,7 @@ and additionally a `2x` variant for devices with high pixel densities:
 
 > [!NOTE]
 > It is sufficient to supply either `width` or `height`, the component will still render the missing attribute according to the image's aspect ratio!
+
+## HTML attributes
+
+Attributes used for image loading and rendering like `src`, `width` and `height` will be automatically set by the component. Some attributes like `loading` and `decoding` have defaults applied which can be customized. All other common [`HTMLImageElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement) attributes can be set on the component and will be proxied to the underlying `<img />` element.
