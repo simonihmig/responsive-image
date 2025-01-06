@@ -1,5 +1,7 @@
 # Solid
 
+The `@responsive-image/solid` package provides a native [SolidJS](https://www.solidjs.com/) image component.
+
 ## Installation
 
 In your application's directory:

@@ -15,15 +15,6 @@ import heroImage from './hero.jpg?responsive';
 </template>
 ```
 
-```tsx [Solid]
-import { ResponsiveImage } from '@responsive-image/solid';
-import heroImage from './hero.jpg?responsive';
-
-export default function MyApp() {
-  return <ResponsiveImage src={heroImage} />;
-}
-```
-
 ```ts [Lit]
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -35,6 +26,15 @@ export class MyApp extends LitElement {
   render() {
     return html`<responsive-image .src=${heroImage}></responsive-image>`;
   }
+}
+```
+
+```tsx [Solid]
+import { ResponsiveImage } from '@responsive-image/solid';
+import heroImage from './hero.jpg?responsive';
+
+export default function MyApp() {
+  return <ResponsiveImage src={heroImage} />;
 }
 ```
 
@@ -103,12 +103,12 @@ If your image width is not `100vw`, say `70vw` for example, you can specify this
 <ResponsiveImage @src={{heroImage}} @size={{70}} />
 ```
 
-```tsx [Solid]
-<ResponsiveImage src={heroImage} size={70} />
-```
-
 ```ts [Lit]
 html`<responsive-image .src=${heroImage} size="70"></responsive-image>`;
+```
+
+```tsx [Solid]
+<ResponsiveImage src={heroImage} size={70} />
 ```
 
 :::
@@ -123,15 +123,15 @@ You can also set the attribute like this if your responsive image width is more 
 <ResponsiveImage @src={{heroImage}} @sizes='(min-width: 800px) 800px, 100vw' />
 ```
 
-```tsx [Solid]
-<ResponsiveImage src={heroImage} sizes="(min-width: 800px) 800px, 100vw" />
-```
-
 ```ts [Lit]
 html`<responsive-image
   .src=${heroImage}
   sizes="(min-width: 800px) 800px, 100vw"
 ></responsive-image>`;
+```
+
+```tsx [Solid]
+<ResponsiveImage src={heroImage} sizes="(min-width: 800px) 800px, 100vw" />
 ```
 
 :::
@@ -151,6 +151,12 @@ import logoImage from './hero.jpg?w=320;640&responsive';
 </template>
 ```
 
+```ts [Lit]
+import logoImage from './hero.jpg?w=320;640&responsive';
+
+html`<responsive-image .src=${logoImage} with="320"></responsive-image>`;
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import logoImage from './hero.jpg?w=320;640&responsive';
@@ -158,12 +164,6 @@ import logoImage from './hero.jpg?w=320;640&responsive';
 export default function () {
   return <ResponsiveImage src={logoImage} width={320} />;
 }
-```
-
-```ts [Lit]
-import logoImage from './hero.jpg?w=320;640&responsive';
-
-html`<responsive-image .src=${logoImage} with="320"></responsive-image>`;
 ```
 
 :::
