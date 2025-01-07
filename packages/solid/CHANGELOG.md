@@ -1,5 +1,11 @@
 # @responsive-image/solid
 
+## 1.0.1
+
+### Patch Changes
+
+- [#903](https://github.com/simonihmig/responsive-image/pull/903) [`ee6ad76`](https://github.com/simonihmig/responsive-image/commit/ee6ad767ad6538eb1e47e8a8939acbd90f341f37) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix missing prepack script
+
 ## 1.0.0
 
 ### Major Changes
