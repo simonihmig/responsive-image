@@ -1,5 +1,20 @@
 # @responsive-image/cdn
 
+## 1.1.0
+
+### Minor Changes
+
+- [#881](https://github.com/simonihmig/responsive-image/pull/881) [`fec0c61`](https://github.com/simonihmig/responsive-image/commit/fec0c61449a2b8568884612731dfb4c68acfbe20) Thanks [@simonihmig](https://github.com/simonihmig)! - Add aspectRatio option
+
+  Provider functions for image CDNs support an `aspectRatio` parameter to set the aspect ratio of the remote image, allowing the image component to render proper `width` and `height` attributes to prevent layout shift.
+
+### Patch Changes
+
+- [#883](https://github.com/simonihmig/responsive-image/pull/883) [`4c13f20`](https://github.com/simonihmig/responsive-image/commit/4c13f20f912a5308a347695798a8bc0c7c4187a1) Thanks [@simonihmig](https://github.com/simonihmig)! - Cleanup and update package.json meta data
+
+- Updated dependencies [[`4c13f20`](https://github.com/simonihmig/responsive-image/commit/4c13f20f912a5308a347695798a8bc0c7c4187a1)]:
+  - @responsive-image/core@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

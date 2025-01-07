@@ -1,5 +1,14 @@
 # @responsive-image/build-utils
 
+## 1.0.1
+
+### Patch Changes
+
+- [#883](https://github.com/simonihmig/responsive-image/pull/883) [`4c13f20`](https://github.com/simonihmig/responsive-image/commit/4c13f20f912a5308a347695798a8bc0c7c4187a1) Thanks [@simonihmig](https://github.com/simonihmig)! - Cleanup and update package.json meta data
+
+- Updated dependencies [[`4c13f20`](https://github.com/simonihmig/responsive-image/commit/4c13f20f912a5308a347695798a8bc0c7c4187a1)]:
+  - @responsive-image/core@1.0.1
+
 ## 1.0.0
 
 ### Minor Changes

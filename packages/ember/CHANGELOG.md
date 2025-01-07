@@ -1,5 +1,19 @@
 # ember-responsive-image
 
+## 1.0.1
+
+### Patch Changes
+
+- [#874](https://github.com/simonihmig/responsive-image/pull/874) [`5359bbe`](https://github.com/simonihmig/responsive-image/commit/5359bbe68daf6f16521f7297848675f77f97319f) Thanks [@simonihmig](https://github.com/simonihmig)! - Better workaround for lazy loading issue in Firefox
+
+- [#883](https://github.com/simonihmig/responsive-image/pull/883) [`4c13f20`](https://github.com/simonihmig/responsive-image/commit/4c13f20f912a5308a347695798a8bc0c7c4187a1) Thanks [@simonihmig](https://github.com/simonihmig)! - Cleanup and update package.json meta data
+
+- [#866](https://github.com/simonihmig/responsive-image/pull/866) [`2203965`](https://github.com/simonihmig/responsive-image/commit/220396501332b4235e665072f4d23b4a2102628e) Thanks [@simonihmig](https://github.com/simonihmig)! - Migrate component to gts format
+
+- Updated dependencies [[`4c13f20`](https://github.com/simonihmig/responsive-image/commit/4c13f20f912a5308a347695798a8bc0c7c4187a1), [`fec0c61`](https://github.com/simonihmig/responsive-image/commit/fec0c61449a2b8568884612731dfb4c68acfbe20)]:
+  - @responsive-image/core@1.0.1
+  - @responsive-image/cdn@1.1.0
+
 ## 1.0.0
 
 ### Major Changes
