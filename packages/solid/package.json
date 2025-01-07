@@ -37,7 +37,8 @@
     "test:watch": "vitest watch",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:js": "eslint . --cache",
-    "lint:types": "tsc --noEmit"
+    "lint:types": "tsc --noEmit",
+    "prepack": "pnpm turbo build"
   },
   "dependencies": {
     "@responsive-image/core": "workspace:^",
