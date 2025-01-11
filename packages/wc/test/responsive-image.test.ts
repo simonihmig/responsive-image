@@ -571,6 +571,12 @@ describe('ResponsiveImage', () => {
       expect(imgEl).toBeDefined();
       expect(imgEl!.complete).toBe(false);
 
+      await waitUntil(
+        () => imgEl!.style.backgroundImage.startsWith('url'),
+        undefined,
+        { interval: 1, timeout: 5000 },
+      );
+
       expect(imgEl!.style.backgroundImage, 'it has a background PNG').to.match(
         /data:image\/png/,
       );

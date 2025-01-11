@@ -1,16 +1,16 @@
-import { html, css, LitElement, nothing } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { Task, TaskStatus } from '@lit/task';
 import {
-  type ImageType,
-  type LqipBlurhash,
   type ImageData,
+  type ImageType,
+  type Lqip,
   env,
   getDestinationWidthBySize,
 } from '@responsive-image/core';
-import { ClassInfo, classMap } from 'lit/directives/class-map.js';
+import { css, html, LitElement, nothing } from 'lit';
+import { customElement, property, state } from 'lit/decorators.js';
+import { type ClassInfo, classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { decode2url } from '@responsive-image/core/blurhash/decode';
-import { StyleInfo, styleMap } from 'lit/directives/style-map.js';
+import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
   srcset: string;
@@ -172,24 +172,22 @@ export class ResponsiveImage extends LitElement {
     return this.src.imageUrlFor(this.imgWidth ?? 640);
   }
 
-  get hasLqipBlurhash(): boolean {
-    return this.src.lqip?.type === 'blurhash';
-  }
+  private blurhashTask = new Task(this, {
+    task: async ([lqip]: readonly [Lqip | undefined]) => {
+      if (lqip?.type !== 'blurhash' || this.complete) {
+        return '';
+      }
 
-  get showLqipBlurhash(): boolean {
-    return !this.complete && this.hasLqipBlurhash;
-  }
+      const { hash, width, height } = lqip;
+      const { decode2url } = await import(
+        '@responsive-image/core/blurhash/decode'
+      );
+      const uri = decode2url(hash, width, height);
 
-  get lqipBlurhash(): string | undefined {
-    if (!this.hasLqipBlurhash) {
-      return undefined;
-    }
-
-    const { hash, width, height } = this.src.lqip as LqipBlurhash;
-    const uri = decode2url(hash, width, height);
-
-    return `url("${uri}")`;
-  }
+      return uri;
+    },
+    args: () => [this.src.lqip],
+  });
 
   render() {
     const { lqip } = this.src;
@@ -204,12 +202,13 @@ export class ResponsiveImage extends LitElement {
         (lqip?.type === 'color' || lqip?.type === 'inline') && !this.complete,
     };
 
-    const styles: StyleInfo = this.showLqipBlurhash
-      ? {
-          backgroundImage: this.lqipBlurhash,
-          backgroundSize: 'cover',
-        }
-      : {};
+    const styles: StyleInfo =
+      this.blurhashTask.status === TaskStatus.COMPLETE && !this.complete
+        ? {
+            backgroundImage: `url("${this.blurhashTask.value}")`,
+            backgroundSize: 'cover',
+          }
+        : {};
 
     return html`
       <picture>
