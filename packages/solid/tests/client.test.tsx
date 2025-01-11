@@ -641,7 +641,7 @@ describe('ResponsiveImage', () => {
         expect(imgEl.style.backgroundImage, 'it has a background PNG').to.match(
           /data:image\/png/,
         ),
-      { timeout: 5000 },
+      { interval: 1, timeout: 5000 },
     );
     expect(imgEl).toHaveStyle({ backgroundSize: 'cover' });
     expect(imgEl.style.backgroundImage).toMatchInlineSnapshot(
