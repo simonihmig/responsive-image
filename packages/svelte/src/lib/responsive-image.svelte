@@ -34,8 +34,6 @@
 		sizes?: string | undefined;
 	}
 
-	type Layout = 'responsive' | 'fixed';
-
 	const PIXEL_DENSITIES = [1, 2];
 
 	// determines the order of sources, prefereing next-gen formats over legacy

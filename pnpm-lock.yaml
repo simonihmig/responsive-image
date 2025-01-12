@@ -1217,21 +1217,18 @@ importers:
       '@eslint/compat':
         specifier: ^1.2.3
         version: 1.2.4(eslint@9.18.0(jiti@2.4.2))
-      '@sveltejs/adapter-auto':
-        specifier: ^3.0.0
-        version: 3.3.1(@sveltejs/kit@2.15.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))
-      '@sveltejs/kit':
-        specifier: ^2.0.0
-        version: 2.15.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))
       '@sveltejs/package':
         specifier: ^2.0.0
         version: 2.3.7(svelte@5.16.1)(typescript@5.7.3)
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0
+        specifier: ^4.0.4
         version: 4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))
       '@testing-library/svelte':
         specifier: ^5.2.6
         version: 5.2.6(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))(vitest@2.1.8(@types/node@22.10.6)(@vitest/browser@2.1.8)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.6)(typescript@5.7.3))(terser@5.37.0))
+      '@tsconfig/strictest':
+        specifier: 2.0.5
+        version: 2.0.5
       '@vitest/browser':
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.6)(playwright@1.49.1)(typescript@5.7.3)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))(vitest@2.1.8)
@@ -1274,9 +1271,6 @@ importers:
       typescript-eslint:
         specifier: ^8.0.0
         version: 8.19.0(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3)
-      vite:
-        specifier: ^5.4.11
-        version: 5.4.11(@types/node@22.10.6)(terser@5.37.0)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.6)(@vitest/browser@2.1.8)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.6)(typescript@5.7.3))(terser@5.37.0)
@@ -4011,15 +4005,6 @@ packages:
     resolution: {integrity: sha512-5Sc7WAxYdL6q9j/+D0jJKjGREGlfIevDyHSQ2eNETHcB1TKlQWHcAo8AS8H1QdjNvSXpvOwNjykDUHPEAyGgdQ==}
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
-
-  '@sveltejs/kit@2.15.1':
-    resolution: {integrity: sha512-8t7D3hQHbUDMiaQ2RVnjJJ/+Ur4Fn/tkeySJCsHtX346Q9cp3LAnav8xXdfuqYNJwpUGX0x3BqF1uvbmXQw93A==}
-    engines: {node: '>=18.13'}
-    hasBin: true
-    peerDependencies:
-      '@sveltejs/vite-plugin-svelte': ^3.0.0 || ^4.0.0-next.1 || ^5.0.0
-      svelte: ^4.0.0 || ^5.0.0-next.0
-      vite: ^5.0.3 || ^6.0.0
 
   '@sveltejs/kit@2.15.2':
     resolution: {integrity: sha512-p208T1kdM6zd8k4YXIUM60pLWQ8dZqehXSiqn4NulXHyHibX53uIAL2xtNL8GjxX2IVPqPRT978MwVYhCKExdQ==}
@@ -15489,33 +15474,10 @@ snapshots:
     optionalDependencies:
       '@solidjs/router': 0.15.2(solid-js@1.9.4)
 
-  '@sveltejs/adapter-auto@3.3.1(@sveltejs/kit@2.15.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))':
-    dependencies:
-      '@sveltejs/kit': 2.15.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))
-      import-meta-resolve: 4.1.0
-
   '@sveltejs/adapter-auto@3.3.1(@sveltejs/kit@2.15.2(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))':
     dependencies:
       '@sveltejs/kit': 2.15.2(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))
       import-meta-resolve: 4.1.0
-
-  '@sveltejs/kit@2.15.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))':
-    dependencies:
-      '@sveltejs/vite-plugin-svelte': 4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))
-      '@types/cookie': 0.6.0
-      cookie: 0.6.0
-      devalue: 5.1.1
-      esm-env: 1.2.1
-      import-meta-resolve: 4.1.0
-      kleur: 4.1.5
-      magic-string: 0.30.17
-      mrmime: 2.0.0
-      sade: 1.8.1
-      set-cookie-parser: 2.7.1
-      sirv: 3.0.0
-      svelte: 5.16.1
-      tiny-glob: 0.2.9
-      vite: 5.4.11(@types/node@22.10.6)(terser@5.37.0)
 
   '@sveltejs/kit@2.15.2(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0)))(svelte@5.16.1)(vite@5.4.11(@types/node@22.10.6)(terser@5.37.0))':
     dependencies:
