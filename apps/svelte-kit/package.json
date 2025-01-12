@@ -1,7 +1,7 @@
 {
 	"name": "svelte-kit",
 	"private": true,
-	"version": "0.0.1",
+	"license": "MIT",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
@@ -10,9 +10,13 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint .",
-		"test:e2e": "playwright test",
-		"test": "npm run test:e2e"
+		"lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+		"lint:js": "eslint . --cache",
+		"lint:js:fix": "eslint . --fix",
+		"lint:prettier": "prettier --check .",
+		"lint:prettier:fix": "prettier --write .",
+		"test": "playwright test",
+		"test:ui": "playwright test --ui"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.3",
@@ -21,6 +25,7 @@
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"concurrently": "9.1.2",
 		"eslint": "^9.7.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
