@@ -3,7 +3,8 @@
 		type ImageType,
 		type ImageData,
 		getDestinationWidthBySize,
-		env
+		env,
+		isLqipBlurhash
 	} from '@responsive-image/core';
 	import type { HTMLImgAttributes } from 'svelte/elements';
 
@@ -129,6 +130,36 @@
 
 		return classNames;
 	});
+
+	let blurhashMeta = $derived(isLqipBlurhash(srcProp.lqip) ? srcProp.lqip : undefined);
+
+	const blurhashLib = $state<{
+		value: typeof import('@responsive-image/core/blurhash/decode') | undefined;
+	}>({ value: undefined });
+	const loadBlurhashLib = () => {
+		$effect(() => {
+			import('@responsive-image/core/blurhash/decode').then((script) => {
+				blurhashLib.value = script;
+			});
+		});
+
+		return blurhashLib;
+	};
+
+	let blurhashUrl = $derived.by(() => {
+		if (!blurhashMeta || isLoaded) {
+			return undefined;
+		}
+
+		let script = loadBlurhashLib().value;
+
+		if (script) {
+			const { hash, width, height } = blurhashMeta;
+			return script.decode2url(hash, width, height);
+		}
+
+		return undefined;
+	});
 </script>
 
 <picture>
@@ -144,5 +175,11 @@
 		alt=""
 		class={classNames.join(' ')}
 		{...htmlAttributes}
+		data-ri-bh={blurhashMeta?.hash}
+		data-ri-bh-w={blurhashMeta?.width}
+		data-ri-bh-h={blurhashMeta?.height}
+		style:background-image={blurhashUrl && `url("${blurhashUrl}")`}
+		style:background-size={blurhashUrl ? 'cover' : undefined}
+		onload={() => (isLoaded = true)}
 	/>
 </picture>
