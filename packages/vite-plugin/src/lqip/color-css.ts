@@ -37,8 +37,9 @@ export default function lqipColorCssPlugin(
         throw new Error('Missing className');
       }
 
-      const file = getPathname(id).replace(/\.css$/, '');
-      const image = sharp(file);
+      const originalFile = getPathname(id).replace(/\.css$/, '');
+      const file = await this.resolve(originalFile);
+      const image = sharp(file?.id);
       const { dominant } = await image.stats();
       const colorHex =
         dominant.r.toString(16).padStart(2, '0') +

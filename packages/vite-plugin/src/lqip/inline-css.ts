@@ -46,8 +46,9 @@ export default function lqipInlineCssPlugin(
         throw new Error('Missing targetPixels');
       }
 
-      const file = getPathname(id).replace(/\.css$/, '');
-      const image = sharp(file);
+      const originalFile = getPathname(id).replace(/\.css$/, '');
+      const file = await this.resolve(originalFile);
+      const image = sharp(file?.id);
       const meta = await image.metadata();
 
       if (meta.width === undefined || meta.height === undefined) {
