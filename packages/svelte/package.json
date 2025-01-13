@@ -25,9 +25,7 @@
 		"test": "vitest"
 	},
 	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"dist"
 	],
 	"sideEffects": [
 		"**/*.css"
