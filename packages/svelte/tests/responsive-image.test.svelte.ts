@@ -192,7 +192,7 @@ describe('ResponsiveImage', () => {
 		});
 
 		test('it rerenders when src changes', async () => {
-			let imageData = $state({
+			const imageData = $state({
 				...defaultImageData,
 				availableWidths: [50, 100, 640]
 			});
@@ -366,11 +366,11 @@ describe('ResponsiveImage', () => {
 		});
 
 		test('it rerenders when props change', async () => {
-			let imageData = $state({
+			const imageData = $state({
 				...defaultImageData,
 				availableWidths: [50, 100, 640]
 			});
-			let width = $state(50);
+			const width = $state(50);
 
 			const { container, rerender } = render(ResponsiveImage, {
 				src: imageData,

@@ -105,7 +105,7 @@
 			} else {
 				return srcProp.imageTypes.map((type) => {
 					const sources: string[] = PIXEL_DENSITIES.map((density) => {
-						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						 
 						const url = srcProp.imageUrlFor(width * density, type)!;
 
 						return `${url} ${density}x`;
