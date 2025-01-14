@@ -181,3 +181,19 @@
 		onload={() => (isLoaded = true)}
 	/>
 </picture>
+
+<style>
+	.ri-responsive {
+		width: 100%;
+		height: auto;
+	}
+
+	.ri-fixed,
+	.ri-responsive {
+		content-visibility: auto;
+	}
+
+	.ri-lqip-inline {
+		background-size: cover;
+	}
+</style>
