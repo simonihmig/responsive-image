@@ -69,6 +69,7 @@ describe('ResponsiveImage', () => {
 			});
 		});
 	});
+
 	describe('responsive layout', () => {
 		test('it has responsive layout by default', async () => {
 			const { container } = render(ResponsiveImage, { src: defaultImageData });
@@ -76,6 +77,7 @@ describe('ResponsiveImage', () => {
 			expect(imgEl).toHaveClass('ri-responsive');
 			expect(imgEl).not.toHaveClass('ri-fixed');
 		});
+
 		test('it renders width and height attributes when aspect ratio is known', async () => {
 			const imageData = {
 				...defaultImageData,
@@ -90,6 +92,7 @@ describe('ResponsiveImage', () => {
 					parseInt(imgEl?.getAttribute('height') ?? '', 10)
 			).to.equal(2);
 		});
+
 		test('it renders the correct sourceset with width descriptors when availableWidths is available', async () => {
 			const imageData: ImageData = {
 				...defaultImageData,
@@ -132,6 +135,7 @@ describe('ResponsiveImage', () => {
 				'/provider/w10/image.avif 10w, /provider/w25/image.avif 25w'
 			);
 		});
+
 		test('it renders the sourceset based on deviceWidths when availableWidths is not available', async () => {
 			const { container } = render(ResponsiveImage, { src: defaultImageData });
 			const { deviceWidths } = env;
@@ -146,6 +150,7 @@ describe('ResponsiveImage', () => {
 				deviceWidths.map((w) => `/provider/w${w}/image.jpeg ${w}w`).join(', ')
 			);
 		});
+
 		//   // TODO: figure out why this is not working
 		//   test.skip('it renders the fallback src next to needed display size', async () => {
 		//     env.physicalWidth = 100;
@@ -157,6 +162,7 @@ describe('ResponsiveImage', () => {
 		//       '/provider/w100/image.jpeg',
 		//     );
 		//   });
+
 		test('it renders a given size as sizes', async () => {
 			const { container } = render(ResponsiveImage, { src: defaultImageData, size: 40 });
 			expect(container.querySelector('picture source[type="image/jpeg"]')).toHaveAttribute(
@@ -168,6 +174,7 @@ describe('ResponsiveImage', () => {
 				'40vw'
 			);
 		});
+
 		test('it renders with given sizes', async () => {
 			const { container } = render(ResponsiveImage, {
 				src: defaultImageData,
@@ -183,7 +190,84 @@ describe('ResponsiveImage', () => {
 				'(max-width: 767px) 100vw, 50vw'
 			);
 		});
+
+		test('it rerenders when src changes', async () => {
+			let imageData = $state({
+				...defaultImageData,
+				availableWidths: [50, 100, 640]
+			});
+
+			const { container, rerender } = render(ResponsiveImage, {
+				src: imageData
+			});
+			await new Promise((r) => requestAnimationFrame(r));
+
+			const imgEl = container.querySelector('img');
+
+			// jpeg
+			expect(container.querySelector('picture source[type="image/jpeg"]')).toHaveAttribute(
+				'srcset',
+				'/provider/w50/image.jpeg 50w, /provider/w100/image.jpeg 100w, /provider/w640/image.jpeg 640w'
+			);
+
+			// webp
+			expect(container.querySelector('picture source[type="image/webp"]')).toHaveAttribute(
+				'srcset',
+				'/provider/w50/image.webp 50w, /provider/w100/image.webp 100w, /provider/w640/image.webp 640w'
+			);
+
+			// avif
+			expect(container.querySelector('picture source[type="image/avif"]')).toHaveAttribute(
+				'srcset',
+				'/provider/w50/image.avif 50w, /provider/w100/image.avif 100w, /provider/w640/image.avif 640w'
+			);
+
+			expect(imgEl).toHaveAttribute(
+				'src',
+				expect.stringMatching(/\/provider\/w[0-9]+\/image\.jpeg/)
+			);
+
+			expect(
+				parseInt(imgEl?.getAttribute('width') ?? '', 10) /
+					parseInt(imgEl?.getAttribute('height') ?? '', 10)
+			).to.equal(2);
+
+			rerender({
+				src: {
+					imageTypes: ['webp', 'avif'],
+					imageUrlFor(width, type = 'webp') {
+						return `/other/w${width}/image.${type}`;
+					},
+					aspectRatio: 1,
+					availableWidths: [200, 400]
+				}
+			});
+			await new Promise((r) => requestAnimationFrame(r));
+
+			// jpeg
+			expect(container.querySelector('picture source[type="image/jpeg"]')).toBeNull();
+
+			// webp
+			expect(container.querySelector('picture source[type="image/webp"]')).toHaveAttribute(
+				'srcset',
+				'/other/w200/image.webp 200w, /other/w400/image.webp 400w'
+			);
+
+			// avif
+			expect(container.querySelector('picture source[type="image/avif"]')).toHaveAttribute(
+				'srcset',
+				'/other/w200/image.avif 200w, /other/w400/image.avif 400w'
+			);
+
+			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/other\/w[0-9]+\/image\.webp/));
+
+			expect(
+				parseInt(imgEl?.getAttribute('width') ?? '', 10) /
+					parseInt(imgEl?.getAttribute('height') ?? '', 10)
+			).to.equal(1);
+		});
 	});
+
 	describe('fixed layout', () => {
 		test('it has fixed layout when width is provided', async () => {
 			const { container } = render(ResponsiveImage, { src: defaultImageData, width: 100 });
@@ -196,6 +280,7 @@ describe('ResponsiveImage', () => {
 			expect(container.querySelector('img')).toHaveClass('ri-fixed');
 			expect(container.querySelector('img')).not.toHaveClass('ri-responsive');
 		});
+
 		test('it renders width and height when given', async () => {
 			const { container } = render(ResponsiveImage, {
 				src: defaultImageData,
@@ -206,6 +291,7 @@ describe('ResponsiveImage', () => {
 			expect(imgEl).toHaveAttribute('width', '150');
 			expect(imgEl).toHaveAttribute('height', '50');
 		});
+
 		test('it renders height when width is given according to aspect ratio', async () => {
 			const imageData = {
 				...defaultImageData,
@@ -216,6 +302,7 @@ describe('ResponsiveImage', () => {
 			expect(imgEl).toHaveAttribute('width', '150');
 			expect(imgEl).toHaveAttribute('height', '75');
 		});
+
 		test('it renders width when height is given according to aspect ratio', async () => {
 			const imageData = {
 				...defaultImageData,
@@ -226,6 +313,7 @@ describe('ResponsiveImage', () => {
 			expect(imgEl).toHaveAttribute('width', '200');
 			expect(imgEl).toHaveAttribute('height', '100');
 		});
+
 		test('it renders the correct sourceset with pixel densities', async () => {
 			const imageData: ImageData = {
 				...defaultImageData,
@@ -276,7 +364,83 @@ describe('ResponsiveImage', () => {
 			await new Promise((r) => requestAnimationFrame(r));
 			expect(container.querySelector('img')).toHaveAttribute('src', '/provider/w100/image.jpeg');
 		});
+
+		test('it rerenders when props change', async () => {
+			let imageData = $state({
+				...defaultImageData,
+				availableWidths: [50, 100, 640]
+			});
+			let width = $state(50);
+
+			const { container, rerender } = render(ResponsiveImage, {
+				src: imageData,
+				width
+			});
+			await new Promise((r) => requestAnimationFrame(r));
+
+			const imgEl = container.querySelector('img');
+
+			// jpeg
+			expect(container.querySelector('picture source[type="image/jpeg"]')).toHaveAttribute(
+				'srcset',
+				'/provider/w50/image.jpeg 1x, /provider/w100/image.jpeg 2x'
+			);
+
+			// webp
+			expect(container.querySelector('picture source[type="image/webp"]')).toHaveAttribute(
+				'srcset',
+				'/provider/w50/image.webp 1x, /provider/w100/image.webp 2x'
+			);
+
+			// avif
+			expect(container.querySelector('picture source[type="image/avif"]')).toHaveAttribute(
+				'srcset',
+				'/provider/w50/image.avif 1x, /provider/w100/image.avif 2x'
+			);
+
+			expect(imgEl).toHaveAttribute(
+				'src',
+				expect.stringMatching(/\/provider\/w[0-9]+\/image\.jpeg/)
+			);
+
+			expect(imgEl).toHaveAttribute('width', '50');
+			expect(imgEl).toHaveAttribute('height', '25');
+
+			rerender({
+				src: {
+					imageTypes: ['webp', 'avif'],
+					imageUrlFor(width, type = 'webp') {
+						return `/other/w${width}/image.${type}`;
+					},
+					aspectRatio: 1,
+					availableWidths: [200, 400]
+				},
+				width: 200
+			});
+			await new Promise((r) => requestAnimationFrame(r));
+
+			// jpeg
+			expect(container.querySelector('picture source[type="image/jpeg"]')).toBeNull();
+
+			// webp
+			expect(container.querySelector('picture source[type="image/webp"]')).toHaveAttribute(
+				'srcset',
+				'/other/w200/image.webp 1x, /other/w400/image.webp 2x'
+			);
+
+			// avif
+			expect(container.querySelector('picture source[type="image/avif"]')).toHaveAttribute(
+				'srcset',
+				'/other/w200/image.avif 1x, /other/w400/image.avif 2x'
+			);
+
+			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/other\/w[0-9]+\/image\.webp/));
+
+			expect(imgEl).toHaveAttribute('width', '200');
+			expect(imgEl).toHaveAttribute('height', '200');
+		});
 	});
+
 	describe('LQIP', () => {
 		test('it sets LQIP class', async () => {
 			const { onload, loaded } = imageLoaded();

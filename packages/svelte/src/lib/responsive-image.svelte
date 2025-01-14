@@ -46,77 +46,86 @@
 
 	let isLoaded = $state(false);
 
-	const isResponsiveLayout = widthProp === undefined && heightProp === undefined;
+	let isResponsiveLayout = $derived(widthProp === undefined && heightProp === undefined);
 
-	let width: number | undefined = undefined;
-
-	if (isResponsiveLayout) {
-		width = getDestinationWidthBySize(sizeProp);
-	} else {
-		if (widthProp) {
-			width = widthProp;
+	let width: number | undefined = $derived.by(() => {
+		if (isResponsiveLayout) {
+			return getDestinationWidthBySize(sizeProp);
 		} else {
-			const ar = srcProp.aspectRatio;
-			if (ar !== undefined && ar !== 0 && heightProp !== undefined) {
-				width = heightProp * ar;
+			if (widthProp) {
+				return widthProp;
+			} else {
+				const ar = srcProp.aspectRatio;
+				if (ar !== undefined && ar !== 0 && heightProp !== undefined) {
+					return heightProp * ar;
+				}
 			}
+
+			return undefined;
 		}
-	}
+	});
 
-	let height: number | undefined = heightProp;
+	let height: number | undefined = $derived.by(() => {
+		if (heightProp) {
+			return heightProp;
+		}
 
-	const ar = srcProp.aspectRatio;
-	if (height === undefined && ar !== undefined && ar !== 0 && width !== undefined) {
-		height = Math.round(width / ar);
-	}
+		const ar = srcProp.aspectRatio;
+		if (heightProp === undefined && ar !== undefined && ar !== 0 && width !== undefined) {
+			return Math.round(width / ar);
+		}
 
-	const src = srcProp.imageUrlFor(width ?? 640);
-	let sources: ImageSource[];
+		return undefined;
+	});
 
-	if (isResponsiveLayout) {
-		sources = srcProp.imageTypes.map((type) => {
-			let widths = srcProp.availableWidths;
-			if (!widths) {
-				widths = env.deviceWidths;
-			}
-			const sources: string[] = widths.map((width) => {
-				const url = srcProp.imageUrlFor(width, type);
-				return `${url} ${width}w`;
-			});
+	let src = $derived(srcProp.imageUrlFor(width ?? 640));
 
-			return {
-				srcset: sources.join(', '),
-				sizes: sizesProp ?? (sizeProp ? `${sizeProp}vw` : undefined),
-				type,
-				mimeType: `image/${type}`
-			};
-		});
-	} else {
-		if (width === undefined) {
-			sources = [];
-		} else {
-			sources = srcProp.imageTypes.map((type) => {
-				const sources: string[] = PIXEL_DENSITIES.map((density) => {
-					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-					const url = srcProp.imageUrlFor(width * density, type)!;
-
-					return `${url} ${density}x`;
-				}).filter((source) => source !== undefined);
+	let sources: ImageSource[] = $derived.by(() => {
+		if (isResponsiveLayout) {
+			return srcProp.imageTypes.map((type) => {
+				let widths = srcProp.availableWidths;
+				if (!widths) {
+					widths = env.deviceWidths;
+				}
+				const sources: string[] = widths.map((width) => {
+					const url = srcProp.imageUrlFor(width, type);
+					return `${url} ${width}w`;
+				});
 
 				return {
 					srcset: sources.join(', '),
+					sizes: sizesProp ?? (sizeProp ? `${sizeProp}vw` : undefined),
 					type,
 					mimeType: `image/${type}`
 				};
 			});
-		}
-	}
+		} else {
+			if (width === undefined) {
+				return [];
+			} else {
+				return srcProp.imageTypes.map((type) => {
+					const sources: string[] = PIXEL_DENSITIES.map((density) => {
+						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						const url = srcProp.imageUrlFor(width * density, type)!;
 
-	const sourcesSorted = sources.sort(
-		(a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0)
+						return `${url} ${density}x`;
+					}).filter((source) => source !== undefined);
+
+					return {
+						srcset: sources.join(', '),
+						type,
+						mimeType: `image/${type}`
+					};
+				});
+			}
+		}
+	});
+
+	let sourcesSorted = $derived(
+		sources.sort((a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0))
 	);
 
-	const classNames = $derived.by(() => {
+	let classNames = $derived.by(() => {
 		const classNames = [`ri-${isResponsiveLayout ? 'responsive' : 'fixed'}`];
 		const lqip = srcProp.lqip;
 		if (lqip && !isLoaded) {
@@ -131,7 +140,7 @@
 
 	let blurhashMeta = $derived(isLqipBlurhash(srcProp.lqip) ? srcProp.lqip : undefined);
 
-	const blurhashLib = $state<{
+	let blurhashLib = $state<{
 		value: typeof import('@responsive-image/core/blurhash/decode') | undefined;
 	}>({ value: undefined });
 	const loadBlurhashLib = () => {

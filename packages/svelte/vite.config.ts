@@ -5,7 +5,7 @@ export default defineConfig({
 	plugins: [svelte()],
 
 	test: {
-		include: ['tests/**/*.{test,spec}.{js,ts}'],
+		include: ['tests/**/*.{test,test.svelte}.{js,ts}'],
 		browser: {
 			provider: 'playwright', // or 'webdriverio'
 			enabled: true,
