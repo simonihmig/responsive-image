@@ -105,7 +105,6 @@
 			} else {
 				return srcProp.imageTypes.map((type) => {
 					const sources: string[] = PIXEL_DENSITIES.map((density) => {
-						 
 						const url = srcProp.imageUrlFor(width * density, type)!;
 
 						return `${url} ${density}x`;
