@@ -6,6 +6,7 @@ export default defineConfig({
 
 	test: {
 		include: ['tests/**/*.{test,test.svelte}.{js,ts}'],
+		watch: false,
 		browser: {
 			provider: 'playwright', // or 'webdriverio'
 			enabled: true,

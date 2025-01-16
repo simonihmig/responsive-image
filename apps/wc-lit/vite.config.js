@@ -7,4 +7,7 @@ export default defineConfig({
       include: /^[^?]+\.jpg\?.*responsive.*$/,
     }),
   ],
+  preview: {
+    port: 4201,
+  },
 });
