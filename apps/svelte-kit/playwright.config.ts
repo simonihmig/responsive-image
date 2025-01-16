@@ -79,5 +79,6 @@ export default defineConfig({
     command: 'pnpm build && pnpm preview',
     url: 'http://localhost:4202',
     stdout: 'pipe',
+    timeout: 300000,
   },
 });
