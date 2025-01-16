@@ -1,0 +1,18 @@
+{
+	"extends": "@tsconfig/strictest/tsconfig.json",
+	"include": [
+		"./vite.config.ts",
+		"./src/**/*.ts",
+		"./src/**/*.svelte",
+		"./tests/**/*.ts",
+		"./tests/**/*.svelte"
+	],
+	"compilerOptions": {
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"sourceMap": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"types": ["@vitest/browser/providers/playwright"]
+	}
+}

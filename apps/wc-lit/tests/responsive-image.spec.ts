@@ -50,23 +50,21 @@ test('fixed layout', async ({ page }) => {
   const picture = page.locator('[data-test-local-image="fixed"] picture');
 
   for (const [type, ext] of imageTypes) {
-    for (const size of sizes) {
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 1x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-      );
+    await expect(
+      picture.locator(`source[type="image/${type}"]`),
+      `has ${type} with a width of 1x`,
+    ).toHaveAttribute(
+      'srcset',
+      new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+    );
 
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 2x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-      );
-    }
+    await expect(
+      picture.locator(`source[type="image/${type}"]`),
+      `has ${type} with a width of 2x`,
+    ).toHaveAttribute(
+      'srcset',
+      new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+    );
   }
 });
 
@@ -87,23 +85,21 @@ test('fixed layout w/ aspect', async ({ page }) => {
   const picture = page.locator('[data-test-local-image="fixed"] picture');
 
   for (const [type, ext] of imageTypes) {
-    for (const size of sizes) {
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 1x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-      );
+    await expect(
+      picture.locator(`source[type="image/${type}"]`),
+      `has ${type} with a width of 1x`,
+    ).toHaveAttribute(
+      'srcset',
+      new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+    );
 
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 2x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-      );
-    }
+    await expect(
+      picture.locator(`source[type="image/${type}"]`),
+      `has ${type} with a width of 2x`,
+    ).toHaveAttribute(
+      'srcset',
+      new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+    );
   }
 });
 
@@ -122,23 +118,21 @@ test.describe('LQIP', () => {
     const picture = page.locator('[data-test-local-image="fixed"] picture');
 
     for (const [type, ext] of imageTypes) {
-      for (const size of sizes) {
-        await expect(
-          picture.locator(`source[type="image/${type}"]`),
-          `has ${type} with a width of 1x`,
-        ).toHaveAttribute(
-          'srcset',
-          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-        );
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 1x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+      );
 
-        await expect(
-          picture.locator(`source[type="image/${type}"]`),
-          `has ${type} with a width of 2x`,
-        ).toHaveAttribute(
-          'srcset',
-          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-        );
-      }
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 2x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+      );
     }
   });
 
@@ -156,23 +150,21 @@ test.describe('LQIP', () => {
     const picture = page.locator('[data-test-local-image="fixed"] picture');
 
     for (const [type, ext] of imageTypes) {
-      for (const size of sizes) {
-        await expect(
-          picture.locator(`source[type="image/${type}"]`),
-          `has ${type} with a width of 1x`,
-        ).toHaveAttribute(
-          'srcset',
-          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-        );
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 1x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+      );
 
-        await expect(
-          picture.locator(`source[type="image/${type}"]`),
-          `has ${type} with a width of 2x`,
-        ).toHaveAttribute(
-          'srcset',
-          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-        );
-      }
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 2x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+      );
     }
   });
 
@@ -192,23 +184,21 @@ test.describe('LQIP', () => {
     const picture = page.locator('[data-test-local-image="fixed"] picture');
 
     for (const [type, ext] of imageTypes) {
-      for (const size of sizes) {
-        await expect(
-          picture.locator(`source[type="image/${type}"]`),
-          `has ${type} with a width of 1x`,
-        ).toHaveAttribute(
-          'srcset',
-          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
-        );
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 1x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+      );
 
-        await expect(
-          picture.locator(`source[type="image/${type}"]`),
-          `has ${type} with a width of 2x`,
-        ).toHaveAttribute(
-          'srcset',
-          new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
-        );
-      }
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 2x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+      );
     }
   });
 });
