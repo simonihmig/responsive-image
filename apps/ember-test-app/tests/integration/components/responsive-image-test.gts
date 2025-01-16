@@ -4,12 +4,10 @@ import { render } from "@ember/test-helpers";
 import { setupRenderingTest } from "ember-qunit";
 import { module, skip, test } from "qunit";
 import type { ImageData } from "@responsive-image/ember";
-import { imageLoaded } from "../../helpers/image-loaded";
+import { trigger } from "../../helpers/image.helper";
 
 import type { RenderingTestContext } from "@ember/test-helpers";
 import { env } from "@responsive-image/core";
-
-const cacheBreaker = () => `${new Date().getTime()}-${Math.random()}`;
 
 module("Integration: Responsive Image Component", function (hooks) {
   setupRenderingTest(hooks);
@@ -394,40 +392,28 @@ module("Integration: Responsive Image Component", function (hooks) {
 
   module("LQIP", function () {
     test("it sets LQIP class", async function (this: RenderingTestContext, assert) {
-      const { onload, loaded } = imageLoaded();
       const imageData: ImageData = {
-        imageTypes: ["jpeg", "webp"],
-        // to replicate the loading timing, we need to load a real existing image
-        imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
-        aspectRatio: 1.5,
+        ...defaultImageData,
         lqip: {
           type: "inline",
           class: "lqip-inline-test-class",
         },
       };
 
-      await render(
-        <template><ResponsiveImage @src={{imageData}} {{onload}} /></template>,
-      );
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
 
       const imgEl = this.element.querySelector("img")!;
 
-      if (!imgEl.complete) {
-        assert.dom(imgEl).hasClass("lqip-inline-test-class");
-      }
+      assert.dom(imgEl).hasClass("lqip-inline-test-class");
 
-      await loaded;
+      await trigger(imgEl);
 
       assert.dom(imgEl).hasNoClass("lqip-inline-test-class");
     });
 
     test("it sets LQIP from blurhash as background", async function (this: RenderingTestContext, assert) {
-      const { onload, loaded } = imageLoaded();
       const imageData: ImageData = {
-        imageTypes: ["jpeg", "webp"],
-        // to replicate the loading timing, we need to load a real existing image
-        imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
-        aspectRatio: 1.5,
+        ...defaultImageData,
         lqip: {
           type: "blurhash",
           hash: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
@@ -436,25 +422,21 @@ module("Integration: Responsive Image Component", function (hooks) {
         },
       };
 
-      await render(
-        <template><ResponsiveImage @src={{imageData}} {{onload}} /></template>,
-      );
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
 
       const imgEl = this.element.querySelector("img")!;
 
-      if (!imgEl.complete) {
-        assert.ok(
-          imgEl.style.backgroundImage?.match(/data:image\/png/),
-          "it has a background PNG",
-        );
-        assert.dom(imgEl).hasStyle({ "background-size": "cover" });
-        assert.ok(
-          window.getComputedStyle(imgEl).backgroundImage?.length > 100,
-          "the background SVG has a reasonable length",
-        );
-      }
+      assert.ok(
+        imgEl.style.backgroundImage?.match(/data:image\/png/),
+        "it has a background PNG",
+      );
+      assert.dom(imgEl).hasStyle({ "background-size": "cover" });
+      assert.ok(
+        window.getComputedStyle(imgEl).backgroundImage?.length > 100,
+        "the background SVG has a reasonable length",
+      );
 
-      await loaded;
+      await trigger(imgEl);
 
       assert.strictEqual(
         window.getComputedStyle(imgEl).backgroundImage,
