@@ -20,7 +20,8 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "glint",
     "start": "ember serve",
-    "test": "ember test -tp 0"
+    "test": "ember test -tp 0",
+    "test:watch": "ember test -s -tp 0"
   },
   "devDependencies": {
     "@babel/core": "7.25.9",

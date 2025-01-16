@@ -5,7 +5,7 @@ import { env, type ImageData } from '@responsive-image/core';
 
 import type { ResponsiveImage } from '../src/responsive-image.js';
 import '../src/responsive-image.js';
-import { imageLoaded } from './image-loaded.helper.js';
+import { trigger } from './image-helper.js';
 
 const cacheBreaker = () => `${new Date().getTime()}-${Math.random()}`;
 
@@ -190,21 +190,13 @@ describe('ResponsiveImage', () => {
     });
 
     test('it exposes complete property', async () => {
-      const imageData: ImageData = {
-        imageTypes: ['jpeg', 'webp'],
-        // to replicate the loading timing, we need to load a real existing image
-        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-      };
-      const { onload, loaded } = imageLoaded();
-
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData} />`,
+        html`<responsive-image .src=${defaultImageData} />`,
       );
-      onload(el);
 
       expect(el.complete).toBe(false);
 
-      await loaded;
+      await trigger(el);
       expect(el.complete).toBe(true);
     });
   });
@@ -519,12 +511,8 @@ describe('ResponsiveImage', () => {
 
   describe('LQIP', () => {
     test('it sets LQIP class', async () => {
-      const { onload, loaded } = imageLoaded();
       const imageData: ImageData = {
-        imageTypes: ['jpeg', 'webp'],
-        // to replicate the loading timing, we need to load a real existing image
-        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-        aspectRatio: 1.5,
+        ...defaultImageData,
         lqip: {
           type: 'inline',
           class: 'lqip-inline-test-class',
@@ -534,26 +522,18 @@ describe('ResponsiveImage', () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${imageData} />`,
       );
-      onload(el);
-
       const imgEl = el.shadowRoot?.querySelector('img');
 
-      if (!imgEl?.complete) {
-        expect(imgEl).toHaveClass('lqip-inline-test-class');
-      }
+      expect(imgEl).toHaveClass('lqip-inline-test-class');
 
-      await loaded;
+      await trigger(imgEl!);
 
       expect(imgEl).not.toHaveClass('lqip-inline-test-class');
     });
 
     test('it sets LQIP from blurhash as background', async () => {
-      const { onload, loaded } = imageLoaded();
       const imageData: ImageData = {
-        imageTypes: ['jpeg', 'webp'],
-        // to replicate the loading timing, we need to load a real existing image
-        imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-        aspectRatio: 1.5,
+        ...defaultImageData,
         lqip: {
           type: 'blurhash',
           hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
@@ -565,9 +545,8 @@ describe('ResponsiveImage', () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${imageData} />`,
       );
-      onload(el);
-
       const imgEl = el.shadowRoot?.querySelector('img');
+
       expect(imgEl).toBeDefined();
       expect(imgEl!.complete).toBe(false);
 
@@ -585,7 +564,7 @@ describe('ResponsiveImage', () => {
         `"url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAAXNSR0IArs4c6QAAAbBJREFUOE890k9rHDEMh+FXtsf2bvKBG8gh0NJct7QlkEOgTSn0UEo+XGbG/6Qys5scfsinB8mS3P96MQdED4f3GNEpwRmCogZdoQxhVccyPEUd1Rzy+fnFnEAUuwBbvQCiCIaa0UyoO+BZ9Ay0Dfj449/eQRIjO+XglCxKlEHYAUWBbkIxz2qBomF/Nzxy9/TXHEZEyQwynWydKI3AgDdAPJWJsifutW/A7eOfHZhskEfjoJWklWgFbw1EMRG6m6guUVymStrTJSA3D7/NmTKNTh6V1FdyX5jGgreKyECdY/hEDQeqP57jEkMm5MO3nxegkVohtYXUXoljxuuKbB14Rw+ZFq6o4fqCZIZE5ObL0zsQeyG3mdRfmfpMsA0YmPeMN8BfU/wV1eV9LLk9PZozI2gjjULqC2ksRJ0JVJwMcH4fofkjxR1Z5UiRRNtGuDs9nIHt57WSrZBsJVEI26JEYfsDmaiSKWQWMiuRagH5dPq+b2FbWaSTqGSpJGlM0s+AOAaeZpHVIrNGFp32W5D701cTIMggbXGd7Npet2PyzgBhmKdqYNXAPCbm/Zw9/wGowBAcO1H/agAAAABJRU5ErkJggg==")"`,
       );
 
-      await loaded;
+      await trigger(imgEl!);
 
       expect(
         window.getComputedStyle(imgEl!).backgroundImage,
