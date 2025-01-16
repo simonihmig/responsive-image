@@ -2,9 +2,7 @@ import { render, cleanup, waitFor } from '@testing-library/svelte';
 import { describe, expect, test, afterEach } from 'vitest';
 import { ResponsiveImage } from '../src/lib/index.js';
 import { env, type ImageData } from '@responsive-image/core';
-import { imageLoaded } from './image-loaded.helper.js';
-
-const cacheBreaker = () => `${new Date().getTime()}-${Math.random()}`;
+import { trigger } from './image.helper.js';
 
 afterEach(cleanup);
 
@@ -443,34 +441,28 @@ describe('ResponsiveImage', () => {
 
 	describe('LQIP', () => {
 		test('it sets LQIP class', async () => {
-			const { onload, loaded } = imageLoaded();
 			const imageData: ImageData = {
-				imageTypes: ['jpeg', 'webp'],
-				// to replicate the loading timing, we need to load a real existing image
-				imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-				aspectRatio: 1.5,
+				...defaultImageData,
 				lqip: {
 					type: 'color',
 					class: 'lqip-color-test-class'
 				}
 			};
 			const { container } = render(ResponsiveImage, { src: imageData });
-			onload(container);
-			const imgEl = container.querySelector('img');
+			const imgEl = container.querySelector('img')!;
+
 			expect(imgEl).toBeDefined();
-			expect(imgEl?.complete).toBe(false);
+			expect(imgEl.complete).toBe(false);
 			expect(imgEl).toHaveClass('lqip-color-test-class');
-			await loaded;
+
+			await trigger(imgEl);
+
 			expect(imgEl).not.toHaveClass('lqip-color-test-class');
 		});
 
 		test('it sets LQIP from blurhash as background', async () => {
-			const { onload, loaded } = imageLoaded();
 			const imageData: ImageData = {
-				imageTypes: ['jpeg', 'webp'],
-				// to replicate the loading timing, we need to load a real existing image
-				imageUrlFor: () => `/test-assets/test-image.jpg?${cacheBreaker()}`,
-				aspectRatio: 1.5,
+				...defaultImageData,
 				lqip: {
 					type: 'blurhash',
 					hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
@@ -479,20 +471,11 @@ describe('ResponsiveImage', () => {
 				}
 			};
 			const { container } = render(ResponsiveImage, { src: imageData });
-			onload(container);
 			const imgEl = container.querySelector('img')!;
-			expect(imgEl).toBeDefined();
-			expect(imgEl?.complete).toBe(false);
 
-			imgEl.addEventListener(
-				'load',
-				(e) => {
-					console.log('load');
-					e.preventDefault();
-					e.stopImmediatePropagation();
-				},
-				{ once: true }
-			);
+			expect(imgEl).toBeDefined();
+			expect(imgEl.complete).toBe(false);
+
 			await waitFor(
 				() =>
 					expect(imgEl.style.backgroundImage, 'it has a background PNG').to.match(
@@ -504,7 +487,9 @@ describe('ResponsiveImage', () => {
 			expect(imgEl.style.backgroundImage).toMatchInlineSnapshot(
 				`"url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAAXNSR0IArs4c6QAAAbBJREFUOE890k9rHDEMh+FXtsf2bvKBG8gh0NJct7QlkEOgTSn0UEo+XGbG/6Qys5scfsinB8mS3P96MQdED4f3GNEpwRmCogZdoQxhVccyPEUd1Rzy+fnFnEAUuwBbvQCiCIaa0UyoO+BZ9Ay0Dfj449/eQRIjO+XglCxKlEHYAUWBbkIxz2qBomF/Nzxy9/TXHEZEyQwynWydKI3AgDdAPJWJsifutW/A7eOfHZhskEfjoJWklWgFbw1EMRG6m6guUVymStrTJSA3D7/NmTKNTh6V1FdyX5jGgreKyECdY/hEDQeqP57jEkMm5MO3nxegkVohtYXUXoljxuuKbB14Rw+ZFq6o4fqCZIZE5ObL0zsQeyG3mdRfmfpMsA0YmPeMN8BfU/wV1eV9LLk9PZozI2gjjULqC2ksRJ0JVJwMcH4fofkjxR1Z5UiRRNtGuDs9nIHt57WSrZBsJVEI26JEYfsDmaiSKWQWMiuRagH5dPq+b2FbWaSTqGSpJGlM0s+AOAaeZpHVIrNGFp32W5D701cTIMggbXGd7Npet2PyzgBhmKdqYNXAPCbm/Zw9/wGowBAcO1H/agAAAABJRU5ErkJggg==")"`
 			);
-			await loaded;
+
+			await trigger(imgEl);
+
 			expect(
 				window.getComputedStyle(imgEl!).backgroundImage,
 				'after image is loaded the background PNG is removed'
