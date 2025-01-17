@@ -53,6 +53,15 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import image from './image.jpg?w=200;400&quality=90&lqip=inline&responsive';
+</script>
+
+<ResponsiveImage src={image} width={200} />
+```
+
 :::
 
 ## Image parameters reference

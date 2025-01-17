@@ -38,6 +38,15 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import heroImage from './hero.jpg?responsive';
+</script>
+
+<ResponsiveImage src={heroImage} />
+```
+
 :::
 
 This will render an `<img>` element wrapped in `<picture>` referencing all the resized images in the different formats, for the browser to decide which image it can support and fits best given the current context (device, screen size, user preferences like low bandwidth etc.):
@@ -111,6 +120,10 @@ html`<responsive-image .src=${heroImage} size="70"></responsive-image>`;
 <ResponsiveImage src={heroImage} size={70} />
 ```
 
+```svelte [Svelte]
+<ResponsiveImage src={heroImage} size={70} />
+```
+
 :::
 
 This will render the corresponding [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-sizes) on all `<source>` elements.
@@ -131,6 +144,10 @@ html`<responsive-image
 ```
 
 ```tsx [Solid]
+<ResponsiveImage src={heroImage} sizes="(min-width: 800px) 800px, 100vw" />
+```
+
+```svelte [Svelte]
 <ResponsiveImage src={heroImage} sizes="(min-width: 800px) 800px, 100vw" />
 ```
 
@@ -164,6 +181,15 @@ import logoImage from './hero.jpg?w=320;640&responsive';
 export default function () {
   return <ResponsiveImage src={logoImage} width={320} />;
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import logoImage from './hero.jpg?w=320;640&responsive';
+</script>
+
+<ResponsiveImage src={logoImage} width={320} />
 ```
 
 :::

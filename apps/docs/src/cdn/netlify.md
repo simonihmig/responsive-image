@@ -81,6 +81,15 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { netlify } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage src={netlify('path/to/uploaded/image.jpg')} />
+```
+
 :::
 
 This assumes that your application itself is also served from Netlify, so that `/path/to/image.jpg` is an image in your repo that is also deployed to Netlify. If your application containing that image is not on Netlify, you can still make Netlify process and serve it, you just need to point to it with an absolue URL to make use of Netlify's [remote source](#remote-source) support.
@@ -144,6 +153,19 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { netlify } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={netlify('path/to/uploaded/image.jpg', {
+    aspectRatio: 1.5,
+  })}
+/>
+```
+
 :::
 
 ### Quality
@@ -203,6 +225,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { netlify } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={netlify('path/to/uploaded/image.jpg', {
+    quality: 50,
+  })}
+/>
 ```
 
 :::
@@ -270,6 +305,19 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { netlify } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={netlify('path/to/uploaded/image.jpg', {
+    formats: ['webp', 'avif'],
+  })}
+/>
+```
+
 :::
 
 ### Remote source
@@ -330,6 +378,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { netlify } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={netlify(
+    'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
+  )}
+/>
 ```
 
 :::
