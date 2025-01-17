@@ -4,6 +4,7 @@ The [image component](../usage/component.md) and other utilities are provided wi
 
 - [Ember](./ember.md)
 - [Solid](./solid.md)
+- [Svelte](./svelte.md)
 - [Web Component](./wc.md) (built with Lit, but usable with any framework)
 
 > [!NOTE]
