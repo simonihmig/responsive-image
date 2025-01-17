@@ -22,7 +22,8 @@
 		"lint:package": "publint",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"test": "vitest"
+		"test": "vitest",
+		"test:watch": "vitest watch"
 	},
 	"files": [
 		"dist"
