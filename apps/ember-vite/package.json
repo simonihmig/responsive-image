@@ -20,6 +20,8 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
     "start": "vite",
     "test": "vite build --mode test && ember test --path dist"
   },
@@ -35,6 +37,7 @@
     "@embroider/core": "3.4.16-unstable.f33728f",
     "@embroider/test-setup": "4.0.1-unstable.f33728f",
     "@embroider/vite": "0.2.1-unstable.f33728f",
+    "@eslint/js": "9.18.0",
     "@glimmer/component": "2.0.0",
     "@glimmer/tracking": "1.1.2",
     "@responsive-image/core": "workspace:*",
@@ -72,8 +75,9 @@
     "stylelint-config-standard": "37.0.0",
     "stylelint-prettier": "5.0.2",
     "tracked-built-ins": "3.4.0",
-    "vite": "6.0.7",
-    "webpack": "5.97.1"
+    "typescript": "5.7.3",
+    "typescript-eslint": "8.20.0",
+    "vite": "6.0.7"
   },
   "engines": {
     "node": ">= 20"
