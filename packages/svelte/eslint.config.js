@@ -30,5 +30,10 @@ export default ts.config(
 				parser: ts.parser
 			}
 		}
+	},
+	{
+		linterOptions: {
+			reportUnusedDisableDirectives: 'error'
+		}
 	}
 );

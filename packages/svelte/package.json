@@ -20,6 +20,7 @@
 		"lint:prettier": "prettier --check .",
 		"lint:prettier:fix": "prettier --write .",
 		"lint:package": "publint",
+		"lint:types": "svelte-check --tsconfig ./tsconfig.json",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"test": "vitest",
@@ -49,6 +50,7 @@
 	},
 	"devDependencies": {
 		"@eslint/compat": "1.2.5",
+		"@eslint/js": "9.18.0",
 		"@sveltejs/package": "2.3.7",
 		"@sveltejs/vite-plugin-svelte": "4.0.4",
 		"@testing-library/svelte": "5.2.6",
@@ -66,7 +68,7 @@
 		"svelte": "5.16.6",
 		"svelte-check": "4.1.4",
 		"typescript": "5.7.3",
-		"typescript-eslint": "8.19.1",
+		"typescript-eslint": "8.20.0",
 		"vitest": "2.1.8"
 	},
 	"volta": {
