@@ -121,7 +121,6 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
       } else {
         return args.src.imageTypes.map((type) => {
           const sources: string[] = PIXEL_DENSITIES.map((density) => {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const url = args.src.imageUrlFor(w * density, type)!;
 
             return `${url} ${density}x`;

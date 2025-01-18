@@ -29,7 +29,6 @@
     }
   },
   "scripts": {
-    "start": "tsup --watch",
     "build": "rollup --config",
     "test": "concurrently 'pnpm:test:*(!watch)'",
     "test:client": "vitest",
@@ -37,6 +36,9 @@
     "test:watch": "vitest watch",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
     "lint:types": "tsc --noEmit",
     "prepack": "pnpm turbo build"
   },
@@ -50,25 +52,25 @@
   "devDependencies": {
     "@babel/preset-typescript": "7.26.0",
     "@embroider/addon-dev": "7.1.1",
+    "@eslint/compat": "1.2.5",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-node-resolve": "16.0.0",
     "@solidjs/testing-library": "0.8.10",
     "@tsconfig/strictest": "2.0.5",
     "@types/node": "22.10.7",
-    "@typescript-eslint/eslint-plugin": "8.20.0",
-    "@typescript-eslint/parser": "8.20.0",
     "@vitest/browser": "2.1.8",
     "babel-preset-solid": "1.9.3",
     "concurrently": "9.1.2",
-    "eslint": "8.57.1",
+    "eslint": "9.18.0",
     "eslint-config-prettier": "10.0.1",
-    "eslint-plugin-prettier": "5.2.2",
+    "globals": "15.14.0",
     "playwright": "1.49.1",
     "prettier": "3.4.2",
     "rollup": "4.30.1",
     "rollup-plugin-node-externals": "8.0.0",
     "solid-js": "1.9.4",
     "typescript": "5.7.3",
+    "typescript-eslint": "8.20.0",
     "vite-plugin-solid": "2.11.0",
     "vitest": "2.1.8"
   }
