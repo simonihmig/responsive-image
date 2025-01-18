@@ -225,8 +225,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       ember-template-lint:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.1.0
+        version: 6.1.0
       ember-try:
         specifier: 3.0.0
         version: 3.0.0
@@ -378,8 +378,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1(@glimmer/component@2.0.0)(@glint/template@1.5.1)(rsvp@4.8.5)(webpack@5.97.1)
       ember-template-lint:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.1.0
+        version: 6.1.0
       eslint:
         specifier: 9.18.0
         version: 9.18.0(jiti@2.4.2)
@@ -624,8 +624,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       ember-template-lint:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.1.0
+        version: 6.1.0
       eslint:
         specifier: 9.18.0
         version: 9.18.0(jiti@2.4.2)
@@ -1123,8 +1123,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0(@babel/core@7.25.9)(ember-source@6.0.1(@glimmer/component@2.0.0)(@glint/template@1.5.1)(rsvp@4.8.5))
       ember-template-lint:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.1.0
+        version: 6.1.0
       eslint:
         specifier: 9.18.0
         version: 9.18.0(jiti@2.4.2)
@@ -6641,9 +6641,9 @@ packages:
     resolution: {integrity: sha512-qwf/38E1ut8M2/1tsFJl6kL99799MvxQrx0lN3LAc0HJRQhM/lYHqnHhzS30rkH76g+76TfxcMB5JJZQabWk2A==}
     engines: {node: 16.* || >= 18}
 
-  ember-template-lint@6.0.0:
-    resolution: {integrity: sha512-TWWt/qCd4KoQ50T3We5nCoKcsrAT8Ip79Kmm9eyWjjyL+LAbRFu0z+GxcmW7MR+QCNW/1LQs3kwEdtIcaHEGiA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+  ember-template-lint@6.1.0:
+    resolution: {integrity: sha512-UyzLPcyneG3mnbBfewyYIlV7fy6JKHQVAJy5a9+URdJKkZKN+3vQkQzIIlsz6dP/GpoXVB+datns5HlfMfliSA==}
+    engines: {node: ^18.18.0 || >= 20.9.0}
     hasBin: true
 
   ember-template-recast@6.1.5:
@@ -18940,7 +18940,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-template-lint@6.0.0:
+  ember-template-lint@6.1.0:
     dependencies:
       '@lint-todo/utils': 13.1.1
       aria-query: 5.3.2
