@@ -1317,6 +1317,12 @@ importers:
         specifier: ^0.33.0
         version: 0.33.5
     devDependencies:
+      '@eslint/compat':
+        specifier: 1.2.5
+        version: 1.2.5(eslint@9.18.0(jiti@2.4.2))
+      '@eslint/js':
+        specifier: 9.18.0
+        version: 9.18.0
       '@tsconfig/node20':
         specifier: 20.1.4
         version: 20.1.4
@@ -1451,6 +1457,12 @@ importers:
         specifier: ^0.33.0
         version: 0.33.5
     devDependencies:
+      '@eslint/compat':
+        specifier: 1.2.5
+        version: 1.2.5(eslint@9.18.0(jiti@2.4.2))
+      '@eslint/js':
+        specifier: 9.18.0
+        version: 9.18.0
       '@tsconfig/node20':
         specifier: 20.1.4
         version: 20.1.4
@@ -1460,12 +1472,6 @@ importers:
       '@types/node':
         specifier: 22.10.7
         version: 22.10.7
-      '@typescript-eslint/eslint-plugin':
-        specifier: 8.20.0
-        version: 8.20.0(@typescript-eslint/parser@8.20.0(eslint@8.57.1)(typescript@5.7.3))(eslint@8.57.1)(typescript@5.7.3)
-      '@typescript-eslint/parser':
-        specifier: 8.20.0
-        version: 8.20.0(eslint@8.57.1)(typescript@5.7.3)
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -1473,20 +1479,20 @@ importers:
         specifier: 7.1.2
         version: 7.1.2(webpack@5.97.1)
       eslint:
-        specifier: 8.57.1
-        version: 8.57.1
+        specifier: 9.18.0
+        version: 9.18.0(jiti@2.4.2)
       eslint-config-prettier:
         specifier: 10.0.1
-        version: 10.0.1(eslint@8.57.1)
+        version: 10.0.1(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-n:
         specifier: 17.15.1
-        version: 17.15.1(eslint@8.57.1)
-      eslint-plugin-prettier:
-        specifier: 5.2.2
-        version: 5.2.2(@types/eslint@9.6.1)(eslint-config-prettier@10.0.1(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.2)
+        version: 17.15.1(eslint@9.18.0(jiti@2.4.2))
       glob:
         specifier: 11.0.1
         version: 11.0.1
+      globals:
+        specifier: 15.14.0
+        version: 15.14.0
       jest-image-snapshot:
         specifier: 6.4.0
         version: 6.4.0
@@ -1505,6 +1511,9 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
+      typescript-eslint:
+        specifier: 8.20.0
+        version: 8.20.0(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.7)(@vitest/browser@2.1.8)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.7)(typescript@5.7.3))(terser@5.37.0)
