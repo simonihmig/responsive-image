@@ -20,6 +20,11 @@ export default defineConfig(({ mode }) => {
         enabled: !testSSR,
         provider: 'playwright',
         name: 'chromium',
+        providerOptions: {
+          launch: {
+            channel: 'chrome',
+          },
+        },
       },
       watch: false,
       isolate: !testSSR,
