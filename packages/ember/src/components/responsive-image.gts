@@ -109,7 +109,6 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
       return this.args.src.imageTypes.map((type) => {
         const sources: string[] = PIXEL_DENSITIES.map((density) => {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           const url = this.args.src.imageUrlFor(width * density, type)!;
 
           return `${url} ${density}x`;

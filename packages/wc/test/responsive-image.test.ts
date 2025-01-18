@@ -23,7 +23,7 @@ describe('ResponsiveImage', () => {
   describe('basics', () => {
     test('it renders a source for every format', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('picture')).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('ResponsiveImage', () => {
 
     test('it loads lazily by default', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -52,7 +52,7 @@ describe('ResponsiveImage', () => {
 
     test('it decodes async', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -63,7 +63,7 @@ describe('ResponsiveImage', () => {
 
     test('it exposes img with part', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -75,7 +75,10 @@ describe('ResponsiveImage', () => {
     describe('HTML attributes', () => {
       test('it can optionally load eager', async () => {
         const el = await fixture<ResponsiveImage>(
-          html`<responsive-image .src=${defaultImageData} loading="eager" />`,
+          html`<responsive-image
+            .src=${defaultImageData}
+            loading="eager"
+          ></responsive-image>`,
         );
 
         expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -86,7 +89,10 @@ describe('ResponsiveImage', () => {
 
       test('it can optionally decode sync', async () => {
         const el = await fixture<ResponsiveImage>(
-          html`<responsive-image .src=${defaultImageData} decoding="sync" />`,
+          html`<responsive-image
+            .src=${defaultImageData}
+            decoding="sync"
+          ></responsive-image>`,
         );
 
         expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -97,7 +103,10 @@ describe('ResponsiveImage', () => {
 
       test('it can customize alt attribute', async () => {
         const el = await fixture<ResponsiveImage>(
-          html`<responsive-image .src=${defaultImageData} alt="some" />`,
+          html`<responsive-image
+            .src=${defaultImageData}
+            alt="some"
+          ></responsive-image>`,
         );
 
         expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -111,7 +120,7 @@ describe('ResponsiveImage', () => {
           html`<responsive-image
             .src=${defaultImageData}
             fetchPriority="high"
-          />`,
+          ></responsive-image>`,
         );
 
         expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -125,7 +134,7 @@ describe('ResponsiveImage', () => {
           html`<responsive-image
             .src=${defaultImageData}
             crossOrigin="use-credentials"
-          />`,
+          ></responsive-image>`,
         );
 
         expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -139,7 +148,7 @@ describe('ResponsiveImage', () => {
           html`<responsive-image
             .src=${defaultImageData}
             referrerPolicy="no-referrer"
-          />`,
+          ></responsive-image>`,
         );
 
         expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -165,7 +174,7 @@ describe('ResponsiveImage', () => {
           @load=${(e: Event) => {
             triggeredEvent = e;
           }}
-        />`,
+        ></responsive-image>`,
       );
 
       await waitUntil(() => triggeredEvent);
@@ -181,7 +190,7 @@ describe('ResponsiveImage', () => {
           @error=${(e: Event) => {
             triggeredEvent = e;
           }}
-        />`,
+        ></responsive-image>`,
       );
 
       await waitUntil(() => triggeredEvent);
@@ -191,7 +200,7 @@ describe('ResponsiveImage', () => {
 
     test('it exposes complete property', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
 
       expect(el.complete).toBe(false);
@@ -204,7 +213,7 @@ describe('ResponsiveImage', () => {
   describe('responsive layout', () => {
     test('it has responsive layout by default', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveClass('ri-responsive');
@@ -217,7 +226,7 @@ describe('ResponsiveImage', () => {
         aspectRatio: 2,
       };
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData} />`,
+        html`<responsive-image .src=${imageData}></responsive-image>`,
       );
       const imgEl = el.shadowRoot?.querySelector('img');
 
@@ -236,7 +245,7 @@ describe('ResponsiveImage', () => {
       };
 
       let el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData} />`,
+        html`<responsive-image .src=${imageData}></responsive-image>`,
       );
       // png
       expect(
@@ -268,7 +277,7 @@ describe('ResponsiveImage', () => {
       };
 
       el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${smallImageData} />`,
+        html`<responsive-image .src=${smallImageData}></responsive-image>`,
       );
 
       // png
@@ -298,7 +307,7 @@ describe('ResponsiveImage', () => {
 
     test('it renders the sourceset based on deviceWidths when availableWidths is not available', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
 
       const { deviceWidths } = env;
@@ -324,7 +333,7 @@ describe('ResponsiveImage', () => {
     test.skip('it renders the fallback src next to needed display size', async () => {
       env.physicalWidth = 100;
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${defaultImageData} />`,
+        html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'src',
@@ -334,7 +343,10 @@ describe('ResponsiveImage', () => {
 
     test('it renders a given size as sizes', async () => {
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image size="40" .src=${defaultImageData} />`,
+        html`<responsive-image
+          size="40"
+          .src=${defaultImageData}
+        ></responsive-image>`,
       );
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
@@ -349,7 +361,7 @@ describe('ResponsiveImage', () => {
         html`<responsive-image
           sizes="(max-width: 767px) 100vw, 50vw"
           .src=${defaultImageData}
-        />`,
+        ></responsive-image>`,
       );
       expect(
         el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
@@ -363,7 +375,10 @@ describe('ResponsiveImage', () => {
   describe('fixed layout', () => {
     test('it has fixed layout when width or height is provided', async () => {
       let el = await fixture<ResponsiveImage>(
-        html`<responsive-image width="100" .src=${defaultImageData} />`,
+        html`<responsive-image
+          width="100"
+          .src=${defaultImageData}
+        ></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveClass('ri-fixed');
@@ -372,7 +387,10 @@ describe('ResponsiveImage', () => {
       );
 
       el = await fixture<ResponsiveImage>(
-        html`<responsive-image height="100" .src=${defaultImageData} />`,
+        html`<responsive-image
+          height="100"
+          .src=${defaultImageData}
+        ></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveClass('ri-fixed');
@@ -387,7 +405,7 @@ describe('ResponsiveImage', () => {
           width="150"
           height="50"
           .src=${defaultImageData}
-        />`,
+        ></responsive-image>`,
       );
 
       const imgEl = el.shadowRoot?.querySelector('img');
@@ -402,7 +420,10 @@ describe('ResponsiveImage', () => {
         aspectRatio: 2,
       };
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image width="150" .src=${imageData} />`,
+        html`<responsive-image
+          width="150"
+          .src=${imageData}
+        ></responsive-image>`,
       );
 
       const imgEl = el.shadowRoot?.querySelector('img');
@@ -417,7 +438,10 @@ describe('ResponsiveImage', () => {
         aspectRatio: 2,
       };
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image height="100" .src=${imageData} />`,
+        html`<responsive-image
+          height="100"
+          .src=${imageData}
+        ></responsive-image>`,
       );
 
       const imgEl = el.shadowRoot?.querySelector('img');
@@ -433,7 +457,10 @@ describe('ResponsiveImage', () => {
       };
 
       let el = await fixture<ResponsiveImage>(
-        html`<responsive-image width="50" .src=${imageData} />`,
+        html`<responsive-image
+          width="50"
+          .src=${imageData}
+        ></responsive-image>`,
       );
 
       // jpeg
@@ -461,7 +488,10 @@ describe('ResponsiveImage', () => {
       );
 
       el = await fixture<ResponsiveImage>(
-        html`<responsive-image width="10" .src=${defaultImageData} />`,
+        html`<responsive-image
+          width="10"
+          .src=${defaultImageData}
+        ></responsive-image>`,
       );
       // jpeg
       expect(
@@ -490,7 +520,10 @@ describe('ResponsiveImage', () => {
 
     test('it renders the fallback src', async () => {
       let el = await fixture<ResponsiveImage>(
-        html`<responsive-image width="320" .src=${defaultImageData} />`,
+        html`<responsive-image
+          width="320"
+          .src=${defaultImageData}
+        ></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -499,7 +532,10 @@ describe('ResponsiveImage', () => {
       );
 
       el = await fixture<ResponsiveImage>(
-        html`<responsive-image width="100" .src=${defaultImageData} />`,
+        html`<responsive-image
+          width="100"
+          .src=${defaultImageData}
+        ></responsive-image>`,
       );
 
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
@@ -520,7 +556,7 @@ describe('ResponsiveImage', () => {
       };
 
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData} />`,
+        html`<responsive-image .src=${imageData}></responsive-image>`,
       );
       const imgEl = el.shadowRoot?.querySelector('img');
 
@@ -543,7 +579,7 @@ describe('ResponsiveImage', () => {
       };
 
       const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData} />`,
+        html`<responsive-image .src=${imageData}></responsive-image>`,
       );
       const imgEl = el.shadowRoot?.querySelector('img');
 

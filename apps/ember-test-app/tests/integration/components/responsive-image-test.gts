@@ -1,5 +1,4 @@
 import ResponsiveImage from "@responsive-image/ember/components/responsive-image";
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { render } from "@ember/test-helpers";
 import { setupRenderingTest } from "ember-qunit";
 import { module, skip, test } from "qunit";

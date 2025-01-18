@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -28,10 +28,12 @@
     <script src="/@embroider/core/vendor.js"></script>
     <script src="/@embroider/core/test-support.js"></script>
     <script src="/@embroider/core/entrypoint" type="module"></script>
-    <script type="module">import "ember-testing";</script>
+    <script type="module">
+      import "ember-testing";
+    </script>
 
     <script type="module">
-      import { start } from './test-helper';
+      import { start } from "./test-helper";
       import.meta.glob("./**/*.{js,gjs,gts}", { eager: true });
       start();
     </script>

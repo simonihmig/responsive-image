@@ -5,7 +5,6 @@ const b64 = baseN.create();
 
 export function generateLqipClassName(resource: string): string {
   if (generatedClassNames.has(resource)) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return generatedClassNames.get(resource)!;
   } else {
     const className = `ri-dyn-${b64.encode(generatedClassNames.size)}`;
