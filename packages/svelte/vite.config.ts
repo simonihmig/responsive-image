@@ -10,7 +10,12 @@ export default defineConfig({
 		browser: {
 			provider: 'playwright', // or 'webdriverio'
 			enabled: true,
-			name: 'chromium' // browser name is required
+			name: 'chromium', // browser name is required,
+			providerOptions: {
+				launch: {
+					channel: 'chrome'
+				}
+			}
 		}
 	}
 });
