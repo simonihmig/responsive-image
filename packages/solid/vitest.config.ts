@@ -19,12 +19,13 @@ export default defineConfig(({ mode }) => {
       browser: {
         enabled: !testSSR,
         provider: 'playwright',
-        name: 'chromium',
-        providerOptions: {
-          launch: {
-            channel: 'chrome',
+        instances: [
+          {
+            name: 'Chrome',
+            browser: 'chromium',
+            launch: { channel: 'chrome' },
           },
-        },
+        ],
       },
       watch: false,
       isolate: !testSSR,
@@ -34,7 +35,6 @@ export default defineConfig(({ mode }) => {
         SSR: testSSR ? '1' : '',
         PROD: testSSR ? '1' : '',
       },
-      environment: testSSR ? 'node' : 'jsdom',
       transformMode: { web: [/\.[jt]sx$/] },
       ...(testSSR
         ? {
@@ -44,6 +44,7 @@ export default defineConfig(({ mode }) => {
             include: ['tests/*.test.{ts,tsx}'],
             exclude: ['tests/server.test.{ts,tsx}'],
           }),
+      ...(testSSR ? { environment: 'node' } : {}),
     },
     resolve: {
       conditions: testSSR ? ['node'] : ['browser', 'development'],
