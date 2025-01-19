@@ -6,6 +6,11 @@ settings:
 
 packageExtensionsChecksum: 9b755308b75bb567ca9eefdf5e153eca
 
+patchedDependencies:
+  vite-plugin-solid@2.11.0:
+    hash: 2amjeh7latl6kthk4i6urfsa64
+    path: patches/vite-plugin-solid@2.11.0.patch
+
 importers:
 
   .:
@@ -1239,7 +1244,7 @@ importers:
         version: 8.20.0(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3)
       vite-plugin-solid:
         specifier: 2.11.0
-        version: 2.11.0(solid-js@1.9.4)(vite@6.0.7(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))
+        version: 2.11.0(patch_hash=2amjeh7latl6kthk4i6urfsa64)(solid-js@1.9.4)(vite@6.0.7(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))
       vitest:
         specifier: 3.0.2
         version: 3.0.2(@types/node@22.10.7)(@vitest/browser@3.0.2)(jiti@2.4.2)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.7)(typescript@5.7.3))(terser@5.37.0)(yaml@1.10.2)
@@ -15385,7 +15390,7 @@ snapshots:
       source-map-js: 1.2.1
       terracotta: 1.0.6(solid-js@1.9.4)
       tinyglobby: 0.2.10
-      vite-plugin-solid: 2.11.0(solid-js@1.9.4)(vite@6.0.7(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))
+      vite-plugin-solid: 2.11.0(patch_hash=2amjeh7latl6kthk4i6urfsa64)(solid-js@1.9.4)(vite@6.0.7(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - solid-js
@@ -24557,7 +24562,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-solid@2.11.0(solid-js@1.9.4)(vite@6.0.7(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)):
+  vite-plugin-solid@2.11.0(patch_hash=2amjeh7latl6kthk4i6urfsa64)(solid-js@1.9.4)(vite@6.0.7(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)):
     dependencies:
       '@babel/core': 7.25.9
       '@types/babel__core': 7.20.5
