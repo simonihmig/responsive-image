@@ -1,0 +1,16 @@
+diff --git a/dist/esm/index.mjs b/dist/esm/index.mjs
+index e065926b3da86406660aba987cb8226af9f0f8fd..bca68dfff42867a904d1be10938240ae459a8612 100644
+--- a/dist/esm/index.mjs
++++ b/dist/esm/index.mjs
+@@ -102,10 +102,7 @@ function solidPlugin(options = {}) {
+           include: [...nestedDeps, ...solidPkgsConfig.optimizeDeps.include],
+           exclude: solidPkgsConfig.optimizeDeps.exclude
+         },
+-        ssr: solidPkgsConfig.ssr,
+-        ...(test.server ? {
+-          test
+-        } : {})
++        ssr: solidPkgsConfig.ssr
+       };
+     },
+     // @ts-ignore This hook only works in Vite 6
