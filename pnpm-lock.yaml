@@ -33,8 +33,8 @@ importers:
   apps/docs:
     devDependencies:
       vitepress:
-        specifier: 1.6.0
-        version: 1.6.0(@algolia/client-search@5.19.0)(@types/node@22.10.7)(change-case@5.4.4)(fuse.js@7.0.0)(postcss@8.5.1)(search-insights@2.17.3)(terser@5.37.0)(typescript@5.7.3)
+        specifier: 1.6.1
+        version: 1.6.1(@algolia/client-search@5.19.0)(@types/node@22.10.7)(change-case@5.4.4)(fuse.js@7.0.0)(postcss@8.5.1)(search-insights@2.17.3)(terser@5.37.0)(typescript@5.7.3)
 
   apps/ember-test-app:
     devDependencies:
@@ -11315,8 +11315,8 @@ packages:
       vite:
         optional: true
 
-  vitepress@1.6.0:
-    resolution: {integrity: sha512-cm7tyYoU1og9eYUA9YH65i2mzkr4cB3jzxYrvCcStfBxQIqeWWFRJQcQw5WMEmdZ1Z9zOK5kRapydG4FGzK5zQ==}
+  vitepress@1.6.1:
+    resolution: {integrity: sha512-n41KBL08aonxaWMnk5V+TkpZ29rZF4sgYjvIqU2k0foteNhgms5BmbVWw9xTqD5hps12H1W+EZUwc7NlHh1s3g==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -24708,7 +24708,7 @@ snapshots:
     optionalDependencies:
       vite: 6.0.10(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)
 
-  vitepress@1.6.0(@algolia/client-search@5.19.0)(@types/node@22.10.7)(change-case@5.4.4)(fuse.js@7.0.0)(postcss@8.5.1)(search-insights@2.17.3)(terser@5.37.0)(typescript@5.7.3):
+  vitepress@1.6.1(@algolia/client-search@5.19.0)(@types/node@22.10.7)(change-case@5.4.4)(fuse.js@7.0.0)(postcss@8.5.1)(search-insights@2.17.3)(terser@5.37.0)(typescript@5.7.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.19.0)(search-insights@2.17.3)
