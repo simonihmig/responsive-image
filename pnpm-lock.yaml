@@ -1260,8 +1260,8 @@ importers:
         specifier: 9.18.0
         version: 9.18.0
       '@sveltejs/package':
-        specifier: 2.3.8
-        version: 2.3.8(svelte@5.19.1)(typescript@5.7.3)
+        specifier: 2.3.9
+        version: 2.3.9(svelte@5.19.1)(typescript@5.7.3)
       '@sveltejs/vite-plugin-svelte':
         specifier: 5.0.3
         version: 5.0.3(svelte@5.19.1)(vite@6.0.11(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))
@@ -4039,8 +4039,8 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       vite: ^5.0.3 || ^6.0.0
 
-  '@sveltejs/package@2.3.8':
-    resolution: {integrity: sha512-QqWm/FcNnuboEq2dqbUqt6OdGKIVY7g/5h95E+f3KYXvNfmHKw5Z1tHCNGBYxSffODeLd4ZO8IonDghenNMr0A==}
+  '@sveltejs/package@2.3.9':
+    resolution: {integrity: sha512-POIiQknGmcGCcM7ZbFG7cjsJ51GndFOY3PTXa8XFzZ+C/GJfx/JufvVXiWcXVsteP74FeXSSgcC+b5sIayXXKw==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     peerDependencies:
@@ -15333,7 +15333,7 @@ snapshots:
       svelte: 5.19.1
       vite: 6.0.11(@types/node@22.10.7)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)
 
-  '@sveltejs/package@2.3.8(svelte@5.19.1)(typescript@5.7.3)':
+  '@sveltejs/package@2.3.9(svelte@5.19.1)(typescript@5.7.3)':
     dependencies:
       chokidar: 4.0.3
       kleur: 4.1.5
