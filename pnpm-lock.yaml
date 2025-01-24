@@ -90,8 +90,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/webpack
       '@tsconfig/ember':
-        specifier: 3.0.8
-        version: 3.0.8
+        specifier: 3.0.9
+        version: 3.0.9
       '@types/ember':
         specifier: 4.0.11
         version: 4.0.11(@babel/core@7.25.9)
@@ -498,8 +498,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/webpack
       '@tsconfig/ember':
-        specifier: 3.0.8
-        version: 3.0.8
+        specifier: 3.0.9
+        version: 3.0.9
       '@types/ember':
         specifier: 4.0.11
         version: 4.0.11(@babel/core@7.25.9)
@@ -1045,8 +1045,8 @@ importers:
         specifier: 0.4.4
         version: 0.4.4(rollup@4.31.0)
       '@tsconfig/ember':
-        specifier: 3.0.8
-        version: 3.0.8
+        specifier: 3.0.9
+        version: 3.0.9
       '@types/ember':
         specifier: 4.0.11
         version: 4.0.11(@babel/core@7.25.9)
@@ -4102,8 +4102,8 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
 
-  '@tsconfig/ember@3.0.8':
-    resolution: {integrity: sha512-OVnIsZIt/8q0VEtcdz3rRryNrm6gdJTxXlxefkGIrkZnME0wqslmwHlUEZ7mvh377df9FqBhNKrYNarhCW8zJA==}
+  '@tsconfig/ember@3.0.9':
+    resolution: {integrity: sha512-0B44GyEafxJLAZSixH9VBnm9kDFCpaLXu86httaJSDEm1nfl3WWI/XfY4diPsOyOg+pc9N1/YfqH7uKM2dF0lA==}
 
   '@tsconfig/node20@20.1.4':
     resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
@@ -15442,7 +15442,7 @@ snapshots:
 
   '@tootallnate/once@2.0.0': {}
 
-  '@tsconfig/ember@3.0.8': {}
+  '@tsconfig/ember@3.0.9': {}
 
   '@tsconfig/node20@20.1.4': {}
 
