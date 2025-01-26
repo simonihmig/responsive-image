@@ -140,6 +140,7 @@
 	let blurhashMeta = $derived(isLqipBlurhash(srcProp.lqip) ? srcProp.lqip : undefined);
 
 	let blurhashLib = $state<{
+		/* eslint-disable @typescript-eslint/consistent-type-imports */
 		value: typeof import('@responsive-image/core/blurhash/decode') | undefined;
 	}>({ value: undefined });
 	const loadBlurhashLib = () => {

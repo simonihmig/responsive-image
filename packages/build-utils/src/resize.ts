@@ -1,7 +1,7 @@
 import type { ImageType } from '@responsive-image/core';
 import type { ImageConfig } from 'imagetools-core';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import type { Metadata } from 'sharp';
+import { Metadata } from 'sharp';
 import type {
   ImageLoaderChainedResult,
   ImageOptions,

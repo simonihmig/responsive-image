@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { netlify, Config } from '../src';
+import type { Config } from '../src';
+import { netlify } from '../src';
 import { setConfig } from '@responsive-image/core';
 
 describe('netlify', function () {

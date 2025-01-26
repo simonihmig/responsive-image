@@ -78,6 +78,9 @@ export default ts.config(
       parserOptions: parserOptions.esm.ts,
     },
     extends: [...ts.configs.recommendedTypeChecked, ember.configs.gts],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+    },
   },
   {
     files: ['src/**/*'],

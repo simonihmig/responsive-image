@@ -1,4 +1,5 @@
-import sharp, { Metadata } from 'sharp';
+import type { Metadata } from 'sharp';
+import sharp from 'sharp';
 import type { Plugin } from 'vite';
 import type { Options } from '../types';
 import {

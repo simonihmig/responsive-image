@@ -25,6 +25,7 @@ export default ts.config(
     rules: {
       // we want to handle this by eslint-plugin-import
       'n/no-missing-import': 'off',
+      '@typescript-eslint/consistent-type-imports': 'error',
     },
   },
   {

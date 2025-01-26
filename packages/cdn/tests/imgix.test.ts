@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { Config, imgix } from '../src';
+import type { Config } from '../src';
+import { imgix } from '../src';
 import { setConfig } from '@responsive-image/core';
 
 describe('imgix', function () {

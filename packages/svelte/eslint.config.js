@@ -32,6 +32,12 @@ export default ts.config(
 		}
 	},
 	{
+		files: ['**/*.ts', '**/*.svelte'],
+		rules: {
+			'@typescript-eslint/consistent-type-imports': 'error'
+		}
+	},
+	{
 		linterOptions: {
 			reportUnusedDisableDirectives: 'error'
 		}

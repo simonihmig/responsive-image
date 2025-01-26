@@ -3,9 +3,9 @@ import * as path from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
 import type { Options, ServedImageData } from './types';
 import { getInput, getViteBasePath, getViteOptions } from './utils';
+import type { ImageProcessingResult } from '@responsive-image/build-utils';
 import {
   getAspectRatio,
-  ImageProcessingResult,
   parseURL,
   onlyUnique,
 } from '@responsive-image/build-utils';

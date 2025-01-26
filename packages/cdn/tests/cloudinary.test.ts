@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { cloudinary, Config } from '../src';
+import type { Config } from '../src';
+import { cloudinary } from '../src';
 import { setConfig } from '@responsive-image/core';
 
 describe('cloudinary', function () {

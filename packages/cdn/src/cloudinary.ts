@@ -1,6 +1,6 @@
 import { assert, getConfig } from '@responsive-image/core';
 import type { ImageType, ImageData } from '@responsive-image/core';
-import { Config, CoreOptions } from './types';
+import type { Config, CoreOptions } from './types';
 
 export interface CloudinaryConfig {
   cloudName: string;

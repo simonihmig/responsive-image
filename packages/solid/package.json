@@ -35,6 +35,7 @@
     "test:server": "pnpm run test:client --mode ssr",
     "test:watch": "vitest watch",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:prettier": "prettier --check .",

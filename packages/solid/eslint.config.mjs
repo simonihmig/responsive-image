@@ -21,6 +21,12 @@ export default ts.config(
       },
     },
   },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+    },
+  },
   // node files
   {
     files: ['eslint.config.mjs', 'rollup.config.mjs', 'vitest.config.ts'],
