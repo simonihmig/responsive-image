@@ -1,11 +1,13 @@
-import type { Plugin } from 'vite';
-import type { Options } from '../types';
-import { META_KEY, getInput, getViteOptions } from '../utils';
-import { name as inlineCssPluginName } from './inline-css';
 import {
   generateLqipClassName,
   getPathname,
 } from '@responsive-image/build-utils';
+
+import { META_KEY, getInput, getViteOptions } from '../utils';
+import { name as inlineCssPluginName } from './inline-css';
+
+import type { Options } from '../types';
+import type { Plugin } from 'vite';
 
 export default function lqipLinlinePlugin(
   userOptions: Partial<Options> = {},

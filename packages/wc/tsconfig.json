@@ -17,7 +17,8 @@
     "rootDir": "./",
     "declaration": true,
     "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true
   },
   "include": ["**/*.ts"]
 }

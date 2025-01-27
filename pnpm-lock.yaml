@@ -808,6 +808,49 @@ importers:
         specifier: 6.0.11
         version: 6.0.11(@types/node@22.10.10)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)
 
+  packages/-internals:
+    dependencies:
+      '@eslint/compat':
+        specifier: 1.2.5
+        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
+      '@eslint/js':
+        specifier: 9.19.0
+        version: 9.19.0
+      eslint-config-prettier:
+        specifier: 10.0.1
+        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
+      eslint-plugin-import:
+        specifier: 2.31.0
+        version: 2.31.0(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
+      eslint-plugin-n:
+        specifier: 17.15.1
+        version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
+      globals:
+        specifier: 15.14.0
+        version: 15.14.0
+      typescript-eslint:
+        specifier: 8.22.0
+        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
+    devDependencies:
+      '@tsconfig/node20':
+        specifier: 20.1.4
+        version: 20.1.4
+      '@types/node':
+        specifier: 22.10.10
+        version: 22.10.10
+      concurrently:
+        specifier: 9.1.2
+        version: 9.1.2
+      eslint:
+        specifier: 9.19.0
+        version: 9.19.0(jiti@2.4.2)
+      prettier:
+        specifier: 3.4.2
+        version: 3.4.2
+      typescript:
+        specifier: 5.7.3
+        version: 5.7.3
+
   packages/build-utils:
     dependencies:
       '@responsive-image/core':
@@ -829,12 +872,9 @@ importers:
         specifier: ^0.33.0
         version: 0.33.5
     devDependencies:
-      '@eslint/compat':
-        specifier: 1.2.5
-        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
-      '@eslint/js':
-        specifier: 9.19.0
-        version: 9.19.0
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@tsconfig/node20':
         specifier: 20.1.4
         version: 20.1.4
@@ -850,18 +890,9 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-n:
-        specifier: 17.15.1
-        version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
       glob:
         specifier: 11.0.1
         version: 11.0.1
-      globals:
-        specifier: 15.14.0
-        version: 15.14.0
       jest-image-snapshot:
         specifier: 6.4.0
         version: 6.4.0
@@ -877,9 +908,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.10)(@vitest/browser@3.0.4)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.10)(typescript@5.7.3))(terser@5.37.0)
@@ -890,12 +918,9 @@ importers:
         specifier: workspace:^
         version: link:../core
     devDependencies:
-      '@eslint/compat':
-        specifier: 1.2.5
-        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
-      '@eslint/js':
-        specifier: 9.19.0
-        version: 9.19.0
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -905,15 +930,6 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-n:
-        specifier: 17.15.1
-        version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
-      globals:
-        specifier: 15.14.0
-        version: 15.14.0
       pkgroll:
         specifier: 2.6.1
         version: 2.6.1(typescript@5.7.3)
@@ -923,21 +939,15 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.10)(@vitest/browser@3.0.4)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.10)(typescript@5.7.3))(terser@5.37.0)
 
   packages/core:
     devDependencies:
-      '@eslint/compat':
-        specifier: 1.2.5
-        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
-      '@eslint/js':
-        specifier: 9.19.0
-        version: 9.19.0
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -950,15 +960,6 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-n:
-        specifier: 17.15.1
-        version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
-      globals:
-        specifier: 15.14.0
-        version: 15.14.0
       pkgroll:
         specifier: 2.6.1
         version: 2.6.1(typescript@5.7.3)
@@ -968,9 +969,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.10)(@vitest/browser@3.0.4)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.10)(typescript@5.7.3))(terser@5.37.0)
@@ -1014,9 +1012,6 @@ importers:
       '@embroider/addon-dev':
         specifier: 7.1.1
         version: 7.1.1(@glint/template@1.5.2)(rollup@4.32.0)
-      '@eslint/js':
-        specifier: 9.19.0
-        version: 9.19.0
       '@glimmer/component':
         specifier: 2.0.0
         version: 2.0.0
@@ -1035,6 +1030,9 @@ importers:
       '@glint/template':
         specifier: 1.5.2
         version: 1.5.2
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@rollup/plugin-babel':
         specifier: 6.0.4
         version: 6.0.4(@babel/core@7.25.9)(@types/babel__core@7.20.5)(rollup@4.32.0)
@@ -1128,18 +1126,9 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-ember:
         specifier: 12.3.3
         version: 12.3.3(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-import:
-        specifier: 2.31.0
-        version: 2.31.0(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-n:
-        specifier: 17.15.1
-        version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
       globals:
         specifier: 15.14.0
         version: 15.14.0
@@ -1161,9 +1150,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
 
   packages/solid:
     dependencies:
@@ -1180,9 +1166,9 @@ importers:
       '@embroider/addon-dev':
         specifier: 7.1.1
         version: 7.1.1(@glint/template@1.5.2)(rollup@4.32.0)
-      '@eslint/compat':
-        specifier: 1.2.5
-        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@rollup/plugin-babel':
         specifier: 6.0.4
         version: 6.0.4(@babel/core@7.25.9)(@types/babel__core@7.20.5)(rollup@4.32.0)
@@ -1210,12 +1196,6 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
-      globals:
-        specifier: 15.14.0
-        version: 15.14.0
       playwright:
         specifier: 1.50.0
         version: 1.50.0
@@ -1234,9 +1214,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vite-plugin-solid:
         specifier: 2.11.0
         version: 2.11.0(solid-js@1.9.4)(vite@5.4.14(@types/node@22.10.10)(terser@5.37.0))
@@ -1253,12 +1230,9 @@ importers:
         specifier: ^2.0.0
         version: 2.0.5
     devDependencies:
-      '@eslint/compat':
-        specifier: 1.2.5
-        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
-      '@eslint/js':
-        specifier: 9.19.0
-        version: 9.19.0
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@sveltejs/package':
         specifier: 2.3.9
         version: 2.3.9(svelte@5.19.3)(typescript@5.7.3)
@@ -1280,15 +1254,9 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-svelte:
         specifier: 2.46.1
         version: 2.46.1(eslint@9.19.0(jiti@2.4.2))(svelte@5.19.3)
-      globals:
-        specifier: 15.14.0
-        version: 15.14.0
       playwright:
         specifier: 1.50.0
         version: 1.50.0
@@ -1298,9 +1266,6 @@ importers:
       prettier-plugin-svelte:
         specifier: 3.3.3
         version: 3.3.3(prettier@3.4.2)(svelte@5.19.3)
-      publint:
-        specifier: 0.3.2
-        version: 0.3.2
       svelte:
         specifier: 5.19.3
         version: 5.19.3
@@ -1338,12 +1303,9 @@ importers:
         specifier: ^0.33.0
         version: 0.33.5
     devDependencies:
-      '@eslint/compat':
-        specifier: 1.2.5
-        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
-      '@eslint/js':
-        specifier: 9.19.0
-        version: 9.19.0
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@tsconfig/node20':
         specifier: 20.1.4
         version: 20.1.4
@@ -1359,18 +1321,9 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-n:
-        specifier: 17.15.1
-        version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
       glob:
         specifier: 11.0.1
         version: 11.0.1
-      globals:
-        specifier: 15.14.0
-        version: 15.14.0
       jest-image-snapshot:
         specifier: 6.4.0
         version: 6.4.0
@@ -1386,9 +1339,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vite:
         specifier: 6.0.11
         version: 6.0.11(@types/node@22.10.10)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)
@@ -1417,6 +1367,9 @@ importers:
       '@open-wc/testing-helpers':
         specifier: 3.0.1
         version: 3.0.1
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@vitest/browser':
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.10)(playwright@1.50.0)(typescript@5.7.3)(vite@6.0.11(@types/node@22.10.10)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))(vitest@2.1.8)
@@ -1426,9 +1379,6 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-lit:
         specifier: 1.15.0
         version: 1.15.0(eslint@9.19.0(jiti@2.4.2))
@@ -1447,9 +1397,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vite:
         specifier: 6.0.11
         version: 6.0.11(@types/node@22.10.10)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)
@@ -1478,12 +1425,9 @@ importers:
         specifier: ^0.33.0
         version: 0.33.5
     devDependencies:
-      '@eslint/compat':
-        specifier: 1.2.5
-        version: 1.2.5(eslint@9.19.0(jiti@2.4.2))
-      '@eslint/js':
-        specifier: 9.19.0
-        version: 9.19.0
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../-internals
       '@tsconfig/node20':
         specifier: 20.1.4
         version: 20.1.4
@@ -1502,18 +1446,9 @@ importers:
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
-      eslint-config-prettier:
-        specifier: 10.0.1
-        version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-n:
-        specifier: 17.15.1
-        version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
       glob:
         specifier: 11.0.1
         version: 11.0.1
-      globals:
-        specifier: 15.14.0
-        version: 15.14.0
       jest-image-snapshot:
         specifier: 6.4.0
         version: 6.4.0
@@ -1532,9 +1467,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-      typescript-eslint:
-        specifier: 8.22.0
-        version: 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.10)(@vitest/browser@3.0.4)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.10.10)(typescript@5.7.3))(terser@5.37.0)
@@ -3729,10 +3661,6 @@ packages:
 
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
-
-  '@publint/pack@0.1.1':
-    resolution: {integrity: sha512-TvCl79Y8v18ZhFGd5mjO1kYPovSBq3+4LVCi5Nfl1JI8fS8i8kXbgQFGwBJRXczim8GlW8c2LMBKTtExYXOy/A==}
-    engines: {node: '>=18'}
 
   '@redocly/ajv@8.11.2':
     resolution: {integrity: sha512-io1JpnwtIcvojV7QKDUSIuMN/ikdOUd1ReEnUnMKGfDVridQZ31J0MmIuqwuRjWDZfmvr+Q0MqCcfHM2gTivOg==}
@@ -9619,11 +9547,6 @@ packages:
   psl@1.15.0:
     resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
 
-  publint@0.3.2:
-    resolution: {integrity: sha512-fPs7QUbUvwixxPYUUTn0Kqp0rbH5rbiAOZwQOXMkIj+4Nopby1AngodSQmzTkJWTJ5R4uVV8oYmgVIjj+tgv1w==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   pump@3.0.2:
     resolution: {integrity: sha512-tUPXtzlGM8FE3P0ZL6DVs/3P58k9nk8/jZeQCurTJylQA8qFYzHFfhBJkuqyE0FifOsQ0uKWekiZ5g8wtr28cw==}
 
@@ -15034,8 +14957,6 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@publint/pack@0.1.1': {}
-
   '@redocly/ajv@8.11.2':
     dependencies:
       fast-deep-equal: 3.1.3
@@ -15461,40 +15382,20 @@ snapshots:
     dependencies:
       '@types/node': 22.10.10
 
-  '@types/ember@4.0.11':
-    dependencies:
-      '@types/ember__application': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__array': 4.0.10
-      '@types/ember__component': 4.0.22
-      '@types/ember__controller': 4.0.12
-      '@types/ember__debug': 4.0.8
-      '@types/ember__engine': 4.0.11
-      '@types/ember__error': 4.0.6
-      '@types/ember__object': 4.0.12
-      '@types/ember__polyfills': 4.0.6
-      '@types/ember__routing': 4.0.22
-      '@types/ember__runloop': 4.0.10
-      '@types/ember__service': 4.0.9
-      '@types/ember__string': 3.16.3
-      '@types/ember__template': 4.0.7
-      '@types/ember__test': 4.0.6(@babel/core@7.25.9)
-      '@types/ember__utils': 4.0.7
-      '@types/rsvp': 4.0.9
-
   '@types/ember@4.0.11(@babel/core@7.25.9)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.25.9)
       '@types/ember__array': 4.0.10(@babel/core@7.25.9)
       '@types/ember__component': 4.0.22(@babel/core@7.25.9)
-      '@types/ember__controller': 4.0.12
-      '@types/ember__debug': 4.0.8
-      '@types/ember__engine': 4.0.11
+      '@types/ember__controller': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__debug': 4.0.8(@babel/core@7.25.9)
+      '@types/ember__engine': 4.0.11(@babel/core@7.25.9)
       '@types/ember__error': 4.0.6
       '@types/ember__object': 4.0.12(@babel/core@7.25.9)
       '@types/ember__polyfills': 4.0.6
       '@types/ember__routing': 4.0.22(@babel/core@7.25.9)
       '@types/ember__runloop': 4.0.10(@babel/core@7.25.9)
-      '@types/ember__service': 4.0.9
+      '@types/ember__service': 4.0.9(@babel/core@7.25.9)
       '@types/ember__string': 3.16.3
       '@types/ember__template': 4.0.7
       '@types/ember__test': 4.0.6(@babel/core@7.25.9)
@@ -15507,44 +15408,30 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.25.9)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.25.9)
-      '@types/ember': 4.0.11
-      '@types/ember__engine': 4.0.11
-      '@types/ember__object': 4.0.12
+      '@types/ember': 4.0.11(@babel/core@7.25.9)
+      '@types/ember__engine': 4.0.11(@babel/core@7.25.9)
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
       '@types/ember__owner': 4.0.9
-      '@types/ember__routing': 4.0.22
+      '@types/ember__routing': 4.0.22(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__array@4.0.10':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/ember__object': 4.0.12
 
   '@types/ember__array@4.0.10(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__component@4.0.22':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/ember__object': 4.0.12
 
   '@types/ember__component@4.0.22(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__object': 4.0.12
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__controller@4.0.12':
-    dependencies:
-      '@types/ember__object': 4.0.12
 
   '@types/ember__controller@4.0.12(@babel/core@7.25.9)':
     dependencies:
@@ -15552,11 +15439,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__debug@4.0.8':
-    dependencies:
-      '@types/ember__object': 4.0.12
-      '@types/ember__owner': 4.0.9
 
   '@types/ember__debug@4.0.8(@babel/core@7.25.9)':
     dependencies:
@@ -15567,11 +15449,6 @@ snapshots:
       - supports-color
 
   '@types/ember__destroyable@4.0.5': {}
-
-  '@types/ember__engine@4.0.11':
-    dependencies:
-      '@types/ember__object': 4.0.12
-      '@types/ember__owner': 4.0.9
 
   '@types/ember__engine@4.0.11(@babel/core@7.25.9)':
     dependencies:
@@ -15600,11 +15477,6 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@types/ember__object@4.0.12':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/rsvp': 4.0.9
-
   '@types/ember__object@4.0.12(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
@@ -15617,26 +15489,15 @@ snapshots:
 
   '@types/ember__polyfills@4.0.6': {}
 
-  '@types/ember__routing@4.0.22':
-    dependencies:
-      '@types/ember': 4.0.11
-      '@types/ember__controller': 4.0.12
-      '@types/ember__object': 4.0.12
-      '@types/ember__service': 4.0.9
-
   '@types/ember__routing@4.0.22(@babel/core@7.25.9)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.9)
-      '@types/ember__controller': 4.0.12
-      '@types/ember__object': 4.0.12
-      '@types/ember__service': 4.0.9
+      '@types/ember__controller': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__object': 4.0.12(@babel/core@7.25.9)
+      '@types/ember__service': 4.0.9(@babel/core@7.25.9)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__runloop@4.0.10':
-    dependencies:
-      '@types/ember': 4.0.11
 
   '@types/ember__runloop@4.0.10(@babel/core@7.25.9)':
     dependencies:
@@ -15644,10 +15505,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__service@4.0.9':
-    dependencies:
-      '@types/ember__object': 4.0.12
 
   '@types/ember__service@4.0.9(@babel/core@7.25.9)':
     dependencies:
@@ -15668,10 +15525,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__utils@4.0.7':
-    dependencies:
-      '@types/ember': 4.0.11
 
   '@types/ember__utils@4.0.7(@babel/core@7.25.9)':
     dependencies:
@@ -22637,13 +22490,6 @@ snapshots:
   psl@1.15.0:
     dependencies:
       punycode: 2.3.1
-
-  publint@0.3.2:
-    dependencies:
-      '@publint/pack': 0.1.1
-      package-manager-detector: 0.2.8
-      picocolors: 1.1.1
-      sade: 1.8.1
 
   pump@3.0.2:
     dependencies:

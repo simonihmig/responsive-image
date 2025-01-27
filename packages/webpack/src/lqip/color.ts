@@ -1,11 +1,13 @@
-import { getWebpackOptions } from '../utils';
-import type { LoaderContext } from 'webpack';
-import type { Options } from '../types';
 import {
   generateLqipClassName,
   type ImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
+
+import { getWebpackOptions } from '../utils';
+
+import type { Options } from '../types';
+import type { LoaderContext } from 'webpack';
 
 export default function lqipColorLoader(
   this: LoaderContext<Partial<Options>>,

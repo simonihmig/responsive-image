@@ -1,7 +1,7 @@
+import { Addon } from '@embroider/addon-dev/rollup';
 import { babel } from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import externals from 'rollup-plugin-node-externals';
-import { Addon } from '@embroider/addon-dev/rollup';
 import ts from 'typescript';
 
 const addon = new Addon({

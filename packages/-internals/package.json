@@ -1,0 +1,45 @@
+{
+  "name": "@responsive-image/internals",
+  "description": "Internal tooling",
+  "repository": "https://github.com/simonihmig/responsive-image",
+  "license": "MIT",
+  "author": "Simon Ihmig <simon.ihmig@gmail.com>",
+  "private": "true",
+  "scripts": {
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write ."
+  },
+  "type": "module",
+  "exports": {
+    "./eslint": {
+      "default": "./src/eslint/index.js"
+    }
+  },
+  "dependencies": {
+    "@eslint/compat": "1.2.5",
+    "@eslint/js": "9.19.0",
+    "eslint-config-prettier": "10.0.1",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-n": "17.15.1",
+    "globals": "15.14.0",
+    "typescript-eslint": "8.22.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.4",
+    "@types/node": "22.10.10",
+    "concurrently": "9.1.2",
+    "eslint": "9.19.0",
+    "prettier": "3.4.2",
+    "typescript": "5.7.3"
+  },
+  "engines": {
+    "node": "20.* || >= 22"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

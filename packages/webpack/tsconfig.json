@@ -2,7 +2,8 @@
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": true
   },
   "include": ["src/**/*", "types/**/*", "tests/**/*"]
 }

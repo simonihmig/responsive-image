@@ -1,6 +1,3 @@
-import sharp, { Metadata } from 'sharp';
-import type { Plugin } from 'vite';
-import type { Options } from '../types';
 import {
   blurrySvg,
   dataUri,
@@ -9,6 +6,11 @@ import {
   parseQuery,
   parseURL,
 } from '@responsive-image/build-utils';
+import sharp from 'sharp';
+
+import type { Options } from '../types';
+import type { Metadata } from 'sharp';
+import type { Plugin } from 'vite';
 
 export const name = 'responsive-image/lqip/inline-css';
 

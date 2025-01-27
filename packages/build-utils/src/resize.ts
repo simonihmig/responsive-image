@@ -1,14 +1,16 @@
-import type { ImageType } from '@responsive-image/core';
-import type { ImageConfig } from 'imagetools-core';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import type { Metadata } from 'sharp';
+
+import { getCacheFilename } from './utils';
+
 import type {
   ImageLoaderChainedResult,
   ImageOptions,
   ImageProcessingResult,
   OutputImageType,
 } from './types';
-import { getCacheFilename } from './utils';
+import type { ImageType } from '@responsive-image/core';
+import type { ImageConfig } from 'imagetools-core';
+import type { Metadata } from 'sharp';
 
 export async function generateResizedImage(
   input: ImageLoaderChainedResult,

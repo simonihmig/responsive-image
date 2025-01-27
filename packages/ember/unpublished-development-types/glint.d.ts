@@ -1,8 +1,9 @@
-import Helper from '@ember/component/helper';
 import '@glint/environment-ember-loose';
 import 'ember-cached-decorator-polyfill';
 import Modifier from 'ember-modifier';
-import AddonRegistry from '../src/template-registry.ts';
+
+import type AddonRegistry from '../src/template-registry.ts';
+import type Helper from '@ember/component/helper';
 
 declare class RenderModifier<Args extends unknown[]> extends Modifier<{
   Element: HTMLElement;

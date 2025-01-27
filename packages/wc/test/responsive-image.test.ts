@@ -1,11 +1,13 @@
-import { describe, expect, test, afterEach } from 'vitest';
-import { html } from 'lit';
 import { fixture, fixtureCleanup, waitUntil } from '@open-wc/testing-helpers';
 import { env, type ImageData } from '@responsive-image/core';
+import { html } from 'lit';
+import { describe, expect, test, afterEach } from 'vitest';
+
+import { trigger } from './image-helper.js';
 
 import type { ResponsiveImage } from '../src/responsive-image.js';
+
 import '../src/responsive-image.js';
-import { trigger } from './image-helper.js';
 
 const cacheBreaker = () => `${new Date().getTime()}-${Math.random()}`;
 

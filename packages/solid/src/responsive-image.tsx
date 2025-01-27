@@ -5,14 +5,10 @@ import {
   env,
   isLqipBlurhash,
 } from '@responsive-image/core';
-import {
-  Component,
-  createResource,
-  createSignal,
-  type JSX,
-  splitProps,
-} from 'solid-js';
+import { createResource, createSignal, type JSX, splitProps } from 'solid-js';
 import { isServer } from 'solid-js/web';
+
+import type { Component } from 'solid-js';
 
 import './responsive-image.css';
 

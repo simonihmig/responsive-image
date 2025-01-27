@@ -1,11 +1,13 @@
-import type { Plugin } from 'vite';
-import type { Options } from '../types';
-import { META_KEY, getInput, getViteOptions } from '../utils';
-import { name as colorCssPluginName } from './color-css';
 import {
   generateLqipClassName,
   getPathname,
 } from '@responsive-image/build-utils';
+
+import { META_KEY, getInput, getViteOptions } from '../utils';
+import { name as colorCssPluginName } from './color-css';
+
+import type { Options } from '../types';
+import type { Plugin } from 'vite';
 
 export default function lqipColorPlugin(
   userOptions: Partial<Options> = {},

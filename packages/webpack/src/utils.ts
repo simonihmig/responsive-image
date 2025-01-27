@@ -1,9 +1,10 @@
-import type { LoaderContext } from 'webpack';
-import type { Options, WebpackLoaderOptions } from './types';
 import {
   getOptions,
   type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
+
+import type { Options, WebpackLoaderOptions } from './types';
+import type { LoaderContext } from 'webpack';
 
 export const defaultWebpackOptions = {
   name: '[name]-[width]w-[hash].[ext]',

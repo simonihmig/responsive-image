@@ -2,10 +2,10 @@ import {
   getOptions,
   type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
-import type { PluginContext } from 'rollup';
-import type { ResolvedConfig } from 'vite';
 
 import type { Options, ViteOptions } from './types';
+import type { PluginContext } from 'rollup';
+import type { ResolvedConfig } from 'vite';
 
 export const META_KEY = 'responsive-image';
 

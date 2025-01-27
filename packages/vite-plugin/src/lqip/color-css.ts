@@ -1,11 +1,12 @@
-import sharp from 'sharp';
-import type { Plugin } from 'vite';
-import type { Options } from '../types';
 import {
   getPathname,
   parseQuery,
   parseURL,
 } from '@responsive-image/build-utils';
+import sharp from 'sharp';
+
+import type { Options } from '../types';
+import type { Plugin } from 'vite';
 
 export const name = 'responsive-image/lqip/color-css';
 

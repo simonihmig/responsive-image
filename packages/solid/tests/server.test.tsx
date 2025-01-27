@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest';
-import { isServer, renderToString } from 'solid-js/web';
-import { ResponsiveImage } from '../src';
 import { type ImageData } from '@responsive-image/core';
+import { isServer, renderToString } from 'solid-js/web';
+import { describe, expect, it } from 'vitest';
+
+import { ResponsiveImage } from '../src';
 
 describe('environment', () => {
   it('runs on server', () => {
