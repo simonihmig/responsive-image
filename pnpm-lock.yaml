@@ -1266,9 +1266,6 @@ importers:
       prettier-plugin-svelte:
         specifier: 3.3.3
         version: 3.3.3(prettier@3.4.2)(svelte@5.19.3)
-      publint:
-        specifier: 0.3.2
-        version: 0.3.2
       svelte:
         specifier: 5.19.3
         version: 5.19.3
@@ -3664,10 +3661,6 @@ packages:
 
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
-
-  '@publint/pack@0.1.1':
-    resolution: {integrity: sha512-TvCl79Y8v18ZhFGd5mjO1kYPovSBq3+4LVCi5Nfl1JI8fS8i8kXbgQFGwBJRXczim8GlW8c2LMBKTtExYXOy/A==}
-    engines: {node: '>=18'}
 
   '@redocly/ajv@8.11.2':
     resolution: {integrity: sha512-io1JpnwtIcvojV7QKDUSIuMN/ikdOUd1ReEnUnMKGfDVridQZ31J0MmIuqwuRjWDZfmvr+Q0MqCcfHM2gTivOg==}
@@ -9554,11 +9547,6 @@ packages:
   psl@1.15.0:
     resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
 
-  publint@0.3.2:
-    resolution: {integrity: sha512-fPs7QUbUvwixxPYUUTn0Kqp0rbH5rbiAOZwQOXMkIj+4Nopby1AngodSQmzTkJWTJ5R4uVV8oYmgVIjj+tgv1w==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   pump@3.0.2:
     resolution: {integrity: sha512-tUPXtzlGM8FE3P0ZL6DVs/3P58k9nk8/jZeQCurTJylQA8qFYzHFfhBJkuqyE0FifOsQ0uKWekiZ5g8wtr28cw==}
 
@@ -14968,8 +14956,6 @@ snapshots:
       find-up: 5.0.0
 
   '@polka/url@1.0.0-next.28': {}
-
-  '@publint/pack@0.1.1': {}
 
   '@redocly/ajv@8.11.2':
     dependencies:
@@ -22504,13 +22490,6 @@ snapshots:
   psl@1.15.0:
     dependencies:
       punycode: 2.3.1
-
-  publint@0.3.2:
-    dependencies:
-      '@publint/pack': 0.1.1
-      package-manager-detector: 0.2.8
-      picocolors: 1.1.1
-      sade: 1.8.1
 
   pump@3.0.2:
     dependencies:
