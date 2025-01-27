@@ -1,45 +1,25 @@
-import prettier from 'eslint-config-prettier';
-import js from '@eslint/js';
-import { includeIgnoreFile } from '@eslint/compat';
 import svelte from 'eslint-plugin-svelte';
-import globals from 'globals';
-import { fileURLToPath } from 'node:url';
 import ts from 'typescript-eslint';
-const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
+import { base, browser, nodeESM } from '@responsive-image/internals/eslint';
 
-export default ts.config(
-	includeIgnoreFile(gitignorePath),
-	js.configs.recommended,
-	...ts.configs.recommended,
+export default [
+	...base,
+	...browser.map((c) => ({
+		...c,
+		files: ['src/**/*']
+	})),
 	...svelte.configs['flat/recommended'],
-	prettier,
 	...svelte.configs['flat/prettier'],
 	{
-		languageOptions: {
-			globals: {
-				...globals.browser,
-				...globals.node
-			}
-		}
-	},
-	{
 		files: ['**/*.svelte'],
-
 		languageOptions: {
 			parserOptions: {
 				parser: ts.parser
 			}
 		}
 	},
-	{
-		files: ['**/*.ts', '**/*.svelte'],
-		rules: {
-			'@typescript-eslint/consistent-type-imports': 'error'
-		}
-	},
-	{
-		linterOptions: {
-			reportUnusedDisableDirectives: 'error'
-		}
-	}
-);
+	...nodeESM.map((c) => ({
+		...c,
+		files: ['eslint.config.js', 'vite.config.ts']
+	}))
+];
