@@ -1,8 +1,10 @@
-import { describe, expect, test } from 'vitest';
 import { dirname, join } from 'path';
-import compiler from './compiler';
 import { fileURLToPath } from 'url';
+
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
+import { describe, expect, test } from 'vitest';
+
+import compiler from './compiler';
 
 const customConfig = { threshold: 0.1 };
 const toMatchImageSnapshot = configureToMatchImageSnapshot({

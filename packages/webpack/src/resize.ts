@@ -4,9 +4,11 @@ import {
   getImagetoolsConfigs,
   type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
-import type { LoaderContext } from 'webpack';
-import type { Options } from './types';
+
 import { assertInput, getWebpackOptions, webpackOptionKeys } from './utils';
+
+import type { Options } from './types';
+import type { LoaderContext } from 'webpack';
 
 export default function resizeLoader(
   this: LoaderContext<Partial<Options>>,

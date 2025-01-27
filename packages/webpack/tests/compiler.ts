@@ -1,7 +1,10 @@
-import webpack from 'webpack';
-import { createFsFromVolume, Volume } from 'memfs';
-import { setupLoaders } from '../src';
 import path, { join, resolve } from 'path';
+
+import { createFsFromVolume, Volume } from 'memfs';
+import webpack from 'webpack';
+
+import { setupLoaders } from '../src';
+
 import type { Options } from '../src/types';
 
 const defaultOptions: Partial<Options> = {
