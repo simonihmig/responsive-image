@@ -1,7 +1,8 @@
 import { describe, expect, test } from 'vitest';
 
-import type { ImageData } from '../src';
 import { resolveImage } from '../src';
+
+import type { ImageData } from '../src';
 
 describe('resolveImage', () => {
   const imageData: ImageData = {

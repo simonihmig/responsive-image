@@ -1,7 +1,9 @@
 import { Readable } from 'stream';
-import type { Plugin } from 'vite';
-import type { Options, ServedImageData } from './types';
+
 import { getViteBasePath } from './utils';
+
+import type { Options, ServedImageData } from './types';
+import type { Plugin } from 'vite';
 
 export default function servePlugin(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -1,10 +1,13 @@
-import { build } from 'vite';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+
+import { build } from 'vite';
+
 import { setupPlugins } from '../src';
+
 import type { Options } from '../src/types';
-import type { Plugin } from 'vite';
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup';
+import type { Plugin } from 'vite';
 
 const _dirname = dirname(fileURLToPath(import.meta.url));
 

@@ -1,4 +1,5 @@
 import { getConfig } from './config.ts';
+
 import type { Env, EnvConfig } from './types';
 
 const screenWidth = typeof screen !== 'undefined' ? screen.width : 320;

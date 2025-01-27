@@ -1,8 +1,9 @@
+import { resolve } from 'node:path';
+
 import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
-import { resolve } from 'node:path';
 import ts from 'typescript-eslint';
 
 export default ts.config(
@@ -26,22 +27,22 @@ export default ts.config(
     rules: {
       // we want to handle this by eslint-plugin-import
       'n/no-missing-import': 'off',
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     groups: [
-      //       'builtin',
-      //       'external',
-      //       ['sibling', 'parent'],
-      //       'index',
-      //       'type',
-      //     ],
-      //     'newlines-between': 'always',
-      //     alphabetize: {
-      //       order: 'asc',
-      //     },
-      //   },
-      // ],
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            ['sibling', 'parent'],
+            'index',
+            'type',
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+          },
+        },
+      ],
     },
   },
   {

@@ -1,8 +1,10 @@
-import { createFilter } from '@rollup/pluginutils';
-import type { Plugin } from 'vite';
-import type { Options } from './types';
-import { getViteOptions, META_KEY } from './utils';
 import { normalizeInput } from '@responsive-image/build-utils';
+import { createFilter } from '@rollup/pluginutils';
+
+import { getViteOptions, META_KEY } from './utils';
+
+import type { Options } from './types';
+import type { Plugin } from 'vite';
 
 export default function loaderPlugin(
   userOptions: Partial<Options> = {},

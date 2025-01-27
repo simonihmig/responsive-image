@@ -1,8 +1,8 @@
 import type ResponsiveImageComponent from './components/responsive-image.gts';
-import type ResponsiveImageResolve from './helpers/responsive-image-resolve.ts';
 import type CloudinaryProvider from './helpers/responsive-image-cloudinary';
-import type NetlifyProvider from './helpers/responsive-image-netlify';
 import type ImgixProvider from './helpers/responsive-image-imgix.ts';
+import type NetlifyProvider from './helpers/responsive-image-netlify';
+import type ResponsiveImageResolve from './helpers/responsive-image-resolve.ts';
 
 export default interface Registry {
   ResponsiveImage: typeof ResponsiveImageComponent;

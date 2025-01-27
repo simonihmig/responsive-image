@@ -1,7 +1,9 @@
-import { beforeAll, describe, expect, test } from 'vitest';
-import type { Config } from '../src';
-import { netlify } from '../src';
 import { setConfig } from '@responsive-image/core';
+import { beforeAll, describe, expect, test } from 'vitest';
+
+import { netlify } from '../src';
+
+import type { Config } from '../src';
 
 describe('netlify', function () {
   beforeAll(() => {

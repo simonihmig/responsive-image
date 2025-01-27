@@ -1,9 +1,11 @@
+import { getAspectRatio } from '@responsive-image/build-utils';
 import { encode } from 'blurhash';
+
+import { META_KEY, getInput, getViteOptions } from '../utils';
+
+import type { Options } from '../types';
 import type { Metadata } from 'sharp';
 import type { Plugin } from 'vite';
-import type { Options } from '../types';
-import { META_KEY, getInput, getViteOptions } from '../utils';
-import { getAspectRatio } from '@responsive-image/build-utils';
 
 export default function lqipBlurhashPlugin(
   userOptions: Partial<Options> = {},

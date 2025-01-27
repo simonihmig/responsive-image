@@ -1,13 +1,16 @@
-import type { ImageLoaderChainedResult } from '@responsive-image/build-utils';
+import { join } from 'node:path';
+
 import {
   effectiveImageFormats,
   generateResizedImage,
   getImagetoolsConfigs,
 } from '@responsive-image/build-utils';
-import { join } from 'node:path';
-import type { Plugin } from 'vite';
-import type { Options } from './types';
+
 import { META_KEY, getInput, getViteOptions, viteOptionKeys } from './utils';
+
+import type { Options } from './types';
+import type { ImageLoaderChainedResult } from '@responsive-image/build-utils';
+import type { Plugin } from 'vite';
 
 export default function resizePlugin(
   userOptions: Partial<Options> = {},

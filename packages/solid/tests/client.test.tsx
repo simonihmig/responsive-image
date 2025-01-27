@@ -1,10 +1,11 @@
-import { isServer } from 'solid-js/web';
-import { render, cleanup, waitFor } from '@solidjs/testing-library';
-import { describe, expect, test, afterEach } from 'vitest';
-import { ResponsiveImage } from '../src';
 import { env, type ImageData } from '@responsive-image/core';
-import { trigger } from './image.helper';
+import { render, cleanup, waitFor } from '@solidjs/testing-library';
 import { createSignal } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { describe, expect, test, afterEach } from 'vitest';
+
+import { ResponsiveImage } from '../src';
+import { trigger } from './image.helper';
 
 afterEach(cleanup);
 

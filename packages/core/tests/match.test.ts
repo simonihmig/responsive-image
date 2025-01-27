@@ -1,7 +1,8 @@
 import { describe, expect, test } from 'vitest';
 
-import type { ImageOutputResult } from '../src';
 import { findMatchingImage } from '../src';
+
+import type { ImageOutputResult } from '../src';
 
 describe('findMatchingImage', function () {
   test('find matching image', function () {

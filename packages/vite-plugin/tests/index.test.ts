@@ -1,5 +1,6 @@
-import { describe, expect, test } from 'vitest';
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
+import { describe, expect, test } from 'vitest';
+
 import { compile } from './utils';
 
 const customConfig = { threshold: 0.1 };

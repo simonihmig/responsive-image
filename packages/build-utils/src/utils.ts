@@ -1,9 +1,11 @@
-import sharp, { type Metadata } from 'sharp';
-import type { ImageOptions, ImageLoaderChainedResult } from './types';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import type { ImageConfig } from 'imagetools-core';
 import { join } from 'node:path';
+
+import sharp, { type Metadata } from 'sharp';
+
+import type { ImageOptions, ImageLoaderChainedResult } from './types';
+import type { ImageConfig } from 'imagetools-core';
 
 const defaultImageConfig: ImageOptions = {
   w: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

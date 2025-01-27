@@ -1,5 +1,5 @@
-import { configs } from 'eslint-plugin-lit';
 import { base, browser, nodeESM } from '@responsive-image/internals/eslint';
+import { configs } from 'eslint-plugin-lit';
 
 export default [
   ...base,

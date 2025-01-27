@@ -1,24 +1,25 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
-import { cached, tracked } from '@glimmer/tracking';
+import { hash } from '@ember/helper';
+import { on } from '@ember/modifier';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
+import { cached, tracked } from '@glimmer/tracking';
 import {
   env,
   getDestinationWidthBySize,
   isLqipBlurhash,
 } from '@responsive-image/core';
 import { TrackedAsyncData } from 'ember-async-data';
+import style from 'ember-style-modifier';
+
+import type Owner from '@ember/owner';
 import type {
   ImageType,
   LqipBlurhash,
   ImageData,
 } from '@responsive-image/core';
-import type Owner from '@ember/owner';
 
 import './responsive-image.css';
-import { on } from '@ember/modifier';
-import style from 'ember-style-modifier';
-import { hash } from '@ember/helper';
 
 declare global {
   const __eri_blurhash: {

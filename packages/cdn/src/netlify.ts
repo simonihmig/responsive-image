@@ -1,6 +1,7 @@
 import { getConfig } from '@responsive-image/core';
-import type { ImageType, ImageData } from '@responsive-image/core';
+
 import type { Config, CoreOptions } from './types';
+import type { ImageType, ImageData } from '@responsive-image/core';
 
 export interface NetlifyConfig {
   /**

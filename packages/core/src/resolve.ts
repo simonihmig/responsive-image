@@ -1,4 +1,5 @@
 import { getDestinationWidthBySize } from './env';
+
 import type { ImageData, ImageType } from './types';
 
 export interface ResolveImageOptions {

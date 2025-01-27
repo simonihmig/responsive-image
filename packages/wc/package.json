@@ -28,6 +28,7 @@
     "analyze": "cem analyze --litelement",
     "build": "tsc && npm run analyze -- --exclude dist",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:prettier": "prettier --check .",
