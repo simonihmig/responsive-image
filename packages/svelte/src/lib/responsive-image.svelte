@@ -6,9 +6,10 @@
 		env,
 		isLqipBlurhash
 	} from '@responsive-image/core';
+
 	import type { HTMLImgAttributes } from 'svelte/elements';
 
-	let {
+	const {
 		src: srcProp,
 		size: sizeProp,
 		sizes: sizesProp,
@@ -46,9 +47,9 @@
 
 	let isLoaded = $state(false);
 
-	let isResponsiveLayout = $derived(widthProp === undefined && heightProp === undefined);
+	const isResponsiveLayout = $derived(widthProp === undefined && heightProp === undefined);
 
-	let width: number | undefined = $derived.by(() => {
+	const width: number | undefined = $derived.by(() => {
 		if (isResponsiveLayout) {
 			return getDestinationWidthBySize(sizeProp);
 		} else {
@@ -65,7 +66,7 @@
 		}
 	});
 
-	let height: number | undefined = $derived.by(() => {
+	const height: number | undefined = $derived.by(() => {
 		if (heightProp) {
 			return heightProp;
 		}
@@ -78,9 +79,9 @@
 		return undefined;
 	});
 
-	let src = $derived(srcProp.imageUrlFor(width ?? 640));
+	const src = $derived(srcProp.imageUrlFor(width ?? 640));
 
-	let sources: ImageSource[] = $derived.by(() => {
+	const sources: ImageSource[] = $derived.by(() => {
 		if (isResponsiveLayout) {
 			return srcProp.imageTypes.map((type) => {
 				let widths = srcProp.availableWidths;
@@ -120,11 +121,11 @@
 		}
 	});
 
-	let sourcesSorted = $derived(
+	const sourcesSorted = $derived(
 		sources.sort((a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0))
 	);
 
-	let classNames = $derived.by(() => {
+	const classNames = $derived.by(() => {
 		const classNames = [`ri-${isResponsiveLayout ? 'responsive' : 'fixed'}`];
 		const lqip = srcProp.lqip;
 		if (lqip && !isLoaded) {
@@ -137,9 +138,9 @@
 		return classNames;
 	});
 
-	let blurhashMeta = $derived(isLqipBlurhash(srcProp.lqip) ? srcProp.lqip : undefined);
+	const blurhashMeta = $derived(isLqipBlurhash(srcProp.lqip) ? srcProp.lqip : undefined);
 
-	let blurhashLib = $state<{
+	const blurhashLib = $state<{
 		/* eslint-disable @typescript-eslint/consistent-type-imports */
 		value: typeof import('@responsive-image/core/blurhash/decode') | undefined;
 	}>({ value: undefined });
@@ -153,12 +154,12 @@
 		return blurhashLib;
 	};
 
-	let blurhashUrl = $derived.by(() => {
+	const blurhashUrl = $derived.by(() => {
 		if (!blurhashMeta || isLoaded) {
 			return undefined;
 		}
 
-		let script = loadBlurhashLib().value;
+		const script = loadBlurhashLib().value;
 
 		if (script) {
 			const { hash, width, height } = blurhashMeta;

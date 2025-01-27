@@ -1,8 +1,9 @@
+import { env, type ImageData } from '@responsive-image/core';
 import { render, cleanup, waitFor } from '@testing-library/svelte';
 import { describe, expect, test, afterEach } from 'vitest';
-import { ResponsiveImage } from '../src/lib/index.js';
-import { env, type ImageData } from '@responsive-image/core';
+
 import { trigger } from './image.helper.js';
+import { ResponsiveImage } from '../src/lib/index.js';
 
 afterEach(cleanup);
 

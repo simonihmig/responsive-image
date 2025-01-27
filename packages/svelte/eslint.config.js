@@ -1,6 +1,6 @@
+import { base, browser, nodeESM } from '@responsive-image/internals/eslint';
 import svelte from 'eslint-plugin-svelte';
 import ts from 'typescript-eslint';
-import { base, browser, nodeESM } from '@responsive-image/internals/eslint';
 
 export default [
 	...base,
