@@ -1,5 +1,11 @@
 # @responsive-image/vite-plugin
 
+## 1.0.2
+
+### Patch Changes
+
+- [#929](https://github.com/simonihmig/responsive-image/pull/929) [`3344a65`](https://github.com/simonihmig/responsive-image/commit/3344a65efb2895f465dd57f885f3b81d630bf0d5) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix resolving in CSS-generating plugins
+
 ## 1.0.1
 
 ### Patch Changes
