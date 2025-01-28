@@ -83,6 +83,15 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage src={cloudinary('path/to/uploaded/image.jpg')} />
+```
+
 :::
 
 ### Aspect Ratio
@@ -142,6 +151,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={cloudinary('path/to/uploaded/image.jpg', {
+    aspectRatio: 1.5,
+  })}
+/>
 ```
 
 :::
@@ -212,6 +234,20 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={cloudinary('path/to/uploaded/image.jpg', {
+    co: 'rgb:20a020',
+    e: 'colorize:50',
+  })}
+/>
+```
+
 :::
 
 It accepts an object of transformations, or an array of objects for [chained transformations](https://cloudinary.com/documentation/image_transformations#chained_transformations).
@@ -274,6 +310,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={cloudinary('path/to/uploaded/image.jpg', {
+    quality: 50,
+  })}
+/>
 ```
 
 :::
@@ -341,6 +390,19 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={cloudinary('path/to/uploaded/image.jpg', {
+    formats: ['webp', 'avif'],
+  })}
+/>
+```
+
 :::
 
 ### Remote source
@@ -401,6 +463,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={cloudinary(
+    'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
+  )}
+/>
 ```
 
 :::

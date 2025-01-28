@@ -81,6 +81,15 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { imgix } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage src={imgix('path/to/uploaded/image.jpg')} />
+```
+
 :::
 
 ### Aspect Ratio
@@ -140,6 +149,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { imgix } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={imgix('path/to/uploaded/image.jpg', {
+    aspectRatio: 1.5,
+  })}
+/>
 ```
 
 :::
@@ -209,6 +231,20 @@ export default function MyApp() {
 }
 ```
 
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { imgix } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={imgix('path/to/uploaded/image.jpg', {
+    monochrome: '44768B',
+    px: 10,
+  })}
+/>
+```
+
 :::
 
 ### Quality
@@ -269,6 +305,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { imgix } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={imgix('path/to/uploaded/image.jpg', {
+    quality: 50,
+  })}
+/>
 ```
 
 :::
@@ -334,6 +383,19 @@ export default function MyApp() {
     />
   );
 }
+```
+
+```svelte [Svelte]
+<script>
+  import { ResponsiveImage } from '@responsive-image/svelte';
+  import { imgix } from '@responsive-image/cdn';
+</script>
+
+<ResponsiveImage
+  src={imgix('path/to/uploaded/image.jpg', {
+    formats: ['webp', 'avif'],
+  })}
+/>
 ```
 
 :::
