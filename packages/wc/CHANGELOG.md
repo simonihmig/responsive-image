@@ -1,5 +1,11 @@
 # @responsive-image/wc
 
+## 1.0.2
+
+### Patch Changes
+
+- [#913](https://github.com/simonihmig/responsive-image/pull/913) [`2fb39c5`](https://github.com/simonihmig/responsive-image/commit/2fb39c5280b2de903cf0fe79f116399afe3f8ed0) Thanks [@simonihmig](https://github.com/simonihmig)! - Load blurhash script lazily in web component
+
 ## 1.0.1
 
 ### Patch Changes
