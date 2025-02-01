@@ -237,8 +237,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-ember:
-        specifier: 12.3.3
-        version: 12.3.3(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
+        specifier: 12.5.0
+        version: 12.5.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-n:
         specifier: 17.15.1
         version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
@@ -387,8 +387,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-ember:
-        specifier: 12.3.3
-        version: 12.3.3(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
+        specifier: 12.5.0
+        version: 12.5.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-n:
         specifier: 17.15.1
         version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
@@ -633,8 +633,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-ember:
-        specifier: 12.3.3
-        version: 12.3.3(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
+        specifier: 12.5.0
+        version: 12.5.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-n:
         specifier: 17.15.1
         version: 17.15.1(eslint@9.19.0(jiti@2.4.2))
@@ -1127,8 +1127,8 @@ importers:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
       eslint-plugin-ember:
-        specifier: 12.3.3
-        version: 12.3.3(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
+        specifier: 12.5.0
+        version: 12.5.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
       globals:
         specifier: 15.14.0
         version: 15.14.0
@@ -6864,8 +6864,8 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-ember@12.3.3:
-    resolution: {integrity: sha512-OXf3+XofsSMW/zGnp6B1cB2veC9zLzby8RGmHkxNwRHGLs/fYNVBbpwkmdZhzR8+IMN3wjtLR4iNLvkKOAT5bg==}
+  eslint-plugin-ember@12.5.0:
+    resolution: {integrity: sha512-DBUzsaKWDVXsujAZPpRir0O7owdlCoVzZmtaJm7g7iQeSrNtcRWI7AItsTqKSsws1XeAySH0sPsQItMdDCb9Fg==}
     engines: {node: 18.* || 20.* || >= 21}
     peerDependencies:
       '@typescript-eslint/parser': '*'
@@ -19393,7 +19393,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-ember@12.3.3(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2)):
+  eslint-plugin-ember@12.5.0(@babel/core@7.25.9)(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2)):
     dependencies:
       '@ember-data/rfc395-data': 0.0.4
       css-tree: 3.1.0
