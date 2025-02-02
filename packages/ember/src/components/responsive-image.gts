@@ -16,11 +16,14 @@ import { LqipBlurhashProvider } from '../utils/lqip-hash/blurhash.ts';
 import { LqipThumbhashProvider } from '../utils/lqip-hash/thumbhash.ts';
 
 import type { LqipHashProvider } from '../utils/lqip-hash/types';
+import type Owner from '@ember/owner';
 import type {
   ImageData,
   ImageType,
   LqipBlurhash,
+  LqipThumbhash,
 } from '@responsive-image/core';
+
 import './responsive-image.css';
 
 declare global {

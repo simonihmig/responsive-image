@@ -445,37 +445,29 @@ module("Integration: Responsive Image Component", function (hooks) {
     });
 
     test("it sets LQIP from thumbhash as background", async function (this: RenderingTestContext, assert) {
-      const { onload, loaded } = imageLoaded();
       const imageData: ImageData = {
-        imageTypes: ["jpeg", "webp"],
-        // to replicate the loading timing, we need to load a real existing image
-        imageUrlFor: () => `/test-image.jpg?${cacheBreaker()}`,
-        aspectRatio: 1.5,
+        ...defaultImageData,
         lqip: {
           type: "thumbhash",
           hash: "jJcFFYI1fIWHe4dweXlYeUaAmWj3",
         },
       };
 
-      await render(
-        <template><ResponsiveImage @src={{imageData}} {{onload}} /></template>,
-      );
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
 
       const imgEl = this.element.querySelector("img")!;
 
-      if (!imgEl.complete) {
-        assert.ok(
-          imgEl.style.backgroundImage?.match(/data:image\/png/),
-          "it has a background PNG",
-        );
-        assert.dom(imgEl).hasStyle({ "background-size": "cover" });
-        assert.ok(
-          window.getComputedStyle(imgEl).backgroundImage?.length > 100,
-          "the background SVG has a reasonable length",
-        );
-      }
+      assert.ok(
+        imgEl.style.backgroundImage?.match(/data:image\/png/),
+        "it has a background PNG",
+      );
+      assert.dom(imgEl).hasStyle({ "background-size": "cover" });
+      assert.ok(
+        window.getComputedStyle(imgEl).backgroundImage?.length > 100,
+        "the background SVG has a reasonable length",
+      );
 
-      await loaded;
+      await trigger(imgEl);
 
       assert.strictEqual(
         window.getComputedStyle(imgEl).backgroundImage,
