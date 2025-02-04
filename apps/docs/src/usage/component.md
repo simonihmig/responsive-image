@@ -95,7 +95,7 @@ This will render an `<img>` element wrapped in `<picture>` referencing all the r
 ### Responsive layout
 
 By default, the component will render the image in a responsive layout i.e. one that automatically takes the whole available width of its parent element.
-For this it will automatically apply the following CSS to you image:
+For this it will automatically apply the following CSS to your image:
 
 ```css
 img {
