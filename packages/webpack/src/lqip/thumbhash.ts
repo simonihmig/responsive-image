@@ -3,7 +3,6 @@ import {
   type ImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
-import { rgbaToThumbHash } from 'thumbhash';
 
 import { getWebpackOptions } from '../utils';
 
@@ -52,6 +51,8 @@ async function process(
     .raw();
 
   const imageData = new Uint8ClampedArray(await lqi.toBuffer());
+  const { rgbaToThumbHash } = await import('thumbhash');
+
   const rawHash = rgbaToThumbHash(width, height, imageData);
 
   return {
