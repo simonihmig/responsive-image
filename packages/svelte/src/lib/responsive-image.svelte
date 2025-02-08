@@ -4,8 +4,12 @@
 		type ImageData,
 		getDestinationWidthBySize,
 		env,
-		isLqipBlurhash
+		isLqipBlurhash,
+		isLqipThumbhash
 	} from '@responsive-image/core';
+
+	import { LqipBlurhashProvider } from './lqip-hash/blurhash.svelte';
+	import { LqipThumbhashProvider } from './lqip-hash/thumbhash.svelte';
 
 	import type { HTMLImgAttributes } from 'svelte/elements';
 
@@ -139,34 +143,22 @@
 	});
 
 	const blurhashMeta = $derived(isLqipBlurhash(srcProp.lqip) ? srcProp.lqip : undefined);
+	const thumbhashMeta = $derived(isLqipThumbhash(srcProp.lqip) ? srcProp.lqip : undefined);
 
-	const blurhashLib = $state<{
-		/* eslint-disable @typescript-eslint/consistent-type-imports */
-		value: typeof import('@responsive-image/core/blurhash/decode') | undefined;
-	}>({ value: undefined });
-	const loadBlurhashLib = () => {
-		$effect(() => {
-			import('@responsive-image/core/blurhash/decode').then((script) => {
-				blurhashLib.value = script;
-			});
-		});
+	const hashProvider = $derived(
+		blurhashMeta
+			? new LqipBlurhashProvider(blurhashMeta)
+			: thumbhashMeta
+				? new LqipThumbhashProvider(thumbhashMeta)
+				: undefined
+	);
 
-		return blurhashLib;
-	};
-
-	const blurhashUrl = $derived.by(() => {
-		if (!blurhashMeta || isLoaded) {
+	const hashUrl = $derived.by(() => {
+		if (!hashProvider?.available || isLoaded) {
 			return undefined;
 		}
 
-		const script = loadBlurhashLib().value;
-
-		if (script) {
-			const { hash, width, height } = blurhashMeta;
-			return script.decode2url(hash, width, height);
-		}
-
-		return undefined;
+		return hashProvider.imageUrl;
 	});
 </script>
 
@@ -186,8 +178,8 @@
 		data-ri-bh={blurhashMeta?.hash}
 		data-ri-bh-w={blurhashMeta?.width}
 		data-ri-bh-h={blurhashMeta?.height}
-		style:background-image={blurhashUrl && `url("${blurhashUrl}")`}
-		style:background-size={blurhashUrl ? 'cover' : undefined}
+		style:background-image={hashUrl}
+		style:background-size={hashUrl ? 'cover' : undefined}
 		onload={() => (isLoaded = true)}
 	/>
 </picture>

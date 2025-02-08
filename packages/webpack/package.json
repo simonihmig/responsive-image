@@ -106,6 +106,16 @@
         "types": "./dist/lqip/blurhash.d.mts",
         "default": "./dist/lqip/blurhash.mjs"
       }
+    },
+    "./lqip/thumbhash": {
+      "require": {
+        "types": "./dist/lqip/thumbhash.d.cts",
+        "default": "./dist/lqip/thumbhash.cjs"
+      },
+      "import": {
+        "types": "./dist/lqip/thumbhash.d.mts",
+        "default": "./dist/lqip/thumbhash.mjs"
+      }
     }
   },
   "scripts": {
@@ -128,7 +138,8 @@
     "blurhash": "^2.0.4",
     "imagetools-core": "^7.0.0",
     "loader-utils": "^3.2.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.0",
+    "thumbhash": "^0.1.1"
   },
   "devDependencies": {
     "@responsive-image/internals": "workspace:*",

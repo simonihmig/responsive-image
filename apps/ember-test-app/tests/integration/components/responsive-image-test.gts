@@ -443,5 +443,37 @@ module("Integration: Responsive Image Component", function (hooks) {
         "after image is loaded the background PNG is removed",
       );
     });
+
+    test("it sets LQIP from thumbhash as background", async function (this: RenderingTestContext, assert) {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          type: "thumbhash",
+          hash: "jJcFFYI1fIWHe4dweXlYeUaAmWj3",
+        },
+      };
+
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
+
+      const imgEl = this.element.querySelector("img")!;
+
+      assert.ok(
+        imgEl.style.backgroundImage?.match(/data:image\/png/),
+        "it has a background PNG",
+      );
+      assert.dom(imgEl).hasStyle({ "background-size": "cover" });
+      assert.ok(
+        window.getComputedStyle(imgEl).backgroundImage?.length > 100,
+        "the background SVG has a reasonable length",
+      );
+
+      await trigger(imgEl);
+
+      assert.strictEqual(
+        window.getComputedStyle(imgEl).backgroundImage,
+        "none",
+        "after image is loaded the background PNG is removed",
+      );
+    });
   });
 });

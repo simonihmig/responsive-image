@@ -81,6 +81,33 @@ console.log(s);
 "
 `;
 
+exports[`LQIP > thumbhash LQIP is supported 1`] = `
+"function m(t, a, n) {
+  const r = t.map((e) => e.width).reduce((e, i) => i >= a && e >= a ? i >= e ? e : i : i >= e ? i : e, 0);
+  return t.find(
+    (e) => e.width === r && e.format === n
+  );
+}
+const o = /* @__PURE__ */ new Map();
+function c(t) {
+  return o.get(t);
+}
+var g;
+(g = c("env")) == null || g.deviceWidths;
+const h = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], p = {
+  imageTypes: ["jpeg", "webp"],
+  availableWidths: [100, 200],
+  lqip: { type: "thumbhash", hash: "jJcFFYI1fIWHe4dweXlYeUaAmWj3" },
+  aspectRatio: 1.5,
+  imageUrlFor(t, a) {
+    var n;
+    return (n = m(h, t, a ?? "jpeg")) == null ? void 0 : n.url;
+  }
+};
+console.log(p);
+"
+`;
+
 exports[`custom loader options are supported 1`] = `
 "function a(n, e, g) {
   const r = n.map((t) => t.width).reduce((t, i) => i >= e && t >= e ? i >= t ? t : i : i >= t ? i : t, 0);

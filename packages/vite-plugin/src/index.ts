@@ -5,6 +5,7 @@ import lqipColorPlugin from './lqip/color';
 import lqipColorCssPlugin from './lqip/color-css';
 import lqipInlinePlugin from './lqip/inline';
 import lqipInlineCssPlugin from './lqip/inline-css';
+import lqipThumbhashPlugin from './lqip/thumbhash';
 import resizePlugin from './resize';
 import servePlugin from './serve';
 
@@ -15,6 +16,7 @@ function setupPlugins(options?: Partial<Options>) {
     loaderPlugin(options),
     resizePlugin(options),
     lqipBlurhashPlugin(options),
+    lqipThumbhashPlugin(options),
     lqipColorPlugin(options),
     lqipColorCssPlugin(options),
     lqipInlinePlugin(options),

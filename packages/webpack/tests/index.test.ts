@@ -219,4 +219,20 @@ describe('LQIP', function () {
     const output = stats.modules?.[0]?.modules?.[0]?.source;
     expect(sanitizeOutput(output)).toMatchSnapshot();
   });
+
+  test('thumbhash LQIP is supported', async () => {
+    const { stats } = await compiler(
+      'fixtures/image.jpg?responsive',
+      _dirname,
+      {
+        lqip: { type: 'thumbhash' },
+      },
+    );
+
+    expect(stats.modules).toBeDefined();
+    expect(stats.modules![0]?.modules).toHaveLength(2);
+
+    const output = stats.modules?.[0]?.modules?.[0]?.source;
+    expect(sanitizeOutput(output)).toMatchSnapshot();
+  });
 });

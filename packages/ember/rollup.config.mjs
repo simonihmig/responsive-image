@@ -78,8 +78,11 @@ export default [
       }),
     ],
   },
+  // Compile BlurHash/ThumbHash SSR support modules separately to expose them as public assets separate from the compiled addon source, to allow to load this in a SSR (FastBoot) environment ahead of the main bundle.
+  // Note: this is only needed because of legacy output semantics in Ember's index.html. With input semantics in a Vite build, this shouldn't be needed, as
+  // you should be able to import the modules directly and let the bundler figoure out the rest.
   {
-    input: ['src/blurhash.ts'],
+    input: ['src/blurhash.ts', 'src/thumbhash.ts'],
     output: {
       dir: './dist',
     },

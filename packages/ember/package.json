@@ -114,7 +114,8 @@
       "./helpers/responsive-image-resolve.js": "./dist/_app_/helpers/responsive-image-resolve.js"
     },
     "public-assets": {
-      "./dist/blurhash.js": "/@responsive-image/ember/blurhash.js"
+      "./dist/blurhash.js": "/@responsive-image/ember/blurhash.js",
+      "./dist/thumbhash.js": "/@responsive-image/ember/thumbhash.js"
     }
   },
   "exports": {

@@ -208,4 +208,14 @@ describe('LQIP', async () => {
 
     expect(source).toMatchSnapshot();
   });
+
+  test('thumbhash LQIP is supported', async () => {
+    const { source } = await compile('image.jpg', {
+      include: '**/*.jpg',
+      w: [100, 200],
+      lqip: { type: 'thumbhash' },
+    });
+
+    expect(source).toMatchSnapshot();
+  });
 });

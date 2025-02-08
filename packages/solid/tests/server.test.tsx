@@ -17,6 +17,7 @@ describe('ResponsiveImage', () => {
     imageUrlFor(width, type = 'jpeg') {
       return `/provider/w${width}/image.${type}`;
     },
+    aspectRatio: 1.5,
   };
 
   it('renders a responsive image', () => {
@@ -24,7 +25,37 @@ describe('ResponsiveImage', () => {
       <ResponsiveImage src={defaultImageData} />
     ));
     expect(string).toMatchInlineSnapshot(
-      `"<picture><source srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><img width="320" class="ri-responsive " loading="lazy" decoding="async" src="/provider/w320/image.jpeg" style=""/></picture>"`,
+      `"<picture><source srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><img width="320" height="213" class="ri-responsive " loading="lazy" decoding="async" src="/provider/w320/image.jpeg" style=""/></picture>"`,
+    );
+  });
+
+  it('renders blurhash LQIP', () => {
+    const imageData: ImageData = {
+      ...defaultImageData,
+      lqip: {
+        type: 'blurhash',
+        hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+        width: 4,
+        height: 3,
+      },
+    };
+    const string = renderToString(() => <ResponsiveImage src={imageData} />);
+    expect(string).toMatchInlineSnapshot(
+      `"<picture><source srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><img width="320" height="213" class="ri-responsive ri-lqip-blurhash " loading="lazy" decoding="async" src="/provider/w320/image.jpeg" data-ri-bh="LEHV6nWB2yk8pyo0adR*.7kCMdnj" data-ri-bh-w="4" data-ri-bh-h="3" style=""/></picture>"`,
+    );
+  });
+
+  it('renders thumbhash LQIP', () => {
+    const imageData: ImageData = {
+      ...defaultImageData,
+      lqip: {
+        type: 'thumbhash',
+        hash: 'jJcFFYI1fIWHe4dweXlYeUaAmWj3',
+      },
+    };
+    const string = renderToString(() => <ResponsiveImage src={imageData} />);
+    expect(string).toMatchInlineSnapshot(
+      `"<picture><source srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><img width="320" height="213" class="ri-responsive ri-lqip-thumbhash " loading="lazy" decoding="async" src="/provider/w320/image.jpeg" data-ri-th="jJcFFYI1fIWHe4dweXlYeUaAmWj3" style=""/></picture>"`,
     );
   });
 });
