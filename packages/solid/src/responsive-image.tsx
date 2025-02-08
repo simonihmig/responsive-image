@@ -4,7 +4,7 @@ import {
   isLqipBlurhash,
   isLqipThumbhash,
 } from '@responsive-image/core';
-import { createSignal, type JSX, splitProps } from 'solid-js';
+import { createMemo, createSignal, type JSX, splitProps } from 'solid-js';
 import { isServer } from 'solid-js/web';
 
 import './responsive-image.css';
@@ -157,28 +157,29 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   const thumbhashMeta = () =>
     isLqipThumbhash(args.src.lqip) ? args.src.lqip : undefined;
 
-  let hashStyles: (() => JSX.CSSProperties | undefined) | undefined = undefined;
+  const hashProvider = createMemo(() => {
+    const _blurhashMeta = blurhashMeta();
+    const _thumbhashMeta = thumbhashMeta();
 
-  if (!isServer) {
-    const hashProvider = blurhashMeta()
-      ? new LqipBlurhashProvider(blurhashMeta())
-      : thumbhashMeta
-        ? new LqipThumbhashProvider(thumbhashMeta())
+    return _blurhashMeta
+      ? new LqipBlurhashProvider(_blurhashMeta)
+      : _thumbhashMeta
+        ? new LqipThumbhashProvider(_thumbhashMeta)
         : undefined;
+  });
 
-    if (hashProvider) {
-      hashStyles = () => {
-        if (isLoaded() || !hashProvider.available) {
-          return undefined;
-        }
+  const hashStyles = (): JSX.CSSProperties | undefined => {
+    const _hashProvider = hashProvider();
 
-        return {
-          'background-image': `${hashProvider.imageUrl}`,
-          'background-size': 'cover',
-        };
-      };
+    if (isServer || !_hashProvider || isLoaded() || !_hashProvider.available) {
+      return undefined;
     }
-  }
+
+    return {
+      'background-image': `${_hashProvider.imageUrl}`,
+      'background-size': 'cover',
+    };
+  };
 
   return (
     <picture>
@@ -197,7 +198,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         data-ri-bh-w={blurhashMeta()?.width}
         data-ri-bh-h={blurhashMeta()?.height}
         data-ri-th={thumbhashMeta()?.hash}
-        style={hashStyles?.()}
+        style={hashStyles()}
         on:load={() => setLoaded(true)}
       />
     </picture>

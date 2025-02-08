@@ -1,6 +1,7 @@
-import type { LqipThumbhash } from '@responsive-image/core';
-import type { LqipHashProvider } from './types';
 import { createResource } from 'solid-js';
+
+import type { LqipHashProvider } from './types';
+import type { LqipThumbhash } from '@responsive-image/core';
 
 export class LqipThumbhashProvider implements LqipHashProvider {
   private script;

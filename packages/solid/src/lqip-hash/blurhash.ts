@@ -1,6 +1,7 @@
-import type { LqipBlurhash } from '@responsive-image/core';
-import type { LqipHashProvider } from './types';
 import { createResource } from 'solid-js';
+
+import type { LqipHashProvider } from './types';
+import type { LqipBlurhash } from '@responsive-image/core';
 
 export class LqipBlurhashProvider implements LqipHashProvider {
   private script;
