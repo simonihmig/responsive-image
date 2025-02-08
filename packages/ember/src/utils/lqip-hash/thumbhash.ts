@@ -1,7 +1,8 @@
-import type { LqipThumbhash } from '@responsive-image/core';
-import type { LqipHashProvider } from './types';
-import { TrackedAsyncData } from 'ember-async-data';
 import { assert } from '@ember/debug';
+import { TrackedAsyncData } from 'ember-async-data';
+
+import type { LqipHashProvider } from './types';
+import type { LqipThumbhash } from '@responsive-image/core';
 
 export class LqipThumbhashProvider implements LqipHashProvider {
   private script;

@@ -1,13 +1,15 @@
-import type { Metadata } from 'sharp';
-import type { LoaderContext } from 'webpack';
-import type { Options } from '../types';
-import { getWebpackOptions } from '../utils';
 import {
   getAspectRatio,
   type ImageLoaderChainedResult,
   normalizeInput,
 } from '@responsive-image/build-utils';
 import { rgbaToThumbHash } from 'thumbhash';
+
+import { getWebpackOptions } from '../utils';
+
+import type { Options } from '../types';
+import type { Metadata } from 'sharp';
+import type { LoaderContext } from 'webpack';
 
 export default function lqipThumbhashLoader(
   this: LoaderContext<Partial<Options>>,
@@ -21,7 +23,7 @@ export default function lqipThumbhashLoader(
 
   const loaderCallback = this.async();
 
-  process(data, options)
+  process(data)
     .then((result) => {
       // @ts-expect-error wrong webpack types
       loaderCallback(null, result);
@@ -33,7 +35,6 @@ lqipThumbhashLoader.raw = true;
 
 async function process(
   data: ImageLoaderChainedResult,
-  options: Options,
 ): Promise<ImageLoaderChainedResult> {
   const { sharp, sharpMeta } = data;
 

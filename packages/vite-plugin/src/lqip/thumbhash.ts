@@ -1,12 +1,12 @@
+import { getAspectRatio } from '@responsive-image/build-utils';
+import { rgbaToThumbHash } from 'thumbhash';
+
+import { META_KEY, getInput, getViteOptions } from '../utils';
+
+import type { Options } from '../types';
+import type { ImageLoaderChainedResult } from '@responsive-image/build-utils';
 import type { Metadata } from 'sharp';
 import type { Plugin } from 'vite';
-import type { Options } from '../types';
-import { META_KEY, getInput, getViteOptions } from '../utils';
-import {
-  getAspectRatio,
-  ImageLoaderChainedResult,
-} from '@responsive-image/build-utils';
-import { rgbaToThumbHash } from 'thumbhash';
 
 export default function lqipThumbhashPlugin(
   userOptions: Partial<Options> = {},

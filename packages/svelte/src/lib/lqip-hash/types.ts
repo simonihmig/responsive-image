@@ -1,4 +1,4 @@
 export interface LqipHashProvider {
-  available: boolean;
-  imageUrl: string | undefined;
+	available: boolean;
+	imageUrl: string | undefined;
 }

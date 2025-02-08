@@ -1,11 +1,11 @@
 import exportPlugin from './export';
 import loaderPlugin from './loader';
 import lqipBlurhashPlugin from './lqip/blurhash';
-import lqipThumbhashPlugin from './lqip/thumbhash';
 import lqipColorPlugin from './lqip/color';
 import lqipColorCssPlugin from './lqip/color-css';
 import lqipInlinePlugin from './lqip/inline';
 import lqipInlineCssPlugin from './lqip/inline-css';
+import lqipThumbhashPlugin from './lqip/thumbhash';
 import resizePlugin from './resize';
 import servePlugin from './serve';
 

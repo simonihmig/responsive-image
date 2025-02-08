@@ -8,9 +8,10 @@
 		isLqipThumbhash
 	} from '@responsive-image/core';
 
-	import type { HTMLImgAttributes } from 'svelte/elements';
 	import { LqipBlurhashProvider } from './lqip-hash/blurhash.svelte';
 	import { LqipThumbhashProvider } from './lqip-hash/thumbhash.svelte';
+
+	import type { HTMLImgAttributes } from 'svelte/elements';
 
 	const {
 		src: srcProp,
