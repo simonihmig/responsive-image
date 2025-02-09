@@ -93,11 +93,13 @@ setupPlugins({
 
 ## BlurHash
 
-[BlurHash](https://blurha.sh/) is an encoding algorithm and library, dedicated for the very purpose of generating nice looking blurry placeholders, without the overhead of a real image format, which was never optimized for that kind of _tiny_ images. This example consumes just 34 bytes (uncompressed).
+[BlurHash](https://blurha.sh/) is an encoding algorithm and library, dedicated for the very purpose of generating nice looking blurry placeholders, without the overhead of a real image format, which was never optimized for that kind of _tiny_ images.
+
+This example consumes just 34 bytes (uncompressed):
 
 ![blurry LQIP](../assets/lqip/blurhash.png)
 
-But the tradeoff here is that it needs a runtime library for decoding, which takes about 4.7KB (1.9KB compressed). Therefore it
+But the tradeoff here is that it needs a runtime library for decoding, which takes about 2KB (1.2KB compressed). Therefore it
 is less suited if you have just a few images, but shines if you need placeholders for a lot!
 
 ### Usage
@@ -119,6 +121,41 @@ setupLoaders({
 ```js [Vite global options]
 setupPlugins({
   lqip: { type: 'blurhash' },
+});
+```
+
+:::
+
+## ThumbHash
+
+[ThumbHash](https://evanw.github.io/thumbhash/) is similar to [BlurHash](#blurhash), but is able to provide better image quality at about the same size.
+
+This example consumes just 28 bytes (uncompressed):
+
+![blurry LQIP](../assets/lqip/thumbhash.png)
+
+Just as BlurHash it is subject to the same tradeoff that it needs a runtime library for decoding, which takes about 2.7KB (1.5KB compressed). Therefore it
+is less suited if you have just a few images, but shines if you need placeholders for a lot!
+
+### Usage
+
+You can opt into this LQIP mode either on a case by case basis by adding query parameters to your import, or setting this up as a global default in your [Vite](../build/vite.md) or [Webpack](../build/webpack.md) configuration:
+
+::: code-group
+
+```js [Import query params]
+import heroImage from './hero.jpg?lqip=thumbhash&responsive';
+```
+
+```js [Webpack global options]
+setupLoaders({
+  lqip: { type: 'thumbhash' },
+});
+```
+
+```js [Vite global options]
+setupPlugins({
+  lqip: { type: 'thumbhash' },
 });
 ```
 

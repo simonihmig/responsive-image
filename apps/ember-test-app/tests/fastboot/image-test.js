@@ -69,4 +69,32 @@ module('FastBoot | image', function (hooks) {
       'it has a background PNG',
     );
   });
+
+  test('it renders lqip thumbhash', async function (assert) {
+    await visit('/image');
+
+    // this is called automatically in a real page, but ember-feastboot-testing does not evaluate our blurhash script,
+    // so we need to call it explicitly in our test.
+    const { applySSR } = await import(
+      /* webpackIgnore: true */
+      `//${window.location.host}/@responsive-image/ember/thumbhash.js`
+    );
+
+    assert.strictEqual(typeof applySSR, 'function', 'applySSR is available');
+
+    applySSR();
+
+    assert.dom('img[data-test-lqip-image=thumbhash]').exists();
+    assert
+      .dom('img[data-test-lqip-image=thumbhash]')
+      .hasStyle({ 'background-size': 'cover' });
+    assert.ok(
+      window
+        .getComputedStyle(
+          document.querySelector('img[data-test-lqip-image=thumbhash]'),
+        )
+        .backgroundImage?.match(/data:image\/png/),
+      'it has a background PNG',
+    );
+  });
 });

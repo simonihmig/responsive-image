@@ -8,15 +8,20 @@ import {
   env,
   getDestinationWidthBySize,
   isLqipBlurhash,
+  isLqipThumbhash,
 } from '@responsive-image/core';
-import { TrackedAsyncData } from 'ember-async-data';
 import style from 'ember-style-modifier';
 
+import { LqipBlurhashProvider } from '../utils/lqip-hash/blurhash.ts';
+import { LqipThumbhashProvider } from '../utils/lqip-hash/thumbhash.ts';
+
+import type { LqipHashProvider } from '../utils/lqip-hash/types';
 import type Owner from '@ember/owner';
 import type {
+  ImageData,
   ImageType,
   LqipBlurhash,
-  ImageData,
+  LqipThumbhash,
 } from '@responsive-image/core';
 
 import './responsive-image.css';
@@ -182,36 +187,29 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return classNames.join(' ');
   }
 
-  get showLqipBlurhash(): boolean {
-    return (
-      !this.isLoaded &&
-      isLqipBlurhash(this.args.src.lqip) &&
-      this.blurhashScript.isResolved
-    );
-  }
-
   get blurhashMeta(): LqipBlurhash | undefined {
     return isLqipBlurhash(this.args.src.lqip) ? this.args.src.lqip : undefined;
   }
 
-  @cached
-  get blurhashScript() {
-    const promise = import('@responsive-image/core/blurhash/decode');
-    return new TrackedAsyncData(promise);
+  get thumbhashMeta(): LqipThumbhash | undefined {
+    return isLqipThumbhash(this.args.src.lqip) ? this.args.src.lqip : undefined;
   }
 
-  get lqipBlurhash(): string | undefined {
-    if (
-      !isLqipBlurhash(this.args.src.lqip) ||
-      !this.blurhashScript.isResolved
-    ) {
-      return undefined;
+  @cached
+  get lqipHashProvider(): LqipHashProvider | undefined {
+    if (isLqipBlurhash(this.args.src.lqip)) {
+      return new LqipBlurhashProvider(this.args.src.lqip);
     }
 
-    const { hash, width, height } = this.args.src.lqip;
-    const uri = this.blurhashScript.value.decode2url(hash, width, height);
+    if (isLqipThumbhash(this.args.src.lqip)) {
+      return new LqipThumbhashProvider(this.args.src.lqip);
+    }
 
-    return `url("${uri}")`;
+    return undefined;
+  }
+
+  get showLqipHash(): boolean {
+    return (!this.isLoaded && this.lqipHashProvider?.available) ?? false;
   }
 
   @action
@@ -236,10 +234,14 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         data-ri-bh={{this.blurhashMeta.hash}}
         data-ri-bh-w={{this.blurhashMeta.width}}
         data-ri-bh-h={{this.blurhashMeta.height}}
+        data-ri-th={{this.thumbhashMeta.hash}}
         {{style
           (if
-            this.showLqipBlurhash
-            (hash background-image=this.lqipBlurhash background-size="cover")
+            this.showLqipHash
+            (hash
+              background-image=this.lqipHashProvider.imageUrl
+              background-size="cover"
+            )
           )
         }}
         {{on "load" this.onLoad}}

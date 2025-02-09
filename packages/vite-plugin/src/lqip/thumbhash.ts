@@ -1,5 +1,5 @@
 import { getAspectRatio } from '@responsive-image/build-utils';
-import { encode } from 'blurhash';
+import { rgbaToThumbHash } from 'thumbhash';
 
 import { META_KEY, getInput, getViteOptions } from '../utils';
 
@@ -8,11 +8,11 @@ import type { ImageLoaderChainedResult } from '@responsive-image/build-utils';
 import type { Metadata } from 'sharp';
 import type { Plugin } from 'vite';
 
-export default function lqipBlurhashPlugin(
+export default function lqipThumbhashPlugin(
   userOptions: Partial<Options> = {},
 ): Plugin {
   return {
-    name: 'responsive-image/lqip/blurhash',
+    name: 'responsive-image/lqip/thumbhash',
     async transform(code, id) {
       const input = getInput(this, id);
 
@@ -23,7 +23,7 @@ export default function lqipBlurhashPlugin(
 
       const options = getViteOptions(id, userOptions);
 
-      if (options.lqip?.type !== 'blurhash') {
+      if (options.lqip?.type !== 'thumbhash') {
         return;
       }
 
@@ -33,34 +33,23 @@ export default function lqipBlurhashPlugin(
         throw new Error('Expected sharp metadata to be available');
       }
 
-      const targetPixels =
-        (options.lqip?.type === 'blurhash' ? options.lqip?.targetPixels : 16) ??
-        16;
-
-      const { width, height } = await getLqipDimensions(
-        targetPixels,
-        sharpMeta,
-      );
-      const rawWidth = width * 8;
-      const rawHeight = height * 8;
+      const { width, height } = await getLqipInputDimensions(sharpMeta);
       const lqi = sharp
         .clone()
         .ensureAlpha()
-        .resize(rawWidth, rawHeight, {
+        .resize(width, height, {
           fit: 'fill',
         })
         .raw();
 
       const imageData = new Uint8ClampedArray(await lqi.toBuffer());
-      const hash = encode(imageData, rawWidth, rawHeight, width, height);
+      const rawHash = rgbaToThumbHash(width, height, imageData);
 
       const result = {
         ...input,
         lqip: {
-          type: 'blurhash',
-          hash,
-          width,
-          height,
+          type: 'thumbhash',
+          hash: Buffer.from(rawHash).toString('base64'),
         },
       } satisfies ImageLoaderChainedResult;
 
@@ -75,16 +64,18 @@ export default function lqipBlurhashPlugin(
   };
 }
 
-function getLqipDimensions(targetPixels: number, meta: Metadata) {
+function getLqipInputDimensions(meta: Metadata) {
   const aspectRatio = getAspectRatio(meta) ?? 1;
+  let width: number;
+  let height: number;
 
-  // taken from https://github.com/google/eleventy-high-performance-blog/blob/5ed39db7fd3f21ae82ac1a8e833bf283355bd3d0/_11ty/blurry-placeholder.js#L74-L92
-  let bitmapHeight = targetPixels / aspectRatio;
-  bitmapHeight = Math.sqrt(bitmapHeight);
-  let bitmapWidth = targetPixels / bitmapHeight;
+  if (aspectRatio > 1) {
+    width = 100;
+    height = Math.round(100 / aspectRatio);
+  } else {
+    width = Math.round(100 * aspectRatio);
+    height = 100;
+  }
 
-  // Blurhash has a limit of 9 "components"
-  bitmapHeight = Math.min(9, Math.round(bitmapHeight));
-  bitmapWidth = Math.min(9, Math.round(bitmapWidth));
-  return { width: Math.round(bitmapWidth), height: Math.round(bitmapHeight) };
+  return { width, height };
 }

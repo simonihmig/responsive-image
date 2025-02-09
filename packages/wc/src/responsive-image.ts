@@ -5,6 +5,8 @@ import {
   type Lqip,
   env,
   getDestinationWidthBySize,
+  isLqipBlurhash,
+  isLqipThumbhash,
 } from '@responsive-image/core';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -172,19 +174,27 @@ export class ResponsiveImage extends LitElement {
     return this.src.imageUrlFor(this.imgWidth ?? 640);
   }
 
-  private blurhashTask = new Task(this, {
+  private hashTask = new Task(this, {
     task: async ([lqip]: readonly [Lqip | undefined]) => {
-      if (lqip?.type !== 'blurhash' || this.complete) {
+      if (this.complete) {
         return '';
       }
 
-      const { hash, width, height } = lqip;
-      const { decode2url } = await import(
-        '@responsive-image/core/blurhash/decode'
-      );
-      const uri = decode2url(hash, width, height);
+      if (isLqipBlurhash(lqip)) {
+        const { hash, width, height } = lqip;
+        const { decode2url } = await import(
+          '@responsive-image/core/blurhash/decode'
+        );
+        return decode2url(hash, width, height);
+      }
 
-      return uri;
+      if (isLqipThumbhash(lqip)) {
+        const { hash } = lqip;
+        const { decode2url } = await import(
+          '@responsive-image/core/thumbhash/decode'
+        );
+        return decode2url(hash);
+      }
     },
     args: () => [this.src.lqip],
   });
@@ -198,14 +208,15 @@ export class ResponsiveImage extends LitElement {
       'ri-lqip-inline': lqip?.type === 'inline' && !this.complete,
       'ri-lqip-color': lqip?.type === 'color' && !this.complete,
       'ri-lqip-blurhash': lqip?.type === 'blurhash' && !this.complete,
+      'ri-lqip-thumbhash': lqip?.type === 'thumbhash' && !this.complete,
       [lqip?.type === 'color' || lqip?.type === 'inline' ? lqip.class : '']:
         (lqip?.type === 'color' || lqip?.type === 'inline') && !this.complete,
     };
 
     const styles: StyleInfo =
-      this.blurhashTask.status === TaskStatus.COMPLETE && !this.complete
+      this.hashTask.status === TaskStatus.COMPLETE && !this.complete
         ? {
-            backgroundImage: `url("${this.blurhashTask.value}")`,
+            backgroundImage: `url("${this.hashTask.value}")`,
             backgroundSize: 'cover',
           }
         : {};

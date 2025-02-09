@@ -29,6 +29,14 @@
     "./blurhash/ssr": {
       "types": "./dist/blurhash/ssr.d.ts",
       "default": "./dist/blurhash/ssr.js"
+    },
+    "./thumbhash/decode": {
+      "types": "./dist/thumbhash/decode.d.ts",
+      "default": "./dist/thumbhash/decode.js"
+    },
+    "./thumbhash/ssr": {
+      "types": "./dist/thumbhash/ssr.d.ts",
+      "default": "./dist/thumbhash/ssr.js"
     }
   },
   "scripts": {
@@ -45,8 +53,12 @@
     "test:watch": "vitest watch",
     "prepack": "pnpm turbo build"
   },
+  "dependencies": {
+    "base64-arraybuffer": "^1.0.2"
+  },
   "peerDependencies": {
-    "blurhash": "^2.0.0"
+    "blurhash": "^2.0.0",
+    "thumbhash": "^0.1.1"
   },
   "devDependencies": {
     "@responsive-image/internals": "workspace:*",
@@ -56,11 +68,15 @@
     "eslint": "9.20.0",
     "pkgroll": "2.8.2",
     "prettier": "3.4.2",
+    "thumbhash": "0.1.1",
     "typescript": "5.7.3",
     "vitest": "2.1.9"
   },
   "peerDependenciesMeta": {
     "blurhash": {
+      "optional": true
+    },
+    "thumbhash": {
       "optional": true
     }
   },
