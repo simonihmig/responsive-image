@@ -1,5 +1,23 @@
 # ember-responsive-image
 
+## 1.1.0
+
+### Minor Changes
+
+- [#891](https://github.com/simonihmig/responsive-image/pull/891) [`6cd7e98`](https://github.com/simonihmig/responsive-image/commit/6cd7e980403b2c11595e6eaacd0bbe6d64d7100a) Thanks [@simonihmig](https://github.com/simonihmig)! - Add ThumbHash support
+
+  Adds support for [ThumbHash](https://evanw.github.io/thumbhash/) as a LQIP option.
+
+### Patch Changes
+
+- [#1044](https://github.com/simonihmig/responsive-image/pull/1044) [`3f9b621`](https://github.com/simonihmig/responsive-image/commit/3f9b621ba54bf8125d225f2ce9f762c4d5be05e0) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix published files for ember package
+
+  `addon-main.cjs` was not getting published correctly.
+
+- Updated dependencies [[`6cd7e98`](https://github.com/simonihmig/responsive-image/commit/6cd7e980403b2c11595e6eaacd0bbe6d64d7100a)]:
+  - @responsive-image/core@1.1.0
+  - @responsive-image/cdn@1.1.1
+
 ## 1.0.1
 
 ### Patch Changes
