@@ -13,6 +13,9 @@ module('FastBoot | Imgix', function (hooks) {
     assert.dom('img[data-test-image]').exists();
     assert
       .dom('img[data-test-image]')
-      .hasAttribute('src', new RegExp('https://responsive-image.imgix.net/'));
+      .hasAttribute(
+        'src',
+        'https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=320&fit=max',
+      );
   });
 });
