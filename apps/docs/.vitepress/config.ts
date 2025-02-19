@@ -131,7 +131,7 @@ export default defineConfig({
     footer: {
       message: 'Made with ❤︎ for OSS - Support 🇺🇦',
       copyright:
-        'Copyright © 2024 <a href="https://github.com/simonihmig">Simon Ihmig</a>',
+        'Copyright © 2025 <a href="https://github.com/simonihmig">Simon Ihmig</a>',
     },
   },
 });

@@ -1,6 +1,6 @@
 # What is ResponsiveImage?
 
-ResponsiveImage is a library, or better a set of libraries, that will make rendering responsive images in a JavaScript application easy.
+ResponsiveImage is a library, or better a family of libraries, that will make rendering responsive images in a JavaScript application easy.
 
 Let's start first with explaining what responsive images are. As [MDN defines them](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images), they are "images that work well on devices with widely differing screen sizes, resolutions, and other such features". This goal can be supported in different ways:
 
@@ -19,7 +19,7 @@ There are two main ingredients in the mix here: one is to render that markup (th
 
 ### Image component
 
-Rendering is the concern of the [image component](../usage/component.md), that has different implementations based on your choice of [framework](../frameworks/index.md) or technology. On top of the basic markup, it will also apply best practices for optimal performance, like reducing [Cumulative Layout Shift (CLS)](https://web.dev/cls/), lazy loading or support for [Low Quality Image Placeholders (LQIP)](../usage/lqip.md).
+Rendering responsive images is the concern of the [image component](../usage/component.md), that has different implementations based on your choice of [framework](../frameworks/index.md) or technology. On top of the basic markup, it will also apply best practices for optimal performance, like reducing [Cumulative Layout Shift (CLS)](https://web.dev/cls/), lazy loading or support for [Low Quality Image Placeholders (LQIP)](../usage/lqip.md).
 
 > [!TIP]
 > Malte Ubl's ["Maximally optimizing image loading for the web"](https://www.industrialempathy.com/posts/image-optimizations/) is a great read for those optimization techniques!

@@ -89,7 +89,7 @@ The template for the generated image files. The placeholders `[name]`, `[ext]` a
 Default: `[name]-[width]w.[ext]`
 
 ```js
-setsetupPluginsupLoaders({
+setupPlugins({
   name: '[name]_[width].[ext]',
 });
 ```

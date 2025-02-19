@@ -1,8 +1,8 @@
 # Image component
 
-The `ResponsiveImage` component is provided by one of the packages for the supported [frontend frameworks](../frameworks/index.md).
+The `ResponsiveImage` component is provided by one of the packages for the supported [frontend frameworks](../frameworks/index.md). It is used to render the required markup, following best practices for responsive images.
 
-The only required argument is `src`, which expect an `ImageData` structure coming from an import or an [Image CDN](../cdn/index.md) (see [Core concepts](./concepts.md#image-source)):
+The only required argument is `src`, which expects an `ImageData` structure coming from an import or an [Image CDN](../cdn/index.md) (see [Core concepts](./concepts.md#image-source)):
 
 ::: code-group
 

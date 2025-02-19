@@ -20,4 +20,4 @@ pnpm add @responsive-image/ember @responsive-image/webpack
 
 :::
 
-Now let's dive a bit deeper into the [core concepts](../usage/concepts.md)!
+Now let's dive a bit deeper into the [core concepts](../usage/concepts.md) for responsive images!

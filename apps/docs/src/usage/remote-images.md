@@ -1,7 +1,6 @@
 # Remote images
 
-Besides local images, provider functions allow using also remote images, i.e. images that are static parts of your local project. The most common use case is to load images from an [image CDN](https://web.dev/image-cdns/), that is then used to offload all image processing to the Cloud. This allows for _dynamic_ image processing, in cases where your images are not
-available at build-time. For example you could have an API endpoint refer to the raw (large, unprocessed) image, and use
+Besides local images, provider functions allow to load remote images, i.e. images that are not static parts of your local project. The most common use case is to load responsive images from an [image CDN](https://web.dev/image-cdns/), that is then used to offload all image processing to the Cloud. This allows for _dynamic_ image processing, in cases where your images are not available at build-time. For example you could have an API endpoint refer to the raw (large, unprocessed) image, and use
 an image CDN as a proxy to scale, optimize and deliver that image as needed, at _runtime_.
 
 See the [image CDNs](../cdn/index.md) section for information on loading remote images from supported image CDNs.
