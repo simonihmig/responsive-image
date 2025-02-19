@@ -1,6 +1,6 @@
 # Core concepts
 
-This project consists of a number of different packages, that cover the frontend part responsible for rendering the image markup supporting different JavaScript [frameworks](../frameworks/index.md) on the one hand. On the other hand, there are [build plugins](../build/index.md) that integrate with your app's build tool to process [local images](./local-images.md).
+This project consists of a number of different packages. On the one hand they cover the frontend part responsible for rendering the responsive image markup, supporting different JavaScript [frameworks](../frameworks/index.md). On the other hand, there are packages to provide the image data, either [build plugins](../build/index.md) for processing [local images](./local-images.md) or providers for [Image CDNs](../cdn/index.md) to refer to [remote image](./remote-images.md).
 
 ## Image component
 
@@ -8,7 +8,7 @@ The image component will take some image data as its source, and render that usi
 
 [More about the image component](component.md)
 
-## Image source
+## Image data
 
 The image data used as the source for the image component can come from different sources. Essentially, it is a data structure that conforms to the `ImageData` interface as defined [here](https://github.com/simonihmig/responsive-image/blob/docs-vitepress/packages/core/src/types.ts). While you _could_ provide that data structure manually, usually you will not need to get in touch with that yourself. Instead, it will be provided to you by either
 

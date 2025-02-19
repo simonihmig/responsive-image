@@ -1,6 +1,6 @@
-# Solid
+# Solid image component
 
-The `@responsive-image/solid` package provides a native [SolidJS](https://www.solidjs.com/) image component.
+The `@responsive-image/solid` package provides a native [SolidJS](https://www.solidjs.com/) image component to render responsive images.
 
 ## Installation
 

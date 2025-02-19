@@ -1,6 +1,6 @@
-# Svelte
+# Svelte image component
 
-The `@responsive-image/svelte` package provides a native [Svelte](https://svelte.dev/) image component.
+The `@responsive-image/svelte` package provides a native [Svelte](https://svelte.dev/) image component to render responsive images.
 
 ## Installation
 

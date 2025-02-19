@@ -1,6 +1,6 @@
-# Ember.js
+# Ember.js image component
 
-The `@responsive-image/ember` package provides a native [Ember.js](https://emberjs.com/) image component.
+The `@responsive-image/ember` package provides a native [Ember.js](https://emberjs.com/) image component to render responsive images.
 
 ## Installation
 
