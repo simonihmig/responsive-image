@@ -1222,8 +1222,8 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
       vite-plugin-solid:
-        specifier: 2.11.1
-        version: 2.11.1(solid-js@1.9.4)(vite@5.4.14(@types/node@22.13.4)(terser@5.37.0))
+        specifier: 2.11.2
+        version: 2.11.2(solid-js@1.9.4)(vite@5.4.14(@types/node@22.13.4)(terser@5.37.0))
       vitest:
         specifier: 2.1.9
         version: 2.1.9(@types/node@22.13.4)(@vitest/browser@2.1.9)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.13.4)(typescript@5.7.3))(terser@5.37.0)
@@ -11201,8 +11201,8 @@ packages:
       '@testing-library/jest-dom':
         optional: true
 
-  vite-plugin-solid@2.11.1:
-    resolution: {integrity: sha512-X9vbbK6AOOA6yxSsNl1VTuUq5y4BG9AR6Z5F/J1ZC2VO7ll8DlSCbOL+RcZXlRbxn0ptE6OI5832nGQhq4yXKQ==}
+  vite-plugin-solid@2.11.2:
+    resolution: {integrity: sha512-/OXVasW5OIRSFXnqzMgm8X3hPvf+JTbGecjQhmk7QnbDFq4hqdLssuYAWw9GsJGfzUPiMHM3ME2Y2XHPsTWmkw==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
       solid-js: ^1.7.2
@@ -24651,7 +24651,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-solid@2.11.1(solid-js@1.9.4)(vite@5.4.14(@types/node@22.13.4)(terser@5.37.0)):
+  vite-plugin-solid@2.11.2(solid-js@1.9.4)(vite@5.4.14(@types/node@22.13.4)(terser@5.37.0)):
     dependencies:
       '@babel/core': 7.25.9
       '@types/babel__core': 7.20.5
