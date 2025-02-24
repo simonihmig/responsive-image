@@ -30,14 +30,14 @@ This package provides several Vite plugins for specific aspects of image process
 The easiest and recommended way to set these up is to use the provided `setupPlugins` utility function:
 
 ```js
-import { setupPlugins } from '@responsive-image/vite-plugin @responsive-image/core';
+import { setupPlugins } from '@responsive-image/vite-plugin';
 ```
 
 The function will return an array of plugins, that you can add to the list of other plugins inside your `vite.config.js`:
 
 ```js
 import { defineConfig } from 'vite';
-import { setupPlugins } from '@responsive-image/vite-plugin @responsive-image/core';
+import { setupPlugins } from '@responsive-image/vite-plugin';
 
 export default defineConfig({
   plugins: [
