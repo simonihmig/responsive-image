@@ -6,11 +6,6 @@ settings:
 
 packageExtensionsChecksum: 9b755308b75bb567ca9eefdf5e153eca
 
-patchedDependencies:
-  vite-plugin-solid@2.11.2:
-    hash: oitsedtwwgeeca6rtim4grm4fq
-    path: patches/vite-plugin-solid@2.11.2.patch
-
 importers:
 
   .:
@@ -1227,8 +1222,8 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
       vite-plugin-solid:
-        specifier: 2.11.2
-        version: 2.11.2(patch_hash=oitsedtwwgeeca6rtim4grm4fq)(solid-js@1.9.4)(vite@6.1.1(@types/node@22.13.4)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))
+        specifier: 2.11.6
+        version: 2.11.6(solid-js@1.9.4)(vite@6.1.1(@types/node@22.13.4)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))
       vitest:
         specifier: 3.0.6
         version: 3.0.6(@types/node@22.13.4)(@vitest/browser@3.0.6)(jiti@2.4.2)(jsdom@25.0.1)(msw@2.7.0(@types/node@22.13.4)(typescript@5.7.3))(terser@5.37.0)(yaml@1.10.2)
@@ -11157,8 +11152,8 @@ packages:
       '@testing-library/jest-dom':
         optional: true
 
-  vite-plugin-solid@2.11.2:
-    resolution: {integrity: sha512-/OXVasW5OIRSFXnqzMgm8X3hPvf+JTbGecjQhmk7QnbDFq4hqdLssuYAWw9GsJGfzUPiMHM3ME2Y2XHPsTWmkw==}
+  vite-plugin-solid@2.11.6:
+    resolution: {integrity: sha512-Sl5CTqJTGyEeOsmdH6BOgalIZlwH3t4/y0RQuFLMGnvWMBvxb4+lq7x3BSiAw6etf0QexfNJW7HSOO/Qf7pigg==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
       solid-js: ^1.7.2
@@ -24376,7 +24371,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-solid@2.11.2(patch_hash=oitsedtwwgeeca6rtim4grm4fq)(solid-js@1.9.4)(vite@6.1.1(@types/node@22.13.4)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)):
+  vite-plugin-solid@2.11.6(solid-js@1.9.4)(vite@6.1.1(@types/node@22.13.4)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2)):
     dependencies:
       '@babel/core': 7.25.9
       '@types/babel__core': 7.20.5
