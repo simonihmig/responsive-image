@@ -178,6 +178,7 @@
 		data-ri-bh={blurhashMeta?.hash}
 		data-ri-bh-w={blurhashMeta?.width}
 		data-ri-bh-h={blurhashMeta?.height}
+		data-ri-th={thumbhashMeta?.hash}
 		style:background-image={hashUrl}
 		style:background-size={hashUrl ? 'cover' : undefined}
 		onload={() => (isLoaded = true)}
