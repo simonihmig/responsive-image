@@ -1,21 +1,21 @@
-import { createResource } from 'solid-js';
+import { createSignal } from 'solid-js';
 
 import type { LqipHashProvider } from './types';
 import type { LqipBlurhash } from '@responsive-image/core';
 
 export class LqipBlurhashProvider implements LqipHashProvider {
   private script;
-  constructor(private lqip: LqipBlurhash) {
-    // Allow lazy loading of dependency to make it pay as you go
-    const [script] = createResource(
-      () => import('@responsive-image/core/blurhash/decode'),
-    );
 
+  constructor(private lqip: LqipBlurhash) {
+    const [script, setScript] =
+      createSignal<typeof import('@responsive-image/core/blurhash/decode')>();
     this.script = script;
+
+    import('@responsive-image/core/blurhash/decode').then(setScript);
   }
 
   get available() {
-    return !this.script.loading && !this.script.error;
+    return !!this.script();
   }
 
   get imageUrl() {
