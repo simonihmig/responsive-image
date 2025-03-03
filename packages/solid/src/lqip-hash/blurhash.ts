@@ -8,6 +8,7 @@ export class LqipBlurhashProvider implements LqipHashProvider {
 
   constructor(private lqip: LqipBlurhash) {
     const [script, setScript] =
+      // eslint-disable-next-line @typescript-eslint/consistent-type-imports
       createSignal<typeof import('@responsive-image/core/blurhash/decode')>();
     this.script = script;
 

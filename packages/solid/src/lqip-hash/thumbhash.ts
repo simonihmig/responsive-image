@@ -8,6 +8,7 @@ export class LqipThumbhashProvider implements LqipHashProvider {
 
   constructor(private lqip: LqipThumbhash) {
     const [script, setScript] =
+      // eslint-disable-next-line @typescript-eslint/consistent-type-imports
       createSignal<typeof import('@responsive-image/core/thumbhash/decode')>();
     this.script = script;
 
