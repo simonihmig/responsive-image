@@ -1,5 +1,11 @@
 # @responsive-image/solid
 
+## 1.1.1
+
+### Patch Changes
+
+- [#1079](https://github.com/simonihmig/responsive-image/pull/1079) [`aa42f2f`](https://github.com/simonihmig/responsive-image/commit/aa42f2fc06a9ca072927fa91e3d9fc99eecd37e1) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix ThumbHash/BlurHash loading in SolidStart SSR mode
+
 ## 1.1.0
 
 ### Minor Changes
