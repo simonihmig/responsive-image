@@ -1,69 +1,19 @@
-import { defineConfig } from "vite";
-import {
-  resolver,
-  hbs,
-  scripts,
-  templateTag,
-  optimizeDeps,
-  compatPrebuild,
-  assets,
-  contentFor,
-} from "@embroider/vite";
-import { babel } from "@rollup/plugin-babel";
-import { setupPlugins } from "@responsive-image/vite-plugin";
+import { defineConfig } from 'vite';
+import { extensions, classicEmberSupport, ember } from '@embroider/vite';
+import { babel } from '@rollup/plugin-babel';
+import { setupPlugins } from '@responsive-image/vite-plugin';
 
-const extensions = [
-  ".mjs",
-  ".gjs",
-  ".js",
-  ".mts",
-  ".gts",
-  ".ts",
-  ".hbs",
-  ".json",
-];
-
-export default defineConfig(({ mode }) => {
-  return {
-    resolve: {
+export default defineConfig({
+  plugins: [
+    classicEmberSupport(),
+    ember(),
+    // extra plugins here
+    babel({
+      babelHelpers: 'runtime',
       extensions,
-    },
-    plugins: [
-      hbs(),
-      templateTag(),
-      scripts(),
-      resolver(),
-      compatPrebuild(),
-      assets(),
-      contentFor(),
-
-      babel({
-        babelHelpers: "runtime",
-        extensions,
-      }),
-
-      setupPlugins({
-        include: /^[^?]+\.jpg\?.*responsive.*$/,
-      }),
-    ],
-    optimizeDeps: optimizeDeps(),
-    server: {
-      port: 4200,
-    },
-    build: {
-      outDir: "dist",
-      rollupOptions: {
-        input: {
-          main: "index.html",
-          ...(shouldBuildTests(mode)
-            ? { tests: "tests/index.html" }
-            : undefined),
-        },
-      },
-    },
-  };
+    }),
+    setupPlugins({
+      include: /^[^?]+\.jpg\?.*responsive.*$/,
+    }),
+  ],
 });
-
-function shouldBuildTests(mode) {
-  return mode !== "production" || process.env.FORCE_BUILD_TESTS;
-}

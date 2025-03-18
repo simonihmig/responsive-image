@@ -17,14 +17,14 @@ module.exports = {
         transforms: [...templateCompatSupport()],
       },
     ],
-    // [
-    //   'module:decorator-transforms',
-    //   {
-    //     runtime: {
-    //       import: require.resolve('decorator-transforms/runtime-esm'),
-    //     },
-    //   },
-    // ],
+    [
+      'module:decorator-transforms',
+      {
+        runtime: {
+          import: require.resolve('decorator-transforms/runtime-esm'),
+        },
+      },
+    ],
     [
       '@babel/plugin-transform-runtime',
       {
