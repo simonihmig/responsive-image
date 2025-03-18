@@ -1,28 +1,28 @@
-import { module, test } from "qunit";
-import { setupRenderingTest } from "ember-qunit";
-import { render } from "@ember/test-helpers";
-import { array, hash } from "@ember/helper";
-import responsiveImageImgix from "@responsive-image/ember/helpers/responsive-image-imgix";
-import type { ImageData } from "@responsive-image/ember";
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
+import { array, hash } from '@ember/helper';
+import responsiveImageImgix from '@responsive-image/ember/helpers/responsive-image-imgix';
+import type { ImageData } from '@responsive-image/ember';
 
-module("Integration | Helper | responsive-image-imgix", function (hooks) {
+module('Integration | Helper | responsive-image-imgix', function (hooks) {
   setupRenderingTest(hooks);
   let data: ImageData | undefined;
   const dump = (argument: ImageData) => {
     data = argument;
   };
 
-  test("it supports default image types", async function (assert) {
+  test('it supports default image types', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageImgix "aurora-original.jpg")}}
       </template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
+    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
   });
 
-  test("it returns correct image URLs", async function (assert) {
+  test('it returns correct image URLs', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageImgix "aurora-original.jpg")}}
@@ -30,22 +30,22 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(1000, "jpeg"),
-      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=1000&fit=max",
+      data?.imageUrlFor(1000, 'jpeg'),
+      'https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=1000&fit=max',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "webp"),
-      "https://responsive-image.imgix.net/aurora-original.jpg?fm=webp&w=100&fit=max",
+      data?.imageUrlFor(100, 'webp'),
+      'https://responsive-image.imgix.net/aurora-original.jpg?fm=webp&w=100&fit=max',
     );
   });
 
-  test("it supports custom params", async function (assert) {
+  test('it supports custom params', async function (assert) {
     await render(
       <template>
         {{dump
@@ -57,12 +57,12 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max&monochrome=44768B&px=10",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max&monochrome=44768B&px=10',
     );
   });
 
-  test("it supports custom image formats", async function (assert) {
+  test('it supports custom image formats', async function (assert) {
     await render(
       <template>
         {{dump
@@ -73,10 +73,10 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
       </template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ["webp", "jpeg"]);
+    assert.deepEqual(data?.imageTypes, ['webp', 'jpeg']);
   });
 
-  test("it supports custom quality setting", async function (assert) {
+  test('it supports custom quality setting', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageImgix "aurora-original.jpg" quality=50)}}
@@ -84,8 +84,8 @@ module("Integration | Helper | responsive-image-imgix", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max&q=50",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://responsive-image.imgix.net/aurora-original.jpg?fm=jpg&w=100&fit=max&q=50',
     );
   });
 });

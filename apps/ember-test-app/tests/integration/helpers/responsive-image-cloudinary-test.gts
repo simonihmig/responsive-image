@@ -1,11 +1,11 @@
-import { module, test } from "qunit";
-import { setupRenderingTest } from "ember-qunit";
-import { render } from "@ember/test-helpers";
-import { array, hash } from "@ember/helper";
-import responsiveImageCloudinary from "@responsive-image/ember/helpers/responsive-image-cloudinary";
-import type { ImageData } from "@responsive-image/ember";
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
+import { array, hash } from '@ember/helper';
+import responsiveImageCloudinary from '@responsive-image/ember/helpers/responsive-image-cloudinary';
+import type { ImageData } from '@responsive-image/ember';
 
-module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
+module('Integration | Helper | responsive-image-cloudinary', function (hooks) {
   setupRenderingTest(hooks);
 
   let data: ImageData | undefined;
@@ -13,17 +13,17 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
     data = argument;
   };
 
-  test("it supports default image types", async function (assert) {
+  test('it supports default image types', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageCloudinary "aurora-original_w0sk6h")}}
       </template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
+    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
   });
 
-  test("it returns correct upload image URLs", async function (assert) {
+  test('it returns correct upload image URLs', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageCloudinary "aurora-original_w0sk6h")}}
@@ -31,22 +31,22 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(1000, "jpeg"),
-      "https://res.cloudinary.com/responsive-image/image/upload/w_1000,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
+      data?.imageUrlFor(1000, 'jpeg'),
+      'https://res.cloudinary.com/responsive-image/image/upload/w_1000,c_limit,q_auto/aurora-original_w0sk6h.jpeg',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "webp"),
-      "https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_auto/aurora-original_w0sk6h.webp",
+      data?.imageUrlFor(100, 'webp'),
+      'https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_auto/aurora-original_w0sk6h.webp',
     );
   });
 
-  test("it returns correct fetch image URLs", async function (assert) {
+  test('it returns correct fetch image URLs', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageCloudinary "https://via.placeholder.com/150")}}
@@ -54,22 +54,22 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(1000, "jpeg"),
-      "https://res.cloudinary.com/responsive-image/image/fetch/w_1000,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150",
+      data?.imageUrlFor(1000, 'jpeg'),
+      'https://res.cloudinary.com/responsive-image/image/fetch/w_1000,c_limit,q_auto,f_jpg/https%3A%2F%2Fvia.placeholder.com%2F150',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "webp"),
-      "https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fvia.placeholder.com%2F150",
+      data?.imageUrlFor(100, 'webp'),
+      'https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fvia.placeholder.com%2F150',
     );
   });
 
-  test("it supports custom transformations", async function (assert) {
+  test('it supports custom transformations', async function (assert) {
     await render(
       <template>
         {{dump
@@ -82,12 +82,12 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/responsive-image/image/upload/co_rgb:20a020,e_colorize:50/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://res.cloudinary.com/responsive-image/image/upload/co_rgb:20a020,e_colorize:50/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg',
     );
   });
 
-  test("it supports custom chained transformations", async function (assert) {
+  test('it supports custom chained transformations', async function (assert) {
     await render(
       <template>
         {{dump
@@ -104,12 +104,12 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/responsive-image/image/upload/co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://res.cloudinary.com/responsive-image/image/upload/co_rgb:20a020,e_colorize:50/ar_1.0,c_fill,w_150/r_max/w_100,c_limit,q_auto/aurora-original_w0sk6h.jpeg',
     );
   });
 
-  test("it supports custom image formats", async function (assert) {
+  test('it supports custom image formats', async function (assert) {
     await render(
       <template>
         {{dump
@@ -120,10 +120,10 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
       </template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
+    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
   });
 
-  test("it supports custom quality setting", async function (assert) {
+  test('it supports custom quality setting', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageCloudinary "aurora-original_w0sk6h" quality=50)}}
@@ -131,12 +131,12 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_50/aurora-original_w0sk6h.jpeg",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://res.cloudinary.com/responsive-image/image/upload/w_100,c_limit,q_50/aurora-original_w0sk6h.jpeg',
     );
   });
 
-  test("it supports remote fetching", async function (assert) {
+  test('it supports remote fetching', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageCloudinary "https://www.example.com/image.jpg")}}
@@ -144,8 +144,8 @@ module("Integration | Helper | responsive-image-cloudinary", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "webp"),
-      "https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fwww.example.com%2Fimage.jpg",
+      data?.imageUrlFor(100, 'webp'),
+      'https://res.cloudinary.com/responsive-image/image/fetch/w_100,c_limit,q_auto,f_webp/https%3A%2F%2Fwww.example.com%2Fimage.jpg',
     );
   });
 });
