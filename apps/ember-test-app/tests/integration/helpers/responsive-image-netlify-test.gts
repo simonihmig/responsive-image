@@ -1,13 +1,13 @@
-import { module, test } from "qunit";
-import { setupRenderingTest } from "ember-qunit";
-import { render } from "@ember/test-helpers";
-import { array } from "@ember/helper";
-import responsiveImageNetlify from "@responsive-image/ember/helpers/responsive-image-netlify";
-import type { ImageData } from "@responsive-image/ember";
-import { setConfig } from "@responsive-image/core";
-import type { Config } from "@responsive-image/cdn";
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
+import { array } from '@ember/helper';
+import responsiveImageNetlify from '@responsive-image/ember/helpers/responsive-image-netlify';
+import type { ImageData } from '@responsive-image/ember';
+import { setConfig } from '@responsive-image/core';
+import type { Config } from '@responsive-image/cdn';
 
-module("Integration | Helper | responsive-image-netlify", function (hooks) {
+module('Integration | Helper | responsive-image-netlify', function (hooks) {
   setupRenderingTest(hooks);
 
   let data: ImageData | undefined;
@@ -16,34 +16,34 @@ module("Integration | Helper | responsive-image-netlify", function (hooks) {
   };
 
   hooks.beforeEach(() => {
-    setConfig<Config>("cdn", { netlify: { domain: "dummy.netlify.app" } });
+    setConfig<Config>('cdn', { netlify: { domain: 'dummy.netlify.app' } });
   });
 
-  test("it supports default image types", async function (assert) {
+  test('it supports default image types', async function (assert) {
     await render(
       <template>{{dump (responsiveImageNetlify "/foo/bar.jpg")}}</template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
+    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
   });
 
-  test("it returns correct relative image URLs", async function (assert) {
+  test('it returns correct relative image URLs', async function (assert) {
     await render(
       <template>{{dump (responsiveImageNetlify "/foo/bar.jpg")}}</template>,
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100&fm=jpg",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100&fm=jpg',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(1000, "webp"),
-      "https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=1000&fm=webp",
+      data?.imageUrlFor(1000, 'webp'),
+      'https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=1000&fm=webp',
     );
   });
 
-  test("it returns correct remote image URLs", async function (assert) {
+  test('it returns correct remote image URLs', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageNetlify "https://example.com/foo/bar.jpg")}}
@@ -51,17 +51,17 @@ module("Integration | Helper | responsive-image-netlify", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://dummy.netlify.app/.netlify/images?url=https%3A%2F%2Fexample.com%2Ffoo%2Fbar.jpg&w=100&fm=jpg",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://dummy.netlify.app/.netlify/images?url=https%3A%2F%2Fexample.com%2Ffoo%2Fbar.jpg&w=100&fm=jpg',
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(1000, "webp"),
-      "https://dummy.netlify.app/.netlify/images?url=https%3A%2F%2Fexample.com%2Ffoo%2Fbar.jpg&w=1000&fm=webp",
+      data?.imageUrlFor(1000, 'webp'),
+      'https://dummy.netlify.app/.netlify/images?url=https%3A%2F%2Fexample.com%2Ffoo%2Fbar.jpg&w=1000&fm=webp',
     );
   });
 
-  test("it supports custom image formats", async function (assert) {
+  test('it supports custom image formats', async function (assert) {
     await render(
       <template>
         {{dump
@@ -70,10 +70,10 @@ module("Integration | Helper | responsive-image-netlify", function (hooks) {
       </template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ["webp", "avif"]);
+    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
   });
 
-  test("it supports custom quality setting", async function (assert) {
+  test('it supports custom quality setting', async function (assert) {
     await render(
       <template>
         {{dump (responsiveImageNetlify "/foo/bar.jpg" quality=50)}}
@@ -81,8 +81,8 @@ module("Integration | Helper | responsive-image-netlify", function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, "jpeg"),
-      "https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100&fm=jpg&q=50",
+      data?.imageUrlFor(100, 'jpeg'),
+      'https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100&fm=jpg&q=50',
     );
   });
 });
