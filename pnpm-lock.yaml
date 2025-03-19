@@ -1045,8 +1045,8 @@ importers:
         specifier: 3.0.6
         version: 3.0.6(@types/node@22.13.4)(playwright@1.50.1)(typescript@5.7.3)(vite@6.1.1(@types/node@22.13.4)(jiti@2.4.2)(terser@5.37.0)(yaml@1.10.2))(vitest@3.0.6)
       babel-preset-solid:
-        specifier: 1.9.3
-        version: 1.9.3(@babel/core@7.26.10)
+        specifier: 1.9.5
+        version: 1.9.5(@babel/core@7.26.10)
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -4720,8 +4720,8 @@ packages:
     resolution: {integrity: sha512-QWjjFgSKtSRIcsBhJmEwS2laIdrA6na8HAlc/pEAhjHgQsah/gMiBFRZvbQTy//hWxR4BMwV7/Mya7q5H8uHeA==}
     engines: {node: 10.* || >= 12.*}
 
-  babel-plugin-jsx-dom-expressions@0.39.5:
-    resolution: {integrity: sha512-dwyVkszHRsZCXfFusu3xq1DJS7twhgLrjEpMC1gtTfJG1xSrMMKWWhdl1SFFFNXrvYDsoHiRxSbku/TzLxHNxg==}
+  babel-plugin-jsx-dom-expressions@0.39.7:
+    resolution: {integrity: sha512-8GzVmFla7jaTNWW8W+lTMl9YGva4/06CtwJjySnkYtt8G1v9weCzc2SuF1DfrudcCNb2Doetc1FRg33swBYZCA==}
     peerDependencies:
       '@babel/core': ^7.20.12
 
@@ -4755,8 +4755,8 @@ packages:
   babel-plugin-syntax-dynamic-import@6.18.0:
     resolution: {integrity: sha512-MioUE+LfjCEz65Wf7Z/Rm4XCP5k2c+TbMd2Z2JKc7U9uwjBhAfNPE48KC4GTGKhppMeYVepwDBNO/nGY6NYHBA==}
 
-  babel-preset-solid@1.9.3:
-    resolution: {integrity: sha512-jvlx5wDp8s+bEF9sGFw/84SInXOA51ttkUEroQziKMbxplXThVKt83qB6bDTa1HuLNatdU9FHpFOiQWs1tLQIg==}
+  babel-preset-solid@1.9.5:
+    resolution: {integrity: sha512-85I3osODJ1LvZbv8wFozROV1vXq32BubqHXAGu73A//TRs3NLI1OFP83AQBUTSQHwgZQmARjHlJciym3we+V+w==}
     peerDependencies:
       '@babel/core': ^7.0.0
 
@@ -16263,7 +16263,7 @@ snapshots:
       parse-static-imports: 1.1.0
       string.prototype.matchall: 4.0.12
 
-  babel-plugin-jsx-dom-expressions@0.39.5(@babel/core@7.26.10):
+  babel-plugin-jsx-dom-expressions@0.39.7(@babel/core@7.26.10):
     dependencies:
       '@babel/core': 7.26.10
       '@babel/helper-module-imports': 7.18.6
@@ -16347,10 +16347,10 @@ snapshots:
 
   babel-plugin-syntax-dynamic-import@6.18.0: {}
 
-  babel-preset-solid@1.9.3(@babel/core@7.26.10):
+  babel-preset-solid@1.9.5(@babel/core@7.26.10):
     dependencies:
       '@babel/core': 7.26.10
-      babel-plugin-jsx-dom-expressions: 0.39.5(@babel/core@7.26.10)
+      babel-plugin-jsx-dom-expressions: 0.39.7(@babel/core@7.26.10)
 
   babel-remove-types@1.0.0:
     dependencies:
@@ -24135,7 +24135,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.10
       '@types/babel__core': 7.20.5
-      babel-preset-solid: 1.9.3(@babel/core@7.26.10)
+      babel-preset-solid: 1.9.5(@babel/core@7.26.10)
       merge-anything: 5.1.7
       solid-js: 1.9.4
       solid-refresh: 0.6.3(solid-js@1.9.4)
@@ -24148,7 +24148,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.10
       '@types/babel__core': 7.20.5
-      babel-preset-solid: 1.9.3(@babel/core@7.26.10)
+      babel-preset-solid: 1.9.5(@babel/core@7.26.10)
       merge-anything: 5.1.7
       solid-js: 1.9.5
       solid-refresh: 0.6.3(solid-js@1.9.5)
