@@ -1,5 +1,27 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>kaliber5/renovate-config:ember-addon"],
+  "extends": [
+    "config:base",
+    ":automergePatch",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeTypes",
+    ":maintainLockFilesWeekly",
+    ":semanticCommitsDisabled",
+    "config:js-lib"
+  ],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchCurrentVersion": ">= 1.0.0",
+      "updateTypes": ["minor"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "updateTypes": ["minor"],
+      "automerge": true
+    }
+  ],
   "baseBranches": ["main"]
 }
