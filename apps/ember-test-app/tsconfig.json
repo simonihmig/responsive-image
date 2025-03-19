@@ -9,7 +9,8 @@
       "ember-test-app/tests/*": ["tests/*"],
       "ember-test-app/*": ["app/*"],
       "*": ["types/*"]
-    }
+    },
+    "types": ["ember-source/types"]
   },
   // "include": ["app/**/*", "tests/**/*", "types/**/*"],
   "glint": {
