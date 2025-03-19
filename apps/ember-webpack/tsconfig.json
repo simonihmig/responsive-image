@@ -9,7 +9,8 @@
       "ember-webpack/tests/*": ["tests/*"],
       "ember-webpack/*": ["app/*"],
       "*": ["types/*"]
-    }
+    },
+    "types": ["ember-source/types"]
   },
   // "include": ["app/**/*", "tests/**/*", "types/**/*"],
   "glint": {
