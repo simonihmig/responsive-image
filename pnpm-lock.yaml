@@ -261,8 +261,8 @@ importers:
         specifier: 5.1.0
         version: 5.1.0(@babel/core@7.26.10)(@glint/template@1.5.2)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.98.0))
       '@embroider/compat':
-        specifier: 4.0.0-alpha.13
-        version: 4.0.0-alpha.13(@embroider/core@4.0.0-alpha.9(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.98.0)
+        specifier: 4.0.0-alpha.14
+        version: 4.0.0-alpha.14(@embroider/core@4.0.0-alpha.9(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.98.0)
       '@embroider/config-meta-loader':
         specifier: 1.0.0-alpha.3
         version: 1.0.0-alpha.3
@@ -2206,8 +2206,8 @@ packages:
     peerDependencies:
       '@embroider/core': ^3.5.4
 
-  '@embroider/compat@4.0.0-alpha.13':
-    resolution: {integrity: sha512-BTF83TSHjQIaEWLavMIcivdC44ceBzwV6PqdNRiaxKqHfb0lpN1qrr9si7qEBJh7S64LEjRjHymDFU+vXK5FAw==}
+  '@embroider/compat@4.0.0-alpha.14':
+    resolution: {integrity: sha512-q/EcDOEfF5Id8JvtewDEPYVZrZE4//AEM6z1xuYuR52hm9VAsdGRzIjN0Z5J+9uJDkW2NMiGQq//TBqKQZVl9Q==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
       '@embroider/core': ^4.0.0-alpha.9
@@ -13121,7 +13121,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/compat@4.0.0-alpha.13(@embroider/core@4.0.0-alpha.9(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.98.0)':
+  '@embroider/compat@4.0.0-alpha.14(@embroider/core@4.0.0-alpha.9(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.98.0)':
     dependencies:
       '@babel/code-frame': 7.26.2
       '@babel/core': 7.26.10
