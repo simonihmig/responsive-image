@@ -810,8 +810,8 @@ importers:
         specifier: 6.4.0
         version: 6.4.0
       pkgroll:
-        specifier: 2.10.0
-        version: 2.10.0(typescript@5.7.3)
+        specifier: 2.11.2
+        version: 2.11.2(typescript@5.7.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -844,8 +844,8 @@ importers:
         specifier: 9.20.1
         version: 9.20.1(jiti@2.4.2)
       pkgroll:
-        specifier: 2.10.0
-        version: 2.10.0(typescript@5.7.3)
+        specifier: 2.11.2
+        version: 2.11.2(typescript@5.7.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -878,8 +878,8 @@ importers:
         specifier: 9.20.1
         version: 9.20.1(jiti@2.4.2)
       pkgroll:
-        specifier: 2.10.0
-        version: 2.10.0(typescript@5.7.3)
+        specifier: 2.11.2
+        version: 2.11.2(typescript@5.7.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -1188,8 +1188,8 @@ importers:
         specifier: 6.4.0
         version: 6.4.0
       pkgroll:
-        specifier: 2.10.0
-        version: 2.10.0(typescript@5.7.3)
+        specifier: 2.11.2
+        version: 2.11.2(typescript@5.7.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -1319,8 +1319,8 @@ importers:
         specifier: 4.17.0
         version: 4.17.0
       pkgroll:
-        specifier: 2.10.0
-        version: 2.10.0(typescript@5.7.3)
+        specifier: 2.11.2
+        version: 2.11.2(typescript@5.7.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -9163,8 +9163,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  pkgroll@2.10.0:
-    resolution: {integrity: sha512-v9LPi6fXnbs6FeR67to3Q+LWSamBSKNYUGiXRYcetI41KVgv+ncxwNVyF9oT2mvhy8L2DjEWT2HmX3xxQXmwHg==}
+  pkgroll@2.11.2:
+    resolution: {integrity: sha512-AnmLpYTRsOuYl3tATsx9EHaBFN5siNu9ufdu0REz8oKDiILMsWrfvis3DxZh+ATw7z7lbc+hx7pE63pkI3k4Rg==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -21623,7 +21623,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  pkgroll@2.10.0(typescript@5.7.3):
+  pkgroll@2.11.2(typescript@5.7.3):
     dependencies:
       '@rollup/plugin-alias': 5.1.1(rollup@4.34.9)
       '@rollup/plugin-commonjs': 28.0.3(rollup@4.34.9)
