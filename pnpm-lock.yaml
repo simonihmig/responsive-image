@@ -198,8 +198,8 @@ importers:
         specifier: 8.1.2
         version: 8.1.2(eslint@9.23.0(jiti@2.4.2))
       globals:
-        specifier: 15.15.0
-        version: 15.15.0
+        specifier: 16.0.0
+        version: 16.0.0
       loader.js:
         specifier: 4.7.0
         version: 4.7.0
@@ -357,8 +357,8 @@ importers:
         specifier: 8.1.2
         version: 8.1.2(eslint@9.23.0(jiti@2.4.2))
       globals:
-        specifier: 15.15.0
-        version: 15.15.0
+        specifier: 16.0.0
+        version: 16.0.0
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -546,8 +546,8 @@ importers:
         specifier: 8.1.2
         version: 8.1.2(eslint@9.23.0(jiti@2.4.2))
       globals:
-        specifier: 15.15.0
-        version: 15.15.0
+        specifier: 16.0.0
+        version: 16.0.0
       loader.js:
         specifier: 4.7.0
         version: 4.7.0
@@ -666,8 +666,8 @@ importers:
         specifier: 2.46.1
         version: 2.46.1(eslint@9.23.0(jiti@2.4.2))(svelte@5.25.2)
       globals:
-        specifier: 15.15.0
-        version: 15.15.0
+        specifier: 16.0.0
+        version: 16.0.0
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -739,8 +739,8 @@ importers:
         specifier: 17.16.2
         version: 17.16.2(eslint@9.23.0(jiti@2.4.2))
       globals:
-        specifier: 15.15.0
-        version: 15.15.0
+        specifier: 16.0.0
+        version: 16.0.0
       typescript-eslint:
         specifier: 8.27.0
         version: 8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
@@ -987,8 +987,8 @@ importers:
         specifier: 12.5.0
         version: 12.5.0(@babel/core@7.26.10)(@typescript-eslint/parser@8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))
       globals:
-        specifier: 15.15.0
-        version: 15.15.0
+        specifier: 16.0.0
+        version: 16.0.0
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -1243,8 +1243,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0(eslint@9.23.0(jiti@2.4.2))
       globals:
-        specifier: 15.15.0
-        version: 15.15.0
+        specifier: 16.0.0
+        version: 16.0.0
       playwright:
         specifier: 1.51.1
         version: 1.51.1
@@ -7240,6 +7240,10 @@ packages:
 
   globals@15.15.0:
     resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
+    engines: {node: '>=18'}
+
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -19321,6 +19325,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@15.15.0: {}
+
+  globals@16.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
