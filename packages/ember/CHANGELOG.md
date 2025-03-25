@@ -1,5 +1,11 @@
 # @responsive-image/ember
 
+## 1.1.1
+
+### Minor Changes
+
+-   Update ember-async-data to v2
+
 ## 1.1.0
 
 ### Minor Changes
