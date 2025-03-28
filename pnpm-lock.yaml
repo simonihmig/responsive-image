@@ -189,8 +189,8 @@ importers:
         specifier: 12.5.0
         version: 12.5.0(@babel/core@7.26.10)(@typescript-eslint/parser@8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))
       eslint-plugin-n:
-        specifier: 17.16.2
-        version: 17.16.2(eslint@9.23.0(jiti@2.4.2))
+        specifier: 17.17.0
+        version: 17.17.0(eslint@9.23.0(jiti@2.4.2))
       eslint-plugin-prettier:
         specifier: 5.2.5
         version: 5.2.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(prettier@3.5.3)
@@ -348,8 +348,8 @@ importers:
         specifier: 12.5.0
         version: 12.5.0(@babel/core@7.26.10)(@typescript-eslint/parser@8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))
       eslint-plugin-n:
-        specifier: 17.16.2
-        version: 17.16.2(eslint@9.23.0(jiti@2.4.2))
+        specifier: 17.17.0
+        version: 17.17.0(eslint@9.23.0(jiti@2.4.2))
       eslint-plugin-prettier:
         specifier: 5.2.5
         version: 5.2.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(prettier@3.5.3)
@@ -537,8 +537,8 @@ importers:
         specifier: 12.5.0
         version: 12.5.0(@babel/core@7.26.10)(@typescript-eslint/parser@8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))
       eslint-plugin-n:
-        specifier: 17.16.2
-        version: 17.16.2(eslint@9.23.0(jiti@2.4.2))
+        specifier: 17.17.0
+        version: 17.17.0(eslint@9.23.0(jiti@2.4.2))
       eslint-plugin-prettier:
         specifier: 5.2.5
         version: 5.2.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(prettier@3.5.3)
@@ -736,8 +736,8 @@ importers:
         specifier: 2.31.0
         version: 2.31.0(eslint@9.23.0(jiti@2.4.2))
       eslint-plugin-n:
-        specifier: 17.16.2
-        version: 17.16.2(eslint@9.23.0(jiti@2.4.2))
+        specifier: 17.17.0
+        version: 17.17.0(eslint@9.23.0(jiti@2.4.2))
       globals:
         specifier: 16.0.0
         version: 16.0.0
@@ -6620,8 +6620,8 @@ packages:
     peerDependencies:
       eslint: '>= 8'
 
-  eslint-plugin-n@17.16.2:
-    resolution: {integrity: sha512-iQM5Oj+9o0KaeLoObJC/uxNGpktZCkYiTTBo8PkRWq3HwNcRxwpvSDFjBhQ5+HLJzBTy+CLDC5+bw0Z5GyhlOQ==}
+  eslint-plugin-n@17.17.0:
+    resolution: {integrity: sha512-2VvPK7Mo73z1rDFb6pTvkH6kFibAmnTubFq5l83vePxu0WiY1s0LOtj2WHb6Sa40R3w4mnh8GFYbHBQyMlotKw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -18522,7 +18522,7 @@ snapshots:
       parse5: 6.0.1
       parse5-htmlparser2-tree-adapter: 6.0.1
 
-  eslint-plugin-n@17.16.2(eslint@9.23.0(jiti@2.4.2)):
+  eslint-plugin-n@17.17.0(eslint@9.23.0(jiti@2.4.2)):
     dependencies:
       '@eslint-community/eslint-utils': 4.5.1(eslint@9.23.0(jiti@2.4.2))
       enhanced-resolve: 5.18.1
