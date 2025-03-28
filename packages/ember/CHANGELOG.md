@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
--   Update ember-async-data to v2
+- Update ember-async-data to v2
 
 ## 1.1.0
 
