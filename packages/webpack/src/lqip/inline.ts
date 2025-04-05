@@ -22,11 +22,11 @@ export default function lqipInlineLoader(
 
   const className = generateLqipClassName(this.resource);
   const targetPixels = options.lqip.targetPixels ?? 60;
-  const importCSS = `${
+  const importCSS = `import '${
     this.resourcePath
   }.css!=!@responsive-image/webpack/lqip/inline-css!${
     this.resourcePath
-  }?className=${encodeURIComponent(className)}&targetPixels=${targetPixels}`;
+  }?className=${encodeURIComponent(className)}&targetPixels=${targetPixels}';`;
 
   return {
     ...data,
