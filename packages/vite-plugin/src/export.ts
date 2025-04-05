@@ -109,9 +109,7 @@ export default function exportPlugin(
         "import { findMatchingImage } from '@responsive-image/core';",
       ];
 
-      for (const importedModule of input.imports) {
-        moduleOutput.push(`import '${importedModule}';`);
-      }
+      moduleOutput.push(...input.imports);
 
       moduleOutput.push(
         `const images = [${emittedImages

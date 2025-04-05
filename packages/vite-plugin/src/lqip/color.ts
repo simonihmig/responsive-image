@@ -30,9 +30,9 @@ export default function lqipColorPlugin(
 
       const pathname = getPathname(id);
       const className = generateLqipClassName(id);
-      const importCSS = `${
+      const importCSS = `import '${
         pathname
-      }.css?_plugin=${colorCssPluginName}&className=${encodeURIComponent(className)}`;
+      }.css?_plugin=${colorCssPluginName}&className=${encodeURIComponent(className)}';`;
 
       const result = {
         ...input,

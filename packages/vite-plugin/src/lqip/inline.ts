@@ -31,9 +31,9 @@ export default function lqipLinlinePlugin(
       const pathname = getPathname(id);
       const className = generateLqipClassName(id);
       const targetPixels = options.lqip.targetPixels ?? 60;
-      const importCSS = `${
+      const importCSS = `import '${
         pathname
-      }.css?_plugin=${inlineCssPluginName}&className=${encodeURIComponent(className)}&targetPixels=${targetPixels}`;
+      }.css?_plugin=${inlineCssPluginName}&className=${encodeURIComponent(className)}&targetPixels=${targetPixels}';`;
 
       const result = {
         ...input,
