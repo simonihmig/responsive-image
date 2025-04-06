@@ -1,4 +1,4 @@
-import type { ImageType, Lqip } from '@responsive-image/core';
+import type { ImageType } from '@responsive-image/core';
 import type { Metadata, Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;
@@ -43,6 +43,16 @@ export interface ImageProcessingResult {
   data: () => Promise<Buffer>;
   width: number;
   format: ImageType;
+}
+
+// TODO
+type SafeString = string;
+
+export type ValueOrCallback<T> = T | SafeString;
+
+export interface Lqip {
+  class?: ValueOrCallback<string>;
+  bgImage?: ValueOrCallback<string>;
 }
 
 export interface ImageLoaderChainedResult {

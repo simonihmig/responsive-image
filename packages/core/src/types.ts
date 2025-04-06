@@ -1,32 +1,11 @@
 export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
 
-export interface LqipBase {
-  type: string;
-}
+export type ValueOrCallback<T> = T | (() => T);
 
-export interface LqipInline extends LqipBase {
-  type: 'inline';
-  class: string;
+export interface Lqip {
+  class?: ValueOrCallback<string>;
+  bgImage?: ValueOrCallback<string>;
 }
-
-export interface LqipColor extends LqipBase {
-  type: 'color';
-  class: string;
-}
-
-export interface LqipBlurhash extends LqipBase {
-  type: 'blurhash';
-  hash: string;
-  width: number;
-  height: number;
-}
-
-export interface LqipThumbhash extends LqipBase {
-  type: 'thumbhash';
-  hash: string;
-}
-
-export type Lqip = LqipInline | LqipColor | LqipBlurhash | LqipThumbhash;
 
 export interface ImageData {
   imageTypes: ImageType[];
@@ -49,6 +28,7 @@ export interface Env {
   devicePixelRatio: number;
   deviceWidths: number[];
 }
+
 export interface EnvConfig {
   deviceWidths?: number[];
 }
