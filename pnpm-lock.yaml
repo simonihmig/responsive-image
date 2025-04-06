@@ -781,6 +781,9 @@ importers:
       imagetools-core:
         specifier: ^7.0.0
         version: 7.0.2
+      javascript-stringify:
+        specifier: ^2.1.0
+        version: 2.1.0
       sharp:
         specifier: ^0.34.0
         version: 0.34.1
@@ -7921,6 +7924,9 @@ packages:
   jackspeak@4.1.0:
     resolution: {integrity: sha512-9DDdhb5j6cpeitCbvLO7n7J4IxnbM6hoF6O1g4HQ5TfhvvKN8ywDM7668ZhMHRqVmxqhps/F6syWK2KcPxYlkw==}
     engines: {node: 20 || >=22}
+
+  javascript-stringify@2.1.0:
+    resolution: {integrity: sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg==}
 
   jest-diff@29.7.0:
     resolution: {integrity: sha512-LMIgiIrhigmPrs03JHpxUh2yISK3vLFPkAodPeo0+BuF7wA2FoQbkEg1u8gBYBThncu7e1oEDUfIXVuTqLRUjw==}
@@ -19694,6 +19700,8 @@ snapshots:
   jackspeak@4.1.0:
     dependencies:
       '@isaacs/cliui': 8.0.2
+
+  javascript-stringify@2.1.0: {}
 
   jest-diff@29.7.0:
     dependencies:
