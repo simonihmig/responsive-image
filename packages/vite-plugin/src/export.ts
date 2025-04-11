@@ -4,6 +4,8 @@ import {
   getAspectRatio,
   parseURL,
   onlyUnique,
+  safeString,
+  serialize,
 } from '@responsive-image/build-utils';
 
 import { getInput, getViteBasePath, getViteOptions } from './utils';
@@ -112,23 +114,21 @@ export default function exportPlugin(
       moduleOutput.push(...input.imports);
 
       moduleOutput.push(
-        `const images = [${emittedImages
-          .map(
-            ({ url, width, format }) =>
-              `{"url":${JSON.stringify(url)},"width":${String(width)},"format":"${format}"}`,
-          )
-          .join(',')}];`,
+        `const images = [${emittedImages.map(serialize).join(',')}];`,
       );
 
-      moduleOutput.push(`export default {
-  imageTypes: ${JSON.stringify(imageTypes)},
-  availableWidths: ${JSON.stringify(availableWidths)},
-  ${input.lqip ? `lqip: ` + JSON.stringify(input.lqip) + ',' : ''}
-  aspectRatio: ${aspectRatio},
-  imageUrlFor(w, f) {
-    return findMatchingImage(images, w, f ?? "${imageTypes[0]}")?.url;
-  }
-}`);
+      const result = {
+        imageTypes,
+        availableWidths,
+        aspectRatio,
+        imageUrlFor: safeString(
+          `(w, f) => findMatchingImage(images, w, f ?? '${imageTypes[0]}')?.url`,
+        ),
+
+        lqip: input.lqip,
+      };
+
+      moduleOutput.push(`export default ${serialize(result)}`);
 
       return moduleOutput.join('\n');
     },

@@ -1,6 +1,7 @@
 import {
   generateLqipClassName,
   getPathname,
+  type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
 
 import { META_KEY, getInput, getViteOptions } from '../utils';
@@ -36,9 +37,9 @@ export default function lqipColorPlugin(
 
       const result = {
         ...input,
-        lqip: { type: 'color', class: className },
+        lqip: { class: className },
         imports: [...input.imports, importCSS],
-      };
+      } satisfies ImageLoaderChainedResult;
 
       return {
         // Only the export plugin will actually return ESM code
