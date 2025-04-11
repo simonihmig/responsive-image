@@ -174,8 +174,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0
       ember-template-lint:
-        specifier: 7.0.4
-        version: 7.0.4(@babel/core@7.26.10)
+        specifier: 7.0.5
+        version: 7.0.5(@babel/core@7.26.10)
       ember-try:
         specifier: 4.0.0
         version: 4.0.0
@@ -336,8 +336,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0
       ember-template-lint:
-        specifier: 7.0.4
-        version: 7.0.4(@babel/core@7.26.10)
+        specifier: 7.0.5
+        version: 7.0.5(@babel/core@7.26.10)
       eslint:
         specifier: 9.24.0
         version: 9.24.0(jiti@2.4.2)
@@ -525,8 +525,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0
       ember-template-lint:
-        specifier: 7.0.4
-        version: 7.0.4(@babel/core@7.26.10)
+        specifier: 7.0.5
+        version: 7.0.5(@babel/core@7.26.10)
       eslint:
         specifier: 9.24.0
         version: 9.24.0(jiti@2.4.2)
@@ -978,8 +978,8 @@ importers:
         specifier: 6.3.0
         version: 6.3.0(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.99.5)
       ember-template-lint:
-        specifier: 7.0.4
-        version: 7.0.4(@babel/core@7.26.10)
+        specifier: 7.0.5
+        version: 7.0.5(@babel/core@7.26.10)
       eslint:
         specifier: 9.24.0
         version: 9.24.0(jiti@2.4.2)
@@ -6279,8 +6279,8 @@ packages:
     resolution: {integrity: sha512-jZ5D6KLKU8up/AynZltmKh4lkXBPgTGSPgomprI/55XvIVqn42UNUpEz7ra/mO3QiGODDZOUesbggPe49i38sQ==}
     engines: {node: 16.* || >= 18}
 
-  ember-template-lint@7.0.4:
-    resolution: {integrity: sha512-60TAoopPzfSpfCEQawnOFUTxizFAZkar6f/0Nsa1FeAIxif6oBqY+tVVrqwcOSenVLjWZLMGxm4iARlQz2aagg==}
+  ember-template-lint@7.0.5:
+    resolution: {integrity: sha512-PRhtq6UZRbm3ishl+3/jOxQY9pr2l2QQbY03MJExQWqhUmrXJ8fNkeqSyXOsjEr1Zl+lR/8CjyHccAG0lbBOgw==}
     engines: {node: ^18.18.0 || >= 20.9.0}
     hasBin: true
 
@@ -17361,7 +17361,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-template-lint@7.0.4(@babel/core@7.26.10):
+  ember-template-lint@7.0.5(@babel/core@7.26.10):
     dependencies:
       '@babel/generator': 7.27.0
       '@babel/parser': 7.27.0
