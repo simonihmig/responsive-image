@@ -390,11 +390,10 @@ module('Integration: Responsive Image Component', function (hooks) {
   });
 
   module('LQIP', function () {
-    test('it sets LQIP class', async function (this: RenderingTestContext, assert) {
+    test('it sets LQIP class from literal', async function (this: RenderingTestContext, assert) {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
-          type: 'inline',
           class: 'lqip-inline-test-class',
         },
       };
@@ -410,14 +409,11 @@ module('Integration: Responsive Image Component', function (hooks) {
       assert.dom(imgEl).hasNoClass('lqip-inline-test-class');
     });
 
-    test('it sets LQIP from blurhash as background', async function (this: RenderingTestContext, assert) {
+    test('it sets LQIP class from callback', async function (this: RenderingTestContext, assert) {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
-          type: 'blurhash',
-          hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-          width: 4,
-          height: 3,
+          class: () => 'lqip-inline-test-class',
         },
       };
 
@@ -425,31 +421,18 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       const imgEl = this.element.querySelector('img')!;
 
-      assert.ok(
-        imgEl.style.backgroundImage?.match(/data:image\/png/),
-        'it has a background PNG',
-      );
-      assert.dom(imgEl).hasStyle({ 'background-size': 'cover' });
-      assert.ok(
-        window.getComputedStyle(imgEl).backgroundImage?.length > 100,
-        'the background SVG has a reasonable length',
-      );
+      assert.dom(imgEl).hasClass('lqip-inline-test-class');
 
       await trigger(imgEl);
 
-      assert.strictEqual(
-        window.getComputedStyle(imgEl).backgroundImage,
-        'none',
-        'after image is loaded the background PNG is removed',
-      );
+      assert.dom(imgEl).hasNoClass('lqip-inline-test-class');
     });
 
-    test('it sets LQIP from thumbhash as background', async function (this: RenderingTestContext, assert) {
+    test('it sets LQIP background image from literal', async function (this: RenderingTestContext, assert) {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
-          type: 'thumbhash',
-          hash: 'jJcFFYI1fIWHe4dweXlYeUaAmWj3',
+          bgImage: 'test.png',
         },
       };
 
@@ -457,23 +440,36 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       const imgEl = this.element.querySelector('img')!;
 
-      assert.ok(
-        imgEl.style.backgroundImage?.match(/data:image\/png/),
-        'it has a background PNG',
-      );
-      assert.dom(imgEl).hasStyle({ 'background-size': 'cover' });
-      assert.ok(
-        window.getComputedStyle(imgEl).backgroundImage?.length > 100,
-        'the background SVG has a reasonable length',
-      );
+      assert.dom(imgEl).hasStyle({
+        'background-size': 'cover',
+        'background.image': 'url("test.png")',
+      });
 
       await trigger(imgEl);
 
-      assert.strictEqual(
-        window.getComputedStyle(imgEl).backgroundImage,
-        'none',
-        'after image is loaded the background PNG is removed',
-      );
+      assert.notOk(imgEl.style.backgroundImage, 'it has no background PNG');
+    });
+
+    test('it sets LQIP background image from callback', async function (this: RenderingTestContext, assert) {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          bgImage: () => 'test.png',
+        },
+      };
+
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
+
+      const imgEl = this.element.querySelector('img')!;
+
+      assert.dom(imgEl).hasStyle({
+        'background-size': 'cover',
+        'background.image': 'url("test.png")',
+      });
+
+      await trigger(imgEl);
+
+      assert.notOk(imgEl.style.backgroundImage, 'it has no background PNG');
     });
   });
 });

@@ -7,22 +7,12 @@ import { cached, tracked } from '@glimmer/tracking';
 import {
   env,
   getDestinationWidthBySize,
-  isLqipBlurhash,
-  isLqipThumbhash,
+  getValueOrCallback,
 } from '@responsive-image/core';
 import style from 'ember-style-modifier';
 
-import { LqipBlurhashProvider } from '../utils/lqip-hash/blurhash.ts';
-import { LqipThumbhashProvider } from '../utils/lqip-hash/thumbhash.ts';
-
-import type { LqipHashProvider } from '../utils/lqip-hash/types';
 import type Owner from '@ember/owner';
-import type {
-  ImageData,
-  ImageType,
-  LqipBlurhash,
-  LqipThumbhash,
-} from '@responsive-image/core';
+import type { ImageData, ImageType } from '@responsive-image/core';
 
 import './responsive-image.css';
 
@@ -176,40 +166,22 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   get classNames(): string {
     const classNames = [`ri-${this.layout}`];
-    const lqip = this.args.src.lqip;
-    if (lqip && !this.isLoaded) {
-      classNames.push(`ri-lqip-${lqip.type}`);
-      if (lqip.type === 'color' || lqip.type === 'inline') {
-        classNames.push(lqip.class);
-      }
+    const lqipClass = this.args.src.lqip?.class;
+    if (lqipClass && !this.isLoaded) {
+      classNames.push(getValueOrCallback(lqipClass));
     }
 
     return classNames.join(' ');
   }
 
-  get blurhashMeta(): LqipBlurhash | undefined {
-    return isLqipBlurhash(this.args.src.lqip) ? this.args.src.lqip : undefined;
-  }
-
-  get thumbhashMeta(): LqipThumbhash | undefined {
-    return isLqipThumbhash(this.args.src.lqip) ? this.args.src.lqip : undefined;
-  }
-
   @cached
-  get lqipHashProvider(): LqipHashProvider | undefined {
-    if (isLqipBlurhash(this.args.src.lqip)) {
-      return new LqipBlurhashProvider(this.args.src.lqip);
+  get bgImage(): string | undefined {
+    if (this.isLoaded) {
+      return undefined;
     }
 
-    if (isLqipThumbhash(this.args.src.lqip)) {
-      return new LqipThumbhashProvider(this.args.src.lqip);
-    }
-
-    return undefined;
-  }
-
-  get showLqipHash(): boolean {
-    return (!this.isLoaded && this.lqipHashProvider?.available) ?? false;
+    const bgImage = this.args.src.lqip?.bgImage;
+    return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
   }
 
   @action
@@ -231,17 +203,14 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         class={{this.classNames}}
         decoding="async"
         ...attributes
-        data-ri-bh={{this.blurhashMeta.hash}}
+        {{!-- data-ri-bh={{this.blurhashMeta.hash}}
         data-ri-bh-w={{this.blurhashMeta.width}}
         data-ri-bh-h={{this.blurhashMeta.height}}
-        data-ri-th={{this.thumbhashMeta.hash}}
+        data-ri-th={{this.thumbhashMeta.hash}} --}}
         {{style
           (if
-            this.showLqipHash
-            (hash
-              background-image=this.lqipHashProvider.imageUrl
-              background-size="cover"
-            )
+            this.bgImage
+            (hash backgroundImage=this.bgImage backgroundSize="cover")
           )
         }}
         {{on "load" this.onLoad}}
