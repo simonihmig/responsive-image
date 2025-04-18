@@ -2,6 +2,7 @@ import {
   getAspectRatio,
   type ImageLoaderChainedResult,
   normalizeInput,
+  safeString,
 } from '@responsive-image/build-utils';
 
 import { getWebpackOptions } from '../utils';
@@ -54,12 +55,14 @@ async function process(
   const { rgbaToThumbHash } = await import('thumbhash');
 
   const rawHash = rgbaToThumbHash(width, height, imageData);
+  const hash = Buffer.from(rawHash).toString('base64');
+  const decodeImport = `import { decode2url } from '@responsive-image/core/thumbhash/decode';`;
 
   return {
     ...data,
+    imports: [...data.imports, decodeImport],
     lqip: {
-      type: 'thumbhash',
-      hash: Buffer.from(rawHash).toString('base64'),
+      bgImage: safeString(`() => decode2url('${hash}', ${width}, ${height})`),
     },
   };
 }

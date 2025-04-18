@@ -29,7 +29,7 @@ export default function lqipColorLoader(
 
   return {
     ...data,
-    lqip: { type: 'color', class: className },
+    lqip: { class: className },
     imports: [...data.imports, importCSS],
   };
 }

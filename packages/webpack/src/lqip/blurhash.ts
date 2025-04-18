@@ -2,6 +2,7 @@ import {
   getAspectRatio,
   type ImageLoaderChainedResult,
   normalizeInput,
+  safeString,
 } from '@responsive-image/build-utils';
 import { encode } from 'blurhash';
 
@@ -59,14 +60,13 @@ async function process(
 
   const imageData = new Uint8ClampedArray(await lqi.toBuffer());
   const hash = encode(imageData, rawWidth, rawHeight, width, height);
+  const decodeImport = `import { decode2url } from '@responsive-image/core/blurhash/decode';`;
 
   return {
     ...data,
+    imports: [...data.imports, decodeImport],
     lqip: {
-      type: 'blurhash',
-      hash,
-      width,
-      height,
+      bgImage: safeString(`() => decode2url('${hash}', ${width}, ${height})`),
     },
   };
 }

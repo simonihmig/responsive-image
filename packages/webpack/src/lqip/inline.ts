@@ -30,7 +30,7 @@ export default function lqipInlineLoader(
 
   return {
     ...data,
-    lqip: { type: 'inline', class: className },
+    lqip: { class: className },
     imports: [...data.imports, importCSS],
   };
 }
