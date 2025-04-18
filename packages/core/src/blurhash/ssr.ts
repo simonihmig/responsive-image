@@ -17,7 +17,6 @@ export function applySSR(): void {
       const url = decode2url(hash, parseInt(width, 10), parseInt(height, 10));
       if (url) {
         image.style.backgroundImage = `url("${url}")`;
-        image.style.backgroundSize = 'cover';
       }
     }
   });

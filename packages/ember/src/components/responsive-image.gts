@@ -165,7 +165,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get classNames(): string {
-    const classNames = [`ri-${this.layout}`];
+    const classNames = ['ri-img', `ri-${this.layout}`];
     const lqipClass = this.args.src.lqip?.class;
     if (lqipClass && !this.isLoaded) {
       classNames.push(getValueOrCallback(lqipClass));
