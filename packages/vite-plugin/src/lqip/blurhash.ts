@@ -62,6 +62,7 @@ export default function lqipBlurhashPlugin(
           bgImage: safeString(
             `() => decode2url('${hash}', ${width}, ${height})`,
           ),
+          attribute: `bh:${width}:${height}:${hash}`,
         },
       } satisfies ImageLoaderChainedResult;
 

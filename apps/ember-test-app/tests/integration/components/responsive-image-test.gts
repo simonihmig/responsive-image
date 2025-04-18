@@ -471,5 +471,26 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       assert.notOk(imgEl.style.backgroundImage, 'it has no background PNG');
     });
+
+    test('it sets LQIP attribute from literal', async function (this: RenderingTestContext, assert) {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          attribute: 'test-attr',
+        },
+      };
+
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
+
+      const imgEl = this.element.querySelector('img')!;
+
+      assert
+        .dom(imgEl)
+        .hasAttribute(
+          'data-ri-lqip',
+          'test-attr',
+          'has data-ri-lqip attribute',
+        );
+    });
   });
 });

@@ -52,6 +52,7 @@ export default function lqipThumbhashPlugin(
         imports: [...input.imports, decodeImport],
         lqip: {
           bgImage: safeString(`() => decode2url('${hash}')`),
+          attribute: `th:${hash}`,
         },
       } satisfies ImageLoaderChainedResult;
 

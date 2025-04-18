@@ -13,6 +13,11 @@ export type ValueOrCallback<T extends NonFunction> = T | (() => T);
 export interface Lqip {
   class?: ValueOrCallback<string>;
   bgImage?: ValueOrCallback<string>;
+
+  /**
+   * If set, the image component will apply a data-ri-lqip=<value> attribute, which can be used e.g. for embedded decoding information for SSR
+   */
+  attribute?: string;
 }
 
 export interface ImageData {
@@ -20,7 +25,6 @@ export interface ImageData {
   availableWidths?: number[];
   aspectRatio?: number;
   imageUrlFor(width: number, type?: ImageType): string | undefined;
-  fingerprint?: string;
   lqip?: Lqip;
 }
 

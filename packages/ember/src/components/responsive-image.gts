@@ -203,10 +203,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         class={{this.classNames}}
         decoding="async"
         ...attributes
-        {{!-- data-ri-bh={{this.blurhashMeta.hash}}
-        data-ri-bh-w={{this.blurhashMeta.width}}
-        data-ri-bh-h={{this.blurhashMeta.height}}
-        data-ri-th={{this.thumbhashMeta.hash}} --}}
+        data-ri-lqip={{@src.lqip.attribute}}
         {{style
           (if
             this.bgImage

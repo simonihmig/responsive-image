@@ -55,6 +55,7 @@ export type StringLike<T> = T | SafeString;
 export interface Lqip {
   class?: StringLike<string>;
   bgImage?: StringLike<string>;
+  attribute?: string;
 }
 
 export interface ImageLoaderChainedResult {
