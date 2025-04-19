@@ -177,11 +177,9 @@ test.describe('LQIP', () => {
       new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
     );
     await expect(img).toHaveAttribute(
-      'data-ri-bh',
-      'M53T;oR8D8y.t2M.oxylRoRlHYniyBRQXR',
+      'data-ri-lqip',
+      'bh:5:3:M53T;oR8D8y.t2M.oxylRoRlHYniyBRQXR',
     );
-    await expect(img).toHaveAttribute('data-ri-bh-w', '5');
-    await expect(img).toHaveAttribute('data-ri-bh-h', '3');
 
     for (const [type, ext] of imageTypes) {
       await expect(
@@ -214,8 +212,8 @@ test.describe('LQIP', () => {
       new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
     );
     await expect(img).toHaveAttribute(
-      'data-ri-th',
-      'jJcFFYI1fIWHe4dweXlYeUaAmWj3',
+      'data-ri-lqip',
+      'th:jJcFFYI1fIWHe4dweXlYeUaAmWj3',
     );
 
     for (const [type, ext] of imageTypes) {
