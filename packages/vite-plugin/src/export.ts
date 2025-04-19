@@ -90,7 +90,9 @@ export default function exportPlugin(
         }
 
         return {
-          url: imageUrl,
+          // Vite bug: __VITE_ASSET__ only works when surrounded by double quotes, single quote compile to something like this:
+          // url: '"+new URL('../assets/aurora-640w.Da-U-QmX.jpg', import.meta.url).href+"'
+          url: safeString(JSON.stringify(imageUrl)),
           width,
           format,
         };
