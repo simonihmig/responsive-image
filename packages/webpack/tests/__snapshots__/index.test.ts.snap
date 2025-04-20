@@ -361,7 +361,7 @@ export default {
   imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? 'jpeg')?.url,
   lqip: {
     bgImage: () => decode2url('jJcFFYI1fIWHe4dweXlYeUaAmWj3', 100, 67),
-    attribute: 'bh:jJcFFYI1fIWHe4dweXlYeUaAmWj3'
+    attribute: 'th:jJcFFYI1fIWHe4dweXlYeUaAmWj3'
   }
 }"
 `;

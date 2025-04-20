@@ -440,10 +440,12 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       const imgEl = this.element.querySelector('img')!;
 
-      assert.dom(imgEl).hasStyle({
-        'background-size': 'cover',
-        'background.image': 'url("test.png")',
-      });
+      assert.strictEqual(
+        imgEl.style.backgroundImage,
+        'url("test.png")',
+        'it has a background PNG',
+      );
+      assert.dom(imgEl).hasStyle({ 'background-size': 'cover' });
 
       await trigger(imgEl);
 
@@ -462,10 +464,12 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       const imgEl = this.element.querySelector('img')!;
 
-      assert.dom(imgEl).hasStyle({
-        'background-size': 'cover',
-        'background.image': 'url("test.png")',
-      });
+      assert.strictEqual(
+        imgEl.style.backgroundImage,
+        'url("test.png")',
+        'it has a background PNG',
+      );
+      assert.dom(imgEl).hasStyle({ 'background-size': 'cover' });
 
       await trigger(imgEl);
 
