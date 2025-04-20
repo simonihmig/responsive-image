@@ -775,9 +775,6 @@ importers:
       base-n:
         specifier: ^3.0.0
         version: 3.0.0
-      blurhash:
-        specifier: ^2.0.4
-        version: 2.0.5
       imagetools-core:
         specifier: ^7.0.0
         version: 7.0.2
@@ -910,9 +907,6 @@ importers:
       '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
-      blurhash:
-        specifier: ^2.0.0
-        version: 2.0.5
       decorator-transforms:
         specifier: ^2.0.0
         version: 2.3.0(@babel/core@7.26.10)
@@ -1016,9 +1010,6 @@ importers:
       '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
-      blurhash:
-        specifier: ^2.0.0
-        version: 2.0.5
     devDependencies:
       '@babel/preset-typescript':
         specifier: 7.27.0
@@ -1086,9 +1077,6 @@ importers:
       '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
-      blurhash:
-        specifier: ^2.0.0
-        version: 2.0.5
     devDependencies:
       '@responsive-image/internals':
         specifier: workspace:*
