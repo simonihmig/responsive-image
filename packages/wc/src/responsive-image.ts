@@ -1,12 +1,9 @@
-import { Task, TaskStatus } from '@lit/task';
 import {
   type ImageData,
   type ImageType,
-  type Lqip,
   env,
   getDestinationWidthBySize,
-  isLqipBlurhash,
-  isLqipThumbhash,
+  getValueOrCallback,
 } from '@responsive-image/core';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -39,6 +36,10 @@ const typeScore = new Map<ImageType, number>([
 @customElement('responsive-image')
 export class ResponsiveImage extends LitElement {
   static styles = css`
+    .ri-img {
+      background-size: cover;
+    }
+
     .ri-responsive {
       width: 100%;
       height: auto;
@@ -47,10 +48,6 @@ export class ResponsiveImage extends LitElement {
     .ri-fixed,
     .ri-responsive {
       content-visibility: auto;
-    }
-
-    .ri-lqip-inline {
-      background-size: cover;
     }
   `;
 
@@ -174,50 +171,22 @@ export class ResponsiveImage extends LitElement {
     return this.src.imageUrlFor(this.imgWidth ?? 640);
   }
 
-  private hashTask = new Task(this, {
-    task: async ([lqip]: readonly [Lqip | undefined]) => {
-      if (this.complete) {
-        return '';
-      }
-
-      if (isLqipBlurhash(lqip)) {
-        const { hash, width, height } = lqip;
-        const { decode2url } = await import(
-          '@responsive-image/core/blurhash/decode'
-        );
-        return decode2url(hash, width, height);
-      }
-
-      if (isLqipThumbhash(lqip)) {
-        const { hash } = lqip;
-        const { decode2url } = await import(
-          '@responsive-image/core/thumbhash/decode'
-        );
-        return decode2url(hash);
-      }
-    },
-    args: () => [this.src.lqip],
-  });
-
   render() {
     const { lqip } = this.src;
 
     const classes: ClassInfo = {
+      'ri-img': true,
       'ri-responsive': this.layout === Layout.RESPONSIVE,
       'ri-fixed': this.layout === Layout.FIXED,
-      'ri-lqip-inline': lqip?.type === 'inline' && !this.complete,
-      'ri-lqip-color': lqip?.type === 'color' && !this.complete,
-      'ri-lqip-blurhash': lqip?.type === 'blurhash' && !this.complete,
-      'ri-lqip-thumbhash': lqip?.type === 'thumbhash' && !this.complete,
-      [lqip?.type === 'color' || lqip?.type === 'inline' ? lqip.class : '']:
-        (lqip?.type === 'color' || lqip?.type === 'inline') && !this.complete,
+      ...(lqip?.class && !this.complete
+        ? { [getValueOrCallback(lqip.class)]: true }
+        : {}),
     };
 
     const styles: StyleInfo =
-      this.hashTask.status === TaskStatus.COMPLETE && !this.complete
+      lqip?.bgImage && !this.complete
         ? {
-            backgroundImage: `url("${this.hashTask.value}")`,
-            backgroundSize: 'cover',
+            backgroundImage: `url("${getValueOrCallback(lqip.bgImage)}")`,
           }
         : {};
 
@@ -244,6 +213,7 @@ export class ResponsiveImage extends LitElement {
           crossorigin=${ifDefined(this.crossOrigin)}
           fetchpriority=${ifDefined(this.fetchPriority)}
           referrerpolicy=${ifDefined(this.referrerPolicy)}
+          data-ri-lqip=${ifDefined(lqip?.attribute)}
           @load=${(event: Event) => {
             this.complete = true;
             this.dispatchEvent(new Event(event.type, event));
