@@ -1,6 +1,7 @@
 import {
   generateLqipClassName,
   getPathname,
+  type ImageLoaderChainedResult,
 } from '@responsive-image/build-utils';
 
 import { META_KEY, getInput, getViteOptions } from '../utils';
@@ -31,15 +32,15 @@ export default function lqipLinlinePlugin(
       const pathname = getPathname(id);
       const className = generateLqipClassName(id);
       const targetPixels = options.lqip.targetPixels ?? 60;
-      const importCSS = `${
+      const importCSS = `import '${
         pathname
-      }.css?_plugin=${inlineCssPluginName}&className=${encodeURIComponent(className)}&targetPixels=${targetPixels}`;
+      }.css?_plugin=${inlineCssPluginName}&className=${encodeURIComponent(className)}&targetPixels=${targetPixels}';`;
 
       const result = {
         ...input,
-        lqip: { type: 'inline', class: className },
+        lqip: { class: className },
         imports: [...input.imports, importCSS],
-      };
+      } satisfies ImageLoaderChainedResult;
 
       return {
         // Only the export plugin will actually return ESM code

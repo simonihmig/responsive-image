@@ -1,6 +1,11 @@
 import * as path from 'path';
 
-import { getAspectRatio, onlyUnique } from '@responsive-image/build-utils';
+import {
+  getAspectRatio,
+  onlyUnique,
+  safeString,
+  serialize,
+} from '@responsive-image/build-utils';
 import { interpolateName } from 'loader-utils';
 
 import { assertInput, getWebpackOptions } from './utils';
@@ -64,7 +69,7 @@ async function process(
 
     const url = options.webPath
       ? JSON.stringify(path.posix.join(options.webPath, fileName))
-      : `__webpack_public_path__ + ${JSON.stringify(outputPath)}`;
+      : safeString(`__webpack_public_path__ + ${JSON.stringify(outputPath)}`);
 
     return {
       url,
@@ -83,28 +88,24 @@ async function process(
     "import { findMatchingImage } from '@responsive-image/core';",
   ];
 
-  for (const importedModule of input.imports) {
-    moduleOutput.push(`import '${importedModule}';`);
-  }
+  moduleOutput.push(...input.imports);
 
   moduleOutput.push(
-    `const images = [${emittedImages
-      .map(
-        ({ url, width, format }) =>
-          `{"url":${url},"width":${String(width)},"format":"${format}"}`,
-      )
-      .join(',')}];`,
+    `const images = [${emittedImages.map(serialize).join(',')}];`,
   );
 
-  moduleOutput.push(`export default {
-    imageTypes: ${JSON.stringify(imageTypes)},
-    availableWidths: ${JSON.stringify(availableWidths)},
-    ${input.lqip ? `lqip: ` + JSON.stringify(input.lqip) + ',' : ''}
-    aspectRatio: ${aspectRatio},
-    imageUrlFor(w, f) {
-      return findMatchingImage(images, w, f ?? "${imageTypes[0]}")?.url;
-    }
-  }`);
+  const result = {
+    imageTypes,
+    availableWidths,
+    aspectRatio,
+    imageUrlFor: safeString(
+      `(w, f) => findMatchingImage(images, w, f ?? '${imageTypes[0]}')?.url`,
+    ),
+
+    lqip: input.lqip,
+  };
+
+  moduleOutput.push(`export default ${serialize(result)}`);
 
   return moduleOutput.join('\n');
 }

@@ -1,17 +1,14 @@
 import {
-  getDestinationWidthBySize,
   env,
-  isLqipBlurhash,
-  isLqipThumbhash,
+  getDestinationWidthBySize,
+  getValueOrCallback,
 } from '@responsive-image/core';
-import { createMemo, createSignal, type JSX, splitProps } from 'solid-js';
+import { createSignal, type JSX, splitProps } from 'solid-js';
 import { isServer } from 'solid-js/web';
 
 import './responsive-image.css';
-import { LqipBlurhashProvider } from './lqip-hash/blurhash.ts';
-import { LqipThumbhashProvider } from './lqip-hash/thumbhash.ts';
 
-import type { ImageType, ImageData } from '@responsive-image/core';
+import type { ImageData, ImageType } from '@responsive-image/core';
 import type { Component } from 'solid-js';
 
 export interface ResponsiveImageArgs {
@@ -140,45 +137,25 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     );
 
   const classNames = () => {
-    const classNames = [`ri-${isResponsiveLayout() ? 'responsive' : 'fixed'}`];
-    const lqip = args.src.lqip;
-    if (lqip && !isLoaded()) {
-      classNames.push(`ri-lqip-${lqip.type}`);
-      if (lqip.type === 'color' || lqip.type === 'inline') {
-        classNames.push(lqip.class);
-      }
+    const classNames = [
+      'ri-img',
+      `ri-${isResponsiveLayout() ? 'responsive' : 'fixed'}`,
+    ];
+    const lqipClass = args.src.lqip?.class;
+    if (lqipClass && !isLoaded()) {
+      classNames.push(getValueOrCallback(lqipClass));
     }
 
     return classNames;
   };
 
-  const blurhashMeta = () =>
-    isLqipBlurhash(args.src.lqip) ? args.src.lqip : undefined;
-  const thumbhashMeta = () =>
-    isLqipThumbhash(args.src.lqip) ? args.src.lqip : undefined;
-
-  const hashProvider = createMemo(() => {
-    const _blurhashMeta = blurhashMeta();
-    const _thumbhashMeta = thumbhashMeta();
-
-    return _blurhashMeta
-      ? new LqipBlurhashProvider(_blurhashMeta)
-      : _thumbhashMeta
-        ? new LqipThumbhashProvider(_thumbhashMeta)
-        : undefined;
-  });
-
-  const hashStyles = (): JSX.CSSProperties | undefined => {
-    const _hashProvider = hashProvider();
-
-    if (isServer || !_hashProvider || isLoaded() || !_hashProvider.available) {
+  const bgImage = () => {
+    if (isLoaded() || isServer) {
       return undefined;
     }
 
-    return {
-      'background-image': `${_hashProvider.imageUrl}`,
-      'background-size': 'cover',
-    };
+    const bgImage = args.src.lqip?.bgImage;
+    return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
   };
 
   return (
@@ -194,11 +171,8 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         decoding="async"
         src={src()}
         {...attributes}
-        data-ri-bh={blurhashMeta()?.hash}
-        data-ri-bh-w={blurhashMeta()?.width}
-        data-ri-bh-h={blurhashMeta()?.height}
-        data-ri-th={thumbhashMeta()?.hash}
-        style={hashStyles()}
+        data-ri-lqip={args.src.lqip?.attribute}
+        style={{ 'background-image': bgImage() }}
         on:load={() => setLoaded(true)}
       />
     </picture>

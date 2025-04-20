@@ -4,6 +4,8 @@ import {
   getAspectRatio,
   parseURL,
   onlyUnique,
+  safeString,
+  serialize,
 } from '@responsive-image/build-utils';
 
 import { getInput, getViteBasePath, getViteOptions } from './utils';
@@ -88,7 +90,9 @@ export default function exportPlugin(
         }
 
         return {
-          url: imageUrl,
+          // Vite bug: __VITE_ASSET__ only works when surrounded by double quotes, single quote compile to something like this:
+          // url: '"+new URL('../assets/aurora-640w.Da-U-QmX.jpg', import.meta.url).href+"'
+          url: safeString(JSON.stringify(imageUrl)),
           width,
           format,
         };
@@ -109,28 +113,24 @@ export default function exportPlugin(
         "import { findMatchingImage } from '@responsive-image/core';",
       ];
 
-      for (const importedModule of input.imports) {
-        moduleOutput.push(`import '${importedModule}';`);
-      }
+      moduleOutput.push(...input.imports);
 
       moduleOutput.push(
-        `const images = [${emittedImages
-          .map(
-            ({ url, width, format }) =>
-              `{"url":${JSON.stringify(url)},"width":${String(width)},"format":"${format}"}`,
-          )
-          .join(',')}];`,
+        `const images = [${emittedImages.map(serialize).join(',')}];`,
       );
 
-      moduleOutput.push(`export default {
-  imageTypes: ${JSON.stringify(imageTypes)},
-  availableWidths: ${JSON.stringify(availableWidths)},
-  ${input.lqip ? `lqip: ` + JSON.stringify(input.lqip) + ',' : ''}
-  aspectRatio: ${aspectRatio},
-  imageUrlFor(w, f) {
-    return findMatchingImage(images, w, f ?? "${imageTypes[0]}")?.url;
-  }
-}`);
+      const result = {
+        imageTypes,
+        availableWidths,
+        aspectRatio,
+        imageUrlFor: safeString(
+          `(w, f) => findMatchingImage(images, w, f ?? '${imageTypes[0]}')?.url`,
+        ),
+
+        lqip: input.lqip,
+      };
+
+      moduleOutput.push(`export default ${serialize(result)}`);
 
       return moduleOutput.join('\n');
     },

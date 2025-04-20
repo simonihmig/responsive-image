@@ -47,13 +47,18 @@ export async function compile(
   let bundle = (await build({
     root: join(_dirname, 'fixtures'),
     logLevel: 'warn',
+    mode: 'development',
     build: {
       lib: {
         entry: 'index.js',
         formats: ['es'],
       },
+      minify: false,
       write: false,
       modulePreload: { polyfill: false },
+      rollupOptions: {
+        external: (id) => id.startsWith('@responsive-image/'),
+      },
     },
     plugins: [entryFile(source), setupPlugins(options)],
   })) as RollupOutput | RollupOutput[];

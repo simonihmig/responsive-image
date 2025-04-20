@@ -112,7 +112,7 @@ test.describe('LQIP', () => {
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
+      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
     );
 
     const picture = page.locator('[data-test-local-image="fixed"] picture');
@@ -123,7 +123,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 1x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
       );
 
       await expect(
@@ -131,7 +131,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 2x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
       );
     }
   });
@@ -144,7 +144,7 @@ test.describe('LQIP', () => {
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
+      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
     );
 
     const picture = page.locator('[data-test-local-image="fixed"] picture');
@@ -155,7 +155,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 1x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
       );
 
       await expect(
@@ -163,7 +163,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 2x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
       );
     }
   });
@@ -174,14 +174,17 @@ test.describe('LQIP', () => {
     const img = page.locator(
       '[data-test-local-image="fixed,lqip-blurhash"] img',
     );
+    const picture = page.locator('[data-test-local-image="fixed"] picture');
 
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
+      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
     );
-
-    const picture = page.locator('[data-test-local-image="fixed"] picture');
+    await expect(img).toHaveAttribute(
+      'data-ri-lqip',
+      'bh:5:3:M53T;oR8D8y.t2M.oxylRoRlHYniyBRQXR',
+    );
 
     for (const [type, ext] of imageTypes) {
       await expect(
@@ -189,7 +192,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 1x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
       );
 
       await expect(
@@ -197,7 +200,44 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 2x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
+      );
+    }
+  });
+
+  test('thumbhash', async ({ page }) => {
+    await page.goto('/');
+
+    const img = page.locator(
+      '[data-test-local-image="fixed,lqip-thumbhash"] img',
+    );
+    const picture = page.locator('[data-test-local-image="fixed"] picture');
+
+    await expect(img).toHaveClass(/ri-fixed/);
+    await expect(img).toHaveAttribute(
+      'src',
+      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+    );
+    await expect(img).toHaveAttribute(
+      'data-ri-lqip',
+      'th:jJcFFYI1fIWHe4dweXlYeUaAmWj3',
+    );
+
+    for (const [type, ext] of imageTypes) {
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 1x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
+      );
+
+      await expect(
+        picture.locator(`source[type="image/${type}"]`),
+        `has ${type} with a width of 2x`,
+      ).toHaveAttribute(
+        'srcset',
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
       );
     }
   });

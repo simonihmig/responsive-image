@@ -21,15 +21,15 @@ export default function lqipColorLoader(
   }
 
   const className = generateLqipClassName(this.resource);
-  const importCSS = `${
+  const importCSS = `import '${
     this.resourcePath
   }.css!=!@responsive-image/webpack/lqip/color-css!${
     this.resourcePath
-  }?className=${encodeURIComponent(className)}`;
+  }?className=${encodeURIComponent(className)}';`;
 
   return {
     ...data,
-    lqip: { type: 'color', class: className },
+    lqip: { class: className },
     imports: [...data.imports, importCSS],
   };
 }

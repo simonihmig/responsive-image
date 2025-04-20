@@ -1,265 +1,475 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`LQIP > blurhash LQIP is supported 1`] = `
-"function r(e, n, a) {
-  const o = e.map((t) => t.width).reduce((t, i) => i >= n && t >= n ? i >= t ? t : i : i >= t ? i : t, 0);
-  return e.find(
-    (t) => t.width === o && t.format === a
-  );
-}
-const h = /* @__PURE__ */ new Map();
-function m(e) {
-  return h.get(e);
-}
-var g;
-(g = m("env")) == null || g.deviceWidths;
-const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], c = {
-  imageTypes: ["jpeg", "webp"],
-  availableWidths: [100, 200],
-  lqip: { type: "blurhash", hash: "M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu", width: 5, height: 3 },
+"import { findMatchingImage } from "@responsive-image/core";
+import { decode2url } from "@responsive-image/core/blurhash/decode";
+const images = [{
+  url: "/image-100w.jpg",
+  width: 100,
+  format: "jpeg"
+}, {
+  url: "/image-100w.webp",
+  width: 100,
+  format: "webp"
+}, {
+  url: "/image-200w.jpg",
+  width: 200,
+  format: "jpeg"
+}, {
+  url: "/image-200w.webp",
+  width: 200,
+  format: "webp"
+}];
+const image = {
+  imageTypes: [
+    "jpeg",
+    "webp"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(e, n) {
-    var a;
-    return (a = r(p, e, n ?? "jpeg")) == null ? void 0 : a.url;
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
+  },
+  lqip: {
+    bgImage: () => decode2url("M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu", 5, 3),
+    attribute: "bh:5:3:M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu"
   }
 };
-console.log(c);
+console.log(image);
 "
 `;
 
 exports[`LQIP > color LQIP is supported 1`] = `
-"function o(t, n, a) {
-  const r = t.map((e) => e.width).reduce((e, i) => i >= n && e >= n ? i >= e ? e : i : i >= e ? i : e, 0);
-  return t.find(
-    (e) => e.width === r && e.format === a
-  );
-}
-const c = /* @__PURE__ */ new Map();
-function m(t) {
-  return c.get(t);
-}
-var g;
-(g = m("env")) == null || g.deviceWidths;
-const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], s = {
-  imageTypes: ["jpeg", "webp"],
-  availableWidths: [100, 200],
-  lqip: { type: "color", class: "ri-dyn-0" },
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/image-100w.jpg",
+  width: 100,
+  format: "jpeg"
+}, {
+  url: "/image-100w.webp",
+  width: 100,
+  format: "webp"
+}, {
+  url: "/image-200w.jpg",
+  width: 200,
+  format: "jpeg"
+}, {
+  url: "/image-200w.webp",
+  width: 200,
+  format: "webp"
+}];
+const image = {
+  imageTypes: [
+    "jpeg",
+    "webp"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(t, n) {
-    var a;
-    return (a = o(p, t, n ?? "jpeg")) == null ? void 0 : a.url;
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
+  },
+  lqip: {
+    "class": "ri-dyn-0"
   }
 };
-console.log(s);
+console.log(image);
 "
 `;
 
 exports[`LQIP > inline LQIP is supported 1`] = `
-"function o(t, n, a) {
-  const r = t.map((e) => e.width).reduce((e, i) => i >= n && e >= n ? i >= e ? e : i : i >= e ? i : e, 0);
-  return t.find(
-    (e) => e.width === r && e.format === a
-  );
-}
-const m = /* @__PURE__ */ new Map();
-function c(t) {
-  return m.get(t);
-}
-var g;
-(g = c("env")) == null || g.deviceWidths;
-const p = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], s = {
-  imageTypes: ["jpeg", "webp"],
-  availableWidths: [100, 200],
-  lqip: { type: "inline", class: "ri-dyn-0" },
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/image-100w.jpg",
+  width: 100,
+  format: "jpeg"
+}, {
+  url: "/image-100w.webp",
+  width: 100,
+  format: "webp"
+}, {
+  url: "/image-200w.jpg",
+  width: 200,
+  format: "jpeg"
+}, {
+  url: "/image-200w.webp",
+  width: 200,
+  format: "webp"
+}];
+const image = {
+  imageTypes: [
+    "jpeg",
+    "webp"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(t, n) {
-    var a;
-    return (a = o(p, t, n ?? "jpeg")) == null ? void 0 : a.url;
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
+  },
+  lqip: {
+    "class": "ri-dyn-0"
   }
 };
-console.log(s);
+console.log(image);
 "
 `;
 
 exports[`LQIP > thumbhash LQIP is supported 1`] = `
-"function m(t, a, n) {
-  const r = t.map((e) => e.width).reduce((e, i) => i >= a && e >= a ? i >= e ? e : i : i >= e ? i : e, 0);
-  return t.find(
-    (e) => e.width === r && e.format === n
-  );
-}
-const o = /* @__PURE__ */ new Map();
-function c(t) {
-  return o.get(t);
-}
-var g;
-(g = c("env")) == null || g.deviceWidths;
-const h = [{ url: "/image-100w.jpg", width: 100, format: "jpeg" }, { url: "/image-100w.webp", width: 100, format: "webp" }, { url: "/image-200w.jpg", width: 200, format: "jpeg" }, { url: "/image-200w.webp", width: 200, format: "webp" }], p = {
-  imageTypes: ["jpeg", "webp"],
-  availableWidths: [100, 200],
-  lqip: { type: "thumbhash", hash: "jJcFFYI1fIWHe4dweXlYeUaAmWj3" },
+"import { findMatchingImage } from "@responsive-image/core";
+import { decode2url } from "@responsive-image/core/thumbhash/decode";
+const images = [{
+  url: "/image-100w.jpg",
+  width: 100,
+  format: "jpeg"
+}, {
+  url: "/image-100w.webp",
+  width: 100,
+  format: "webp"
+}, {
+  url: "/image-200w.jpg",
+  width: 200,
+  format: "jpeg"
+}, {
+  url: "/image-200w.webp",
+  width: 200,
+  format: "webp"
+}];
+const image = {
+  imageTypes: [
+    "jpeg",
+    "webp"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(t, a) {
-    var n;
-    return (n = m(h, t, a ?? "jpeg")) == null ? void 0 : n.url;
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
+  },
+  lqip: {
+    bgImage: () => decode2url("jJcFFYI1fIWHe4dweXlYeUaAmWj3"),
+    attribute: "th:jJcFFYI1fIWHe4dweXlYeUaAmWj3"
   }
 };
-console.log(p);
+console.log(image);
 "
 `;
 
 exports[`custom loader options are supported 1`] = `
-"function a(n, e, g) {
-  const r = n.map((t) => t.width).reduce((t, i) => i >= e && t >= e ? i >= t ? t : i : i >= t ? i : t, 0);
-  return n.find(
-    (t) => t.width === r && t.format === g
-  );
-}
-const c = /* @__PURE__ */ new Map();
-function s(n) {
-  return c.get(n);
-}
-var o;
-(o = s("env")) == null || o.deviceWidths;
-const d = [{ url: "/test-100.png", width: 100, format: "png" }, { url: "/test-200.png", width: 200, format: "png" }], f = {
-  imageTypes: ["png"],
-  availableWidths: [100, 200],
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/test-100.png",
+  width: 100,
+  format: "png"
+}, {
+  url: "/test-200.png",
+  width: 200,
+  format: "png"
+}];
+const image = {
+  imageTypes: [
+    "png"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(n, e) {
-    var g;
-    return (g = a(d, n, e ?? "png")) == null ? void 0 : g.url;
-  }
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
+  },
+  lqip: void 0
 };
-console.log(f);
+console.log(image);
 "
 `;
 
 exports[`custom query params are supported 1`] = `
-"function r(t, e, g) {
-  const o = t.map((n) => n.width).reduce((n, i) => i >= e && n >= e ? i >= n ? n : i : i >= n ? i : n, 0);
-  return t.find(
-    (n) => n.width === o && n.format === g
-  );
-}
-const c = /* @__PURE__ */ new Map();
-function m(t) {
-  return c.get(t);
-}
-var a;
-(a = m("env")) == null || a.deviceWidths;
-const s = [{ url: "/image-100w.png", width: 100, format: "png" }, { url: "/image-200w.png", width: 200, format: "png" }], d = {
-  imageTypes: ["png"],
-  availableWidths: [100, 200],
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/image-100w.png",
+  width: 100,
+  format: "png"
+}, {
+  url: "/image-200w.png",
+  width: 200,
+  format: "png"
+}];
+const image = {
+  imageTypes: [
+    "png"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(t, e) {
-    var g;
-    return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
-  }
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
+  },
+  lqip: void 0
 };
-console.log(d);
+console.log(image);
 "
 `;
 
 exports[`different aspect ratio 1`] = `
-"function r(t, e, g) {
-  const o = t.map((n) => n.width).reduce((n, i) => i >= e && n >= e ? i >= n ? n : i : i >= n ? i : n, 0);
-  return t.find(
-    (n) => n.width === o && n.format === g
-  );
-}
-const c = /* @__PURE__ */ new Map();
-function m(t) {
-  return c.get(t);
-}
-var a;
-(a = m("env")) == null || a.deviceWidths;
-const s = [{ url: "/image-100w.png", width: 100, format: "png" }, { url: "/image-200w.png", width: 200, format: "png" }], d = {
-  imageTypes: ["png"],
-  availableWidths: [100, 200],
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/image-100w.png",
+  width: 100,
+  format: "png"
+}, {
+  url: "/image-200w.png",
+  width: 200,
+  format: "png"
+}];
+const image = {
+  imageTypes: [
+    "png"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 0.6666666666666666,
-  imageUrlFor(t, e) {
-    var g;
-    return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
-  }
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
+  },
+  lqip: void 0
 };
-console.log(d);
+console.log(image);
 "
 `;
 
 exports[`filter > it operates on included assets 1`] = `
-"function m(t, w, g) {
-  const r = t.map((e) => e.width).reduce((e, i) => i >= w && e >= w ? i >= e ? e : i : i >= e ? i : e, 0);
-  return t.find(
-    (e) => e.width === r && e.format === g
-  );
-}
-const p = /* @__PURE__ */ new Map();
-function o(t) {
-  return p.get(t);
-}
-var a;
-(a = o("env")) == null || a.deviceWidths;
-const d = [{ url: "/image-640w.jpg", width: 640, format: "jpeg" }, { url: "/image-640w.webp", width: 640, format: "webp" }, { url: "/image-750w.jpg", width: 750, format: "jpeg" }, { url: "/image-750w.webp", width: 750, format: "webp" }, { url: "/image-828w.jpg", width: 828, format: "jpeg" }, { url: "/image-828w.webp", width: 828, format: "webp" }, { url: "/image-1080w.jpg", width: 1080, format: "jpeg" }, { url: "/image-1080w.webp", width: 1080, format: "webp" }, { url: "/image-1200w.jpg", width: 1200, format: "jpeg" }, { url: "/image-1200w.webp", width: 1200, format: "webp" }, { url: "/image-1920w.jpg", width: 1920, format: "jpeg" }, { url: "/image-1920w.webp", width: 1920, format: "webp" }, { url: "/image-2048w.jpg", width: 2048, format: "jpeg" }, { url: "/image-2048w.webp", width: 2048, format: "webp" }, { url: "/image-3840w.jpg", width: 3840, format: "jpeg" }, { url: "/image-3840w.webp", width: 3840, format: "webp" }], f = {
-  imageTypes: ["jpeg", "webp"],
-  availableWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/image-640w.jpg",
+  width: 640,
+  format: "jpeg"
+}, {
+  url: "/image-640w.webp",
+  width: 640,
+  format: "webp"
+}, {
+  url: "/image-750w.jpg",
+  width: 750,
+  format: "jpeg"
+}, {
+  url: "/image-750w.webp",
+  width: 750,
+  format: "webp"
+}, {
+  url: "/image-828w.jpg",
+  width: 828,
+  format: "jpeg"
+}, {
+  url: "/image-828w.webp",
+  width: 828,
+  format: "webp"
+}, {
+  url: "/image-1080w.jpg",
+  width: 1080,
+  format: "jpeg"
+}, {
+  url: "/image-1080w.webp",
+  width: 1080,
+  format: "webp"
+}, {
+  url: "/image-1200w.jpg",
+  width: 1200,
+  format: "jpeg"
+}, {
+  url: "/image-1200w.webp",
+  width: 1200,
+  format: "webp"
+}, {
+  url: "/image-1920w.jpg",
+  width: 1920,
+  format: "jpeg"
+}, {
+  url: "/image-1920w.webp",
+  width: 1920,
+  format: "webp"
+}, {
+  url: "/image-2048w.jpg",
+  width: 2048,
+  format: "jpeg"
+}, {
+  url: "/image-2048w.webp",
+  width: 2048,
+  format: "webp"
+}, {
+  url: "/image-3840w.jpg",
+  width: 3840,
+  format: "jpeg"
+}, {
+  url: "/image-3840w.webp",
+  width: 3840,
+  format: "webp"
+}];
+const image = {
+  imageTypes: [
+    "jpeg",
+    "webp"
+  ],
+  availableWidths: [
+    640,
+    750,
+    828,
+    1080,
+    1200,
+    1920,
+    2048,
+    3840
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(t, w) {
-    var g;
-    return (g = m(d, t, w ?? "jpeg")) == null ? void 0 : g.url;
-  }
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
+  },
+  lqip: void 0
 };
-console.log(f);
+console.log(image);
 "
 `;
 
 exports[`imagetools params are supported 1`] = `
-"function r(t, e, g) {
-  const o = t.map((n) => n.width).reduce((n, i) => i >= e && n >= e ? i >= n ? n : i : i >= n ? i : n, 0);
-  return t.find(
-    (n) => n.width === o && n.format === g
-  );
-}
-const c = /* @__PURE__ */ new Map();
-function m(t) {
-  return c.get(t);
-}
-var a;
-(a = m("env")) == null || a.deviceWidths;
-const s = [{ url: "/image-100w.png", width: 100, format: "png" }, { url: "/image-200w.png", width: 200, format: "png" }], d = {
-  imageTypes: ["png"],
-  availableWidths: [100, 200],
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/image-100w.png",
+  width: 100,
+  format: "png"
+}, {
+  url: "/image-200w.png",
+  width: 200,
+  format: "png"
+}];
+const image = {
+  imageTypes: [
+    "png"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(t, e) {
-    var g;
-    return (g = r(s, t, e ?? "png")) == null ? void 0 : g.url;
-  }
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
+  },
+  lqip: void 0
 };
-console.log(d);
+console.log(image);
 "
 `;
 
 exports[`it produces expected output 1`] = `
-"function m(e, w, g) {
-  const r = e.map((t) => t.width).reduce((t, i) => i >= w && t >= w ? i >= t ? t : i : i >= t ? i : t, 0);
-  return e.find(
-    (t) => t.width === r && t.format === g
-  );
-}
-const n = /* @__PURE__ */ new Map();
-function p(e) {
-  return n.get(e);
-}
-var a;
-(a = p("env")) == null || a.deviceWidths;
-const o = [{ url: "/image-640w.png", width: 640, format: "png" }, { url: "/image-640w.webp", width: 640, format: "webp" }, { url: "/image-750w.png", width: 750, format: "png" }, { url: "/image-750w.webp", width: 750, format: "webp" }, { url: "/image-828w.png", width: 828, format: "png" }, { url: "/image-828w.webp", width: 828, format: "webp" }, { url: "/image-1080w.png", width: 1080, format: "png" }, { url: "/image-1080w.webp", width: 1080, format: "webp" }, { url: "/image-1200w.png", width: 1200, format: "png" }, { url: "/image-1200w.webp", width: 1200, format: "webp" }, { url: "/image-1920w.png", width: 1920, format: "png" }, { url: "/image-1920w.webp", width: 1920, format: "webp" }, { url: "/image-2048w.png", width: 2048, format: "png" }, { url: "/image-2048w.webp", width: 2048, format: "webp" }, { url: "/image-3840w.png", width: 3840, format: "png" }, { url: "/image-3840w.webp", width: 3840, format: "webp" }], d = {
-  imageTypes: ["png", "webp"],
-  availableWidths: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+"import { findMatchingImage } from "@responsive-image/core";
+const images = [{
+  url: "/image-640w.png",
+  width: 640,
+  format: "png"
+}, {
+  url: "/image-640w.webp",
+  width: 640,
+  format: "webp"
+}, {
+  url: "/image-750w.png",
+  width: 750,
+  format: "png"
+}, {
+  url: "/image-750w.webp",
+  width: 750,
+  format: "webp"
+}, {
+  url: "/image-828w.png",
+  width: 828,
+  format: "png"
+}, {
+  url: "/image-828w.webp",
+  width: 828,
+  format: "webp"
+}, {
+  url: "/image-1080w.png",
+  width: 1080,
+  format: "png"
+}, {
+  url: "/image-1080w.webp",
+  width: 1080,
+  format: "webp"
+}, {
+  url: "/image-1200w.png",
+  width: 1200,
+  format: "png"
+}, {
+  url: "/image-1200w.webp",
+  width: 1200,
+  format: "webp"
+}, {
+  url: "/image-1920w.png",
+  width: 1920,
+  format: "png"
+}, {
+  url: "/image-1920w.webp",
+  width: 1920,
+  format: "webp"
+}, {
+  url: "/image-2048w.png",
+  width: 2048,
+  format: "png"
+}, {
+  url: "/image-2048w.webp",
+  width: 2048,
+  format: "webp"
+}, {
+  url: "/image-3840w.png",
+  width: 3840,
+  format: "png"
+}, {
+  url: "/image-3840w.webp",
+  width: 3840,
+  format: "webp"
+}];
+const image = {
+  imageTypes: [
+    "png",
+    "webp"
+  ],
+  availableWidths: [
+    640,
+    750,
+    828,
+    1080,
+    1200,
+    1920,
+    2048,
+    3840
+  ],
   aspectRatio: 1.5,
-  imageUrlFor(e, w) {
-    var g;
-    return (g = m(o, e, w ?? "png")) == null ? void 0 : g.url;
-  }
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
+  },
+  lqip: void 0
 };
-console.log(d);
+console.log(image);
 "
 `;

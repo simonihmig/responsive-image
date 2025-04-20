@@ -214,7 +214,7 @@ describe('LQIP', function () {
     );
 
     expect(stats.modules).toBeDefined();
-    expect(stats.modules![0]?.modules).toHaveLength(2);
+    expect(stats.modules![0]?.modules).toHaveLength(4);
 
     const output = stats.modules?.[0]?.modules?.[0]?.source;
     expect(sanitizeOutput(output)).toMatchSnapshot();
@@ -230,7 +230,7 @@ describe('LQIP', function () {
     );
 
     expect(stats.modules).toBeDefined();
-    expect(stats.modules![0]?.modules).toHaveLength(2);
+    expect(stats.modules![0]?.modules).toHaveLength(5);
 
     const output = stats.modules?.[0]?.modules?.[0]?.source;
     expect(sanitizeOutput(output)).toMatchSnapshot();

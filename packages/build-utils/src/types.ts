@@ -1,4 +1,5 @@
-import type { ImageType, Lqip } from '@responsive-image/core';
+import type { SAFE_STRING } from './serialize';
+import type { ImageType } from '@responsive-image/core';
 import type { Metadata, Sharp } from 'sharp';
 
 export type OutputImageType = 'original' | ImageType;
@@ -43,6 +44,18 @@ export interface ImageProcessingResult {
   data: () => Promise<Buffer>;
   width: number;
   format: ImageType;
+}
+
+export type SafeString = string & {
+  [SAFE_STRING]: true;
+};
+
+export type StringLike<T> = T | SafeString;
+
+export interface Lqip {
+  class?: StringLike<string>;
+  bgImage?: StringLike<string>;
+  attribute?: string;
 }
 
 export interface ImageLoaderChainedResult {

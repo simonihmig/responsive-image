@@ -44,8 +44,7 @@
     "prepack": "pnpm turbo build"
   },
   "dependencies": {
-    "@responsive-image/core": "workspace:^",
-    "blurhash": "^2.0.0"
+    "@responsive-image/core": "workspace:^"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0"

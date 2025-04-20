@@ -1,4 +1,4 @@
-import { getAspectRatio } from '@responsive-image/build-utils';
+import { getAspectRatio, safeString } from '@responsive-image/build-utils';
 import { encode } from 'blurhash';
 
 import { META_KEY, getInput, getViteOptions } from '../utils';
@@ -53,14 +53,16 @@ export default function lqipBlurhashPlugin(
 
       const imageData = new Uint8ClampedArray(await lqi.toBuffer());
       const hash = encode(imageData, rawWidth, rawHeight, width, height);
+      const decodeImport = `import { decode2url } from '@responsive-image/core/blurhash/decode';`;
 
       const result = {
         ...input,
+        imports: [...input.imports, decodeImport],
         lqip: {
-          type: 'blurhash',
-          hash,
-          width,
-          height,
+          bgImage: safeString(
+            `() => decode2url('${hash}', ${width}, ${height})`,
+          ),
+          attribute: `bh:${width}:${height}:${hash}`,
         },
       } satisfies ImageLoaderChainedResult;
 

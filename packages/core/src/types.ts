@@ -1,39 +1,30 @@
 export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
 
-export interface LqipBase {
-  type: string;
-}
+export type NonFunction =
+  | string
+  | number
+  | boolean
+  | undefined
+  | null
+  | object
+  | Array<unknown>;
+export type ValueOrCallback<T extends NonFunction> = T | (() => T);
 
-export interface LqipInline extends LqipBase {
-  type: 'inline';
-  class: string;
-}
+export interface Lqip {
+  class?: ValueOrCallback<string>;
+  bgImage?: ValueOrCallback<string>;
 
-export interface LqipColor extends LqipBase {
-  type: 'color';
-  class: string;
+  /**
+   * If set, the image component will apply a data-ri-lqip=<value> attribute, which can be used e.g. for embedded decoding information for SSR
+   */
+  attribute?: string;
 }
-
-export interface LqipBlurhash extends LqipBase {
-  type: 'blurhash';
-  hash: string;
-  width: number;
-  height: number;
-}
-
-export interface LqipThumbhash extends LqipBase {
-  type: 'thumbhash';
-  hash: string;
-}
-
-export type Lqip = LqipInline | LqipColor | LqipBlurhash | LqipThumbhash;
 
 export interface ImageData {
   imageTypes: ImageType[];
   availableWidths?: number[];
   aspectRatio?: number;
   imageUrlFor(width: number, type?: ImageType): string | undefined;
-  fingerprint?: string;
   lqip?: Lqip;
 }
 
@@ -49,6 +40,7 @@ export interface Env {
   devicePixelRatio: number;
   deviceWidths: number[];
 }
+
 export interface EnvConfig {
   deviceWidths?: number[];
 }

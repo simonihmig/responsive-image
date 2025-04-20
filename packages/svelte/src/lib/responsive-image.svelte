@@ -4,12 +4,8 @@
 		type ImageData,
 		getDestinationWidthBySize,
 		env,
-		isLqipBlurhash,
-		isLqipThumbhash
+		getValueOrCallback
 	} from '@responsive-image/core';
-
-	import { LqipBlurhashProvider } from './lqip-hash/blurhash.svelte';
-	import { LqipThumbhashProvider } from './lqip-hash/thumbhash.svelte';
 
 	import type { HTMLImgAttributes } from 'svelte/elements';
 
@@ -130,35 +126,23 @@
 	);
 
 	const classNames = $derived.by(() => {
-		const classNames = [`ri-${isResponsiveLayout ? 'responsive' : 'fixed'}`];
-		const lqip = srcProp.lqip;
-		if (lqip && !isLoaded) {
-			classNames.push(`ri-lqip-${lqip.type}`);
-			if (lqip.type === 'color' || lqip.type === 'inline') {
-				classNames.push(lqip.class);
-			}
+		const classNames = ['ri-img', `ri-${isResponsiveLayout ? 'responsive' : 'fixed'}`];
+		const lqipClass = srcProp.lqip?.class;
+
+		if (lqipClass && !isLoaded) {
+			classNames.push(getValueOrCallback(lqipClass));
 		}
 
 		return classNames;
 	});
 
-	const blurhashMeta = $derived(isLqipBlurhash(srcProp.lqip) ? srcProp.lqip : undefined);
-	const thumbhashMeta = $derived(isLqipThumbhash(srcProp.lqip) ? srcProp.lqip : undefined);
-
-	const hashProvider = $derived(
-		blurhashMeta
-			? new LqipBlurhashProvider(blurhashMeta)
-			: thumbhashMeta
-				? new LqipThumbhashProvider(thumbhashMeta)
-				: undefined
-	);
-
-	const hashUrl = $derived.by(() => {
-		if (!hashProvider?.available || isLoaded) {
+	const bgImage = $derived.by(() => {
+		if (isLoaded || typeof document === 'undefined') {
 			return undefined;
 		}
 
-		return hashProvider.imageUrl;
+		const bgImage = srcProp.lqip?.bgImage;
+		return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
 	});
 </script>
 
@@ -175,17 +159,18 @@
 		alt=""
 		class={classNames.join(' ')}
 		{...htmlAttributes}
-		data-ri-bh={blurhashMeta?.hash}
-		data-ri-bh-w={blurhashMeta?.width}
-		data-ri-bh-h={blurhashMeta?.height}
-		data-ri-th={thumbhashMeta?.hash}
-		style:background-image={hashUrl}
-		style:background-size={hashUrl ? 'cover' : undefined}
+		data-ri-lqip={srcProp.lqip?.attribute}
+		style:background-image={bgImage}
+		style:background-size={bgImage ? 'cover' : undefined}
 		onload={() => (isLoaded = true)}
 	/>
 </picture>
 
 <style>
+	.ri-img {
+		background-size: cover;
+	}
+
 	.ri-responsive {
 		width: 100%;
 		height: auto;
@@ -194,9 +179,5 @@
 	.ri-fixed,
 	.ri-responsive {
 		content-visibility: auto;
-	}
-
-	.ri-lqip-inline {
-		background-size: cover;
 	}
 </style>

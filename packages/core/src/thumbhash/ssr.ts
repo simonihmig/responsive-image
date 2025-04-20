@@ -1,19 +1,30 @@
 import { decode2url } from './decode';
 
-const THUMBHASH_ATTRIBUTE = 'data-ri-th';
+const LQIP_ATTRIBUTE = 'data-ri-lqip';
 
 export function applySSR(): void {
   const images = document.querySelectorAll<HTMLImageElement>(
-    `img[${THUMBHASH_ATTRIBUTE}]`,
+    `img[${LQIP_ATTRIBUTE}^="th:"]`,
   );
+
   images.forEach((image) => {
-    const hash = image.getAttribute(THUMBHASH_ATTRIBUTE);
+    const value = image.getAttribute(LQIP_ATTRIBUTE);
+    if (!value) {
+      return;
+    }
+
+    const matches = /th:(.+)/.exec(value);
+
+    if (!matches) {
+      return;
+    }
+
+    const [, hash] = matches;
 
     if (hash) {
       const url = decode2url(hash);
       if (url) {
         image.style.backgroundImage = `url("${url}")`;
-        image.style.backgroundSize = 'cover';
       }
     }
   });

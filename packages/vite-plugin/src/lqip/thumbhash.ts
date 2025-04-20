@@ -1,4 +1,4 @@
-import { getAspectRatio } from '@responsive-image/build-utils';
+import { getAspectRatio, safeString } from '@responsive-image/build-utils';
 import { rgbaToThumbHash } from 'thumbhash';
 
 import { META_KEY, getInput, getViteOptions } from '../utils';
@@ -44,12 +44,15 @@ export default function lqipThumbhashPlugin(
 
       const imageData = new Uint8ClampedArray(await lqi.toBuffer());
       const rawHash = rgbaToThumbHash(width, height, imageData);
+      const hash = Buffer.from(rawHash).toString('base64');
+      const decodeImport = `import { decode2url } from '@responsive-image/core/thumbhash/decode';`;
 
       const result = {
         ...input,
+        imports: [...input.imports, decodeImport],
         lqip: {
-          type: 'thumbhash',
-          hash: Buffer.from(rawHash).toString('base64'),
+          bgImage: safeString(`() => decode2url('${hash}')`),
+          attribute: `th:${hash}`,
         },
       } satisfies ImageLoaderChainedResult;
 
