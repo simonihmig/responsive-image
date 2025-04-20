@@ -1,6 +1,6 @@
+import type { SAFE_STRING } from './serialize';
 import type { ImageType } from '@responsive-image/core';
 import type { Metadata, Sharp } from 'sharp';
-import type { SAFE_STRING } from './serialize';
 
 export type OutputImageType = 'original' | ImageType;
 
