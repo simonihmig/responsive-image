@@ -491,15 +491,14 @@ describe('ResponsiveImage', () => {
 
 			expect(imgEl).toBeDefined();
 			expect(imgEl.complete).toBe(false);
-
 			expect(imgEl).toHaveStyle({ backgroundSize: 'cover', backgroundImage: 'url("test.png")' });
 
 			await trigger(imgEl);
 
-			expect(
-				window.getComputedStyle(imgEl!).backgroundImage,
-				'after image is loaded the background PNG is removed'
-			).to.equal('none');
+			expect(imgEl).toHaveStyle({
+				backgroundSize: 'cover',
+				backgroundImage: 'none'
+			});
 		});
 
 		test('it sets LQIP background image from callback', async () => {
@@ -519,10 +518,10 @@ describe('ResponsiveImage', () => {
 
 			await trigger(imgEl);
 
-			expect(
-				window.getComputedStyle(imgEl!).backgroundImage,
-				'after image is loaded the background PNG is removed'
-			).to.equal('none');
+			expect(imgEl).toHaveStyle({
+				backgroundSize: 'cover',
+				backgroundImage: 'none'
+			});
 		});
 
 		test('it sets LQIP attribute from literal', async () => {
