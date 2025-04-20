@@ -172,14 +172,12 @@ test.describe('LQIP', () => {
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
+      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
     );
     await expect(img).toHaveAttribute(
-      'data-ri-bh',
-      'M53T;oR8D8y.t2M.oxylRoRlHYniyBRQXR',
+      'data-ri-lqip',
+      'bh:5:3:M53T;oR8D8y.t2M.oxylRoRlHYniyBRQXR',
     );
-    await expect(img).toHaveAttribute('data-ri-bh-w', '5');
-    await expect(img).toHaveAttribute('data-ri-bh-h', '3');
 
     for (const [type, ext] of imageTypes) {
       await expect(
@@ -187,7 +185,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 1x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
       );
 
       await expect(
@@ -195,7 +193,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 2x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
       );
     }
   });
@@ -209,11 +207,11 @@ test.describe('LQIP', () => {
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w(-[a-zA-Z0-9-_]+)?.jpg`),
+      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
     );
     await expect(img).toHaveAttribute(
-      'data-ri-th',
-      'jJcFFYI1fIWHe4dweXlYeUaAmWj3',
+      'data-ri-lqip',
+      'th:jJcFFYI1fIWHe4dweXlYeUaAmWj3',
     );
 
     for (const [type, ext] of imageTypes) {
@@ -222,7 +220,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 1x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 1x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
       );
 
       await expect(
@@ -230,7 +228,7 @@ test.describe('LQIP', () => {
         `has ${type} with a width of 2x`,
       ).toHaveAttribute(
         'srcset',
-        new RegExp(`/assets/aurora-640w(-[a-zA-Z0-9-_]+)?.${ext} 2x`),
+        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
       );
     }
   });
