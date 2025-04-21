@@ -281,18 +281,30 @@ importers:
       '@glimmer/tracking':
         specifier: 1.1.2
         version: 1.1.2
+      '@playwright/test':
+        specifier: 1.52.0
+        version: 1.52.0
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@responsive-image/ember':
         specifier: workspace:*
         version: link:../../packages/ember
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
       '@responsive-image/vite-plugin':
         specifier: workspace:*
         version: link:../../packages/vite-plugin
       '@rollup/plugin-babel':
         specifier: 6.0.4
         version: 6.0.4(@babel/core@7.26.10)(@types/babel__core@7.20.5)(rollup@4.40.0)
+      '@tsconfig/ember':
+        specifier: 3.0.10
+        version: 3.0.10
+      '@types/node':
+        specifier: 22.13.4
+        version: 22.13.4
       babel-plugin-ember-template-compilation:
         specifier: 2.4.1
         version: 2.4.1
@@ -353,9 +365,6 @@ importers:
       eslint-plugin-prettier:
         specifier: 5.2.6
         version: 5.2.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.2(eslint@9.25.1(jiti@2.4.2)))(eslint@9.25.1(jiti@2.4.2))(prettier@3.5.3)
-      eslint-plugin-qunit:
-        specifier: 8.1.2
-        version: 8.1.2(eslint@9.25.1(jiti@2.4.2))
       globals:
         specifier: 16.0.0
         version: 16.0.0

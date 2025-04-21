@@ -11,7 +11,9 @@
     "test": "tests"
   },
   "scripts": {
+    "dev": "vite dev",
     "build": "vite build",
+    "preview": "vite preview",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:css:fix": "concurrently \"pnpm:lint:css -- --fix\"",
@@ -23,7 +25,8 @@
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "start": "vite",
-    "test": "vite build --mode test && ember test --path dist"
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
   },
   "devDependencies": {
     "@babel/core": "7.26.10",
@@ -39,10 +42,14 @@
     "@eslint/js": "9.25.1",
     "@glimmer/component": "2.0.0",
     "@glimmer/tracking": "1.1.2",
+    "@playwright/test": "1.52.0",
     "@responsive-image/core": "workspace:*",
     "@responsive-image/ember": "workspace:*",
+    "@responsive-image/internals": "workspace:*",
     "@responsive-image/vite-plugin": "workspace:*",
     "@rollup/plugin-babel": "6.0.4",
+    "@tsconfig/ember": "3.0.10",
+    "@types/node": "22.13.4",
     "babel-plugin-ember-template-compilation": "2.4.1",
     "concurrently": "9.1.2",
     "decorator-transforms": "2.3.0",
@@ -63,7 +70,6 @@
     "eslint-plugin-ember": "12.5.0",
     "eslint-plugin-n": "17.17.0",
     "eslint-plugin-prettier": "5.2.6",
-    "eslint-plugin-qunit": "8.1.2",
     "globals": "16.0.0",
     "prettier": "3.5.3",
     "prettier-plugin-ember-template-tag": "2.0.5",
