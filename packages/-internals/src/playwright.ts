@@ -1,6 +1,22 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Locator } from '@playwright/test';
 
-export function runTests() {
+function getImage(
+  locator: Locator,
+  isShadowDom: boolean,
+): { img: Locator; picture: Locator } {
+  const img = isShadowDom ? locator.locator('img') : locator;
+  const picture = isShadowDom
+    ? locator.locator('picture')
+    : locator.page().locator('picture').filter({ has: img });
+
+  return { img, picture };
+}
+
+interface TestOptions {
+  isShadowDom?: boolean;
+}
+
+export function runTests({ isShadowDom = false }: TestOptions = {}) {
   const sizes = [640, 750, 828, 1080, 1200, 1920, 2048, 3840];
   const imageTypes = [
     ['jpeg', 'jpg'],
@@ -10,8 +26,10 @@ export function runTests() {
   test('responsive layout', async ({ page }) => {
     await page.goto('/');
 
-    const img = page.locator('[data-test-local-image="responsive"]');
-    const picture = page.locator('picture').filter({ has: img });
+    const { img, picture } = getImage(
+      page.locator('[data-test-local-image="responsive"]'),
+      isShadowDom,
+    );
 
     await expect(img).toHaveClass(/ri-responsive/);
     await expect(img).toHaveAttribute(
@@ -38,8 +56,10 @@ export function runTests() {
   test('fixed layout', async ({ page }) => {
     await page.goto('/');
 
-    const img = page.locator('[data-test-local-image="fixed"]');
-    const picture = page.locator('picture').filter({ has: img });
+    const { img, picture } = getImage(
+      page.locator('[data-test-local-image="fixed"]'),
+      isShadowDom,
+    );
 
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
@@ -72,8 +92,10 @@ export function runTests() {
   test('fixed layout w/ aspect', async ({ page }) => {
     await page.goto('/');
 
-    const img = page.locator('[data-test-local-image="fixed,aspect"]');
-    const picture = page.locator('picture').filter({ has: img });
+    const { img, picture } = getImage(
+      page.locator('[data-test-local-image="fixed,aspect"]'),
+      isShadowDom,
+    );
 
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
@@ -107,8 +129,10 @@ export function runTests() {
     test('color', async ({ page }) => {
       await page.goto('/');
 
-      const img = page.locator('[data-test-local-image="fixed,lqip-color"]');
-      const picture = page.locator('picture').filter({ has: img });
+      const { img, picture } = getImage(
+        page.locator('[data-test-local-image="fixed,lqip-color"]'),
+        isShadowDom,
+      );
 
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
@@ -138,8 +162,10 @@ export function runTests() {
     test('inline', async ({ page }) => {
       await page.goto('/');
 
-      const img = page.locator('[data-test-local-image="fixed,lqip-inline"]');
-      const picture = page.locator('picture').filter({ has: img });
+      const { img, picture } = getImage(
+        page.locator('[data-test-local-image="fixed,lqip-inline"]'),
+        isShadowDom,
+      );
 
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
@@ -169,8 +195,10 @@ export function runTests() {
     test('blurhash', async ({ page }) => {
       await page.goto('/');
 
-      const img = page.locator('[data-test-local-image="fixed,lqip-blurhash"]');
-      const picture = page.locator('picture').filter({ has: img });
+      const { img, picture } = getImage(
+        page.locator('[data-test-local-image="fixed,lqip-blurhash"]'),
+        isShadowDom,
+      );
 
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
@@ -204,10 +232,10 @@ export function runTests() {
     test('thumbhash', async ({ page }) => {
       await page.goto('/');
 
-      const img = page.locator(
-        '[data-test-local-image="fixed,lqip-thumbhash"]',
+      const { img, picture } = getImage(
+        page.locator('[data-test-local-image="fixed,lqip-thumbhash"]'),
+        isShadowDom,
       );
-      const picture = page.locator('picture').filter({ has: img });
 
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(

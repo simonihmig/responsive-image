@@ -8,6 +8,7 @@
   "private": "true",
   "scripts": {
     "build": "pkgroll",
+    "dev": "pkgroll --watch",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
