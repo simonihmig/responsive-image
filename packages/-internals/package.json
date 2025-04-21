@@ -7,17 +7,23 @@
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "private": "true",
   "scripts": {
+    "build": "pkgroll",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:prettier": "prettier --check .",
-    "lint:prettier:fix": "prettier --write ."
+    "lint:prettier:fix": "prettier --write .",
+    "prepack": "pnpm turbo build"
   },
   "type": "module",
   "exports": {
     "./eslint": {
-      "default": "./src/eslint/index.js"
+      "default": "./dist/eslint/index.js"
+    },
+    "./playwright": {
+      "types": "./dist/playwright.d.ts",
+      "default": "./dist/playwright.js"
     }
   },
   "dependencies": {
@@ -30,12 +36,22 @@
     "typescript-eslint": "8.30.1"
   },
   "devDependencies": {
-    "@tsconfig/node20": "20.1.5",
+    "@playwright/test": "1.52.0",
+    "@tsconfig/strictest": "2.0.5",
     "@types/node": "22.13.4",
     "concurrently": "9.1.2",
     "eslint": "9.25.1",
+    "pkgroll": "2.12.1",
     "prettier": "3.5.3",
     "typescript": "5.8.3"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.52.0"
+  },
+  "peerDependenciesMeta": {
+    "@playwright/test": {
+      "optional": true
+    }
   },
   "engines": {
     "node": "20.* || >= 22"
