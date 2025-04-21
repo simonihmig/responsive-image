@@ -19,8 +19,7 @@ import ts from 'typescript-eslint';
 
 import ember from 'eslint-plugin-ember/recommended';
 
-import eslintConfigPrettier from 'eslint-config-prettier';
-import qunit from 'eslint-plugin-qunit';
+import prettier from 'eslint-plugin-prettier/recommended';
 import n from 'eslint-plugin-n';
 
 import babelParser from '@babel/eslint-parser';
@@ -52,7 +51,7 @@ export default ts.config(
   ember.configs.base,
   ember.configs.gjs,
   ember.configs.gts,
-  eslintConfigPrettier,
+  prettier,
   /**
    * Ignores must be in their own object
    * https://eslint.org/docs/latest/use/configure/ignore
@@ -84,18 +83,12 @@ export default ts.config(
     },
   },
   {
-    files: ['**/*.{ts,gts}'],
+    files: ['app/**/*.{ts,gts}', 'types/*.ts'],
     languageOptions: {
       parser: ember.parser,
       parserOptions: parserOptions.esm.ts,
     },
     extends: [...ts.configs.recommendedTypeChecked, ember.configs.gts],
-  },
-  {
-    files: ['tests/**/*-test.{js,gjs,ts,gts}'],
-    plugins: {
-      qunit,
-    },
   },
   /**
    * CJS node files
@@ -104,10 +97,8 @@ export default ts.config(
     files: [
       '**/*.cjs',
       'config/**/*.js',
-      'tests/dummy/config/**/*.js',
       'testem.js',
       'testem*.js',
-      'index.js',
       '.prettierrc.js',
       '.stylelintrc.js',
       '.template-lintrc.js',
@@ -138,6 +129,22 @@ export default ts.config(
       sourceType: 'module',
       ecmaVersion: 'latest',
       parserOptions: parserOptions.esm.js,
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  // TS node files
+  {
+    files: ['tests/*.ts', '*.ts'],
+    plugins: {
+      n,
+    },
+
+    languageOptions: {
+      sourceType: 'module',
+      ecmaVersion: 'latest',
+      parserOptions: parserOptions.esm.ts,
       globals: {
         ...globals.node,
       },

@@ -455,6 +455,9 @@ importers:
       '@glint/template':
         specifier: 1.5.2
         version: 1.5.2
+      '@playwright/test':
+        specifier: 1.52.0
+        version: 1.52.0
       '@responsive-image/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn
@@ -464,6 +467,9 @@ importers:
       '@responsive-image/ember':
         specifier: workspace:*
         version: link:../../packages/ember
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
       '@responsive-image/webpack':
         specifier: workspace:*
         version: link:../../packages/webpack
@@ -551,9 +557,6 @@ importers:
       eslint-plugin-prettier:
         specifier: 5.2.6
         version: 5.2.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.2(eslint@9.25.1(jiti@2.4.2)))(eslint@9.25.1(jiti@2.4.2))(prettier@3.5.3)
-      eslint-plugin-qunit:
-        specifier: 8.1.2
-        version: 8.1.2(eslint@9.25.1(jiti@2.4.2))
       globals:
         specifier: 16.0.0
         version: 16.0.0

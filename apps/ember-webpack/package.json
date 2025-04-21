@@ -11,7 +11,8 @@
     "test": "tests"
   },
   "scripts": {
-    "build:prod": "ember build --environment=production",
+    "build": "ember build --environment=production",
+    "preview": "ember s -p 4204",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:css:fix": "concurrently \"pnpm:lint:css -- --fix\"",
@@ -24,7 +25,8 @@
     "lint:prettier:fix": "prettier --write .",
     "lint:types": "glint",
     "start": "ember serve",
-    "test": "ember test -tp 0"
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
   },
   "devDependencies": {
     "@babel/core": "7.26.10",
@@ -44,9 +46,11 @@
     "@glint/environment-ember-loose": "1.5.2",
     "@glint/environment-ember-template-imports": "1.5.2",
     "@glint/template": "1.5.2",
+    "@playwright/test": "1.52.0",
     "@responsive-image/cdn": "workspace:*",
     "@responsive-image/core": "workspace:*",
     "@responsive-image/ember": "workspace:*",
+    "@responsive-image/internals": "workspace:*",
     "@responsive-image/webpack": "workspace:*",
     "@tsconfig/ember": "3.0.10",
     "@types/qunit": "2.19.12",
@@ -76,7 +80,6 @@
     "eslint-plugin-ember": "12.5.0",
     "eslint-plugin-n": "17.17.0",
     "eslint-plugin-prettier": "5.2.6",
-    "eslint-plugin-qunit": "8.1.2",
     "globals": "16.0.0",
     "loader.js": "4.7.0",
     "npm-run-all2": "7.0.2",

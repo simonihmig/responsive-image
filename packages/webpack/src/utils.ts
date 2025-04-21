@@ -8,7 +8,7 @@ import type { LoaderContext } from 'webpack';
 
 export const defaultWebpackOptions = {
   name: '[name]-[width]w-[hash].[ext]',
-  outputPath: 'images',
+  outputPath: 'assets',
   cache: true,
 };
 
