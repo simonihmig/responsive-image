@@ -1,16 +1,6 @@
-import { test, expect, type Locator } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-function getImage(
-  locator: Locator,
-  isShadowDom: boolean,
-): { img: Locator; picture: Locator } {
-  const img = isShadowDom ? locator.locator('img') : locator;
-  const picture = isShadowDom
-    ? locator.locator('picture')
-    : locator.page().locator('picture').filter({ has: img });
-
-  return { img, picture };
-}
+import { delayImageLoading, getImage } from './helpers';
 
 interface TestOptions {
   isShadowDom?: boolean;
@@ -126,6 +116,13 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
   });
 
   test.describe('LQIP', () => {
+    let loadImages: () => void;
+
+    test.beforeEach(async ({ page }) => {
+      const { load } = await delayImageLoading(page);
+      loadImages = load;
+    });
+
     test('color', async ({ page }) => {
       await page.goto('/');
 
@@ -133,6 +130,9 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
         page.locator('[data-test-local-image="fixed,lqip-color"]'),
         isShadowDom,
       );
+
+      await expect(img).toHaveJSProperty('complete', false);
+      await expect(img).toHaveScreenshot();
 
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
@@ -157,6 +157,11 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
           new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
         );
       }
+
+      loadImages();
+
+      await expect(img).toHaveJSProperty('complete', true);
+      await expect(img).toHaveScreenshot();
     });
 
     test('inline', async ({ page }) => {
@@ -167,6 +172,9 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
         isShadowDom,
       );
 
+      await expect(img).toHaveJSProperty('complete', false);
+      await expect(img).toHaveScreenshot();
+
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
         'src',
@@ -190,6 +198,11 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
           new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
         );
       }
+
+      loadImages();
+
+      await expect(img).toHaveJSProperty('complete', true);
+      await expect(img).toHaveScreenshot();
     });
 
     test('blurhash', async ({ page }) => {
@@ -199,6 +212,9 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
         page.locator('[data-test-local-image="fixed,lqip-blurhash"]'),
         isShadowDom,
       );
+
+      await expect(img).toHaveJSProperty('complete', false);
+      await expect(img).toHaveScreenshot();
 
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
@@ -227,15 +243,23 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
           new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
         );
       }
+
+      loadImages();
+
+      await expect(img).toHaveJSProperty('complete', true);
+      await expect(img).toHaveScreenshot();
     });
 
     test('thumbhash', async ({ page }) => {
-      await page.goto('/');
+      await page.goto('/', { waitUntil: 'commit' });
 
       const { img, picture } = getImage(
         page.locator('[data-test-local-image="fixed,lqip-thumbhash"]'),
         isShadowDom,
       );
+
+      await expect(img).toHaveJSProperty('complete', false);
+      await expect(img).toHaveScreenshot();
 
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
@@ -264,6 +288,11 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
           new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
         );
       }
+
+      loadImages();
+
+      await expect(img).toHaveJSProperty('complete', true);
+      await expect(img).toHaveScreenshot();
     });
   });
 }

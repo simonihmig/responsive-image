@@ -1,12 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
+import { createRequire } from 'node:module';
+import { dirname } from 'node:path';
+
+const require = createRequire(import.meta.url);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   testDir: './tests',
-  snapshotPathTemplate:
-    '{testDir}/__screenshots__{/projectName}/{testFilePath}/{arg}{ext}',
+  snapshotPathTemplate: `${dirname(require.resolve('@responsive-image/internals/screenshots'))}/{arg}{ext}`,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
