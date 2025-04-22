@@ -281,18 +281,30 @@ importers:
       '@glimmer/tracking':
         specifier: 1.1.2
         version: 1.1.2
+      '@playwright/test':
+        specifier: 1.52.0
+        version: 1.52.0
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@responsive-image/ember':
         specifier: workspace:*
         version: link:../../packages/ember
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
       '@responsive-image/vite-plugin':
         specifier: workspace:*
         version: link:../../packages/vite-plugin
       '@rollup/plugin-babel':
         specifier: 6.0.4
         version: 6.0.4(@babel/core@7.26.10)(@types/babel__core@7.20.5)(rollup@4.40.0)
+      '@tsconfig/ember':
+        specifier: 3.0.10
+        version: 3.0.10
+      '@types/node':
+        specifier: 22.13.4
+        version: 22.13.4
       babel-plugin-ember-template-compilation:
         specifier: 2.4.1
         version: 2.4.1
@@ -353,9 +365,6 @@ importers:
       eslint-plugin-prettier:
         specifier: 5.2.6
         version: 5.2.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.2(eslint@9.25.1(jiti@2.4.2)))(eslint@9.25.1(jiti@2.4.2))(prettier@3.5.3)
-      eslint-plugin-qunit:
-        specifier: 8.1.2
-        version: 8.1.2(eslint@9.25.1(jiti@2.4.2))
       globals:
         specifier: 16.0.0
         version: 16.0.0
@@ -446,6 +455,9 @@ importers:
       '@glint/template':
         specifier: 1.5.2
         version: 1.5.2
+      '@playwright/test':
+        specifier: 1.52.0
+        version: 1.52.0
       '@responsive-image/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn
@@ -455,12 +467,18 @@ importers:
       '@responsive-image/ember':
         specifier: workspace:*
         version: link:../../packages/ember
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
       '@responsive-image/webpack':
         specifier: workspace:*
         version: link:../../packages/webpack
       '@tsconfig/ember':
         specifier: 3.0.10
         version: 3.0.10
+      '@types/node':
+        specifier: 22.13.4
+        version: 22.13.4
       '@types/qunit':
         specifier: 2.19.12
         version: 2.19.12
@@ -542,9 +560,6 @@ importers:
       eslint-plugin-prettier:
         specifier: 5.2.6
         version: 5.2.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.2(eslint@9.25.1(jiti@2.4.2)))(eslint@9.25.1(jiti@2.4.2))(prettier@3.5.3)
-      eslint-plugin-qunit:
-        specifier: 8.1.2
-        version: 8.1.2(eslint@9.25.1(jiti@2.4.2))
       globals:
         specifier: 16.0.0
         version: 16.0.0
@@ -599,6 +614,9 @@ importers:
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
       '@responsive-image/solid':
         specifier: workspace:*
         version: link:../../packages/solid
@@ -638,6 +656,9 @@ importers:
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
       '@responsive-image/svelte':
         specifier: workspace:*
         version: link:../../packages/svelte
@@ -708,6 +729,9 @@ importers:
       '@playwright/test':
         specifier: 1.52.0
         version: 1.52.0
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
       '@responsive-image/vite-plugin':
         specifier: workspace:*
         version: link:../../packages/vite-plugin
@@ -745,9 +769,12 @@ importers:
         specifier: 8.31.0
         version: 8.31.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.8.3)
     devDependencies:
-      '@tsconfig/node20':
-        specifier: 20.1.5
-        version: 20.1.5
+      '@playwright/test':
+        specifier: 1.52.0
+        version: 1.52.0
+      '@tsconfig/strictest':
+        specifier: 2.0.5
+        version: 2.0.5
       '@types/node':
         specifier: 22.13.4
         version: 22.13.4
@@ -757,6 +784,9 @@ importers:
       eslint:
         specifier: 9.25.1
         version: 9.25.1(jiti@2.4.2)
+      pkgroll:
+        specifier: 2.12.1
+        version: 2.12.1(typescript@5.8.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3

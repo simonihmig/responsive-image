@@ -13,7 +13,7 @@ module('Helper: responsive-image-resolve', function (hooks) {
         <h1>{{responsiveImageResolve testImage}}</h1>
       </template>,
     );
-    assert.dom('h1').hasText(new RegExp('/images/aurora-2048w(-\\w+)?.jpg'));
+    assert.dom('h1').hasText(new RegExp('/assets/aurora-2048w(-\\w+)?.jpg'));
   });
 
   test('supports sidth', async function (assert) {
@@ -23,7 +23,7 @@ module('Helper: responsive-image-resolve', function (hooks) {
       </template>,
     );
 
-    assert.dom('h1').hasText(new RegExp('/images/aurora-2048w(-\\w+)?.jpg'));
+    assert.dom('h1').hasText(new RegExp('/assets/aurora-2048w(-\\w+)?.jpg'));
   });
 
   test('supports size', async function (assert) {
@@ -33,7 +33,7 @@ module('Helper: responsive-image-resolve', function (hooks) {
       </template>,
     );
 
-    assert.dom('h1').hasText(new RegExp('/images/aurora-640w(-\\w+)?.jpg'));
+    assert.dom('h1').hasText(new RegExp('/assets/aurora-640w(-\\w+)?.jpg'));
   });
 
   test('supports format', async function (assert) {
@@ -43,6 +43,6 @@ module('Helper: responsive-image-resolve', function (hooks) {
       </template>,
     );
 
-    assert.dom('h1').hasText(new RegExp('/images/aurora-2048w(-\\w+)?.webp'));
+    assert.dom('h1').hasText(new RegExp('/assets/aurora-2048w(-\\w+)?.webp'));
   });
 });

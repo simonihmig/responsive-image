@@ -38,22 +38,22 @@ test('it produces expected output', async () => {
   const imageAssets = stats.modules![0]!.assets!;
   expect(imageAssets.toSorted()).toEqual(
     [
-      'images/image-640w.png',
-      'images/image-640w.webp',
-      'images/image-750w.png',
-      'images/image-750w.webp',
-      'images/image-828w.png',
-      'images/image-828w.webp',
-      'images/image-1080w.png',
-      'images/image-1080w.webp',
-      'images/image-1200w.png',
-      'images/image-1200w.webp',
-      'images/image-1920w.png',
-      'images/image-1920w.webp',
-      'images/image-2048w.png',
-      'images/image-2048w.webp',
-      'images/image-3840w.png',
-      'images/image-3840w.webp',
+      'assets/image-640w.png',
+      'assets/image-640w.webp',
+      'assets/image-750w.png',
+      'assets/image-750w.webp',
+      'assets/image-828w.png',
+      'assets/image-828w.webp',
+      'assets/image-1080w.png',
+      'assets/image-1080w.webp',
+      'assets/image-1200w.png',
+      'assets/image-1200w.webp',
+      'assets/image-1920w.png',
+      'assets/image-1920w.webp',
+      'assets/image-2048w.png',
+      'assets/image-2048w.webp',
+      'assets/image-3840w.png',
+      'assets/image-3840w.webp',
     ].toSorted(),
   );
 
@@ -61,7 +61,7 @@ test('it produces expected output', async () => {
     fs.readFileSync(
       join(
         _dirname,
-        imageAssets.find((fileName) => fileName === 'images/image-640w.png')!,
+        imageAssets.find((fileName) => fileName === 'assets/image-640w.png')!,
       ),
     ),
   ).toMatchImageSnapshot();
@@ -86,7 +86,7 @@ test('custom loader options are supported', async () => {
   expect(sanitizeOutput(output)).toMatchSnapshot();
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
-  expect(imageAssets).toEqual(['images/test-100.png', 'images/test-200.png']);
+  expect(imageAssets).toEqual(['assets/test-100.png', 'assets/test-200.png']);
 
   for (const image of imageAssets) {
     expect(
@@ -110,8 +110,8 @@ test('custom query params are supported', async () => {
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
-    'images/image-100w.png',
-    'images/image-200w.png',
+    'assets/image-100w.png',
+    'assets/image-200w.png',
   ]);
 
   for (const image of imageAssets) {
@@ -135,8 +135,8 @@ test('imagetools params are supported', async () => {
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
-    'images/image-100w.png',
-    'images/image-200w.png',
+    'assets/image-100w.png',
+    'assets/image-200w.png',
   ]);
 
   for (const image of imageAssets) {
@@ -160,8 +160,8 @@ test('different aspect ratio', async () => {
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
-    'images/image-100w.png',
-    'images/image-200w.png',
+    'assets/image-100w.png',
+    'assets/image-200w.png',
   ]);
 
   for (const image of imageAssets) {
