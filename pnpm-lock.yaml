@@ -270,8 +270,8 @@ importers:
         specifier: 4.0.2
         version: 4.0.2(@glint/template@1.5.2)
       '@embroider/vite':
-        specifier: 1.0.3
-        version: 1.0.3(@embroider/core@4.0.2(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.40.0)(vite@6.3.4(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0))
+        specifier: 1.1.0
+        version: 1.1.0(@embroider/core@4.0.2(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.40.0)(vite@6.3.4(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0))
       '@eslint/js':
         specifier: 9.25.1
         version: 9.25.1
@@ -2296,8 +2296,8 @@ packages:
       '@embroider/webpack':
         optional: true
 
-  '@embroider/vite@1.0.3':
-    resolution: {integrity: sha512-DTKOTi+SJ0Ph99X0J20Bjn8uB+YMp29lmkOgNweew3dZVrqM34CmyuXF17R/SP40Xdy6db70XmKZDv0XkmByKA==}
+  '@embroider/vite@1.1.0':
+    resolution: {integrity: sha512-rcRZNQecZ8l9JRGmCQ7SHFbmxVvb/GfEYX9fw6M8C9qz2pXRtQAZVWtHXCjVqbMV2K3av+ynswfwcZ0Qs47VHA==}
     peerDependencies:
       '@embroider/core': ^4.0.2
       vite: '>= 5.2.0'
@@ -13602,7 +13602,7 @@ snapshots:
       '@embroider/core': 3.5.6(@glint/template@1.5.2)
       '@embroider/webpack': 4.1.0(@embroider/core@3.5.6(@glint/template@1.5.2))(webpack@5.99.7)
 
-  '@embroider/vite@1.0.3(@embroider/core@4.0.2(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.40.0)(vite@6.3.4(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0))':
+  '@embroider/vite@1.1.0(@embroider/core@4.0.2(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.40.0)(vite@6.3.4(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0))':
     dependencies:
       '@babel/core': 7.26.10(supports-color@8.1.1)
       '@embroider/core': 4.0.2(@glint/template@1.5.2)
