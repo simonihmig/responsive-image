@@ -147,7 +147,7 @@
 </script>
 
 <picture>
-	{#each sourcesSorted as s}
+	{#each sourcesSorted as s (s.mimeType)}
 		<source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
 	{/each}
 	<img

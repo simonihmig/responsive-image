@@ -11,7 +11,7 @@ export default [
 	...svelte.configs['flat/recommended'],
 	...svelte.configs['flat/prettier'],
 	{
-		files: ['**/*.svelte'],
+		files: ['**/*.svelte', '**/*.svelte.ts'],
 		languageOptions: {
 			parserOptions: {
 				parser: ts.parser
