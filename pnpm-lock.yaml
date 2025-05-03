@@ -174,8 +174,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0
       ember-template-lint:
-        specifier: 7.2.0
-        version: 7.2.0(@babel/core@7.27.1)
+        specifier: 7.4.0
+        version: 7.4.0(@babel/core@7.27.1)
       ember-try:
         specifier: 4.0.0
         version: 4.0.0
@@ -348,8 +348,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0
       ember-template-lint:
-        specifier: 7.2.0
-        version: 7.2.0(@babel/core@7.27.1)
+        specifier: 7.4.0
+        version: 7.4.0(@babel/core@7.27.1)
       eslint:
         specifier: 9.26.0
         version: 9.26.0(jiti@2.4.2)
@@ -543,8 +543,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0
       ember-template-lint:
-        specifier: 7.2.0
-        version: 7.2.0(@babel/core@7.27.1)
+        specifier: 7.4.0
+        version: 7.4.0(@babel/core@7.27.1)
       eslint:
         specifier: 9.26.0
         version: 9.26.0(jiti@2.4.2)
@@ -1005,8 +1005,8 @@ importers:
         specifier: 6.4.0
         version: 6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
       ember-template-lint:
-        specifier: 7.2.0
-        version: 7.2.0(@babel/core@7.27.1)
+        specifier: 7.4.0
+        version: 7.4.0(@babel/core@7.27.1)
       eslint:
         specifier: 9.26.0
         version: 9.26.0(jiti@2.4.2)
@@ -1459,10 +1459,6 @@ packages:
     peerDependencies:
       '@babel/core': ^7.11.0
       eslint: ^7.5.0 || ^8.0.0 || ^9.0.0
-
-  '@babel/generator@7.27.0':
-    resolution: {integrity: sha512-VybsKvpiN1gU1sdMZIp7FcqphVVKEwcuj02x73uvcHE0PTihx1nlBcowYWhDwjpoAXRv43+gDzyggGnn1XZhVw==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/generator@7.27.1':
     resolution: {integrity: sha512-UnJfnIpc/+JO0/+KRVQNGU+y5taA5vCbwN8+azkX6beii/ZF+enZJSOKo11ZSzGJjlNfJHfQtmQT8H+9TXPG2w==}
@@ -6874,8 +6870,8 @@ packages:
     resolution: {integrity: sha512-jZ5D6KLKU8up/AynZltmKh4lkXBPgTGSPgomprI/55XvIVqn42UNUpEz7ra/mO3QiGODDZOUesbggPe49i38sQ==}
     engines: {node: 16.* || >= 18}
 
-  ember-template-lint@7.2.0:
-    resolution: {integrity: sha512-igRCRVz3kO/7LZk3VjT38+0971LilFC3OSGO6seLp2Ue8/bGGd13cp/f8w76hhr6qeQe2+UyHNZ81EK3KbD78Q==}
+  ember-template-lint@7.4.0:
+    resolution: {integrity: sha512-jLNQZlb4fHnWO5cu8YzeTefIlU6fyJ9IhXjdZ4MgYQ4fQauo39mUMmAa/dCLglrYuRYvSfzKfcAcPG5L4utwfQ==}
     engines: {node: ^18.18.0 || >= 20.9.0}
     hasBin: true
 
@@ -12455,14 +12451,6 @@ snapshots:
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
-  '@babel/generator@7.27.0':
-    dependencies:
-      '@babel/parser': 7.27.0
-      '@babel/types': 7.27.0
-      '@jridgewell/gen-mapping': 0.3.8
-      '@jridgewell/trace-mapping': 0.3.25
-      jsesc: 3.1.0
-
   '@babel/generator@7.27.1':
     dependencies:
       '@babel/parser': 7.27.1
@@ -13266,8 +13254,8 @@ snapshots:
   '@babel/traverse@7.27.0':
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@babel/generator': 7.27.0
-      '@babel/parser': 7.27.0
+      '@babel/generator': 7.27.1
+      '@babel/parser': 7.27.1
       '@babel/template': 7.27.0
       '@babel/types': 7.27.0
       debug: 4.4.0(supports-color@8.1.1)
@@ -15676,7 +15664,7 @@ snapshots:
       '@babel/code-frame': 7.26.2
       '@babel/core': 7.27.1(supports-color@8.1.1)
       '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.27.1)
-      '@babel/plugin-syntax-typescript': 7.25.9(@babel/core@7.27.1)
+      '@babel/plugin-syntax-typescript': 7.27.1(@babel/core@7.27.1)
       '@babel/template': 7.27.1
       '@babel/traverse': 7.27.1(supports-color@8.1.1)
       '@babel/types': 7.27.1
@@ -15712,7 +15700,7 @@ snapshots:
       '@babel/code-frame': 7.26.2
       '@babel/core': 7.27.1(supports-color@8.1.1)
       '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.27.1)
-      '@babel/plugin-syntax-typescript': 7.25.9(@babel/core@7.27.1)
+      '@babel/plugin-syntax-typescript': 7.27.1(@babel/core@7.27.1)
       '@babel/template': 7.27.1
       '@babel/traverse': 7.27.1(supports-color@8.1.1)
       '@babel/types': 7.27.1
@@ -19091,13 +19079,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-template-lint@7.2.0(@babel/core@7.27.1):
+  ember-template-lint@7.4.0(@babel/core@7.27.1):
     dependencies:
-      '@babel/generator': 7.27.0
-      '@babel/parser': 7.27.0
-      '@babel/plugin-syntax-typescript': 7.25.9(@babel/core@7.27.1)
-      '@babel/plugin-transform-typescript': 7.27.0(@babel/core@7.27.1)
-      '@babel/traverse': 7.27.0
+      '@babel/generator': 7.27.1
+      '@babel/parser': 7.27.1
+      '@babel/plugin-syntax-typescript': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-transform-typescript': 7.27.1(@babel/core@7.27.1)
+      '@babel/traverse': 7.27.1(supports-color@8.1.1)
       '@lint-todo/utils': 13.1.1
       aria-query: 5.3.2
       chalk: 5.4.1
