@@ -43,7 +43,6 @@ export async function generateResizedImage(
 
       try {
         const buffer = await readFile(cacheFile);
-        // console.log(`file read from cache: ${cacheFile}`);
 
         return buffer;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars

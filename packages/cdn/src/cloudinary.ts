@@ -35,7 +35,7 @@ export function cloudinary(
   let imageId: string;
   let deliveryType: 'upload' | 'fetch';
 
-  const isFullUrl = image.match(URL_REGEX);
+  const isFullUrl = URL_REGEX.test(image);
 
   if (isFullUrl) {
     imageId = encodeURIComponent(image);

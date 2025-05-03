@@ -13,7 +13,7 @@ export function applySSR(): void {
       return;
     }
 
-    const matches = /bh:([0-9]+):([0-9]+):(.+)/.exec(value);
+    const matches = /bh:(\d+):(\d+):(.+)/.exec(value);
 
     if (!matches) {
       return;
