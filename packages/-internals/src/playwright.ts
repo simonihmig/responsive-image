@@ -34,7 +34,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
     await expect(img).toHaveClass(/ri-responsive/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+      /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
     );
     await expect(img).toHaveScreenshot();
 
@@ -64,7 +64,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+      /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
     );
     await expect(img).toHaveAttribute('width', '320');
     await expect(img).toHaveAttribute('height', '213');
@@ -100,7 +100,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
     await expect(img).toHaveClass(/ri-fixed/);
     await expect(img).toHaveAttribute(
       'src',
-      new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+      /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
     );
     await expect(img).toHaveAttribute('width', '320');
     await expect(img).toHaveAttribute('height', '480');
@@ -137,7 +137,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
         'src',
-        new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+        /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
       );
 
       for (const [type, ext] of imageTypes) {
@@ -170,7 +170,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
         'src',
-        new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+        /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
       );
 
       for (const [type, ext] of imageTypes) {
@@ -203,7 +203,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
         'src',
-        new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+        /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
       );
       await expect(img).toHaveAttribute(
         'data-ri-lqip',
@@ -240,7 +240,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
       await expect(img).toHaveClass(/ri-fixed/);
       await expect(img).toHaveAttribute(
         'src',
-        new RegExp(`/assets/aurora-[0-9]+w([-.][a-zA-Z0-9-_]+)?.jpg`),
+        /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
       );
       await expect(img).toHaveAttribute(
         'data-ri-lqip',

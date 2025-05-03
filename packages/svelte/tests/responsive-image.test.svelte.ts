@@ -221,10 +221,7 @@ describe('ResponsiveImage', () => {
 				'/provider/w50/image.avif 50w, /provider/w100/image.avif 100w, /provider/w640/image.avif 640w'
 			);
 
-			expect(imgEl).toHaveAttribute(
-				'src',
-				expect.stringMatching(/\/provider\/w[0-9]+\/image\.jpeg/)
-			);
+			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/provider\/w\d+\/image\.jpeg/));
 
 			expect(
 				parseInt(imgEl?.getAttribute('width') ?? '', 10) /
@@ -258,7 +255,7 @@ describe('ResponsiveImage', () => {
 				'/other/w200/image.avif 200w, /other/w400/image.avif 400w'
 			);
 
-			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/other\/w[0-9]+\/image\.webp/));
+			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/other\/w\d+\/image\.webp/));
 
 			expect(
 				parseInt(imgEl?.getAttribute('width') ?? '', 10) /
@@ -397,10 +394,7 @@ describe('ResponsiveImage', () => {
 				'/provider/w50/image.avif 1x, /provider/w100/image.avif 2x'
 			);
 
-			expect(imgEl).toHaveAttribute(
-				'src',
-				expect.stringMatching(/\/provider\/w[0-9]+\/image\.jpeg/)
-			);
+			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/provider\/w\d+\/image\.jpeg/));
 
 			expect(imgEl).toHaveAttribute('width', '50');
 			expect(imgEl).toHaveAttribute('height', '25');
@@ -433,7 +427,7 @@ describe('ResponsiveImage', () => {
 				'/other/w200/image.avif 1x, /other/w400/image.avif 2x'
 			);
 
-			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/other\/w[0-9]+\/image\.webp/));
+			expect(imgEl).toHaveAttribute('src', expect.stringMatching(/\/other\/w\d+\/image\.webp/));
 
 			expect(imgEl).toHaveAttribute('width', '200');
 			expect(imgEl).toHaveAttribute('height', '200');

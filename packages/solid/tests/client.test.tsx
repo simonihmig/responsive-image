@@ -306,7 +306,7 @@ describe('ResponsiveImage', () => {
 
       expect(imgEl).toHaveAttribute(
         'src',
-        expect.stringMatching(/\/provider\/w[0-9]+\/image\.jpeg/),
+        expect.stringMatching(/\/provider\/w\d+\/image\.jpeg/),
       );
 
       expect(
@@ -346,7 +346,7 @@ describe('ResponsiveImage', () => {
 
       expect(imgEl).toHaveAttribute(
         'src',
-        expect.stringMatching(/\/other\/w[0-9]+\/image\.webp/),
+        expect.stringMatching(/\/other\/w\d+\/image\.webp/),
       );
 
       expect(
@@ -537,7 +537,7 @@ describe('ResponsiveImage', () => {
 
       expect(imgEl).toHaveAttribute(
         'src',
-        expect.stringMatching(/\/provider\/w[0-9]+\/image\.jpeg/),
+        expect.stringMatching(/\/provider\/w\d+\/image\.jpeg/),
       );
 
       expect(imgEl).toHaveAttribute('width', '50');
@@ -576,7 +576,7 @@ describe('ResponsiveImage', () => {
 
       expect(imgEl).toHaveAttribute(
         'src',
-        expect.stringMatching(/\/other\/w[0-9]+\/image\.webp/),
+        expect.stringMatching(/\/other\/w\d+\/image\.webp/),
       );
 
       expect(imgEl).toHaveAttribute('width', '200');
