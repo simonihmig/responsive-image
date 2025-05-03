@@ -42,7 +42,7 @@ async function process(
     throw new Error('Expected sharp metadata to be available');
   }
 
-  const { width, height } = await getLqipInputDimensions(sharpMeta);
+  const { width, height } = getLqipInputDimensions(sharpMeta);
   const lqi = sharp
     .clone()
     .ensureAlpha()
