@@ -37,10 +37,7 @@ async function process(context: LoaderContext<unknown>): Promise<string> {
     throw new Error('Missing image meta data');
   }
 
-  const { width, height } = await getLqipDimensions(
-    parseInt(targetPixels, 10),
-    meta,
-  );
+  const { width, height } = getLqipDimensions(parseInt(targetPixels, 10), meta);
 
   const lqi = await image
     .resize(width, height, {
@@ -61,10 +58,10 @@ async function process(context: LoaderContext<unknown>): Promise<string> {
   return `.${className} { background-image: url(${uri}); }`;
 }
 
-async function getLqipDimensions(
+function getLqipDimensions(
   targetPixels: number,
   meta: Metadata,
-): Promise<{ width: number; height: number }> {
+): { width: number; height: number } {
   const aspectRatio = getAspectRatio(meta) ?? 1;
 
   // taken from https://github.com/google/eleventy-high-performance-blog/blob/5ed39db7fd3f21ae82ac1a8e833bf283355bd3d0/_11ty/blurry-placeholder.js#L74-L92

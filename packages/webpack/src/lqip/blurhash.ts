@@ -47,7 +47,7 @@ async function process(
   const targetPixels =
     (options.lqip?.type === 'blurhash' ? options.lqip?.targetPixels : 16) ?? 16;
 
-  const { width, height } = await getLqipDimensions(targetPixels, sharpMeta);
+  const { width, height } = getLqipDimensions(targetPixels, sharpMeta);
   const rawWidth = width * 8;
   const rawHeight = height * 8;
   const lqi = sharp
