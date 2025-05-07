@@ -115,7 +115,8 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
     }
   });
 
-  test.describe('LQIP', () => {
+  // LQIP is broken in web components: https://github.com/simonihmig/responsive-image/issues/1238
+  (isShadowDom ? test.describe.skip : test.describe)('LQIP', () => {
     let loadImages: () => void;
 
     test.beforeEach(async ({ page }) => {
