@@ -23,9 +23,10 @@
       "default": "./dist/eslint/index.js"
     },
     "./playwright": {
-      "types": "./dist/playwright.d.ts",
-      "default": "./dist/playwright.js"
-    }
+      "types": "./dist/playwright/index.d.ts",
+      "default": "./dist/playwright/index.js"
+    },
+    "./screenshots": "./src/playwright/__screenshots__/index.js"
   },
   "dependencies": {
     "@eslint/compat": "1.2.9",
