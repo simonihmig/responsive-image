@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { cloudinary, imgix, netlify } from '@responsive-image/cdn';
+import { cloudinary, fastly, imgix, netlify } from '@responsive-image/cdn';
 import { setConfig } from '@responsive-image/core';
 import '@responsive-image/wc';
 import image from './images/aurora.jpg?responsive';
@@ -16,6 +16,9 @@ import type { Config } from '@responsive-image/cdn';
 setConfig<Config>('cdn', {
   cloudinary: {
     cloudName: 'responsive-image',
+  },
+  fastly: {
+    domain: 'www.fastly.io',
   },
   imgix: {
     domain: 'responsive-image.imgix.net',
@@ -43,6 +46,13 @@ export class MyApp extends LitElement {
       <responsive-image
         .src=${cloudinary('aurora-original_w0sk6h', { aspectRatio: 1.4971927636 })}
         data-test-cloudinary-image
+      ></responsive-image>
+
+      <h2>Fastly</h2>
+
+      <responsive-image
+        .src=${fastly('image.webp', { aspectRatio: 2 })}
+        data-test-fastly-image
       ></responsive-image>
 
       <h2>imgix</h2>
