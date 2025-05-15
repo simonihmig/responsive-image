@@ -72,6 +72,15 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return <ResponsiveImage src={netlify('path/to/uploaded/image.jpg')} />;
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { netlify } from '@responsive-image/cdn';
@@ -135,6 +144,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify('path/to/uploaded/image.jpg', {
+        aspectRatio: 1.5,
+      })}
+    />
+  );
 }
 ```
 
@@ -209,6 +233,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify('path/to/uploaded/image.jpg', {
+        quality: 50,
+      })}
+    />
+  );
 }
 ```
 
@@ -290,6 +329,21 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify('path/to/uploaded/image.jpg', {
+        formats: ['webp', 'avif'],
+      })}
+    />
+  );
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { netlify } from '@responsive-image/cdn';
@@ -362,6 +416,21 @@ export class MyApp extends LitElement {
       )}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { netlify } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={netlify(
+        'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
+      )}
+    />
+  );
 }
 ```
 
