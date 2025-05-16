@@ -2,6 +2,7 @@
   import { ResponsiveImage } from '@responsive-image/svelte';
   import {
     cloudinary,
+    fastly,
     imgix,
     netlify,
     type Config,
@@ -18,6 +19,9 @@
   setConfig<Config>('cdn', {
     cloudinary: {
       cloudName: 'responsive-image',
+    },
+    fastly: {
+      domain: 'www.fastly.io',
     },
     imgix: {
       domain: 'responsive-image.imgix.net',
@@ -41,6 +45,11 @@
     aspectRatio: 1.4971927636,
   })}
   data-test-cloudinary-image
+/>
+<h2>Fastly</h2>
+<ResponsiveImage
+  src={fastly('image.webp', { aspectRatio: 2 })}
+  data-test-fastly-image
 />
 <h2>imgix</h2>
 <ResponsiveImage

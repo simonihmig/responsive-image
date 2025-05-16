@@ -15,6 +15,9 @@ setConfig('cdn', {
   cloudinary: {
     cloudName: 'responsive-image',
   },
+  fastly: {
+    domain: 'www.fastly.io',
+  },
   imgix: {
     domain: 'responsive-image.imgix.net',
   },
