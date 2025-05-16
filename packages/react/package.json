@@ -1,0 +1,74 @@
+{
+  "name": "@responsive-image/react",
+  "version": "1.0.0",
+  "description": "React component to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+  "keywords": [
+    "responsive image",
+    "responsive images",
+    "react"
+  ],
+  "license": "MIT",
+  "author": "",
+  "repository": "https://github.com/simonihmig/responsive-image",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rollup --config",
+    "test": "concurrently 'pnpm:test:*(!watch)'",
+    "test:client": "vitest",
+    "test:server": "pnpm run test:client --mode ssr",
+    "test:watch": "vitest watch",
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
+    "lint:types": "tsc --noEmit",
+    "prepack": "pnpm turbo build"
+  },
+  "dependencies": {
+    "@responsive-image/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": "18.x || 19.x",
+    "react-dom": "18.x || 19.x"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "7.27.1",
+    "@embroider/addon-dev": "7.1.4",
+    "@responsive-image/internals": "workspace:*",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-node-resolve": "16.0.1",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.2.0",
+    "@tsconfig/strictest": "2.0.5",
+    "@types/node": "22.13.4",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "^19.1.5",
+    "@vitest/browser": "3.1.3",
+    "concurrently": "9.1.2",
+    "eslint": "9.26.0",
+    "playwright": "1.52.0",
+    "prettier": "3.5.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "rollup": "4.37.0",
+    "rollup-plugin-node-externals": "8.0.0",
+    "typescript": "5.8.3",
+    "vitest": "3.1.3"
+  }
+}

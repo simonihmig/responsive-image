@@ -72,6 +72,15 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { imgix } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return <ResponsiveImage src={imgix('path/to/uploaded/image.jpg')} />;
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { imgix } from '@responsive-image/cdn';
@@ -133,6 +142,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { imgix } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={imgix('path/to/uploaded/image.jpg', {
+        aspectRatio: 1.5,
+      })}
+    />
+  );
 }
 ```
 
@@ -215,6 +239,22 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { imgix } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={imgix('path/to/uploaded/image.jpg', {
+        monochrome: '44768B',
+        px: 10,
+      })}
+    />
+  );
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { imgix } from '@responsive-image/cdn';
@@ -289,6 +329,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { imgix } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={imgix('path/to/uploaded/image.jpg', {
+        quality: 50,
+      })}
+    />
+  );
 }
 ```
 
@@ -367,6 +422,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { imgix } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={imgix('path/to/uploaded/image.jpg', {
+        formats: ['webp', 'avif'],
+      })}
+    />
+  );
 }
 ```
 

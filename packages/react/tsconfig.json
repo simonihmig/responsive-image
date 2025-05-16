@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "include": ["src/**/*", "tests/**/*", "./*.ts"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "react",
+    "verbatimModuleSyntax": true,
+    "types": ["@vitest/browser/providers/playwright"]
+  }
+}

@@ -29,6 +29,15 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import heroImage from './hero.jpg?responsive';
+
+export default function MyApp() {
+  return <ResponsiveImage src={heroImage} />;
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import heroImage from './hero.jpg?responsive';
@@ -116,6 +125,10 @@ If your image width is not `100vw`, say `70vw` for example, you can specify this
 html`<responsive-image .src=${heroImage} size="70"></responsive-image>`;
 ```
 
+```tsx [React]
+<ResponsiveImage src={heroImage} size={70} />
+```
+
 ```tsx [Solid]
 <ResponsiveImage src={heroImage} size={70} />
 ```
@@ -141,6 +154,10 @@ html`<responsive-image
   .src=${heroImage}
   sizes="(min-width: 800px) 800px, 100vw"
 ></responsive-image>`;
+```
+
+```tsx [React]
+<ResponsiveImage src={heroImage} sizes="(min-width: 800px) 800px, 100vw" />
 ```
 
 ```tsx [Solid]
@@ -172,6 +189,15 @@ import logoImage from './hero.jpg?w=320;640&responsive';
 import logoImage from './hero.jpg?w=320;640&responsive';
 
 html`<responsive-image .src=${logoImage} with="320"></responsive-image>`;
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import logoImage from './hero.jpg?w=320;640&responsive';
+
+export default function () {
+  return <ResponsiveImage src={logoImage} width={320} />;
+}
 ```
 
 ```tsx [Solid]
