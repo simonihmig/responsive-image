@@ -1,5 +1,12 @@
 # @responsive-image/cdn
 
+## 1.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`2a12953`](https://github.com/simonihmig/responsive-image/commit/2a12953af08d22d5d9ba255c8a53025afd616a17)]:
+  - @responsive-image/core@2.0.0
+
 ## 1.1.1
 
 ### Patch Changes
