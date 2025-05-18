@@ -32,7 +32,7 @@ export default function lqipInlineCssPlugin(
       return source;
     },
     async load(id) {
-      const { className, targetPixels, _plugin } = parseQuery(
+      const { className, targetPixels, _plugin, inline } = parseQuery(
         parseURL(id).searchParams,
       );
 
@@ -78,7 +78,9 @@ export default function lqipInlineCssPlugin(
         'image/svg+xml',
       );
 
-      return `.${className} { background-image: url(${uri}); }`;
+      const cssRule = `.${className} { background-image: url(${uri}); }`;
+
+      return inline ? `export default ${JSON.stringify(cssRule)}` : cssRule;
     },
   };
 }
