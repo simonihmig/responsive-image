@@ -56,6 +56,7 @@ export interface Lqip {
   class?: StringLike<string>;
   bgImage?: StringLike<string>;
   attribute?: string;
+  inlineStyles?: string;
 }
 
 export interface ImageLoaderChainedResult {

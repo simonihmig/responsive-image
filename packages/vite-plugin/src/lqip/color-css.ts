@@ -28,7 +28,9 @@ export default function lqipColorCssPlugin(
       return source;
     },
     async load(id) {
-      const { className, _plugin } = parseQuery(parseURL(id).searchParams);
+      const { className, inline, _plugin } = parseQuery(
+        parseURL(id).searchParams,
+      );
 
       if (_plugin !== name) {
         return;
@@ -50,7 +52,7 @@ export default function lqipColorCssPlugin(
 
       const cssRule = `.${className} { background-color: ${color}; }`;
 
-      return cssRule;
+      return inline ? `export default ${JSON.stringify(cssRule)}` : cssRule;
     },
   };
 }

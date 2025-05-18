@@ -84,6 +84,49 @@ console.log(image);
 "
 `;
 
+exports[`LQIP > color LQIP with inline styles is supported 1`] = `
+"import { findMatchingImage } from "@responsive-image/core";
+const inlineStyles = ".ri-dyn-0 { background-color: #083838; }";
+const images = [{
+  url: "/image-100w.jpg",
+  width: 100,
+  format: "jpeg"
+}, {
+  url: "/image-100w.webp",
+  width: 100,
+  format: "webp"
+}, {
+  url: "/image-200w.jpg",
+  width: 200,
+  format: "jpeg"
+}, {
+  url: "/image-200w.webp",
+  width: 200,
+  format: "webp"
+}];
+const image = {
+  imageTypes: [
+    "jpeg",
+    "webp"
+  ],
+  availableWidths: [
+    100,
+    200
+  ],
+  aspectRatio: 1.5,
+  imageUrlFor: (w, f) => {
+    var _a;
+    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
+  },
+  lqip: {
+    "class": "ri-dyn-0",
+    inlineStyles
+  }
+};
+console.log(image);
+"
+`;
+
 exports[`LQIP > inline LQIP is supported 1`] = `
 "import { findMatchingImage } from "@responsive-image/core";
 const images = [{

@@ -174,6 +174,24 @@ describe('LQIP', async () => {
     );
   });
 
+  test('color LQIP with inline styles is supported', async () => {
+    const { source, assets } = await compile('image.jpg', {
+      include: '**/*.jpg',
+      w: [100, 200],
+      lqip: { type: 'color' },
+      styles: 'inline',
+    });
+
+    expect(assets.map((a) => a.fileName)).toEqual([
+      'image-100w.jpg',
+      'image-100w.webp',
+      'image-200w.jpg',
+      'image-200w.webp',
+    ]);
+
+    expect(source).toMatchSnapshot();
+  });
+
   test('inline LQIP is supported', async () => {
     const { source, assets } = await compile('image.jpg', {
       include: '**/*.jpg',
