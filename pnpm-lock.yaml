@@ -840,8 +840,8 @@ importers:
         specifier: 11.0.2
         version: 11.0.2
       jest-image-snapshot:
-        specifier: 6.5.0
-        version: 6.5.0
+        specifier: 6.5.1
+        version: 6.5.1
       pkgroll:
         specifier: 2.12.2
         version: 2.12.2(typescript@5.8.3)
@@ -1209,8 +1209,8 @@ importers:
         specifier: 11.0.2
         version: 11.0.2
       jest-image-snapshot:
-        specifier: 6.5.0
-        version: 6.5.0
+        specifier: 6.5.1
+        version: 6.5.1
       pkgroll:
         specifier: 2.12.2
         version: 2.12.2(typescript@5.8.3)
@@ -1331,8 +1331,8 @@ importers:
         specifier: 11.0.2
         version: 11.0.2
       jest-image-snapshot:
-        specifier: 6.5.0
-        version: 6.5.0
+        specifier: 6.5.1
+        version: 6.5.1
       memfs:
         specifier: 4.17.2
         version: 4.17.2
@@ -8118,8 +8118,8 @@ packages:
     resolution: {integrity: sha512-zrteXnqYxfQh7l5FHyL38jL39di8H8rHoecLH3JNxH3BwOrBsNeabdap5e0I23lD4HHI8W5VFBZqG4Eaq5LNcw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  jest-image-snapshot@6.5.0:
-    resolution: {integrity: sha512-oTMGQEpvW3Q3+BwlULINBJRpvsVDXAILqjniCuiUT7us4f1YDQF99fPrMVy4yIQui1ZIHe7fjqRsErfK6tUlSQ==}
+  jest-image-snapshot@6.5.1:
+    resolution: {integrity: sha512-xlJFufgfY2Z4DsRsjcnTwxuynvo1bKdhf4OfcEftNuUAK+BwSCUtPmwlBGJhQ0XJXfm9JMAi/4BhQiHbaV8HrA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
       jest: '>=20 <=29'
@@ -20495,7 +20495,7 @@ snapshots:
 
   jest-get-type@29.6.3: {}
 
-  jest-image-snapshot@6.5.0:
+  jest-image-snapshot@6.5.1:
     dependencies:
       chalk: 4.1.2
       get-stdin: 5.0.1
