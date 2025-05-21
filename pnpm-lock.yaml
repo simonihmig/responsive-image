@@ -57,8 +57,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2(@babel/core@7.27.1)(@glint/template@1.5.2)
       '@embroider/macros':
-        specifier: 1.17.3
-        version: 1.17.3(@glint/template@1.5.2)
+        specifier: 1.18.0
+        version: 1.18.0(@glint/template@1.5.2)
       '@embroider/test-setup':
         specifier: 4.0.0
         version: 4.0.0(@embroider/compat@3.9.0(@embroider/core@3.5.6(@glint/template@1.5.2))(@glint/template@1.5.2))(@embroider/core@3.5.6(@glint/template@1.5.2))(@embroider/webpack@4.1.0(@embroider/core@3.5.6(@glint/template@1.5.2))(webpack@5.99.9))
@@ -261,17 +261,17 @@ importers:
         specifier: 5.2.2
         version: 5.2.2(@babel/core@7.27.1)(@glint/template@1.5.2)
       '@embroider/compat':
-        specifier: 4.0.4
-        version: 4.0.4(@embroider/core@4.0.4(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.99.9)
+        specifier: 4.1.0
+        version: 4.1.0(@embroider/core@4.1.0(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.99.9)
       '@embroider/config-meta-loader':
         specifier: 1.0.0
         version: 1.0.0
       '@embroider/core':
-        specifier: 4.0.4
-        version: 4.0.4(@glint/template@1.5.2)
+        specifier: 4.1.0
+        version: 4.1.0(@glint/template@1.5.2)
       '@embroider/vite':
         specifier: 1.1.5
-        version: 1.1.5(@embroider/core@4.0.4(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.41.0)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))
+        version: 1.1.5(@embroider/core@4.1.0(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.41.0)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))
       '@eslint/js':
         specifier: 9.27.0
         version: 9.27.0
@@ -429,8 +429,8 @@ importers:
         specifier: 3.5.6
         version: 3.5.6(@glint/template@1.5.2)
       '@embroider/macros':
-        specifier: 1.17.3
-        version: 1.17.3(@glint/template@1.5.2)
+        specifier: 1.18.0
+        version: 1.18.0(@glint/template@1.5.2)
       '@embroider/webpack':
         specifier: 4.1.0
         version: 4.1.0(@embroider/core@3.5.6(@glint/template@1.5.2))(webpack@5.99.9)
@@ -933,7 +933,7 @@ importers:
         version: 1.10.0
       '@embroider/macros':
         specifier: ^1.0.0
-        version: 1.17.3(@glint/template@1.5.2)
+        version: 1.18.0(@glint/template@1.5.2)
       '@responsive-image/cdn':
         specifier: workspace:^
         version: link:../cdn
@@ -2228,11 +2228,11 @@ packages:
     peerDependencies:
       '@embroider/core': ^3.5.6
 
-  '@embroider/compat@4.0.4':
-    resolution: {integrity: sha512-OyVlPJqAFLAJ4wBgDn3OTQ8vwMPGuYexgciPagXuTR9DxAts/KQoQYMPLvugaSu1f5gi7o+ROxq9qZdls9LnEA==}
+  '@embroider/compat@4.1.0':
+    resolution: {integrity: sha512-7pqXS+uK/ovhVfFBqmPzeMfdbLI4f/LCOhjdghYJGBxb40IG49BuXgjBQr2cOofU0/ItbQISZd0Ksl0JU4Eu5w==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
-      '@embroider/core': ^4.0.4
+      '@embroider/core': ^4.1.0
 
   '@embroider/config-meta-loader@1.0.0':
     resolution: {integrity: sha512-qznkdjgEGPe6NM94hZNXvOm/WhrJwBh8FtSQZ+nGjh9TOjY42tOiTEevFuM0onNXUn6bpdGzmjwKo2xY2jxQxQ==}
@@ -2242,8 +2242,8 @@ packages:
     resolution: {integrity: sha512-yCTed4fjX4ZK3baFN4qay8zvER6MB75peCHN0WxfxX4esK/Lgjh8aANLYPsZ/7kmSlKcq4qYnBmBD7peIMh6dA==}
     engines: {node: 12.* || 14.* || >= 16}
 
-  '@embroider/core@4.0.4':
-    resolution: {integrity: sha512-A2fLz4wGUhEvTL48NPOyTXONsEK2MB5Dq7N/ok2DDXupLiPCkHzFAdTzEDly3h69R4TtFW2Hk4QzytsnZxIvMw==}
+  '@embroider/core@4.1.0':
+    resolution: {integrity: sha512-boX+qHg2O24l9braMOC0RQHCwV+dLoQVqRZcvevKxETAPO9HK8mo2pgR/w7bdB9yfFbBjucxs8x4uEIgfRKWJw==}
     engines: {node: 12.* || 14.* || >= 16}
 
   '@embroider/hbs-loader@3.0.3':
@@ -2255,15 +2255,6 @@ packages:
 
   '@embroider/macros@1.16.13':
     resolution: {integrity: sha512-2oGZh0m1byBYQFWEa8b2cvHJB2LzaF3DdMCLCqcRAccABMROt1G3sultnNCT30NhfdGWMEsJOT3Jm4nFxXmTRw==}
-    engines: {node: 12.* || 14.* || >= 16}
-    peerDependencies:
-      '@glint/template': ^1.0.0
-    peerDependenciesMeta:
-      '@glint/template':
-        optional: true
-
-  '@embroider/macros@1.17.3':
-    resolution: {integrity: sha512-ag0QUiawjSwEqOhNqscZN5O2Q0gjQ6TS5weepamn4MGGVwIC4/9MpLUAZKmbVh5dmPhCvRp9jTmYvCykx0vB2Q==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
       '@glint/template': ^1.0.0
@@ -4864,6 +4855,10 @@ packages:
   babel-plugin-ember-template-compilation@2.4.1:
     resolution: {integrity: sha512-n+ktQ3JeyWrpRutSyPn2PsHeH+A94SVm+iUoogzf9VUqpP47FfWem24gpQXhn+p6+x5/BpuFJXMLXWt7ZoYAKA==}
     engines: {node: '>= 12.*'}
+
+  babel-plugin-ember-template-compilation@3.0.0:
+    resolution: {integrity: sha512-tIZh1sgvswtJqtjiAQLZEtfje37HvsFsivV3jOrkruq0K1JzewP5VUJxx72qK3vwqFOG6XtiVXYBNyEJFmdXgQ==}
+    engines: {node: '>= 18.*'}
 
   babel-plugin-htmlbars-inline-precompile@5.3.1:
     resolution: {integrity: sha512-QWjjFgSKtSRIcsBhJmEwS2laIdrA6na8HAlc/pEAhjHgQsah/gMiBFRZvbQTy//hWxR4BMwV7/Mya7q5H8uHeA==}
@@ -7740,6 +7735,9 @@ packages:
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
+
+  import-meta-resolve@4.1.0:
+    resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
 
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
@@ -13010,7 +13008,7 @@ snapshots:
     dependencies:
       '@ember/test-waiters': 4.1.0(@glint/template@1.5.2)
       '@embroider/addon-shim': 1.10.0
-      '@embroider/macros': 1.17.3(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
       '@simple-dom/interface': 1.4.0
       decorator-transforms: 2.3.0(@babel/core@7.27.1)
       dom-element-descriptors: 0.5.1
@@ -13022,7 +13020,7 @@ snapshots:
   '@ember/test-waiters@4.1.0(@glint/template@1.5.2)':
     dependencies:
       '@embroider/addon-shim': 1.10.0
-      '@embroider/macros': 1.17.3(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
@@ -13118,7 +13116,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/compat@4.0.4(@embroider/core@4.0.4(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.99.9)':
+  '@embroider/compat@4.1.0(@embroider/core@4.1.0(@glint/template@1.5.2))(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.99.9)':
     dependencies:
       '@babel/code-frame': 7.27.1
       '@babel/core': 7.27.1(supports-color@8.1.1)
@@ -13129,13 +13127,14 @@ snapshots:
       '@babel/preset-env': 7.27.2(@babel/core@7.27.1)(supports-color@8.1.1)
       '@babel/runtime': 7.27.1
       '@babel/traverse': 7.27.1(supports-color@8.1.1)
-      '@embroider/core': 4.0.4(@glint/template@1.5.2)
-      '@embroider/macros': 1.17.3(@glint/template@1.5.2)
+      '@embroider/core': 4.1.0(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
       '@types/babel__code-frame': 7.0.6
       assert-never: 1.4.0
       babel-import-util: 3.0.1
       babel-plugin-debug-macros: 1.0.2(@babel/core@7.27.1)
-      babel-plugin-ember-template-compilation: 2.4.1
+      babel-plugin-ember-template-compilation: 3.0.0
+      babel-plugin-ember-template-compilation-2: babel-plugin-ember-template-compilation@2.4.1
       babel-plugin-syntax-dynamic-import: 6.18.0
       babylon: 6.18.0
       bind-decorator: 1.0.11
@@ -13210,16 +13209,16 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/core@4.0.4(@glint/template@1.5.2)':
+  '@embroider/core@4.1.0(@glint/template@1.5.2)':
     dependencies:
       '@babel/core': 7.27.1(supports-color@8.1.1)
       '@babel/parser': 7.27.2
       '@babel/traverse': 7.27.1(supports-color@8.1.1)
-      '@embroider/macros': 1.17.3(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
       '@embroider/reverse-exports': 0.1.2
       '@embroider/shared-internals': 3.0.0
       assert-never: 1.4.0
-      babel-plugin-ember-template-compilation: 2.4.1
+      babel-plugin-ember-template-compilation: 3.0.0
       broccoli-node-api: 1.7.0
       broccoli-persistent-filter: 3.1.3
       broccoli-plugin: 4.0.7
@@ -13256,21 +13255,6 @@ snapshots:
       '@embroider/shared-internals': 2.9.0(supports-color@8.1.1)
       assert-never: 1.4.0
       babel-import-util: 2.1.1
-      ember-cli-babel: 7.26.11
-      find-up: 5.0.0
-      lodash: 4.17.21
-      resolve: 1.22.10
-      semver: 7.7.2
-    optionalDependencies:
-      '@glint/template': 1.5.2
-    transitivePeerDependencies:
-      - supports-color
-
-  '@embroider/macros@1.17.3(@glint/template@1.5.2)':
-    dependencies:
-      '@embroider/shared-internals': 3.0.0
-      assert-never: 1.4.0
-      babel-import-util: 3.0.1
       ember-cli-babel: 7.26.11
       find-up: 5.0.0
       lodash: 4.17.21
@@ -13345,10 +13329,10 @@ snapshots:
       '@embroider/core': 3.5.6(@glint/template@1.5.2)
       '@embroider/webpack': 4.1.0(@embroider/core@3.5.6(@glint/template@1.5.2))(webpack@5.99.9)
 
-  '@embroider/vite@1.1.5(@embroider/core@4.0.4(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.41.0)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))':
+  '@embroider/vite@1.1.5(@embroider/core@4.1.0(@glint/template@1.5.2))(@glint/template@1.5.2)(rollup@4.41.0)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))':
     dependencies:
       '@babel/core': 7.27.1(supports-color@8.1.1)
-      '@embroider/core': 4.0.4(@glint/template@1.5.2)
+      '@embroider/core': 4.1.0(@glint/template@1.5.2)
       '@embroider/macros': 1.18.0(@glint/template@1.5.2)
       '@embroider/reverse-exports': 0.1.2
       '@rollup/pluginutils': 5.1.4(rollup@4.41.0)
@@ -16183,6 +16167,12 @@ snapshots:
       '@glimmer/syntax': 0.94.9
       babel-import-util: 3.0.1
 
+  babel-plugin-ember-template-compilation@3.0.0:
+    dependencies:
+      '@glimmer/syntax': 0.94.9
+      babel-import-util: 3.0.1
+      import-meta-resolve: 4.1.0
+
   babel-plugin-htmlbars-inline-precompile@5.3.1:
     dependencies:
       babel-plugin-ember-modules-api-polyfill: 3.5.0
@@ -17721,7 +17711,7 @@ snapshots:
       '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.27.1)
       '@babel/plugin-transform-class-static-block': 7.27.1(@babel/core@7.27.1)(supports-color@8.1.1)
       '@babel/preset-env': 7.27.2(@babel/core@7.27.1)(supports-color@8.1.1)
-      '@embroider/macros': 1.17.3(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
       '@embroider/shared-internals': 2.9.0(supports-color@8.1.1)
       babel-loader: 8.4.1(@babel/core@7.27.1)(webpack@5.99.9)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
@@ -17768,7 +17758,7 @@ snapshots:
 
   ember-cached-decorator-polyfill@1.0.2(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5)):
     dependencies:
-      '@embroider/macros': 1.17.3(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
       '@glimmer/tracking': 1.1.2
       babel-import-util: 1.4.1
       ember-cache-primitive-polyfill: 1.0.1(@babel/core@7.27.1)
@@ -18234,7 +18224,7 @@ snapshots:
     dependencies:
       '@ember/test-helpers': 5.2.2(@babel/core@7.27.1)(@glint/template@1.5.2)
       '@embroider/addon-shim': 1.10.0
-      '@embroider/macros': 1.17.3(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
       qunit: 2.24.1
       qunit-theme-ember: 1.0.0
     transitivePeerDependencies:
@@ -20134,6 +20124,8 @@ snapshots:
     dependencies:
       parent-module: 1.0.1
       resolve-from: 4.0.0
+
+  import-meta-resolve@4.1.0: {}
 
   imurmurhash@0.1.4: {}
 
