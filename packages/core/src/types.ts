@@ -1,4 +1,4 @@
-export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
+export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif' | 'auto' | string;
 
 export type NonFunction =
   | string
