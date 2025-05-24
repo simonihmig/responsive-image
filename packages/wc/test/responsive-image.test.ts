@@ -588,7 +588,7 @@ describe('ResponsiveImage', () => {
       expect(imgEl).not.toHaveClass('lqip-inline-test-class');
     });
 
-    test('it sets LQIP background form literal', async () => {
+    test('it sets LQIP background from literal', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
@@ -616,7 +616,7 @@ describe('ResponsiveImage', () => {
       });
     });
 
-    test('it sets LQIP background form callback', async () => {
+    test('it sets LQIP background from callback', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
@@ -658,6 +658,28 @@ describe('ResponsiveImage', () => {
       const imgEl = el.shadowRoot?.querySelector('img');
 
       expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+    });
+
+    test('it applies inline styles', async () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
+        },
+      };
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      expect(imgEl).toHaveStyle('border-left: solid 5px red');
+
+      await trigger(imgEl!);
+
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
     });
   });
 });
