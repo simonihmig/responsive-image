@@ -17,7 +17,7 @@ module('Integration | Helper | responsive-image-fastly', function (hooks) {
       <template>{{dump (responsiveImageFastly "image.webp")}}</template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ['auto']);
+    assert.deepEqual(data?.imageTypes, ['webp']);
   });
 
   test('it returns correct upload image URLs', async function (assert) {
@@ -26,8 +26,8 @@ module('Integration | Helper | responsive-image-fastly', function (hooks) {
     );
 
     assert.strictEqual(
-      data?.imageUrlFor(100, 'auto'),
-      'https://www.fastly.io/image.webp?format=auto&width=100',
+      data?.imageUrlFor(100, 'avif'),
+      'https://www.fastly.io/image.webp?format=avif&width=100',
     );
   });
 });

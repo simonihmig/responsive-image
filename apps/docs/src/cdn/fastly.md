@@ -37,10 +37,10 @@ setConfig('cdn', {
 
 :::info
 
-By default `fastly` is configured to use the `auto` format.
-This uses [content negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation)
-to use the optimal image format for any given browser.
-You can change this behavior with the `defaultFormats` configuration.
+By default `fastly` is configured to only use the `webp` format since `avif`
+requires a higher cost tier of Fastly IO.
+You can change which formats get used by default by passing `defaultFormats`
+next to `domain` in this configuration.
 
 :::
 

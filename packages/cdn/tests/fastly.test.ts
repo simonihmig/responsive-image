@@ -10,13 +10,13 @@ describe('fastly', function () {
     setConfig<Config>('cdn', { fastly: { domain: 'image.mydomain.com' } });
   });
 
-  test('it uses the auto format by default', function () {
+  test('it uses the webp format by default', function () {
     const result = fastly('foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['auto']);
+    expect(result?.imageTypes).toEqual(['webp']);
   });
 
-  test('can set custom default formats', function () {
+  test('can set custom default formats (f. ex. add avif)', function () {
     setConfig<Config>('cdn', {
       fastly: {
         domain: 'image.mydomain.com',

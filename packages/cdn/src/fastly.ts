@@ -16,7 +16,6 @@ export interface FastlyConfig {
 }
 
 type FastlyImageFormats =
-  | 'auto'
   | 'avif'
   | 'bjpg'
   | 'bjpeg'
@@ -37,11 +36,6 @@ type FastlyImageFormats =
   | 'webply';
 
 export interface FastlyOptions extends Omit<CoreOptions, 'formats'> {
-  /**
-   * Enables optimizations based on [content negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation).
-   * @see https://www.fastly.com/documentation/reference/io/auto/
-   */
-  auto?: 'avif' | 'webp';
   /**
    * Sets the background color of the image when adding padding
    * or for transparent images.
@@ -227,18 +221,29 @@ function normalizeSrc(src: string): string {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
+function kebabCase(camelCase: string): string {
+  return camelCase.replace(
+    /[A-Z]/g,
+    (upperCaseChar) => '-' + upperCaseChar.toLowerCase(),
+  );
+}
+
 export function fastly(image: string, options: FastlyOptions = {}): ImageData {
   const config = getConfig<Config>('cdn')?.fastly || {};
   const domain = config.domain;
-  const defaultFormats = config.defaultFormats ?? ['auto'];
   assert(
     'domain must be set for the fastly provider!',
     typeof domain === 'string',
   );
 
+  // avif is a paid addon, so omitted by default (compared to other CDNs)
+  const defaultFormats = config.defaultFormats ?? ['webp'];
+
   const imageData: ImageData = {
-    imageTypes: options.formats ?? defaultFormats,
-    imageUrlFor(width: number, type: ImageType = 'auto') {
+    // The components handle more formats than ImageType,
+    // though with a priority of 0
+    imageTypes: (options.formats ?? defaultFormats) as ImageType[],
+    imageUrlFor(width: number, type: ImageType = 'jpeg') {
       const url = new URL(`https://${domain}/${normalizeSrc(image)}`);
       const searchParams = url.searchParams;
 
@@ -248,15 +253,8 @@ export function fastly(image: string, options: FastlyOptions = {}): ImageData {
       for (const [key, value] of Object.entries(options)) {
         if (key === 'aspectRatio') {
           continue;
-        } else if (key === 'bgColor') {
-          searchParams.set('bg-color', value);
-        } else if (key === 'resizeFilter') {
-          searchParams.set('resize-filter', value);
-        } else if (key === 'trimColor') {
-          searchParams.set('trim-color', value);
-        } else {
-          searchParams.set(key, String(value));
         }
+        searchParams.set(kebabCase(key), value);
       }
 
       return url.toString();
