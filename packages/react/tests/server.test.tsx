@@ -3,7 +3,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { ResponsiveImage } from '../src/responsive-image.tsx';
+import { ResponsiveImage } from '../src';
 
 describe('environment', () => {
   it('runs on server', () => {
