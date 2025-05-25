@@ -8,31 +8,11 @@ export interface FastlyConfig {
    * By default `fastly` uses the `webp` format.
    * Use this to set a different list of default formats.
    */
-  defaultFormats?: FastlyImageFormats[];
+  defaultFormats?: ImageType[];
   domain?: string;
 }
 
-type FastlyImageFormats =
-  | 'avif'
-  | 'bjpg'
-  | 'bjpeg'
-  | 'gif'
-  | 'jpg'
-  | 'jpeg'
-  | 'jxl'
-  | 'jpegxl'
-  | 'mp4'
-  | 'pjpg'
-  | 'pjpeg'
-  | 'pjxl'
-  | 'pjpegxl'
-  | 'png'
-  | 'png8'
-  | 'webp'
-  | 'webpll'
-  | 'webply';
-
-export interface FastlyOptions extends Omit<CoreOptions, 'formats'> {
+export interface FastlyOptions extends CoreOptions {
   /**
    * Sets the background color of the image when adding padding
    * or for transparent images.
@@ -109,7 +89,7 @@ export interface FastlyOptions extends Omit<CoreOptions, 'formats'> {
    *
    * @see https://www.fastly.com/documentation/reference/io/format/
    */
-  formats?: FastlyImageFormats[];
+  formats?: ImageType[];
   /**
    * Extracts the first frame from an animated image sequence (gif).
    *
@@ -226,7 +206,7 @@ function kebabCase(camelCase: string): string {
 }
 
 export function fastly(image: string, options: FastlyOptions = {}): ImageData {
-  const config = getConfig<Config>('cdn')?.fastly || {};
+  const config = getConfig<Config>('cdn')?.fastly ?? {};
   const domain = config.domain;
   assert(
     'domain must be set for the fastly provider!',
@@ -237,9 +217,7 @@ export function fastly(image: string, options: FastlyOptions = {}): ImageData {
   const defaultFormats = config.defaultFormats ?? ['webp'];
 
   const imageData: ImageData = {
-    // The components handle more formats than ImageType,
-    // though with a priority of 0
-    imageTypes: (options.formats ?? defaultFormats) as ImageType[],
+    imageTypes: options.formats ?? defaultFormats,
     imageUrlFor(width: number, type: ImageType = 'jpeg') {
       const url = new URL(`https://${domain}/${normalizeSrc(image)}`);
       const searchParams = url.searchParams;
