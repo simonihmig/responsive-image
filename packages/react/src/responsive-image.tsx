@@ -10,58 +10,34 @@ import './responsive-image.css';
 
 export type ResponsiveImageLayout = 'responsive' | 'fixed';
 
-export interface ResponsiveImageProps {
+interface ResponsiveImageArgs {
   src: ImageData;
-  /**
-   * The [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt) for `img`.
-   */
-  alt?: string;
   /**
    * The [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes) for `img`.
    */
-  sizes?: string;
+  sizes?: string | undefined;
   /**
    * The [height attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#height) for `img`.
    */
-  height?: number;
+  height?: number | undefined;
   /**
    * The [width attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width) for `img`.
    */
-  width?: number;
+  width?: number | undefined;
   /**
    * Number of vw units to use for responsive layout.
    */
-  size?: number;
-  /**
-   * The [loading attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading) for `img`.
-   */
-  loading?: 'eager' | 'lazy';
-  /**
-   * The [decoding attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#decoding) for `img`.
-   */
-  decoding?: 'async' | 'sync' | 'auto';
-  /**
-   * The [fetchpriority attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#fetchpriority) for `img`.
-   */
-  fetchpriority?: 'high' | 'low' | 'auto';
-  /**
-   * The [crossorigin attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#crossorigin) for `img`.
-   */
-  crossorigin?: 'anonymous' | 'use-credentials';
-  /**
-   * The [referrerpolicy attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#referrerpolicy) for `img`.
-   */
-  referrerpolicy?:
-    | 'no-referrer'
-    | 'no-referrer-when-downgrade'
-    | 'origin'
-    | 'origin-when-cross-origin'
-    | 'same-origin'
-    | 'strict-origin'
-    | 'strict-origin-when-cross-origin'
-    | 'unsafe-url';
-  className?: string;
+  size?: number | undefined;
 }
+
+export type ResponsiveImageProps = Omit<
+  React.DetailedHTMLProps<
+    React.ImgHTMLAttributes<HTMLImageElement>,
+    HTMLImageElement
+  >,
+  'src'
+> &
+  ResponsiveImageArgs;
 
 interface ImageSource {
   srcset: string;
@@ -79,7 +55,7 @@ const typeScore = new Map<string, number>([
 
 const pixelDensities = [1, 2];
 
-function getLayout(props: ResponsiveImageProps) {
+function getLayout(props: ResponsiveImageArgs) {
   const layout: ResponsiveImageLayout =
     props.width === undefined && props.height === undefined
       ? 'responsive'
@@ -87,7 +63,7 @@ function getLayout(props: ResponsiveImageProps) {
   return layout;
 }
 
-function getSources(props: ResponsiveImageProps): ImageSource[] {
+function getSources(props: ResponsiveImageArgs): ImageSource[] {
   const layout = getLayout(props);
   if (layout === 'responsive') {
     return props.src.imageTypes.map((type) => {
@@ -130,7 +106,7 @@ function getSources(props: ResponsiveImageProps): ImageSource[] {
   });
 }
 
-function getWidth(props: ResponsiveImageProps) {
+function getWidth(props: ResponsiveImageArgs) {
   const layout = getLayout(props);
   if (layout === 'responsive') {
     return getDestinationWidthBySize(props.size);
@@ -147,7 +123,7 @@ function getWidth(props: ResponsiveImageProps) {
   return undefined;
 }
 
-function getHeight(props: ResponsiveImageProps) {
+function getHeight(props: ResponsiveImageArgs) {
   if (props.height !== undefined) {
     return props.height;
   }
@@ -161,36 +137,45 @@ function getHeight(props: ResponsiveImageProps) {
   return undefined;
 }
 
-function getSrc(props: ResponsiveImageProps) {
+function getSrc(props: ResponsiveImageArgs) {
   const width = getWidth(props) || 640;
   return props.src.imageUrlFor(width);
 }
 
-export function ResponsiveImage(props: ResponsiveImageProps) {
+function getClassNames(props: ResponsiveImageArgs, isLoaded: boolean) {
   const layout = getLayout(props);
-  const sources = getSources(props);
+  const classNames = [
+    'ri-img',
+    `ri-${layout === 'responsive' ? 'responsive' : 'fixed'}`,
+  ];
+  const lqipClass = props.src.lqip?.class;
+  if (lqipClass && !isLoaded) {
+    classNames.push(getValueOrCallback(lqipClass));
+  }
+  return classNames.join(' ');
+}
 
+function bgImage(props: ResponsiveImageArgs, isLoaded: boolean) {
+  if (isLoaded) {
+    return undefined;
+  }
+  const bgImage = props.src.lqip?.bgImage;
+  return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
+}
+
+export function ResponsiveImage(props: ResponsiveImageProps) {
   const [isLoaded, setLoaded] = useState(false);
 
-  function getClassNames(props: ResponsiveImageProps) {
-    const classNames = [
-      'ri-img',
-      `ri-${layout === 'responsive' ? 'responsive' : 'fixed'}`,
-    ];
-    const lqipClass = props.src.lqip?.class;
-    if (lqipClass && !isLoaded) {
-      classNames.push(getValueOrCallback(lqipClass));
-    }
-    return classNames.join(' ');
-  }
+  const { src, size, sizes, width, height, ...htmlAttributes } = props;
+  const riProps: ResponsiveImageArgs = {
+    src,
+    size,
+    sizes,
+    width,
+    height,
+  };
 
-  function bgImage() {
-    if (isLoaded) {
-      return undefined;
-    }
-    const bgImage = props.src.lqip?.bgImage;
-    return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
-  }
+  const sources = getSources(riProps);
 
   return (
     <picture>
@@ -202,16 +187,15 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
           <source srcSet={s.srcset} type={s.mimeType} sizes={s.sizes} />
         ))}
       <img
-        className={getClassNames(props)}
-        loading={props.loading || 'lazy'}
-        decoding={props.decoding || 'async'}
-        alt={props.alt}
-        width={getWidth(props)}
-        height={getHeight(props)}
-        {...props}
-        src={getSrc(props)}
-        data-ri-lqip={props.src.lqip?.attribute}
-        style={{ backgroundImage: bgImage() }}
+        className={getClassNames(riProps, isLoaded)}
+        loading={htmlAttributes.loading || 'lazy'}
+        decoding={htmlAttributes.decoding || 'async'}
+        width={getWidth(riProps)}
+        height={getHeight(riProps)}
+        src={getSrc(riProps)}
+        {...htmlAttributes}
+        data-ri-lqip={riProps.src.lqip?.attribute}
+        style={{ backgroundImage: bgImage(riProps, isLoaded) }}
         onLoad={() => setLoaded(true)}
       />
     </picture>
