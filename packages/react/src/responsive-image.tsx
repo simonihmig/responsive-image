@@ -184,7 +184,12 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
           (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0),
         )
         .map((s) => (
-          <source srcSet={s.srcset} type={s.mimeType} sizes={s.sizes} />
+          <source
+            key={s.mimeType}
+            srcSet={s.srcset}
+            type={s.mimeType}
+            sizes={s.sizes}
+          />
         ))}
       <img
         className={getClassNames(riProps, isLoaded)}
