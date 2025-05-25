@@ -19,6 +19,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "9.26.0",
     "@playwright/test": "1.52.0",
     "@responsive-image/internals": "workspace:*",
     "@responsive-image/vite-plugin": "workspace:*",
@@ -26,7 +27,12 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "9.26.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "16.1.0",
     "typescript": "~5.8.3",
+    "typescript-eslint": "8.32.1",
     "vite": "^6.3.5"
   }
 }
