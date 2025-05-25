@@ -548,7 +548,7 @@ describe('ResponsiveImage', () => {
   });
 
   describe('LQIP', () => {
-    test('it sets LQIP class from literal', async () => {
+    test('it throws when LQIP class is set', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
@@ -556,36 +556,14 @@ describe('ResponsiveImage', () => {
         },
       };
 
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
+      expect(
+        fixture<ResponsiveImage>(
+          html`<responsive-image .src=${imageData}></responsive-image>`,
+        ),
+      ).rejects.toHaveProperty(
+        'message',
+        "Using LQIP with a class name is not supported in @responsive-image/wc, as globals styles will not work with web components and Shadow DOM. Use the `styles: 'inline'` option in your build plugin config.",
       );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toHaveClass('lqip-inline-test-class');
-
-      await trigger(imgEl!);
-
-      expect(imgEl).not.toHaveClass('lqip-inline-test-class');
-    });
-
-    test('it sets LQIP class from callback', async () => {
-      const imageData: ImageData = {
-        ...defaultImageData,
-        lqip: {
-          class: () => 'lqip-inline-test-class',
-        },
-      };
-
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
-      );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toHaveClass('lqip-inline-test-class');
-
-      await trigger(imgEl!);
-
-      expect(imgEl).not.toHaveClass('lqip-inline-test-class');
     });
 
     test('it sets LQIP background from literal', async () => {

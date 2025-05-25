@@ -174,6 +174,12 @@ export class ResponsiveImage extends LitElement {
   render() {
     const { lqip } = this.src;
 
+    if (lqip?.class) {
+      throw new Error(
+        "Using LQIP with a class name is not supported in @responsive-image/wc, as globals styles will not work with web components and Shadow DOM. Use the `styles: 'inline'` option in your build plugin config.",
+      );
+    }
+
     const classes: ClassInfo = {
       'ri-img': true,
       'ri-responsive': this.layout === Layout.RESPONSIVE,
