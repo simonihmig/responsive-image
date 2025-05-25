@@ -5,10 +5,7 @@ import type { ImageData, ImageType } from '@responsive-image/core';
 
 export interface FastlyConfig {
   /**
-   * By default `fastly` uses the `auto` format to let
-   * Fastly determine the optimal format based on
-   * [content negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation).
-   *
+   * By default `fastly` uses the `webp` format.
    * Use this to set a different list of default formats.
    */
   defaultFormats?: FastlyImageFormats[];
