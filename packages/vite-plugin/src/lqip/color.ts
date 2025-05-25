@@ -43,7 +43,7 @@ export default function lqipColorPlugin(
         case 'inline':
           importCSS = `import inlineStyles from '${
             pathname
-          }.css?_plugin=${colorCssPluginName}&className=${encodeURIComponent(className)}&inline';`;
+          }.xyz?_plugin=${colorCssPluginName}&inline=1';`;
           break;
         default:
           throw new Error(`Unknown styles option: ${options.styles}`);
@@ -51,12 +51,10 @@ export default function lqipColorPlugin(
 
       const result = {
         ...input,
-        lqip: {
-          class: className,
-          ...(options.styles === 'inline'
+        lqip:
+          options.styles === 'inline'
             ? { inlineStyles: safeString('inlineStyles') }
-            : {}),
-        },
+            : { class: className },
         imports: [...input.imports, importCSS],
       } satisfies ImageLoaderChainedResult;
 

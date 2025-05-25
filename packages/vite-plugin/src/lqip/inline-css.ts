@@ -40,15 +40,11 @@ export default function lqipInlineCssPlugin(
         return;
       }
 
-      if (typeof className !== 'string') {
-        throw new Error('Missing className');
-      }
-
       if (typeof targetPixels !== 'string') {
         throw new Error('Missing targetPixels');
       }
 
-      const originalFile = getPathname(id).replace(/\.css$/, '');
+      const originalFile = getPathname(id).replace(/\.(css|xyz)$/, '');
       const file = await this.resolve(originalFile);
       const image = sharp(file?.id);
       const meta = await image.metadata();
@@ -78,9 +74,9 @@ export default function lqipInlineCssPlugin(
         'image/svg+xml',
       );
 
-      const cssRule = `.${className} { background-image: url(${uri}); }`;
-
-      return inline ? `export default ${JSON.stringify(cssRule)}` : cssRule;
+      return inline
+        ? `export default ${JSON.stringify({ 'background-image': `url(${uri})` })}`
+        : `.${className} { background-image: url(${uri}); }`;
     },
   };
 }

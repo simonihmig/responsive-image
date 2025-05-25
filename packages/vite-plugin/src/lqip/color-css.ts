@@ -36,11 +36,7 @@ export default function lqipColorCssPlugin(
         return;
       }
 
-      if (typeof className !== 'string') {
-        throw new Error('Missing className');
-      }
-
-      const originalFile = getPathname(id).replace(/\.css$/, '');
+      const originalFile = getPathname(id).replace(/\.(css|xyz)$/, '');
       const file = await this.resolve(originalFile);
       const image = sharp(file?.id);
       const { dominant } = await image.stats();
@@ -50,9 +46,9 @@ export default function lqipColorCssPlugin(
         dominant.b.toString(16).padStart(2, '0');
       const color = '#' + colorHex;
 
-      const cssRule = `.${className} { background-color: ${color}; }`;
-
-      return inline ? `export default ${JSON.stringify(cssRule)}` : cssRule;
+      return inline
+        ? `export default ${JSON.stringify({ 'background-color': color })}`
+        : `.${className} { background-color: ${color}; }`;
     },
   };
 }
