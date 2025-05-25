@@ -30,30 +30,6 @@ The addon provides a `<ResponsiveImage>` component for rendering the set of imag
 
 To process [local images](../usage/local-images.md) you will need to setup one of the [build plugins](../build/index.md) depending on your app's setup.
 
-### Vite
-
-If your app is built with Vite, add the Vite plugin to your `app.config.ts`:
-
-```ts
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import { setupPlugins } from '@responsive-image/vite-plugin';
-
-export default defineConfig({
-  vite: {
-    plugins: [
-      react(),
-      setupPlugins({
-        include: /^[^?]+\.jpg\?.*responsive.*$/,
-      }),
-    ],
-  },
-});
-```
-
-> [!IMPORTANT]
-> For more information on how to configure `@responsive-image/vite-plugin` and `setupPlugins()` refer to the [Vite plugin](../build/vite.md) documentation.
-
 ## Remote images
 
 The `@responsibe-image/cdn` package provides multiple helper functions to support [remote images](../usage/remote-images.md) served from different image CDNs for use with the `<responsive-image/>` component.
