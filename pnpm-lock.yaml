@@ -204,8 +204,8 @@ importers:
         specifier: 4.7.0
         version: 4.7.0
       npm-run-all2:
-        specifier: 8.0.3
-        version: 8.0.3
+        specifier: 8.0.4
+        version: 8.0.4
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -567,8 +567,8 @@ importers:
         specifier: 4.7.0
         version: 4.7.0
       npm-run-all2:
-        specifier: 8.0.3
-        version: 8.0.3
+        specifier: 8.0.4
+        version: 8.0.4
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -8990,8 +8990,8 @@ packages:
     resolution: {integrity: sha512-f1NpFjNI9O4VbKMOlA5QoBq/vSQPORHcTZ2feJpFkTHJ9eQkdlmZEKSjcAhxTGInC7RlEyScT9ui67NaOsjFWA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  npm-run-all2@8.0.3:
-    resolution: {integrity: sha512-0mAycidMUMThrLt8AT3LGtOMgfLaMg6/4oUKHTKMU0jDSIsdKBsKp98H8zBFcJylQC4CtOB140UUFbOlFyE9gA==}
+  npm-run-all2@8.0.4:
+    resolution: {integrity: sha512-wdbB5My48XKp2ZfJUlhnLVihzeuA1hgBnqB2J9ahV77wLS+/YAJAlN8I+X3DIFIPZ3m5L7nplmlbhNiFDmXRDA==}
     engines: {node: ^20.5.0 || >=22.0.0, npm: '>= 10'}
     hasBin: true
 
@@ -21506,12 +21506,12 @@ snapshots:
       semver: 7.7.2
       validate-npm-package-name: 6.0.0
 
-  npm-run-all2@8.0.3:
+  npm-run-all2@8.0.4:
     dependencies:
       ansi-styles: 6.2.1
       cross-spawn: 7.0.6
       memorystream: 0.3.1
-      minimatch: 10.0.1
+      picomatch: 4.0.2
       pidtree: 0.6.0
       read-package-json-fast: 4.0.0
       shell-quote: 1.8.2
