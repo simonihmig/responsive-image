@@ -110,6 +110,7 @@ export default defineConfig({
         base: '/cdn',
         items: [
           { text: 'Cloudinary', link: '/cloudinary' },
+          { text: 'Fastly', link: '/fastly' },
           { text: 'Imgix', link: '/imgix' },
           { text: 'Netlify', link: '/netlify' },
         ],

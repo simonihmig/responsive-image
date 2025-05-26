@@ -1,4 +1,4 @@
-import { cloudinary, imgix, netlify } from '@responsive-image/cdn';
+import { cloudinary, fastly, imgix, netlify } from '@responsive-image/cdn';
 import { ResponsiveImage } from '@responsive-image/solid';
 import image from '../images/aurora.jpg?responsive';
 import imageLqipColor from '../images/aurora.jpg?lqip=color&responsive';
@@ -22,6 +22,13 @@ export default function Home() {
           aspectRatio: 1.4971927636,
         })}
         data-test-cloudinary-image
+      />
+      <h2>Fastly</h2>
+      <ResponsiveImage
+        src={fastly('image.webp', {
+          aspectRatio: 2,
+        })}
+        data-test-fastly-image
       />
       <h2>imgix</h2>
       <ResponsiveImage
