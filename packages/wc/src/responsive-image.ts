@@ -193,9 +193,6 @@ export class ResponsiveImage extends LitElement {
       ? {}
       : {
           ...(lqip?.inlineStyles ? getValueOrCallback(lqip.inlineStyles) : {}),
-          ...(lqip?.bgImage
-            ? { backgroundImage: `url("${getValueOrCallback(lqip.bgImage)}")` }
-            : {}),
         };
 
     return html`

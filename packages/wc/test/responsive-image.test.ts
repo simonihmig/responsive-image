@@ -566,62 +566,6 @@ describe('ResponsiveImage', () => {
       );
     });
 
-    test('it sets LQIP background from literal', async () => {
-      const imageData: ImageData = {
-        ...defaultImageData,
-        lqip: {
-          bgImage: 'test.png',
-        },
-      };
-
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
-      );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toBeDefined();
-      expect(imgEl!.complete).toBe(false);
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'url("test.png")',
-      });
-
-      await trigger(imgEl!);
-
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'none',
-      });
-    });
-
-    test('it sets LQIP background from callback', async () => {
-      const imageData: ImageData = {
-        ...defaultImageData,
-        lqip: {
-          bgImage: () => 'test.png',
-        },
-      };
-
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
-      );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toBeDefined();
-      expect(imgEl!.complete).toBe(false);
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'url("test.png")',
-      });
-
-      await trigger(imgEl!);
-
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'none',
-      });
-    });
-
     test('it sets LQIP attribute from literal', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
