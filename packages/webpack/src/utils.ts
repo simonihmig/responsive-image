@@ -10,7 +10,8 @@ export const defaultWebpackOptions = {
   name: '[name]-[width]w-[hash].[ext]',
   outputPath: 'assets',
   cache: true,
-};
+  styles: 'external',
+} as const;
 
 export const webpackOptionKeys = [
   'lqip',

@@ -21,10 +21,8 @@ export default function lqipInlineCssLoader(
 }
 
 async function process(context: LoaderContext<unknown>): Promise<string> {
-  const { className, targetPixels } = parseQuery(context.resourceQuery);
-  if (typeof className !== 'string') {
-    throw new Error('Missing className');
-  }
+  const { className, targetPixels, inline } = parseQuery(context.resourceQuery);
+
   if (typeof targetPixels !== 'string') {
     throw new Error('Missing targetPixels');
   }
@@ -55,7 +53,9 @@ async function process(context: LoaderContext<unknown>): Promise<string> {
     'image/svg+xml',
   );
 
-  return `.${className} { background-image: url(${uri}); }`;
+  return inline
+    ? `export default ${JSON.stringify({ 'background-image': `url(${uri})` })}`
+    : `.${className} { background-image: url(${uri}); }`;
 }
 
 function getLqipDimensions(
