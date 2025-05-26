@@ -65,4 +65,15 @@ describe('netlify', function () {
 
     expect(result.aspectRatio).toBe(2);
   });
+
+  test('it supports auto format', function () {
+    const result = netlify('/foo/bar.jpg', {
+      auto: 'format',
+    });
+
+    expect(result.auto).toBe('format');
+    expect(result.imageUrlFor(100, 'jpeg')).toBe(
+      'https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100',
+    );
+  });
 });

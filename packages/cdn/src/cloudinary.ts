@@ -65,13 +65,17 @@ export function cloudinary(
 
       transformations.push(resizeParams);
 
-      const params = transformations
-        .map((transformation) =>
-          Object.entries(transformation)
-            .map(([key, value]) => `${key}_${value}`)
-            .join(','),
-        )
-        .join('/');
+      const pathParameters = transformations.map((transformation) =>
+        Object.entries(transformation)
+          .map(([key, value]) => `${key}_${value}`)
+          .join(','),
+      );
+
+      if (options.auto === 'format') {
+        pathParameters.push('f_auto');
+      }
+
+      const params = pathParameters.join('/');
 
       return `https://res.cloudinary.com/${cloudName}/image/${deliveryType}/${params}/${imageId}${
         deliveryType === 'upload' ? '.' + type : ''
@@ -79,6 +83,9 @@ export function cloudinary(
     },
   };
 
+  if (options.auto) {
+    imageData.auto = options.auto;
+  }
   if (options.aspectRatio) {
     imageData.aspectRatio = options.aspectRatio;
   }

@@ -30,8 +30,14 @@ export function netlify(
       const params = new URLSearchParams({
         url,
         w: String(width),
-        fm: formatMap[type] ?? type,
       });
+
+      // In Netlify omiting the format parameter
+      // lets the CDN pick a format based on the Accept header
+      // https://docs.netlify.com/image-cdn/overview/#format
+      if (options.auto !== 'format') {
+        params.set('fm', formatMap[type] ?? type);
+      }
 
       if (options.quality) {
         params.set('q', String(options.quality));
@@ -41,6 +47,9 @@ export function netlify(
     },
   };
 
+  if (options.auto) {
+    imageData.auto = options.auto;
+  }
   if (options.aspectRatio) {
     imageData.aspectRatio = options.aspectRatio;
   }

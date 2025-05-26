@@ -29,7 +29,11 @@ export function imgix(image: string, options: ImgixOptions = {}): ImageData {
       const url = new URL(`https://${domain}/${normalizeSrc(image)}`);
       const params = url.searchParams;
 
-      params.set('fm', formatMap[type] ?? type);
+      if (options.auto === 'format') {
+        params.set('auto', 'format');
+      } else {
+        params.set('fm', formatMap[type] ?? type);
+      }
       params.set('w', String(width));
       params.set('fit', 'max');
 
@@ -47,6 +51,9 @@ export function imgix(image: string, options: ImgixOptions = {}): ImageData {
     },
   };
 
+  if (options.auto) {
+    imageData.auto = options.auto;
+  }
   if (options.aspectRatio) {
     imageData.aspectRatio = options.aspectRatio;
   }
