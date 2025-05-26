@@ -2,7 +2,7 @@ import type { CloudinaryConfig } from './cloudinary';
 import type { FastlyConfig } from './fastly';
 import type { ImgixConfig } from './imgix';
 import type { NetlifyConfig } from './netlify';
-import type { ImageType } from '@responsive-image/core';
+import type { ImageAuto, ImageType } from '@responsive-image/core';
 
 export interface Config {
   imgix?: ImgixConfig;
@@ -13,6 +13,7 @@ export interface Config {
 
 export interface CoreOptions {
   formats?: ImageType[];
+  auto?: ImageAuto;
   quality?: number;
   aspectRatio?: number;
 }

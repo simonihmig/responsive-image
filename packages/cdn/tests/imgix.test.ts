@@ -64,4 +64,15 @@ describe('imgix', function () {
 
     expect(result.aspectRatio).toBe(2);
   });
+
+  test('it supports auto format', function () {
+    const result = imgix('foo/bar.jpg', {
+      auto: 'format',
+    });
+
+    expect(result.auto).toBe('format');
+    expect(result.imageUrlFor(100, 'jpeg')).toBe(
+      'https://dummy.imgix.net/foo/bar.jpg?auto=format&w=100&fit=max',
+    );
+  });
 });
