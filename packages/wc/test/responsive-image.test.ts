@@ -659,5 +659,27 @@ describe('ResponsiveImage', () => {
 
       expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
     });
+
+    test('it applies inline styles from callback', async () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: () => ({
+            'border-left': 'solid 5px red',
+          }),
+        },
+      };
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      expect(imgEl).toHaveStyle('border-left: solid 5px red');
+
+      await trigger(imgEl!);
+
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
+    });
   });
 });

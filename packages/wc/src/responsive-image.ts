@@ -192,7 +192,7 @@ export class ResponsiveImage extends LitElement {
     const styles: StyleInfo = this.complete
       ? {}
       : {
-          ...(lqip?.inlineStyles ?? {}),
+          ...(lqip?.inlineStyles ? getValueOrCallback(lqip.inlineStyles) : {}),
           ...(lqip?.bgImage
             ? { backgroundImage: `url("${getValueOrCallback(lqip.bgImage)}")` }
             : {}),
