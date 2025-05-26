@@ -112,3 +112,9 @@ setupLoaders({
 The file path where the public image files are emitted to. This is relative to the default folder configured for public asset files in Webpack.
 
 Default: `images`
+
+#### `styles: 'external' | 'internal'
+
+Some plugin options like [LQIP](../usage/lqip.md) `color` and `inline` options produce CSS output. By default the CSS is emitted in a way that makes it get bundled into an external CSS file. By changing this to `internal`, the CSS is integrated into the same JavaScript bundle and applied inline by the [image component](../usage/component.md). This is especially needed for the [web component](../frameworks/wc.md) based image component, as Shadow DOM prevents any global styles by the external CSS to get applied correctly. For all other cases, using `external` is recommended for performance reasons.
+
+Default: `external`
