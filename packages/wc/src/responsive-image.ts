@@ -172,7 +172,7 @@ export class ResponsiveImage extends LitElement {
   }
 
   render() {
-    const { lqip } = this.src;
+    const { lqip, auto } = this.src;
 
     if (lqip?.class) {
       throw new Error(
@@ -195,6 +195,44 @@ export class ResponsiveImage extends LitElement {
           ...(lqip?.inlineStyles ? getValueOrCallback(lqip.inlineStyles) : {}),
         };
 
+    const img = html`
+      <img
+        part="img"
+        width=${ifDefined(this.imgWidth)}
+        height=${ifDefined(this.imgHeight)}
+        class=${classMap(classes)}
+        style=${styleMap(styles)}
+        srcset=${ifDefined(
+          auto === 'format'
+            ? // auto format assumes only one entry in sources
+              this.sources[0].srcset
+            : undefined,
+        )}
+        src=${ifDefined(this.imgSrc)}
+        alt=${this.alt}
+        loading=${this.loading}
+        decoding=${this.decoding}
+        crossorigin=${ifDefined(this.crossOrigin)}
+        fetchpriority=${ifDefined(this.fetchPriority)}
+        referrerpolicy=${ifDefined(this.referrerPolicy)}
+        data-ri-lqip=${ifDefined(lqip?.attribute)}
+        @load=${(event: Event) => {
+          this.complete = true;
+          this.dispatchEvent(new Event(event.type, event));
+        }}
+        @error=${(event: Event) => {
+          this.dispatchEvent(new ErrorEvent(event.type, event));
+        }}
+        @abort=${(event: Event) => {
+          this.dispatchEvent(new Event(event.type, event));
+        }}
+      />
+    `;
+
+    if (auto === 'format') {
+      return img;
+    }
+
     return html`
       <picture>
         ${this.sourcesSorted.map(
@@ -205,31 +243,7 @@ export class ResponsiveImage extends LitElement {
               sizes=${s.sizes ?? nothing}
             />`,
         )}
-        <img
-          part="img"
-          width=${ifDefined(this.imgWidth)}
-          height=${ifDefined(this.imgHeight)}
-          class=${classMap(classes)}
-          style=${styleMap(styles)}
-          src=${ifDefined(this.imgSrc)}
-          alt=${this.alt}
-          loading=${this.loading}
-          decoding=${this.decoding}
-          crossorigin=${ifDefined(this.crossOrigin)}
-          fetchpriority=${ifDefined(this.fetchPriority)}
-          referrerpolicy=${ifDefined(this.referrerPolicy)}
-          data-ri-lqip=${ifDefined(lqip?.attribute)}
-          @load=${(event: Event) => {
-            this.complete = true;
-            this.dispatchEvent(new Event(event.type, event));
-          }}
-          @error=${(event: Event) => {
-            this.dispatchEvent(new ErrorEvent(event.type, event));
-          }}
-          @abort=${(event: Event) => {
-            this.dispatchEvent(new Event(event.type, event));
-          }}
-        />
+        ${img}
       </picture>
     `;
   }

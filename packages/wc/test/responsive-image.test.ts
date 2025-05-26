@@ -4,8 +4,7 @@ import { html } from 'lit';
 import { describe, expect, test, afterEach } from 'vitest';
 
 import { trigger } from './image-helper.js';
-
-import type { ResponsiveImage } from '../src/responsive-image.js';
+import { type ResponsiveImage } from '../src/responsive-image.js';
 
 import '../src/responsive-image.js';
 
@@ -624,6 +623,39 @@ describe('ResponsiveImage', () => {
       await trigger(imgEl!);
 
       expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
+    });
+  });
+
+  describe('auto format', () => {
+    const imageData: ImageData = {
+      auto: 'format',
+      imageTypes: ['webp'],
+      imageUrlFor(width, type = 'jpeg') {
+        return `/provider/w${width}/image.${type}?format=auto`;
+      },
+      availableWidths: [50, 100, 640],
+      aspectRatio: 2,
+    };
+
+    test('it renders a srcset on the img tag', async () => {
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      expect(imgEl).toHaveAttribute(
+        'srcset',
+        '/provider/w50/image.webp?format=auto 50w, /provider/w100/image.webp?format=auto 100w, /provider/w640/image.webp?format=auto 640w',
+      );
+    });
+
+    test('it omits the picture and source tags', async () => {
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+
+      expect(el.shadowRoot?.querySelector('picture')).not.toBeInTheDocument();
+      expect(el.shadowRoot?.querySelector('source')).not.toBeInTheDocument();
     });
   });
 });
