@@ -56,8 +56,8 @@ export default function lqipBlurhashPlugin(
         ...input,
         imports: [...input.imports, decodeImport],
         lqip: {
-          bgImage: safeString(
-            `() => decode2url('${hash}', ${width}, ${height})`,
+          inlineStyles: safeString(
+            `() => ({ "background-image": \`url("\${decode2url('${hash}', ${width}, ${height})}")\` })`,
           ),
           attribute: `bh:${width}:${height}:${hash}`,
         },

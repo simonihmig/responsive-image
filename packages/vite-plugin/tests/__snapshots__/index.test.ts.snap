@@ -35,7 +35,7 @@ const image = {
     return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
   },
   lqip: {
-    bgImage: () => decode2url("M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu", 5, 3),
+    inlineStyles: () => ({ "background-image": \`url("\${decode2url("M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu", 5, 3)}")\` }),
     attribute: "bh:5:3:M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu"
   }
 };
@@ -244,7 +244,7 @@ const image = {
     return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
   },
   lqip: {
-    bgImage: () => decode2url("jJcFFYI1fIWHe4dweXlYeUaAmWj3"),
+    inlineStyles: () => ({ "background-image": \`url("\${decode2url("jJcFFYI1fIWHe4dweXlYeUaAmWj3")}")\` }),
     attribute: "th:jJcFFYI1fIWHe4dweXlYeUaAmWj3"
   }
 };
