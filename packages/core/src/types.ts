@@ -20,8 +20,11 @@ export interface Lqip {
   attribute?: string;
 }
 
+export type ImageAuto = 'format';
+
 export interface ImageData {
   imageTypes: ImageType[];
+  auto?: ImageAuto;
   availableWidths?: number[];
   aspectRatio?: number;
   imageUrlFor(width: number, type?: ImageType): string | undefined;
