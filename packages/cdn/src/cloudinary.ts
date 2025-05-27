@@ -1,7 +1,7 @@
 import { assert, getConfig } from '@responsive-image/core';
 
 import type { Config, CoreOptions } from './types';
-import type { ImageType, ImageData } from '@responsive-image/core';
+import type { ImageData, ImageUrlForType } from '@responsive-image/core';
 
 export interface CloudinaryConfig {
   cloudName: string;
@@ -47,7 +47,7 @@ export function cloudinary(
 
   const imageData: ImageData = {
     imageTypes: options.formats ?? ['webp', 'avif'],
-    imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
+    imageUrlFor(width: number, type: ImageUrlForType = 'jpeg'): string {
       const resizeParams: CloudinaryTransformation = {
         w: width,
         c: 'limit',
@@ -71,21 +71,23 @@ export function cloudinary(
           .join(','),
       );
 
-      if (options.auto === 'format') {
+      if (type === 'auto') {
         pathParameters.push('f_auto');
       }
 
       const params = pathParameters.join('/');
 
+      // Omit the extension when using auto for the upload delivery method
+      // https://cloudinary.com/documentation/transformation_reference#_lt_extension_gt
+      const extension =
+        deliveryType === 'upload' && type !== 'auto' ? '.' + type : '';
+
       return `https://res.cloudinary.com/${cloudName}/image/${deliveryType}/${params}/${imageId}${
-        deliveryType === 'upload' ? '.' + type : ''
+        extension
       }`;
     },
   };
 
-  if (options.auto) {
-    imageData.auto = options.auto;
-  }
   if (options.aspectRatio) {
     imageData.aspectRatio = options.aspectRatio;
   }
