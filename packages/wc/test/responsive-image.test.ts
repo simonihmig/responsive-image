@@ -628,10 +628,9 @@ describe('ResponsiveImage', () => {
 
   describe('auto format', () => {
     const imageData: ImageData = {
-      auto: 'format',
-      imageTypes: ['webp'],
+      imageTypes: 'auto',
       imageUrlFor(width, type = 'jpeg') {
-        return `/provider/w${width}/image.${type}?format=auto`;
+        return `/provider/w${width}/image.webp?format=${type}`;
       },
       availableWidths: [50, 100, 640],
       aspectRatio: 2,

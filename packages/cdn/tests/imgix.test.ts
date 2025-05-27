@@ -67,11 +67,10 @@ describe('imgix', function () {
 
   test('it supports auto format', function () {
     const result = imgix('foo/bar.jpg', {
-      auto: 'format',
+      formats: 'auto',
     });
 
-    expect(result.auto).toBe('format');
-    expect(result.imageUrlFor(100, 'jpeg')).toBe(
+    expect(result.imageUrlFor(100, 'auto')).toBe(
       'https://dummy.imgix.net/foo/bar.jpg?auto=format&w=100&fit=max',
     );
   });

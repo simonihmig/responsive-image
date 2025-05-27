@@ -1,6 +1,7 @@
 import {
   type ImageData,
   type ImageType,
+  type ImageTypeAuto,
   env,
   getDestinationWidthBySize,
   getValueOrCallback,
@@ -13,8 +14,8 @@ import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
   srcset: string;
-  type: ImageType;
-  mimeType: string;
+  type: ImageType | ImageTypeAuto;
+  mimeType?: string;
   sizes?: string;
 }
 
@@ -26,11 +27,12 @@ enum Layout {
 const PIXEL_DENSITIES = [1, 2];
 
 // determines the order of sources, prefereing next-gen formats over legacy
-const typeScore = new Map<ImageType, number>([
+const typeScore = new Map<ImageType | ImageTypeAuto, number>([
   ['png', 1],
   ['jpeg', 1],
   ['webp', 2],
   ['avif', 3],
+  ['auto', 4],
 ]);
 
 @customElement('responsive-image')
@@ -92,8 +94,11 @@ export class ResponsiveImage extends LitElement {
   }
 
   get sources(): ImageSource[] {
+    const imageTypes = Array.isArray(this.src.imageTypes)
+      ? this.src.imageTypes
+      : [this.src.imageTypes];
     if (this.layout === Layout.RESPONSIVE) {
-      return this.src.imageTypes.map((type) => {
+      return imageTypes.map((type) => {
         let widths = this.src.availableWidths;
         if (!widths) {
           widths = env.deviceWidths;
@@ -107,7 +112,7 @@ export class ResponsiveImage extends LitElement {
           srcset: sources.join(', '),
           sizes: this.sizes ?? (this.size ? `${this.size}vw` : undefined),
           type,
-          mimeType: `image/${type}`,
+          mimeType: type != 'auto' ? `image/${type}` : undefined,
         };
       });
     }
@@ -116,7 +121,7 @@ export class ResponsiveImage extends LitElement {
       return [];
     }
 
-    return this.src.imageTypes.map((type) => {
+    return imageTypes.map((type) => {
       const sources: string[] = PIXEL_DENSITIES.map((density) => {
         const url = this.src.imageUrlFor(width * density, type)!;
 
@@ -126,7 +131,7 @@ export class ResponsiveImage extends LitElement {
       return {
         srcset: sources.join(', '),
         type,
-        mimeType: `image/${type}`,
+        mimeType: type != 'auto' ? `image/${type}` : undefined,
       };
     });
   }
@@ -168,11 +173,12 @@ export class ResponsiveImage extends LitElement {
   }
 
   get imgSrc(): string | undefined {
-    return this.src.imageUrlFor(this.imgWidth ?? 640);
+    const format = this.src.imageTypes === 'auto' ? 'auto' : undefined;
+    return this.src.imageUrlFor(this.imgWidth ?? 640, format);
   }
 
   render() {
-    const { lqip, auto } = this.src;
+    const { lqip, imageTypes } = this.src;
 
     if (lqip?.class) {
       throw new Error(
@@ -203,7 +209,7 @@ export class ResponsiveImage extends LitElement {
         class=${classMap(classes)}
         style=${styleMap(styles)}
         srcset=${ifDefined(
-          auto === 'format'
+          imageTypes === 'auto'
             ? // auto format assumes only one entry in sources
               this.sources[0].srcset
             : undefined,
@@ -229,7 +235,7 @@ export class ResponsiveImage extends LitElement {
       />
     `;
 
-    if (auto === 'format') {
+    if (imageTypes === 'auto') {
       return img;
     }
 
@@ -239,7 +245,7 @@ export class ResponsiveImage extends LitElement {
           (s) =>
             html`<source
               srcset=${s.srcset}
-              type=${s.mimeType}
+              type=${ifDefined(s.mimeType)}
               sizes=${s.sizes ?? nothing}
             />`,
         )}

@@ -64,4 +64,13 @@ describe('fastly', function () {
 
     expect(result.aspectRatio).toBe(2);
   });
+
+  test('it supports auto format', function () {
+    const result = fastly('foo/bar.jpg', {
+      formats: 'auto',
+    });
+    expect(result.imageUrlFor(100, 'auto')).toBe(
+      'https://image.mydomain.com/foo/bar.jpg?format=auto&width=100',
+    );
+  });
 });

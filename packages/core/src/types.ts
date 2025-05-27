@@ -27,14 +27,15 @@ export interface Lqip {
   inlineStyles?: ValueOrCallback<Record<string, string | undefined>>;
 }
 
-export type ImageAuto = 'format';
+export type ImageTypeAuto = 'auto';
+
+export type ImageUrlForType = ImageType | ImageTypeAuto;
 
 export interface ImageData {
-  imageTypes: ImageType[];
-  auto?: ImageAuto;
+  imageTypes: ImageType[] | ImageTypeAuto;
   availableWidths?: number[];
   aspectRatio?: number;
-  imageUrlFor(width: number, type?: ImageType): string | undefined;
+  imageUrlFor(width: number, type?: ImageUrlForType): string | undefined;
   lqip?: Lqip;
 }
 

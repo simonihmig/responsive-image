@@ -92,12 +92,11 @@ describe('cloudinary', function () {
 
   test('it supports auto format', function () {
     const result = cloudinary('foo/bar.jpg', {
-      auto: 'format',
+      formats: 'auto',
     });
 
-    expect(result.auto).toBe('format');
-    expect(result.imageUrlFor(100, 'jpeg')).toBe(
-      'https://res.cloudinary.com/dummy/image/upload/w_100,c_limit,q_auto/f_auto/foo/bar.jpeg',
+    expect(result.imageUrlFor(100, 'auto')).toBe(
+      'https://res.cloudinary.com/dummy/image/upload/w_100,c_limit,q_auto/f_auto/foo/bar',
     );
   });
 });

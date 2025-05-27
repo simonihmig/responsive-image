@@ -68,11 +68,10 @@ describe('netlify', function () {
 
   test('it supports auto format', function () {
     const result = netlify('/foo/bar.jpg', {
-      auto: 'format',
+      formats: 'auto',
     });
 
-    expect(result.auto).toBe('format');
-    expect(result.imageUrlFor(100, 'jpeg')).toBe(
+    expect(result.imageUrlFor(100, 'auto')).toBe(
       'https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100',
     );
   });

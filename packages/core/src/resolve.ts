@@ -23,9 +23,13 @@ export function resolveImage(
   data: ImageData,
   { width, size, format }: ResolveImageOptions = {},
 ): string | undefined {
+  const imageType =
+    format ??
+    (Array.isArray(data.imageTypes) ? data.imageTypes[0] : data.imageTypes);
+
   const url = data.imageUrlFor(
     width ?? getDestinationWidthBySize(size),
-    format ?? data.imageTypes[0],
+    imageType,
   );
 
   return url;
