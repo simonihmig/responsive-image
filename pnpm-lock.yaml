@@ -637,7 +637,7 @@ importers:
         specifier: 22.13.4
         version: 22.13.4
       '@types/react':
-        specifier: ^19.1.2
+        specifier: ^19.1.4
         version: 19.1.4
       '@types/react-dom':
         specifier: ^19.1.2
@@ -1131,7 +1131,7 @@ importers:
         version: 10.4.0
       '@testing-library/react':
         specifier: 16.2.0
-        version: 16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.5(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.5(@types/react@19.0.14))(@types/react@19.0.14)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -1139,11 +1139,11 @@ importers:
         specifier: 22.13.4
         version: 22.13.4
       '@types/react':
-        specifier: 19.0.8
-        version: 19.0.8
+        specifier: 19.0.14
+        version: 19.0.14
       '@types/react-dom':
         specifier: ^19.1.5
-        version: 19.1.5(@types/react@19.0.8)
+        version: 19.1.5(@types/react@19.0.14)
       '@vitest/browser':
         specifier: 3.1.3
         version: 3.1.3(playwright@1.52.0)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))(vitest@3.1.3)
@@ -4325,8 +4325,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.0.8':
-    resolution: {integrity: sha512-9P/o1IGdfmQxrujGbIMDyYaaCykhLKc0NGCtYcECNUr9UAaDe4gwvV9bR6tvd5Br1SG0j+PBpbKr2UYY8CwqSw==}
+  '@types/react@19.0.14':
+    resolution: {integrity: sha512-ixLZ7zG7j1fM0DijL9hDArwhwcCb4vqmePgwtV0GfnkHRSCUEv4LvzarcTdhoqgyMznUx/EhoTUv31CKZzkQlw==}
 
   '@types/react@19.1.4':
     resolution: {integrity: sha512-EB1yiiYdvySuIITtD5lhW4yPyJ31RkJkkDw794LaQYrxCSaQV/47y5o1FMC4zF9ZyjUjzJMZwbovEnT5yHTW6g==}
@@ -15558,15 +15558,15 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/react@16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.5(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@testing-library/react@16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.5(@types/react@19.0.14))(@types/react@19.0.14)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@babel/runtime': 7.27.1
       '@testing-library/dom': 10.4.0
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     optionalDependencies:
-      '@types/react': 19.0.8
-      '@types/react-dom': 19.1.5(@types/react@19.0.8)
+      '@types/react': 19.0.14
+      '@types/react-dom': 19.1.5(@types/react@19.0.14)
 
   '@testing-library/svelte@5.2.8(svelte@5.28.2)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))(vitest@3.1.4)':
     dependencies:
@@ -15763,15 +15763,15 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-dom@19.1.5(@types/react@19.0.8)':
+  '@types/react-dom@19.1.5(@types/react@19.0.14)':
     dependencies:
-      '@types/react': 19.0.8
+      '@types/react': 19.0.14
 
   '@types/react-dom@19.1.5(@types/react@19.1.4)':
     dependencies:
       '@types/react': 19.1.4
 
-  '@types/react@19.0.8':
+  '@types/react@19.0.14':
     dependencies:
       csstype: 3.1.3
 
