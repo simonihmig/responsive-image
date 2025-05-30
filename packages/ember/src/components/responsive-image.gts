@@ -174,7 +174,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return classNames.join(' ');
   }
 
-  get styles(): Record<string, string | null | undefined> {
+  get styles(): Record<string, string | undefined> {
     if (this.isLoaded) return {};
 
     return getValueOrCallback(this.args.src.lqip?.inlineStyles) ?? {};

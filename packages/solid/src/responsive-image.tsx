@@ -149,13 +149,12 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     return classNames;
   };
 
-  const bgImage = () => {
+  const styles = () => {
     if (isLoaded() || isServer) {
       return undefined;
     }
 
-    const bgImage = args.src.lqip?.bgImage;
-    return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
+    return getValueOrCallback(args.src.lqip?.inlineStyles);
   };
 
   return (
@@ -172,7 +171,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         src={src()}
         {...attributes}
         data-ri-lqip={args.src.lqip?.attribute}
-        style={{ 'background-image': bgImage() }}
+        style={styles()}
         on:load={() => setLoaded(true)}
       />
     </picture>
