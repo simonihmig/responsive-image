@@ -1,7 +1,7 @@
 import { getConfig } from '@responsive-image/core';
 
 import type { Config, CoreOptions } from './types';
-import type { ImageType, ImageData } from '@responsive-image/core';
+import type { ImageData, ImageUrlForType } from '@responsive-image/core';
 
 export interface NetlifyConfig {
   /**
@@ -26,12 +26,18 @@ export function netlify(
 
   const imageData: ImageData = {
     imageTypes: options.formats ?? ['webp', 'avif'],
-    imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
+    imageUrlFor(width: number, type: ImageUrlForType = 'jpeg'): string {
       const params = new URLSearchParams({
         url,
         w: String(width),
-        fm: formatMap[type] ?? type,
       });
+
+      // In Netlify omiting the format parameter
+      // lets the CDN pick a format based on the Accept header
+      // https://docs.netlify.com/image-cdn/overview/#format
+      if (type !== 'auto') {
+        params.set('fm', formatMap[type] ?? type);
+      }
 
       if (options.quality) {
         params.set('q', String(options.quality));

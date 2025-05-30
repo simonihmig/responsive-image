@@ -89,4 +89,14 @@ describe('cloudinary', function () {
 
     expect(result.aspectRatio).toBe(2);
   });
+
+  test('it supports auto format', function () {
+    const result = cloudinary('foo/bar.jpg', {
+      formats: 'auto',
+    });
+
+    expect(result.imageUrlFor(100, 'auto')).toBe(
+      'https://res.cloudinary.com/dummy/image/upload/w_100,c_limit,q_auto/f_auto/foo/bar',
+    );
+  });
 });

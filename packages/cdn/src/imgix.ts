@@ -1,7 +1,7 @@
 import { assert, getConfig } from '@responsive-image/core';
 
 import type { Config, CoreOptions } from './types';
-import type { ImageType, ImageData } from '@responsive-image/core';
+import type { ImageData, ImageUrlForType } from '@responsive-image/core';
 
 export interface ImgixConfig {
   domain: string;
@@ -25,11 +25,15 @@ export function imgix(image: string, options: ImgixOptions = {}): ImageData {
 
   const imageData: ImageData = {
     imageTypes: options.formats ?? ['webp', 'avif'],
-    imageUrlFor(width: number, type: ImageType = 'jpeg'): string {
+    imageUrlFor(width: number, type: ImageUrlForType = 'jpeg'): string {
       const url = new URL(`https://${domain}/${normalizeSrc(image)}`);
       const params = url.searchParams;
 
-      params.set('fm', formatMap[type] ?? type);
+      if (type === 'auto') {
+        params.set('auto', 'format');
+      } else {
+        params.set('fm', formatMap[type] ?? type);
+      }
       params.set('w', String(width));
       params.set('fit', 'max');
 

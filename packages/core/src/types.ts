@@ -20,11 +20,15 @@ export interface Lqip {
   attribute?: string;
 }
 
+export type ImageTypeAuto = 'auto';
+
+export type ImageUrlForType = ImageType | ImageTypeAuto;
+
 export interface ImageData {
-  imageTypes: ImageType[];
+  imageTypes: ImageType[] | ImageTypeAuto;
   availableWidths?: number[];
   aspectRatio?: number;
-  imageUrlFor(width: number, type?: ImageType): string | undefined;
+  imageUrlFor(width: number, type?: ImageUrlForType): string | undefined;
   lqip?: Lqip;
 }
 
