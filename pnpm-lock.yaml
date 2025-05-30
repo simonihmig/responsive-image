@@ -643,8 +643,8 @@ importers:
         specifier: ^19.1.2
         version: 19.1.5(@types/react@19.1.4)
       '@vitejs/plugin-react':
-        specifier: 4.4.1
-        version: 4.4.1(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))
+        specifier: 4.5.0
+        version: 4.5.0(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))
       eslint:
         specifier: 9.26.0
         version: 9.26.0(jiti@2.4.2)
@@ -3664,6 +3664,9 @@ packages:
     resolution: {integrity: sha512-aQypoot0HPSJa6gDPEPTntc1GT6QINrSbgRlRhadGW2WaYqUK3tK4Bw9SBMZXhmxd3GeAlZjVcODHgiu+THY7A==}
     engines: {node: '>=18'}
 
+  '@rolldown/pluginutils@1.0.0-beta.9':
+    resolution: {integrity: sha512-e9MeMtVWo186sgvFFJOPGy7/d2j2mZhLJIdVW0C/xDluuOvymEATqz6zKsP0ZmXGzQtqlyjz5sC1sYQUoJG98w==}
+
   '@rollup/plugin-alias@5.1.1':
     resolution: {integrity: sha512-PR9zDb+rOzkRb2VD+EuKB7UC41vU5DIwZ5qqCpk0KJudcWAyi8rvYOhS7+L5aZCspw1stTViLgN5v6FF1p5cgQ==}
     engines: {node: '>=14.0.0'}
@@ -4505,8 +4508,8 @@ packages:
     peerDependencies:
       vinxi: ^0.5.5
 
-  '@vitejs/plugin-react@4.4.1':
-    resolution: {integrity: sha512-IpEm5ZmeXAP/osiBXVVP5KjFMzbWOonMs0NaQQl+xYnUAcq4oHUBsF2+p4MgKWG4YMmFYJU8A6sxRPuowllm6w==}
+  '@vitejs/plugin-react@4.5.0':
+    resolution: {integrity: sha512-JuLWaEqypaJmOJPLWwO335Ig6jSgC1FTONCWAxnqcQthLTK/Yc9aH6hr9z/87xciejbQcnP3GnA1FWUSWeXaeg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0
@@ -14829,7 +14832,7 @@ snapshots:
 
   '@netlify/zip-it-and-ship-it@12.1.0(rollup@4.41.1)':
     dependencies:
-      '@babel/parser': 7.27.3
+      '@babel/parser': 7.27.4
       '@babel/types': 7.27.1
       '@netlify/binary-info': 1.0.0
       '@netlify/serverless-functions-api': 1.41.2
@@ -15000,6 +15003,8 @@ snapshots:
       supports-color: 10.0.0
 
   '@poppinss/exception@1.2.1': {}
+
+  '@rolldown/pluginutils@1.0.0-beta.9': {}
 
   '@rollup/plugin-alias@5.1.1(rollup@4.37.0)':
     optionalDependencies:
@@ -15525,7 +15530,7 @@ snapshots:
   '@tanstack/router-utils@1.115.0':
     dependencies:
       '@babel/generator': 7.27.3
-      '@babel/parser': 7.27.3
+      '@babel/parser': 7.27.4
       ansis: 3.17.0
       diff: 7.0.0
 
@@ -15604,7 +15609,7 @@ snapshots:
 
   '@types/babel__core@7.20.5':
     dependencies:
-      '@babel/parser': 7.27.3
+      '@babel/parser': 7.27.4
       '@babel/types': 7.27.3
       '@types/babel__generator': 7.27.0
       '@types/babel__template': 7.4.4
@@ -15616,7 +15621,7 @@ snapshots:
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.27.3
+      '@babel/parser': 7.27.4
       '@babel/types': 7.27.3
 
   '@types/babel__traverse@7.20.7':
@@ -16070,11 +16075,12 @@ snapshots:
       recast: 0.23.11
       vinxi: 0.5.6(@types/node@22.13.4)(db0@0.3.2)(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)
 
-  '@vitejs/plugin-react@4.4.1(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))':
+  '@vitejs/plugin-react@4.5.0(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))':
     dependencies:
       '@babel/core': 7.27.4(supports-color@8.1.1)
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.27.4)
       '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.27.4)
+      '@rolldown/pluginutils': 1.0.0-beta.9
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
       vite: 6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2)
@@ -22213,7 +22219,7 @@ snapshots:
 
   node-source-walk@7.0.1:
     dependencies:
-      '@babel/parser': 7.27.3
+      '@babel/parser': 7.27.4
 
   node-watch@0.7.3: {}
 
