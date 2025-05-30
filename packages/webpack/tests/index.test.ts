@@ -188,12 +188,46 @@ describe('LQIP', function () {
     expect(sanitizeOutput(output)).toMatchSnapshot();
   });
 
+  test('color LQIP with inline styles is supported', async () => {
+    const { stats } = await compiler(
+      'fixtures/image.jpg?responsive',
+      _dirname,
+      {
+        lqip: { type: 'color' },
+        styles: 'inline',
+      },
+    );
+
+    expect(stats.modules).toBeDefined();
+    expect(stats.modules![0]?.modules).toHaveLength(3);
+
+    const output = stats.modules?.[0]?.modules?.[0]?.source;
+    expect(sanitizeOutput(output)).toMatchSnapshot();
+  });
+
   test('inline LQIP is supported', async () => {
     const { stats } = await compiler(
       'fixtures/image.jpg?responsive',
       _dirname,
       {
         lqip: { type: 'inline' },
+      },
+    );
+
+    expect(stats.modules).toBeDefined();
+    expect(stats.modules![0]?.modules).toHaveLength(3);
+
+    const output = stats.modules?.[0]?.modules?.[0]?.source;
+    expect(sanitizeOutput(output)).toMatchSnapshot();
+  });
+
+  test('inline LQIP with inline styles is supported', async () => {
+    const { stats } = await compiler(
+      'fixtures/image.jpg?responsive',
+      _dirname,
+      {
+        lqip: { type: 'inline' },
+        styles: 'inline',
       },
     );
 

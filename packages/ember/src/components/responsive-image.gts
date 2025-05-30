@@ -1,5 +1,4 @@
 import { assert } from '@ember/debug';
-import { hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -174,14 +173,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     return classNames.join(' ');
   }
 
-  @cached
-  get bgImage(): string | undefined {
-    if (this.isLoaded) {
-      return undefined;
-    }
+  get styles(): Record<string, string | undefined> {
+    if (this.isLoaded) return {};
 
-    const bgImage = this.args.src.lqip?.bgImage;
-    return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
+    return getValueOrCallback(this.args.src.lqip?.inlineStyles) ?? {};
   }
 
   @action
@@ -204,12 +199,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         decoding="async"
         ...attributes
         data-ri-lqip={{@src.lqip.attribute}}
-        {{style
-          (if
-            this.bgImage
-            (hash backgroundImage=this.bgImage backgroundSize="cover")
-          )
-        }}
+        {{style this.styles}}
         {{on "load" this.onLoad}}
       />
     </picture>

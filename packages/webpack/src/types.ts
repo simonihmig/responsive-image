@@ -6,6 +6,7 @@ export interface WebpackLoaderOptions {
   outputPath: string;
   lqip?: LqipOptions;
   cache: boolean;
+  styles: 'external' | 'inline';
 }
 
 export type Options = WebpackLoaderOptions & ImageOptions;

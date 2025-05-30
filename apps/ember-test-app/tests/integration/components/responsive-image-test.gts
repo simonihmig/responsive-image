@@ -428,11 +428,13 @@ module('Integration: Responsive Image Component', function (hooks) {
       assert.dom(imgEl).hasNoClass('lqip-inline-test-class');
     });
 
-    test('it sets LQIP background image from literal', async function (this: RenderingTestContext, assert) {
+    test('it applies inline styles from literal', async function (this: RenderingTestContext, assert) {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
-          bgImage: 'test.png',
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
         },
       };
 
@@ -440,23 +442,22 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       const imgEl = this.element.querySelector('img')!;
 
-      assert.strictEqual(
-        imgEl.style.backgroundImage,
-        'url("test.png")',
-        'it has a background PNG',
-      );
-      assert.dom(imgEl).hasStyle({ 'background-size': 'cover' });
+      assert.dom(imgEl).hasStyle({ 'border-left': '5px solid rgb(255, 0, 0)' });
 
       await trigger(imgEl);
 
-      assert.notOk(imgEl.style.backgroundImage, 'it has no background PNG');
+      assert
+        .dom(imgEl)
+        .doesNotHaveStyle({ 'border-left': '5px solid rgb(255, 0, 0)' });
     });
 
-    test('it sets LQIP background image from callback', async function (this: RenderingTestContext, assert) {
+    test('it applies inline styles from callback', async function (this: RenderingTestContext, assert) {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
-          bgImage: () => 'test.png',
+          inlineStyles: () => ({
+            'border-left': 'solid 5px red',
+          }),
         },
       };
 
@@ -464,16 +465,13 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       const imgEl = this.element.querySelector('img')!;
 
-      assert.strictEqual(
-        imgEl.style.backgroundImage,
-        'url("test.png")',
-        'it has a background PNG',
-      );
-      assert.dom(imgEl).hasStyle({ 'background-size': 'cover' });
+      assert.dom(imgEl).hasStyle({ 'border-left': '5px solid rgb(255, 0, 0)' });
 
       await trigger(imgEl);
 
-      assert.notOk(imgEl.style.backgroundImage, 'it has no background PNG');
+      assert
+        .dom(imgEl)
+        .doesNotHaveStyle({ 'border-left': '5px solid rgb(255, 0, 0)' });
     });
 
     test('it sets LQIP attribute from literal', async function (this: RenderingTestContext, assert) {

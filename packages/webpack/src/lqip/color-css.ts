@@ -9,21 +9,25 @@ export default function lqipColorCssLoader(
 ): void {
   const loaderCallback = this.async();
 
-  const { className } = parseQuery(this.resourceQuery);
+  const { className, inline } = parseQuery(this.resourceQuery);
   if (typeof className !== 'string') {
     throw new Error('Missing className');
   }
 
   const file = this.resourcePath.replace(/\.css$/, '');
 
-  process(file, className)
+  process(file, className, !!inline)
     .then((result) => {
       loaderCallback(null, result);
     })
     .catch((err) => loaderCallback(err));
 }
 
-async function process(file: string, className: string): Promise<string> {
+async function process(
+  file: string,
+  className: string,
+  inline: boolean,
+): Promise<string> {
   const image = sharp(file);
   const { dominant } = await image.stats();
   const colorHex =
@@ -32,9 +36,9 @@ async function process(file: string, className: string): Promise<string> {
     dominant.b.toString(16).padStart(2, '0');
   const color = '#' + colorHex;
 
-  const cssRule = `.${className} { background-color: ${color}; }`;
-
-  return cssRule;
+  return inline
+    ? `export default ${JSON.stringify({ 'background-color': color })}`
+    : `.${className} { background-color: ${color}; }`;
 }
 
 lqipColorCssLoader.raw = true;

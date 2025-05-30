@@ -2,6 +2,7 @@ import {
   generateLqipClassName,
   type ImageLoaderChainedResult,
   normalizeInput,
+  safeString,
 } from '@responsive-image/build-utils';
 
 import { getWebpackOptions } from '../utils';
@@ -22,15 +23,36 @@ export default function lqipInlineLoader(
 
   const className = generateLqipClassName(this.resource);
   const targetPixels = options.lqip.targetPixels ?? 60;
-  const importCSS = `import '${
-    this.resourcePath
-  }.css!=!@responsive-image/webpack/lqip/inline-css!${
-    this.resourcePath
-  }?className=${encodeURIComponent(className)}&targetPixels=${targetPixels}';`;
+  const pathname = this.resourcePath;
+  let importCSS: string;
+
+  switch (options.styles) {
+    case 'external':
+      importCSS = `import '${
+        pathname
+      }.css!=!@responsive-image/webpack/lqip/inline-css!${
+        pathname
+      }?className=${encodeURIComponent(className)}&targetPixels=${targetPixels}';`;
+      break;
+    case 'inline':
+      importCSS = `import inlineStyles from '@responsive-image/webpack/lqip/inline-css!${
+        pathname
+      }?&targetPixels=${targetPixels}&inline=1';`;
+      break;
+    default:
+      throw new Error(`Unknown styles option: ${options.styles}`);
+  }
 
   return {
     ...data,
-    lqip: { class: className },
+    lqip:
+      options.styles === 'inline'
+        ? {
+            inlineStyles: safeString('inlineStyles'),
+          }
+        : {
+            class: className,
+          },
     imports: [...data.imports, importCSS],
   };
 }

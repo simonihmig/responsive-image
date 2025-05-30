@@ -422,11 +422,13 @@ describe('Response image', () => {
       expect(imgEl).not.toHaveClass('lqip-color-test-class');
     });
 
-    test('it sets LQIP background image from literal', async () => {
+    test('it sets inline styles image from literal', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
-          bgImage: 'test.png',
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
         },
       };
 
@@ -436,24 +438,20 @@ describe('Response image', () => {
       expect(imgEl).toBeDefined();
       expect(imgEl.complete).toBe(false);
 
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'url("test.png")',
-      });
+      expect(imgEl).toHaveStyle('border-left: solid 5px red');
 
       await act(() => trigger(imgEl));
 
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'none',
-      });
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
     });
 
-    test('it sets LQIP background image from callback', async () => {
+    test('it sets inline styles image from callback', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
-          bgImage: () => 'test.png',
+          inlineStyles: () => ({
+            'border-left': 'solid 5px red',
+          }),
         },
       };
 
@@ -462,17 +460,11 @@ describe('Response image', () => {
 
       expect(imgEl).toBeDefined();
       expect(imgEl.complete).toBe(false);
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'url("test.png")',
-      });
+      expect(imgEl).toHaveStyle('border-left: solid 5px red');
 
       await act(() => trigger(imgEl));
 
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'none',
-      });
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
     });
 
     test('it sets LQIP attribute from literal', async () => {

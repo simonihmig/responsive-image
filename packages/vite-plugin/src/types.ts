@@ -7,6 +7,7 @@ export interface ViteOptions {
   include?: string | RegExp | Array<string | RegExp>;
   exclude?: string | RegExp | Array<string | RegExp>;
   lqip?: LqipOptions;
+  styles: 'external' | 'inline';
 }
 
 export type Options = ViteOptions & ImageOptions;

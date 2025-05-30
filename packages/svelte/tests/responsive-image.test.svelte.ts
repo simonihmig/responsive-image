@@ -473,11 +473,13 @@ describe('ResponsiveImage', () => {
 			expect(imgEl).not.toHaveClass('lqip-color-test-class');
 		});
 
-		test('it sets LQIP background image from literal', async () => {
+		test('it sets inline styles from literal', async () => {
 			const imageData: ImageData = {
 				...defaultImageData,
 				lqip: {
-					bgImage: 'test.png'
+					inlineStyles: {
+						'border-left': 'solid 5px red'
+					}
 				}
 			};
 			const { container } = render(ResponsiveImage, { src: imageData });
@@ -485,21 +487,18 @@ describe('ResponsiveImage', () => {
 
 			expect(imgEl).toBeDefined();
 			expect(imgEl.complete).toBe(false);
-			expect(imgEl).toHaveStyle({ backgroundSize: 'cover', backgroundImage: 'url("test.png")' });
+			expect(imgEl).toHaveStyle('border-left: solid 5px red');
 
 			await trigger(imgEl);
 
-			expect(imgEl).toHaveStyle({
-				backgroundSize: 'cover',
-				backgroundImage: 'none'
-			});
+			expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
 		});
 
-		test('it sets LQIP background image from callback', async () => {
+		test('it sets inline styles from callback', async () => {
 			const imageData: ImageData = {
 				...defaultImageData,
 				lqip: {
-					bgImage: () => 'test.png'
+					inlineStyles: () => ({ 'border-left': 'solid 5px red' })
 				}
 			};
 			const { container } = render(ResponsiveImage, { src: imageData });
@@ -508,14 +507,11 @@ describe('ResponsiveImage', () => {
 			expect(imgEl).toBeDefined();
 			expect(imgEl.complete).toBe(false);
 
-			expect(imgEl).toHaveStyle({ backgroundSize: 'cover', backgroundImage: 'url("test.png")' });
+			expect(imgEl).toHaveStyle('border-left: solid 5px red');
 
 			await trigger(imgEl);
 
-			expect(imgEl).toHaveStyle({
-				backgroundSize: 'cover',
-				backgroundImage: 'none'
-			});
+			expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
 		});
 
 		test('it sets LQIP attribute from literal', async () => {
