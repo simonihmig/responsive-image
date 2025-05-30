@@ -582,7 +582,7 @@ describe('ResponsiveImage', () => {
       expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
     });
 
-    test('it applies inline styles', async () => {
+    test('it applies inline styles from literal', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
