@@ -38,7 +38,6 @@ export default function lqipColorLoader(
         pathname
       }?className=${encodeURIComponent(className)}&inline=1';`;
       break;
-      break;
     default:
       throw new Error(`Unknown styles option: ${options.styles}`);
   }

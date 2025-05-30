@@ -53,9 +53,11 @@ async function process(context: LoaderContext<unknown>): Promise<string> {
     'image/svg+xml',
   );
 
+  const urlString = `url(${uri})`;
+
   return inline
-    ? `export default ${JSON.stringify({ 'background-image': `url(${uri})` })}`
-    : `.${className} { background-image: url(${uri}); }`;
+    ? `export default ${JSON.stringify({ 'background-image': urlString })}`
+    : `.${className} { background-image: ${urlString}; }`;
 }
 
 function getLqipDimensions(
