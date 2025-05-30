@@ -90,6 +90,7 @@ export default defineConfig({
         base: '/frameworks',
         items: [
           { text: 'Ember', link: '/ember' },
+          { text: 'React', link: '/react' },
           { text: 'Solid', link: '/solid' },
           { text: 'Svelte', link: '/svelte' },
           { text: 'Web Component (Lit)', link: '/wc' },

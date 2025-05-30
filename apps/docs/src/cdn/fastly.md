@@ -84,6 +84,15 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { fastly } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return <ResponsiveImage src={fastly('path/to/uploaded/image.jpg')} />;
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { fastly } from '@responsive-image/cdn';
@@ -145,6 +154,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { fastly } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={fastly('path/to/uploaded/image.jpg', {
+        aspectRatio: 1.5,
+      })}
+    />
+  );
 }
 ```
 
@@ -227,6 +251,22 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { fastly } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={fastly('path/to/uploaded/image.jpg', {
+        orient: 'l',
+        saturation: -100,
+      })}
+    />
+  );
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { fastly } from '@responsive-image/cdn';
@@ -301,6 +341,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { fastly } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={fastly('path/to/uploaded/image.jpg', {
+        quality: 50,
+      })}
+    />
+  );
 }
 ```
 
@@ -379,6 +434,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { fastly } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={fastly('path/to/uploaded/image.jpg', {
+        formats: ['webp', 'avif'],
+      })}
+    />
+  );
 }
 ```
 

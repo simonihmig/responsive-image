@@ -74,6 +74,15 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { cloudinary } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return <ResponsiveImage src={cloudinary('path/to/uploaded/image.jpg')} />;
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { cloudinary } from '@responsive-image/cdn';
@@ -135,6 +144,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { cloudinary } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={cloudinary('path/to/uploaded/image.jpg', {
+        aspectRatio: 1.5,
+      })}
+    />
+  );
 }
 ```
 
@@ -218,6 +242,22 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { cloudinary } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={cloudinary('path/to/uploaded/image.jpg', {
+        co: 'rgb:20a020',
+        e: 'colorize:50',
+      })}
+    />
+  );
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { cloudinary } from '@responsive-image/cdn';
@@ -294,6 +334,21 @@ export class MyApp extends LitElement {
       })}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { cloudinary } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={cloudinary('path/to/uploaded/image.jpg', {
+        quality: 50,
+      })}
+    />
+  );
 }
 ```
 
@@ -375,6 +430,21 @@ export class MyApp extends LitElement {
 }
 ```
 
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { cloudinary } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={cloudinary('path/to/uploaded/image.jpg', {
+        formats: ['webp', 'avif'],
+      })}
+    />
+  );
+}
+```
+
 ```tsx [Solid]
 import { ResponsiveImage } from '@responsive-image/solid';
 import { cloudinary } from '@responsive-image/cdn';
@@ -447,6 +517,21 @@ export class MyApp extends LitElement {
       )}
     ></responsive-image>`;
   }
+}
+```
+
+```tsx [React]
+import { ResponsiveImage } from '@responsive-image/react';
+import { cloudinary } from '@responsive-image/cdn';
+
+export default function MyApp() {
+  return (
+    <ResponsiveImage
+      src={cloudinary(
+        'https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png',
+      )}
+    />
+  );
 }
 ```
 
