@@ -643,28 +643,28 @@ importers:
         specifier: ^19.1.2
         version: 19.1.5(@types/react@19.1.4)
       '@vitejs/plugin-react':
-        specifier: ^4.4.1
+        specifier: 4.4.1
         version: 4.4.1(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2))
       eslint:
         specifier: 9.26.0
         version: 9.26.0(jiti@2.4.2)
       eslint-plugin-react-hooks:
-        specifier: ^5.2.0
+        specifier: 5.2.0
         version: 5.2.0(eslint@9.26.0(jiti@2.4.2))
       eslint-plugin-react-refresh:
-        specifier: ^0.4.20
+        specifier: 0.4.20
         version: 0.4.20(eslint@9.26.0(jiti@2.4.2))
       globals:
         specifier: 16.1.0
         version: 16.1.0
       typescript:
-        specifier: ~5.8.3
+        specifier: 5.8.3
         version: 5.8.3
       typescript-eslint:
         specifier: 8.32.1
         version: 8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       vite:
-        specifier: ^6.3.5
+        specifier: 6.3.5
         version: 6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.2)
 
   apps/solid-start:
@@ -1109,7 +1109,7 @@ importers:
         version: link:../core
     devDependencies:
       '@babel/preset-react':
-        specifier: ^7.27.1
+        specifier: 7.27.1
         version: 7.27.1(@babel/core@7.27.3)
       '@babel/preset-typescript':
         specifier: 7.27.1
@@ -15594,7 +15594,7 @@ snapshots:
 
   '@types/babel__core@7.20.5':
     dependencies:
-      '@babel/parser': 7.27.2
+      '@babel/parser': 7.27.3
       '@babel/types': 7.27.3
       '@types/babel__generator': 7.27.0
       '@types/babel__template': 7.4.4
