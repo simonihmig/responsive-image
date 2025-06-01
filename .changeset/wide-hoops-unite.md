@@ -4,7 +4,6 @@
 '@responsive-image/webpack': major
 '@responsive-image/svelte': major
 '@responsive-image/ember': major
-'@responsive-image/react': major
 '@responsive-image/solid': major
 '@responsive-image/core': major
 '@responsive-image/wc': major
