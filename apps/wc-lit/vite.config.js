@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [
     setupPlugins({
       include: /^[^?]+\.jpg\?.*responsive.*$/,
+      styles: 'inline',
     }),
   ],
   preview: {

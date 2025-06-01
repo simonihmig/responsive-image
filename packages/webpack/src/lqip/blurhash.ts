@@ -66,7 +66,9 @@ async function process(
     ...data,
     imports: [...data.imports, decodeImport],
     lqip: {
-      bgImage: safeString(`() => decode2url('${hash}', ${width}, ${height})`),
+      inlineStyles: safeString(
+        `() => ({ "background-image": \`url("\${decode2url('${hash}', ${width}, ${height})}")\` })`,
+      ),
       attribute: `bh:${width}:${height}:${hash}`,
     },
   };

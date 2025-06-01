@@ -12,13 +12,15 @@ export const META_KEY = 'responsive-image';
 export const defaultViteOptions = {
   name: '[name]-[width]w.[ext]',
   cache: true,
-};
+  styles: 'external',
+} satisfies ViteOptions;
 
 export const viteOptionKeys = [
   'exclude',
   'include',
   'lqip',
   'name',
+  'styles',
 ] satisfies Array<keyof ViteOptions>;
 
 export function getViteOptions(

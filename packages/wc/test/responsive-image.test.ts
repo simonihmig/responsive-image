@@ -548,7 +548,7 @@ describe('ResponsiveImage', () => {
   });
 
   describe('LQIP', () => {
-    test('it sets LQIP class from literal', async () => {
+    test('it throws when LQIP class is set', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
         lqip: {
@@ -556,92 +556,14 @@ describe('ResponsiveImage', () => {
         },
       };
 
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
+      expect(
+        fixture<ResponsiveImage>(
+          html`<responsive-image .src=${imageData}></responsive-image>`,
+        ),
+      ).rejects.toHaveProperty(
+        'message',
+        "Using LQIP with a class name is not supported in @responsive-image/wc, as globals styles will not work with web components and Shadow DOM. Use the `styles: 'inline'` option in your build plugin config.",
       );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toHaveClass('lqip-inline-test-class');
-
-      await trigger(imgEl!);
-
-      expect(imgEl).not.toHaveClass('lqip-inline-test-class');
-    });
-
-    test('it sets LQIP class from callback', async () => {
-      const imageData: ImageData = {
-        ...defaultImageData,
-        lqip: {
-          class: () => 'lqip-inline-test-class',
-        },
-      };
-
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
-      );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toHaveClass('lqip-inline-test-class');
-
-      await trigger(imgEl!);
-
-      expect(imgEl).not.toHaveClass('lqip-inline-test-class');
-    });
-
-    test('it sets LQIP background form literal', async () => {
-      const imageData: ImageData = {
-        ...defaultImageData,
-        lqip: {
-          bgImage: 'test.png',
-        },
-      };
-
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
-      );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toBeDefined();
-      expect(imgEl!.complete).toBe(false);
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'url("test.png")',
-      });
-
-      await trigger(imgEl!);
-
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'none',
-      });
-    });
-
-    test('it sets LQIP background form callback', async () => {
-      const imageData: ImageData = {
-        ...defaultImageData,
-        lqip: {
-          bgImage: () => 'test.png',
-        },
-      };
-
-      const el = await fixture<ResponsiveImage>(
-        html`<responsive-image .src=${imageData}></responsive-image>`,
-      );
-      const imgEl = el.shadowRoot?.querySelector('img');
-
-      expect(imgEl).toBeDefined();
-      expect(imgEl!.complete).toBe(false);
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'url("test.png")',
-      });
-
-      await trigger(imgEl!);
-
-      expect(imgEl).toHaveStyle({
-        backgroundSize: 'cover',
-        backgroundImage: 'none',
-      });
     });
 
     test('it sets LQIP attribute from literal', async () => {
@@ -658,6 +580,50 @@ describe('ResponsiveImage', () => {
       const imgEl = el.shadowRoot?.querySelector('img');
 
       expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+    });
+
+    test('it applies inline styles from literal', async () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
+        },
+      };
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      expect(imgEl).toHaveStyle('border-left: solid 5px red');
+
+      await trigger(imgEl!);
+
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
+    });
+
+    test('it applies inline styles from callback', async () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: () => ({
+            'border-left': 'solid 5px red',
+          }),
+        },
+      };
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      expect(imgEl).toHaveStyle('border-left: solid 5px red');
+
+      await trigger(imgEl!);
+
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
     });
   });
 });

@@ -136,14 +136,32 @@
 		return classNames;
 	});
 
-	const bgImage = $derived.by(() => {
+	const styles = $derived.by(() => {
 		if (isLoaded || typeof document === 'undefined') {
-			return undefined;
+			return {};
 		}
 
-		const bgImage = srcProp.lqip?.bgImage;
-		return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
+		return getValueOrCallback(srcProp.lqip?.inlineStyles) ?? {};
 	});
+
+	// Geez, no primitive in Svelte for applying styles from an object! See https://github.com/sveltejs/svelte/issues/7311
+	const applyStyles = (el: HTMLElement) => {
+		const existingStyles: Set<string> = new Set();
+
+		$effect(() => {
+			const rulesToRemove: Set<string> = new Set(existingStyles);
+			existingStyles.clear();
+			for (const [cssProperty, value] of Object.entries(styles)) {
+				if (value !== undefined) {
+					el.style.setProperty(cssProperty, value);
+					rulesToRemove.delete(cssProperty);
+					existingStyles.add(cssProperty);
+				}
+			}
+
+			rulesToRemove.forEach((rule) => el.style.removeProperty(rule));
+		});
+	};
 </script>
 
 <picture>
@@ -160,8 +178,7 @@
 		class={classNames.join(' ')}
 		{...htmlAttributes}
 		data-ri-lqip={srcProp.lqip?.attribute}
-		style:background-image={bgImage}
-		style:background-size={bgImage ? 'cover' : undefined}
+		use:applyStyles
 		onload={() => (isLoaded = true)}
 	/>
 </picture>

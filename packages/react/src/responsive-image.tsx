@@ -155,12 +155,12 @@ function getClassNames(props: ResponsiveImageArgs, isLoaded: boolean) {
   return classNames.join(' ');
 }
 
-function bgImage(props: ResponsiveImageArgs, isLoaded: boolean) {
+function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
   if (isLoaded) {
     return undefined;
   }
-  const bgImage = props.src.lqip?.bgImage;
-  return bgImage ? `url("${getValueOrCallback(bgImage)}")` : undefined;
+
+  return getValueOrCallback(props.src.lqip?.inlineStyles);
 }
 
 export function ResponsiveImage(props: ResponsiveImageProps) {
@@ -200,7 +200,7 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
         src={getSrc(riProps)}
         {...htmlAttributes}
         data-ri-lqip={riProps.src.lqip?.attribute}
-        style={{ backgroundImage: bgImage(riProps, isLoaded) }}
+        style={getStyles(riProps, isLoaded)}
         onLoad={() => setLoaded(true)}
       />
     </picture>
