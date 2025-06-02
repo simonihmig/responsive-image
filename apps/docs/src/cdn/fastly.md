@@ -1,3 +1,7 @@
+---
+outline: [2, 3]
+---
+
 # Fastly
 
 The [Fastly Image Optimizer](https://www.fastly.com/documentation/reference/io/) (IO)
@@ -391,8 +395,9 @@ export default function MyApp() {
 
 ### Image formats
 
-By default, a modern image format (webp) is referenced in the generated `<source>` tags.
-You can tweak that using the `formats` argument:
+By default the component uses the [automatic image format selection](https://www.fastly.com/documentation/reference/io/format/) in Fastly.
+
+If you want a `picture` tag with one or more specific formats as `source` tags you can specify them using the `formats` argument:
 
 ::: code-group
 
