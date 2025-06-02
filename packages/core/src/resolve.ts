@@ -1,6 +1,6 @@
 import { getDestinationWidthBySize } from './env';
 
-import type { ImageData, ImageType } from './types';
+import type { ImageData, ImageUrlForType } from './types';
 
 export interface ResolveImageOptions {
   /**
@@ -16,7 +16,7 @@ export interface ResolveImageOptions {
   /**
    * preferred image format
    */
-  format?: ImageType;
+  format?: ImageUrlForType;
 }
 
 export function resolveImage(
