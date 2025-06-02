@@ -32,7 +32,6 @@ const typeScore = new Map<ImageType | ImageTypeAuto, number>([
   ['jpeg', 1],
   ['webp', 2],
   ['avif', 3],
-  ['auto', 4],
 ]);
 
 @customElement('responsive-image')
