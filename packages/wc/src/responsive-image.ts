@@ -1,7 +1,6 @@
 import {
   type ImageData,
-  type ImageType,
-  type ImageTypeAuto,
+  type ImageUrlForType,
   env,
   getDestinationWidthBySize,
   getValueOrCallback,
@@ -14,7 +13,7 @@ import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
   srcset: string;
-  type: ImageType | ImageTypeAuto;
+  type: ImageUrlForType;
   mimeType?: string;
   sizes?: string;
 }
@@ -27,7 +26,7 @@ enum Layout {
 const PIXEL_DENSITIES = [1, 2];
 
 // determines the order of sources, prefereing next-gen formats over legacy
-const typeScore = new Map<ImageType | ImageTypeAuto, number>([
+const typeScore = new Map<ImageUrlForType, number>([
   ['png', 1],
   ['jpeg', 1],
   ['webp', 2],
