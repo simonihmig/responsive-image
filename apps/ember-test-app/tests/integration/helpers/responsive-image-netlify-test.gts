@@ -24,7 +24,7 @@ module('Integration | Helper | responsive-image-netlify', function (hooks) {
       <template>{{dump (responsiveImageNetlify "/foo/bar.jpg")}}</template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
+    assert.deepEqual(data?.imageTypes, 'auto');
   });
 
   test('it returns correct relative image URLs', async function (assert) {

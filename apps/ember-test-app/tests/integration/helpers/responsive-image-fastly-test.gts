@@ -17,7 +17,7 @@ module('Integration | Helper | responsive-image-fastly', function (hooks) {
       <template>{{dump (responsiveImageFastly "image.webp")}}</template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ['webp']);
+    assert.deepEqual(data?.imageTypes, 'auto');
   });
 
   test('it returns correct upload image URLs', async function (assert) {

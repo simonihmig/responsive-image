@@ -495,4 +495,35 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
     });
   });
+
+  module('auto format', () => {
+    const imageData: ImageData = {
+      imageTypes: 'auto',
+      imageUrlFor(width, type = 'jpeg') {
+        return `/provider/w${width}/image.webp?format=${type}`;
+      },
+      availableWidths: [50, 100, 640],
+      aspectRatio: 2,
+    };
+
+    test('it renders a srcset on the img tag', async function (this: RenderingTestContext, assert) {
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
+
+      const imgEl = this.element.querySelector('img')!;
+
+      assert
+        .dom(imgEl)
+        .hasAttribute(
+          'srcset',
+          '/provider/w50/image.webp?format=auto 50w, /provider/w100/image.webp?format=auto 100w, /provider/w640/image.webp?format=auto 640w',
+        );
+    });
+
+    test('it omits the picture and source tags', async function (this: RenderingTestContext, assert) {
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
+
+      assert.dom('picture').exists({ count: 0 });
+      assert.dom('source').exists({ count: 0 });
+    });
+  });
 });

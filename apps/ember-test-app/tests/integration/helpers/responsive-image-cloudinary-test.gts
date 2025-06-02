@@ -20,7 +20,7 @@ module('Integration | Helper | responsive-image-cloudinary', function (hooks) {
       </template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
+    assert.deepEqual(data?.imageTypes, 'auto');
   });
 
   test('it returns correct upload image URLs', async function (assert) {
