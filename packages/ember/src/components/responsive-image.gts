@@ -11,7 +11,7 @@ import {
 import style from 'ember-style-modifier';
 
 import type Owner from '@ember/owner';
-import type { ImageData, ImageType } from '@responsive-image/core';
+import type { ImageData, ImageUrlForType } from '@responsive-image/core';
 
 import './responsive-image.css';
 
@@ -36,8 +36,8 @@ export interface ResponsiveImageComponentSignature {
 
 interface ImageSource {
   srcset: string;
-  type: ImageType;
-  mimeType: string;
+  type: ImageUrlForType;
+  mimeType: string | undefined;
   sizes?: string;
 }
 
@@ -49,7 +49,7 @@ enum Layout {
 const PIXEL_DENSITIES = [1, 2];
 
 // determines the order of sources, prefereing next-gen formats over legacy
-const typeScore = new Map<ImageType, number>([
+const typeScore = new Map<ImageUrlForType, number>([
   ['png', 1],
   ['jpeg', 1],
   ['webp', 2],
@@ -69,6 +69,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     );
   }
 
+  get autoFormat(): boolean {
+    return this.args.src.imageTypes === 'auto';
+  }
+
   get layout(): Layout {
     return this.args.width === undefined && this.args.height === undefined
       ? Layout.RESPONSIVE
@@ -76,8 +80,12 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   get sources(): ImageSource[] {
+    const imageTypes = Array.isArray(this.args.src.imageTypes)
+      ? this.args.src.imageTypes
+      : [this.args.src.imageTypes];
+
     if (this.layout === Layout.RESPONSIVE) {
-      return this.args.src.imageTypes.map((type) => {
+      return imageTypes.map((type) => {
         let widths = this.args.src.availableWidths;
         if (!widths) {
           widths = env.deviceWidths;
@@ -93,7 +101,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
             this.args.sizes ??
             (this.args.size ? `${this.args.size}vw` : undefined),
           type,
-          mimeType: `image/${type}`,
+          mimeType: type != 'auto' ? `image/${type}` : undefined,
         };
       });
     } else {
@@ -102,7 +110,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         return [];
       }
 
-      return this.args.src.imageTypes.map((type) => {
+      return imageTypes.map((type) => {
         const sources: string[] = PIXEL_DENSITIES.map((density) => {
           const url = this.args.src.imageUrlFor(width * density, type)!;
 
@@ -112,7 +120,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         return {
           srcset: sources.join(', '),
           type,
-          mimeType: `image/${type}`,
+          mimeType: type != 'auto' ? `image/${type}` : undefined,
         };
       });
     }
@@ -124,12 +132,16 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     );
   }
 
+  get imgSrcset(): string | undefined {
+    return this.sources[0]?.srcset;
+  }
+
   /**
    * the image source which fits at best for the size and screen
    */
   get src(): string | undefined {
-    const url = this.args.src.imageUrlFor(this.width ?? 640);
-    return url;
+    const format = this.args.src.imageTypes === 'auto' ? 'auto' : undefined;
+    return this.args.src.imageUrlFor(this.width ?? 640, format);
   }
 
   @cached
@@ -185,13 +197,11 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   }
 
   <template>
-    <picture>
-      {{#each this.sourcesSorted as |s|}}
-        <source srcset={{s.srcset}} type={{s.mimeType}} sizes={{s.sizes}} />
-      {{/each}}
+    {{#if this.autoFormat}}
       <img
         {{! set loading before src, otherwise FF will always load eagerly! }}
         loading="lazy"
+        srcset={{this.imgSrcset}}
         src={{this.src}}
         width={{this.width}}
         height={{this.height}}
@@ -202,6 +212,25 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
         {{style this.styles}}
         {{on "load" this.onLoad}}
       />
-    </picture>
+    {{else}}
+      <picture>
+        {{#each this.sourcesSorted as |s|}}
+          <source srcset={{s.srcset}} type={{s.mimeType}} sizes={{s.sizes}} />
+        {{/each}}
+        <img
+          {{! set loading before src, otherwise FF will always load eagerly! }}
+          loading="lazy"
+          src={{this.src}}
+          width={{this.width}}
+          height={{this.height}}
+          class={{this.classNames}}
+          decoding="async"
+          ...attributes
+          data-ri-lqip={{@src.lqip.attribute}}
+          {{style this.styles}}
+          {{on "load" this.onLoad}}
+        />
+      </picture>
+    {{/if}}
   </template>
 }
