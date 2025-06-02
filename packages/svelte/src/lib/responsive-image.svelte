@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {
-		type ImageType,
 		type ImageData,
+		type ImageUrlForType,
 		getDestinationWidthBySize,
 		env,
 		getValueOrCallback
@@ -30,15 +30,15 @@
 
 	interface ImageSource {
 		srcset: string;
-		type: ImageType;
-		mimeType: string;
+		type: ImageUrlForType;
+		mimeType: string | undefined;
 		sizes?: string | undefined;
 	}
 
 	const PIXEL_DENSITIES = [1, 2];
 
 	// determines the order of sources, prefereing next-gen formats over legacy
-	const typeScore = new Map<ImageType, number>([
+	const typeScore = new Map<ImageUrlForType, number>([
 		['png', 1],
 		['jpeg', 1],
 		['webp', 2],
@@ -79,11 +79,17 @@
 		return undefined;
 	});
 
-	const src = $derived(srcProp.imageUrlFor(width ?? 640));
+	const src = $derived.by(() => {
+		const format = srcProp.imageTypes === 'auto' ? 'auto' : undefined;
+		return srcProp.imageUrlFor(width ?? 640, format);
+	});
 
 	const sources: ImageSource[] = $derived.by(() => {
+		const imageTypes = Array.isArray(srcProp.imageTypes)
+			? srcProp.imageTypes
+			: [srcProp.imageTypes];
 		if (isResponsiveLayout) {
-			return srcProp.imageTypes.map((type) => {
+			return imageTypes.map((type) => {
 				let widths = srcProp.availableWidths;
 				if (!widths) {
 					widths = env.deviceWidths;
@@ -97,14 +103,14 @@
 					srcset: sources.join(', '),
 					sizes: sizesProp ?? (sizeProp ? `${sizeProp}vw` : undefined),
 					type,
-					mimeType: `image/${type}`
+					mimeType: type != 'auto' ? `image/${type}` : undefined
 				};
 			});
 		} else {
 			if (width === undefined) {
 				return [];
 			} else {
-				return srcProp.imageTypes.map((type) => {
+				return imageTypes.map((type) => {
 					const sources: string[] = PIXEL_DENSITIES.map((density) => {
 						const url = srcProp.imageUrlFor(width * density, type)!;
 
@@ -114,7 +120,7 @@
 					return {
 						srcset: sources.join(', '),
 						type,
-						mimeType: `image/${type}`
+						mimeType: type != 'auto' ? `image/${type}` : undefined
 					};
 				});
 			}
@@ -164,15 +170,13 @@
 	};
 </script>
 
-<picture>
-	{#each sourcesSorted as s (s.mimeType)}
-		<source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
-	{/each}
+{#if srcProp.imageTypes === 'auto'}
 	<img
 		{width}
 		{height}
 		loading="lazy"
 		decoding="async"
+		srcset={sourcesSorted[0]?.srcset}
 		{src}
 		alt=""
 		class={classNames.join(' ')}
@@ -181,7 +185,26 @@
 		use:applyStyles
 		onload={() => (isLoaded = true)}
 	/>
-</picture>
+{:else}
+	<picture>
+		{#each sourcesSorted as s (s.mimeType)}
+			<source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
+		{/each}
+		<img
+			{width}
+			{height}
+			loading="lazy"
+			decoding="async"
+			{src}
+			alt=""
+			class={classNames.join(' ')}
+			{...htmlAttributes}
+			data-ri-lqip={srcProp.lqip?.attribute}
+			use:applyStyles
+			onload={() => (isLoaded = true)}
+		/>
+	</picture>
+{/if}
 
 <style>
 	.ri-img {
