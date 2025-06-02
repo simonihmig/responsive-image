@@ -46,7 +46,7 @@ export function cloudinary(
   }
 
   const imageData: ImageData = {
-    imageTypes: options.formats ?? ['webp', 'avif'],
+    imageTypes: options.formats ?? 'auto',
     imageUrlFor(width: number, type: ImageUrlForType = 'jpeg'): string {
       const resizeParams: CloudinaryTransformation = {
         w: width,

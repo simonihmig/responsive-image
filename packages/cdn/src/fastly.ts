@@ -9,7 +9,7 @@ import type {
 
 export interface FastlyConfig {
   /**
-   * By default `fastly` uses the `webp` format.
+   * By default `fastly` uses the `auto` format.
    * Use this to set a different list of default formats.
    */
   defaultFormats?: ImageType[];
@@ -211,8 +211,7 @@ export function fastly(image: string, options: FastlyOptions = {}): ImageData {
     typeof domain === 'string',
   );
 
-  // avif is a paid addon, so omitted by default (compared to other CDNs)
-  const defaultFormats = config.defaultFormats ?? ['webp'];
+  const defaultFormats = config.defaultFormats ?? 'auto';
 
   const { formats, aspectRatio, ...fastlyParams } = options;
 

@@ -24,7 +24,7 @@ export function imgix(image: string, options: ImgixOptions = {}): ImageData {
   assert('domain must be set for imgix provider!', typeof domain === 'string');
 
   const imageData: ImageData = {
-    imageTypes: options.formats ?? ['webp', 'avif'],
+    imageTypes: options.formats ?? 'auto',
     imageUrlFor(width: number, type: ImageUrlForType = 'jpeg'): string {
       const url = new URL(`https://${domain}/${normalizeSrc(image)}`);
       const params = url.searchParams;

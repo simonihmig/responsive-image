@@ -10,10 +10,10 @@ describe('netlify', function () {
     setConfig<Config>('cdn', { netlify: { domain: 'dummy.netlify.app' } });
   });
 
-  test('it supports webp, avif image types by default', function () {
+  test('it lets the CDN choose image type by default', function () {
     const result = netlify('/foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['webp', 'avif']);
+    expect(result?.imageTypes).toEqual('auto');
   });
 
   test('it supports custom image types', function () {

@@ -10,10 +10,10 @@ describe('imgix', function () {
     setConfig<Config>('cdn', { imgix: { domain: 'dummy.imgix.net' } });
   });
 
-  test('it supports webp, avif image types by default', function () {
+  test('it lets the CDN choose image type by default', function () {
     const result = imgix('foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['webp', 'avif']);
+    expect(result?.imageTypes).toEqual('auto');
   });
 
   test('it supports custom image types', function () {
