@@ -205,6 +205,7 @@ export class ResponsiveImage extends LitElement {
         width=${ifDefined(this.imgWidth)}
         height=${ifDefined(this.imgHeight)}
         class=${classMap(classes)}
+        loading=${this.loading}
         style=${styleMap(styles)}
         srcset=${ifDefined(
           imageTypes === 'auto'
@@ -214,7 +215,6 @@ export class ResponsiveImage extends LitElement {
         )}
         src=${ifDefined(this.imgSrc)}
         alt=${this.alt}
-        loading=${this.loading}
         decoding=${this.decoding}
         crossorigin=${ifDefined(this.crossOrigin)}
         fetchpriority=${ifDefined(this.fetchPriority)}
