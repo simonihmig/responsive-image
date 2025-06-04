@@ -15,14 +15,6 @@ import type { ImageData, ImageUrlForType } from '@responsive-image/core';
 
 import './responsive-image.css';
 
-declare global {
-  const __eri_blurhash: {
-    bh2url: (hash: string, width: number, height: number) => string | undefined;
-  };
-
-  const FastBoot: unknown;
-}
-
 export interface ResponsiveImageComponentSignature {
   Element: HTMLImageElement;
   Args: {
