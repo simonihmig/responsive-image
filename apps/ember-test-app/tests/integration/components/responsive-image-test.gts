@@ -522,8 +522,8 @@ module('Integration: Responsive Image Component', function (hooks) {
     test('it omits the picture and source tags', async function (this: RenderingTestContext, assert) {
       await render(<template><ResponsiveImage @src={{imageData}} /></template>);
 
-      assert.dom('picture').exists({ count: 0 });
-      assert.dom('source').exists({ count: 0 });
+      assert.dom('picture').doesNotExist();
+      assert.dom('source').doesNotExist();
     });
   });
 });
