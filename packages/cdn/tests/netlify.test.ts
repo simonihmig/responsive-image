@@ -10,10 +10,10 @@ describe('netlify', function () {
     setConfig<Config>('cdn', { netlify: { domain: 'dummy.netlify.app' } });
   });
 
-  test('it supports webp, avif image types by default', function () {
+  test('it lets the CDN choose image type by default', function () {
     const result = netlify('/foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['webp', 'avif']);
+    expect(result?.imageTypes).toEqual('auto');
   });
 
   test('it supports custom image types', function () {
@@ -64,5 +64,15 @@ describe('netlify', function () {
     });
 
     expect(result.aspectRatio).toBe(2);
+  });
+
+  test('it supports auto format', function () {
+    const result = netlify('/foo/bar.jpg', {
+      formats: 'auto',
+    });
+
+    expect(result.imageUrlFor(100, 'auto')).toBe(
+      'https://dummy.netlify.app/.netlify/images?url=%2Ffoo%2Fbar.jpg&w=100',
+    );
   });
 });

@@ -10,10 +10,10 @@ describe('fastly', function () {
     setConfig<Config>('cdn', { fastly: { domain: 'image.mydomain.com' } });
   });
 
-  test('it uses the webp format by default', function () {
+  test('it lets the CDN choose image type by default', function () {
     const result = fastly('foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['webp']);
+    expect(result?.imageTypes).toEqual('auto');
   });
 
   test('can set custom default formats (f. ex. add avif)', function () {
@@ -63,5 +63,14 @@ describe('fastly', function () {
     });
 
     expect(result.aspectRatio).toBe(2);
+  });
+
+  test('it supports auto format', function () {
+    const result = fastly('foo/bar.jpg', {
+      formats: 'auto',
+    });
+    expect(result.imageUrlFor(100, 'auto')).toBe(
+      'https://image.mydomain.com/foo/bar.jpg?format=auto&width=100',
+    );
   });
 });

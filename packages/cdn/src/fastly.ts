@@ -1,11 +1,15 @@
 import { assert, getConfig } from '@responsive-image/core';
 
 import type { Config, CoreOptions } from './types';
-import type { ImageData, ImageType } from '@responsive-image/core';
+import type {
+  ImageData,
+  ImageType,
+  ImageUrlForType,
+} from '@responsive-image/core';
 
 export interface FastlyConfig {
   /**
-   * By default `fastly` uses the `webp` format.
+   * By default `fastly` uses the `auto` format.
    * Use this to set a different list of default formats.
    */
   defaultFormats?: ImageType[];
@@ -84,12 +88,6 @@ export interface FastlyOptions extends CoreOptions {
    * @see https://www.fastly.com/documentation/reference/io/fit/
    */
   fit?: 'bounds' | 'cover' | 'crop';
-  /**
-   * Specifies the desired output encoding for the image.
-   *
-   * @see https://www.fastly.com/documentation/reference/io/format/
-   */
-  formats?: ImageType[];
   /**
    * Extracts the first frame from an animated image sequence (gif).
    *
@@ -213,31 +211,29 @@ export function fastly(image: string, options: FastlyOptions = {}): ImageData {
     typeof domain === 'string',
   );
 
-  // avif is a paid addon, so omitted by default (compared to other CDNs)
-  const defaultFormats = config.defaultFormats ?? ['webp'];
+  const defaultFormats = config.defaultFormats ?? 'auto';
+
+  const { formats, aspectRatio, ...fastlyParams } = options;
 
   const imageData: ImageData = {
-    imageTypes: options.formats ?? defaultFormats,
-    imageUrlFor(width: number, type: ImageType = 'jpeg') {
+    imageTypes: formats ?? defaultFormats,
+    imageUrlFor(width: number, type: ImageUrlForType = 'jpeg') {
       const url = new URL(`https://${domain}/${normalizeSrc(image)}`);
       const searchParams = url.searchParams;
 
-      searchParams.set('format', type);
+      searchParams.set('format', type); // fastly supports format=auto
       searchParams.set('width', String(width));
 
-      for (const [key, value] of Object.entries(options)) {
-        if (key === 'aspectRatio') {
-          continue;
-        }
-        searchParams.set(kebabCase(key), value);
+      for (const [key, value] of Object.entries(fastlyParams)) {
+        searchParams.set(kebabCase(key), String(value));
       }
 
       return url.toString();
     },
   };
 
-  if (options.aspectRatio) {
-    imageData.aspectRatio = options.aspectRatio;
+  if (aspectRatio) {
+    imageData.aspectRatio = aspectRatio;
   }
 
   return imageData;

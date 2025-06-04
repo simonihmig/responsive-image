@@ -1,3 +1,7 @@
+---
+outline: [2, 3]
+---
+
 # Netlify
 
 The image processing capabilities of the [Netlify Image CDN](https://docs.netlify.com/image-cdn/overview/) are supported by a helper function provided to you by this library.
@@ -283,8 +287,9 @@ export default function MyApp() {
 
 ### Image formats
 
-By default, modern image formats (webp, avif) are referenced in the generated `<source>` tags.
-You can tweak that using the `formats` argument:
+By default the component uses the [automatic image format selection](https://docs.netlify.com/image-cdn/overview/#format) in Netlify.
+
+If you want a `picture` tag with one or more specific formats as `source` tags you can specify them using the `formats` argument:
 
 ::: code-group
 

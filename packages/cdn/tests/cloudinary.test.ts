@@ -10,10 +10,10 @@ describe('cloudinary', function () {
     setConfig<Config>('cdn', { cloudinary: { cloudName: 'dummy' } });
   });
 
-  test('it supports webp, avif image types by default', function () {
+  test('it lets the CDN choose image type by default', function () {
     const result = cloudinary('foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['webp', 'avif']);
+    expect(result?.imageTypes).toEqual('auto');
   });
 
   test('it supports custom image types', function () {
@@ -88,5 +88,15 @@ describe('cloudinary', function () {
     });
 
     expect(result.aspectRatio).toBe(2);
+  });
+
+  test('it supports auto format', function () {
+    const result = cloudinary('foo/bar.jpg', {
+      formats: 'auto',
+    });
+
+    expect(result.imageUrlFor(100, 'auto')).toBe(
+      'https://res.cloudinary.com/dummy/image/upload/w_100,c_limit,q_auto/f_auto/foo/bar',
+    );
   });
 });

@@ -97,7 +97,7 @@ This will render an `<img>` element wrapped in `<picture>` referencing all the r
 ```
 
 > [!NOTE]
-> Actually it will likely have more image sizes, but this has been reduced here for readability.
+> Actually it will likely have more image sizes, but this has been reduced here for readability. When using an image CDN by default the component will render just an `img` with a `srcset` attribute and let the CDN choose the optimal format.
 
 ## Layout modes
 

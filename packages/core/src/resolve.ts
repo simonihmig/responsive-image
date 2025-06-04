@@ -1,6 +1,6 @@
 import { getDestinationWidthBySize } from './env';
 
-import type { ImageData, ImageType } from './types';
+import type { ImageData, ImageUrlForType } from './types';
 
 export interface ResolveImageOptions {
   /**
@@ -16,16 +16,20 @@ export interface ResolveImageOptions {
   /**
    * preferred image format
    */
-  format?: ImageType;
+  format?: ImageUrlForType;
 }
 
 export function resolveImage(
   data: ImageData,
   { width, size, format }: ResolveImageOptions = {},
 ): string | undefined {
+  const imageType =
+    format ??
+    (Array.isArray(data.imageTypes) ? data.imageTypes[0] : data.imageTypes);
+
   const url = data.imageUrlFor(
     width ?? getDestinationWidthBySize(size),
-    format ?? data.imageTypes[0],
+    imageType,
   );
 
   return url;

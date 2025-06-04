@@ -1,6 +1,6 @@
 import {
   type ImageData,
-  type ImageType,
+  type ImageUrlForType,
   env,
   getDestinationWidthBySize,
   getValueOrCallback,
@@ -13,8 +13,8 @@ import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
   srcset: string;
-  type: ImageType;
-  mimeType: string;
+  type: ImageUrlForType;
+  mimeType?: string;
   sizes?: string;
 }
 
@@ -26,7 +26,7 @@ enum Layout {
 const PIXEL_DENSITIES = [1, 2];
 
 // determines the order of sources, prefereing next-gen formats over legacy
-const typeScore = new Map<ImageType, number>([
+const typeScore = new Map<ImageUrlForType, number>([
   ['png', 1],
   ['jpeg', 1],
   ['webp', 2],
@@ -92,8 +92,11 @@ export class ResponsiveImage extends LitElement {
   }
 
   get sources(): ImageSource[] {
+    const imageTypes = Array.isArray(this.src.imageTypes)
+      ? this.src.imageTypes
+      : [this.src.imageTypes];
     if (this.layout === Layout.RESPONSIVE) {
-      return this.src.imageTypes.map((type) => {
+      return imageTypes.map((type) => {
         let widths = this.src.availableWidths;
         if (!widths) {
           widths = env.deviceWidths;
@@ -107,7 +110,7 @@ export class ResponsiveImage extends LitElement {
           srcset: sources.join(', '),
           sizes: this.sizes ?? (this.size ? `${this.size}vw` : undefined),
           type,
-          mimeType: `image/${type}`,
+          mimeType: type != 'auto' ? `image/${type}` : undefined,
         };
       });
     }
@@ -116,7 +119,7 @@ export class ResponsiveImage extends LitElement {
       return [];
     }
 
-    return this.src.imageTypes.map((type) => {
+    return imageTypes.map((type) => {
       const sources: string[] = PIXEL_DENSITIES.map((density) => {
         const url = this.src.imageUrlFor(width * density, type)!;
 
@@ -126,7 +129,7 @@ export class ResponsiveImage extends LitElement {
       return {
         srcset: sources.join(', '),
         type,
-        mimeType: `image/${type}`,
+        mimeType: type != 'auto' ? `image/${type}` : undefined,
       };
     });
   }
@@ -168,11 +171,12 @@ export class ResponsiveImage extends LitElement {
   }
 
   get imgSrc(): string | undefined {
-    return this.src.imageUrlFor(this.imgWidth ?? 640);
+    const format = this.src.imageTypes === 'auto' ? 'auto' : undefined;
+    return this.src.imageUrlFor(this.imgWidth ?? 640, format);
   }
 
   render() {
-    const { lqip } = this.src;
+    const { lqip, imageTypes } = this.src;
 
     if (lqip?.class) {
       throw new Error(
@@ -195,41 +199,55 @@ export class ResponsiveImage extends LitElement {
           ...(lqip?.inlineStyles ? getValueOrCallback(lqip.inlineStyles) : {}),
         };
 
+    const img = html`
+      <img
+        part="img"
+        width=${ifDefined(this.imgWidth)}
+        height=${ifDefined(this.imgHeight)}
+        class=${classMap(classes)}
+        loading=${this.loading}
+        style=${styleMap(styles)}
+        srcset=${ifDefined(
+          imageTypes === 'auto'
+            ? // auto format assumes only one entry in sources
+              this.sources[0].srcset
+            : undefined,
+        )}
+        src=${ifDefined(this.imgSrc)}
+        alt=${this.alt}
+        decoding=${this.decoding}
+        crossorigin=${ifDefined(this.crossOrigin)}
+        fetchpriority=${ifDefined(this.fetchPriority)}
+        referrerpolicy=${ifDefined(this.referrerPolicy)}
+        data-ri-lqip=${ifDefined(lqip?.attribute)}
+        @load=${(event: Event) => {
+          this.complete = true;
+          this.dispatchEvent(new Event(event.type, event));
+        }}
+        @error=${(event: Event) => {
+          this.dispatchEvent(new ErrorEvent(event.type, event));
+        }}
+        @abort=${(event: Event) => {
+          this.dispatchEvent(new Event(event.type, event));
+        }}
+      />
+    `;
+
+    if (imageTypes === 'auto') {
+      return img;
+    }
+
     return html`
       <picture>
         ${this.sourcesSorted.map(
           (s) =>
             html`<source
               srcset=${s.srcset}
-              type=${s.mimeType}
+              type=${ifDefined(s.mimeType)}
               sizes=${s.sizes ?? nothing}
             />`,
         )}
-        <img
-          part="img"
-          width=${ifDefined(this.imgWidth)}
-          height=${ifDefined(this.imgHeight)}
-          class=${classMap(classes)}
-          style=${styleMap(styles)}
-          src=${ifDefined(this.imgSrc)}
-          alt=${this.alt}
-          loading=${this.loading}
-          decoding=${this.decoding}
-          crossorigin=${ifDefined(this.crossOrigin)}
-          fetchpriority=${ifDefined(this.fetchPriority)}
-          referrerpolicy=${ifDefined(this.referrerPolicy)}
-          data-ri-lqip=${ifDefined(lqip?.attribute)}
-          @load=${(event: Event) => {
-            this.complete = true;
-            this.dispatchEvent(new Event(event.type, event));
-          }}
-          @error=${(event: Event) => {
-            this.dispatchEvent(new ErrorEvent(event.type, event));
-          }}
-          @abort=${(event: Event) => {
-            this.dispatchEvent(new Event(event.type, event));
-          }}
-        />
+        ${img}
       </picture>
     `;
   }

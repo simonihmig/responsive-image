@@ -3,7 +3,7 @@ import {
   getDestinationWidthBySize,
   getValueOrCallback,
   type ImageData,
-  type ImageType,
+  type ImageUrlForType,
 } from '@responsive-image/core';
 import React, { useState } from 'react';
 import './responsive-image.css';
@@ -41,8 +41,8 @@ export type ResponsiveImageProps = Omit<
 
 interface ImageSource {
   srcset: string;
-  type: ImageType;
-  mimeType: string;
+  type: ImageUrlForType;
+  mimeType: string | undefined;
   sizes?: string | undefined;
 }
 
@@ -65,8 +65,11 @@ function getLayout(props: ResponsiveImageArgs) {
 
 function getSources(props: ResponsiveImageArgs): ImageSource[] {
   const layout = getLayout(props);
+  const imageTypes = Array.isArray(props.src.imageTypes)
+    ? props.src.imageTypes
+    : [props.src.imageTypes];
   if (layout === 'responsive') {
-    return props.src.imageTypes.map((type) => {
+    return imageTypes.map((type) => {
       let widths = props.src.availableWidths;
       if (!widths) {
         widths = env.deviceWidths;
@@ -80,7 +83,7 @@ function getSources(props: ResponsiveImageArgs): ImageSource[] {
         srcset: sources.join(', '),
         sizes: props.sizes ?? (props.size ? `${props.size}vw` : undefined),
         type,
-        mimeType: `image/${type}`,
+        mimeType: type != 'auto' ? `image/${type}` : undefined,
       };
     });
   }
@@ -90,7 +93,7 @@ function getSources(props: ResponsiveImageArgs): ImageSource[] {
     return [];
   }
 
-  return props.src.imageTypes.map((type) => {
+  return imageTypes.map((type) => {
     const sources = pixelDensities
       .map((density) => {
         const url = props.src.imageUrlFor(width * density, type);
@@ -101,7 +104,7 @@ function getSources(props: ResponsiveImageArgs): ImageSource[] {
     return {
       srcset: sources.join(', '),
       type,
-      mimeType: `image/${type}`,
+      mimeType: type != 'auto' ? `image/${type}` : undefined,
     };
   });
 }
@@ -138,8 +141,9 @@ function getHeight(props: ResponsiveImageArgs) {
 }
 
 function getSrc(props: ResponsiveImageArgs) {
+  const format = props.src.imageTypes === 'auto' ? 'auto' : undefined;
   const width = getWidth(props) || 640;
-  return props.src.imageUrlFor(width);
+  return props.src.imageUrlFor(width, format);
 }
 
 function getClassNames(props: ResponsiveImageArgs, isLoaded: boolean) {
@@ -177,6 +181,31 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
 
   const sources = getSources(riProps);
 
+  const img = (
+    <img
+      className={getClassNames(riProps, isLoaded)}
+      loading={htmlAttributes.loading || 'lazy'}
+      decoding={htmlAttributes.decoding || 'async'}
+      width={getWidth(riProps)}
+      height={getHeight(riProps)}
+      srcSet={
+        src.imageTypes === 'auto'
+          ? // auto format assumes only one entry in sources
+            sources[0]?.srcset
+          : undefined
+      }
+      src={getSrc(riProps)}
+      {...htmlAttributes}
+      data-ri-lqip={riProps.src.lqip?.attribute}
+      style={getStyles(riProps, isLoaded)}
+      onLoad={() => setLoaded(true)}
+    />
+  );
+
+  if (src.imageTypes === 'auto') {
+    return img;
+  }
+
   return (
     <picture>
       {sources
@@ -191,18 +220,7 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
             sizes={s.sizes}
           />
         ))}
-      <img
-        className={getClassNames(riProps, isLoaded)}
-        loading={htmlAttributes.loading || 'lazy'}
-        decoding={htmlAttributes.decoding || 'async'}
-        width={getWidth(riProps)}
-        height={getHeight(riProps)}
-        src={getSrc(riProps)}
-        {...htmlAttributes}
-        data-ri-lqip={riProps.src.lqip?.attribute}
-        style={getStyles(riProps, isLoaded)}
-        onLoad={() => setLoaded(true)}
-      />
+      {img}
     </picture>
   );
 }

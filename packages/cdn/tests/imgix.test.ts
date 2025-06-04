@@ -10,10 +10,10 @@ describe('imgix', function () {
     setConfig<Config>('cdn', { imgix: { domain: 'dummy.imgix.net' } });
   });
 
-  test('it supports webp, avif image types by default', function () {
+  test('it lets the CDN choose image type by default', function () {
     const result = imgix('foo/bar.jpg');
 
-    expect(result?.imageTypes).toEqual(['webp', 'avif']);
+    expect(result?.imageTypes).toEqual('auto');
   });
 
   test('it supports custom image types', function () {
@@ -63,5 +63,15 @@ describe('imgix', function () {
     });
 
     expect(result.aspectRatio).toBe(2);
+  });
+
+  test('it supports auto format', function () {
+    const result = imgix('foo/bar.jpg', {
+      formats: 'auto',
+    });
+
+    expect(result.imageUrlFor(100, 'auto')).toBe(
+      'https://dummy.imgix.net/foo/bar.jpg?auto=format&w=100&fit=max',
+    );
   });
 });

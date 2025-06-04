@@ -1,3 +1,7 @@
+---
+outline: [2, 3]
+---
+
 # Cloudinary
 
 The image processing capabilities of the [Cloudinary](https://cloudinary.com) image CDN are supported by a helper function provided to you by this library.
@@ -384,8 +388,9 @@ export default function MyApp() {
 
 ### Image formats
 
-By default, modern image formats (webp, avif) are referenced in the generated `<source>` tags.
-You can tweak that using the `formats` argument:
+By default the component uses the [automatic image format selection](https://cloudinary.com/documentation/image_optimization#automatic_format_selection_f_auto) in Cloudinary.
+
+If you want a `picture` tag with one or more specific formats as `source` tags you can specify them using the `formats` argument:
 
 ::: code-group
 

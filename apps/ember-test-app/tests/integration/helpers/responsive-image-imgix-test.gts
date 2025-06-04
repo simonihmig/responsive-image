@@ -19,7 +19,7 @@ module('Integration | Helper | responsive-image-imgix', function (hooks) {
       </template>,
     );
 
-    assert.deepEqual(data?.imageTypes, ['webp', 'avif']);
+    assert.deepEqual(data?.imageTypes, 'auto');
   });
 
   test('it returns correct image URLs', async function (assert) {

@@ -16,7 +16,7 @@ Supports basic PNG and JPEG formats, as well as next-gen WebP and AVIF, for incr
 Fast image processing of local images with a selection of optionally applyable filters and effects, using the popular sharp library.
 
 🌍 **Image CDNs**:
-Besides processing of local images, it also supports integrating remote images from image CDNs like Cloudinary or imgix using a versatile image provider abstraction
+Besides processing of local images, it also supports integrating remote images from image CDNs like Cloudinary or imgix using a versatile image provider abstraction.
 
 ⏳ **Image Placeholders**:
 Supports Low Quality Image Placeholders (LQIP) techniques to show a preview while loading, using different strategies like a blurry low-res image, BlurHash or a simple dominant color.

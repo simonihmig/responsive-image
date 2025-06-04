@@ -8,7 +8,7 @@ import { isServer } from 'solid-js/web';
 
 import './responsive-image.css';
 
-import type { ImageData, ImageType } from '@responsive-image/core';
+import type { ImageData, ImageUrlForType } from '@responsive-image/core';
 import type { Component } from 'solid-js';
 
 export interface ResponsiveImageArgs {
@@ -35,15 +35,15 @@ export type ResponsiveImageProps = Omit<
 
 interface ImageSource {
   srcset: string;
-  type: ImageType;
-  mimeType: string;
+  type: ImageUrlForType;
+  mimeType: string | undefined;
   sizes?: string | undefined;
 }
 
 const PIXEL_DENSITIES = [1, 2];
 
 // determines the order of sources, prefereing next-gen formats over legacy
-const typeScore = new Map<ImageType, number>([
+const typeScore = new Map<ImageUrlForType, number>([
   ['png', 1],
   ['jpeg', 1],
   ['webp', 2],
@@ -88,11 +88,18 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     return undefined;
   };
 
-  const src = () => args.src.imageUrlFor(width() ?? 640);
+  const src = () => {
+    const format = args.src.imageTypes === 'auto' ? 'auto' : undefined;
+    return args.src.imageUrlFor(width() ?? 640, format);
+  };
 
   const sources = (): ImageSource[] => {
+    const imageTypes = Array.isArray(args.src.imageTypes)
+      ? args.src.imageTypes
+      : [args.src.imageTypes];
+
     if (isResponsiveLayout()) {
-      return args.src.imageTypes.map((type) => {
+      return imageTypes.map((type) => {
         let widths = args.src.availableWidths;
         if (!widths) {
           widths = env.deviceWidths;
@@ -106,7 +113,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
           srcset: sources.join(', '),
           sizes: args.sizes ?? (args.size ? `${args.size}vw` : undefined),
           type,
-          mimeType: `image/${type}`,
+          mimeType: type != 'auto' ? `image/${type}` : undefined,
         };
       });
     } else {
@@ -114,7 +121,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
       if (w === undefined) {
         return [];
       } else {
-        return args.src.imageTypes.map((type) => {
+        return imageTypes.map((type) => {
           const sources: string[] = PIXEL_DENSITIES.map((density) => {
             const url = args.src.imageUrlFor(w * density, type)!;
 
@@ -124,7 +131,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
           return {
             srcset: sources.join(', '),
             type,
-            mimeType: `image/${type}`,
+            mimeType: type != 'auto' ? `image/${type}` : undefined,
           };
         });
       }
@@ -157,23 +164,37 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     return getValueOrCallback(args.src.lqip?.inlineStyles);
   };
 
+  const img = (
+    <img
+      width={width()}
+      height={height()}
+      class={classNames().join(' ')}
+      loading="lazy"
+      decoding="async"
+      srcSet={
+        args.src.imageTypes === 'auto'
+          ? // auto format assumes only one entry in sources
+            sources()[0]?.srcset
+          : undefined
+      }
+      src={src()}
+      {...attributes}
+      data-ri-lqip={args.src.lqip?.attribute}
+      style={styles()}
+      on:load={() => setLoaded(true)}
+    />
+  );
+
+  if (args.src.imageTypes === 'auto') {
+    return img;
+  }
+
   return (
     <picture>
       {sourcesSorted().map((s) => (
         <source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
       ))}
-      <img
-        width={width()}
-        height={height()}
-        class={classNames().join(' ')}
-        loading="lazy"
-        decoding="async"
-        src={src()}
-        {...attributes}
-        data-ri-lqip={args.src.lqip?.attribute}
-        style={styles()}
-        on:load={() => setLoaded(true)}
-      />
+      {img}
     </picture>
   );
 };

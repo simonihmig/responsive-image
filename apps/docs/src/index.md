@@ -25,7 +25,7 @@ features:
   - title: Local image processing
     details: Fast processing of local images with a selection of optionally applyable filters and effects. Generates responsive images at different sizes, using the popular sharp library.
   - title: Image CDNs
-    details: Besides processing of local images, it also supports integrating remote images from <b>image CDNs</b> like Cloudinary or imgix using a versatile image provider abstraction
+    details: Besides processing of local images, it also supports integrating remote images from <b>image CDNs</b> like Cloudinary or imgix using a versatile image provider abstraction.
   - title: Image Placeholders
     details: Supports Low Quality Image Placeholders (LQIP) to show a preview while loading, using a simple dominant color, a blurred low-res image or advanced ThumbHash placeholders.
   - title: Layout modes

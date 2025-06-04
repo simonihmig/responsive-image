@@ -528,4 +528,32 @@ describe('ResponsiveImage', () => {
 			expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
 		});
 	});
+
+	describe('auto format', () => {
+		const imageData: ImageData = {
+			imageTypes: 'auto',
+			imageUrlFor(width, type = 'jpeg') {
+				return `/provider/w${width}/image.webp?format=${type}`;
+			},
+			availableWidths: [50, 100, 640],
+			aspectRatio: 2
+		};
+
+		test('it renders a srcset on the img tag', () => {
+			const { container } = render(ResponsiveImage, { src: imageData });
+			const imgEl = container.querySelector('img');
+
+			expect(imgEl).toHaveAttribute(
+				'srcset',
+				'/provider/w50/image.webp?format=auto 50w, /provider/w100/image.webp?format=auto 100w, /provider/w640/image.webp?format=auto 640w'
+			);
+		});
+
+		test('it omits the picture and source tags', () => {
+			const { container } = render(ResponsiveImage, { src: imageData });
+
+			expect(container.querySelector('picture')).not.toBeInTheDocument();
+			expect(container.querySelector('source')).not.toBeInTheDocument();
+		});
+	});
 });
