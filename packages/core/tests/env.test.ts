@@ -6,10 +6,7 @@ import type { EnvConfig } from '../src';
 
 describe('env', () => {
   beforeAll(() => {
-    expect(
-      globalThis.window,
-      'these tests only run in node.js',
-    ).toBeUndefined();
+    expect(typeof window).toBe('undefined');
   });
 
   afterEach(() => {

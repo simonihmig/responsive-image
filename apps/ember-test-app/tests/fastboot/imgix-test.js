@@ -15,7 +15,7 @@ module('FastBoot | Imgix', function (hooks) {
       .dom('img[data-test-image]')
       .hasAttribute(
         'src',
-        'https://responsive-image.imgix.net/aurora-original.jpg?auto=format&w=320&fit=max',
+        'https://responsive-image.imgix.net/aurora-original.jpg?auto=format&w=3840&fit=max',
       );
   });
 });
