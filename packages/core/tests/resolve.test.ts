@@ -13,11 +13,11 @@ describe('resolveImage', () => {
   };
 
   test('returns image matching device width with no args', () => {
-    expect(resolveImage(imageData)).toBe('/320.webp');
+    expect(resolveImage(imageData)).toBe('/3840.webp');
   });
 
   test('supports size', () => {
-    expect(resolveImage(imageData, { size: 10 })).toBe('/32.webp');
+    expect(resolveImage(imageData, { size: 10 })).toBe('/384.webp');
   });
 
   test('supports width', () => {
@@ -25,6 +25,6 @@ describe('resolveImage', () => {
   });
 
   test('supports format', () => {
-    expect(resolveImage(imageData, { format: 'avif' })).toBe('/320.avif');
+    expect(resolveImage(imageData, { format: 'avif' })).toBe('/3840.avif');
   });
 });

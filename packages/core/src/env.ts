@@ -4,7 +4,9 @@ import type { Env, EnvConfig } from './types';
 
 export const env: Env = {
   get screenWidth(): number {
-    return typeof screen !== 'undefined' ? screen.width : 320;
+    return typeof screen !== 'undefined'
+      ? screen.width
+      : (env.deviceWidths.at(-1) ?? 320);
   },
   get physicalWidth(): number {
     return env.screenWidth * env.devicePixelRatio;

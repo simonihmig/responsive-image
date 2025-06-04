@@ -39,8 +39,8 @@ describe('env', () => {
       expect(env.screenWidth).toBe(800);
     });
 
-    test('defaults to 320', () => {
-      expect(env.screenWidth).toBe(320);
+    test('defaults to largest deviceWidth', () => {
+      expect(env.screenWidth).toBe(3840);
     });
   });
 
