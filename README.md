@@ -7,7 +7,7 @@ The multi-framework JavaScript library for responsive images.
 ## Key Features
 
 📦 **Multi Framework**:
-Supports Vite and Webpack for local image processing, a framework-agnostic core and components for multiple frontend frameworks: Ember.js, Lit, Solid and more in the future.
+Supports Vite and Webpack for local image processing, a framework-agnostic core and components for multiple frontend frameworks: Ember.js, Lit, Solid, Svelte and React.
 
 🌇 **Next-gen image formats**:
 Supports basic PNG and JPEG formats, as well as next-gen WebP and AVIF, for increased performance with optimal image quality at small file sizes.
