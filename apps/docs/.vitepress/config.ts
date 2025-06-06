@@ -118,6 +118,10 @@ export default defineConfig({
       },
     ],
 
+    search: {
+      provider: 'local',
+    },
+
     socialLinks: [
       {
         icon: 'github',
