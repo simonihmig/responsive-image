@@ -15,6 +15,7 @@
     },
     "test": {
       "dependsOn": ["^build"],
+      "outputs": ["playwright-report"],
       "env": ["EMBER_TRY_CURRENT_SCENARIO", "EMBROIDER_TEST_SETUP_OPTIONS"]
     },
     "build": {
