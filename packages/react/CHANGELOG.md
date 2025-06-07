@@ -1,5 +1,11 @@
 # @responsive-image/react
 
+## 1.0.1
+
+### Patch Changes
+
+- [#1390](https://github.com/simonihmig/responsive-image/pull/1390) [`323fa8a`](https://github.com/simonihmig/responsive-image/commit/323fa8adf9aec78d41c105f56c51fae008ef6ae6) Thanks [@wkillerud](https://github.com/wkillerud)! - Add missing README
+
 ## 1.0.0
 
 ### Major Changes
