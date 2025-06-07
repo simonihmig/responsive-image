@@ -1,3 +1,6 @@
+---
+layout: page
+---
 <script setup>
 import {
   VPTeamPage,
@@ -18,11 +21,25 @@ const members = [
       { icon: 'mastodon', link: 'https://fosstodon.org/@simonihmig' },
     ]
   },
+  {
+    avatar: 'https://www.github.com/wkillerud.png',
+    name: 'William Killerud',
+    title: 'Senior Developer',
+    org: 'Vend',
+    links: [
+      { icon: 'github', link: 'https://github.com/wkillerud' },
+      { icon: 'mastodon', link: 'https://social.lol/@dub' },
+    ]
+  },
 ]
 </script>
 
-# About me
+<VPTeamPage>
+  <VPTeamPageTitle>
+    <template #title>
+      Our Team
+    </template>
 
-<VPTeamMembers
-    :members="members"
-  />
+  </VPTeamPageTitle>
+  <VPTeamMembers :members />
+</VPTeamPage>

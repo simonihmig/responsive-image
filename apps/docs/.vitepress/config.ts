@@ -16,15 +16,14 @@ export default defineConfig({
       { text: 'Docs', link: '/intro/what' },
       {
         text: 'About',
-        // link: '/usage/concepts',
         items: [
           {
             text: 'Releases',
             link: 'https://github.com/simonihmig/responsive-image/releases',
           },
           {
-            text: 'Me',
-            link: '/me',
+            text: 'Team',
+            link: '/team',
           },
           {
             text: 'History',
@@ -117,6 +116,10 @@ export default defineConfig({
         ],
       },
     ],
+
+    search: {
+      provider: 'local',
+    },
 
     socialLinks: [
       {

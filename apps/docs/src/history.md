@@ -1,6 +1,8 @@
 # History of the project
 
-This project has its roots in late 2016, when Andreas Schacht, my then co-worker, and [me](./me.md) started to work on `ember-responsive-image`. This came out of the need to render optimized responsive images in our framkework of choice [Ember.js](https://emberjs.com/), for client projects at [kaliber5](https://www.kaliber5.de), the consultancy that I co-founded.
+_Simon Ihmig_
+
+This project has its roots in late 2016, when Andreas Schacht, my then co-worker, and [me](./team.md) started to work on `ember-responsive-image`. This came out of the need to render optimized responsive images in our framkework of choice [Ember.js](https://emberjs.com/), for client projects at [kaliber5](https://www.kaliber5.de), the consultancy that I co-founded.
 
 As strong believers in open source software, and as this proved to be useful for others as well, we started the project in the open on GitHub, see the [first commit](https://github.com/simonihmig/responsive-image/commit/1718f0c6d113d21309cb3800338c944d5ba90943). Don't look too closely at the code though, 2016 was different! 😅
 
