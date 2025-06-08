@@ -33,6 +33,7 @@
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "lint:package": "publint",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:types": "tsc --noEmit",
@@ -60,6 +61,7 @@
     "jest-image-snapshot": "6.5.1",
     "pkgroll": "2.12.2",
     "prettier": "3.5.3",
+    "publint": "0.3.12",
     "rollup": "4.37.0",
     "typescript": "5.8.3",
     "vitest": "3.2.2"
