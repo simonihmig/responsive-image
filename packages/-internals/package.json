@@ -2,7 +2,7 @@
   "name": "@responsive-image/internals",
   "version": "0.0.0",
   "description": "Internal tooling",
-  "repository": "https://github.com/simonihmig/responsive-image",
+  "repository": "github:simonihmig/responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "private": "true",
@@ -19,6 +19,10 @@
     "prepack": "pnpm turbo build"
   },
   "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
   "exports": {
     "./eslint": {
       "default": "./dist/eslint/index.js"
