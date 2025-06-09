@@ -6,7 +6,7 @@
     "responsive image",
     "responsive images"
   ],
-  "repository": "https://github.com/simonihmig/responsive-image",
+  "repository": "github:simonihmig/responsive-image",
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "files": [
@@ -45,6 +45,7 @@
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "lint:package": "publint",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:types": "tsc --noEmit",
@@ -68,6 +69,7 @@
     "eslint": "9.28.0",
     "pkgroll": "2.12.2",
     "prettier": "3.5.3",
+    "publint": "0.3.12",
     "thumbhash": "0.1.1",
     "typescript": "5.8.3",
     "vitest": "3.2.2"

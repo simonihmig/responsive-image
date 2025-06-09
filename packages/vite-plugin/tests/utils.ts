@@ -68,7 +68,7 @@ export async function compile(
   }
 
   const module = bundle.output.find((chunk): chunk is OutputChunk =>
-    chunk.fileName.endsWith('.mjs'),
+    chunk.fileName.endsWith('.js'),
   );
 
   if (!module) {

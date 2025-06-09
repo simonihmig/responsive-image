@@ -857,6 +857,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -912,6 +915,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       rollup:
         specifier: 4.37.0
         version: 4.37.0
@@ -946,6 +952,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -980,6 +989,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       thumbhash:
         specifier: 0.1.1
         version: 0.1.1
@@ -1089,6 +1101,9 @@ importers:
       prettier-plugin-ember-template-tag:
         specifier: 2.0.6
         version: 2.0.6(prettier@3.5.3)
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       rollup:
         specifier: 4.37.0
         version: 4.37.0
@@ -1159,6 +1174,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -1226,6 +1244,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       rollup:
         specifier: 4.37.0
         version: 4.37.0
@@ -1287,6 +1308,9 @@ importers:
       prettier-plugin-svelte:
         specifier: 3.4.0
         version: 3.4.0(prettier@3.5.3)(svelte@5.33.18)
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       svelte:
         specifier: 5.33.18
         version: 5.33.18
@@ -1357,6 +1381,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       rollup:
         specifier: 4.37.0
         version: 4.37.0
@@ -1409,6 +1436,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -1482,6 +1512,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       style-loader:
         specifier: 4.0.0
         version: 4.0.0(webpack@5.99.9)
@@ -3605,6 +3638,10 @@ packages:
 
   '@poppinss/exception@1.2.1':
     resolution: {integrity: sha512-aQypoot0HPSJa6gDPEPTntc1GT6QINrSbgRlRhadGW2WaYqUK3tK4Bw9SBMZXhmxd3GeAlZjVcODHgiu+THY7A==}
+    engines: {node: '>=18'}
+
+  '@publint/pack@0.1.2':
+    resolution: {integrity: sha512-S+9ANAvUmjutrshV4jZjaiG8XQyuJIZ8a4utWmN/vW1sgQ9IfBnPndwkmQYw53QmouOIytT874u65HEmu6H5jw==}
     engines: {node: '>=18'}
 
   '@rolldown/pluginutils@1.0.0-beta.9':
@@ -9359,6 +9396,9 @@ packages:
   package-manager-detector@0.2.11:
     resolution: {integrity: sha512-BEnLolu+yuz22S56CU1SUKq3XC3PkwD5wv4ikR4MfGvnRVcmzXR9DwSlW2fEamyTPyXHomBJRzgapeuBvRNzJQ==}
 
+  package-manager-detector@1.3.0:
+    resolution: {integrity: sha512-ZsEbbZORsyHuO00lY1kV3/t72yp6Ysay6Pd17ZAlNGuGwmWDLCJxFpRs0IzfXfj1o4icJOkUEioexFHzyPurSQ==}
+
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -9753,6 +9793,11 @@ packages:
 
   psl@1.15.0:
     resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
+
+  publint@0.3.12:
+    resolution: {integrity: sha512-1w3MMtL9iotBjm1mmXtG3Nk06wnq9UhGNRpQ2j6n1Zq7YAD6gnxMMZMIxlRPAydVjVbjSm+n0lhwqsD1m4LD5w==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   pump@3.0.2:
     resolution: {integrity: sha512-tUPXtzlGM8FE3P0ZL6DVs/3P58k9nk8/jZeQCurTJylQA8qFYzHFfhBJkuqyE0FifOsQ0uKWekiZ5g8wtr28cw==}
@@ -14592,6 +14637,8 @@ snapshots:
       supports-color: 10.0.0
 
   '@poppinss/exception@1.2.1': {}
+
+  '@publint/pack@0.1.2': {}
 
   '@rolldown/pluginutils@1.0.0-beta.9': {}
 
@@ -21802,6 +21849,8 @@ snapshots:
     dependencies:
       quansync: 0.2.10
 
+  package-manager-detector@1.3.0: {}
+
   parent-module@1.0.1:
     dependencies:
       callsites: 3.1.0
@@ -22146,6 +22195,13 @@ snapshots:
   psl@1.15.0:
     dependencies:
       punycode: 2.3.1
+
+  publint@0.3.12:
+    dependencies:
+      '@publint/pack': 0.1.2
+      package-manager-detector: 1.3.0
+      picocolors: 1.1.1
+      sade: 1.8.1
 
   pump@3.0.2:
     dependencies:
