@@ -6,7 +6,6 @@ import {
   type ImageUrlForType,
 } from '@responsive-image/core';
 import React, { useState } from 'react';
-import './responsive-image.css';
 
 export type ResponsiveImageLayout = 'responsive' | 'fixed';
 
