@@ -19,9 +19,17 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    "import": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+    "./responsive-image.css": {
+      "default": "./dist/responsive-image.css"
+    },
+    "./responsive-image.js": {
+      "default": "./dist/responsive-image.js"
+    },
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     }
   },
   "scripts": {
