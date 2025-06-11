@@ -1,5 +1,19 @@
 # @responsive-image/react
 
+## 1.1.0
+
+### Minor Changes
+
+- [#1408](https://github.com/simonihmig/responsive-image/pull/1408) [`04979f8`](https://github.com/simonihmig/responsive-image/commit/04979f823085a1894219e7070f79138fca0e7558) Thanks [@wkillerud](https://github.com/wkillerud)! - Export the CSS as well as a JS only variant
+
+  Most of the time the default export should "just work", but this change adds some flexibility for users of the package.
+
+  In particular it makes it easier to include the CSS in a client-side bundle in an application that is otherwise server-side only.
+
+### Patch Changes
+
+- [#1390](https://github.com/simonihmig/responsive-image/pull/1390) [`323fa8a`](https://github.com/simonihmig/responsive-image/commit/323fa8adf9aec78d41c105f56c51fae008ef6ae6) Thanks [@wkillerud](https://github.com/wkillerud)! - Add missing README
+
 ## 1.0.0
 
 ### Major Changes
