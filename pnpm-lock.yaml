@@ -852,8 +852,8 @@ importers:
         specifier: 9.29.0
         version: 9.29.0(jiti@2.4.2)
       pkgroll:
-        specifier: 2.12.2
-        version: 2.12.2(typescript@5.8.3)
+        specifier: 2.13.0
+        version: 2.13.0(typescript@5.8.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -910,8 +910,8 @@ importers:
         specifier: 6.5.1
         version: 6.5.1
       pkgroll:
-        specifier: 2.12.2
-        version: 2.12.2(typescript@5.8.3)
+        specifier: 2.13.0
+        version: 2.13.0(typescript@5.8.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -947,8 +947,8 @@ importers:
         specifier: 9.29.0
         version: 9.29.0(jiti@2.4.2)
       pkgroll:
-        specifier: 2.12.2
-        version: 2.12.2(typescript@5.8.3)
+        specifier: 2.13.0
+        version: 2.13.0(typescript@5.8.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -984,8 +984,8 @@ importers:
         specifier: 9.29.0
         version: 9.29.0(jiti@2.4.2)
       pkgroll:
-        specifier: 2.12.2
-        version: 2.12.2(typescript@5.8.3)
+        specifier: 2.13.0
+        version: 2.13.0(typescript@5.8.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -1376,8 +1376,8 @@ importers:
         specifier: 6.5.1
         version: 6.5.1
       pkgroll:
-        specifier: 2.12.2
-        version: 2.12.2(typescript@5.8.3)
+        specifier: 2.13.0
+        version: 2.13.0(typescript@5.8.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -1507,8 +1507,8 @@ importers:
         specifier: 4.17.2
         version: 4.17.2
       pkgroll:
-        specifier: 2.12.2
-        version: 2.12.2(typescript@5.8.3)
+        specifier: 2.13.0
+        version: 2.13.0(typescript@5.8.3)
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -9431,8 +9431,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  pkgroll@2.12.2:
-    resolution: {integrity: sha512-Vl1hJ6jQj6YY9xvhuH8qNVf4qEZng9qC5jfqUKIR4+k5HaGdt6TCXj3lI5uNs+Z3ljtdlwMigi5re1YyDDhVxA==}
+  pkgroll@2.13.0:
+    resolution: {integrity: sha512-JlWEoQW6cevBBOVzpqKZRYOa97dYB08ddKTJZG5hrknOzKKTiZIiFIvUuO/ANbxy3yGHSl1EeTL5AGdHKCDwrw==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -14389,10 +14389,6 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.0-beta.11': {}
 
-  '@rollup/plugin-alias@5.1.1(rollup@4.37.0)':
-    optionalDependencies:
-      rollup: 4.37.0
-
   '@rollup/plugin-alias@5.1.1(rollup@4.43.0)':
     optionalDependencies:
       rollup: 4.43.0
@@ -14419,18 +14415,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@rollup/plugin-commonjs@28.0.5(rollup@4.37.0)':
-    dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
-      commondir: 1.0.1
-      estree-walker: 2.0.2
-      fdir: 6.4.6(picomatch@4.0.2)
-      is-reference: 1.2.1
-      magic-string: 0.30.17
-      picomatch: 4.0.2
-    optionalDependencies:
-      rollup: 4.37.0
-
   '@rollup/plugin-commonjs@28.0.5(rollup@4.43.0)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.43.0)
@@ -14443,23 +14427,15 @@ snapshots:
     optionalDependencies:
       rollup: 4.43.0
 
-  '@rollup/plugin-dynamic-import-vars@2.1.5(rollup@4.37.0)':
+  '@rollup/plugin-dynamic-import-vars@2.1.5(rollup@4.43.0)':
     dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
+      '@rollup/pluginutils': 5.1.4(rollup@4.43.0)
       astring: 1.9.0
       estree-walker: 2.0.2
       fast-glob: 3.3.3
       magic-string: 0.30.17
     optionalDependencies:
-      rollup: 4.37.0
-
-  '@rollup/plugin-inject@5.0.5(rollup@4.37.0)':
-    dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
-      estree-walker: 2.0.2
-      magic-string: 0.30.17
-    optionalDependencies:
-      rollup: 4.37.0
+      rollup: 4.43.0
 
   '@rollup/plugin-inject@5.0.5(rollup@4.43.0)':
     dependencies:
@@ -14468,12 +14444,6 @@ snapshots:
       magic-string: 0.30.17
     optionalDependencies:
       rollup: 4.43.0
-
-  '@rollup/plugin-json@6.1.0(rollup@4.37.0)':
-    dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
-    optionalDependencies:
-      rollup: 4.37.0
 
   '@rollup/plugin-json@6.1.0(rollup@4.43.0)':
     dependencies:
@@ -21667,18 +21637,18 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  pkgroll@2.12.2(typescript@5.8.3):
+  pkgroll@2.13.0(typescript@5.8.3):
     dependencies:
-      '@rollup/plugin-alias': 5.1.1(rollup@4.37.0)
-      '@rollup/plugin-commonjs': 28.0.5(rollup@4.37.0)
-      '@rollup/plugin-dynamic-import-vars': 2.1.5(rollup@4.37.0)
-      '@rollup/plugin-inject': 5.0.5(rollup@4.37.0)
-      '@rollup/plugin-json': 6.1.0(rollup@4.37.0)
-      '@rollup/plugin-node-resolve': 16.0.1(rollup@4.37.0)
-      '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
+      '@rollup/plugin-alias': 5.1.1(rollup@4.43.0)
+      '@rollup/plugin-commonjs': 28.0.5(rollup@4.43.0)
+      '@rollup/plugin-dynamic-import-vars': 2.1.5(rollup@4.43.0)
+      '@rollup/plugin-inject': 5.0.5(rollup@4.43.0)
+      '@rollup/plugin-json': 6.1.0(rollup@4.43.0)
+      '@rollup/plugin-node-resolve': 16.0.1(rollup@4.43.0)
+      '@rollup/pluginutils': 5.1.4(rollup@4.43.0)
       esbuild: 0.25.5
       magic-string: 0.30.17
-      rollup: 4.37.0
+      rollup: 4.43.0
       rollup-pluginutils: 2.8.2
     optionalDependencies:
       typescript: 5.8.3
