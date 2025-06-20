@@ -751,8 +751,8 @@ importers:
         specifier: 10.1.5
         version: 10.1.5(eslint@9.29.0(jiti@2.4.2))
       eslint-plugin-svelte:
-        specifier: 3.9.2
-        version: 3.9.2(eslint@9.29.0(jiti@2.4.2))(svelte@5.34.7)
+        specifier: 3.9.3
+        version: 3.9.3(eslint@9.29.0(jiti@2.4.2))(svelte@5.34.7)
       globals:
         specifier: 16.2.0
         version: 16.2.0
@@ -1297,8 +1297,8 @@ importers:
         specifier: 9.29.0
         version: 9.29.0(jiti@2.4.2)
       eslint-plugin-svelte:
-        specifier: 3.9.2
-        version: 3.9.2(eslint@9.29.0(jiti@2.4.2))(svelte@5.34.7)
+        specifier: 3.9.3
+        version: 3.9.3(eslint@9.29.0(jiti@2.4.2))(svelte@5.34.7)
       playwright:
         specifier: 1.53.1
         version: 1.53.1
@@ -6871,8 +6871,8 @@ packages:
     peerDependencies:
       eslint: '>=8.40'
 
-  eslint-plugin-svelte@3.9.2:
-    resolution: {integrity: sha512-aqzfHtG9RPaFhCUFm5QFC6eFY/yHFQIT8VYYFe7/mT2A9mbgVR3XV2keCqU19LN8iVD9mdvRvqHU+4+CzJImvg==}
+  eslint-plugin-svelte@3.9.3:
+    resolution: {integrity: sha512-PlcyK80sqAZ43IITeZkgl3zPFWJytx/Joup9iKGqIOsXM2m3pWfPbWuXPr5PN3loXFEypqTY/JyZwNqlSpSvRw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.1 || ^9.0.0
@@ -8392,9 +8392,6 @@ packages:
 
   knitwork@1.2.0:
     resolution: {integrity: sha512-xYSH7AvuQ6nXkq42x0v5S8/Iry+cfulBz/DJQzhIyESdLD7425jXsPy4vn5cCXU+HhRN2kVw51Vd1K6/By4BQg==}
-
-  known-css-properties@0.36.0:
-    resolution: {integrity: sha512-A+9jP+IUmuQsNdsLdcg6Yt7voiMF/D4K83ew0OpJtpu+l34ef7LaohWV0Rc6KNvzw6ZDizkqfyB5JznZnzuKQA==}
 
   known-css-properties@0.37.0:
     resolution: {integrity: sha512-JCDrsP4Z1Sb9JwG0aJ8Eo2r7k4Ou5MwmThS/6lcIe1ICyb7UBJKGRIUUdqc2ASdE/42lgz6zFUnzAIhtXnBVrQ==}
@@ -18729,14 +18726,14 @@ snapshots:
     dependencies:
       eslint: 9.29.0(jiti@2.4.2)
 
-  eslint-plugin-svelte@3.9.2(eslint@9.29.0(jiti@2.4.2))(svelte@5.34.7):
+  eslint-plugin-svelte@3.9.3(eslint@9.29.0(jiti@2.4.2))(svelte@5.34.7):
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0(eslint@9.29.0(jiti@2.4.2))
       '@jridgewell/sourcemap-codec': 1.5.0
       eslint: 9.29.0(jiti@2.4.2)
       esutils: 2.0.3
       globals: 16.2.0
-      known-css-properties: 0.36.0
+      known-css-properties: 0.37.0
       postcss: 8.5.5
       postcss-load-config: 3.1.4(postcss@8.5.5)
       postcss-safe-parser: 7.0.1(postcss@8.5.5)
@@ -20579,8 +20576,6 @@ snapshots:
   klona@2.0.6: {}
 
   knitwork@1.2.0: {}
-
-  known-css-properties@0.36.0: {}
 
   known-css-properties@0.37.0: {}
 
