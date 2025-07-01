@@ -4,7 +4,7 @@ This project consists of a number of different packages. On the one hand they co
 
 ## Image component
 
-The image component will take some image data as its source, and render that using optimal HTML markup for responsive images, using a compination of `<picture>`, `<source>` and `<img>` elements. That will make the browser be able to pick the optimal image size and [format](./image-formats.md). If the image data has that available, the component will also be able to display an immediately visible [Low Quality Image Placeholder](./lqip.md) while the high resolution image is loading.
+The image component will take some image data as its source, and render that using optimal HTML markup for responsive images, using a combination of `<picture>`, `<source>` and `<img>` elements. That will make the browser be able to pick the optimal image size and [format](./image-formats.md). If the image data has that available, the component will also be able to display an immediately visible [Low Quality Image Placeholder](./lqip.md) while the high resolution image is loading.
 
 [More about the image component](component.md)
 
