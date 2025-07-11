@@ -731,13 +731,13 @@ importers:
         version: link:../../packages/vite-plugin
       '@sveltejs/adapter-auto':
         specifier: 6.0.1
-        version: 6.0.1(@sveltejs/kit@2.22.5(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))
+        version: 6.0.1(@sveltejs/kit@2.22.5(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))
       '@sveltejs/kit':
         specifier: 2.22.5
-        version: 2.22.5(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+        version: 2.22.5(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
       '@sveltejs/vite-plugin-svelte':
-        specifier: 5.1.0
-        version: 5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+        specifier: 5.1.1
+        version: 5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
       '@types/node':
         specifier: 22.13.4
         version: 22.13.4
@@ -1279,8 +1279,8 @@ importers:
         specifier: 2.3.12
         version: 2.3.12(svelte@5.35.6)(typescript@5.8.3)
       '@sveltejs/vite-plugin-svelte':
-        specifier: 5.1.0
-        version: 5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+        specifier: 5.1.1
+        version: 5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
       '@testing-library/svelte':
         specifier: 5.2.8
         version: 5.2.8(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))(vitest@3.2.4)
@@ -3970,8 +3970,8 @@ packages:
       svelte: ^5.0.0
       vite: ^6.0.0
 
-  '@sveltejs/vite-plugin-svelte@5.1.0':
-    resolution: {integrity: sha512-wojIS/7GYnJDYIg1higWj2ROA6sSRWvcR1PO/bqEyFr/5UZah26c8Cz4u0NaqjPeVltzsVpt2Tm8d2io0V+4Tw==}
+  '@sveltejs/vite-plugin-svelte@5.1.1':
+    resolution: {integrity: sha512-Y1Cs7hhTc+a5E9Va/xwKlAJoariQyHY+5zBgCZg4PFWNYQ1nMN9sjK1zhw1gK69DuqVP++sht/1GZg1aRwmAXQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22}
     peerDependencies:
       svelte: ^5.0.0
@@ -14875,14 +14875,14 @@ snapshots:
     dependencies:
       acorn: 8.15.0
 
-  '@sveltejs/adapter-auto@6.0.1(@sveltejs/kit@2.22.5(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))':
+  '@sveltejs/adapter-auto@6.0.1(@sveltejs/kit@2.22.5(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))':
     dependencies:
-      '@sveltejs/kit': 2.22.5(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+      '@sveltejs/kit': 2.22.5(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
 
-  '@sveltejs/kit@2.22.5(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
+  '@sveltejs/kit@2.22.5(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
     dependencies:
       '@sveltejs/acorn-typescript': 1.0.5(acorn@8.15.0)
-      '@sveltejs/vite-plugin-svelte': 5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
       '@types/cookie': 0.6.0
       acorn: 8.15.0
       cookie: 0.6.0
@@ -14908,18 +14908,18 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
       debug: 4.4.1(supports-color@8.1.1)
       svelte: 5.35.6
       vite: 6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
+  '@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
       debug: 4.4.1(supports-color@8.1.1)
       deepmerge: 4.3.1
       kleur: 4.1.5
