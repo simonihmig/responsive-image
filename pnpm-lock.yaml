@@ -195,8 +195,8 @@ importers:
         specifier: 5.5.3
         version: 5.5.3(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))(prettier@3.5.3)
       eslint-plugin-qunit:
-        specifier: 8.2.4
-        version: 8.2.4(eslint@9.31.0(jiti@2.4.2))
+        specifier: 8.2.5
+        version: 8.2.5(eslint@9.31.0(jiti@2.4.2))
       globals:
         specifier: 16.3.0
         version: 16.3.0
@@ -6874,8 +6874,8 @@ packages:
       eslint-config-prettier:
         optional: true
 
-  eslint-plugin-qunit@8.2.4:
-    resolution: {integrity: sha512-rKlLQ/AIKFBNd9Ga8Cg058+iS0xqx2SE5rByyhAga2/ORDAHArfvc3tatAxUvaHzqUsDL0gIez3l2zcFQ9x7Vg==}
+  eslint-plugin-qunit@8.2.5:
+    resolution: {integrity: sha512-qr7RJCYImKQjB+39q4q46i1l7p1V3joHzBE5CAYfxn5tfVFjrnjn/tw7q/kDyweU9kAIcLul0Dx/KWVUCb3BgA==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
 
   eslint-plugin-react-hooks@5.2.0:
@@ -18750,7 +18750,7 @@ snapshots:
       '@types/eslint': 9.6.1
       eslint-config-prettier: 10.1.8(eslint@9.31.0(jiti@2.4.2))
 
-  eslint-plugin-qunit@8.2.4(eslint@9.31.0(jiti@2.4.2)):
+  eslint-plugin-qunit@8.2.5(eslint@9.31.0(jiti@2.4.2)):
     dependencies:
       eslint-utils: 3.0.0(eslint@9.31.0(jiti@2.4.2))
       requireindex: 1.2.0
