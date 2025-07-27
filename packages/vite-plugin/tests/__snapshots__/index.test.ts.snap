@@ -30,10 +30,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
   lqip: {
     inlineStyles: () => ({ "background-image": \`url("\${decode2url("M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu", 5, 3)}")\` }),
     attribute: "bh:5:3:M53dVIR8D8*Ft2MpoxylRoRlHYniyBRQbu"
@@ -72,10 +69,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
   lqip: {
     "class": "ri-dyn-0"
   }
@@ -114,10 +108,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
   lqip: {
     inlineStyles
   }
@@ -155,10 +146,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
   lqip: {
     "class": "ri-dyn-0"
   }
@@ -197,10 +185,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
   lqip: {
     inlineStyles
   }
@@ -239,10 +224,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
   lqip: {
     inlineStyles: () => ({ "background-image": \`url("\${decode2url("jJcFFYI1fIWHe4dweXlYeUaAmWj3")}")\` }),
     attribute: "th:jJcFFYI1fIWHe4dweXlYeUaAmWj3"
@@ -272,10 +254,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
   lqip: void 0
 };
 console.log(image);
@@ -302,10 +281,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
   lqip: void 0
 };
 console.log(image);
@@ -332,10 +308,7 @@ const image = {
     200
   ],
   aspectRatio: 0.6666666666666666,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
   lqip: void 0
 };
 console.log(image);
@@ -425,10 +398,7 @@ const image = {
     3840
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "jpeg")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
   lqip: void 0
 };
 console.log(image);
@@ -455,10 +425,7 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
   lqip: void 0
 };
 console.log(image);
@@ -548,10 +515,7 @@ const image = {
     3840
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => {
-    var _a;
-    return (_a = findMatchingImage(images, w, f ?? "png")) == null ? void 0 : _a.url;
-  },
+  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
   lqip: void 0
 };
 console.log(image);
