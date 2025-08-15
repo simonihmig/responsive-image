@@ -13,7 +13,7 @@ module('FastBoot | image', function (hooks) {
     assert.dom('img[data-test-simple-image]').exists();
     assert
       .dom('img[data-test-simple-image]')
-      .hasAttribute('src', /assets\/aurora-3840w(-\w+)?\.jpg/);
+      .hasAttribute('src', /assets\/aurora-1920w-(-\w+)?\.jpg/);
   });
 
   test('it renders lqip color', async function (assert) {
