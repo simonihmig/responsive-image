@@ -10,15 +10,15 @@
 ::: code-group
 
 ```bash [npm]
-npm install @responsive-image/webpack @responsive-image/core
+npm install @responsive-image/webpack @responsive-image/core --save-dev
 ```
 
 ```bash [yarn]
-yarn add @responsive-image/webpack @responsive-image/core
+yarn add @responsive-image/webpack @responsive-image/core --dev
 ```
 
 ```bash [pnpm]
-pnpm add @responsive-image/webpack @responsive-image/core
+pnpm add @responsive-image/webpack @responsive-image/core --save-dev
 ```
 
 :::

@@ -10,15 +10,15 @@
 ::: code-group
 
 ```bash [npm]
-npm install @responsive-image/vite-plugin @responsive-image/core
+npm install @responsive-image/vite-plugin @responsive-image/core --save-dev
 ```
 
 ```bash [yarn]
-yarn add @responsive-image/vite-plugin @responsive-image/core
+yarn add @responsive-image/vite-plugin @responsive-image/core --dev
 ```
 
 ```bash [pnpm]
-pnpm add @responsive-image/vite-plugin @responsive-image/core
+pnpm add @responsive-image/vite-plugin @responsive-image/core --save-dev
 ```
 
 :::
