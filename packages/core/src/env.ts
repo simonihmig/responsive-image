@@ -6,7 +6,9 @@ export const env: Env = {
   get screenWidth(): number {
     return typeof screen !== 'undefined'
       ? screen.width
-      : (getConfig<EnvConfig>('env')?.fallbackScreenWidth ?? env.deviceWidths.at(-1) ?? 320);
+      : (getConfig<EnvConfig>('env')?.fallbackScreenWidth ??
+          env.deviceWidths.at(-1) ??
+          320);
   },
   get physicalWidth(): number {
     return env.screenWidth * env.devicePixelRatio;
