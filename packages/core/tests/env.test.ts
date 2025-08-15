@@ -39,6 +39,11 @@ describe('env', () => {
     test('defaults to largest deviceWidth', () => {
       expect(env.screenWidth).toBe(3840);
     });
+
+    test('can be changed with the fallbackScreenWidth setting', () => {
+      setConfig<EnvConfig>('env', { fallbackScreenWidth: 1280 });
+      expect(env.screenWidth).toBe(1280);
+    });
   });
 
   describe('devicePixelRatio', () => {
