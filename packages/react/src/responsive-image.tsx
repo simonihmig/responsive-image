@@ -145,7 +145,11 @@ function getSrc(props: ResponsiveImageArgs) {
   return props.src.imageUrlFor(width, format);
 }
 
-function getClassNames(props: ResponsiveImageArgs, isLoaded: boolean) {
+function getClassNames(
+  props: ResponsiveImageArgs,
+  isLoaded: boolean,
+  className?: string,
+) {
   const layout = getLayout(props);
   const classNames = [
     'ri-img',
@@ -154,6 +158,9 @@ function getClassNames(props: ResponsiveImageArgs, isLoaded: boolean) {
   const lqipClass = props.src.lqip?.class;
   if (lqipClass && !isLoaded) {
     classNames.push(getValueOrCallback(lqipClass));
+  }
+  if (className) {
+    classNames.push(className);
   }
   return classNames.join(' ');
 }
@@ -169,7 +176,8 @@ function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
 export function ResponsiveImage(props: ResponsiveImageProps) {
   const [isLoaded, setLoaded] = useState(false);
 
-  const { src, size, sizes, width, height, ...htmlAttributes } = props;
+  const { src, size, sizes, width, height, className, ...htmlAttributes } =
+    props;
   const riProps: ResponsiveImageArgs = {
     src,
     size,
@@ -182,7 +190,7 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
 
   const img = (
     <img
-      className={getClassNames(riProps, isLoaded)}
+      className={getClassNames(riProps, isLoaded, className)}
       loading={htmlAttributes.loading || 'lazy'}
       decoding={htmlAttributes.decoding || 'async'}
       width={getWidth(riProps)}

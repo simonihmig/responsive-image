@@ -39,6 +39,18 @@ describe('Response image', () => {
         container.querySelector('source[type="image/avif"]'),
       ).toBeInTheDocument();
     });
+
+    test('can add a custom class without losing internal classes', async () => {
+      const { container } = render(
+        <ResponsiveImage
+          className="custom-class"
+          src={defaultImageData}
+        ></ResponsiveImage>,
+      );
+      const imgEl = container.querySelector('img');
+      expect(imgEl).toHaveClass('ri-img');
+      expect(imgEl).toHaveClass('custom-class');
+    });
   });
 
   describe('HTML attributes', () => {

@@ -73,6 +73,20 @@ describe('ResponsiveImage', () => {
       );
     });
 
+    test('can add a custom class without losing internal classes', async () => {
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image
+          class="custom-class"
+          .src=${defaultImageData}
+        ></responsive-image>`,
+      );
+
+      const imgEl = el.shadowRoot?.querySelector('img');
+      expect(imgEl).toHaveClass('ri-img');
+      // Leave the custom class in the light DOM so it can be affected by external stylesheets
+      expect(el).toHaveClass('custom-class');
+    });
+
     describe('HTML attributes', () => {
       test('it can optionally load eager', async () => {
         const el = await fixture<ResponsiveImage>(
