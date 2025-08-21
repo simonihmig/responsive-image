@@ -2,7 +2,7 @@ import Application from '@ember/application';
 import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from 'ember-test-app/config/environment';
-import { type EnvConfig, setConfig } from '@responsive-image/core';
+import { setConfig } from '@responsive-image/core';
 import type { Config } from '@responsive-image/cdn';
 
 export default class App extends Application {
@@ -24,11 +24,6 @@ setConfig<Config>('cdn', {
   netlify: {
     domain: 'responsive-image.dev',
   },
-});
-
-// Integration test for #1558
-setConfig<EnvConfig>('env', {
-  fallbackScreenWidth: 1280,
 });
 
 loadInitializers(App, config.modulePrefix);

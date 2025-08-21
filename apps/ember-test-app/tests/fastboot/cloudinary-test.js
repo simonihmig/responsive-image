@@ -15,7 +15,7 @@ module('FastBoot | Cloudinary', function (hooks) {
       .dom('img[data-test-image]')
       .hasAttribute(
         'src',
-        'https://res.cloudinary.com/responsive-image/image/upload/w_1280,c_limit,q_auto/f_auto/aurora-original_w0sk6h',
+        'https://res.cloudinary.com/responsive-image/image/upload/w_3840,c_limit,q_auto/f_auto/aurora-original_w0sk6h',
       );
   });
 });

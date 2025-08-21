@@ -82,8 +82,8 @@ export default defineConfig({
             link: '/lqip',
           },
           {
-            text: 'Configure',
-            link: '/configure',
+            text: 'Configuration',
+            link: '/configuration',
           }
         ],
       },

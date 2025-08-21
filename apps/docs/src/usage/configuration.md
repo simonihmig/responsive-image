@@ -1,4 +1,4 @@
-# Configure
+# Configuration
 
 Using the `setConfig` method you can configure what device widths ResponsiveImage considers when generating the `<picture>`'s `<source>` list by overriding `deviceWidths`.
 

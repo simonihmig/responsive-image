@@ -15,7 +15,7 @@ module('FastBoot | Fastly', function (hooks) {
       .dom('img[data-test-image]')
       .hasAttribute(
         'src',
-        'https://www.fastly.io/image.webp?format=auto&width=1280',
+        'https://www.fastly.io/image.webp?format=auto&width=3840',
       );
   });
 });
