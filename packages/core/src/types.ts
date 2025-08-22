@@ -54,4 +54,10 @@ export interface Env {
 
 export interface EnvConfig {
   deviceWidths?: number[];
+  /**
+   * By default the size for the `img` tag fallback is set to the largest {@link deviceWidths}.
+   *
+   * Set this to an explicit size if you want to change that behavior.
+   */
+  fallbackScreenWidth?: number;
 }
