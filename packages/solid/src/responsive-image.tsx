@@ -19,7 +19,8 @@ export interface ResponsiveImageArgs {
   height?: number;
 }
 
-const responsiveImageArgs: Array<keyof ResponsiveImageArgs> = [
+const responsiveImageArgs: Array<keyof ResponsiveImageArgs | 'class'> = [
+  'class',
   'src',
   'size',
   'sizes',
@@ -151,6 +152,9 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     const lqipClass = args.src.lqip?.class;
     if (lqipClass && !isLoaded()) {
       classNames.push(getValueOrCallback(lqipClass));
+    }
+    if (args.class) {
+      classNames.push(args.class);
     }
 
     return classNames;

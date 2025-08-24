@@ -32,6 +32,16 @@ describe('ResponsiveImage', () => {
 			expect(container.querySelector('source[type="image/avif"]')).toBeInTheDocument();
 		});
 
+		test('can add a custom class without losing internal classes', async () => {
+			const { container } = render(ResponsiveImage, {
+				src: defaultImageData,
+				class: 'custom-class'
+			});
+			const imgEl = container.querySelector('img');
+			expect(imgEl).toHaveClass('ri-img');
+			expect(imgEl).toHaveClass('custom-class');
+		});
+
 		describe('HTML attributes', () => {
 			test('it loads lazily by default', async () => {
 				const { container } = render(ResponsiveImage, { src: defaultImageData });

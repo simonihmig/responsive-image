@@ -44,6 +44,15 @@ describe('ResponsiveImage', () => {
       ).toBeInTheDocument();
     });
 
+    test('can add a custom class without losing internal classes', async () => {
+      const { container } = render(() => (
+        <ResponsiveImage class="custom-class" src={defaultImageData} />
+      ));
+      const imgEl = container.querySelector('img');
+      expect(imgEl).toHaveClass('ri-img');
+      expect(imgEl).toHaveClass('custom-class');
+    });
+
     describe('HTML attributes', () => {
       test('it loads lazily by default', async () => {
         const { container } = render(() => (

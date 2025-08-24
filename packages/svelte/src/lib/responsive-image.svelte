@@ -7,7 +7,7 @@
 		getValueOrCallback
 	} from '@responsive-image/core';
 
-	import type { HTMLImgAttributes } from 'svelte/elements';
+	import type { ClassValue, HTMLImgAttributes } from 'svelte/elements';
 
 	const {
 		src: srcProp,
@@ -15,6 +15,7 @@
 		sizes: sizesProp,
 		width: widthProp,
 		height: heightProp,
+		class: classProp,
 		...htmlAttributes
 	}: ResponsiveImageProps = $props();
 
@@ -132,11 +133,18 @@
 	);
 
 	const classNames = $derived.by(() => {
-		const classNames = ['ri-img', `ri-${isResponsiveLayout ? 'responsive' : 'fixed'}`];
+		const classNames: ClassValue[] = [
+			'ri-img',
+			`ri-${isResponsiveLayout ? 'responsive' : 'fixed'}`
+		];
 		const lqipClass = srcProp.lqip?.class;
 
 		if (lqipClass && !isLoaded) {
 			classNames.push(getValueOrCallback(lqipClass));
+		}
+
+		if (classProp) {
+			classNames.push(classProp);
 		}
 
 		return classNames;
