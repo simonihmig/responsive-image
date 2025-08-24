@@ -31,6 +31,15 @@ module('Integration: Responsive Image Component', function (hooks) {
       assert.dom('picture source[type="image/webp"]').exists({ count: 1 });
     });
 
+    test('can add a custom class without losing internal classes', async (assert) => {
+      await render(
+        <template>
+          <ResponsiveImage @src={{defaultImageData}} class="custom-class" />
+        </template>,
+      );
+      assert.dom('img').hasClass('ri-img').hasClass('custom-class');
+    });
+
     test('it loads lazily by default', async function (assert) {
       await render(
         <template><ResponsiveImage @src={{defaultImageData}} /></template>,
