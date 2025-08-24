@@ -1,5 +1,15 @@
 # @responsive-image/core
 
+## 2.1.0
+
+### Minor Changes
+
+- [#1560](https://github.com/simonihmig/responsive-image/pull/1560) [`d22c0fa`](https://github.com/simonihmig/responsive-image/commit/d22c0fac3f7c1bf03057745d802a9b58aa7075d9) Thanks [@wkillerud](https://github.com/wkillerud)! - Add configuration option to set width for img fallback
+
+  Using `setConfig` you can now set a custom width for the `src` attribute in the `<img>` tag for older browsers that may not support `<picture>`. The default behavior is to use the largest entry in `deviceWidths`, which is 3840.
+
+  See a [usage example in the documentation](https://responsive-image.dev/usage/configure).
+
 ## 2.0.0
 
 ### Major Changes
