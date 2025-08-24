@@ -1,5 +1,16 @@
 # @responsive-image/react
 
+## 1.1.1
+
+### Patch Changes
+
+- [#1563](https://github.com/simonihmig/responsive-image/pull/1563) [`06d9e9b`](https://github.com/simonihmig/responsive-image/commit/06d9e9bea0afd7b7d9e06827664f7a2946de04a2) Thanks [@wkillerud](https://github.com/wkillerud)! - Merges given class name instead of replacing internal classes
+
+  Now you can give the React, Svelte and Solid components a custom class name without breaking the built-in styles or having to add `ri-img`, `ri-responsive` or `ri-fixed` yourself.
+
+- Updated dependencies [[`d22c0fa`](https://github.com/simonihmig/responsive-image/commit/d22c0fac3f7c1bf03057745d802a9b58aa7075d9)]:
+  - @responsive-image/core@2.1.0
+
 ## 1.1.0
 
 ### Minor Changes
