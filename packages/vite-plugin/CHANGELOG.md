@@ -1,5 +1,11 @@
 # @responsive-image/vite-plugin
 
+## 2.0.1
+
+### Patch Changes
+
+- [#1578](https://github.com/simonihmig/responsive-image/pull/1578) [`37d8123`](https://github.com/simonihmig/responsive-image/commit/37d8123fb7caa52288b6711f427ee5869fbec7ba) Thanks [@kedarv](https://github.com/kedarv)! - Adds Vite ^7.x as peerDep
+
 ## 2.0.0
 
 ### Major Changes
