@@ -165,12 +165,26 @@ function getClassNames(
   return classNames.join(' ');
 }
 
+function camelCase(kebabCase: string): string {
+  return kebabCase.replace(/(-.)/g, (dashChar) =>
+    dashChar.charAt(1).toUpperCase(),
+  );
+}
+
 function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
   if (isLoaded) {
     return undefined;
   }
 
-  return getValueOrCallback(props.src.lqip?.inlineStyles);
+  const styles = getValueOrCallback(props.src.lqip?.inlineStyles);
+  if (!styles) {
+    return undefined;
+  }
+  const reactStyles: Record<string, string | undefined> = {};
+  for (const [property, value] of Object.entries(styles)) {
+    reactStyles[camelCase(property)] = value;
+  }
+  return reactStyles;
 }
 
 export function ResponsiveImage(props: ResponsiveImageProps) {
