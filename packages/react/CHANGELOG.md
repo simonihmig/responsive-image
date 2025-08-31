@@ -1,5 +1,13 @@
 # @responsive-image/react
 
+## 1.1.2
+
+### Patch Changes
+
+- [#1584](https://github.com/simonihmig/responsive-image/pull/1584) [`6746123`](https://github.com/simonihmig/responsive-image/commit/6746123bd971fcc033f8350cefe16ed4b5c1f54e) Thanks [@wkillerud](https://github.com/wkillerud)! - Map LQIP styles to React format
+
+  Fixes a warning about unsupported style properties when using CSS attribute names with dashes. The React component now maps CSS attributes to the camelCase React expects.
+
 ## 1.1.1
 
 ### Patch Changes
