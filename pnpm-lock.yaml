@@ -637,11 +637,11 @@ importers:
         specifier: 22.13.4
         version: 22.13.4
       '@types/react':
-        specifier: 19.1.11
-        version: 19.1.11
+        specifier: 19.1.12
+        version: 19.1.12
       '@types/react-dom':
-        specifier: 19.1.7
-        version: 19.1.7(@types/react@19.1.11)
+        specifier: 19.1.9
+        version: 19.1.9(@types/react@19.1.12)
       '@vitejs/plugin-react':
         specifier: 4.7.0
         version: 4.7.0(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
@@ -1146,7 +1146,7 @@ importers:
         version: 10.4.1
       '@testing-library/react':
         specifier: 16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.7(@types/react@19.1.11))(@types/react@19.1.11)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -1154,11 +1154,11 @@ importers:
         specifier: 22.13.4
         version: 22.13.4
       '@types/react':
-        specifier: 19.1.11
-        version: 19.1.11
+        specifier: 19.1.12
+        version: 19.1.12
       '@types/react-dom':
-        specifier: 19.1.7
-        version: 19.1.7(@types/react@19.1.11)
+        specifier: 19.1.9
+        version: 19.1.9(@types/react@19.1.12)
       '@vitest/browser':
         specifier: 3.2.4
         version: 3.2.4(playwright@1.54.2)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))(vitest@3.2.4)
@@ -4528,13 +4528,13 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  '@types/react-dom@19.1.7':
-    resolution: {integrity: sha512-i5ZzwYpqjmrKenzkoLM2Ibzt6mAsM7pxB6BCIouEVVmgiqaMj1TjaK7hnA36hbW5aZv20kx7Lw6hWzPWg0Rurw==}
+  '@types/react-dom@19.1.9':
+    resolution: {integrity: sha512-qXRuZaOsAdXKFyOhRBg6Lqqc0yay13vN7KrIg4L7N4aaHN68ma9OK3NE1BoDFgFOTfM7zg+3/8+2n8rLUH3OKQ==}
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.1.11':
-    resolution: {integrity: sha512-lr3jdBw/BGj49Eps7EvqlUaoeA0xpj3pc0RoJkHpYaCHkVK7i28dKyImLQb3JVlqs3aYSXf7qYuWOW/fgZnTXQ==}
+  '@types/react@19.1.12':
+    resolution: {integrity: sha512-cMoR+FoAf/Jyq6+Df2/Z41jISvGZZ2eTlnsaJRptmZ76Caldwy1odD4xTr/gNV9VLj0AWgg/nmkevIyUfIIq5w==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -15652,15 +15652,15 @@ snapshots:
       picocolors: 1.1.1
       pretty-format: 27.5.1
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.7(@types/react@19.1.11))(@types/react@19.1.11)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.28.3
       '@testing-library/dom': 10.4.1
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
     optionalDependencies:
-      '@types/react': 19.1.11
-      '@types/react-dom': 19.1.7(@types/react@19.1.11)
+      '@types/react': 19.1.12
+      '@types/react-dom': 19.1.9(@types/react@19.1.12)
 
   '@testing-library/svelte@5.2.8(svelte@5.38.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))(vitest@3.2.4)':
     dependencies:
@@ -15864,11 +15864,11 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-dom@19.1.7(@types/react@19.1.11)':
+  '@types/react-dom@19.1.9(@types/react@19.1.12)':
     dependencies:
-      '@types/react': 19.1.11
+      '@types/react': 19.1.12
 
-  '@types/react@19.1.11':
+  '@types/react@19.1.12':
     dependencies:
       csstype: 3.1.3
 
