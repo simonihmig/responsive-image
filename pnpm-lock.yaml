@@ -1276,8 +1276,8 @@ importers:
         specifier: workspace:*
         version: link:../-internals
       '@sveltejs/package':
-        specifier: 2.4.1
-        version: 2.4.1(svelte@5.38.6)(typescript@5.9.2)
+        specifier: 2.5.0
+        version: 2.5.0(svelte@5.38.6)(typescript@5.9.2)
       '@sveltejs/vite-plugin-svelte':
         specifier: 6.1.4
         version: 6.1.4(svelte@5.38.6)(vite@6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
@@ -4286,8 +4286,8 @@ packages:
       '@opentelemetry/api':
         optional: true
 
-  '@sveltejs/package@2.4.1':
-    resolution: {integrity: sha512-dFj78EMy8Vgqsj5Tv2rPuPmtpyqYiJDL1QGhWjK4xW3g77ffF26ovoNBHNg/NZG9ZdTUUDb4rov6We3gW1pamg==}
+  '@sveltejs/package@2.5.0':
+    resolution: {integrity: sha512-qpB91oWEraOXA4l1ldpGtMc/rLCthbf1ACw/1oroKxvT3sd2NXPd/+NLhIk5FCvd0IUSEZGYa86K+D94GWW2Zw==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     peerDependencies:
@@ -15569,7 +15569,7 @@ snapshots:
       svelte: 5.38.6
       vite: 6.3.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1)
 
-  '@sveltejs/package@2.4.1(svelte@5.38.6)(typescript@5.9.2)':
+  '@sveltejs/package@2.5.0(svelte@5.38.6)(typescript@5.9.2)':
     dependencies:
       chokidar: 4.0.3
       kleur: 4.1.5
