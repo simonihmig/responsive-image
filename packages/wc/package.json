@@ -27,17 +27,16 @@
   "scripts": {
     "analyze": "cem analyze --litelement",
     "build": "tsc && npm run analyze -- --exclude dist",
-    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
-    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix",
-    "lint:package": "publint",
-    "lint:prettier": "prettier --check .",
-    "lint:prettier:fix": "prettier --write .",
-    "lint:types": "tsc --noEmit",
+    "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
+    "lint.eslint": "eslint .",
+    "lint.eslint:fix": "eslint . --fix",
+    "lint.publint": "publint",
+    "lint.prettier": "prettier . --check",
+    "lint.prettier:fix": "prettier . --write",
+    "lint.types": "tsc --noEmit",
     "prepack": "pnpm turbo build",
-    "test": "vitest",
-    "test:watch": "vitest watch"
+    "test.vitest": "vitest",
+    "test.vitest:watch": "vitest watch"
   },
   "dependencies": {
     "@responsive-image/core": "workspace:^",

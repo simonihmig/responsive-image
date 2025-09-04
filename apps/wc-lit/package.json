@@ -7,8 +7,8 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test.playwright": "playwright test",
+    "test.playwright:ui": "playwright test --ui"
   },
   "dependencies": {
     "@responsive-image/cdn": "workspace:*",

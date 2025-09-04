@@ -13,19 +13,17 @@
 	"scripts": {
 		"build": "svelte-package",
 		"prepack": "pnpm run build",
-		"lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
-		"lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
-		"lint:js": "eslint . --cache",
-		"lint:js:fix": "eslint . --fix",
-		"lint:svelte": "svelte-check --tsconfig ./tsconfig.json",
-		"lint:package": "publint",
-		"lint:prettier": "prettier --check .",
-		"lint:prettier:fix": "prettier --write .",
-		"lint:types": "svelte-check --tsconfig ./tsconfig.json",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"test": "vitest",
-		"test:watch": "vitest watch"
+		"lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
+		"lint.eslint": "eslint .",
+		"lint.eslint:fix": "eslint . --fix",
+		"lint.svelte": "svelte-check --tsconfig ./tsconfig.json",
+		"lint.svelte:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint.publint": "publint",
+		"lint.prettier": "prettier . --check",
+		"lint.prettier:fix": "prettier . --write",
+		"lint.types": "svelte-check --tsconfig ./tsconfig.json",
+		"test.vitest": "vitest",
+		"test.vitest:watch": "vitest watch"
 	},
 	"files": [
 		"dist"
