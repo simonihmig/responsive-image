@@ -2,9 +2,6 @@
   "$schema": "https://turborepo.org/schema.json",
   "extends": ["//"],
   "tasks": {
-    "build": {
-      "outputs": ["dist/**", "node_modules/.embroider", "tmp"]
-    },
     // turborepo will run dependsOn for *all* tasks, even when the current package does not have a matching script.
     // See https://github.com/vercel/turborepo/issues/937
     // We have some lint tasks that depend on `build`, but we don't want the (long!) build to be triggered for apps

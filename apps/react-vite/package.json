@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint.eslint": "eslint .",
+    "lint.eslint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test.playwright": "playwright test",
+    "test.playwright:ui": "playwright test --ui"
   },
   "dependencies": {
     "@responsive-image/cdn": "workspace:*",

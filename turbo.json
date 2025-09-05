@@ -14,15 +14,71 @@
       "persistent": true
     },
     "test": {
+      "dependsOn": [
+        "test.ember",
+        "test.playwright",
+        "test.vitest",
+        "test.vitest:server"
+      ],
+      "outputs": []
+    },
+    "test.ember": {
       "dependsOn": ["^build"],
-      "outputs": ["playwright-report"],
+      "outputs": [],
       "env": ["EMBER_TRY_CURRENT_SCENARIO", "EMBROIDER_TEST_SETUP_OPTIONS"]
+    },
+    "test.playwright": {
+      "dependsOn": ["^build"],
+      "outputs": ["playwright-report"]
+    },
+    "test.vitest": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "test.vitest:server": {
+      "dependsOn": ["^build"],
+      "outputs": []
     },
     "build": {
       "outputs": ["dist/**", "declarations/**"],
       "dependsOn": ["^build"]
     },
     "lint": {
+      "outputs": [],
+      "dependsOn": [
+        "lint.eslint",
+        "lint.hbs",
+        "lint.publint",
+        "lint.prettier",
+        "lint.svelte",
+        "lint.types"
+      ]
+    },
+    "lint.eslint": {
+      "outputs": [],
+      "dependsOn": ["^build"]
+    },
+    "lint.hbs": {
+      "outputs": [],
+      "dependsOn": ["^build"]
+    },
+    "lint.publint": {
+      "outputs": [],
+      "dependsOn": ["build"]
+    },
+    "lint.prettier": {
+      "outputs": [],
+      "dependsOn": []
+    },
+    "lint.svelte": {
+      "outputs": [],
+      "dependsOn": ["build"]
+    },
+    "lint.style": {
+      "outputs": [],
+      "dependsOn": []
+    },
+    "lint.types": {
       "outputs": [],
       "dependsOn": ["^build"]
     }

@@ -10,8 +10,8 @@
     "build": "vinxi build",
     "start": "vinxi start",
     "version": "vinxi version",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test.playwright": "playwright test",
+    "test.playwright:ui": "playwright test --ui"
   },
   "dependencies": {
     "@playwright/test": "1.54.2",
