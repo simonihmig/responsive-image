@@ -61,7 +61,6 @@
   `@responsive-image/webpack` is now using the `imagetools-core` package for image processing via `sharp`. This now supports not only scaling to different sizes and generating different image formats as before, but also a lot of other [directives](https://github.com/JonasKruckenberg/imagetools/blob/main/docs/directives.md) for image manipulation.
 
   _Breaking Changes_: Some parameters passed to the loader as defaults directly or using as query parameters in imports had to change to align with that library:
-
   - `widths` has been renamed to `w`
   - `formats` to `format`
   - the separator for array vlues has been changed to `;` instead of `,`
@@ -150,7 +149,6 @@
   `@responsive-image/webpack` is now using the `imagetools-core` package for image processing via `sharp`. This now supports not only scaling to different sizes and generating different image formats as before, but also a lot of other [directives](https://github.com/JonasKruckenberg/imagetools/blob/main/docs/directives.md) for image manipulation.
 
   _Breaking Changes_: Some parameters passed to the loader as defaults directly or using as query parameters in imports had to change to align with that library:
-
   - `widths` has been renamed to `w`
   - `formats` to `format`
   - the separator for array vlues has been changed to `;` instead of `,`
@@ -189,7 +187,6 @@
   The main breaking change here is that when using the `<ResponsiveImage/>` component you don't refer to the image by a string-based reference anymore. In the pull-based world of v2 addons, you need to explicitly import the image file. This triggers the Webpack loaders, applying the image processing. This has t he benefit of only processing what is actually used, and being able to apply specific image processing options _per import_.
 
   For organizational purposes, the different concerns (image processing, image CDN providers etc.) have been split into separate packages that you need to add as dependencies if you make use of them:
-
   - `@ember-responsive-image/webpack` for local image processing
   - `@ember-responsive-image/cloudinary` for supporting the Cloudinary image CDN
   - `@ember-responsive-image/imgix` for supporting the Imgix image CDN
