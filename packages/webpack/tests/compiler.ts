@@ -38,6 +38,8 @@ export default function compiler(
     },
   });
 
+  if (!compiler) throw new Error('webpack compiler could not be created');
+
   const fs = createFsFromVolume(new Volume());
   // @ts-expect-error type mismatch
   compiler.outputFileSystem = fs;
