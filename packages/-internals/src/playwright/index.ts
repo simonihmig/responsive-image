@@ -221,10 +221,10 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
         'src',
         /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
       );
-      await expect(img).toHaveAttribute(
-        'data-ri-lqip',
-        'bh:5:3:M53T;oR8D8y.t2M.oxylRoRlHYniyBRQXR',
-      );
+      // Blurhash encoding seems to suffer from some indeterminism based on external factors, causing test flakiness.
+      // See https://github.com/woltapp/blurhash/issues/196.
+      // Therefore not comparing with exact expected result.
+      await expect(img).toHaveAttribute('data-ri-lqip', /^bh:5:3:M53T.{30}$/);
 
       for (const [type, ext] of imageTypes) {
         await expect(
