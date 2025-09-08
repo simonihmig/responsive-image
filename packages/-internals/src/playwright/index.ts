@@ -13,106 +13,115 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
     ['webp', 'webp'],
   ];
 
-  test('responsive layout', async ({ page }) => {
-    await page.goto('/');
+  test.describe('responsive layout', () => {
+    // screenshots suffer from some flakiness, see https://github.com/simonihmig/responsive-image/issues/1391
+    test.describe.configure({ retries: 5 });
 
-    const { img, picture } = getImage(
-      page.locator('[data-test-local-image="responsive"]'),
-      isShadowDom,
-    );
+    test('responsive layout', async ({ page }) => {
+      await page.goto('/');
 
-    await expect(img).toHaveClass(/ri-responsive/);
-    await expect(img).toHaveAttribute(
-      'src',
-      /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
-    );
-    await expect(img).toHaveScreenshot();
+      const { img, picture } = getImage(
+        page.locator('[data-test-local-image="responsive"]'),
+        isShadowDom,
+      );
 
-    for (const [type, ext] of imageTypes) {
-      for (const size of sizes) {
+      await expect(img).toHaveClass(/ri-responsive/);
+      await expect(img).toHaveAttribute(
+        'src',
+        /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
+      );
+      await expect(img).toHaveScreenshot('responsive-layout-1.png', {
+        timeout: 20_000,
+      });
+
+      for (const [type, ext] of imageTypes) {
+        for (const size of sizes) {
+          await expect(
+            picture.locator(`source[type="image/${type}"]`),
+            `has ${type} with a width of ${size}`,
+          ).toHaveAttribute(
+            'srcset',
+            new RegExp(
+              `/assets/aurora-${size}w([-.][a-zA-Z0-9-_]+)?.${ext} ${size}w`,
+            ),
+          );
+        }
+      }
+    });
+  });
+
+  test.describe('fixed layout', () => {
+    test('fixed layout', async ({ page }) => {
+      await page.goto('/');
+
+      const { img, picture } = getImage(
+        page.locator('[data-test-local-image="fixed"]'),
+        isShadowDom,
+      );
+
+      await expect(img).toHaveClass(/ri-fixed/);
+      await expect(img).toHaveAttribute(
+        'src',
+        /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
+      );
+      await expect(img).toHaveAttribute('width', '320');
+      await expect(img).toHaveAttribute('height', '213');
+      await expect(img).toHaveScreenshot('fixed-layout-1.png');
+
+      for (const [type, ext] of imageTypes) {
         await expect(
           picture.locator(`source[type="image/${type}"]`),
-          `has ${type} with a width of ${size}`,
+          `has ${type} with a width of 1x`,
         ).toHaveAttribute(
           'srcset',
-          new RegExp(
-            `/assets/aurora-${size}w([-.][a-zA-Z0-9-_]+)?.${ext} ${size}w`,
-          ),
+          new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
+        );
+
+        await expect(
+          picture.locator(`source[type="image/${type}"]`),
+          `has ${type} with a width of 2x`,
+        ).toHaveAttribute(
+          'srcset',
+          new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
         );
       }
-    }
-  });
+    });
 
-  test('fixed layout', async ({ page }) => {
-    await page.goto('/');
+    test('fixed layout w/ aspect', async ({ page }) => {
+      await page.goto('/');
 
-    const { img, picture } = getImage(
-      page.locator('[data-test-local-image="fixed"]'),
-      isShadowDom,
-    );
-
-    await expect(img).toHaveClass(/ri-fixed/);
-    await expect(img).toHaveAttribute(
-      'src',
-      /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
-    );
-    await expect(img).toHaveAttribute('width', '320');
-    await expect(img).toHaveAttribute('height', '213');
-    await expect(img).toHaveScreenshot();
-
-    for (const [type, ext] of imageTypes) {
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 1x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
+      const { img, picture } = getImage(
+        page.locator('[data-test-local-image="fixed,aspect"]'),
+        isShadowDom,
       );
 
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 2x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
+      await expect(img).toHaveClass(/ri-fixed/);
+      await expect(img).toHaveAttribute(
+        'src',
+        /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
       );
-    }
-  });
+      await expect(img).toHaveAttribute('width', '320');
+      await expect(img).toHaveAttribute('height', '480');
+      await expect(img).toHaveScreenshot('fixed-layout-w-aspect-1.png');
 
-  test('fixed layout w/ aspect', async ({ page }) => {
-    await page.goto('/');
+      for (const [type, ext] of imageTypes) {
+        await expect(
+          picture.locator(`source[type="image/${type}"]`),
+          `has ${type} with a width of 1x`,
+        ).toHaveAttribute(
+          'srcset',
+          new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
+        );
 
-    const { img, picture } = getImage(
-      page.locator('[data-test-local-image="fixed,aspect"]'),
-      isShadowDom,
-    );
-
-    await expect(img).toHaveClass(/ri-fixed/);
-    await expect(img).toHaveAttribute(
-      'src',
-      /assets\/aurora-\d+w([-.][a-zA-Z0-9-_]+)?\.jpg/,
-    );
-    await expect(img).toHaveAttribute('width', '320');
-    await expect(img).toHaveAttribute('height', '480');
-    await expect(img).toHaveScreenshot();
-
-    for (const [type, ext] of imageTypes) {
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 1x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 1x`),
-      );
-
-      await expect(
-        picture.locator(`source[type="image/${type}"]`),
-        `has ${type} with a width of 2x`,
-      ).toHaveAttribute(
-        'srcset',
-        new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
-      );
-    }
+        await expect(
+          picture.locator(`source[type="image/${type}"]`),
+          `has ${type} with a width of 2x`,
+        ).toHaveAttribute(
+          'srcset',
+          new RegExp(`/assets/aurora-640w([-.][a-zA-Z0-9-_]+)?.${ext} 2x`),
+        );
+      }
+    });
   });
 
   test.describe('LQIP', () => {
