@@ -50,7 +50,7 @@ const typeScore = new Map<ImageUrlForType, number>([
 
 export default class ResponsiveImageComponent extends Component<ResponsiveImageComponentSignature> {
   @tracked
-  isLoaded = false;
+  loadedSrc?: ImageData;
 
   constructor(owner: Owner, args: ResponsiveImageComponentSignature['Args']) {
     super(owner, args);
@@ -59,6 +59,10 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
       'Image paths as @src argument for <ResponsiveImage> are not supported anymore.',
       typeof args.src !== 'string',
     );
+  }
+
+  get isLoaded(): boolean {
+    return this.loadedSrc === this.args.src;
   }
 
   get autoFormat(): boolean {
@@ -185,7 +189,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
 
   @action
   onLoad(): void {
-    this.isLoaded = true;
+    this.loadedSrc = this.args.src;
   }
 
   <template>
