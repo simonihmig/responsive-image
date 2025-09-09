@@ -853,8 +853,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0(@glint/template@1.6.0-alpha.2)
       '@embroider/vite':
-        specifier: 1.1.5
-        version: 1.1.5(@embroider/core@4.1.0(@glint/template@1.6.0-alpha.2))(@glint/template@1.6.0-alpha.2)(rollup@4.50.1)(vite@7.1.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
+        specifier: 1.2.0
+        version: 1.2.0(@embroider/core@4.1.0(@glint/template@1.6.0-alpha.2))(@glint/template@1.6.0-alpha.2)(rollup@4.50.1)(vite@7.1.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))
       '@glimmer/component':
         specifier: 2.0.0
         version: 2.0.0
@@ -2375,12 +2375,6 @@ packages:
   '@embroider/shared-internals@3.0.0':
     resolution: {integrity: sha512-5J5ipUMCAinQS38WW7wedruq5Z4VnHvNo+ZgOduw0PtI9w0CQWx7/HE+98PBDW8jclikeF+aHwF317vc1hwuzg==}
     engines: {node: 12.* || 14.* || >= 16}
-
-  '@embroider/vite@1.1.5':
-    resolution: {integrity: sha512-PGN4FgPlmHw19Hj/VcAwuJa2fECZ4ZLreMcryWgNuplt+PEMpse2+r4TeCacuLFNwhSV4H4Gne0/izbmvg4i0A==}
-    peerDependencies:
-      '@embroider/core': ^4.1.0
-      vite: '>= 5.2.0'
 
   '@embroider/vite@1.2.0':
     resolution: {integrity: sha512-0opYfabELLX8LNxOywyIu6ccO1MPPfaiIy6zOTET/qil7Xksh+4C3Mg+nEmQDI3Ryc/Y34L11BHB6UfxZM/EWg==}
@@ -13683,11 +13677,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@1.1.5(@embroider/core@4.1.0(@glint/template@1.6.0-alpha.2))(@glint/template@1.6.0-alpha.2)(rollup@4.50.1)(vite@7.1.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
+  '@embroider/vite@1.2.0(@embroider/core@4.1.0(@glint/template@1.6.0-alpha.2))(@glint/template@1.6.0-alpha.2)(rollup@4.50.1)(vite@7.1.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.43.1))':
     dependencies:
       '@babel/core': 7.28.4(supports-color@8.1.1)
       '@embroider/core': 4.1.0(@glint/template@1.6.0-alpha.2)
-      '@embroider/macros': 1.18.0(@glint/template@1.6.0-alpha.2)
+      '@embroider/macros': 1.18.1(@glint/template@1.6.0-alpha.2)
       '@embroider/reverse-exports': 0.1.2
       '@rollup/pluginutils': 5.2.0(rollup@4.50.1)
       assert-never: 1.4.0
