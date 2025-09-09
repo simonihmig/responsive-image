@@ -925,8 +925,8 @@ importers:
         specifier: 4.50.1
         version: 4.50.1
       testem:
-        specifier: 3.15.1
-        version: 3.15.1(handlebars@4.7.8)(underscore@1.13.7)
+        specifier: 3.15.2
+        version: 3.15.2(handlebars@4.7.8)(underscore@1.13.7)
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -10790,8 +10790,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  testem@3.15.1:
-    resolution: {integrity: sha512-532OJy6VVsnDFEGZBdWVywvceNWdjdxJruC6qCDzLH586+eh1duWk5ju6QSRqQdP6gZB7zNiUJU9dSQdHPzFuA==}
+  testem@3.15.2:
+    resolution: {integrity: sha512-mRzqZktqTCWi/rUP/RQOKXvMtuvY3lxuzBVb1xGXPnRNGMEj/1DaLGn6X447yOsz6SlWxSsZfcNuiE7fT1MOKg==}
     engines: {node: '>= 7.*'}
     hasBin: true
 
@@ -23807,7 +23807,7 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
 
-  testem@3.15.1(handlebars@4.7.8)(underscore@1.13.7):
+  testem@3.15.2(handlebars@4.7.8)(underscore@1.13.7):
     dependencies:
       '@xmldom/xmldom': 0.8.10
       backbone: 1.6.1
