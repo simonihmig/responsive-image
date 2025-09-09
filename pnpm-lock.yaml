@@ -865,8 +865,8 @@ importers:
         specifier: 2.0.0-alpha.3
         version: 2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/template@1.6.0-alpha.1)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.2(@babel/core@7.28.4))
       '@glint/environment-ember-template-imports':
-        specifier: 2.0.0-alpha.2
-        version: 2.0.0-alpha.2(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/environment-ember-loose@2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/template@1.6.0-alpha.1)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.2(@babel/core@7.28.4)))(@glint/template@1.6.0-alpha.1)
+        specifier: 2.0.0-alpha.3
+        version: 2.0.0-alpha.3(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/environment-ember-loose@2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/template@1.6.0-alpha.1)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.2(@babel/core@7.28.4)))(@glint/template@1.6.0-alpha.1)
       '@glint/template':
         specifier: 1.6.0-alpha.1
         version: 1.6.0-alpha.1
@@ -3117,8 +3117,8 @@ packages:
       '@types/ember__routing':
         optional: true
 
-  '@glint/environment-ember-template-imports@2.0.0-alpha.2':
-    resolution: {integrity: sha512-+TfRtImWCG1uXYyRaO+vgElb1ZtP1VErMNAMH67K08jBysOhYIETow2wtHVzVXDtWIX5QfPAeuJeK0CpT1/pQw==}
+  '@glint/environment-ember-template-imports@2.0.0-alpha.3':
+    resolution: {integrity: sha512-OLcmZ1MtHyyt5LZqUUdBxBviUV8apoXzb46yBNn68JREzzkkmVQIKr4YZuNtwrmGrmUMGGr7G5og56rWur0IXw==}
     peerDependencies:
       '@glint/core': '*'
       '@glint/environment-ember-loose': '*'
@@ -14450,7 +14450,7 @@ snapshots:
       '@glint/template': 1.5.2
       content-tag: 2.0.3
 
-  '@glint/environment-ember-template-imports@2.0.0-alpha.2(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/environment-ember-loose@2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/template@1.6.0-alpha.1)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.2(@babel/core@7.28.4)))(@glint/template@1.6.0-alpha.1)':
+  '@glint/environment-ember-template-imports@2.0.0-alpha.3(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/environment-ember-loose@2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/template@1.6.0-alpha.1)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.2(@babel/core@7.28.4)))(@glint/template@1.6.0-alpha.1)':
     dependencies:
       '@glint/core': 2.0.0-alpha.5(typescript@5.9.2)
       '@glint/environment-ember-loose': 2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.5(typescript@5.9.2))(@glint/template@1.6.0-alpha.1)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.2(@babel/core@7.28.4))
