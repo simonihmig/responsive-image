@@ -233,7 +233,7 @@ export function runTests({ isShadowDom = false }: TestOptions = {}) {
       // Blurhash encoding seems to suffer from some indeterminism based on external factors, causing test flakiness.
       // See https://github.com/woltapp/blurhash/issues/196.
       // Therefore not comparing with exact expected result.
-      await expect(img).toHaveAttribute('data-ri-lqip', /^bh:5:3:M53T.{30}$/);
+      await expect(img).toHaveAttribute('data-ri-lqip', /^bh:5:3:.{34}$/);
 
       for (const [type, ext] of imageTypes) {
         await expect(
