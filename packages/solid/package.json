@@ -32,7 +32,7 @@
     "build": "rollup --config",
     "test.vitest": "vitest",
     "test.vitest:server": "vitest --mode ssr",
-    "test:watch": "vitest watch",
+    "test.vitest:watch": "vitest watch",
     "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
     "lint.eslint": "eslint .",
     "lint.eslint:fix": "eslint . --fix",

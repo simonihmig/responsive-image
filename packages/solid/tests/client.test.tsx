@@ -688,6 +688,58 @@ describe('ResponsiveImage', () => {
       const imgEl = container.querySelector('img')!;
 
       expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+
+      await trigger(imgEl);
+
+      expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+    });
+
+    test('it reapplies LQIP after src changes', async () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          class: 'lqip-test-class',
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
+          attribute: 'test-attr',
+        },
+      };
+
+      const [image, setImage] = createSignal(imageData);
+
+      const { container } = render(() => <ResponsiveImage src={image()} />);
+      const imgEl = container.querySelector('img')!;
+
+      expect(imgEl).toHaveClass('lqip-test-class');
+      expect(imgEl).toHaveStyle({ borderLeft: '5px solid red' });
+      expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+
+      await trigger(imgEl);
+
+      expect(imgEl).not.toHaveClass('lqip-test-class');
+
+      const otherImage = {
+        ...defaultImageData,
+        lqip: {
+          class: 'other-lqip-test-class',
+          inlineStyles: {
+            'border-left': 'solid 5px blue',
+          },
+          attribute: 'other-attr',
+        },
+      };
+
+      setImage(otherImage);
+
+      expect(imgEl).toHaveClass('other-lqip-test-class');
+      expect(imgEl).toHaveStyle({ borderLeft: '5px solid blue' });
+      expect(imgEl).toHaveAttribute('data-ri-lqip', 'other-attr');
+
+      await trigger(imgEl);
+
+      expect(imgEl).not.toHaveClass('other-lqip-test-class');
+      expect(imgEl).not.toHaveStyle({ borderLeft: '5px solid blue' });
     });
   });
 
