@@ -1,4 +1,5 @@
-import { render } from '@ember/test-helpers';
+import { render, settled } from '@ember/test-helpers';
+import { tracked } from '@glimmer/tracking';
 import { env } from '@responsive-image/core';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, skip, test } from 'qunit';
@@ -503,6 +504,82 @@ module('Integration: Responsive Image Component', function (hooks) {
           'test-attr',
           'has data-ri-lqip attribute',
         );
+
+      await trigger(imgEl);
+
+      assert
+        .dom(imgEl)
+        .hasAttribute(
+          'data-ri-lqip',
+          'test-attr',
+          'keeps data-ri-lqip attribute after load',
+        );
+    });
+
+    test('it reapplies LQIP after src changes', async function (this: RenderingTestContext, assert) {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          class: 'lqip-test-class',
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
+          attribute: 'test-attr',
+        },
+      };
+
+      class Context {
+        @tracked image: ImageData = imageData;
+      }
+      const ctx = new Context();
+
+      await render(<template><ResponsiveImage @src={{ctx.image}} /></template>);
+
+      const imgEl = this.element.querySelector('img')!;
+
+      assert
+        .dom(imgEl)
+        .hasClass('lqip-test-class')
+        .hasStyle({ 'border-left': '5px solid rgb(255, 0, 0)' })
+        .hasAttribute(
+          'data-ri-lqip',
+          'test-attr',
+          'has data-ri-lqip attribute',
+        );
+
+      await trigger(imgEl);
+
+      assert.dom(imgEl).hasNoClass('lqip-test-class');
+
+      ctx.image = {
+        ...defaultImageData,
+        lqip: {
+          class: 'other-lqip-test-class',
+          inlineStyles: {
+            'border-left': 'solid 5px blue',
+          },
+          attribute: 'other-attr',
+        },
+      };
+
+      await settled();
+
+      assert
+        .dom(imgEl)
+        .hasClass('other-lqip-test-class')
+        .hasStyle({ 'border-left': '5px solid rgb(0, 0, 255)' })
+        .hasAttribute(
+          'data-ri-lqip',
+          'other-attr',
+          'has data-ri-lqip attribute',
+        );
+
+      await trigger(imgEl);
+
+      assert
+        .dom(imgEl)
+        .hasNoClass('other-lqip-test-class')
+        .doesNotHaveStyle({ 'border-left': '5px solid rgb(0, 0, 255)' });
     });
   });
 

@@ -46,7 +46,8 @@
 		['avif', 3]
 	]);
 
-	let isLoaded = $state(false);
+	let loadedSrc = $state<ImageData | undefined>(undefined);
+	const isLoaded = $derived(loadedSrc === srcProp);
 
 	const isResponsiveLayout = $derived(widthProp === undefined && heightProp === undefined);
 
@@ -191,7 +192,7 @@
 		{...htmlAttributes}
 		data-ri-lqip={srcProp.lqip?.attribute}
 		use:applyStyles
-		onload={() => (isLoaded = true)}
+		onload={() => (loadedSrc = srcProp)}
 	/>
 {:else}
 	<picture>
@@ -209,7 +210,7 @@
 			{...htmlAttributes}
 			data-ri-lqip={srcProp.lqip?.attribute}
 			use:applyStyles
-			onload={() => (isLoaded = true)}
+			onload={() => (loadedSrc = srcProp)}
 		/>
 	</picture>
 {/if}

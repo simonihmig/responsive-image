@@ -52,8 +52,9 @@ const typeScore = new Map<ImageUrlForType, number>([
 ]);
 
 export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
-  const [isLoaded, setLoaded] = createSignal(false);
+  const [loadedSrc, setLoaded] = createSignal<ImageData | undefined>(undefined);
   const [args, attributes] = splitProps(props, responsiveImageArgs);
+  const isLoaded = () => loadedSrc() === args.src;
 
   const isResponsiveLayout = () =>
     args.width === undefined && args.height === undefined;
@@ -185,7 +186,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
       {...attributes}
       data-ri-lqip={args.src.lqip?.attribute}
       style={styles()}
-      on:load={() => setLoaded(true)}
+      on:load={() => setLoaded(args.src)}
     />
   );
 

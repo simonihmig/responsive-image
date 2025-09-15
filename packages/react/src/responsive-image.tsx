@@ -188,7 +188,7 @@ function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
 }
 
 export function ResponsiveImage(props: ResponsiveImageProps) {
-  const [isLoaded, setLoaded] = useState(false);
+  const [loadedSrc, setLoaded] = useState<ImageData | undefined>(undefined);
 
   const { src, size, sizes, width, height, className, ...htmlAttributes } =
     props;
@@ -199,6 +199,7 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
     width,
     height,
   };
+  const isLoaded = loadedSrc === src;
 
   const sources = getSources(riProps);
 
@@ -219,7 +220,7 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
       {...htmlAttributes}
       data-ri-lqip={riProps.src.lqip?.attribute}
       style={getStyles(riProps, isLoaded)}
-      onLoad={() => setLoaded(true)}
+      onLoad={() => setLoaded(src)}
     />
   );
 

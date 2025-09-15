@@ -593,6 +593,10 @@ describe('ResponsiveImage', () => {
       const imgEl = el.shadowRoot?.querySelector('img');
 
       expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+
+      await trigger(imgEl!);
+
+      expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
     });
 
     test('it applies inline styles from literal', async () => {
@@ -637,6 +641,54 @@ describe('ResponsiveImage', () => {
       await trigger(imgEl!);
 
       expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
+    });
+
+    test('it reapplies LQIP after src changes', async () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
+          attribute: 'test-attr',
+        },
+      };
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      expect(imgEl).toHaveStyle('border-left: solid 5px red');
+      expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+
+      await trigger(imgEl!);
+
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
+
+      const otherImage = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: {
+            'border-left': 'solid 5px blue',
+          },
+          attribute: 'other-attr',
+        },
+      };
+
+      el.src = otherImage;
+
+      expect(el.complete).toBe(false);
+
+      await Promise.resolve();
+
+      expect(imgEl).toHaveStyle('border-left: solid 5px blue');
+      expect(imgEl).toHaveAttribute('data-ri-lqip', 'other-attr');
+
+      await trigger(imgEl!);
+
+      expect(el.complete).toBe(true);
+      expect(imgEl).not.toHaveStyle({ borderLeft: '5px solid blue' });
     });
   });
 

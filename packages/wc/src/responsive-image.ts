@@ -83,7 +83,11 @@ export class ResponsiveImage extends LitElement {
   @property({ type: String }) alt = '';
 
   @state()
-  public complete = false;
+  private loadedSrc?: ImageData;
+
+  get complete(): boolean {
+    return this.loadedSrc === this.src;
+  }
 
   get layout(): Layout {
     return this.width === undefined && this.height === undefined
@@ -221,7 +225,7 @@ export class ResponsiveImage extends LitElement {
         referrerpolicy=${ifDefined(this.referrerPolicy)}
         data-ri-lqip=${ifDefined(lqip?.attribute)}
         @load=${(event: Event) => {
-          this.complete = true;
+          this.loadedSrc = this.src;
           this.dispatchEvent(new Event(event.type, event));
         }}
         @error=${(event: Event) => {
