@@ -1,5 +1,13 @@
 # @responsive-image/wc
 
+## 2.0.1
+
+### Patch Changes
+
+- [#1662](https://github.com/simonihmig/responsive-image/pull/1662) [`ca440a9`](https://github.com/simonihmig/responsive-image/commit/ca440a9069f373cafca2aa79428c34d02aab2dc4) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix LQIP reactivity when src changes
+
+  When changing the `src` argument dynamically, the loading state was not correctly reset. This is fixing it, so that the new image's LQIP styles get applied while it is loading.
+
 ## 2.0.0
 
 ### Major Changes
