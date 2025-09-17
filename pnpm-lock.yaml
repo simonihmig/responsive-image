@@ -1224,8 +1224,8 @@ importers:
         version: 3.3.1
     devDependencies:
       '@custom-elements-manifest/analyzer':
-        specifier: 0.10.5
-        version: 0.10.5
+        specifier: 0.10.6
+        version: 0.10.6
       '@open-wc/testing-helpers':
         specifier: 3.0.1
         version: 3.0.1
@@ -2170,12 +2170,12 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.0.0
 
-  '@custom-elements-manifest/analyzer@0.10.5':
-    resolution: {integrity: sha512-Y9iUIhTDtcoaiH9XLwkK5POTxVJkcDuN9buCH4kQJmPmTMdm8Fhq7yk0l8Pu3TYC+RuXy6xA49+1IwvFJLF5mg==}
+  '@custom-elements-manifest/analyzer@0.10.6':
+    resolution: {integrity: sha512-zWz7BIjY1o7DUrHZPFpsSNtQjkEbLPbEkH1zxSJB3RX/SvyKnw8mvdkTl7nDYgVYEzokIDMZhdPrPzqpV0OXYg==}
     hasBin: true
 
-  '@custom-elements-manifest/find-dependencies@0.0.5':
-    resolution: {integrity: sha512-fKIMMZCDFSoL2ySUoz8knWgpV4jpb0lUXgLOvdZQMQFHxgxz1PqOJpUIypwvEVyKk3nEHRY4f10gNol02HjeCg==}
+  '@custom-elements-manifest/find-dependencies@0.0.6':
+    resolution: {integrity: sha512-2iVksJ156XuaeeC6jB6oMG6k9ROHS3W1delwJLL804yQMri9NnQW78JDCYMtFfW8b4locUG+3+hrtAHxk+fNGg==}
 
   '@deno/shim-deno-test@0.5.0':
     resolution: {integrity: sha512-4nMhecpGlPi0cSzT67L+Tm+GOJqvuk8gqHBziqcUQOarnuIax1z96/gJHCSIz2Z0zhxE6Rzwb3IZXPtFh51j+w==}
@@ -4389,6 +4389,60 @@ packages:
     resolution: {integrity: sha512-cQzWCtO6C8TQiYl1ruKNn2U6Ao4o4WBBcbL61yJl84x+j5sOWWFU9X7DpND8XZG3daDppSsigMdfAIl2upQBRw==}
     engines: {node: '>=10.0.0'}
 
+  '@xn-sakina/rml-darwin-arm64@2.5.1':
+    resolution: {integrity: sha512-opF0AyFOYXkVoibAFh6tLgYHETduN3/aubxGJXOYkAcW4b4YMmDKXqU7UDjsNse3D/5T+8XFxUIl4E0+lHPRxg==}
+    engines: {node: '>=14'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@xn-sakina/rml-darwin-x64@2.5.1':
+    resolution: {integrity: sha512-kWcLQgAZ7aNP10URYxzsWFJH6rMZvGmX904644TEMzTrv1EaqZj0qQwQ34aFq5WX9ze0/MpzlvZ/w0hJIqQH8Q==}
+    engines: {node: '>=14'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@xn-sakina/rml-linux-arm-gnueabihf@2.5.1':
+    resolution: {integrity: sha512-HlQ85PvF+MyOeAScdarAkPpI+PS0u8qh9AAvsRRolhQ8kehHvTzMYFiLAerIZEaRHTHMpgVIhttcZ6ZWKdTUpQ==}
+    engines: {node: '>=14'}
+    cpu: [arm]
+    os: [linux]
+
+  '@xn-sakina/rml-linux-arm64-gnu@2.5.1':
+    resolution: {integrity: sha512-9GQDgAUNqErwC/OftCCch0199zjALgVopTu+FSwQS2ECW4n+sumeyF18xtGQAj4NQUYNn9HseT+7cn3gk7f7HA==}
+    engines: {node: '>=14'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@xn-sakina/rml-linux-arm64-musl@2.5.1':
+    resolution: {integrity: sha512-pN+F/V9H/HZvlovD9T/zeAvXE45qvzti8WD9m7T+fa9A6qdmBwSJTFZeEa0c+lP66r+1OSv9BIir1iMi99wvHw==}
+    engines: {node: '>=14'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@xn-sakina/rml-linux-x64-gnu@2.5.1':
+    resolution: {integrity: sha512-9y5LnhD0N9Hh36CwhlYwO/AiAz+LGAQvYLt9JfGuSTy/m5A4npqSOC4zaGx3hjAIu56FyxfHP3PJHW3opw0mzg==}
+    engines: {node: '>=14'}
+    cpu: [x64]
+    os: [linux]
+
+  '@xn-sakina/rml-linux-x64-musl@2.5.1':
+    resolution: {integrity: sha512-x5TJC6KRG9ATZvVqL5TJBUGN3sVjbw00TCulrdVcxWAv352sxM+yYvxZsMq6yxbU8Y3jAOX36mbZSKcAkR4XYg==}
+    engines: {node: '>=14'}
+    cpu: [x64]
+    os: [linux]
+
+  '@xn-sakina/rml-win32-arm64-msvc@2.5.1':
+    resolution: {integrity: sha512-KCe+wursdZFNM3yfQgwX+6Bgs40t4bg2LLz1DXslZ35dEM64bbAngi4anqr5tdllS4146+Gn5L71DGrxytR8Kw==}
+    engines: {node: '>=14'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@xn-sakina/rml-win32-x64-msvc@2.5.1':
+    resolution: {integrity: sha512-v56lTBAmggAppgohjSVwxbhWniaN+KP5HK/zTQO2OaTdSBUHzufFp9Wt/M/bMRvuhjZzkAp2WNkiYWLJyB3sXg==}
+    engines: {node: '>=14'}
+    cpu: [x64]
+    os: [win32]
+
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
 
@@ -6352,9 +6406,6 @@ packages:
   es-errors@1.3.0:
     resolution: {integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==}
     engines: {node: '>= 0.4'}
-
-  es-module-lexer@0.9.3:
-    resolution: {integrity: sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==}
 
   es-module-lexer@1.7.0:
     resolution: {integrity: sha512-jEQoCwk8hyb2AZziIOLhDqpm5+2ww5uIE6lkO/6jcOCusfk6LhMHpXXfBLXTZ7Ydyt0j4VoUQv6uGNYbdW+kBA==}
@@ -9484,6 +9535,10 @@ packages:
   rrweb-cssom@0.8.0:
     resolution: {integrity: sha512-guoltQEx+9aMf2gDZ0s62EcV8lsXR+0w8915TC3ITdn2YueuNjdAYh/levpU9nFaoChh9RUS5ZdQMrKfVEN9tw==}
 
+  rs-module-lexer@2.5.1:
+    resolution: {integrity: sha512-Zud7if8vr+tCEf7LjGY7ReHyjCrSZrM4feQbWrUtrQ3c1ljDRSQ8zpdc89DCCgWyZyvMTIcInu9BxkrSUtFGyA==}
+    engines: {node: '>=14'}
+
   rsvp@3.2.1:
     resolution: {integrity: sha512-Rf4YVNYpKjZ6ASAmibcwTNciQ5Co5Ztq6iZPEykHpkoflnD/K5ryE/rHehFsTm4NJj8nKDhbi3eKBWGogmNnkg==}
 
@@ -12392,9 +12447,9 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
-  '@custom-elements-manifest/analyzer@0.10.5':
+  '@custom-elements-manifest/analyzer@0.10.6':
     dependencies:
-      '@custom-elements-manifest/find-dependencies': 0.0.5
+      '@custom-elements-manifest/find-dependencies': 0.0.6
       '@github/catalyst': 1.7.0
       '@web/config-loader': 0.1.3
       chokidar: 3.5.2
@@ -12405,9 +12460,9 @@ snapshots:
       globby: 11.0.4
       typescript: 5.4.5
 
-  '@custom-elements-manifest/find-dependencies@0.0.5':
+  '@custom-elements-manifest/find-dependencies@0.0.6':
     dependencies:
-      es-module-lexer: 0.9.3
+      rs-module-lexer: 2.5.1
 
   '@deno/shim-deno-test@0.5.0': {}
 
@@ -15272,6 +15327,33 @@ snapshots:
 
   '@xmldom/xmldom@0.8.11': {}
 
+  '@xn-sakina/rml-darwin-arm64@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-darwin-x64@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-linux-arm-gnueabihf@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-linux-arm64-gnu@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-linux-arm64-musl@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-linux-x64-gnu@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-linux-x64-musl@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-win32-arm64-msvc@2.5.1':
+    optional: true
+
+  '@xn-sakina/rml-win32-x64-msvc@2.5.1':
+    optional: true
+
   '@xtuc/ieee754@1.2.0': {}
 
   '@xtuc/long@4.2.2': {}
@@ -17868,8 +17950,6 @@ snapshots:
   es-define-property@1.0.1: {}
 
   es-errors@1.3.0: {}
-
-  es-module-lexer@0.9.3: {}
 
   es-module-lexer@1.7.0: {}
 
@@ -21545,6 +21625,18 @@ snapshots:
   rrweb-cssom@0.7.1: {}
 
   rrweb-cssom@0.8.0: {}
+
+  rs-module-lexer@2.5.1:
+    optionalDependencies:
+      '@xn-sakina/rml-darwin-arm64': 2.5.1
+      '@xn-sakina/rml-darwin-x64': 2.5.1
+      '@xn-sakina/rml-linux-arm-gnueabihf': 2.5.1
+      '@xn-sakina/rml-linux-arm64-gnu': 2.5.1
+      '@xn-sakina/rml-linux-arm64-musl': 2.5.1
+      '@xn-sakina/rml-linux-x64-gnu': 2.5.1
+      '@xn-sakina/rml-linux-x64-musl': 2.5.1
+      '@xn-sakina/rml-win32-arm64-msvc': 2.5.1
+      '@xn-sakina/rml-win32-x64-msvc': 2.5.1
 
   rsvp@3.2.1: {}
 
