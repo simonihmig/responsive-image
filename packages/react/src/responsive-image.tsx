@@ -187,6 +187,9 @@ function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
   return reactStyles;
 }
 
+let keyCounter = 0;
+const keyMap = new WeakMap<ImageData, number>();
+
 export function ResponsiveImage(props: ResponsiveImageProps) {
   const [loadedSrc, setLoaded] = useState<ImageData | undefined>(undefined);
 
@@ -201,10 +204,27 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
   };
   const isLoaded = loadedSrc === src;
 
+  let key: number | undefined;
+
+  // When LQIP is used, we need to use a key, so when src changes, the img element is recreated to re-apply LQIP styles without having
+  // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
+  // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
+  // Ideally, we would just use src as the key, but React only allows for simple values (numbers or strings) as key, so we need to use
+  // a mapping of src to generated primitive keys, that ensures that we get the same key for the same src
+  if (src.lqip) {
+    key = keyMap.get(src);
+
+    if (key === undefined) {
+      key = keyCounter++;
+      keyMap.set(src, key);
+    }
+  }
+
   const sources = getSources(riProps);
 
   const img = (
     <img
+      key={key}
       className={getClassNames(riProps, isLoaded, className)}
       loading={htmlAttributes.loading || 'lazy'}
       decoding={htmlAttributes.decoding || 'async'}
