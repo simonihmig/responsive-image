@@ -13,6 +13,10 @@
   "labels": ["dependencies"],
   "packageRules": [
     {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
       "matchCurrentVersion": ">= 1.0.0",
       "matchUpdateTypes": ["minor"],
       "automerge": true
