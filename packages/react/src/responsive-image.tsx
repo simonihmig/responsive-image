@@ -187,6 +187,9 @@ function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
   return reactStyles;
 }
 
+let keyCounter = 0;
+const keyMap = new WeakMap<ImageData, number>();
+
 export function ResponsiveImage(props: ResponsiveImageProps) {
   const [loadedSrc, setLoaded] = useState<ImageData | undefined>(undefined);
 
@@ -201,10 +204,24 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
   };
   const isLoaded = loadedSrc === src;
 
+  let key: number | undefined;
+
+  // when LQIP options are, we need to force a recreation of the <img> element when src has changed to prevent
+  // the browser from showing the previous image, as that would overlay the LQIP styles. See https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
+  if (src.lqip) {
+    key = keyMap.get(src);
+
+    if (key === undefined) {
+      key = keyCounter++;
+      keyMap.set(src, key);
+    }
+  }
+
   const sources = getSources(riProps);
 
   const img = (
     <img
+      key={key}
       className={getClassNames(riProps, isLoaded, className)}
       loading={htmlAttributes.loading || 'lazy'}
       decoding={htmlAttributes.decoding || 'async'}
