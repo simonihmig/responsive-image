@@ -1224,8 +1224,8 @@ importers:
         version: 3.3.1
     devDependencies:
       '@custom-elements-manifest/analyzer':
-        specifier: 0.10.6
-        version: 0.10.6
+        specifier: 0.10.8
+        version: 0.10.8
       '@open-wc/testing-helpers':
         specifier: 3.0.1
         version: 3.0.1
@@ -2179,8 +2179,8 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.0.0
 
-  '@custom-elements-manifest/analyzer@0.10.6':
-    resolution: {integrity: sha512-zWz7BIjY1o7DUrHZPFpsSNtQjkEbLPbEkH1zxSJB3RX/SvyKnw8mvdkTl7nDYgVYEzokIDMZhdPrPzqpV0OXYg==}
+  '@custom-elements-manifest/analyzer@0.10.8':
+    resolution: {integrity: sha512-SyZMf0lE6PzZzS2pYy9ONReNZ3duQj9/Cd2n6j79hxVgLS333l+0SAeXadsn9/RYmDQ+oXm+VuNAJujeR7SMoA==}
     hasBin: true
 
   '@custom-elements-manifest/find-dependencies@0.0.6':
@@ -12434,7 +12434,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
-  '@custom-elements-manifest/analyzer@0.10.6':
+  '@custom-elements-manifest/analyzer@0.10.8':
     dependencies:
       '@custom-elements-manifest/find-dependencies': 0.0.6
       '@github/catalyst': 1.7.0
