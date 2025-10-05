@@ -871,8 +871,8 @@ importers:
         specifier: 1.6.1
         version: 1.6.1
       '@glint/tsserver-plugin':
-        specifier: 2.0.2
-        version: 2.0.2
+        specifier: 2.0.3
+        version: 2.0.3
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../-internals
@@ -2820,8 +2820,8 @@ packages:
     peerDependencies:
       typescript: '>=5.6.0'
 
-  '@glint/ember-tsc@1.0.2':
-    resolution: {integrity: sha512-zLzPQTI1k9B41Skw/KSS9MRvxfmUOKUsPOqfRVB86EguudUMme2q8luDRRnhfoel5Rnn/A0jK1srTzXUyH0ANg==}
+  '@glint/ember-tsc@1.0.3':
+    resolution: {integrity: sha512-EDWJJl0Bz7GCfGh6CzfAAy2a6AATjkH1qh0Dz7ERgJj1WUfe+liWZCoBHs1bDbexNrEPoUdkOZCzqFObaP9NBA==}
     hasBin: true
     peerDependencies:
       typescript: '>=5.6.0'
@@ -2903,8 +2903,8 @@ packages:
   '@glint/template@1.6.1':
     resolution: {integrity: sha512-/VuVbS+p2ON/qYVlTljIBnNMR3eUiu202uXdYJHTQ7bfFWmLija+ZfdgQCjdm83uZUMXQqtWvjOwwFXe5cvPtg==}
 
-  '@glint/tsserver-plugin@2.0.2':
-    resolution: {integrity: sha512-fGN8l5CqySiK2hhPNxJr7NoG5e27Hox1D5mCmkKJpgVKxGHx7A01oomr9/kRlmA2hB3yWoToAH5//XWs5GgyMw==}
+  '@glint/tsserver-plugin@2.0.3':
+    resolution: {integrity: sha512-wieKViqtlsH5Djzj3uv+m9FE0rrSN0Mtq7Zfo42RY18pgPm8mwnVD97TZ/6iLLZ4d3oszSXd25fJKPo/aAqAEQ==}
 
   '@handlebars/parser@2.0.0':
     resolution: {integrity: sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==}
@@ -13438,7 +13438,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@glint/ember-tsc@1.0.2(typescript@5.9.3)':
+  '@glint/ember-tsc@1.0.3(typescript@5.9.3)':
     dependencies:
       '@glimmer/syntax': 0.95.0
       '@glint/template': 1.6.1
@@ -13501,9 +13501,9 @@ snapshots:
 
   '@glint/template@1.6.1': {}
 
-  '@glint/tsserver-plugin@2.0.2':
+  '@glint/tsserver-plugin@2.0.3':
     dependencies:
-      '@glint/ember-tsc': 1.0.2(typescript@5.9.3)
+      '@glint/ember-tsc': 1.0.3(typescript@5.9.3)
       '@volar/language-core': 2.4.23
       '@volar/typescript': 2.4.23
       jiti: 2.4.2
