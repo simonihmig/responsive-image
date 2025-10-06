@@ -111,8 +111,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(@babel/core@7.28.4)
       ember-auto-import:
-        specifier: 2.10.1
-        version: 2.10.1(@glint/template@1.6.1)(webpack@5.102.0)
+        specifier: 2.11.0
+        version: 2.11.0(@glint/template@1.6.1)(webpack@5.102.0)
       ember-cli:
         specifier: 6.7.0
         version: 6.7.0(@types/node@22.13.4)
@@ -282,8 +282,8 @@ importers:
         specifier: 9.2.1
         version: 9.2.1
       ember-auto-import:
-        specifier: 2.10.1
-        version: 2.10.1(@glint/template@1.6.1)(webpack@5.102.0)
+        specifier: 2.11.0
+        version: 2.11.0(@glint/template@1.6.1)(webpack@5.102.0)
       ember-cli:
         specifier: 6.7.0
         version: 6.7.0(@types/node@22.13.4)
@@ -6243,8 +6243,8 @@ packages:
   ember-async-data@2.0.1:
     resolution: {integrity: sha512-yCQlVR3NLgjGA09LMc1NYX0XiAd0tHTM4/AmIHD0wq87QpHGmWcpMxyKGEe/TBczyCwBEJifaZNtAjMDsW1YdA==}
 
-  ember-auto-import@2.10.1:
-    resolution: {integrity: sha512-5K4lYSEBch3DKQn1VElFHDHcHTvhTJnB6aebf24VyIobLL+OMWORcCK1fiwyfPiVABztyuLXH2GiXDweNUtntA==}
+  ember-auto-import@2.11.0:
+    resolution: {integrity: sha512-6uM3v+pxvifR0wEMibF/F6/AjDK262JIEWPRvndaC1kaFERH29eXpeOVRVqowMhN9f4Spj3mKHpQjLLRM1macw==}
     engines: {node: 12.* || 14.* || >= 16}
 
   ember-cli-app-version@7.0.0:
@@ -17052,7 +17052,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  ember-auto-import@2.10.1(@glint/template@1.6.1)(webpack@5.102.0):
+  ember-auto-import@2.11.0(@glint/template@1.6.1)(webpack@5.102.0):
     dependencies:
       '@babel/core': 7.28.4(supports-color@8.1.1)
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.28.4)
@@ -17060,7 +17060,7 @@ snapshots:
       '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.28.4)
       '@babel/plugin-transform-class-static-block': 7.28.3(@babel/core@7.28.4)(supports-color@8.1.1)
       '@babel/preset-env': 7.28.3(@babel/core@7.28.4)(supports-color@8.1.1)
-      '@embroider/macros': 1.18.1(@glint/template@1.6.1)
+      '@embroider/macros': 1.18.2(@glint/template@1.6.1)
       '@embroider/shared-internals': 2.9.1(supports-color@8.1.1)
       babel-loader: 8.4.1(@babel/core@7.28.4)(webpack@5.102.0)
       babel-plugin-ember-modules-api-polyfill: 3.5.0
