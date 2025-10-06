@@ -9,6 +9,7 @@ import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { type ClassInfo, classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { keyed } from 'lit/directives/keyed.js';
 import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
@@ -179,7 +180,7 @@ export class ResponsiveImage extends LitElement {
     return this.src.imageUrlFor(this.imgWidth ?? 640, format);
   }
 
-  render() {
+  render(): unknown {
     const { lqip, imageTypes } = this.src;
 
     if (lqip?.class) {
@@ -203,7 +204,7 @@ export class ResponsiveImage extends LitElement {
           ...(lqip?.inlineStyles ? getValueOrCallback(lqip.inlineStyles) : {}),
         };
 
-    const img = html`
+    const _img = html`
       <img
         part="img"
         width=${ifDefined(this.imgWidth)}
@@ -236,6 +237,11 @@ export class ResponsiveImage extends LitElement {
         }}
       />
     `;
+
+    // When LQIP is used, the key is our src, so when src changes, the img element is recreated to re-apply LQIP styles without having
+    // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
+    // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
+    const img = keyed(this.src.lqip && this.src, _img);
 
     if (imageTypes === 'auto') {
       return img;
