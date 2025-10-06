@@ -248,6 +248,114 @@ module('Integration: Responsive Image Component', function (hooks) {
         .dom('picture source[type="image/webp"]')
         .hasAttribute('sizes', '(max-width: 767px) 100vw, 50vw');
     });
+
+    test('it rerenders when src changes', async function (this: RenderingTestContext, assert) {
+      const imageData = {
+        ...defaultImageData,
+        availableWidths: [50, 100, 640],
+      };
+
+      class Context {
+        @tracked image: ImageData = imageData;
+      }
+      const ctx = new Context();
+
+      await render(<template><ResponsiveImage @src={{ctx.image}} /></template>);
+
+      const imgEl = this.element.querySelector('img')!;
+
+      // jpeg
+      assert
+        .dom('picture source[type="image/jpeg"]')
+        .hasAttribute(
+          'srcset',
+          '/provider/w50/image.jpeg 50w, /provider/w100/image.jpeg 100w, /provider/w640/image.jpeg 640w',
+        );
+
+      // webp
+      assert
+        .dom('picture source[type="image/webp"]')
+        .hasAttribute(
+          'srcset',
+          '/provider/w50/image.webp 50w, /provider/w100/image.webp 100w, /provider/w640/image.webp 640w',
+        );
+
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          '/provider/w50/image.avif 50w, /provider/w100/image.avif 100w, /provider/w640/image.avif 640w',
+        );
+
+      assert.dom(imgEl).hasAttribute('src', /\/provider\/w\d+\/image\.jpeg/);
+
+      assert.strictEqual(
+        parseInt(
+          this.element.querySelector('img')?.getAttribute('width') ?? '',
+          10,
+        ) /
+          parseInt(
+            this.element.querySelector('img')?.getAttribute('height') ?? '',
+            10,
+          ),
+        2,
+      );
+
+      const otherImage: ImageData = {
+        imageTypes: ['webp', 'avif'],
+        imageUrlFor(width, type = 'webp') {
+          return `/other/w${width}/image.${type}`;
+        },
+        aspectRatio: 1,
+        availableWidths: [200, 400],
+      };
+
+      ctx.image = otherImage;
+
+      await settled();
+
+      const imgEl2 = this.element.querySelector('img')!;
+
+      assert.strictEqual(
+        imgEl2,
+        imgEl,
+        'when changing src (without LQIP), the img element stays the same',
+      );
+
+      // jpeg
+      assert.dom('picture source[type="image/jpeg"]').doesNotExist();
+
+      // webp
+      assert
+        .dom('picture source[type="image/webp"]')
+        .hasAttribute(
+          'srcset',
+          '/other/w200/image.webp 200w, /other/w400/image.webp 400w',
+        );
+
+      // avif
+      assert
+        .dom('picture source[type="image/avif"]')
+        .hasAttribute(
+          'srcset',
+          '/other/w200/image.avif 200w, /other/w400/image.avif 400w',
+        );
+
+      assert.dom(imgEl).hasAttribute('src', /\/other\/w\d+\/image\.webp/);
+
+      assert.strictEqual(
+        parseInt(
+          this.element.querySelector('img')?.getAttribute('width') ?? '',
+          10,
+        ) /
+          parseInt(
+            this.element.querySelector('img')?.getAttribute('height') ?? '',
+            10,
+          ),
+        1,
+      );
+    });
   });
 
   module('fixed layout', function () {
@@ -564,8 +672,16 @@ module('Integration: Responsive Image Component', function (hooks) {
 
       await settled();
 
+      const imgEl2 = this.element.querySelector('img')!;
+
+      assert.notStrictEqual(
+        imgEl2,
+        imgEl,
+        'when changing src, the img element must be recreated to show LQIP styles',
+      );
+
       assert
-        .dom(imgEl)
+        .dom(imgEl2)
         .hasClass('other-lqip-test-class')
         .hasStyle({ 'border-left': '5px solid rgb(0, 0, 255)' })
         .hasAttribute(
@@ -574,10 +690,10 @@ module('Integration: Responsive Image Component', function (hooks) {
           'has data-ri-lqip attribute',
         );
 
-      await trigger(imgEl);
+      await trigger(imgEl2);
 
       assert
-        .dom(imgEl)
+        .dom(imgEl2)
         .hasNoClass('other-lqip-test-class')
         .doesNotHaveStyle({ 'border-left': '5px solid rgb(0, 0, 255)' });
     });
