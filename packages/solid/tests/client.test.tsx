@@ -332,6 +332,13 @@ describe('ResponsiveImage', () => {
         availableWidths: [200, 400],
       });
 
+      const imgEl2 = container.querySelector('img')!;
+
+      expect(
+        imgEl2,
+        'when changing src (without LQIP), the img element stays the same',
+      ).toBe(imgEl);
+
       // jpeg
       expect(
         container.querySelector('picture source[type="image/jpeg"]'),
@@ -732,14 +739,21 @@ describe('ResponsiveImage', () => {
 
       setImage(otherImage);
 
-      expect(imgEl).toHaveClass('other-lqip-test-class');
-      expect(imgEl).toHaveStyle({ borderLeft: '5px solid blue' });
-      expect(imgEl).toHaveAttribute('data-ri-lqip', 'other-attr');
+      const imgEl2 = container.querySelector('img')!;
 
-      await trigger(imgEl);
+      expect(
+        imgEl2,
+        'when changing src, the img element must be recreated to show LQIP styles',
+      ).not.toBe(imgEl);
 
-      expect(imgEl).not.toHaveClass('other-lqip-test-class');
-      expect(imgEl).not.toHaveStyle({ borderLeft: '5px solid blue' });
+      expect(imgEl2).toHaveClass('other-lqip-test-class');
+      expect(imgEl2).toHaveStyle({ borderLeft: '5px solid blue' });
+      expect(imgEl2).toHaveAttribute('data-ri-lqip', 'other-attr');
+
+      await trigger(imgEl2);
+
+      expect(imgEl2).not.toHaveClass('other-lqip-test-class');
+      expect(imgEl2).not.toHaveStyle({ borderLeft: '5px solid blue' });
     });
   });
 
