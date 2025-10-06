@@ -1077,8 +1077,8 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
       vite-plugin-solid:
-        specifier: 2.11.8
-        version: 2.11.8(solid-js@1.9.9)(vite@7.1.9(@types/node@22.13.4)(jiti@2.5.1)(terser@5.44.0))
+        specifier: 2.11.9
+        version: 2.11.9(solid-js@1.9.9)(vite@7.1.9(@types/node@22.13.4)(jiti@2.5.1)(terser@5.44.0))
       vitest:
         specifier: 3.2.4
         version: 3.2.4(@types/node@22.13.4)(@vitest/browser@3.2.4)(jiti@2.5.1)(jsdom@26.1.0)(terser@5.44.0)
@@ -10869,6 +10869,16 @@ packages:
 
   vite-plugin-solid@2.11.8:
     resolution: {integrity: sha512-hFrCxBfv3B1BmFqnJF4JOCYpjrmi/zwyeKjcomQ0khh8HFyQ8SbuBWQ7zGojfrz6HUOBFrJBNySDi/JgAHytWg==}
+    peerDependencies:
+      '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
+      solid-js: ^1.7.2
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+    peerDependenciesMeta:
+      '@testing-library/jest-dom':
+        optional: true
+
+  vite-plugin-solid@2.11.9:
+    resolution: {integrity: sha512-bTA6p+bspXZsuulSd2y6aTzegF8xGaJYcq1Uyh/mv+W4DQtzCgL9nN6n2fsTaxp/dMk+ZHHKgGndlNeooqHLKw==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
       solid-js: ^1.7.2
@@ -23184,6 +23194,19 @@ snapshots:
       - yaml
 
   vite-plugin-solid@2.11.8(solid-js@1.9.9)(vite@7.1.9(@types/node@22.13.4)(jiti@2.5.1)(terser@5.44.0)):
+    dependencies:
+      '@babel/core': 7.28.4(supports-color@8.1.1)
+      '@types/babel__core': 7.20.5
+      babel-preset-solid: 1.9.9(@babel/core@7.28.4)(solid-js@1.9.9)
+      merge-anything: 5.1.7
+      solid-js: 1.9.9
+      solid-refresh: 0.6.3(solid-js@1.9.9)
+      vite: 7.1.9(@types/node@22.13.4)(jiti@2.5.1)(terser@5.44.0)
+      vitefu: 1.1.1(vite@7.1.9(@types/node@22.13.4)(jiti@2.5.1)(terser@5.44.0))
+    transitivePeerDependencies:
+      - supports-color
+
+  vite-plugin-solid@2.11.9(solid-js@1.9.9)(vite@7.1.9(@types/node@22.13.4)(jiti@2.5.1)(terser@5.44.0)):
     dependencies:
       '@babel/core': 7.28.4(supports-color@8.1.1)
       '@types/babel__core': 7.20.5
