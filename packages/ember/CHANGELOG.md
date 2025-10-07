@@ -1,5 +1,15 @@
 # @responsive-image/ember
 
+## 2.0.2
+
+### Patch Changes
+
+- [#1712](https://github.com/simonihmig/responsive-image/pull/1712) [`c97ca84`](https://github.com/simonihmig/responsive-image/commit/c97ca8456167169cd0565f99cd72025b7902dc26) Thanks [@simonihmig](https://github.com/simonihmig)! - Force recreating the `<img>` element to show LQIP styles
+
+  When changing the `src` argument dynamically and LQIP styles are being used, the `<img>` element will be recreated instead of reusing the existing DOM node. Otherwise LQIP styles for the new image would not be visisble, as the browser would continue showing the old (already loaded) image while the new one is loading, hiding the LQIP preview (implemented as `background-image` based styles). The `<img>` element is essentially a stateful element, which in this case is not playing in our favor.
+
+  For dynamically changing `src` with image data that does not have LQIP styles, the problem does not apply and therefore nothing changes: re-rendering will continue to reuse the existing DOM element, as this is more efficient.
+
 ## 2.0.1
 
 ### Patch Changes
