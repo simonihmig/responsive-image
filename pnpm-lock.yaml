@@ -956,8 +956,8 @@ importers:
         specifier: 6.0.4
         version: 6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
       '@rollup/plugin-node-resolve':
-        specifier: 16.0.1
-        version: 16.0.1(rollup@4.52.4)
+        specifier: 16.0.2
+        version: 16.0.2(rollup@4.52.4)
       '@testing-library/dom':
         specifier: 10.4.1
         version: 10.4.1
@@ -1032,8 +1032,8 @@ importers:
         specifier: 6.0.4
         version: 6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
       '@rollup/plugin-node-resolve':
-        specifier: 16.0.1
-        version: 16.0.1(rollup@4.52.4)
+        specifier: 16.0.2
+        version: 16.0.2(rollup@4.52.4)
       '@solidjs/testing-library':
         specifier: 0.8.10
         version: 0.8.10(@solidjs/router@0.15.3(solid-js@1.9.9))(solid-js@1.9.9)
@@ -3424,6 +3424,15 @@ packages:
 
   '@rollup/plugin-node-resolve@16.0.1':
     resolution: {integrity: sha512-tk5YCxJWIG81umIvNkSod2qK5KyQW19qcBF/B78n1bjtOON6gzKoVeSzAE8yHCZEDmqkHKkxplExA8KzdJLJpA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.78.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-node-resolve@16.0.2':
+    resolution: {integrity: sha512-tCtHJ2BlhSoK4cCs25NMXfV7EALKr0jyasmqVCq3y9cBrKdmJhtsy1iTz36Xhk/O+pDJbzawxF4K6ZblqCnITQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
@@ -13964,6 +13973,16 @@ snapshots:
     optionalDependencies:
       rollup: 4.52.4
 
+  '@rollup/plugin-node-resolve@16.0.2(rollup@4.52.4)':
+    dependencies:
+      '@rollup/pluginutils': 5.3.0(rollup@4.52.4)
+      '@types/resolve': 1.20.2
+      deepmerge: 4.3.1
+      is-module: 1.0.0
+      resolve: 1.22.10
+    optionalDependencies:
+      rollup: 4.52.4
+
   '@rollup/plugin-replace@6.0.2(rollup@4.52.4)':
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.52.4)
@@ -20082,7 +20101,7 @@ snapshots:
       '@rollup/plugin-commonjs': 28.0.6(rollup@4.52.4)
       '@rollup/plugin-inject': 5.0.5(rollup@4.52.4)
       '@rollup/plugin-json': 6.1.0(rollup@4.52.4)
-      '@rollup/plugin-node-resolve': 16.0.1(rollup@4.52.4)
+      '@rollup/plugin-node-resolve': 16.0.2(rollup@4.52.4)
       '@rollup/plugin-replace': 6.0.2(rollup@4.52.4)
       '@rollup/plugin-terser': 0.4.4(rollup@4.52.4)
       '@vercel/nft': 0.30.1(rollup@4.52.4)
