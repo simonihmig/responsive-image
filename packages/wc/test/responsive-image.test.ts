@@ -385,6 +385,103 @@ describe('ResponsiveImage', () => {
         el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
       ).toHaveAttribute('sizes', '(max-width: 767px) 100vw, 50vw');
     });
+
+    test('it rerenders when src changes', async () => {
+      const imageData = {
+        ...defaultImageData,
+        availableWidths: [50, 100, 640],
+      };
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      // jpeg
+      expect(
+        el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
+      ).toHaveAttribute(
+        'srcset',
+        '/provider/w50/image.jpeg 50w, /provider/w100/image.jpeg 100w, /provider/w640/image.jpeg 640w',
+      );
+
+      // webp
+      expect(
+        el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
+      ).toHaveAttribute(
+        'srcset',
+        '/provider/w50/image.webp 50w, /provider/w100/image.webp 100w, /provider/w640/image.webp 640w',
+      );
+
+      // avif
+      expect(
+        el.shadowRoot?.querySelector('picture source[type="image/avif"]'),
+      ).toHaveAttribute(
+        'srcset',
+        '/provider/w50/image.avif 50w, /provider/w100/image.avif 100w, /provider/w640/image.avif 640w',
+      );
+
+      expect(imgEl).toHaveAttribute(
+        'src',
+        expect.stringMatching(/\/provider\/w\d+\/image\.jpeg/),
+      );
+
+      expect(
+        parseInt(imgEl?.getAttribute('width') ?? '', 10) /
+          parseInt(imgEl?.getAttribute('height') ?? '', 10),
+      ).to.equal(2);
+
+      const otherImage: ImageData = {
+        imageTypes: ['webp', 'avif'],
+        imageUrlFor(width, type = 'webp') {
+          return `/other/w${width}/image.${type}`;
+        },
+        aspectRatio: 1,
+        availableWidths: [200, 400],
+      };
+
+      el.src = otherImage;
+      await new Promise((r) => requestAnimationFrame(r));
+
+      const imgEl2 = el.shadowRoot?.querySelector('img');
+
+      expect(
+        imgEl2,
+        'when changing src (without LQIP), the img element stays the same',
+      ).toBe(imgEl);
+
+      // jpeg
+      expect(
+        el.shadowRoot?.querySelector('picture source[type="image/jpeg"]'),
+      ).toBeNull();
+
+      // webp
+      expect(
+        el.shadowRoot?.querySelector('picture source[type="image/webp"]'),
+      ).toHaveAttribute(
+        'srcset',
+        '/other/w200/image.webp 200w, /other/w400/image.webp 400w',
+      );
+
+      // avif
+      expect(
+        el.shadowRoot?.querySelector('picture source[type="image/avif"]'),
+      ).toHaveAttribute(
+        'srcset',
+        '/other/w200/image.avif 200w, /other/w400/image.avif 400w',
+      );
+
+      expect(imgEl).toHaveAttribute(
+        'src',
+        expect.stringMatching(/\/other\/w\d+\/image\.webp/),
+      );
+
+      expect(
+        parseInt(imgEl?.getAttribute('width') ?? '', 10) /
+          parseInt(imgEl?.getAttribute('height') ?? '', 10),
+      ).to.equal(1);
+    });
   });
 
   describe('fixed layout', () => {
@@ -682,13 +779,20 @@ describe('ResponsiveImage', () => {
 
       await Promise.resolve();
 
-      expect(imgEl).toHaveStyle('border-left: solid 5px blue');
-      expect(imgEl).toHaveAttribute('data-ri-lqip', 'other-attr');
+      const imgEl2 = el.shadowRoot?.querySelector('img');
 
-      await trigger(imgEl!);
+      expect(
+        imgEl2,
+        'when changing src, the img element must be recreated to show LQIP styles',
+      ).not.toBe(imgEl);
+
+      expect(imgEl2).toHaveStyle('border-left: solid 5px blue');
+      expect(imgEl2).toHaveAttribute('data-ri-lqip', 'other-attr');
+
+      await trigger(imgEl2!);
 
       expect(el.complete).toBe(true);
-      expect(imgEl).not.toHaveStyle({ borderLeft: '5px solid blue' });
+      expect(imgEl2).not.toHaveStyle({ borderLeft: '5px solid blue' });
     });
   });
 

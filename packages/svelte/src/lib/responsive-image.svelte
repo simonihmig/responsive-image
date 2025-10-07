@@ -180,30 +180,13 @@
 </script>
 
 {#if srcProp.imageTypes === 'auto'}
-	<img
-		{width}
-		{height}
-		loading="lazy"
-		decoding="async"
-		srcset={sourcesSorted[0]?.srcset}
-		{src}
-		alt=""
-		class={classNames.join(' ')}
-		{...htmlAttributes}
-		data-ri-lqip={srcProp.lqip?.attribute}
-		use:applyStyles
-		onload={() => (loadedSrc = srcProp)}
-	/>
-{:else}
-	<picture>
-		{#each sourcesSorted as s (s.mimeType)}
-			<source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
-		{/each}
+	{#key srcProp.lqip && srcProp}
 		<img
 			{width}
 			{height}
 			loading="lazy"
 			decoding="async"
+			srcset={sourcesSorted[0]?.srcset}
 			{src}
 			alt=""
 			class={classNames.join(' ')}
@@ -212,6 +195,27 @@
 			use:applyStyles
 			onload={() => (loadedSrc = srcProp)}
 		/>
+	{/key}
+{:else}
+	<picture>
+		{#each sourcesSorted as s (s.mimeType)}
+			<source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
+		{/each}
+		{#key srcProp.lqip && srcProp}
+			<img
+				{width}
+				{height}
+				loading="lazy"
+				decoding="async"
+				{src}
+				alt=""
+				class={classNames.join(' ')}
+				{...htmlAttributes}
+				data-ri-lqip={srcProp.lqip?.attribute}
+				use:applyStyles
+				onload={() => (loadedSrc = srcProp)}
+			/>
+		{/key}
 	</picture>
 {/if}
 
