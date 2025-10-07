@@ -22,6 +22,9 @@ jobs:
       - uses: wyvox/action-setup-pnpm@v3
         with:
           node-version: 20
+      # Ensure npm 11.5.1 or later is installed for OIDC
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
