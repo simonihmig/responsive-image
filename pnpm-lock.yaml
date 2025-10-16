@@ -93,8 +93,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/vite-plugin
       '@rollup/plugin-babel':
-        specifier: 6.0.4
-        version: 6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
+        specifier: 6.1.0
+        version: 6.1.0(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
       '@tsconfig/ember':
         specifier: 3.0.11
         version: 3.0.11
@@ -877,8 +877,8 @@ importers:
         specifier: workspace:*
         version: link:../-internals
       '@rollup/plugin-babel':
-        specifier: 6.0.4
-        version: 6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
+        specifier: 6.1.0
+        version: 6.1.0(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
       '@types/qunit':
         specifier: 2.19.13
         version: 2.19.13
@@ -953,8 +953,8 @@ importers:
         specifier: workspace:*
         version: link:../-internals
       '@rollup/plugin-babel':
-        specifier: 6.0.4
-        version: 6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
+        specifier: 6.1.0
+        version: 6.1.0(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
       '@rollup/plugin-node-resolve':
         specifier: 16.0.3
         version: 16.0.3(rollup@4.52.4)
@@ -1029,8 +1029,8 @@ importers:
         specifier: workspace:*
         version: link:../-internals
       '@rollup/plugin-babel':
-        specifier: 6.0.4
-        version: 6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
+        specifier: 6.1.0
+        version: 6.1.0(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)
       '@rollup/plugin-node-resolve':
         specifier: 16.0.3
         version: 16.0.3(rollup@4.52.4)
@@ -3351,8 +3351,8 @@ packages:
       rollup:
         optional: true
 
-  '@rollup/plugin-babel@6.0.4':
-    resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
+  '@rollup/plugin-babel@6.1.0':
+    resolution: {integrity: sha512-dFZNuFD2YRcoomP4oYf+DvQNSUA9ih+A3vUqopQx5EdtPGo3WBnQcI/S8pwpz91UsGfL0HsMSOlaMld8HrbubA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -13745,7 +13745,7 @@ snapshots:
     optionalDependencies:
       rollup: 4.52.4
 
-  '@rollup/plugin-babel@6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)':
+  '@rollup/plugin-babel@6.1.0(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.4)':
     dependencies:
       '@babel/core': 7.28.4(supports-color@8.1.1)
       '@babel/helper-module-imports': 7.27.1(supports-color@8.1.1)
