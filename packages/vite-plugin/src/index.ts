@@ -1,3 +1,4 @@
+import configPlugin from './config';
 import exportPlugin from './export';
 import loaderPlugin from './loader';
 import lqipBlurhashPlugin from './lqip/blurhash';
@@ -23,6 +24,7 @@ function setupPlugins(options?: Partial<Options>) {
     lqipInlineCssPlugin(options),
     exportPlugin(options),
     servePlugin(options),
+    configPlugin(),
   ];
 }
 
