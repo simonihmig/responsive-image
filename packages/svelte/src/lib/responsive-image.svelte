@@ -161,9 +161,11 @@
 
 	// Geez, no primitive in Svelte for applying styles from an object! See https://github.com/sveltejs/svelte/issues/7311
 	const applyStyles = (el: HTMLElement) => {
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity
 		const existingStyles: Set<string> = new Set();
 
 		$effect(() => {
+			// eslint-disable-next-line svelte/prefer-svelte-reactivity
 			const rulesToRemove: Set<string> = new Set(existingStyles);
 			existingStyles.clear();
 			for (const [cssProperty, value] of Object.entries(styles)) {
