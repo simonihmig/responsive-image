@@ -941,11 +941,11 @@ importers:
         version: link:../core
     devDependencies:
       '@babel/preset-react':
-        specifier: 7.27.1
-        version: 7.27.1(@babel/core@7.28.5)
+        specifier: 7.28.5
+        version: 7.28.5(@babel/core@7.28.5)
       '@babel/preset-typescript':
-        specifier: 7.27.1
-        version: 7.27.1(@babel/core@7.28.5)
+        specifier: 7.28.5
+        version: 7.28.5(@babel/core@7.28.5)
       '@embroider/addon-dev':
         specifier: 7.1.5
         version: 7.1.5(rollup@4.52.5)
@@ -1020,8 +1020,8 @@ importers:
         version: link:../core
     devDependencies:
       '@babel/preset-typescript':
-        specifier: 7.27.1
-        version: 7.27.1(@babel/core@7.28.5)
+        specifier: 7.28.5
+        version: 7.28.5(@babel/core@7.28.5)
       '@embroider/addon-dev':
         specifier: 7.1.5
         version: 7.1.5(rollup@4.52.5)
@@ -2057,14 +2057,14 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0 || ^8.0.0-0 <8.0.0
 
-  '@babel/preset-react@7.27.1':
-    resolution: {integrity: sha512-oJHWh2gLhU9dW9HHr42q0cI0/iHHXTLGe39qvpAZZzagHy0MzYLCnCVV0symeRvzmjHyVU7mw2K06E6u/JwbhA==}
+  '@babel/preset-react@7.28.5':
+    resolution: {integrity: sha512-Z3J8vhRq7CeLjdC58jLv4lnZ5RKFUJWqH5emvxmv9Hv3BD1T9R/Im713R4MTKwvFaV74ejZ3sM01LyEKk4ugNQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/preset-typescript@7.27.1':
-    resolution: {integrity: sha512-l7WfQfX0WK4M0v2RudjuQK4u99BS6yLHYEmdtVPP7lKV013zr9DygFuWNlnbvQ9LR+LS0Egz/XAvGx5U9MX0fQ==}
+  '@babel/preset-typescript@7.28.5':
+    resolution: {integrity: sha512-+bQy5WOI2V6LJZpPVxY+yp66XdZ2yifu0Mc1aP5CQKgjn4QM5IN2i5fAZ4xKop47pr8rpVhiAeu+nDQa12C8+g==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -11989,7 +11989,7 @@ snapshots:
       '@babel/helper-module-imports': 7.27.1(supports-color@8.1.1)
       '@babel/helper-plugin-utils': 7.27.1
       '@babel/plugin-syntax-jsx': 7.27.1(@babel/core@7.28.5)
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
     transitivePeerDependencies:
       - supports-color
 
@@ -12188,7 +12188,7 @@ snapshots:
       '@babel/types': 7.28.4
       esutils: 2.0.3
 
-  '@babel/preset-react@7.27.1(@babel/core@7.28.5)':
+  '@babel/preset-react@7.28.5(@babel/core@7.28.5)':
     dependencies:
       '@babel/core': 7.28.5(supports-color@8.1.1)
       '@babel/helper-plugin-utils': 7.27.1
@@ -12200,7 +12200,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/preset-typescript@7.27.1(@babel/core@7.28.5)':
+  '@babel/preset-typescript@7.28.5(@babel/core@7.28.5)':
     dependencies:
       '@babel/core': 7.28.5(supports-color@8.1.1)
       '@babel/helper-plugin-utils': 7.27.1
@@ -14245,7 +14245,7 @@ snapshots:
       '@babel/core': 7.28.5(supports-color@8.1.1)
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.4
-      '@babel/preset-typescript': 7.27.1(@babel/core@7.28.5)
+      '@babel/preset-typescript': 7.28.5(@babel/core@7.28.5)
       ansis: 4.2.0
       diff: 8.0.2
       pathe: 2.0.3
