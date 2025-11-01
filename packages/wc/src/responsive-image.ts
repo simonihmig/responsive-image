@@ -10,6 +10,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { type ClassInfo, classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { keyed } from 'lit/directives/keyed.js';
+import { ref } from 'lit/directives/ref.js';
 import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
 
 interface ImageSource {
@@ -180,6 +181,12 @@ export class ResponsiveImage extends LitElement {
     return this.src.imageUrlFor(this.imgWidth ?? 640, format);
   }
 
+  checkAlreadyLoaded(el?: HTMLImageElement) {
+    if (el?.complete) {
+      this.loadedSrc = this.src;
+    }
+  }
+
   render(): unknown {
     const { lqip, imageTypes } = this.src;
 
@@ -235,6 +242,7 @@ export class ResponsiveImage extends LitElement {
         @abort=${(event: Event) => {
           this.dispatchEvent(new Event(event.type, event));
         }}
+        ${ref(this.checkAlreadyLoaded as (el?: Element) => void)}
       />
     `;
 
