@@ -5,7 +5,7 @@ import {
   type ImageData,
   type ImageUrlForType,
 } from '@responsive-image/core';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export type ResponsiveImageLayout = 'responsive' | 'fixed';
 
@@ -222,6 +222,14 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
 
   const sources = getSources(riProps);
 
+  // check if src is already loaded (SSR) and loaded update state so LQIP options are removed
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setLoaded(src);
+    }
+  });
+
   const img = (
     <img
       key={key}
@@ -241,6 +249,7 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
       data-ri-lqip={riProps.src.lqip?.attribute}
       style={getStyles(riProps, isLoaded)}
       onLoad={() => setLoaded(src)}
+      ref={imgRef}
     />
   );
 
