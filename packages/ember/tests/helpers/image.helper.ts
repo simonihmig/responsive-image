@@ -61,3 +61,12 @@ export async function trigger(el: HTMLElement) {
 
   await settled();
 }
+
+export function loadImage(imageUrl: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = document.createElement('img');
+    img.onload = () => resolve();
+
+    img.src = imageUrl;
+  });
+}
