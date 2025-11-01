@@ -3,7 +3,7 @@ import {
   getDestinationWidthBySize,
   getValueOrCallback,
 } from '@responsive-image/core';
-import { createSignal, type JSX, Show, splitProps } from 'solid-js';
+import { createSignal, type JSX, onMount, Show, splitProps } from 'solid-js';
 import { isServer } from 'solid-js/web';
 
 import './responsive-image.css';
@@ -169,6 +169,14 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     return getValueOrCallback(args.src.lqip?.inlineStyles);
   };
 
+  // check if src is already loaded (SSR) and update state so LQIP options are removed
+  let imgEl: HTMLImageElement | undefined;
+  onMount(() => {
+    if (imgEl?.complete) {
+      setLoaded(args.src);
+    }
+  });
+
   const img = (
     // When LQIP is used, the key is our src, so when src changes, the img element is recreated to re-apply LQIP styles without having
     // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
@@ -190,6 +198,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         {...attributes}
         data-ri-lqip={args.src.lqip?.attribute}
         style={styles()}
+        ref={imgEl}
         on:load={() => setLoaded(args.src)}
       />
     </Show>
