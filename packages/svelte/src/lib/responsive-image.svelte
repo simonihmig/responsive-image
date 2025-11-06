@@ -159,8 +159,14 @@
 		return getValueOrCallback(srcProp.lqip?.inlineStyles) ?? {};
 	});
 
+	const checkAlreadyLoaded = (el: HTMLImageElement) => {
+		if (el.complete) {
+			loadedSrc = srcProp;
+		}
+	};
+
 	// Geez, no primitive in Svelte for applying styles from an object! See https://github.com/sveltejs/svelte/issues/7311
-	const applyStyles = (el: HTMLElement) => {
+	const applyStyles = (el: HTMLImageElement) => {
 		// eslint-disable-next-line svelte/prefer-svelte-reactivity
 		const existingStyles: Set<string> = new Set();
 
@@ -194,6 +200,7 @@
 			class={classNames.join(' ')}
 			{...htmlAttributes}
 			data-ri-lqip={srcProp.lqip?.attribute}
+			use:checkAlreadyLoaded
 			use:applyStyles
 			onload={() => (loadedSrc = srcProp)}
 		/>
@@ -214,6 +221,7 @@
 				class={classNames.join(' ')}
 				{...htmlAttributes}
 				data-ri-lqip={srcProp.lqip?.attribute}
+				use:checkAlreadyLoaded
 				use:applyStyles
 				onload={() => (loadedSrc = srcProp)}
 			/>

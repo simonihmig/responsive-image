@@ -8,6 +8,7 @@ import {
   getDestinationWidthBySize,
   getValueOrCallback,
 } from '@responsive-image/core';
+import { modifier } from 'ember-modifier';
 import style from 'ember-style-modifier';
 
 import type Owner from '@ember/owner';
@@ -200,6 +201,12 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
     this.loadedSrc = this.args.src;
   }
 
+  checkAlreadyLoaded = modifier((el: HTMLImageElement) => {
+    if (el.complete) {
+      this.loadedSrc = this.args.src;
+    }
+  });
+
   <template>
     {{#if this.autoFormat}}
       {{#each this.keyedSrcArray}}
@@ -215,6 +222,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
           ...attributes
           data-ri-lqip={{@src.lqip.attribute}}
           {{style this.styles}}
+          {{this.checkAlreadyLoaded}}
           {{on "load" this.onLoad}}
         />
       {{/each}}
@@ -235,6 +243,7 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
             ...attributes
             data-ri-lqip={{@src.lqip.attribute}}
             {{style this.styles}}
+            {{this.checkAlreadyLoaded}}
             {{on "load" this.onLoad}}
           />
         {{/each}}

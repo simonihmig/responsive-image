@@ -3,7 +3,7 @@ import { env, type ImageData } from '@responsive-image/core';
 import { html } from 'lit';
 import { describe, expect, test, afterEach } from 'vitest';
 
-import { trigger } from './image-helper.js';
+import { loadImage, trigger } from './image-helper.js';
 import { type ResponsiveImage } from '../src/responsive-image.js';
 
 import '../src/responsive-image.js';
@@ -792,7 +792,32 @@ describe('ResponsiveImage', () => {
       await trigger(imgEl2!);
 
       expect(el.complete).toBe(true);
-      expect(imgEl2).not.toHaveStyle({ borderLeft: '5px solid blue' });
+      expect(imgEl2).not.toHaveStyle('border-left: solid 5px blue');
+    });
+
+    test('it does not apply LQIP when image is already loaded', async () => {
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp', 'avif'],
+        imageUrlFor() {
+          return '/test-assets/test-image.jpg';
+        },
+        lqip: {
+          inlineStyles: {
+            'border-left': 'solid 5px red',
+          },
+        },
+      };
+
+      await loadImage('/test-assets/test-image.jpg');
+
+      const el = await fixture<ResponsiveImage>(
+        html`<responsive-image .src=${imageData}></responsive-image>`,
+      );
+      const imgEl = el.shadowRoot?.querySelector('img');
+
+      expect(imgEl).toBeDefined();
+      expect(imgEl?.complete).toBe(true);
+      expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
     });
   });
 

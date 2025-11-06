@@ -5,7 +5,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, skip, test } from 'qunit';
 
 import ResponsiveImage from '../../../src/components/responsive-image.gts';
-import { trigger } from '../../helpers/image.helper';
+import { loadImage, trigger } from '../../helpers/image.helper';
 
 import type { RenderingTestContext } from '@ember/test-helpers';
 import type { ImageData } from '@responsive-image/core';
@@ -696,6 +696,27 @@ module('Integration: Responsive Image Component', function (hooks) {
         .dom(imgEl2)
         .hasNoClass('other-lqip-test-class')
         .doesNotHaveStyle({ 'border-left': '5px solid rgb(0, 0, 255)' });
+    });
+
+    test('it does not apply LQIP when image is already loaded', async function (this: RenderingTestContext, assert) {
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp', 'avif'],
+        imageUrlFor() {
+          return '/test-image.jpg';
+        },
+        lqip: {
+          class: 'lqip-test-class',
+        },
+      };
+
+      await loadImage('/test-image.jpg');
+
+      await render(<template><ResponsiveImage @src={{imageData}} /></template>);
+
+      const imgEl = this.element.querySelector('img')!;
+
+      assert.true(imgEl.complete);
+      assert.dom(imgEl).doesNotHaveClass('lqip-test-class');
     });
   });
 

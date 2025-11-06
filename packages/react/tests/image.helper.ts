@@ -15,3 +15,12 @@ export async function trigger(el: HTMLElement) {
   const fakeEvent = new Event('load');
   getImg(el).dispatchEvent(fakeEvent);
 }
+
+export function loadImage(imageUrl: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = document.createElement('img');
+    img.onload = () => resolve();
+
+    img.src = imageUrl;
+  });
+}

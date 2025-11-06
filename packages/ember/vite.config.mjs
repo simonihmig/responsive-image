@@ -22,6 +22,7 @@ export default defineConfig({
       extensions,
     }),
   ],
+  publicDir: 'test-assets',
   build: {
     rollupOptions: {
       input: {

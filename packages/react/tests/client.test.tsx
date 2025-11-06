@@ -4,7 +4,7 @@ import React from 'react';
 import { afterEach, describe, expect, test } from 'vitest';
 
 import { ResponsiveImage } from '../src';
-import { trigger } from './image.helper';
+import { loadImage, trigger } from './image.helper';
 
 describe('environment', () => {
   test('runs on client', () => {
@@ -647,6 +647,27 @@ describe('Response image', () => {
       expect(container.querySelector('img')).toBe(imgEl2);
       expect(imgEl2).not.toHaveClass('other-lqip-test-class');
       expect(imgEl2).not.toHaveStyle({ borderLeft: '5px solid blue' });
+    });
+
+    test('it does not apply LQIP when image is already loaded', async () => {
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp', 'avif'],
+        imageUrlFor() {
+          return '/test-assets/test-image.jpg';
+        },
+        lqip: {
+          class: 'lqip-test-class',
+        },
+      };
+
+      await loadImage('/test-assets/test-image.jpg');
+
+      const { container } = render(<ResponsiveImage src={imageData} />);
+      const imgEl = container.querySelector('img')!;
+
+      expect(imgEl).toBeDefined();
+      expect(imgEl.complete).toBe(true);
+      expect(imgEl).not.toHaveClass('lqip-test-class');
     });
   });
 
