@@ -1,5 +1,13 @@
 # @responsive-image/vite-plugin
 
+## 2.0.2
+
+### Patch Changes
+
+- [#1790](https://github.com/simonihmig/responsive-image/pull/1790) [`8722eb7`](https://github.com/simonihmig/responsive-image/commit/8722eb7ce91fdebb3c17c63ead216e19c2fb8a78) Thanks [@schiller-manuel](https://github.com/schiller-manuel)! - Configure `noExternal` for server env
+
+  Framework package use Vite features, specifically CSS imports, that cannot directly run in node.js in server environments (SSR), so let Vite bundle them.
+
 ## 2.0.1
 
 ### Patch Changes
