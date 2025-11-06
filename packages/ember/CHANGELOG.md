@@ -1,5 +1,15 @@
 # @responsive-image/ember
 
+## 2.0.3
+
+### Patch Changes
+
+- [#1855](https://github.com/simonihmig/responsive-image/pull/1855) [`9e85dec`](https://github.com/simonihmig/responsive-image/commit/9e85dec070bcee9fa9dc8c3e52de402599a2ebdb) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix loading state when image is loaded already
+
+  When the image was already loaded when the component would render initially, the load event would get missed and so some optional LQIP styles (background image) would not get removed properly. This situation can easily happen in a SSR setup.
+
+  In most cases (opaque images) a user wouldn't see this, but with partially transparent images the LQIP would shine through.
+
 ## 2.0.2
 
 ### Patch Changes
