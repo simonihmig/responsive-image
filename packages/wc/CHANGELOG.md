@@ -1,5 +1,13 @@
 # @responsive-image/wc
 
+## 2.0.4
+
+### Patch Changes
+
+- [#1890](https://github.com/simonihmig/responsive-image/pull/1890) [`276ce93`](https://github.com/simonihmig/responsive-image/commit/276ce9317786e8ab2ad69ae3be9ff729ca60e926) Thanks [@simonihmig](https://github.com/simonihmig)! - Fix dependency on `tslib`
+
+  `tslib` must be a dependency, not devDependency, as the compiled code imports it.
+
 ## 2.0.3
 
 ### Patch Changes
