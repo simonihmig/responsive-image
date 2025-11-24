@@ -847,8 +847,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1(@glint/template@1.7.3)
       '@embroider/addon-dev':
-        specifier: 8.1.0
-        version: 8.1.0(@glint/template@1.7.3)(rollup@4.52.5)
+        specifier: 8.1.1
+        version: 8.1.1(@glint/template@1.7.3)(rollup@4.52.5)
       '@embroider/compat':
         specifier: 4.1.10
         version: 4.1.10(@embroider/core@4.2.8(@glint/template@1.7.3))(@glint/template@1.7.3)
@@ -2270,8 +2270,8 @@ packages:
       rollup:
         optional: true
 
-  '@embroider/addon-dev@8.1.0':
-    resolution: {integrity: sha512-bOsEqvpAH7pLphjDUMRQTjy6TTrvocvownIlUUFrIy6JCdfIpiirgrz55MJRxy6IIUtKR4jGBh2LxEZrRbL6PQ==}
+  '@embroider/addon-dev@8.1.1':
+    resolution: {integrity: sha512-EXWu8DyWipYmlYg1yP7dtuHgRUWlV2jU0AuAAmudqdkeiBlwTMlgA17xFyHXgRRax9FLEx/MBDe0mLggliwL6Q==}
     engines: {node: 12.* || 14.* || >= 16}
     hasBin: true
     peerDependencies:
@@ -12924,7 +12924,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/addon-dev@8.1.0(@glint/template@1.7.3)(rollup@4.52.5)':
+  '@embroider/addon-dev@8.1.1(@glint/template@1.7.3)(rollup@4.52.5)':
     dependencies:
       '@embroider/core': 4.2.8(@glint/template@1.7.3)
       '@rollup/pluginutils': 5.3.0(rollup@4.52.5)
