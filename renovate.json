@@ -27,5 +27,6 @@
       "automerge": true
     }
   ],
-  "baseBranchPatterns": ["main"]
+  "baseBranchPatterns": ["main"],
+  "postUpdateOptions": ["pnpmDedupe"]
 }
