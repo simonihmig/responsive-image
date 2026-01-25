@@ -648,8 +648,8 @@ importers:
         specifier: 9.39.1
         version: 9.39.1(jiti@2.6.1)
       pkgroll:
-        specifier: 2.21.4
-        version: 2.21.4(typescript@5.9.3)
+        specifier: 2.21.5
+        version: 2.21.5(typescript@5.9.3)
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -706,8 +706,8 @@ importers:
         specifier: 6.5.1
         version: 6.5.1
       pkgroll:
-        specifier: 2.21.4
-        version: 2.21.4(typescript@5.9.3)
+        specifier: 2.21.5
+        version: 2.21.5(typescript@5.9.3)
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -743,8 +743,8 @@ importers:
         specifier: 9.39.1
         version: 9.39.1(jiti@2.6.1)
       pkgroll:
-        specifier: 2.21.4
-        version: 2.21.4(typescript@5.9.3)
+        specifier: 2.21.5
+        version: 2.21.5(typescript@5.9.3)
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -780,8 +780,8 @@ importers:
         specifier: 9.39.1
         version: 9.39.1(jiti@2.6.1)
       pkgroll:
-        specifier: 2.21.4
-        version: 2.21.4(typescript@5.9.3)
+        specifier: 2.21.5
+        version: 2.21.5(typescript@5.9.3)
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -1196,8 +1196,8 @@ importers:
         specifier: 6.5.1
         version: 6.5.1
       pkgroll:
-        specifier: 2.21.4
-        version: 2.21.4(typescript@5.9.3)
+        specifier: 2.21.5
+        version: 2.21.5(typescript@5.9.3)
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -1327,8 +1327,8 @@ importers:
         specifier: 4.51.1
         version: 4.51.1
       pkgroll:
-        specifier: 2.21.4
-        version: 2.21.4(typescript@5.9.3)
+        specifier: 2.21.5
+        version: 2.21.5(typescript@5.9.3)
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -9149,8 +9149,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  pkgroll@2.21.4:
-    resolution: {integrity: sha512-A86a27/WRXDSJlsIwGbR3zOQsf4TP6+CGRVdBgCUSQ6BGzrmXrH0IIJ/TEOLT4z8FNbR+ALjwNqPgSHBMK1llA==}
+  pkgroll@2.21.5:
+    resolution: {integrity: sha512-TX+u8/l5sW3wiUXmM+bT1DHszSgUQacG70khzuDtKRTRTb2Ai1VWeGr1865DUhhhvJbztFupSgs/3hD3GHoCGg==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -20988,7 +20988,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  pkgroll@2.21.4(typescript@5.9.3):
+  pkgroll@2.21.5(typescript@5.9.3):
     dependencies:
       '@rollup/plugin-alias': 6.0.0(rollup@4.53.3)
       '@rollup/plugin-commonjs': 29.0.0(rollup@4.53.3)
