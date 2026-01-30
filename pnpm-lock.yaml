@@ -688,8 +688,8 @@ importers:
         specifier: 22.0.5
         version: 22.0.5
       '@types/jest-image-snapshot':
-        specifier: 6.4.0
-        version: 6.4.0
+        specifier: 6.4.1
+        version: 6.4.1
       '@types/node':
         specifier: 22.19.1
         version: 22.19.1
@@ -1178,8 +1178,8 @@ importers:
         specifier: 22.0.5
         version: 22.0.5
       '@types/jest-image-snapshot':
-        specifier: 6.4.0
-        version: 6.4.0
+        specifier: 6.4.1
+        version: 6.4.1
       '@types/node':
         specifier: 22.19.1
         version: 22.19.1
@@ -1303,8 +1303,8 @@ importers:
         specifier: 22.0.5
         version: 22.0.5
       '@types/jest-image-snapshot':
-        specifier: 6.4.0
-        version: 6.4.0
+        specifier: 6.4.1
+        version: 6.4.1
       '@types/node':
         specifier: 22.19.1
         version: 22.19.1
@@ -4416,8 +4416,8 @@ packages:
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
 
-  '@types/jest-image-snapshot@6.4.0':
-    resolution: {integrity: sha512-8TQ/EgqFCX0UWSpH488zAc21fCkJNpZPnnp3xWFMqElxApoJV5QOoqajnVRV7AhfF0rbQWTVyc04KG7tXnzCPA==}
+  '@types/jest-image-snapshot@6.4.1':
+    resolution: {integrity: sha512-pj3Sdc7Cx5mMLUttPprazSDQCur2cr512Dm38e9aAHI55LDxEhqdyqzK9myC4EmEy7sPAF2nGJ8zifX4qso7sQ==}
 
   '@types/jest@30.0.0':
     resolution: {integrity: sha512-XTYugzhuwqWjws0CVz8QpM36+T+Dz5mTEBKhNs/esGLnCIlGdRy+Dq78NRjd7ls7r8BC8ZRMOrKlkO1hU0JOwA==}
@@ -15312,7 +15312,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
-  '@types/jest-image-snapshot@6.4.0':
+  '@types/jest-image-snapshot@6.4.1':
     dependencies:
       '@types/jest': 30.0.0
       '@types/pixelmatch': 5.2.6
