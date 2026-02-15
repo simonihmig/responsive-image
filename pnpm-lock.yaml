@@ -1248,8 +1248,8 @@ importers:
         specifier: 9.39.2
         version: 9.39.2(jiti@2.6.1)
       eslint-plugin-lit:
-        specifier: 2.1.1
-        version: 2.1.1(eslint@9.39.2(jiti@2.6.1))
+        specifier: 2.2.1
+        version: 2.2.1(eslint@9.39.2(jiti@2.6.1))
       globals:
         specifier: 17.2.0
         version: 17.2.0
@@ -7034,8 +7034,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-lit@2.1.1:
-    resolution: {integrity: sha512-qmyAOnnTCdS+vDnNxtCoF0icSKIio4GUv6ZLnaCtTX6G/YezRa6Ag6tOQ+MfV5Elvtw9CIXeliRX4mIBSwrPIA==}
+  eslint-plugin-lit@2.2.1:
+    resolution: {integrity: sha512-mnqqwpWF4PBF/YjlGt9mbHwrWCGMtaqdpnqISv3nGcTl8iStaAt9UGieMY3i8vwKfSSWtkEfBZUcRKFGys6yiw==}
     engines: {node: '>= 18'}
     peerDependencies:
       eslint: '>= 8'
@@ -18673,7 +18673,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-lit@2.1.1(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-lit@2.2.1(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
       eslint: 9.39.2(jiti@2.6.1)
       parse5: 6.0.1
