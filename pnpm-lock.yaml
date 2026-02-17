@@ -672,8 +672,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       imagetools-core:
-        specifier: ^7.0.0
-        version: 7.1.0
+        specifier: ^9.0.0
+        version: 9.1.0
       javascript-stringify:
         specifier: ^2.1.0
         version: 2.1.0
@@ -1162,8 +1162,8 @@ importers:
         specifier: ^2.0.4
         version: 2.0.5
       imagetools-core:
-        specifier: ^7.0.0
-        version: 7.1.0
+        specifier: ^9.0.0
+        version: 9.1.0
       sharp:
         specifier: ^0.34.0
         version: 0.34.5
@@ -1284,8 +1284,8 @@ importers:
         specifier: ^2.0.4
         version: 2.0.5
       imagetools-core:
-        specifier: ^7.0.0
-        version: 7.1.0
+        specifier: ^9.0.0
+        version: 9.1.0
       loader-utils:
         specifier: ^3.2.0
         version: 3.3.1
@@ -8012,9 +8012,9 @@ packages:
     resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
     engines: {node: '>= 4'}
 
-  imagetools-core@7.1.0:
-    resolution: {integrity: sha512-8Aa4NecBBGmTkaAUjcuRYgTPKHCsBEWYmCnvKCL6/bxedehtVVFyZPdXe8DD0Nevd6UWBq85ifUaJ8498lgqNQ==}
-    engines: {node: '>=18.0.0'}
+  imagetools-core@9.1.0:
+    resolution: {integrity: sha512-xQjs+2vrxLnAjCq+omuNkd5UQTld9/bP8+YT0LyYTlKfuSQtgUBvqhUwGugzSAh6sCdN+LnROMuLswn5hZ9Fhg==}
+    engines: {node: '>=20.0.0'}
 
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
@@ -19958,7 +19958,7 @@ snapshots:
 
   ignore@7.0.5: {}
 
-  imagetools-core@7.1.0: {}
+  imagetools-core@9.1.0: {}
 
   import-fresh@3.3.1:
     dependencies:
