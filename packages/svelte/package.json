@@ -52,7 +52,7 @@
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"@testing-library/svelte": "5.2.8",
 		"@tsconfig/strictest": "2.0.8",
-		"@vitest/browser": "3.2.4",
+		"@vitest/browser-playwright": "4.0.18",
 		"concurrently": "9.2.1",
 		"eslint": "9.39.2",
 		"eslint-plugin-svelte": "3.15.0",
@@ -64,7 +64,7 @@
 		"svelte-check": "4.4.0",
 		"typescript": "5.9.3",
 		"typescript-eslint": "8.55.0",
-		"vitest": "3.2.4"
+		"vitest": "4.0.18"
 	},
 	"volta": {
 		"extends": "../../package.json"

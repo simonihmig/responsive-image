@@ -1,3 +1,4 @@
+import { playwright } from '@vitest/browser-playwright';
 import solidPlugin from 'vite-plugin-solid';
 import { defineConfig } from 'vitest/config';
 
@@ -18,12 +19,11 @@ export default defineConfig(({ mode }) => {
     test: {
       browser: {
         enabled: !testSSR,
-        provider: 'playwright',
+        provider: playwright({ launchOptions: { channel: 'chrome' } }),
         instances: [
           {
             name: 'Chrome',
             browser: 'chromium',
-            launch: { channel: 'chrome' },
           },
         ],
       },
