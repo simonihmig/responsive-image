@@ -27,14 +27,6 @@
   <body>
     {{content-for "body"}}
 
-    <script type="module" async data-fastboot-ignore>
-      import { applySSR } from "{{rootURL}}@responsive-image/ember/blurhash.js";
-      applySSR();
-    </script>
-    <script type="module" async data-fastboot-ignore>
-      import { applySSR } from "{{rootURL}}@responsive-image/ember/thumbhash.js";
-      applySSR();
-    </script>
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/ember-webpack.js"></script>
 
