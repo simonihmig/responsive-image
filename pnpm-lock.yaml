@@ -717,7 +717,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/cdn:
     dependencies:
@@ -751,7 +751,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/core:
     dependencies:
@@ -791,7 +791,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/ember:
     dependencies:
@@ -974,9 +974,9 @@ importers:
       '@types/react-dom':
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
-      '@vitest/browser':
+      '@vitest/browser-playwright':
         specifier: 4.0.18
-        version: 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2))
+        version: 4.0.18(playwright@1.58.2)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)
       concurrently:
         specifier: 9.2.1
         version: 9.2.1
@@ -1009,7 +1009,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/solid:
     dependencies:
@@ -1041,9 +1041,9 @@ importers:
       '@types/node':
         specifier: 22.19.11
         version: 22.19.11
-      '@vitest/browser':
+      '@vitest/browser-playwright':
         specifier: 4.0.18
-        version: 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2))
+        version: 4.0.18(playwright@1.58.2)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)
       babel-preset-solid:
         specifier: 1.9.10
         version: 1.9.10(@babel/core@7.29.0)(solid-js@1.9.11)
@@ -1079,7 +1079,7 @@ importers:
         version: 2.11.10(solid-js@1.9.11)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/svelte:
     dependencies:
@@ -1098,13 +1098,13 @@ importers:
         version: 6.2.4(svelte@5.51.1)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
       '@testing-library/svelte':
         specifier: 5.2.8
-        version: 5.2.8(svelte@5.51.1)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2))
+        version: 5.2.8(svelte@5.51.1)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)
       '@tsconfig/strictest':
         specifier: 2.0.8
         version: 2.0.8
-      '@vitest/browser':
+      '@vitest/browser-playwright':
         specifier: 4.0.18
-        version: 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2))
+        version: 4.0.18(playwright@1.58.2)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)
       concurrently:
         specifier: 9.2.1
         version: 9.2.1
@@ -1140,7 +1140,7 @@ importers:
         version: 8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/vite-plugin:
     dependencies:
@@ -1210,7 +1210,7 @@ importers:
         version: 7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2)
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/wc:
     dependencies:
@@ -1233,9 +1233,9 @@ importers:
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../-internals
-      '@vitest/browser':
+      '@vitest/browser-playwright':
         specifier: 4.0.18
-        version: 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2))
+        version: 4.0.18(playwright@1.58.2)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)
       concurrently:
         specifier: 9.2.1
         version: 9.2.1
@@ -1265,7 +1265,7 @@ importers:
         version: 7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2)
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/webpack:
     dependencies:
@@ -1338,7 +1338,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+        version: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
       webpack:
         specifier: 5.104.1
         version: 5.104.1
@@ -4616,6 +4616,12 @@ packages:
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
       vue: ^3.2.25
+
+  '@vitest/browser-playwright@4.0.18':
+    resolution: {integrity: sha512-gfajTHVCiwpxRj1qh0Sh/5bbGLG4F/ZH/V9xvFVoFddpITfMta9YGow0W6ZpTTORv2vdJuz9TnrNSmjKvpOf4g==}
+    peerDependencies:
+      playwright: '*'
+      vitest: 4.0.18
 
   '@vitest/browser@4.0.18':
     resolution: {integrity: sha512-gVQqh7paBz3gC+ZdcCmNSWJMk70IUjDeVqi+5m5vYpEHsIwRgw3Y545jljtajhkekIpIp5Gg8oK7bctgY0E2Ng==}
@@ -14878,13 +14884,13 @@ snapshots:
       '@types/react': 19.2.14
       '@types/react-dom': 19.2.3(@types/react@19.2.14)
 
-  '@testing-library/svelte@5.2.8(svelte@5.51.1)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2))':
+  '@testing-library/svelte@5.2.8(svelte@5.51.1)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)':
     dependencies:
       '@testing-library/dom': 10.4.1
       svelte: 5.51.1
     optionalDependencies:
       vite: 7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2)
-      vitest: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+      vitest: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
 
   '@tsconfig/ember@3.0.12': {}
 
@@ -15286,7 +15292,20 @@ snapshots:
       vite: 5.4.21(@types/node@22.19.11)(terser@5.46.0)
       vue: 3.5.27(typescript@5.9.3)
 
-  '@vitest/browser@4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2))':
+  '@vitest/browser-playwright@4.0.18(playwright@1.58.2)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)':
+    dependencies:
+      '@vitest/browser': 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)
+      '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
+      playwright: 1.58.2
+      tinyrainbow: 3.0.3
+      vitest: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+    transitivePeerDependencies:
+      - bufferutil
+      - msw
+      - utf-8-validate
+      - vite
+
+  '@vitest/browser@4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)':
     dependencies:
       '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
       '@vitest/utils': 4.0.18
@@ -15295,7 +15314,7 @@ snapshots:
       pngjs: 7.0.0
       sirv: 3.0.2
       tinyrainbow: 3.0.3
-      vitest: 4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
+      vitest: 4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2)
       ws: 8.19.0
     transitivePeerDependencies:
       - bufferutil
@@ -23268,7 +23287,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest@4.0.18(@types/node@22.19.11)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2):
+  vitest@4.0.18(@types/node@22.19.11)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.46.0)(yaml@2.8.2):
     dependencies:
       '@vitest/expect': 4.0.18
       '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
@@ -23292,6 +23311,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.19.11
+      '@vitest/browser-playwright': 4.0.18(playwright@1.58.2)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18)
       jsdom: 26.1.0
     transitivePeerDependencies:
       - jiti
