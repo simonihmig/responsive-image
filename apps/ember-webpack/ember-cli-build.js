@@ -24,8 +24,7 @@ module.exports = function (defaults) {
         package: 'qunit',
       },
     ],
-    // This breaks with ember-cli-fastboot: https://github.com/ember-fastboot/ember-cli-fastboot/issues/925
-    staticEmberSource: false,
+    staticEmberSource: true,
     packagerOptions: {
       webpackConfig: {
         module: {
