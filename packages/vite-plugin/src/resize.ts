@@ -74,6 +74,7 @@ export default function resizePlugin(
       } catch (e) {
         throw new Error(
           `@responsive-image/vite-plugin failed to generate image data for ${id}: ${e}`,
+          { cause: e },
         );
       }
     },
