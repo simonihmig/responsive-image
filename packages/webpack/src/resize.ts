@@ -58,6 +58,7 @@ async function process(
   } catch (e) {
     throw new Error(
       `@responsive-image/webpack failed to generate image data for ${context.resource}: ${e}`,
+      { cause: e },
     );
   }
 }

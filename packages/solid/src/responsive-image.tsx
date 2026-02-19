@@ -170,6 +170,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   };
 
   // check if src is already loaded (SSR) and update state so LQIP options are removed
+  // eslint-disable-next-line no-unassigned-vars --  false positive
   let imgEl: HTMLImageElement | undefined;
   onMount(() => {
     if (imgEl?.complete) {
