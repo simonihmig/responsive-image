@@ -10078,6 +10078,7 @@ packages:
   rollup-plugin-visualizer@6.0.8:
     resolution: {integrity: sha512-MmLbgYWDiDu8XKoePA1GtmRejl+4GWJTx156zjvycoxCbOq0PkNNwbepyB5tHCfDyRc8PKDLh2f/GLVGKNeV7w==}
     engines: {node: '>=22'}
+    deprecated: Rolled back. Use 6.0.5 or 7.0.0.
     hasBin: true
     peerDependencies:
       rolldown: 1.x || ^1.0.0-beta || ^1.0.0-rc
