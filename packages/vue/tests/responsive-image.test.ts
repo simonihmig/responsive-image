@@ -1,7 +1,6 @@
 import { env, type ImageData } from '@responsive-image/core';
 import { cleanup, render } from '@testing-library/vue';
 import { afterEach, describe, expect, test } from 'vitest';
-import { ref } from 'vue';
 
 import { loadImage, trigger } from './image.helper.js';
 import { ResponsiveImage } from '../src/index.js';
@@ -45,8 +44,10 @@ describe('ResponsiveImage', () => {
 
     test('can add a custom class without losing internal classes', async () => {
       const { container } = render(ResponsiveImage, {
-        src: defaultImageData,
-        class: 'custom-class',
+        props: {
+          src: defaultImageData,
+          class: 'custom-class',
+        },
       });
       const imgEl = container.querySelector('img');
       expect(imgEl).toHaveClass('ri-img');
@@ -61,9 +62,6 @@ describe('ResponsiveImage', () => {
           },
         });
 
-        // in handle-lazy-load svelte delays adding src and loading to img elements to after they are appended to DOM
-        // so we need to delay our assertion. See https://github.com/sveltejs/svelte/blob/a91308d9db2f37f91b7c7e379c638fe6cd814d0c/packages/svelte/src/internal/client/dom/elements/attributes.js#L508
-        await new Promise((r) => requestAnimationFrame(r));
         expect(container.querySelector('img')).toHaveAttribute(
           'loading',
           'lazy',
@@ -111,6 +109,7 @@ describe('ResponsiveImage', () => {
             alt: 'some',
             class: 'foo',
             role: 'button',
+            // @ts-expect-error Vue's ImgHTMLAttributes does not handle arbitrary data attributes
             'data-test-image': true,
           },
         });
@@ -278,10 +277,10 @@ describe('ResponsiveImage', () => {
     });
 
     test('it rerenders when src changes', async () => {
-      const imageData = ref({
+      const imageData = {
         ...defaultImageData,
         availableWidths: [50, 100, 640],
-      });
+      };
 
       const { container, rerender } = render(ResponsiveImage, {
         props: {
@@ -326,10 +325,10 @@ describe('ResponsiveImage', () => {
           parseInt(imgEl?.getAttribute('height') ?? '', 10),
       ).to.equal(2);
 
-      rerender({
+      await rerender({
         src: {
           imageTypes: ['webp', 'avif'],
-          imageUrlFor(width, type = 'webp') {
+          imageUrlFor(width: number, type = 'webp') {
             return `/other/w${width}/image.${type}`;
           },
           aspectRatio: 1,
@@ -536,16 +535,15 @@ describe('ResponsiveImage', () => {
     });
 
     test('it rerenders when props change', async () => {
-      const imageData = ref({
+      const imageData = {
         ...defaultImageData,
         availableWidths: [50, 100, 640],
-      });
-      const width = ref(50);
+      };
 
       const { container, rerender } = render(ResponsiveImage, {
         props: {
           src: imageData,
-          width,
+          width: 50,
         },
       });
       await new Promise((r) => requestAnimationFrame(r));
@@ -585,17 +583,15 @@ describe('ResponsiveImage', () => {
       expect(imgEl).toHaveAttribute('height', '25');
 
       rerender({
-        props: {
-          src: {
-            imageTypes: ['webp', 'avif'],
-            imageUrlFor(width, type = 'webp') {
-              return `/other/w${width}/image.${type}`;
-            },
-            aspectRatio: 1,
-            availableWidths: [200, 400],
+        src: {
+          imageTypes: ['webp', 'avif'],
+          imageUrlFor(width: number, type = 'webp') {
+            return `/other/w${width}/image.${type}`;
           },
-          width: 200,
+          aspectRatio: 1,
+          availableWidths: [200, 400],
         },
+        width: 200,
       });
       await new Promise((r) => requestAnimationFrame(r));
 
@@ -773,6 +769,7 @@ describe('ResponsiveImage', () => {
       };
 
       await rerender({ src: otherImage });
+      await new Promise((r) => requestAnimationFrame(r));
 
       const imgEl2 = container.querySelector('img')!;
 
@@ -808,6 +805,7 @@ describe('ResponsiveImage', () => {
         props: { src: imageData },
       });
       const imgEl = container.querySelector('img')!;
+      await new Promise((r) => requestAnimationFrame(r));
 
       expect(imgEl).toBeDefined();
       expect(imgEl.complete).toBe(true);
