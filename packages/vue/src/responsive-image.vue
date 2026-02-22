@@ -7,6 +7,7 @@ import {
   type ImageUrlForType,
 } from '@responsive-image/core';
 import { onMounted, ref, useTemplateRef } from 'vue';
+
 import type { ImgHTMLAttributes } from 'vue';
 
 interface ResponsiveImageArgs extends /* @vue-ignore */ Omit<
@@ -64,14 +65,12 @@ const isResponsiveLayout = () =>
 const width = () => {
   if (isResponsiveLayout()) {
     return getDestinationWidthBySize(args.size);
+  } else if (args.width) {
+    return args.width;
   } else {
-    if (args.width) {
-      return args.width;
-    } else {
-      const ar = args.src.aspectRatio;
-      if (ar !== undefined && ar !== 0 && args.height !== undefined) {
-        return args.height * ar;
-      }
+    const ar = args.src.aspectRatio;
+    if (ar !== undefined && ar !== 0 && args.height !== undefined) {
+      return args.height * ar;
     }
   }
 
@@ -117,7 +116,7 @@ const sources = (): ImageSource[] => {
         srcset: sources.join(', '),
         sizes: args.sizes ?? (args.size ? `${args.size}vw` : undefined),
         type,
-        mimeType: type != 'auto' ? `image/${type}` : undefined,
+        mimeType: type === 'auto' ? undefined : `image/${type}`,
       };
     });
   } else {
@@ -135,7 +134,7 @@ const sources = (): ImageSource[] => {
         return {
           srcset: sources.join(', '),
           type,
-          mimeType: type != 'auto' ? `image/${type}` : undefined,
+          mimeType: type === 'auto' ? undefined : `image/${type}`,
         };
       });
     }
@@ -204,6 +203,7 @@ onMounted(() => {
   <img
     v-if="args.src.imageTypes === 'auto'"
     :key="key()"
+    ref="imgEl"
     :width="width()"
     :height="height()"
     :class="classNames()"
@@ -211,20 +211,21 @@ onMounted(() => {
     decoding="async"
     :srcSet="args.src.imageTypes === 'auto' ? sources()[0]?.srcset : undefined"
     :src="src()"
-    v-bind="$attrs"
     :data-ri-lqip="args.src.lqip?.attribute"
+    v-bind="$attrs"
     :style="styles()"
-    ref="imgEl"
   />
   <picture v-else>
     <source
       v-for="{ srcset, mimeType, sizes } in sourcesSorted()"
+      :key="mimeType"
       :srcset="srcset"
       :type="mimeType"
       :sizes="sizes"
     />
     <img
       :key="key()"
+      ref="imgEl"
       :width="width()"
       :height="height()"
       :class="classNames()"
@@ -237,11 +238,10 @@ onMounted(() => {
           : undefined
       "
       :src="src()"
-      v-bind="$attrs"
       :data-ri-lqip="args.src.lqip?.attribute"
       :style="styles()"
-      ref="imgEl"
-      v-on:load="loadedSrc = args.src"
+      v-bind="$attrs"
+      @load="loadedSrc = args.src"
     />
   </picture>
 </template>
