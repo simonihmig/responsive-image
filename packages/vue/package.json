@@ -1,0 +1,69 @@
+{
+  "name": "@responsive-image/vue",
+  "version": "0.0.0",
+  "description": "Vue.js component to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+  "keywords": [
+    "responsive image",
+    "responsive images",
+    "vue"
+  ],
+  "license": "MIT",
+  "author": "Simon Ihmig <simon.ihmig@gmail.com>",
+  "repository": "github:simonihmig/responsive-image",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "test.vitest": "vitest",
+    "test.vitest:watch": "vitest watch",
+    "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
+    "lint.eslint": "eslint .",
+    "lint.eslint:fix": "eslint . --fix",
+    "lint.publint": "publint",
+    "lint.prettier": "prettier . --check",
+    "lint.prettier:fix": "prettier . --write",
+    "lint.types": "vue-tsc --noEmit",
+    "prepack": "pnpm turbo build"
+  },
+  "dependencies": {
+    "@responsive-image/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@responsive-image/internals": "workspace:*",
+    "@testing-library/vue": "8.1.0",
+    "@tsconfig/strictest": "2.0.8",
+    "@types/node": "22.19.11",
+    "@vitejs/plugin-vue": "6.0.4",
+    "@vitest/browser-playwright": "4.0.18",
+    "@vue/eslint-config-prettier": "10.2.0",
+    "@vue/eslint-config-typescript": "14.7.0",
+    "eslint-plugin-vue": "10.8.0",
+    "eslint": "9.39.3",
+    "playwright": "1.58.2",
+    "prettier": "3.8.1",
+    "publint": "0.3.17",
+    "typescript": "5.9.3",
+    "vite": "7.3.1",
+    "vitest": "4.0.18",
+    "vite-plugin-externalize-deps": "0.10.0",
+    "vite-plugin-dts": "4.5.4",
+    "vite-plugin-lib-inject-css": "2.2.2",
+    "vue-tsc": "3.2.5",
+    "vue": "3.5.28"
+  }
+}
