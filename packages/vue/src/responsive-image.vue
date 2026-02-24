@@ -159,11 +159,8 @@ const classNames = () => {
   return classNames;
 };
 
-// TODO
-const isServer = false;
-
 const styles = () => {
-  if (isLoaded() || isServer) {
+  if (isLoaded() || typeof window === 'undefined') {
     return undefined;
   }
 
