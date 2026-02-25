@@ -396,6 +396,15 @@ importers:
 
   apps/nuxt:
     dependencies:
+      '@responsive-image/cdn':
+        specifier: workspace:*
+        version: link:../../packages/cdn
+      '@responsive-image/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@responsive-image/vue':
+        specifier: workspace:*
+        version: link:../../packages/vue
       nuxt:
         specifier: ^4.3.1
         version: 4.3.1(@parcel/watcher@2.5.6)(@types/node@22.19.11)(@vue/compiler-sfc@3.5.29)(cac@6.7.14)(db0@0.3.4)(eslint@10.0.2(jiti@2.6.1))(ioredis@5.9.3)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(rollup@4.59.0)(stylelint@17.3.0(typescript@5.9.3))(terser@5.46.0)(typescript@5.9.3)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(vue-tsc@3.2.5(typescript@5.9.3))(yaml@2.8.2)
@@ -405,6 +414,13 @@ importers:
       vue-router:
         specifier: ^4.6.4
         version: 4.6.4(vue@3.5.29(typescript@5.9.3))
+    devDependencies:
+      '@responsive-image/internals':
+        specifier: workspace:*
+        version: link:../../packages/-internals
+      '@responsive-image/vite-plugin':
+        specifier: workspace:*
+        version: link:../../packages/vite-plugin
 
   apps/react-vite:
     dependencies:
