@@ -242,3 +242,19 @@ onMounted(() => {
     />
   </picture>
 </template>
+
+<style scoped>
+.ri-img {
+  background-size: cover;
+}
+
+.ri-responsive {
+  width: 100%;
+  height: auto;
+}
+
+.ri-fixed,
+.ri-responsive {
+  content-visibility: auto;
+}
+</style>
