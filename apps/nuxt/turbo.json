@@ -9,9 +9,19 @@
     "lint.publint": {
       "dependsOn": []
     },
-
+    "lint.svelte": {
+      "dependsOn": []
+    },
     "build": {
-      "outputs": [".output/**"]
+      "outputs": [".output/**"],
+      "dependsOn": ["_prepare"]
+    },
+    "test.playwright": {
+      "dependsOn": ["_prepare"]
+    },
+    "_prepare": {
+      "outputs": [".nuxt"],
+      "dependsOn": ["^build"]
     }
   }
 }
