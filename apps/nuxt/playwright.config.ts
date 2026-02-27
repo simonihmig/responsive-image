@@ -81,6 +81,6 @@ export default defineConfig({
     // serve the prod build, as the dev build uses vite middleware URLs for images that we don't want in tests
     command: 'pnpm build && pnpm preview --port 4208',
     url: 'http://localhost:4208',
-    timeout: 60_000,
+    timeout: 300_000,
   },
 });
