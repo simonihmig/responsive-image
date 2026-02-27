@@ -18,5 +18,6 @@ export default defineConfig({
       },
       formats: ['es'],
     },
+    minify: false,
   },
 });

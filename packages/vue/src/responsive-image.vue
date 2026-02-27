@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import {
   env,
-  getDestinationWidthBySize,
   getValueOrCallback,
   type ImageData,
   type ImageUrlForType,
 } from '@responsive-image/core';
-import { onMounted, ref, useTemplateRef } from 'vue';
+import { computed, onMounted, ref, shallowRef, useTemplateRef } from 'vue';
 
 import type { ImgHTMLAttributes } from 'vue';
 
@@ -55,7 +54,7 @@ const typeScore = new Map<ImageUrlForType, number>([
   ['avif', 3],
 ]);
 
-const loadedSrc = ref<ImageData | undefined>();
+const loadedSrc = shallowRef<ImageData | undefined>();
 
 const isLoaded = () => loadedSrc.value === args.src;
 
@@ -64,7 +63,9 @@ const isResponsiveLayout = () =>
 
 const width = () => {
   if (isResponsiveLayout()) {
-    return getDestinationWidthBySize(args.size);
+    // With responsive layout, the width attribute does not really matter, as we scale to 100%.
+    // We just need to set width and height wit the correct aspect ratio to preven layout shift.
+    return 3840;
   } else if (args.width) {
     return args.width;
   } else {
@@ -159,13 +160,17 @@ const classNames = () => {
   return classNames;
 };
 
-const styles = () => {
-  if (isLoaded() || typeof window === 'undefined') {
+const styles = computed(() => {
+  if (
+    isLoaded() ||
+    mounted.value === false ||
+    typeof document === 'undefined'
+  ) {
     return undefined;
   }
 
   return getValueOrCallback(args.src.lqip?.inlineStyles);
-};
+});
 
 let keyCounter = 0;
 const keyMap = new WeakMap<ImageData, number>();
@@ -190,10 +195,14 @@ const key = () => {
 };
 
 const imgEl = useTemplateRef<HTMLImageElement>('imgEl');
+const mounted = ref(false);
 onMounted(() => {
   if (imgEl.value?.complete) {
     loadedSrc.value = args.src;
   }
+  // Triggering mounted will render inline LQIP styles which we don't want in SSR output.
+  // Need to delay this here to not cause Vue SSR mismatch errors.
+  setTimeout(() => (mounted.value = true), 0);
 });
 </script>
 <template>
@@ -209,8 +218,9 @@ onMounted(() => {
     :srcSet="args.src.imageTypes === 'auto' ? sources()[0]?.srcset : undefined"
     :src="src()"
     :data-ri-lqip="args.src.lqip?.attribute"
+    :style="styles"
     v-bind="$attrs"
-    :style="styles()"
+    @load="loadedSrc = args.src"
   />
   <picture v-else>
     <source
@@ -236,7 +246,7 @@ onMounted(() => {
       "
       :src="src()"
       :data-ri-lqip="args.src.lqip?.attribute"
-      :style="styles()"
+      :style="styles"
       v-bind="$attrs"
       @load="loadedSrc = args.src"
     />
