@@ -685,7 +685,7 @@ describe('ResponsiveImage', () => {
 
       expect(imgEl).toBeDefined();
       expect(imgEl.complete).toBe(false);
-      expect(imgEl).toHaveStyle('border-left: solid 5px red');
+      await expect.element(imgEl).toHaveStyle('border-left: solid 5px red');
 
       await trigger(imgEl);
 
@@ -707,7 +707,7 @@ describe('ResponsiveImage', () => {
       expect(imgEl).toBeDefined();
       expect(imgEl.complete).toBe(false);
 
-      expect(imgEl).toHaveStyle('border-left: solid 5px red');
+      await expect.element(imgEl).toHaveStyle('border-left: solid 5px red');
 
       await trigger(imgEl);
 
@@ -749,9 +749,9 @@ describe('ResponsiveImage', () => {
       });
       const imgEl = container.querySelector('img')!;
 
-      expect(imgEl).toHaveClass('lqip-test-class');
-      expect(imgEl).toHaveStyle({ borderLeft: '5px solid red' });
-      expect(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
+      await expect.element(imgEl).toHaveClass('lqip-test-class');
+      await expect.element(imgEl).toHaveStyle({ borderLeft: '5px solid red' });
+      await expect.element(imgEl).toHaveAttribute('data-ri-lqip', 'test-attr');
 
       await trigger(imgEl);
 
