@@ -415,12 +415,18 @@ importers:
         specifier: ^4.6.4
         version: 4.6.4(vue@3.5.29(typescript@5.9.3))
     devDependencies:
+      '@playwright/test':
+        specifier: 1.58.2
+        version: 1.58.2
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../../packages/-internals
       '@responsive-image/vite-plugin':
         specifier: workspace:*
         version: link:../../packages/vite-plugin
+      '@types/node':
+        specifier: 22.19.11
+        version: 22.19.11
 
   apps/react-vite:
     dependencies:

@@ -8,6 +8,10 @@
     // when the lint tasks are not used at all.
     "lint.publint": {
       "dependsOn": []
+    },
+
+    "build": {
+      "outputs": [".output/**"]
     }
   }
 }
