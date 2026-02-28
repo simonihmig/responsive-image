@@ -103,6 +103,17 @@ export default function MyApp() {
 <ResponsiveImage src={imgix('path/to/uploaded/image.jpg')} />
 ```
 
+```vue [Vue]
+<script setup>
+import { ResponsiveImage } from '@responsive-image/vue';
+import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<template>
+  <ResponsiveImage :src="imgix('path/to/uploaded/image.jpg')" />
+</template>
+```
+
 :::
 
 ### Aspect Ratio
