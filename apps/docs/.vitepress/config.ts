@@ -96,6 +96,7 @@ export default defineConfig({
           { text: 'React', link: '/react' },
           { text: 'Solid', link: '/solid' },
           { text: 'Svelte', link: '/svelte' },
+          { text: 'Vue', link: '/vue' },
           { text: 'Web Component (Lit)', link: '/wc' },
         ],
       },

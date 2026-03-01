@@ -103,6 +103,17 @@ export default function MyApp() {
 <ResponsiveImage src={netlify('path/to/uploaded/image.jpg')} />
 ```
 
+```vue [Vue]
+<script setup>
+import { ResponsiveImage } from '@responsive-image/vue';
+import { cloudinary } from '@responsive-image/cdn';
+</script>
+
+<template>
+  <ResponsiveImage :src="netlify('path/to/uploaded/image.jpg')" />
+</template>
+```
+
 :::
 
 This assumes that your application itself is also served from Netlify, so that `/path/to/image.jpg` is an image in your repo that is also deployed to Netlify. If your application containing that image is not on Netlify, you can still make Netlify process and serve it, you just need to point to it with an absolue URL to make use of Netlify's [remote source](#remote-source) support.

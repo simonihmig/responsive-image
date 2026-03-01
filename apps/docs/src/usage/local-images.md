@@ -71,6 +71,17 @@ export default function MyApp() {
 <ResponsiveImage src={image} width={200} />
 ```
 
+```vue [Vue]
+<script setup>
+import { ResponsiveImage } from '@responsive-image/vue';
+import image from './image.jpg?w=200;400&quality=90&lqip=inline&responsive';
+</script>
+
+<template>
+  <ResponsiveImage :src="image" :width="200" />
+</template>
+```
+
 :::
 
 ## Image parameters reference
