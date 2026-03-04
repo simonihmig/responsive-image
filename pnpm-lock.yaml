@@ -160,8 +160,8 @@ importers:
         specifier: 5.5.5
         version: 5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.3(jiti@2.6.1)))(eslint@9.39.3(jiti@2.6.1))(prettier@3.8.1)
       globals:
-        specifier: 17.3.0
-        version: 17.3.0
+        specifier: 17.4.0
+        version: 17.4.0
       prettier:
         specifier: 3.8.1
         version: 3.8.1
@@ -352,8 +352,8 @@ importers:
         specifier: 5.5.5
         version: 5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.3(jiti@2.6.1)))(eslint@9.39.3(jiti@2.6.1))(prettier@3.8.1)
       globals:
-        specifier: 17.3.0
-        version: 17.3.0
+        specifier: 17.4.0
+        version: 17.4.0
       loader.js:
         specifier: 4.7.0
         version: 4.7.0
@@ -480,8 +480,8 @@ importers:
         specifier: 0.5.2
         version: 0.5.2(eslint@10.0.2(jiti@2.6.1))
       globals:
-        specifier: 17.3.0
-        version: 17.3.0
+        specifier: 17.4.0
+        version: 17.4.0
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -579,8 +579,8 @@ importers:
         specifier: 3.15.0
         version: 3.15.0(eslint@10.0.2(jiti@2.6.1))(svelte@5.53.6)
       globals:
-        specifier: 17.3.0
-        version: 17.3.0
+        specifier: 17.4.0
+        version: 17.4.0
       prettier:
         specifier: 3.8.1
         version: 3.8.1
@@ -655,8 +655,8 @@ importers:
         specifier: 17.24.0
         version: 17.24.0(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3)
       globals:
-        specifier: 17.3.0
-        version: 17.3.0
+        specifier: 17.4.0
+        version: 17.4.0
       typescript-eslint:
         specifier: 8.56.1
         version: 8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3)
@@ -939,8 +939,8 @@ importers:
         specifier: 12.7.5
         version: 12.7.5(@babel/core@7.29.0)(@typescript-eslint/parser@8.56.1(eslint@9.39.3(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.3(jiti@2.6.1))(typescript@5.9.3)
       globals:
-        specifier: 17.3.0
-        version: 17.3.0
+        specifier: 17.4.0
+        version: 17.4.0
       prettier:
         specifier: 3.8.1
         version: 3.8.1
@@ -1350,8 +1350,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1(eslint@10.0.2(jiti@2.6.1))
       globals:
-        specifier: 17.3.0
-        version: 17.3.0
+        specifier: 17.4.0
+        version: 17.4.0
       playwright:
         specifier: 1.58.2
         version: 1.58.2
@@ -8767,8 +8767,8 @@ packages:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
     engines: {node: '>=18'}
 
-  globals@17.3.0:
-    resolution: {integrity: sha512-yMqGUQVVCkD4tqjOJf3TnrvaaHDMYp4VlUSObbkIiuCPe/ofdMBFIAcBbCSRFWOnos6qRiTVStDwqPLUclaxIw==}
+  globals@17.4.0:
+    resolution: {integrity: sha512-hjrNztw/VajQwOLsMNT1cbJiH2muO3OROCHnbehc8eY5JyD2gqz4AcMHPqgaOR59DjgUjYAYLeH699g/eWi2jw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -22210,7 +22210,7 @@ snapshots:
 
   globals@16.5.0: {}
 
-  globals@17.3.0: {}
+  globals@17.4.0: {}
 
   globalthis@1.0.4:
     dependencies:
