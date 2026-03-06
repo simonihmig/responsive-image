@@ -25,6 +25,13 @@
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor"],
       "automerge": true
+    },
+    // Do not attempt to upgrade Embroider from v3 to v4, since they are fundamentally different
+    {
+      "matchPackageNames": ["@embroider/core", "@embroider/compat"],
+      "matchUpdateTypes": ["major"],
+      "matchCurrentVersion": "^3.0.0",
+      "enabled": false
     }
   ],
   "baseBranchPatterns": ["main"],
