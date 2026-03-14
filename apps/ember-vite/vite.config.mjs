@@ -12,9 +12,7 @@ export default defineConfig({
       babelHelpers: 'runtime',
       extensions,
     }),
-    setupPlugins({
-      include: /^[^?]+\.jpg\?.*responsive.*$/,
-    }),
+    setupPlugins(),
   ],
   preview: {
     port: 4203,
