@@ -96,9 +96,7 @@ export default defineConfig({
   // other config...
   plugins: [
     // all your other Ember/Vite plugins ...
-    setupPlugins({
-      include: /^[^?]+\.jpg\?.*responsive.*$/,
-    }),
+    setupPlugins(),
   ],
 });
 ```
@@ -127,8 +125,7 @@ import '@glint/environment-ember-loose';
 import type ResponsiveImageRegistry from '@responsive-image/ember/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry
-    extends ResponsiveImageRegistry /* other addon registries */ {
+  export default interface Registry extends ResponsiveImageRegistry /* other addon registries */ {
     // local entries
   }
 }

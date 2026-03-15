@@ -53,11 +53,7 @@ import { setupPlugins } from '@responsive-image/vite-plugin';
 export default defineNuxtConfig({
   // ...
   vite: {
-    plugins: [
-      setupPlugins({
-        include: /^[^?]+\.jpg\?.*responsive.*$/,
-      }),
-    ],
+    plugins: [setupPlugins()],
   },
 });
 ```

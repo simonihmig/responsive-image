@@ -42,15 +42,10 @@ import { setupPlugins } from '@responsive-image/vite-plugin';
 export default defineConfig({
   plugins: [
     // all your other plugins ...
-    setupPlugins({
-      include: /^[^?]+\.jpg\?.*responsive.*$/,
-    }),
+    setupPlugins(),
   ],
 });
 ```
-
-> [!TIP]
-> While you could define the config to use our plugins for all kind of image imports, we recommend preserving the ability to import images using Vite's built-in [static assets support](https://vitejs.dev/guide/assets.html) if all you need is the image URL. When following the example config above, you would opt-in to responsive image processing only when importing using a `?responsive` query parameter, like `import image from './assets/hero.jpg?responsive';`.
 
 ## Configuration
 
@@ -60,7 +55,6 @@ The package comes with reasonable defaults, but if you want to customize these f
 
 ```js
 setupPlugins({
-  include: /^[^?]+\.jpg\?.*responsive.*$/,
   w: [1024, 2048],
   format: ['original', 'avif'],
 });
@@ -81,6 +75,15 @@ Query params always take precedence over global settings passed to `setupPlugins
 All the general [image parameters](../usage/local-images.md#image-parameters-reference) for local images can be specified both as global options or as query params, as explained above.
 
 On top of that, there are the following Vite specific options, that you can customize the same way. In most cses, the existing defaults should be sufficient though.
+
+### `include: string | RegExp | Array<string | RegExp>`
+
+The path of image imports that should be processed by this plugin.
+
+Default: `/^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)\?.*responsive.*$/`
+
+> [!TIP]
+> While you could define the config to use our plugin for all kind of image imports, we recommend preserving the ability to import images using Vite's built-in [static assets support](https://vitejs.dev/guide/assets.html) if all you need is the image URL. When using the default, images would only be processed when importing using a `?responsive` query parameter, like `import image from './assets/hero.jpg?responsive';`.
 
 #### `name: string`
 
