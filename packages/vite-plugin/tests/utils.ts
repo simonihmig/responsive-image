@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 
 import { build } from 'vite';
 
-import { setupPlugins } from '../src';
+import { responsiveImage } from '../src';
 
 import type { Options } from '../src/types';
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup';
@@ -60,7 +60,7 @@ export async function compile(
         external: (id) => id.startsWith('@responsive-image/'),
       },
     },
-    plugins: [entryFile(source), setupPlugins(options)],
+    plugins: [entryFile(source), responsiveImage(options)],
   })) as RollupOutput | RollupOutput[];
 
   if (Array.isArray(bundle)) {

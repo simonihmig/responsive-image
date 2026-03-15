@@ -1,4 +1,4 @@
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { responsiveImage } from '@responsive-image/vite-plugin';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -9,6 +9,6 @@ export default defineNuxtConfig({
     buildAssetsDir: '/assets/',
   },
   vite: {
-    plugins: [setupPlugins()],
+    plugins: [responsiveImage()],
   },
 });
