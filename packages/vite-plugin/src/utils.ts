@@ -10,6 +10,7 @@ import type { ResolvedConfig } from 'vite';
 export const META_KEY = 'responsive-image';
 
 export const defaultViteOptions = {
+  include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)\?.*responsive.*$/,
   name: '[name]-[width]w.[ext]',
   cache: true,
   styles: 'external',

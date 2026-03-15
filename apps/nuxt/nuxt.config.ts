@@ -9,10 +9,6 @@ export default defineNuxtConfig({
     buildAssetsDir: '/assets/',
   },
   vite: {
-    plugins: [
-      setupPlugins({
-        include: /^[^?]+\.jpg\?.*responsive.*$/,
-      }),
-    ],
+    plugins: [setupPlugins()],
   },
 });

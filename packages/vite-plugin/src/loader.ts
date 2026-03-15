@@ -9,7 +9,8 @@ import type { Plugin } from 'vite';
 export default function loaderPlugin(
   userOptions: Partial<Options> = {},
 ): Plugin {
-  const filter = createFilter(userOptions.include, userOptions.exclude);
+  const options = getViteOptions('', userOptions);
+  const filter = createFilter(options.include, options.exclude);
 
   return {
     name: 'responsive-image/loader',
