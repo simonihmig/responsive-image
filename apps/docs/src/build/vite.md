@@ -27,22 +27,22 @@ pnpm add -D @responsive-image/vite-plugin @responsive-image/core
 
 This package provides several Vite plugins for specific aspects of image processing and transforming an import of a [local image](../usage/local-images.md) into an ES module whose exported value you can pass to the [image component](../usage/component.md).
 
-The easiest and recommended way to set these up is to use the provided `setupPlugins` utility function:
+TTo set these up use the provided `responsiveImage` function:
 
 ```js
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { responsiveImage } from '@responsive-image/vite-plugin';
 ```
 
 The function will return an array of plugins, that you can add to the list of other plugins inside your `vite.config.js`:
 
 ```js
 import { defineConfig } from 'vite';
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { responsiveImage } from '@responsive-image/vite-plugin';
 
 export default defineConfig({
   plugins: [
     // all your other plugins ...
-    setupPlugins(),
+    responsiveImage(),
   ],
 });
 ```
@@ -51,10 +51,10 @@ export default defineConfig({
 
 ### Global configuration
 
-The package comes with reasonable defaults, but if you want to customize these for all image imports globally, then you can pass an optional configuration object to `setupPlugins()`:
+The package comes with reasonable defaults, but if you want to customize these for all image imports globally, then you can pass an optional configuration object to `responsiveImage()`:
 
 ```js
-setupPlugins({
+responsiveImage({
   w: [1024, 2048],
   format: ['original', 'avif'],
 });
@@ -68,7 +68,7 @@ Besides global settings, you can also pass all the supported configuration optio
 import logo from './logo.jpg?&w=32;64&quality=95&responsive';
 ```
 
-Query params always take precedence over global settings passed to `setupPlugins()`.
+Query params always take precedence over global settings passed to `responsiveImage()`.
 
 ### Configuration options
 
@@ -92,7 +92,7 @@ The template for the generated image files. The placeholders `[name]`, `[ext]` a
 Default: `[name]-[width]w.[ext]`
 
 ```js
-setupPlugins({
+responsiveImage({
   name: '[name]_[width].[ext]',
 });
 ```

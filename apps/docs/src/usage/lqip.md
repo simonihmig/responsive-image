@@ -25,13 +25,13 @@ import heroImage from './hero.jpg?responsive&lqip=color';
 ```
 
 ```js [Webpack global options]
-setupLoaders({
+responsiveImage({
   lqip: { type: 'color' },
 });
 ```
 
 ```js [Vite global options]
-setupPlugins({
+responsiveImage({
   lqip: { type: 'color' },
 });
 ```
@@ -56,13 +56,13 @@ import heroImage from './hero.jpg?responsive&lqip=inline';
 ```
 
 ```js [Webpack global options]
-setupLoaders({
+responsiveImage({
   lqip: { type: 'inline' },
 });
 ```
 
 ```js [Vite global options]
-setupPlugins({
+responsiveImage({
   lqip: { type: 'inline' },
 });
 ```
@@ -78,13 +78,13 @@ import heroImage from './hero.jpg?lqip={"type":"inline","targetPixels":120}&resp
 ```
 
 ```js [Webpack global options]
-setupLoaders({
+responsiveImage({
   lqip: { type: 'inline', targetPixels: 120 },
 });
 ```
 
 ```js [Vite global options]
-setupPlugins({
+responsiveImage({
   lqip: { type: 'inline', targetPixels: 120 },
 });
 ```
@@ -113,13 +113,13 @@ import heroImage from './hero.jpg?lqip=blurhash&responsive';
 ```
 
 ```js [Webpack global options]
-setupLoaders({
+responsiveImage({
   lqip: { type: 'blurhash' },
 });
 ```
 
 ```js [Vite global options]
-setupPlugins({
+responsiveImage({
   lqip: { type: 'blurhash' },
 });
 ```
@@ -148,13 +148,13 @@ import heroImage from './hero.jpg?lqip=thumbhash&responsive';
 ```
 
 ```js [Webpack global options]
-setupLoaders({
+responsiveImage({
   lqip: { type: 'thumbhash' },
 });
 ```
 
 ```js [Vite global options]
-setupPlugins({
+responsiveImage({
   lqip: { type: 'thumbhash' },
 });
 ```

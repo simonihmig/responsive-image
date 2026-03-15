@@ -27,16 +27,16 @@ pnpm add -D @responsive-image/webpack @responsive-image/core
 
 This package provides several webpack loaders for specific aspects of image processing and transforming an import of a [local image](../usage/local-images.md) into an ES module whose exported value you can pass to the [image component](../usage/component.md).
 
-The easiest and recommended way to set these up is to use the provided `setupLoaders` utility function:
+The easiest and recommended way to set these up is to use the provided `responsiveImage` utility function:
 
 ```js
-const { setupLoaders } = require('@responsive-image/webpack');
+const { responsiveImage } = require('@responsive-image/webpack');
 ```
 
 The function will return an array of loaders (so called chained loaders), that you can `use` to set up a webpack module rule. In your webpack config file (`webpack.config.js`) add such a module rule that tells webpack to use the provided loaders for importing images:
 
 ```js
-const { setupLoaders } = require('@responsive-image/webpack');
+const { responsiveImage } = require('@responsive-image/webpack');
 
 const config = {
   entry: './src/index.ts',
@@ -46,7 +46,7 @@ const config = {
       // other rules...
       {
         resourceQuery: /responsive/,
-        use: setupLoaders(),
+        use: responsiveImage(),
       },
     ],
   },
@@ -60,10 +60,10 @@ const config = {
 
 ### Global configuration
 
-The package comes with reasonable defaults, but if you want to customize these for all image imports globally, then you can pass an optional object with [configuration options](#configuration-options) to `setupLoaders()`:
+The package comes with reasonable defaults, but if you want to customize these for all image imports globally, then you can pass an optional object with [configuration options](#configuration-options) to `responsiveImage()`:
 
 ```js
-setupLoaders({
+responsiveImage({
   w: [1024, 2048],
   format: ['original', 'avif'],
 });
@@ -77,7 +77,7 @@ Besides global settings, you can also pass all the supported [configuration opti
 import logo from './logo.jpg?&w=32;64&quality=95&responsive';
 ```
 
-Query params always take precedence over global settings passed to `setupLoaders()`.
+Query params always take precedence over global settings passed to `responsiveImage()`.
 
 ### Configuration options
 
@@ -92,7 +92,7 @@ The template for the generated image files. Certains placeholders like `[ext]` a
 Default: `[name]-[width]w-[hash].[ext]`
 
 ```js
-setupLoaders({
+responsiveImage({
   name: '[name]_[width].[hash].[ext]',
 });
 ```
@@ -102,7 +102,7 @@ setupLoaders({
 The public URL the emitted files are referenced from. By default, this matches Webpacks public URL and the path generated from `outputPath`.
 
 ```js
-setupLoaders({
+responsiveImage({
   webPath: 'https://images.example.com/',
 });
 ```

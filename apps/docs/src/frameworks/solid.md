@@ -35,18 +35,18 @@ To process [local images](../usage/local-images.md) you will need to setup one o
 If your app is built with SolidStart, add the Vite plugin to your `app.config.ts`:
 
 ```ts
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { responsiveImage } from '@responsive-image/vite-plugin';
 import { defineConfig } from '@solidjs/start/config';
 
 export default defineConfig({
   vite: {
-    plugins: [setupPlugins()],
+    plugins: [responsiveImage()],
   },
 });
 ```
 
 > [!IMPORTANT]
-> For more information on how to configure `@responsive-image/vite-plugin` and `setupPlugins()` refer to the [Vite plugin](../build/vite.md) documentation.
+> For more information on how to configure `@responsive-image/vite-plugin` and `responsiveImage()` refer to the [Vite plugin](../build/vite.md) documentation.
 
 ## Remote images
 
