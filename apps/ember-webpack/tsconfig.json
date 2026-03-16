@@ -10,7 +10,7 @@
       "ember-webpack/*": ["app/*"],
       "*": ["types/*"]
     },
-    "types": ["ember-source/types", "node"]
+    "types": ["ember-source/types", "node", "@responsive-image/webpack/client"]
   },
   // "include": ["app/**/*", "tests/**/*", "types/**/*"],
   "glint": {

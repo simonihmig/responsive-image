@@ -11,4 +11,12 @@ export default defineNuxtConfig({
   vite: {
     plugins: [responsiveImage()],
   },
+  typescript: {
+    // customize tsconfig.app.json
+    tsConfig: {
+      compilerOptions: {
+        types: ['@responsive-image/vite-plugin/client'],
+      },
+    },
+  },
 });

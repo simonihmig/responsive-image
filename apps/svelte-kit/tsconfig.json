@@ -10,9 +10,8 @@
     "sourceMap": true,
     "strict": true,
     "moduleResolution": "bundler",
-    "types": ["node"]
-  },
-  "include": ["playwright.config.ts"]
+    "types": ["node", "@responsive-image/vite-plugin/client"]
+  }
   // Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
   // except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
   //
