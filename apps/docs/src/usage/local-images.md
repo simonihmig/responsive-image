@@ -310,17 +310,27 @@ import image from 'image.jpg?tint=rgba(10,33,127)&responsive';
 
 ## TypeScript
 
-To make TypeScript understand your image imports, we tag them using a `responsive` query parameter, that has to come _last_!
+To make TypeScript understand your image imports, we tag them using a `responsive` query parameter, that has to come _last_! Add your build plugin's `/client` types to `compilerOptions.types` of your `tsconfig.json`:
 
-Add this ambient declaration to a file in your app, like e.g. `types/global.d.ts` (and make sure that your `tsconfig.json` includes that file!):
+::: code-group
 
-```ts
-declare module '*responsive' {
-  import type { ImageData } from '@responsive-image/core';
-  const value: ImageData;
-  export default value;
+```json [Vite]
+{
+  "compilerOptions": {
+    "types": ["vite/client", "@responsive-image/vite-plugin/client"]
+  }
 }
 ```
+
+```json [webpack]
+{
+  "compilerOptions": {
+    "types": ["@responsive-image/webpack/client"]
+  }
+}
+```
+
+:::
 
 > [!NOTE]
 > We cannot use something like `*.jpg*` that works with queries, as TS only supports a single wildcard. That's why any image imports needs the `responsive` query parameter, and it has to come _last_!

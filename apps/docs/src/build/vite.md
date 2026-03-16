@@ -102,3 +102,19 @@ responsiveImage({
 Some plugin options like [LQIP](../usage/lqip.md) `color` and `inline` options produce CSS output. By default the CSS is emitted in a way that makes it get bundled into an external CSS file. By changing this to `inline`, the CSS is integrated into the same JavaScript bundle and applied inline by the [image component](../usage/component.md). This is especially needed for the [web component](../frameworks/wc.md) based image component, as Shadow DOM prevents any global styles by the external CSS to get applied correctly. For all other cases, using `external` is recommended for performance reasons.
 
 Default: `external`
+
+## TypeScript
+
+To make TypeScript understand your image imports, we tag them using a `responsive` query parameter, that has to come _last_! Add `@responsive-image/vite-plugin/client` types to `compilerOptions.types` of your `tsconfig.json`:
+
+```json [Vite]
+{
+  "compilerOptions": {
+    "types": ["vite/client", "@responsive-image/vite-plugin/client"]
+  }
+}
+```
+
+> [!NOTE]
+> We cannot use something like `*.jpg*` that works with queries, as TS only supports a single wildcard. That's why any image imports needs the `responsive` query parameter, and it has to come _last_!
+> See https://github.com/microsoft/TypeScript/issues/38638
