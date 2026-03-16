@@ -6,7 +6,8 @@
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "files": [
-    "dist"
+    "dist",
+    "client.d.ts"
   ],
   "type": "module",
   "keywords": [
@@ -28,6 +29,11 @@
       "import": {
         "types": "./dist/index.d.mts",
         "default": "./dist/index.mjs"
+      }
+    },
+    "./client": {
+      "import": {
+        "types": "./client.d.ts"
       }
     }
   },
