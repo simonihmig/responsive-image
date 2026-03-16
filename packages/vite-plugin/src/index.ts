@@ -12,7 +12,7 @@ import servePlugin from './serve';
 
 import type { Options } from './types';
 
-function setupPlugins(options?: Partial<Options>) {
+function responsiveImage(options?: Partial<Options>) {
   return [
     loaderPlugin(options),
     resizePlugin(options),
@@ -28,4 +28,9 @@ function setupPlugins(options?: Partial<Options>) {
   ];
 }
 
-export { setupPlugins };
+export {
+  responsiveImage,
+  // For backwards compatibility, we keep the setupPlugins export in place.
+  // No need to eagerly deprecate, as this has no maintenance cost
+  responsiveImage as setupPlugins,
+};

@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { responsiveImage } from '@responsive-image/vite-plugin';
 
 export default defineConfig({
   plugins: [
-    setupPlugins({
+    responsiveImage({
       styles: 'inline',
     }),
   ],

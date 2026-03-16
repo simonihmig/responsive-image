@@ -10,7 +10,7 @@ const defaultLoaders: string[] = [
   '@responsive-image/webpack/loader',
 ];
 
-function setupLoaders(options?: Partial<Options>) {
+function responsiveImage(options?: Partial<Options>) {
   if (options) {
     return defaultLoaders.map((loader) => ({ loader, options }));
   }
@@ -18,4 +18,9 @@ function setupLoaders(options?: Partial<Options>) {
   return defaultLoaders;
 }
 
-export { setupLoaders };
+export {
+  responsiveImage,
+  // For backwards compatibility, we keep the setupLoaders export in place.
+  // No need to eagerly deprecate, as this has no maintenance cost
+  responsiveImage as setupLoaders,
+};
