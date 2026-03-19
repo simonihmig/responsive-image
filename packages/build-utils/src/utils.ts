@@ -9,8 +9,6 @@ import type { ImageConfig } from 'imagetools-core';
 
 const defaultImageConfig: ImageOptions = {
   w: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-  // TODO: remove this, needs fixing tests
-  allowUpscale: 'true',
   format: ['original', 'webp'],
 };
 
