@@ -63,6 +63,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: 'prebuild'
     timeout-minutes: 10
+    outputs:
+      ember-matrix: ${{ steps.set-ember-matrix.outputs.matrix }}
 
     steps:
       - uses: actions/checkout@v6
@@ -85,6 +87,11 @@ jobs:
         with:
           name: playwright-report
           path: '**/playwright-report/**/*'
+      # Create matrix scenarios for final matrix job
+      - id: set-ember-matrix
+        working-directory: packages/ember
+        run: echo "matrix=$(pnpm -s dlx @embroider/try list)" >> $GITHUB_OUTPUT
+
 
   floating_tests:
     name: 'Floating Dependencies'
@@ -108,38 +115,32 @@ jobs:
       - name: Run Tests
         run: pnpm test
 
-  # ember-try-scenarios:
-  #   name: ${{ matrix.try-scenario }}
-  #   runs-on: ubuntu-latest
-  #   needs: 'test'
-  #   timeout-minutes: 10
+  ember-scenarios:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    needs: "test"
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.test.outputs.ember-matrix)}}
 
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       try-scenario:
-  #         - ember-lts-4.12
-  #         - ember-lts-5.4
-  #         - ember-lts-5.8
-  #         - ember-release
-  #         - ember-beta
-  #         - ember-canary
-  #         - embroider-safe
-  #         - embroider-optimized
-
-  #   steps:
-  #     - uses: actions/checkout@v5
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v5
-  #       with:
-  #         node-version: 22
-  #         cache: 'pnpm'
-  #     - name: Install Dependencies
-  #       run: pnpm install --frozen-lockfile
-  #     - name: TurboRepo local server
-  #       uses: felixmosh/turborepo-gh-artifacts@v3
-  #       with:
-  #         repo-token: ${{ secrets.GITHUB_TOKEN }}
-  #     - name: Run Tests
-  #       run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup --- pnpm turbo test
-  #       working-directory: apps/ember-test-app
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      - name: Apply Scenario
+        working-directory: packages/ember
+        run: pnpm dlx @embroider/try apply ${{ matrix.name }}
+      - name: Install Dependencies
+        run: pnpm install --no-lockfile
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Tests
+        working-directory: packages/ember
+        run: pnpm turbo test
+        env: ${{ matrix.env }}

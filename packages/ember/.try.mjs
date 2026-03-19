@@ -9,10 +9,10 @@ export default {
       },
     },
     {
-      name: `ember-latest`,
+      name: `ember-lts-6.8`,
       npm: {
         devDependencies: {
-          'ember-source': `npm:ember-source@latest`,
+          'ember-source': `npm:ember-source@~6.8.0`,
         },
       },
     },
@@ -21,14 +21,6 @@ export default {
       npm: {
         devDependencies: {
           'ember-source': `npm:ember-source@beta`,
-        },
-      },
-    },
-    {
-      name: `ember-alpha`,
-      npm: {
-        devDependencies: {
-          'ember-source': `npm:ember-source@alpha`,
         },
       },
     },
