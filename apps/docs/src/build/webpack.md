@@ -3,7 +3,7 @@
 ## Compatibility
 
 - webpack v5
-- node 20+
+- node 22+
 
 ## Installation
 
