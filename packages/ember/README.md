@@ -6,7 +6,7 @@ Part of the [ResponsiveImage](https://github.com/simonihmig/responsive-image) pr
 
 ## Compatibility
 
-- Ember.js v4.12 or above
+- Ember.js v6.4 or above
 
 ## Documentation
 
