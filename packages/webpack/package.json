@@ -11,7 +11,8 @@
   "license": "MIT",
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "files": [
-    "dist"
+    "dist",
+    "client.d.ts"
   ],
   "type": "module",
   "main": "./dist/index.cjs",
@@ -117,6 +118,9 @@
         "types": "./dist/lqip/thumbhash.d.mts",
         "default": "./dist/lqip/thumbhash.mjs"
       }
+    },
+    "./client": {
+      "types": "./client.d.ts"
     }
   },
   "scripts": {
