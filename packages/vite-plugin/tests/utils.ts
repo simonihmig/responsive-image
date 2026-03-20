@@ -49,11 +49,12 @@ export async function compile(
     logLevel: 'warn',
     mode: 'development',
     build: {
+      target: 'esnext',
       lib: {
         entry: 'index.js',
         formats: ['es'],
       },
-      minify: false,
+      minify: true,
       write: false,
       modulePreload: { polyfill: false },
       rollupOptions: {
