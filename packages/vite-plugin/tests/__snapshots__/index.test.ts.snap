@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`LQIP > blurhash LQIP is supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-import { decode2url } from "@responsive-image/core/blurhash/decode";
-const images = [{
+"import { findMatchingImage as a } from "@responsive-image/core";
+import { decode2url as t } from "@responsive-image/core/blurhash/decode";
+const o = [{
   url: "/image-100w.jpg",
   width: 100,
   format: "jpeg"
@@ -19,8 +19,7 @@ const images = [{
   url: "/image-200w.webp",
   width: 200,
   format: "webp"
-}];
-const image = {
+}], g = {
   imageTypes: [
     "jpeg",
     "webp"
@@ -30,19 +29,19 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
+  imageUrlFor: (e, i) => a(o, e, i ?? "jpeg")?.url,
   lqip: {
-    inlineStyles: () => ({ "background-image": \`url("\${decode2url("M53KT1R8D8y.t2M.oxylRoRlHYniyBRQXR", 5, 3)}")\` }),
+    inlineStyles: () => ({ "background-image": \`url("\${t("M53KT1R8D8y.t2M.oxylRoRlHYniyBRQXR", 5, 3)}")\` }),
     attribute: "bh:5:3:M53KT1R8D8y.t2M.oxylRoRlHYniyBRQXR"
   }
 };
-console.log(image);
+console.log(g);
 "
 `;
 
 exports[`LQIP > color LQIP is supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as i } from "@responsive-image/core";
+const g = [{
   url: "/image-100w.jpg",
   width: 100,
   format: "jpeg"
@@ -58,8 +57,7 @@ const images = [{
   url: "/image-200w.webp",
   width: 200,
   format: "webp"
-}];
-const image = {
+}], m = {
   imageTypes: [
     "jpeg",
     "webp"
@@ -69,19 +67,23 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
+  imageUrlFor: (e, a) => i(g, e, a ?? "jpeg")?.url,
   lqip: {
-    "class": "ri-dyn-0"
+    class: "ri-dyn-0"
   }
 };
-console.log(image);
+console.log(m);
+"
+`;
+
+exports[`LQIP > color LQIP is supported 2`] = `
+".ri-dyn-0{background-color:#083838}
 "
 `;
 
 exports[`LQIP > color LQIP with inline styles is supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const inlineStyles = { "background-color": "#083838" };
-const images = [{
+"import { findMatchingImage as a } from "@responsive-image/core";
+const g = { "background-color": "#083838" }, t = [{
   url: "/image-100w.jpg",
   width: 100,
   format: "jpeg"
@@ -97,8 +99,7 @@ const images = [{
   url: "/image-200w.webp",
   width: 200,
   format: "webp"
-}];
-const image = {
+}], o = {
   imageTypes: [
     "jpeg",
     "webp"
@@ -108,18 +109,18 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
+  imageUrlFor: (e, i) => a(t, e, i ?? "jpeg")?.url,
   lqip: {
-    inlineStyles
+    inlineStyles: g
   }
 };
-console.log(image);
+console.log(o);
 "
 `;
 
 exports[`LQIP > inline LQIP is supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as i } from "@responsive-image/core";
+const g = [{
   url: "/image-100w.jpg",
   width: 100,
   format: "jpeg"
@@ -135,8 +136,7 @@ const images = [{
   url: "/image-200w.webp",
   width: 200,
   format: "webp"
-}];
-const image = {
+}], m = {
   imageTypes: [
     "jpeg",
     "webp"
@@ -146,19 +146,18 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
+  imageUrlFor: (e, a) => i(g, e, a ?? "jpeg")?.url,
   lqip: {
-    "class": "ri-dyn-0"
+    class: "ri-dyn-0"
   }
 };
-console.log(image);
+console.log(m);
 "
 `;
 
 exports[`LQIP > inline LQIP with inline styles is supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const inlineStyles = { "background-image": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQwMCAxNjAzIj4KPGZpbHRlciBpZD0iYiIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIuNSI+PC9mZUdhdXNzaWFuQmx1cj48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSJkaXNjcmV0ZSIgdGFibGVWYWx1ZXM9IjEgMSI+PC9mZUZ1bmNBPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj4KPGltYWdlIGZpbHRlcj0idXJsKCNiKSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFBa0FBQUFHQ0FJQUFBQ2VwU09TQUFBQUNYQklXWE1BQUFzVEFBQUxFd0VBbXB3WUFBQUFzRWxFUVZSNG5HTmdOamRtMTlEbmxOTmlrOVZrMFRKZ2NiTm50YlprMWpGZzFEZGdZUFp6NFBKdzR0VzE0Rll5NXRBejV3N3pZWE4zNG5LdzR3MXpaMkQxYytYT0NSR0tEeGF3ZE9NemNaWE1pWk9LQ1ZaSkMrTDNzbVpnTTdQbThiQVhqWFZVS2dvMnpRcEoycEJqVlJZaWFHZkJvcXpDd0tLcnpxR2p3YVdoSXVPdGI1NW5acDVqSWVoZ3ltNWt4S3Fwd2NBc0w4c2lMOG1xSzh0am95cmhxS3BUcVNNZXBNMWhhc1JpWWdnQXM0QWVMZm5QR3hZQUFBQUFTVVZPUks1Q1lJST0iPjwvaW1hZ2U+Cjwvc3ZnPg==)" };
-const images = [{
+"import { findMatchingImage as l } from "@responsive-image/core";
+const Z = { "background-image": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQwMCAxNjAzIj4KPGZpbHRlciBpZD0iYiIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIuNSI+PC9mZUdhdXNzaWFuQmx1cj48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSJkaXNjcmV0ZSIgdGFibGVWYWx1ZXM9IjEgMSI+PC9mZUZ1bmNBPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj4KPGltYWdlIGZpbHRlcj0idXJsKCNiKSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFBa0FBQUFHQ0FJQUFBQ2VwU09TQUFBQUNYQklXWE1BQUFzVEFBQUxFd0VBbXB3WUFBQUFzRWxFUVZSNG5HTmdOamRtMTlEbmxOTmlrOVZrMFRKZ2NiTm50YlprMWpGZzFEZGdZUFp6NFBKdzR0VzE0Rll5NXRBejV3N3pZWE4zNG5LdzR3MXpaMkQxYytYT0NSR0tEeGF3ZE9NemNaWE1pWk9LQ1ZaSkMrTDNzbVpnTTdQbThiQVhqWFZVS2dvMnpRcEoycEJqVlJZaWFHZkJvcXpDd0tLcnpxR2p3YVdoSXVPdGI1NW5acDVqSWVoZ3ltNWt4S3Fwd2NBc0w4c2lMOG1xSzh0am95cmhxS3BUcVNNZXBNMWhhc1JpWWdnQXM0QWVMZm5QR3hZQUFBQUFTVVZPUks1Q1lJST0iPjwvaW1hZ2U+Cjwvc3ZnPg==)" }, i = [{
   url: "/image-100w.jpg",
   width: 100,
   format: "jpeg"
@@ -174,8 +173,7 @@ const images = [{
   url: "/image-200w.webp",
   width: 200,
   format: "webp"
-}];
-const image = {
+}], c = {
   imageTypes: [
     "jpeg",
     "webp"
@@ -185,19 +183,19 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
+  imageUrlFor: (a, m) => l(i, a, m ?? "jpeg")?.url,
   lqip: {
-    inlineStyles
+    inlineStyles: Z
   }
 };
-console.log(image);
+console.log(c);
 "
 `;
 
 exports[`LQIP > thumbhash LQIP is supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-import { decode2url } from "@responsive-image/core/thumbhash/decode";
-const images = [{
+"import { findMatchingImage as i } from "@responsive-image/core";
+import { decode2url as t } from "@responsive-image/core/thumbhash/decode";
+const m = [{
   url: "/image-100w.jpg",
   width: 100,
   format: "jpeg"
@@ -213,8 +211,7 @@ const images = [{
   url: "/image-200w.webp",
   width: 200,
   format: "webp"
-}];
-const image = {
+}], g = {
   imageTypes: [
     "jpeg",
     "webp"
@@ -224,19 +221,19 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
+  imageUrlFor: (e, a) => i(m, e, a ?? "jpeg")?.url,
   lqip: {
-    inlineStyles: () => ({ "background-image": \`url("\${decode2url("jJcFFYI1fIWHe4dweXlYeUaAmWj3")}")\` }),
+    inlineStyles: () => ({ "background-image": \`url("\${t("jJcFFYI1fIWHe4dweXlYeUaAmWj3")}")\` }),
     attribute: "th:jJcFFYI1fIWHe4dweXlYeUaAmWj3"
   }
 };
-console.log(image);
+console.log(g);
 "
 `;
 
 exports[`custom loader options are supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as a } from "@responsive-image/core";
+const e = [{
   url: "/test-100.png",
   width: 100,
   format: "png"
@@ -244,8 +241,7 @@ const images = [{
   url: "/test-200.png",
   width: 200,
   format: "png"
-}];
-const image = {
+}], g = {
   imageTypes: [
     "png"
   ],
@@ -254,16 +250,16 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
+  imageUrlFor: (t, i) => a(e, t, i ?? "png")?.url,
   lqip: void 0
 };
-console.log(image);
+console.log(g);
 "
 `;
 
 exports[`custom query params are supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as g } from "@responsive-image/core";
+const e = [{
   url: "/image-100w.png",
   width: 100,
   format: "png"
@@ -271,8 +267,7 @@ const images = [{
   url: "/image-200w.png",
   width: 200,
   format: "png"
-}];
-const image = {
+}], n = {
   imageTypes: [
     "png"
   ],
@@ -281,16 +276,16 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
+  imageUrlFor: (i, a) => g(e, i, a ?? "png")?.url,
   lqip: void 0
 };
-console.log(image);
+console.log(n);
 "
 `;
 
 exports[`different aspect ratio 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as g } from "@responsive-image/core";
+const e = [{
   url: "/image-100w.png",
   width: 100,
   format: "png"
@@ -298,8 +293,7 @@ const images = [{
   url: "/image-200w.png",
   width: 200,
   format: "png"
-}];
-const image = {
+}], n = {
   imageTypes: [
     "png"
   ],
@@ -308,16 +302,16 @@ const image = {
     200
   ],
   aspectRatio: 0.6666666666666666,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
+  imageUrlFor: (i, a) => g(e, i, a ?? "png")?.url,
   lqip: void 0
 };
-console.log(image);
+console.log(n);
 "
 `;
 
 exports[`filter > it operates on included assets 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as a } from "@responsive-image/core";
+const g = [{
   url: "/image-640w.jpg",
   width: 640,
   format: "jpeg"
@@ -341,8 +335,7 @@ const images = [{
   url: "/image-1920w.webp",
   width: 1920,
   format: "webp"
-}];
-const image = {
+}], m = {
   imageTypes: [
     "jpeg",
     "webp"
@@ -353,16 +346,16 @@ const image = {
     1920
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "jpeg")?.url,
+  imageUrlFor: (e, i) => a(g, e, i ?? "jpeg")?.url,
   lqip: void 0
 };
-console.log(image);
+console.log(m);
 "
 `;
 
 exports[`imagetools params are supported 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as g } from "@responsive-image/core";
+const e = [{
   url: "/image-100w.png",
   width: 100,
   format: "png"
@@ -370,8 +363,7 @@ const images = [{
   url: "/image-200w.png",
   width: 200,
   format: "png"
-}];
-const image = {
+}], n = {
   imageTypes: [
     "png"
   ],
@@ -380,16 +372,16 @@ const image = {
     200
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
+  imageUrlFor: (i, a) => g(e, i, a ?? "png")?.url,
   lqip: void 0
 };
-console.log(image);
+console.log(n);
 "
 `;
 
 exports[`it produces expected output 1`] = `
-"import { findMatchingImage } from "@responsive-image/core";
-const images = [{
+"import { findMatchingImage as a } from "@responsive-image/core";
+const g = [{
   url: "/image-640w.png",
   width: 640,
   format: "png"
@@ -413,8 +405,7 @@ const images = [{
   url: "/image-1920w.webp",
   width: 1920,
   format: "webp"
-}];
-const image = {
+}], m = {
   imageTypes: [
     "png",
     "webp"
@@ -425,9 +416,9 @@ const image = {
     1920
   ],
   aspectRatio: 1.5,
-  imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? "png")?.url,
+  imageUrlFor: (e, i) => a(g, e, i ?? "png")?.url,
   lqip: void 0
 };
-console.log(image);
+console.log(m);
 "
 `;
