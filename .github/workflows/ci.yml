@@ -89,7 +89,7 @@ jobs:
           path: '**/playwright-report/**/*'
       # Create matrix scenarios for final matrix job
       - id: set-scenario-matrix
-        run: echo "matrix=$(pnpm -s dlx @embroider/try list)" >> $GITHUB_OUTPUT
+        run: echo "matrix=$(scripts/try.mjs list)" >> $GITHUB_OUTPUT
 
 
   floating_tests:
@@ -132,7 +132,7 @@ jobs:
           cache: 'pnpm'
       - name: Apply Scenario
         working-directory: ${{ matrix.cwd }}
-        run: pnpm dlx @embroider/try apply ${{ matrix.name }}
+        run: ${{ github.workspace }}/scripts/try.mjs --config "${{ github.workspace }}/.try.mjs" apply ${{ matrix.name }}
       - name: Install Dependencies
         run: pnpm install --no-lockfile
       - name: TurboRepo local server
