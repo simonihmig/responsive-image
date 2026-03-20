@@ -5,7 +5,7 @@ export default {
       cwd: 'packages/ember',
       npm: {
         devDependencies: {
-          'ember-source': `npm:ember-source@~6.4.0`,
+          'ember-source': `~6.4.0`,
         },
       },
     },
@@ -14,7 +14,7 @@ export default {
       cwd: 'packages/ember',
       npm: {
         devDependencies: {
-          'ember-source': `npm:ember-source@~6.8.0`,
+          'ember-source': `~6.8.0`,
         },
       },
     },
@@ -23,7 +23,16 @@ export default {
       cwd: 'packages/ember',
       npm: {
         devDependencies: {
-          'ember-source': `npm:ember-source@beta`,
+          'ember-source': `beta`,
+        },
+      },
+    },
+    {
+      name: `vite-6`,
+      cwd: 'packages/vite-plugin',
+      npm: {
+        devDependencies: {
+          vite: `^6.0.0`,
         },
       },
     },

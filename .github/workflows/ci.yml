@@ -134,7 +134,7 @@ jobs:
         working-directory: ${{ matrix.cwd }}
         run: ${{ github.workspace }}/scripts/try.mjs --config "${{ github.workspace }}/.try.mjs" apply ${{ matrix.name }}
       - name: Install Dependencies
-        run: pnpm install --no-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: TurboRepo local server
         uses: felixmosh/turborepo-gh-artifacts@v3
         with:
