@@ -6,8 +6,7 @@ import { build } from 'vite';
 import { responsiveImage } from '../src';
 
 import type { Options } from '../src/types';
-import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup';
-import type { Plugin } from 'vite';
+import type { Rollup, Plugin } from 'vite';
 
 const _dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -34,7 +33,7 @@ function entryFile(source: string): Plugin {
 
 export interface CompileResult {
   source: string;
-  assets: OutputAsset[];
+  assets: Rollup.OutputAsset[];
 }
 
 export async function compile(
@@ -62,13 +61,13 @@ export async function compile(
       },
     },
     plugins: [entryFile(source), responsiveImage(options)],
-  })) as unknown as RollupOutput | RollupOutput[];
+  })) as unknown as Rollup.RollupOutput | Rollup.RollupOutput[];
 
   if (Array.isArray(bundle)) {
     bundle = bundle[0];
   }
 
-  const module = bundle.output.find((chunk): chunk is OutputChunk =>
+  const module = bundle.output.find((chunk): chunk is Rollup.OutputChunk =>
     chunk.fileName.endsWith('.js'),
   );
 
@@ -77,7 +76,7 @@ export async function compile(
   }
 
   const assets = bundle.output
-    .filter((chunk): chunk is OutputAsset => chunk.type === 'asset')
+    .filter((chunk): chunk is Rollup.OutputAsset => chunk.type === 'asset')
     .toSorted((a, b) => a.fileName.localeCompare(b.fileName));
 
   return {

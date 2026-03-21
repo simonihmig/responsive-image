@@ -10,8 +10,8 @@ import lqipThumbhashPlugin from './lqip/thumbhash';
 import resizePlugin from './resize';
 import servePlugin from './serve';
 
-import type { Plugin } from 'vite';
 import type { Options } from './types';
+import type { Plugin } from 'vite';
 
 function responsiveImage(options?: Partial<Options>): Plugin[] {
   return [
