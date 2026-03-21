@@ -62,7 +62,7 @@ export async function compile(
       },
     },
     plugins: [entryFile(source), responsiveImage(options)],
-  })) as RollupOutput | RollupOutput[];
+  })) as unknown as RollupOutput | RollupOutput[];
 
   if (Array.isArray(bundle)) {
     bundle = bundle[0];
