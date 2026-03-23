@@ -1184,9 +1184,6 @@ importers:
       '@responsive-image/core':
         specifier: workspace:^
         version: link:../core
-      '@rollup/pluginutils':
-        specifier: ^5.1.0
-        version: 5.3.0(rollup@4.59.0)
       blurhash:
         specifier: ^2.0.4
         version: 2.0.5
@@ -18189,7 +18186,7 @@ snapshots:
       '@babel/core': 7.29.0(supports-color@8.1.1)
       '@babel/plugin-syntax-typescript': 7.28.6(@babel/core@7.29.0)
       '@babel/plugin-transform-typescript': 7.28.6(@babel/core@7.29.0)
-      '@rolldown/pluginutils': 1.0.0-rc.3
+      '@rolldown/pluginutils': 1.0.0-rc.10
       '@vue/babel-plugin-jsx': 2.0.1(@babel/core@7.29.0)
       vite: 7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.0)(yaml@2.8.2)
       vue: 3.5.30(typescript@5.9.3)
