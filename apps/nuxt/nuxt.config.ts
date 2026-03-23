@@ -9,7 +9,10 @@ export default defineNuxtConfig({
     buildAssetsDir: '/assets/',
   },
   vite: {
-    plugins: [responsiveImage()],
+    plugins: [
+      // @ts-expect-error -- https://github.com/vitejs/vite/issues/21981
+      responsiveImage(),
+    ],
   },
   typescript: {
     // customize tsconfig.app.json

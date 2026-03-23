@@ -36,5 +36,14 @@ export default {
         },
       },
     },
+    {
+      name: `vite-7`,
+      cwd: 'packages/vite-plugin',
+      npm: {
+        devDependencies: {
+          vite: `^7.0.0`,
+        },
+      },
+    },
   ],
 };

@@ -6,7 +6,7 @@ Part of the ResponsiveImage project.
 
 ## Compatibility
 
-- Vite v5, v6, v7
+- Vite v5, v6, v7, v8
 
 ## Documentation
 

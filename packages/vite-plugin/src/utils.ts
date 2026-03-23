@@ -4,8 +4,7 @@ import {
 } from '@responsive-image/build-utils';
 
 import type { Options, ViteOptions } from './types';
-import type { PluginContext } from 'rollup';
-import type { ResolvedConfig } from 'vite';
+import type { ResolvedConfig, Rollup } from 'vite';
 
 export const META_KEY = 'responsive-image';
 
@@ -32,7 +31,7 @@ export function getViteOptions(
 }
 
 export function getInput(
-  context: PluginContext,
+  context: Rollup.PluginContext,
   id: string,
 ): ImageLoaderChainedResult | undefined {
   const info = context.getModuleInfo(id);

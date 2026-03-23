@@ -11,8 +11,9 @@ import resizePlugin from './resize';
 import servePlugin from './serve';
 
 import type { Options } from './types';
+import type { Plugin } from 'vite';
 
-function responsiveImage(options?: Partial<Options>) {
+function responsiveImage(options?: Partial<Options>): Plugin[] {
   return [
     loaderPlugin(options),
     resizePlugin(options),
