@@ -64,8 +64,8 @@ importers:
         specifier: 4.4.6
         version: 4.4.6(@glint/template@1.7.7)
       '@embroider/vite':
-        specifier: 1.6.1
-        version: 1.6.1(@embroider/core@4.4.6(@glint/template@1.7.7))(@glint/template@1.7.7)(vite@8.0.1(@types/node@22.19.15)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
+        specifier: 1.7.0
+        version: 1.7.0(@embroider/core@4.4.6(@glint/template@1.7.7))(@glint/template@1.7.7)(vite@8.0.1(@types/node@22.19.15)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
       '@eslint/js':
         specifier: 9.39.4
         version: 9.39.4
@@ -885,8 +885,8 @@ importers:
         specifier: 4.4.6
         version: 4.4.6(@glint/template@1.7.7)
       '@embroider/vite':
-        specifier: 1.6.1
-        version: 1.6.1(@embroider/core@4.4.6(@glint/template@1.7.7))(@glint/template@1.7.7)(vite@8.0.1(@types/node@22.19.15)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
+        specifier: 1.7.0
+        version: 1.7.0(@embroider/core@4.4.6(@glint/template@1.7.7))(@glint/template@1.7.7)(vite@8.0.1(@types/node@22.19.15)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
       '@glimmer/component':
         specifier: 2.0.0
         version: 2.0.0
@@ -2539,10 +2539,10 @@ packages:
     resolution: {integrity: sha512-/SusdG+zgosc3t+9sPFVKSFOYyiSgLfXOT6lYNWoG1YtnhWDxlK4S8leZ0jhcVjemdaHln5rTyxCnq8oFLxqpQ==}
     engines: {node: 12.* || 14.* || >= 16}
 
-  '@embroider/vite@1.6.1':
-    resolution: {integrity: sha512-82xk4ODS31yJTPk9LntJarkmEDvbbZIw3dM95O+k67qXt0NHrcF7AJR2Wg/yn4cgUw0PDQptFE40TeJl6igymQ==}
+  '@embroider/vite@1.7.0':
+    resolution: {integrity: sha512-efHuNrzUQblSqtVf9aMhB+B8zinuA7jI//uYXIxX1t5Cv8OIgTkMO4pMRci4TuYALL85iJkKvuQ9erf+9iOOMw==}
     peerDependencies:
-      '@embroider/core': ^4.4.5
+      '@embroider/core': ^4.4.6
       vite: '>= 5.2.0'
 
   '@embroider/webpack@4.1.2':
@@ -15228,7 +15228,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@1.6.1(@embroider/core@4.4.6(@glint/template@1.7.7))(@glint/template@1.7.7)(vite@8.0.1(@types/node@22.19.15)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))':
+  '@embroider/vite@1.7.0(@embroider/core@4.4.6(@glint/template@1.7.7))(@glint/template@1.7.7)(vite@8.0.1(@types/node@22.19.15)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
       '@babel/core': 7.29.0(supports-color@8.1.1)
       '@embroider/core': 4.4.6(@glint/template@1.7.7)
