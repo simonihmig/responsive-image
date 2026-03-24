@@ -516,8 +516,8 @@ importers:
         specifier: ^0.29.4
         version: 0.29.4(solid-js@1.9.11)
       '@solidjs/router':
-        specifier: ^0.15.0
-        version: 0.15.4(solid-js@1.9.11)
+        specifier: ^0.16.0
+        version: 0.16.1(solid-js@1.9.11)
       '@solidjs/start':
         specifier: ^1.1.1
         version: 1.2.1(solid-js@1.9.11)(vinxi@0.5.11(@types/node@22.19.15)(db0@0.3.4)(ioredis@5.9.3)(jiti@2.6.1)(lightningcss@1.32.0)(rolldown@1.0.0-rc.10)(terser@5.46.0)(yaml@2.8.2))(vite@8.0.1(@types/node@22.19.15)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
@@ -1068,7 +1068,7 @@ importers:
         version: 16.0.3(rollup@4.59.0)
       '@solidjs/testing-library':
         specifier: 0.8.10
-        version: 0.8.10(@solidjs/router@0.15.4(solid-js@1.9.11))(solid-js@1.9.11)
+        version: 0.8.10(@solidjs/router@0.16.1(solid-js@1.9.11))(solid-js@1.9.11)
       '@tsconfig/strictest':
         specifier: 2.0.8
         version: 2.0.8
@@ -5156,8 +5156,8 @@ packages:
     peerDependencies:
       solid-js: '>=1.8.4'
 
-  '@solidjs/router@0.15.4':
-    resolution: {integrity: sha512-WOpgg9a9T638cR+5FGbFi/IV4l2FpmBs1GpIMSPa0Ce9vyJN7Wts+X2PqMf9IYn0zUj2MlSJtm1gp7/HI/n5TQ==}
+  '@solidjs/router@0.16.1':
+    resolution: {integrity: sha512-IhyjedgC6LRpw/8CPGGI89FrV+r0xTHzOl2c4CRyzYQ1bLepJxbVI1LLKvsavMWY5TRBRacV7hAeOhuTXkjiqg==}
     peerDependencies:
       solid-js: ^1.8.6
 
@@ -17497,7 +17497,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.11
 
-  '@solidjs/router@0.15.4(solid-js@1.9.11)':
+  '@solidjs/router@0.16.1(solid-js@1.9.11)':
     dependencies:
       solid-js: 1.9.11
 
@@ -17525,12 +17525,12 @@ snapshots:
       - supports-color
       - vite
 
-  '@solidjs/testing-library@0.8.10(@solidjs/router@0.15.4(solid-js@1.9.11))(solid-js@1.9.11)':
+  '@solidjs/testing-library@0.8.10(@solidjs/router@0.16.1(solid-js@1.9.11))(solid-js@1.9.11)':
     dependencies:
       '@testing-library/dom': 10.4.1
       solid-js: 1.9.11
     optionalDependencies:
-      '@solidjs/router': 0.15.4(solid-js@1.9.11)
+      '@solidjs/router': 0.16.1(solid-js@1.9.11)
 
   '@speed-highlight/core@1.2.14': {}
 
