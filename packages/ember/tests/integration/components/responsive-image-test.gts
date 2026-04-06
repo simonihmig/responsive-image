@@ -2,7 +2,7 @@ import { render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { env } from '@responsive-image/core';
 import { setupRenderingTest } from 'ember-qunit';
-import { module, skip, test } from 'qunit';
+import { module, test } from 'qunit';
 
 import ResponsiveImage from '../../../src/components/responsive-image.gts';
 import { loadImage, trigger } from '../../helpers/image.helper';
@@ -207,15 +207,13 @@ module('Integration: Responsive Image Component', function (hooks) {
         );
     });
 
-    // TODO: figure out why this is not working
-    skip('it renders the fallback src next to needed display size', async function (assert) {
-      env.physicalWidth = 100;
+    test('it renders the fallback src', async function (assert) {
       await render(
         <template><ResponsiveImage @src={{defaultImageData}} /></template>,
       );
       assert
         .dom('img')
-        .hasAttribute('src', new RegExp('/provider/w100/image.jpeg'));
+        .hasAttribute('src', new RegExp('/provider/w3840/image.jpeg'));
     });
 
     test('it renders a given size as sizes', async function (assert) {

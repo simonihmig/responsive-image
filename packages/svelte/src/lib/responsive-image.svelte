@@ -2,7 +2,6 @@
 	import {
 		type ImageData,
 		type ImageUrlForType,
-		getDestinationWidthBySize,
 		env,
 		getValueOrCallback
 	} from '@responsive-image/core';
@@ -53,7 +52,9 @@
 
 	const width: number | undefined = $derived.by(() => {
 		if (isResponsiveLayout) {
-			return getDestinationWidthBySize(sizeProp);
+			// With responsive layout, the width attribute does not really matter, as we scale to 100%.
+			// We just need to set width and height with the correct aspect ratio to preven layout shift.
+			return env.deviceWidths.at(-1);
 		} else {
 			if (widthProp) {
 				return widthProp;
