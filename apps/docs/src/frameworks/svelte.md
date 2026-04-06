@@ -36,21 +36,16 @@ If your app is built with SvelteKit, add the Vite plugin to your `vite.config.ts
 
 ```ts
 import { sveltekit } from '@sveltejs/kit/vite';
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { responsiveImage } from '@responsive-image/vite-plugin';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [
-    sveltekit(),
-    setupPlugins({
-      include: /^[^?]+\.jpg\?.*responsive.*$/,
-    }),
-  ],
+  plugins: [sveltekit(), responsiveImage()],
 });
 ```
 
 > [!IMPORTANT]
-> For more information on how to configure `@responsive-image/vite-plugin` and `setupPlugins()` refer to the [Vite plugin](../build/vite.md) documentation.
+> For more information on how to configure `@responsive-image/vite-plugin` and `responsiveImage()` refer to the [Vite plugin](../build/vite.md) documentation.
 
 ## Remote images
 

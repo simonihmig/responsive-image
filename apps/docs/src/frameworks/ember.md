@@ -44,7 +44,7 @@ let app = new EmberApp(defaults, {
         rules: [
           {
             resourceQuery: /responsive/,
-            use: require('@responsive-image/webpack').setupLoaders(),
+            use: require('@responsive-image/webpack').responsiveImage(),
           },
         ],
       },
@@ -54,7 +54,7 @@ let app = new EmberApp(defaults, {
 ```
 
 > [!IMPORTANT]
-> For more information on how to configure `@responsive-image/webpack` and `setupLoaders()` refer to the [webpack plugin](../build/webpack.md) documentation.
+> For more information on how to configure `@responsive-image/webpack` and `responsiveImage()` refer to the [webpack plugin](../build/webpack.md) documentation.
 
 > [!Note]
 > Note the use of [`allowAppImports`](https://github.com/embroider-build/ember-auto-import#app-imports) here, which is a way to make the build use ember-auto-import and thus Webpack to handle the files configured by the glob pattern of this configuration option. You can place the images files in a central subfolder under `/app`, like `app/images` as in this example, or even colocate them next to other JavaScript files by targeting specific image extensions instead of certain folders (e.g. `**/*/*.jpg`). Either way make sure that image files you import for use by `@responsive-image/ember` are correctly covered by at least one glob pattern passed to `allowAppImports`!
@@ -72,7 +72,7 @@ return require('@embroider/compat').compatBuild(app, Webpack, {
         rules: [
           {
             resourceQuery: /responsive/,
-            use: require('@responsive-image/webpack').setupLoaders(),
+            use: require('@responsive-image/webpack').responsiveImage(),
           },
         ],
       },
@@ -82,7 +82,7 @@ return require('@embroider/compat').compatBuild(app, Webpack, {
 ```
 
 > [!IMPORTANT]
-> For more information on how to configure `@responsive-image/webpack` and `setupLoaders()` refer to the [webpack plugin](../build/webpack.md) documentation.
+> For more information on how to configure `@responsive-image/webpack` and `responsiveImage()` refer to the [webpack plugin](../build/webpack.md) documentation.
 
 ### Embroider + Vite
 
@@ -90,21 +90,19 @@ For an Ember app running on the latest Polaris edition setup using Embroider and
 
 ```js
 import { defineConfig } from 'vite';
-import { setupPlugins } from '@responsive-image/vite-plugin';
+import { responsiveImage } from '@responsive-image/vite-plugin';
 
 export default defineConfig({
   // other config...
   plugins: [
     // all your other Ember/Vite plugins ...
-    setupPlugins({
-      include: /^[^?]+\.jpg\?.*responsive.*$/,
-    }),
+    responsiveImage(),
   ],
 });
 ```
 
 > [!IMPORTANT]
-> For more information on how to configure `@responsive-image/vite-plugin` and `setupPlugins()` refer to the [Vite plugin](../build/vite.md) documentation.
+> For more information on how to configure `@responsive-image/vite-plugin` and `responsiveImage()` refer to the [Vite plugin](../build/vite.md) documentation.
 
 ## Remote images
 
@@ -127,8 +125,7 @@ import '@glint/environment-ember-loose';
 import type ResponsiveImageRegistry from '@responsive-image/ember/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry
-    extends ResponsiveImageRegistry /* other addon registries */ {
+  export default interface Registry extends ResponsiveImageRegistry /* other addon registries */ {
     // local entries
   }
 }
