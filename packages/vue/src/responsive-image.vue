@@ -64,8 +64,8 @@ const isResponsiveLayout = () =>
 const width = () => {
   if (isResponsiveLayout()) {
     // With responsive layout, the width attribute does not really matter, as we scale to 100%.
-    // We just need to set width and height wit the correct aspect ratio to preven layout shift.
-    return 3840;
+    // We just need to set width and height with the correct aspect ratio to preven layout shift.
+    return env.deviceWidths.at(-1);
   } else if (args.width) {
     return args.width;
   } else {

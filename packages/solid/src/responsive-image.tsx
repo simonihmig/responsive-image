@@ -1,8 +1,4 @@
-import {
-  env,
-  getDestinationWidthBySize,
-  getValueOrCallback,
-} from '@responsive-image/core';
+import { env, getValueOrCallback } from '@responsive-image/core';
 import { createSignal, type JSX, onMount, Show, splitProps } from 'solid-js';
 import { isServer } from 'solid-js/web';
 
@@ -61,7 +57,9 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
 
   const width = () => {
     if (isResponsiveLayout()) {
-      return getDestinationWidthBySize(args.size);
+      // With responsive layout, the width attribute does not really matter, as we scale to 100%.
+      // We just need to set width and height with the correct aspect ratio to preven layout shift.
+      return env.deviceWidths.at(-1);
     } else {
       if (args.width) {
         return args.width;

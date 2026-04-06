@@ -3,11 +3,7 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { cached, tracked } from '@glimmer/tracking';
-import {
-  env,
-  getDestinationWidthBySize,
-  getValueOrCallback,
-} from '@responsive-image/core';
+import { env, getValueOrCallback } from '@responsive-image/core';
 import { modifier } from 'ember-modifier';
 import style from 'ember-style-modifier';
 
@@ -144,7 +140,9 @@ export default class ResponsiveImageComponent extends Component<ResponsiveImageC
   @cached
   get width(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
-      return getDestinationWidthBySize(this.args.size);
+      // With responsive layout, the width attribute does not really matter, as we scale to 100%.
+      // We just need to set width and height with the correct aspect ratio to preven layout shift.
+      return env.deviceWidths.at(-1);
     } else {
       if (this.args.width) {
         return this.args.width;

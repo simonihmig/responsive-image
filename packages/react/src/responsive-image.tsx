@@ -1,6 +1,5 @@
 import {
   env,
-  getDestinationWidthBySize,
   getValueOrCallback,
   type ImageData,
   type ImageUrlForType,
@@ -111,7 +110,9 @@ function getSources(props: ResponsiveImageArgs): ImageSource[] {
 function getWidth(props: ResponsiveImageArgs) {
   const layout = getLayout(props);
   if (layout === 'responsive') {
-    return getDestinationWidthBySize(props.size);
+    // With responsive layout, the width attribute does not really matter, as we scale to 100%.
+    // We just need to set width and height with the correct aspect ratio to preven layout shift.
+    return env.deviceWidths.at(-1);
   }
   if (props.width !== undefined) {
     return props.width;
@@ -141,7 +142,7 @@ function getHeight(props: ResponsiveImageArgs) {
 
 function getSrc(props: ResponsiveImageArgs) {
   const format = props.src.imageTypes === 'auto' ? 'auto' : undefined;
-  const width = getWidth(props) || 640;
+  const width = getWidth(props) ?? 640;
   return props.src.imageUrlFor(width, format);
 }
 

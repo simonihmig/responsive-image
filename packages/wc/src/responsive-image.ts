@@ -2,7 +2,6 @@ import {
   type ImageData,
   type ImageUrlForType,
   env,
-  getDestinationWidthBySize,
   getValueOrCallback,
 } from '@responsive-image/core';
 import { css, html, LitElement, nothing } from 'lit';
@@ -148,7 +147,9 @@ export class ResponsiveImage extends LitElement {
 
   get imgWidth(): number | undefined {
     if (this.layout === Layout.RESPONSIVE) {
-      return getDestinationWidthBySize(this.size);
+      // With responsive layout, the width attribute does not really matter, as we scale to 100%.
+      // We just need to set width and height with the correct aspect ratio to preven layout shift.
+      return env.deviceWidths.at(-1);
     }
 
     if (this.width) {

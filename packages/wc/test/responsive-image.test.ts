@@ -344,15 +344,13 @@ describe('ResponsiveImage', () => {
       );
     });
 
-    // TODO: figure out why this is not working
-    test.skip('it renders the fallback src next to needed display size', async () => {
-      env.physicalWidth = 100;
+    test('it renders the fallback src', async () => {
       const el = await fixture<ResponsiveImage>(
         html`<responsive-image .src=${defaultImageData}></responsive-image>`,
       );
       expect(el.shadowRoot?.querySelector('img')).toHaveAttribute(
         'src',
-        '/provider/w100/image.jpeg',
+        '/provider/w3840/image.jpeg',
       );
     });
 
