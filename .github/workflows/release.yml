@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
-      - uses: wyvox/action-setup-pnpm@v3
+      - uses: wyvox/action-setup-pnpm@v4
         with:
           node-version: 22
       # Ensure npm 11.5.1 or later is installed for OIDC
