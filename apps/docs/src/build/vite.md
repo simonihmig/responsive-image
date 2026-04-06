@@ -2,7 +2,7 @@
 
 ## Compatibility
 
-- vite v5
+- Vite v6, v7 or v8
 - node 22+
 
 ## Installation
