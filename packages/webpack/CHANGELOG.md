@@ -1,5 +1,36 @@
 # @ember-responsive-image/webpack
 
+## 3.0.0
+
+### Major Changes
+
+- [#1765](https://github.com/simonihmig/responsive-image/pull/1765) [`5decc20`](https://github.com/simonihmig/responsive-image/commit/5decc20d3e6ced730dfa671de9c0a3e15db27295) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependency imagetools-core to v9
+
+  imagetools-core v8 introduced a breaking change by adding a `autoOrient` directove that is enabled by default (automatically fix the orientation based on EXIF data), which applies to all images processed by the vite or webpack plugins here as well.
+
+- [#2197](https://github.com/simonihmig/responsive-image/pull/2197) [`a40633f`](https://github.com/simonihmig/responsive-image/commit/a40633f2d1539f3ec6af462b7be2e0b6968cd700) Thanks [@simonihmig](https://github.com/simonihmig)! - Drop support for node 20
+
+- [#2193](https://github.com/simonihmig/responsive-image/pull/2193) [`930f44c`](https://github.com/simonihmig/responsive-image/commit/930f44ccb9328a10d0c67453f25d4377d42ae05a) Thanks [@simonihmig](https://github.com/simonihmig)! - Remove `allowUpscale` default config
+
+  This option of `imagetools` was true by default before, which allowed images to get upscaled beyond their original size. This has been changed, as this is not really useful.
+
+### Minor Changes
+
+- [#2174](https://github.com/simonihmig/responsive-image/pull/2174) [`e26b3a2`](https://github.com/simonihmig/responsive-image/commit/e26b3a2f6a54af7ead9a14560667617145a3f24b) Thanks [@simonihmig](https://github.com/simonihmig)! - Provide a responsiveImage export for the build plugins
+
+  The vite and webpack packages provide a more consistent and self-descriptive `responsiveImage` export for their respective plugins. The previous `setupPlugins`/`setupLoaders` exports are kept for backwards compatibility.
+
+- [#2189](https://github.com/simonihmig/responsive-image/pull/2189) [`a20d3f8`](https://github.com/simonihmig/responsive-image/commit/a20d3f8ac4dac0ea1f83a1cada66d9dd3800c008) Thanks [@simonihmig](https://github.com/simonihmig)! - Expose client types for image imports
+
+  The `/client` type export provides the necessary module declarations to make TypeScript understand image imports with a `?responsive` query parameter.
+
+### Patch Changes
+
+- [#2253](https://github.com/simonihmig/responsive-image/pull/2253) [`0acb952`](https://github.com/simonihmig/responsive-image/commit/0acb952dc84ccd9a08852635369a5a0b3e7a1608) Thanks [@simonihmig](https://github.com/simonihmig)! - Better JSDocs for build plugin options
+
+- Updated dependencies [[`5decc20`](https://github.com/simonihmig/responsive-image/commit/5decc20d3e6ced730dfa671de9c0a3e15db27295), [`a40633f`](https://github.com/simonihmig/responsive-image/commit/a40633f2d1539f3ec6af462b7be2e0b6968cd700), [`0acb952`](https://github.com/simonihmig/responsive-image/commit/0acb952dc84ccd9a08852635369a5a0b3e7a1608), [`930f44c`](https://github.com/simonihmig/responsive-image/commit/930f44ccb9328a10d0c67453f25d4377d42ae05a)]:
+  - @responsive-image/build-utils@3.0.0
+
 ## 2.0.0
 
 ### Major Changes
