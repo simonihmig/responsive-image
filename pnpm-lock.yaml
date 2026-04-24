@@ -151,8 +151,8 @@ importers:
         specifier: 10.1.8
         version: 10.1.8(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-ember:
-        specifier: 13.0.0
-        version: 13.0.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
+        specifier: 13.1.0
+        version: 13.1.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       eslint-plugin-n:
         specifier: 17.24.0
         version: 17.24.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
@@ -343,8 +343,8 @@ importers:
         specifier: 10.1.8
         version: 10.1.8(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-ember:
-        specifier: 13.0.0
-        version: 13.0.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
+        specifier: 13.1.0
+        version: 13.1.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       eslint-plugin-n:
         specifier: 17.24.0
         version: 17.24.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
@@ -936,8 +936,8 @@ importers:
         specifier: 9.39.4
         version: 9.39.4(jiti@2.6.1)
       eslint-plugin-ember:
-        specifier: 13.0.0
-        version: 13.0.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
+        specifier: 13.1.0
+        version: 13.1.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       globals:
         specifier: 17.5.0
         version: 17.5.0
@@ -8189,8 +8189,8 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-ember@13.0.0:
-    resolution: {integrity: sha512-/gy9n49JE5j/1FgNEWDcyXL6K8o0uVafIbHdeqYitlUyZ9wx9Ibo/rMM/AxuRjaQ6q0knmvokivEkzxfpBA78g==}
+  eslint-plugin-ember@13.1.0:
+    resolution: {integrity: sha512-38DVNSpQfnyG0y7TlyFMaPjlB44faruQ1YhQvizfUUPHkccJQ6UeBj08CMV5HTrweJ57+19alZfWwwdloL01kQ==}
     engines: {node: '>= 20.19'}
     peerDependencies:
       '@typescript-eslint/parser': '*'
@@ -21407,7 +21407,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-ember@13.0.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3):
+  eslint-plugin-ember@13.1.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3):
     dependencies:
       '@ember-data/rfc395-data': 0.0.4
       aria-query: 5.3.2
