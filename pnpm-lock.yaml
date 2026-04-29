@@ -1131,8 +1131,8 @@ importers:
         specifier: 7.0.0
         version: 7.0.0(svelte@5.55.5)(vite@8.0.10(@types/node@22.19.17)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       '@testing-library/svelte':
-        specifier: 5.2.8
-        version: 5.2.8(svelte@5.55.5)(vite@8.0.10(@types/node@22.19.17)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))(vitest@4.1.5)
+        specifier: 5.3.1
+        version: 5.3.1(svelte@5.55.5)(vite@8.0.10(@types/node@22.19.17)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))(vitest@4.1.5)
       '@tsconfig/strictest':
         specifier: 2.0.8
         version: 2.0.8
@@ -5356,8 +5356,14 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@testing-library/svelte@5.2.8':
-    resolution: {integrity: sha512-ucQOtGsJhtawOEtUmbR4rRh53e6RbM1KUluJIXRmh6D4UzxR847iIqqjRtg9mHNFmGQ8Vkam9yVcR5d1mhIHKA==}
+  '@testing-library/svelte-core@1.0.0':
+    resolution: {integrity: sha512-VkUePoLV6oOYwSUvX6ShA8KLnJqZiYMIbP2JW2t0GLWLkJxKGvuH5qrrZBV/X7cXFnLGuFQEC7RheYiZOW68KQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      svelte: ^3 || ^4 || ^5 || ^5.0.0-next.0
+
+  '@testing-library/svelte@5.3.1':
+    resolution: {integrity: sha512-8Ez7ZOqW5geRf9PF5rkuopODe5RGy3I9XR+kc7zHh26gBiktLaxTfKmhlGaSHYUOTQE7wFsLMN9xCJVCszw47w==}
     engines: {node: '>= 10'}
     peerDependencies:
       svelte: ^3 || ^4 || ^5 || ^5.0.0-next.0
@@ -17695,9 +17701,14 @@ snapshots:
       '@types/react': 19.2.14
       '@types/react-dom': 19.2.3(@types/react@19.2.14)
 
-  '@testing-library/svelte@5.2.8(svelte@5.55.5)(vite@8.0.10(@types/node@22.19.17)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))(vitest@4.1.5)':
+  '@testing-library/svelte-core@1.0.0(svelte@5.55.5)':
+    dependencies:
+      svelte: 5.55.5
+
+  '@testing-library/svelte@5.3.1(svelte@5.55.5)(vite@8.0.10(@types/node@22.19.17)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))(vitest@4.1.5)':
     dependencies:
       '@testing-library/dom': 10.4.1
+      '@testing-library/svelte-core': 1.0.0(svelte@5.55.5)
       svelte: 5.55.5
     optionalDependencies:
       vite: 8.0.10(@types/node@22.19.17)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)
