@@ -7,15 +7,15 @@ For example, if you use Ember.js and Vite, then install these packages:
 ::: code-group
 
 ```bash [npm]
-npm install @responsive-image/ember @responsive-image/vite
+npm install @responsive-image/ember @responsive-image/vite-plugin
 ```
 
 ```bash [yarn]
-yarn add @responsive-image/ember @responsive-image/vite
+yarn add @responsive-image/ember @responsive-image/vite-plugin
 ```
 
 ```bash [pnpm]
-pnpm add @responsive-image/ember @responsive-image/vite
+pnpm add @responsive-image/ember @responsive-image/vite-plugin
 ```
 
 :::
