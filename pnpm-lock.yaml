@@ -683,8 +683,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -741,8 +741,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       rollup:
         specifier: 4.60.3
         version: 4.60.3
@@ -778,8 +778,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -815,8 +815,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       thumbhash:
         specifier: 0.1.1
         version: 0.1.1
@@ -1024,8 +1024,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       react:
         specifier: 19.2.5
         version: 19.2.5
@@ -1094,8 +1094,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       rollup:
         specifier: 4.60.3
         version: 4.60.3
@@ -1158,8 +1158,8 @@ importers:
         specifier: 3.5.1
         version: 3.5.1(prettier@3.8.3)(svelte@5.55.5(@typescript-eslint/types@8.59.1))
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       svelte:
         specifier: 5.55.5
         version: 5.55.5(@typescript-eslint/types@8.59.1)
@@ -1228,8 +1228,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1283,8 +1283,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1353,8 +1353,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1426,8 +1426,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       publint:
-        specifier: 0.3.18
-        version: 0.3.18
+        specifier: 0.3.19
+        version: 0.3.19
       style-loader:
         specifier: 4.0.0
         version: 4.0.0(webpack@5.106.2(esbuild@0.28.0))
@@ -11447,8 +11447,8 @@ packages:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
 
-  publint@0.3.18:
-    resolution: {integrity: sha512-JRJFeBTrfx4qLwEuGFPk+haJOJN97KnPuK01yj+4k/Wj5BgoOK5uNsivporiqBjk2JDaslg7qJOhGRnpltGeog==}
+  publint@0.3.19:
+    resolution: {integrity: sha512-J3p4GOocCRFyLLFRzGfIhAwWgk0Kkcdxj5iFspFvCYbyiJs5IhCM8gsIkcNeQL+tdpV671RtJQiTFSUKhl1Wjg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -25404,7 +25404,7 @@ snapshots:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
 
-  publint@0.3.18:
+  publint@0.3.19:
     dependencies:
       '@publint/pack': 0.1.4
       package-manager-detector: 1.6.0
