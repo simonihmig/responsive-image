@@ -155,7 +155,7 @@ importers:
         version: 13.2.1(@babel/eslint-parser@7.28.6(@babel/core@7.29.0)(eslint@9.39.4(jiti@2.6.1)))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@typescript-eslint/parser@8.59.3(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3))(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3)
       eslint-plugin-n:
         specifier: 18.0.1
-        version: 18.0.1(eslint@9.39.4(jiti@2.6.1))(ts-declaration-location@1.0.7(typescript@6.0.3))(typescript@6.0.3)
+        version: 18.0.1(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3)
       eslint-plugin-prettier:
         specifier: 5.5.5
         version: 5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1))(prettier@3.8.3)
@@ -347,7 +347,7 @@ importers:
         version: 13.2.1(@babel/eslint-parser@7.28.6(@babel/core@7.29.0)(eslint@9.39.4(jiti@2.6.1)))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@typescript-eslint/parser@8.59.3(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3))(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3)
       eslint-plugin-n:
         specifier: 18.0.1
-        version: 18.0.1(eslint@9.39.4(jiti@2.6.1))(ts-declaration-location@1.0.7(typescript@6.0.3))(typescript@6.0.3)
+        version: 18.0.1(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3)
       eslint-plugin-prettier:
         specifier: 5.5.5
         version: 5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1))(prettier@3.8.3)
@@ -653,7 +653,7 @@ importers:
         version: 2.32.0(eslint@10.3.0(jiti@2.6.1))
       eslint-plugin-n:
         specifier: 18.0.1
-        version: 18.0.1(eslint@10.3.0(jiti@2.6.1))(ts-declaration-location@1.0.7(typescript@6.0.3))(typescript@6.0.3)
+        version: 18.0.1(eslint@10.3.0(jiti@2.6.1))(typescript@6.0.3)
       globals:
         specifier: 17.6.0
         version: 17.6.0
@@ -903,8 +903,8 @@ importers:
         specifier: 1.7.7
         version: 1.7.7
       '@glint/tsserver-plugin':
-        specifier: 2.4.0
-        version: 2.4.0
+        specifier: 2.4.1
+        version: 2.4.1(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../-internals
@@ -3473,11 +3473,15 @@ packages:
     peerDependencies:
       typescript: '>=5.6.0'
 
-  '@glint/ember-tsc@1.5.0':
-    resolution: {integrity: sha512-mMAG91QyzKQvklnoQFy5orNA4gYU2LPQlPHUbJnuAHJ0c5pwyUO/rjseudFXAWRA5F8cQmNLqtximnLTvHSMzw==}
+  '@glint/ember-tsc@1.6.0':
+    resolution: {integrity: sha512-rnhS7cMs6/ifUTYseZVxKMMt1fwHfEJ4kUlacniEv5EoD/qqJ0mgBJAFMtKmk7NN+TmanzRsy3O6C91/VEGsHQ==}
     hasBin: true
     peerDependencies:
+      ember-source: '>=7.1.0'
       typescript: '>=5.6.0'
+    peerDependenciesMeta:
+      ember-source:
+        optional: true
 
   '@glint/environment-ember-loose@1.5.2':
     resolution: {integrity: sha512-AuYRwZbQZW13WMW9tmyYqSGHLBXbdXn+HqdRDAG1qHItnjON4uv6sJVQUrnadlMT3G2AVRjL6jtfnwHs3t2Kuw==}
@@ -3553,8 +3557,8 @@ packages:
   '@glint/template@1.7.7':
     resolution: {integrity: sha512-jcPdQ3A6cXo5h9RBi0tK4/o5qNn7868Y8xpkwWQNPAd8xQKuRKmG9dGJwUycXvtqISzfrnL1p3MQr3hYN/Ua6Q==}
 
-  '@glint/tsserver-plugin@2.4.0':
-    resolution: {integrity: sha512-3HD8v9c2PvIR1dOCJfeilgIjLnSCiBeEgi6NEm14oa90bw0mu9LVB/YO8aCAGWw9A/CERnrV4HZdHqsr3rdySQ==}
+  '@glint/tsserver-plugin@2.4.1':
+    resolution: {integrity: sha512-B2SWdu0rkwNfGiu3pUEz2IL56riw5tmOH0qgocNSNeNLRYRbJn0cE78I/VuatVr50cOK80ToYs93NKt4MDwu0g==}
 
   '@handlebars/parser@2.0.0':
     resolution: {integrity: sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==}
@@ -12740,11 +12744,6 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  ts-declaration-location@1.0.7:
-    resolution: {integrity: sha512-EDyGAwH1gO0Ausm9gV6T2nUvBgXT5kGoCMJPllOaooZ+4VvJiKBdZE7wK18N1deEowhcUptS+5GXZK8U/fvpwA==}
-    peerDependencies:
-      typescript: '>=4.0.0'
-
   tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}
 
@@ -16137,7 +16136,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@glint/ember-tsc@1.5.0(typescript@5.9.3)':
+  '@glint/ember-tsc@1.6.0(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))(typescript@5.9.3)':
     dependencies:
       '@glimmer/syntax': 0.95.0
       '@glint/template': 1.7.7
@@ -16156,6 +16155,8 @@ snapshots:
       vscode-languageserver-protocol: 3.17.5
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
+    optionalDependencies:
+      ember-source: 6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -16192,14 +16193,15 @@ snapshots:
 
   '@glint/template@1.7.7': {}
 
-  '@glint/tsserver-plugin@2.4.0':
+  '@glint/tsserver-plugin@2.4.1(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))':
     dependencies:
-      '@glint/ember-tsc': 1.5.0(typescript@5.9.3)
+      '@glint/ember-tsc': 1.6.0(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))(typescript@5.9.3)
       '@volar/language-core': 2.4.28
       '@volar/typescript': 2.4.28
       jiti: 2.6.1
       typescript: 5.9.3
     transitivePeerDependencies:
+      - ember-source
       - supports-color
 
   '@handlebars/parser@2.0.0': {}
@@ -21839,7 +21841,7 @@ snapshots:
       parse5: 6.0.1
       parse5-htmlparser2-tree-adapter: 6.0.1
 
-  eslint-plugin-n@18.0.1(eslint@10.3.0(jiti@2.6.1))(ts-declaration-location@1.0.7(typescript@6.0.3))(typescript@6.0.3):
+  eslint-plugin-n@18.0.1(eslint@10.3.0(jiti@2.6.1))(typescript@6.0.3):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@10.3.0(jiti@2.6.1))
       enhanced-resolve: 5.21.0
@@ -21851,10 +21853,9 @@ snapshots:
       ignore: 5.3.2
       semver: 7.7.4
     optionalDependencies:
-      ts-declaration-location: 1.0.7(typescript@6.0.3)
       typescript: 6.0.3
 
-  eslint-plugin-n@18.0.1(eslint@9.39.4(jiti@2.6.1))(ts-declaration-location@1.0.7(typescript@6.0.3))(typescript@6.0.3):
+  eslint-plugin-n@18.0.1(eslint@9.39.4(jiti@2.6.1))(typescript@6.0.3):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.4(jiti@2.6.1))
       enhanced-resolve: 5.21.0
@@ -21866,7 +21867,6 @@ snapshots:
       ignore: 5.3.2
       semver: 7.7.4
     optionalDependencies:
-      ts-declaration-location: 1.0.7(typescript@6.0.3)
       typescript: 6.0.3
 
   eslint-plugin-prettier@5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1))(prettier@3.8.3):
@@ -27098,12 +27098,6 @@ snapshots:
   ts-api-utils@2.5.0(typescript@6.0.3):
     dependencies:
       typescript: 6.0.3
-
-  ts-declaration-location@1.0.7(typescript@6.0.3):
-    dependencies:
-      picomatch: 4.0.4
-      typescript: 6.0.3
-    optional: true
 
   tsconfig-paths@3.15.0:
     dependencies:
