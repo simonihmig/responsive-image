@@ -2,6 +2,14 @@ packages:
   - 'packages/*'
   - 'apps/*'
 
+allowBuilds:
+  '@parcel/watcher': false
+  core-js: false
+  esbuild: false
+  postinstall-postinstall: false
+  rs-module-lexer: false
+  sharp: false
+
 # changesets in release CI workflow is failing to handle package with custom prettier plugins without this
 publicHoistPattern:
   - '*prettier-plugin*'
