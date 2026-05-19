@@ -514,16 +514,16 @@ importers:
         version: link:../../packages/vite-plugin
       '@solidjs/meta':
         specifier: ^0.29.4
-        version: 0.29.4(solid-js@1.9.12)
+        version: 0.29.4(solid-js@1.9.13)
       '@solidjs/router':
         specifier: ^0.16.0
-        version: 0.16.1(solid-js@1.9.12)
+        version: 0.16.1(solid-js@1.9.13)
       '@solidjs/start':
         specifier: ^1.1.1
-        version: 1.3.2(solid-js@1.9.12)(vinxi@0.5.11(@types/node@22.19.19)(db0@0.3.4)(ioredis@5.10.1)(jiti@2.6.1)(lightningcss@1.32.0)(oxc-parser@0.128.0)(rolldown@1.0.0)(srvx@0.11.15)(terser@5.46.2)(yaml@2.8.4))(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
+        version: 1.3.2(solid-js@1.9.13)(vinxi@0.5.11(@types/node@22.19.19)(db0@0.3.4)(ioredis@5.10.1)(jiti@2.6.1)(lightningcss@1.32.0)(oxc-parser@0.128.0)(rolldown@1.0.0)(srvx@0.11.15)(terser@5.46.2)(yaml@2.8.4))(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
       solid-js:
         specifier: ^1.9.5
-        version: 1.9.12
+        version: 1.9.13
       vinxi:
         specifier: ^0.5.3
         version: 0.5.11(@types/node@22.19.19)(db0@0.3.4)(ioredis@5.10.1)(jiti@2.6.1)(lightningcss@1.32.0)(oxc-parser@0.128.0)(rolldown@1.0.0)(srvx@0.11.15)(terser@5.46.2)(yaml@2.8.4)
@@ -1071,7 +1071,7 @@ importers:
         version: 16.0.3(rollup@4.60.4)
       '@solidjs/testing-library':
         specifier: 0.8.10
-        version: 0.8.10(@solidjs/router@0.16.1(solid-js@1.9.12))(solid-js@1.9.12)
+        version: 0.8.10(@solidjs/router@0.16.1(solid-js@1.9.13))(solid-js@1.9.13)
       '@tsconfig/strictest':
         specifier: 2.0.8
         version: 2.0.8
@@ -1083,7 +1083,7 @@ importers:
         version: 4.1.6(playwright@1.59.1)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))(vitest@4.1.6)
       babel-preset-solid:
         specifier: 1.9.12
-        version: 1.9.12(@babel/core@7.29.0)(solid-js@1.9.12)
+        version: 1.9.12(@babel/core@7.29.0)(solid-js@1.9.13)
       concurrently:
         specifier: 9.2.1
         version: 9.2.1
@@ -1106,8 +1106,8 @@ importers:
         specifier: 8.1.2
         version: 8.1.2(rollup@4.60.4)
       solid-js:
-        specifier: 1.9.12
-        version: 1.9.12
+        specifier: 1.9.13
+        version: 1.9.13
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -1116,7 +1116,7 @@ importers:
         version: 8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4)
       vite-plugin-solid:
         specifier: 2.11.12
-        version: 2.11.12(solid-js@1.9.12)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
+        version: 2.11.12(solid-js@1.9.13)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
       vitest:
         specifier: 4.1.6
         version: 4.1.6(@types/node@22.19.19)(@vitest/browser-playwright@4.1.6)(jsdom@26.1.0)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
@@ -12144,8 +12144,8 @@ packages:
     resolution: {integrity: sha512-2Dd78bqzzjE6KPkD5fHZmDAKRNe3J15q+YHDrIsy9WEkqttc7GY+kT9OBLSMaPbQaEd0x1BjcmtMtXkfpc+T5A==}
     engines: {node: '>=10.2.0'}
 
-  solid-js@1.9.12:
-    resolution: {integrity: sha512-QzKaSJq2/iDrWR1As6MHZQ8fQkdOBf8GReYb7L5iKwMGceg7HxDcaOHk0at66tNgn9U2U7dXo8ZZpLIAmGMzgw==}
+  solid-js@1.9.13:
+    resolution: {integrity: sha512-6hJeJMOcEX8ktqjpDoJZEmld3ijvcvWBDtiXBm7f4332SiFN66QeAQI1REQshvyUoISsSeJ4PHDauKYbwao9JQ==}
 
   solid-refresh@0.6.3:
     resolution: {integrity: sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==}
@@ -17838,15 +17838,15 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@solidjs/meta@0.29.4(solid-js@1.9.12)':
+  '@solidjs/meta@0.29.4(solid-js@1.9.13)':
     dependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
-  '@solidjs/router@0.16.1(solid-js@1.9.12)':
+  '@solidjs/router@0.16.1(solid-js@1.9.13)':
     dependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
-  '@solidjs/start@1.3.2(solid-js@1.9.12)(vinxi@0.5.11(@types/node@22.19.19)(db0@0.3.4)(ioredis@5.10.1)(jiti@2.6.1)(lightningcss@1.32.0)(oxc-parser@0.128.0)(rolldown@1.0.0)(srvx@0.11.15)(terser@5.46.2)(yaml@2.8.4))(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))':
+  '@solidjs/start@1.3.2(solid-js@1.9.13)(vinxi@0.5.11(@types/node@22.19.19)(db0@0.3.4)(ioredis@5.10.1)(jiti@2.6.1)(lightningcss@1.32.0)(oxc-parser@0.128.0)(rolldown@1.0.0)(srvx@0.11.15)(terser@5.46.2)(yaml@2.8.4))(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))':
     dependencies:
       '@tanstack/server-functions-plugin': 1.121.21(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
       '@vinxi/plugin-directives': 0.5.1(vinxi@0.5.11(@types/node@22.19.19)(db0@0.3.4)(ioredis@5.10.1)(jiti@2.6.1)(lightningcss@1.32.0)(oxc-parser@0.128.0)(rolldown@1.0.0)(srvx@0.11.15)(terser@5.46.2)(yaml@2.8.4))
@@ -17860,22 +17860,22 @@ snapshots:
       seroval-plugins: 1.5.2(seroval@1.5.2)
       shiki: 1.29.2
       source-map-js: 1.2.1
-      terracotta: 1.1.0(solid-js@1.9.12)
+      terracotta: 1.1.0(solid-js@1.9.13)
       tinyglobby: 0.2.16
       vinxi: 0.5.11(@types/node@22.19.19)(db0@0.3.4)(ioredis@5.10.1)(jiti@2.6.1)(lightningcss@1.32.0)(oxc-parser@0.128.0)(rolldown@1.0.0)(srvx@0.11.15)(terser@5.46.2)(yaml@2.8.4)
-      vite-plugin-solid: 2.11.12(solid-js@1.9.12)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
+      vite-plugin-solid: 2.11.12(solid-js@1.9.13)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - solid-js
       - supports-color
       - vite
 
-  '@solidjs/testing-library@0.8.10(@solidjs/router@0.16.1(solid-js@1.9.12))(solid-js@1.9.12)':
+  '@solidjs/testing-library@0.8.10(@solidjs/router@0.16.1(solid-js@1.9.13))(solid-js@1.9.13)':
     dependencies:
       '@testing-library/dom': 10.4.1
-      solid-js: 1.9.12
+      solid-js: 1.9.13
     optionalDependencies:
-      '@solidjs/router': 0.16.1(solid-js@1.9.12)
+      '@solidjs/router': 0.16.1(solid-js@1.9.13)
 
   '@speed-highlight/core@1.2.15': {}
 
@@ -19525,12 +19525,12 @@ snapshots:
 
   babel-plugin-syntax-dynamic-import@6.18.0: {}
 
-  babel-preset-solid@1.9.12(@babel/core@7.29.0)(solid-js@1.9.12):
+  babel-preset-solid@1.9.12(@babel/core@7.29.0)(solid-js@1.9.13):
     dependencies:
       '@babel/core': 7.29.0(supports-color@8.1.1)
       babel-plugin-jsx-dom-expressions: 0.40.6(@babel/core@7.29.0)
     optionalDependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
   babel-remove-types@1.1.0:
     dependencies:
@@ -26308,24 +26308,24 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  solid-js@1.9.12:
+  solid-js@1.9.13:
     dependencies:
       csstype: 3.2.3
       seroval: 1.5.2
       seroval-plugins: 1.5.2(seroval@1.5.2)
 
-  solid-refresh@0.6.3(solid-js@1.9.12):
+  solid-refresh@0.6.3(solid-js@1.9.13):
     dependencies:
       '@babel/generator': 7.29.1
       '@babel/helper-module-imports': 7.28.6(supports-color@8.1.1)
       '@babel/types': 7.29.0
-      solid-js: 1.9.12
+      solid-js: 1.9.13
     transitivePeerDependencies:
       - supports-color
 
-  solid-use@0.9.1(solid-js@1.9.12):
+  solid-use@0.9.1(solid-js@1.9.13):
     dependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
   sort-object-keys@1.1.3: {}
 
@@ -26822,10 +26822,10 @@ snapshots:
 
   term-size@2.2.1: {}
 
-  terracotta@1.1.0(solid-js@1.9.12):
+  terracotta@1.1.0(solid-js@1.9.13):
     dependencies:
-      solid-js: 1.9.12
-      solid-use: 0.9.1(solid-js@1.9.12)
+      solid-js: 1.9.13
+      solid-use: 0.9.1(solid-js@1.9.13)
 
   terser-webpack-plugin@5.5.0(esbuild@0.28.0)(webpack@5.106.2(esbuild@0.28.0)):
     dependencies:
@@ -27604,14 +27604,14 @@ snapshots:
       picocolors: 1.1.1
       vite: 8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4)
 
-  vite-plugin-solid@2.11.12(solid-js@1.9.12)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4)):
+  vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4)):
     dependencies:
       '@babel/core': 7.29.0(supports-color@8.1.1)
       '@types/babel__core': 7.20.5
-      babel-preset-solid: 1.9.12(@babel/core@7.29.0)(solid-js@1.9.12)
+      babel-preset-solid: 1.9.12(@babel/core@7.29.0)(solid-js@1.9.13)
       merge-anything: 5.1.7
-      solid-js: 1.9.12
-      solid-refresh: 0.6.3(solid-js@1.9.12)
+      solid-js: 1.9.13
+      solid-refresh: 0.6.3(solid-js@1.9.13)
       vite: 8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4)
       vitefu: 1.1.3(vite@8.0.12(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.4))
     transitivePeerDependencies:
