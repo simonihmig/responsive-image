@@ -32,6 +32,12 @@
       "matchUpdateTypes": ["major"],
       "matchCurrentVersion": "^3.0.0",
       "enabled": false
+    },
+    // Leave ember-webpack (Embroider v3) at Ember v6
+    {
+      "matchPackageNames": ["ember-source"],
+      "sourceDirectory": "apps/ember-webpack",
+      "allowedVersions": "^6.12.0"
     }
   ],
   "baseBranchPatterns": ["main"],
