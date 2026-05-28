@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+
 import baseN from 'base-n';
 
 const generatedClassNames = new Map<string, string>();
