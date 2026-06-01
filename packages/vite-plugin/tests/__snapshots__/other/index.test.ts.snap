@@ -69,7 +69,7 @@ const g = [{
   aspectRatio: 1.5,
   imageUrlFor: (e, a) => i(g, e, a ?? "jpeg")?.url,
   lqip: {
-    class: "ri-dyn-36nwCk"
+    class: "ri-dyn-Kygrg"
   }
 };
 console.log(m);
@@ -77,7 +77,7 @@ console.log(m);
 `;
 
 exports[`LQIP > color LQIP is supported 2`] = `
-".ri-dyn-36nwCk{background-color:#083838}
+".ri-dyn-Kygrg{background-color:#083838}
 "
 `;
 
