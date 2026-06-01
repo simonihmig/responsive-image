@@ -9,9 +9,8 @@ export function generateLqipClassName(resource: string): string {
   if (generatedClassNames.has(resource)) {
     return generatedClassNames.get(resource)!;
   } else {
-    const hash = createHash('md5').update(resource).digest();
-    const num = hash.readUInt32LE(0);
-    const className = `ri-dyn-${b64.encode(num)}`;
+    const hash = createHash('md5').update(resource).digest('hex');
+    const className = `ri-dyn-${hash}`;
     generatedClassNames.set(resource, className);
 
     return className;
