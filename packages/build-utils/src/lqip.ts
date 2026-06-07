@@ -1,9 +1,6 @@
 import { createHash } from 'node:crypto';
 
-import baseN from 'base-n';
-
 const generatedClassNames = new Map<string, string>();
-const b64 = baseN.create();
 
 export function generateLqipClassName(resource: string): string {
   if (generatedClassNames.has(resource)) {
