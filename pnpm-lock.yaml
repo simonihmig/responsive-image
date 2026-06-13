@@ -846,7 +846,7 @@ importers:
         version: 2.3.2(@babel/core@7.29.7)
       ember-async-data:
         specifier: ^2.0.0
-        version: 2.0.1(@babel/core@7.29.7)(@glint/template@1.7.7)
+        version: 2.0.1(@babel/core@7.29.7)
       ember-modifier:
         specifier: ^4.2.2
         version: 4.3.0(@babel/core@7.29.7)
@@ -873,8 +873,8 @@ importers:
         specifier: 5.4.2
         version: 5.4.2(@babel/core@7.29.7)(@glint/template@1.7.7)
       '@ember/test-waiters':
-        specifier: 4.1.1
-        version: 4.1.1(@babel/core@7.29.7)(@glint/template@1.7.7)
+        specifier: 4.1.2
+        version: 4.1.2
       '@embroider/addon-dev':
         specifier: 8.3.0
         version: 8.3.0(@glint/template@1.7.7)(rollup@4.61.1)
@@ -2499,8 +2499,8 @@ packages:
   '@ember/test-helpers@5.4.2':
     resolution: {integrity: sha512-ZT++x8DbixXgvxO00J064rzNcsn9WycMPisNvee6dg9u6G4Z1yx0Hc8HqUFBJP7NyxVKZCokHlRWRQuz9S6wvQ==}
 
-  '@ember/test-waiters@4.1.1':
-    resolution: {integrity: sha512-HbK70JYCDJcGI0CrwcbjeL2QHAn0HLwa3oGep7mr6l/yO95U7JYA8VN+/9VTsWJTmKueLtWayUqEmGS3a3mVOg==}
+  '@ember/test-waiters@4.1.2':
+    resolution: {integrity: sha512-zJwFaHLHjJn6mKoXYVM1SEyMT+U1JpaaSKg3JBmxHJwiIoJRI5djJ/CE33Z7N09mk5JfXd2xdhbd9LBWdlvAzg==}
 
   '@embroider/addon-dev@7.1.6':
     resolution: {integrity: sha512-4qhosxD3y2mN0nvy0gA/lafIqW60Xbw0Ym6rWkOtCQluy5R5dxprfds33iTvs26mhtH5307yRaEbazGop9jK0Q==}
@@ -15240,7 +15240,7 @@ snapshots:
 
   '@ember/test-helpers@5.4.2(@babel/core@7.29.7)(@glint/template@1.7.7)':
     dependencies:
-      '@ember/test-waiters': 4.1.1(@babel/core@7.29.7)(@glint/template@1.7.7)
+      '@ember/test-waiters': 4.1.2
       '@embroider/addon-shim': 1.10.2
       '@embroider/macros': 1.20.4(@babel/core@7.29.7)(@glint/template@1.7.7)
       '@simple-dom/interface': 1.4.0
@@ -15251,13 +15251,10 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@ember/test-waiters@4.1.1(@babel/core@7.29.7)(@glint/template@1.7.7)':
+  '@ember/test-waiters@4.1.2':
     dependencies:
       '@embroider/addon-shim': 1.10.2
-      '@embroider/macros': 1.20.4(@babel/core@7.29.7)(@glint/template@1.7.7)
     transitivePeerDependencies:
-      - '@babel/core'
-      - '@glint/template'
       - supports-color
 
   '@embroider/addon-dev@7.1.6(rollup@4.61.1)':
@@ -20915,14 +20912,13 @@ snapshots:
 
   electron-to-chromium@1.5.349: {}
 
-  ember-async-data@2.0.1(@babel/core@7.29.7)(@glint/template@1.7.7):
+  ember-async-data@2.0.1(@babel/core@7.29.7):
     dependencies:
-      '@ember/test-waiters': 4.1.1(@babel/core@7.29.7)(@glint/template@1.7.7)
+      '@ember/test-waiters': 4.1.2
       '@embroider/addon-shim': 1.10.2
       decorator-transforms: 2.3.2(@babel/core@7.29.7)
     transitivePeerDependencies:
       - '@babel/core'
-      - '@glint/template'
       - supports-color
 
   ember-auto-import@2.13.1(@glint/template@1.7.7)(webpack@5.107.2(esbuild@0.28.0)):
