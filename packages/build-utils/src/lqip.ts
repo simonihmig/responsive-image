@@ -1,13 +1,13 @@
-import baseN from 'base-n';
+import { createHash } from 'node:crypto';
 
 const generatedClassNames = new Map<string, string>();
-const b64 = baseN.create();
 
 export function generateLqipClassName(resource: string): string {
   if (generatedClassNames.has(resource)) {
     return generatedClassNames.get(resource)!;
   } else {
-    const className = `ri-dyn-${b64.encode(generatedClassNames.size)}`;
+    const hash = createHash('md5').update(resource).digest('hex');
+    const className = `ri-dyn-${hash}`;
     generatedClassNames.set(resource, className);
 
     return className;
