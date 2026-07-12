@@ -6,7 +6,10 @@ export function generateLqipClassName(resource: string): string {
   if (generatedClassNames.has(resource)) {
     return generatedClassNames.get(resource)!;
   } else {
-    const hash = createHash('md5').update(resource).digest('hex');
+    const hash = createHash('md5')
+      .update(resource)
+      .digest('hex')
+      .substring(0, 8);
     const className = `ri-dyn-${hash}`;
     generatedClassNames.set(resource, className);
 
