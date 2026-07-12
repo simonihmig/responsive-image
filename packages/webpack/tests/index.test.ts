@@ -2,23 +2,33 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, Snapshots } from 'vitest';
 
 import compiler from './compiler';
+
+const { toMatchSnapshot } = Snapshots;
 
 const customConfig = { threshold: 0.1 };
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   customDiffConfig: customConfig,
 });
 
-expect.extend({ toMatchImageSnapshot });
+expect.extend({
+  toMatchImageSnapshot,
+  toMatchSnapshot(received: string, inlineSnapshot?: string) {
+    return toMatchSnapshot.call(
+      this,
+      received
+        // generated class name hashes depend on the file path, so make the tests agnostic of that
+        .replaceAll(/ri-dyn-[a-z0-9]{1,32}/g, 'ri-dyn-XXX')
+        // make sure we remove any non-deterministic parts from the output
+        .replace(new RegExp(_dirname, 'g'), ''),
+      inlineSnapshot,
+    );
+  },
+});
 
 const _dirname = dirname(fileURLToPath(import.meta.url));
-
-// make sure we remove any non-deterministic parts from the output
-function sanitizeOutput(output: string | Buffer | undefined) {
-  return String(output).replace(new RegExp(_dirname, 'g'), '');
-}
 
 test('it produces expected output', async () => {
   const { stats, fs } = await compiler(
@@ -33,7 +43,7 @@ test('it produces expected output', async () => {
   expect(stats.modules?.[0]).toBeDefined();
 
   const output = stats.modules?.[0].source;
-  expect(sanitizeOutput(output)).toMatchSnapshot();
+  expect(output).toMatchSnapshot();
 
   const imageAssets = stats.modules![0]!.assets!;
   expect(imageAssets.toSorted()).toEqual(
@@ -83,7 +93,7 @@ test('custom loader options are supported', async () => {
   expect(stats.modules?.[0]).toBeDefined();
 
   const output = stats.modules?.[0]?.source;
-  expect(sanitizeOutput(output)).toMatchSnapshot();
+  expect(output).toMatchSnapshot();
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual(['assets/test-100.png', 'assets/test-200.png']);
@@ -106,7 +116,7 @@ test('custom query params are supported', async () => {
   // expect(stats.modules![0]).toBeDefined();
 
   const output = stats.modules?.[0]?.source;
-  expect(sanitizeOutput(output)).toMatchSnapshot();
+  expect(output).toMatchSnapshot();
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
@@ -131,7 +141,7 @@ test('imagetools params are supported', async () => {
   expect(stats.modules).toBeDefined();
 
   const output = stats.modules?.[0]?.source;
-  expect(sanitizeOutput(output)).toMatchSnapshot();
+  expect(output).toMatchSnapshot();
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
@@ -156,7 +166,7 @@ test('different aspect ratio', async () => {
   expect(stats.modules).toBeDefined();
 
   const output = stats.modules?.[0]?.source;
-  expect(sanitizeOutput(output)).toMatchSnapshot();
+  expect(output).toMatchSnapshot();
 
   const imageAssets = stats.modules![0]!.assets!.toSorted();
   expect(imageAssets).toEqual([
@@ -186,7 +196,7 @@ describe('LQIP', function () {
 
     const output =
       stats.modules?.[0]?.source ?? stats.modules?.[0].modules?.[0]?.source;
-    expect(sanitizeOutput(output)).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
   });
 
   test('color LQIP with inline styles is supported', async () => {
@@ -204,7 +214,7 @@ describe('LQIP', function () {
 
     const output =
       stats.modules?.[0]?.source ?? stats.modules?.[0].modules?.[0]?.source;
-    expect(sanitizeOutput(output)).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
   });
 
   test('inline LQIP is supported', async () => {
@@ -221,7 +231,7 @@ describe('LQIP', function () {
 
     const output =
       stats.modules?.[0]?.source ?? stats.modules?.[0].modules?.[0]?.source;
-    expect(sanitizeOutput(output)).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
   });
 
   test('inline LQIP with inline styles is supported', async () => {
@@ -239,7 +249,7 @@ describe('LQIP', function () {
 
     const output =
       stats.modules?.[0]?.source ?? stats.modules?.[0].modules?.[0]?.source;
-    expect(sanitizeOutput(output)).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
   });
 
   test('blurhash LQIP is supported', async () => {
@@ -256,7 +266,7 @@ describe('LQIP', function () {
 
     const output =
       stats.modules?.[0]?.source ?? stats.modules?.[0].modules?.[0]?.source;
-    expect(sanitizeOutput(output)).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
   });
 
   test('thumbhash LQIP is supported', async () => {
@@ -273,6 +283,6 @@ describe('LQIP', function () {
 
     const output =
       stats.modules?.[0]?.source ?? stats.modules?.[0].modules?.[0]?.source;
-    expect(sanitizeOutput(output)).toMatchSnapshot();
+    expect(output).toMatchSnapshot();
   });
 });
