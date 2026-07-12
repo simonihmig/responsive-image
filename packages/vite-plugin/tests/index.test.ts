@@ -1,14 +1,26 @@
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, Snapshots } from 'vitest';
 
 import { compile } from './utils';
+
+const { toMatchSnapshot } = Snapshots;
 
 const customConfig = { threshold: 0.1 };
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   customDiffConfig: customConfig,
 });
 
-expect.extend({ toMatchImageSnapshot });
+expect.extend({
+  toMatchImageSnapshot,
+  toMatchSnapshot(received: string, inlineSnapshot?: string) {
+    return toMatchSnapshot.call(
+      this,
+      // generated class name hashes depend on the file path, so make the tests agnostic of that
+      received.replaceAll(/ri-dyn-[a-z0-9]{1,32}/g, 'ri-dyn-XXX'),
+      inlineSnapshot,
+    );
+  },
+});
 
 describe('filter', () => {
   test('it operates on included assets', async () => {
