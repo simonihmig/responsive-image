@@ -94,7 +94,7 @@ export default {
 
 exports[`LQIP > color LQIP is supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=ri-dyn-1d85819bdaae693b10ee9a56ad8b2e53';
+import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=ri-dyn-XXX';
 const images = [{
   url: __webpack_public_path__ + "assets/image-640w.jpg",
   width: 640,
@@ -178,14 +178,14 @@ export default {
   aspectRatio: 1.5,
   imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? 'jpeg')?.url,
   lqip: {
-    'class': 'ri-dyn-1d85819bdaae693b10ee9a56ad8b2e53'
+    'class': 'ri-dyn-XXX'
   }
 }"
 `;
 
 exports[`LQIP > color LQIP with inline styles is supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-import inlineStyles from '@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=ri-dyn-1d85819bdaae693b10ee9a56ad8b2e53&inline=1';
+import inlineStyles from '@responsive-image/webpack/lqip/color-css!/fixtures/image.jpg?className=ri-dyn-XXX&inline=1';
 const images = [{
   url: __webpack_public_path__ + "assets/image-640w.jpg",
   width: 640,
@@ -276,7 +276,7 @@ export default {
 
 exports[`LQIP > inline LQIP is supported 1`] = `
 "import { findMatchingImage } from '@responsive-image/core';
-import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/inline-css!/fixtures/image.jpg?className=ri-dyn-1d85819bdaae693b10ee9a56ad8b2e53&targetPixels=60';
+import '/fixtures/image.jpg.css!=!@responsive-image/webpack/lqip/inline-css!/fixtures/image.jpg?className=ri-dyn-XXX&targetPixels=60';
 const images = [{
   url: __webpack_public_path__ + "assets/image-640w.jpg",
   width: 640,
@@ -360,7 +360,7 @@ export default {
   aspectRatio: 1.5,
   imageUrlFor: (w, f) => findMatchingImage(images, w, f ?? 'jpeg')?.url,
   lqip: {
-    'class': 'ri-dyn-1d85819bdaae693b10ee9a56ad8b2e53'
+    'class': 'ri-dyn-XXX'
   }
 }"
 `;
