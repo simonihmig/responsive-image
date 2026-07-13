@@ -166,8 +166,8 @@ importers:
         specifier: 3.8.5
         version: 3.8.5
       prettier-plugin-ember-template-tag:
-        specifier: 2.1.6
-        version: 2.1.6(prettier@3.8.5)
+        specifier: 2.1.7
+        version: 2.1.7(prettier@3.8.5)
       qunit:
         specifier: 2.26.0
         version: 2.26.0
@@ -364,8 +364,8 @@ importers:
         specifier: 3.8.5
         version: 3.8.5
       prettier-plugin-ember-template-tag:
-        specifier: 2.1.6
-        version: 2.1.6(prettier@3.8.5)
+        specifier: 2.1.7
+        version: 2.1.7(prettier@3.8.5)
       qunit:
         specifier: 2.26.0
         version: 2.26.0
@@ -945,8 +945,8 @@ importers:
         specifier: 3.8.5
         version: 3.8.5
       prettier-plugin-ember-template-tag:
-        specifier: 2.1.6
-        version: 2.1.6(prettier@3.8.5)
+        specifier: 2.1.7
+        version: 2.1.7(prettier@3.8.5)
       qunit:
         specifier: 2.26.0
         version: 2.26.0
@@ -11397,8 +11397,8 @@ packages:
     resolution: {integrity: sha512-SxToR7P8Y2lWmv/kTzVLC1t/GDI2WGjMwNhLLE9qtH8Q13C+aEmuRlzDst4Up4s0Wc8sF2M+J57iB3cMLqftfg==}
     engines: {node: '>=6.0.0'}
 
-  prettier-plugin-ember-template-tag@2.1.6:
-    resolution: {integrity: sha512-Y0/Id2dxccxM9pRaBXLT7sc89mc6B0UVX7Lh0SCEPb2WtQuksx4wJx98YATQKKiv5vInPmDLi9RGMipU6vAztQ==}
+  prettier-plugin-ember-template-tag@2.1.7:
+    resolution: {integrity: sha512-NQS/a03LCefDbOJ1o0NeN+4VdfZRJt6NBp6/5yLMXTQ2TNT4fkcbhfXkvcgl7lN9nmssm6GweX51G/CAEvtazg==}
     engines: {node: 18.* || >= 20}
     peerDependencies:
       prettier: '>= 3.0.0'
@@ -25396,7 +25396,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-ember-template-tag@2.1.6(prettier@3.8.5):
+  prettier-plugin-ember-template-tag@2.1.7(prettier@3.8.5):
     dependencies:
       '@babel/traverse': 7.29.7(supports-color@8.1.1)
       content-tag: 4.2.0
