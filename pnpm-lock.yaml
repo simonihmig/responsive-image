@@ -106,8 +106,8 @@ importers:
         specifier: 10.0.3
         version: 10.0.3
       decorator-transforms:
-        specifier: 2.3.2
-        version: 2.3.2(@babel/core@7.29.7)
+        specifier: 2.4.0
+        version: 2.4.0(@babel/core@7.29.7)
       ember-auto-import:
         specifier: 2.13.1
         version: 2.13.1(@glint/template@1.7.8)(webpack@5.107.2(esbuild@0.28.0))
@@ -843,7 +843,7 @@ importers:
         version: link:../core
       decorator-transforms:
         specifier: ^2.2.2
-        version: 2.3.2(@babel/core@7.29.7)
+        version: 2.4.0(@babel/core@7.29.7)
       ember-async-data:
         specifier: ^2.0.0
         version: 2.0.1(@babel/core@7.29.7)
@@ -7857,8 +7857,10 @@ packages:
     resolution: {integrity: sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==}
     engines: {node: '>=0.10'}
 
-  decorator-transforms@2.3.2:
-    resolution: {integrity: sha512-XcErcjlmCzG5ODgYjt6ZTXwd6S8fPKln/sJmw15ZXkWG2JpoQNwszis+AwF6XSGlOoG7g8MCEO97g+Yw3fk5OQ==}
+  decorator-transforms@2.4.0:
+    resolution: {integrity: sha512-IB+0RqnJpuS7ndH4dVY5dfWTZsrCzN3avWFdjSiET0uT2U24jKywjpVEK97TflnZkZgiSRfmeqc1WfS+1CI23w==}
+    peerDependencies:
+      '@babel/core': ^7.23.0 || ^8.0.0
 
   dedent-js@1.0.1:
     resolution: {integrity: sha512-OUepMozQULMLUmhxS95Vudo0jb0UchLimi3+pQ2plj61Fcy8axbP9hbiD4Sz6DPqn6XG3kfmziVfQ1rSys5AJQ==}
@@ -15264,7 +15266,7 @@ snapshots:
       '@ember/test-waiters': 4.1.2
       '@embroider/addon-shim': 1.10.2
       '@simple-dom/interface': 1.4.0
-      decorator-transforms: 2.3.2(@babel/core@7.29.7)
+      decorator-transforms: 2.4.0(@babel/core@7.29.7)
       dom-element-descriptors: 0.5.1
     transitivePeerDependencies:
       - '@babel/core'
@@ -20757,12 +20759,10 @@ snapshots:
 
   decode-uri-component@0.2.2: {}
 
-  decorator-transforms@2.3.2(@babel/core@7.29.7):
+  decorator-transforms@2.4.0(@babel/core@7.29.7):
     dependencies:
-      '@babel/plugin-syntax-decorators': 7.29.7(@babel/core@7.29.7)
+      '@babel/core': 7.29.7(supports-color@8.1.1)
       babel-import-util: 3.0.1
-    transitivePeerDependencies:
-      - '@babel/core'
 
   dedent-js@1.0.1: {}
 
@@ -20955,7 +20955,7 @@ snapshots:
     dependencies:
       '@ember/test-waiters': 4.1.2
       '@embroider/addon-shim': 1.10.2
-      decorator-transforms: 2.3.2(@babel/core@7.29.7)
+      decorator-transforms: 2.4.0(@babel/core@7.29.7)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -21440,7 +21440,7 @@ snapshots:
   ember-modifier@4.3.0(@babel/core@7.29.7):
     dependencies:
       '@embroider/addon-shim': 1.10.2
-      decorator-transforms: 2.3.2(@babel/core@7.29.7)
+      decorator-transforms: 2.4.0(@babel/core@7.29.7)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -21538,7 +21538,7 @@ snapshots:
     dependencies:
       '@embroider/addon-shim': 1.10.2
       csstype: 3.2.3
-      decorator-transforms: 2.3.2(@babel/core@7.29.7)
+      decorator-transforms: 2.4.0(@babel/core@7.29.7)
       ember-modifier: 4.3.0(@babel/core@7.29.7)
     transitivePeerDependencies:
       - '@babel/core'
@@ -27247,7 +27247,7 @@ snapshots:
   tracked-built-ins@4.1.2(@babel/core@7.29.7):
     dependencies:
       '@embroider/addon-shim': 1.10.2
-      decorator-transforms: 2.3.2(@babel/core@7.29.7)
+      decorator-transforms: 2.4.0(@babel/core@7.29.7)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
