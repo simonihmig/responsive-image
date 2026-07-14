@@ -1,5 +1,18 @@
 # @responsive-image/vite-plugin
 
+## 3.0.1
+
+### Patch Changes
+
+- [#2446](https://github.com/simonihmig/responsive-image/pull/2446) [`ee18ad6`](https://github.com/simonihmig/responsive-image/commit/ee18ad603f8f195b408307097046c9652da55da6) Thanks [@jaroel](https://github.com/jaroel)! - Prevent mismatch between SSR and client builds by using MD5 hash for LQIP class name generation
+
+- [#2515](https://github.com/simonihmig/responsive-image/pull/2515) [`04ac171`](https://github.com/simonihmig/responsive-image/commit/04ac17158f48d18bcf916f24993835bb09e17a16) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade sharp to 0.35.0
+
+- [#2537](https://github.com/simonihmig/responsive-image/pull/2537) [`b5d119f`](https://github.com/simonihmig/responsive-image/commit/b5d119fb823acc9886bf8a046ff24b302a8b0ac3) Thanks [@simonihmig](https://github.com/simonihmig)! - Limit LQIP class name hash to 8 chars
+
+- Updated dependencies [[`ee18ad6`](https://github.com/simonihmig/responsive-image/commit/ee18ad603f8f195b408307097046c9652da55da6), [`04ac171`](https://github.com/simonihmig/responsive-image/commit/04ac17158f48d18bcf916f24993835bb09e17a16), [`b5d119f`](https://github.com/simonihmig/responsive-image/commit/b5d119fb823acc9886bf8a046ff24b302a8b0ac3)]:
+  - @responsive-image/build-utils@3.0.1
+
 ## 3.0.0
 
 ### Major Changes
