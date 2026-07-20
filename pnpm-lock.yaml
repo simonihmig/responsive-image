@@ -979,8 +979,8 @@ importers:
         specifier: 7.29.7
         version: 7.29.7(@babel/core@7.29.7)
       '@embroider/addon-dev':
-        specifier: 7.1.6
-        version: 7.1.6(rollup@4.62.2)
+        specifier: 8.3.1
+        version: 8.3.1(@glint/template@1.7.8)(rollup@4.62.2)
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../-internals
@@ -1058,8 +1058,8 @@ importers:
         specifier: 7.29.7
         version: 7.29.7(@babel/core@7.29.7)
       '@embroider/addon-dev':
-        specifier: 7.1.6
-        version: 7.1.6(rollup@4.62.2)
+        specifier: 8.3.1
+        version: 8.3.1(@glint/template@1.7.8)(rollup@4.62.2)
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../-internals
@@ -2501,16 +2501,6 @@ packages:
 
   '@ember/test-waiters@4.1.2':
     resolution: {integrity: sha512-zJwFaHLHjJn6mKoXYVM1SEyMT+U1JpaaSKg3JBmxHJwiIoJRI5djJ/CE33Z7N09mk5JfXd2xdhbd9LBWdlvAzg==}
-
-  '@embroider/addon-dev@7.1.6':
-    resolution: {integrity: sha512-4qhosxD3y2mN0nvy0gA/lafIqW60Xbw0Ym6rWkOtCQluy5R5dxprfds33iTvs26mhtH5307yRaEbazGop9jK0Q==}
-    engines: {node: 12.* || 14.* || >= 16}
-    hasBin: true
-    peerDependencies:
-      rollup: ^4.6.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
 
   '@embroider/addon-dev@8.3.1':
     resolution: {integrity: sha512-czg8ixNoM+xpag+94Il6PNI7Sp05w4qGlgVT2H/Wi73hZ5EmUWS07/t6Ccmqtendxvqkzqj+aPS6Dh5dDGzq2A==}
@@ -5221,10 +5211,6 @@ packages:
     peerDependenciesMeta:
       rollup:
         optional: true
-
-  '@rollup/pluginutils@4.2.1':
-    resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
-    engines: {node: '>= 8.0.0'}
 
   '@rollup/pluginutils@5.4.0':
     resolution: {integrity: sha512-MfPp06CjRLfXQ3wY0R8vJDYBy/MvVcc9OulEfR0B8Iv9ko+GCNaRZ+EpJYFl27LhKsZK0o420sYCRHCjfCgeUg==}
@@ -15314,26 +15300,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/addon-dev@7.1.6(rollup@4.62.2)':
-    dependencies:
-      '@embroider/core': 3.5.10(@glint/template@1.7.8)
-      '@rollup/pluginutils': 4.2.1
-      content-tag: 3.1.3
-      execa: 5.1.1
-      fs-extra: 10.1.0
-      minimatch: 3.1.5
-      rollup-plugin-copy-assets: 2.0.3(rollup@4.62.2)
-      walk-sync: 3.0.0
-      yargs: 17.7.2
-    optionalDependencies:
-      rollup: 4.62.2
-    transitivePeerDependencies:
-      - '@glint/template'
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-
   '@embroider/addon-dev@8.3.1(@glint/template@1.7.8)(rollup@4.62.2)':
     dependencies:
       '@embroider/core': 4.6.2(@glint/template@1.7.8)
@@ -17773,11 +17739,6 @@ snapshots:
       terser: 5.46.2
     optionalDependencies:
       rollup: 4.62.2
-
-  '@rollup/pluginutils@4.2.1':
-    dependencies:
-      estree-walker: 2.0.2
-      picomatch: 2.3.2
 
   '@rollup/pluginutils@5.4.0(rollup@4.62.2)':
     dependencies:
