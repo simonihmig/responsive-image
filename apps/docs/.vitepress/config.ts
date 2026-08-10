@@ -114,6 +114,7 @@ export default defineConfig({
         link: '/',
         base: '/cdn',
         items: [
+          { text: 'Autorender', link: '/autorender' },
           { text: 'Cloudinary', link: '/cloudinary' },
           { text: 'Fastly', link: '/fastly' },
           { text: 'Imgix', link: '/imgix' },

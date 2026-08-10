@@ -2,6 +2,7 @@
 import { ResponsiveImage } from '@responsive-image/vue';
 import {
   cloudinary,
+  autorender,
   fastly,
   imgix,
   netlify,
@@ -17,6 +18,10 @@ import imageGray from './images/aurora.jpg?grayscale&responsive';
 import { setConfig } from '@responsive-image/core';
 
 setConfig<Config>('cdn', {
+  autorender: {
+    domain: 'assets.autorender.io',
+    workspace: 'wB5HrlVhGq',
+  },
   cloudinary: {
     cloudName: 'responsive-image',
   },
@@ -51,6 +56,11 @@ setConfig<Config>('cdn', {
         })
       "
       data-test-cloudinary-image
+    />
+    <h2>Autorender</h2>
+    <ResponsiveImage
+      :src="autorender('ar-juice.jpg')"
+      data-test-autorender-image
     />
     <h2>Fastly</h2>
     <ResponsiveImage

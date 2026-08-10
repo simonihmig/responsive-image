@@ -12,6 +12,10 @@ export default class App extends Application {
 }
 
 setConfig('cdn', {
+  autorender: {
+    domain: 'assets.autorender.io',
+    workspace: 'wB5HrlVhGq',
+  },
   cloudinary: {
     cloudName: 'responsive-image',
   },

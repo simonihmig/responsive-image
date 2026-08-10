@@ -8,6 +8,10 @@ import { setConfig } from '@responsive-image/core';
 import type { Config } from '@responsive-image/cdn';
 
 setConfig<Config>('cdn', {
+  autorender: {
+    domain: 'assets.autorender.io',
+    workspace: 'wB5HrlVhGq',
+  },
   cloudinary: {
     cloudName: 'responsive-image',
   },

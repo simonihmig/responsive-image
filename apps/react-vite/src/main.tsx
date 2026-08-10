@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { cloudinary, imgix, netlify } from '@responsive-image/cdn';
+import { autorender, cloudinary, imgix, netlify } from '@responsive-image/cdn';
 import { setConfig } from '@responsive-image/core';
 import { ResponsiveImage } from '@responsive-image/react';
 
@@ -13,6 +13,10 @@ import imagePortrait from './images/aurora.jpg?aspect=2:3&allowUpscale&responsiv
 import imageGray from './images/aurora.jpg?grayscale&responsive';
 
 setConfig('cdn', {
+  autorender: {
+    domain: 'assets.autorender.io',
+    workspace: 'wB5HrlVhGq',
+  },
   cloudinary: {
     cloudName: 'responsive-image',
   },
@@ -38,6 +42,11 @@ createRoot(document.getElementById('root')!).render(
           aspectRatio: 1.4971927636,
         })}
         data-test-cloudinary-image
+      />
+      <h2>Autorender</h2>
+      <ResponsiveImage
+        src={autorender('ar-juice.jpg')}
+        data-test-autorender-image
       />
       <h2>imgix</h2>
       <ResponsiveImage
