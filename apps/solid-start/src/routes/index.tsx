@@ -1,4 +1,10 @@
-import { cloudinary, fastly, imgix, netlify } from '@responsive-image/cdn';
+import {
+  autorender,
+  cloudinary,
+  fastly,
+  imgix,
+  netlify,
+} from '@responsive-image/cdn';
 import { ResponsiveImage } from '@responsive-image/solid';
 import image from '../images/aurora.jpg?responsive';
 import imageLqipColor from '../images/aurora.jpg?lqip=color&responsive';
@@ -22,6 +28,11 @@ export default function Home() {
           aspectRatio: 1.4971927636,
         })}
         data-test-cloudinary-image
+      />
+      <h2>Autorender</h2>
+      <ResponsiveImage
+        src={autorender('ar-juice.jpg')}
+        data-test-autorender-image
       />
       <h2>Fastly</h2>
       <ResponsiveImage
