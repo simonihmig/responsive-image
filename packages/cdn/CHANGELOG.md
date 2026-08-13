@@ -1,5 +1,11 @@
 # @responsive-image/cdn
 
+## 2.1.0
+
+### Minor Changes
+
+- [#2584](https://github.com/simonihmig/responsive-image/pull/2584) [`3a7a62f`](https://github.com/simonihmig/responsive-image/commit/3a7a62f437db27caa0a1cb3af126997c0513959c) Thanks [@vasanth-rb](https://github.com/vasanth-rb)! - Add Autorender image CDN provider
+
 ## 2.0.0
 
 ### Major Changes
