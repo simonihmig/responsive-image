@@ -76,8 +76,8 @@ importers:
         specifier: 1.1.2
         version: 1.1.2
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@responsive-image/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -250,8 +250,8 @@ importers:
         specifier: 1.8.0
         version: 1.8.0
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@responsive-image/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn
@@ -416,8 +416,8 @@ importers:
         version: 5.2.0(@vue/compiler-sfc@3.5.41)(esbuild@0.28.0)(rolldown@1.2.3)(rollup@4.62.4)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(esbuild@0.28.0)(lightningcss@1.33.0)(postcss@8.5.26))
     devDependencies:
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../../packages/-internals
@@ -450,8 +450,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(eslint@10.8.1(jiti@2.7.0))
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../../packages/-internals
@@ -495,8 +495,8 @@ importers:
   apps/solid-start:
     dependencies:
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@responsive-image/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn
@@ -537,8 +537,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(eslint@10.8.1(jiti@2.7.0))
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@responsive-image/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn
@@ -619,8 +619,8 @@ importers:
         version: 3.3.2
     devDependencies:
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@responsive-image/internals':
         specifier: workspace:*
         version: link:../../packages/-internals
@@ -662,8 +662,8 @@ importers:
         version: 8.67.0(eslint@10.8.1(jiti@2.7.0))(typescript@6.0.3)
     devDependencies:
       '@playwright/test':
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       '@tsconfig/strictest':
         specifier: 2.0.8
         version: 2.0.8
@@ -1010,7 +1010,7 @@ importers:
         version: 19.2.4(@types/react@19.2.18)
       '@vitest/browser-playwright':
         specifier: 4.1.10
-        version: 4.1.10(playwright@1.61.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
+        version: 4.1.10(playwright@1.62.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
       concurrently:
         specifier: 10.0.4
         version: 10.0.4
@@ -1018,8 +1018,8 @@ importers:
         specifier: 10.8.1
         version: 10.8.1(jiti@2.7.0)
       playwright:
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       prettier:
         specifier: 3.8.5
         version: 3.8.5
@@ -1080,7 +1080,7 @@ importers:
         version: 22.20.1
       '@vitest/browser-playwright':
         specifier: 4.1.10
-        version: 4.1.10(playwright@1.61.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
+        version: 4.1.10(playwright@1.62.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
       babel-preset-solid:
         specifier: 1.9.12
         version: 1.9.12(@babel/core@7.29.7)(solid-js@1.9.14)
@@ -1091,8 +1091,8 @@ importers:
         specifier: 10.8.1
         version: 10.8.1(jiti@2.7.0)
       playwright:
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       prettier:
         specifier: 3.8.5
         version: 3.8.5
@@ -1144,7 +1144,7 @@ importers:
         version: 2.0.8
       '@vitest/browser-playwright':
         specifier: 4.1.10
-        version: 4.1.10(playwright@1.61.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
+        version: 4.1.10(playwright@1.62.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
       concurrently:
         specifier: 10.0.4
         version: 10.0.4
@@ -1155,8 +1155,8 @@ importers:
         specifier: 3.22.0
         version: 3.22.0(eslint@10.8.1(jiti@2.7.0))(svelte@5.56.8(@typescript-eslint/types@8.67.0))
       playwright:
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       prettier:
         specifier: 3.8.5
         version: 3.8.5
@@ -1269,7 +1269,7 @@ importers:
         version: 6.0.8(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))
       '@vitest/browser-playwright':
         specifier: 4.1.10
-        version: 4.1.10(playwright@1.61.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
+        version: 4.1.10(playwright@1.62.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
       '@vue/eslint-config-prettier':
         specifier: 10.2.0
         version: 10.2.0(@types/eslint@8.56.12)(eslint@9.39.5(jiti@2.7.0))(prettier@3.8.5)
@@ -1283,8 +1283,8 @@ importers:
         specifier: 10.10.0
         version: 10.10.0(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0))(vue-eslint-parser@10.4.0(eslint@9.39.5(jiti@2.7.0)))
       playwright:
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       prettier:
         specifier: 3.8.5
         version: 3.8.5
@@ -1339,7 +1339,7 @@ importers:
         version: link:../-internals
       '@vitest/browser-playwright':
         specifier: 4.1.10
-        version: 4.1.10(playwright@1.61.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
+        version: 4.1.10(playwright@1.62.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
       concurrently:
         specifier: 10.0.4
         version: 10.0.4
@@ -1353,8 +1353,8 @@ importers:
         specifier: 17.9.0
         version: 17.9.0
       playwright:
-        specifier: 1.61.1
-        version: 1.61.1
+        specifier: 1.62.1
+        version: 1.62.1
       prettier:
         specifier: 3.8.5
         version: 3.8.5
@@ -4751,9 +4751,9 @@ packages:
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  '@playwright/test@1.61.1':
-    resolution: {integrity: sha512-8nKv6+0RJSL9FE4jYOEGXnPeM/Hg12qZpmqzZjRh3qM0Y7c3z1mrOTfFLids72RDQYVh9WpLEfR5WdpNX4fkig==}
-    engines: {node: '>=18'}
+  '@playwright/test@1.62.1':
+    resolution: {integrity: sha512-DTcUc8qii+cpHvtOwggMtBRMjKZHXYWdw8syRYu2vtzuq4Wxphqq4NfCs5Zt44L6mA8rfDfj+PHnxFc/FeK6mQ==}
+    engines: {node: '>=20'}
     hasBin: true
 
   '@pnpm/constants@1001.3.1':
@@ -10976,14 +10976,14 @@ packages:
       typescript:
         optional: true
 
-  playwright-core@1.61.1:
-    resolution: {integrity: sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg==}
-    engines: {node: '>=18'}
+  playwright-core@1.62.1:
+    resolution: {integrity: sha512-wPYSwEBJY9GHraISXqyqtx0na0LpO3XEX7jNDhntbex7tzUS7kLnZsOlFruFJB4Hi/rhDMjXGqHewDZ68nYZVw==}
+    engines: {node: '>=20'}
     hasBin: true
 
-  playwright@1.61.1:
-    resolution: {integrity: sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ==}
-    engines: {node: '>=18'}
+  playwright@1.62.1:
+    resolution: {integrity: sha512-0M+L3LAD8/nm554LOla9Ayx0j0tmFZ0FBcoQ7F1VuVHpM/XpiC8RcDzBQB8W5+hA8L22THxELzeF+2WcUzvcLg==}
+    engines: {node: '>=20'}
     hasBin: true
 
   pngjs@3.4.0:
@@ -17396,9 +17396,9 @@ snapshots:
 
   '@pkgr/core@0.3.6': {}
 
-  '@playwright/test@1.61.1':
+  '@playwright/test@1.62.1':
     dependencies:
-      playwright: 1.61.1
+      playwright: 1.62.1
 
   '@pnpm/constants@1001.3.1': {}
 
@@ -18480,11 +18480,11 @@ snapshots:
       vite: 8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0)
       vue: 3.5.41(typescript@6.0.3)
 
-  '@vitest/browser-playwright@4.1.10(playwright@1.61.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)':
+  '@vitest/browser-playwright@4.1.10(playwright@1.62.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)':
     dependencies:
       '@vitest/browser': 4.1.10(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
       '@vitest/mocker': 4.1.10(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))
-      playwright: 1.61.1
+      playwright: 1.62.1
       tinyrainbow: 3.1.0
       vitest: 4.1.10(@types/node@22.20.1)(@vitest/browser-playwright@4.1.10)(jsdom@26.1.0)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))
     transitivePeerDependencies:
@@ -25202,11 +25202,11 @@ snapshots:
     transitivePeerDependencies:
       - vite
 
-  playwright-core@1.61.1: {}
+  playwright-core@1.62.1: {}
 
-  playwright@1.61.1:
+  playwright@1.62.1:
     dependencies:
-      playwright-core: 1.61.1
+      playwright-core: 1.62.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -27936,7 +27936,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.20.1
-      '@vitest/browser-playwright': 4.1.10(playwright@1.61.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
+      '@vitest/browser-playwright': 4.1.10(playwright@1.62.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.46.2)(yaml@2.9.0))(vitest@4.1.10)
       jsdom: 26.1.0
     transitivePeerDependencies:
       - msw
