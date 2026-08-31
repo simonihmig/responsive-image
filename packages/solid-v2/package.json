@@ -1,0 +1,79 @@
+{
+  "name": "@responsive-image/solid-v2",
+  "version": "0.1.0",
+  "description": "Solid.js v2 component to render responsive images, provided as locally processed images or loaded remotely from Image CDNs",
+  "keywords": [
+    "responsive image",
+    "responsive images",
+    "solid",
+    "solidjs",
+    "solidjs-v2"
+  ],
+  "license": "MIT",
+  "author": "Simon Ihmig <simon.ihmig@gmail.com>",
+  "repository": "github:simonihmig/responsive-image",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "solid": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.jsx"
+    },
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rollup --config",
+    "test.vitest": "vitest",
+    "test.vitest:server": "vitest --mode ssr",
+    "test.vitest:watch": "vitest watch",
+    "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
+    "lint.eslint": "eslint .",
+    "lint.eslint:fix": "eslint . --fix",
+    "lint.publint": "publint",
+    "lint.prettier": "prettier . --check",
+    "lint.prettier:fix": "prettier . --write",
+    "lint.types": "tsc --noEmit",
+    "prepack": "pnpm turbo build"
+  },
+  "dependencies": {
+    "@responsive-image/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "solid-js": "^2.0.0-rc.0",
+    "@solidjs/web": "^2.0.0-rc.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "7.29.7",
+    "@embroider/addon-dev": "7.1.6",
+    "@responsive-image/internals": "workspace:*",
+    "@rollup/plugin-babel": "7.1.0",
+    "@rollup/plugin-node-resolve": "16.0.3",
+    "@solidjs/testing-library": "1.0.0-beta.2",
+    "@solidjs/web": "2.0.0-rc.4",
+    "@tsconfig/strictest": "2.0.8",
+    "@types/node": "22.20.1",
+    "@vitest/browser-playwright": "4.1.10",
+    "babel-preset-solid": "2.0.0-rc.2",
+    "concurrently": "10.0.4",
+    "eslint": "10.8.1",
+    "playwright": "1.62.1",
+    "prettier": "3.8.5",
+    "publint": "0.3.23",
+    "rollup": "4.62.4",
+    "rollup-plugin-node-externals": "8.1.2",
+    "solid-js": "2.0.0-rc.4",
+    "typescript": "6.0.3",
+    "@solidjs/vite-plugin": "3.0.0-next.36",
+    "vitest": "4.1.10",
+    "vite": "8.2.1"
+  }
+}
