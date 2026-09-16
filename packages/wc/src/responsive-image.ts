@@ -1,8 +1,14 @@
 import {
   type ImageData,
-  type ImageUrlForType,
-  env,
+  type ImageSource,
+  type ResponsiveImageLayout,
+  getLayout,
+  getSources,
+  getSourcesSorted,
+  getSrc,
   getValueOrCallback,
+  getWidth,
+  getHeight,
 } from '@responsive-image/core';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -11,28 +17,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { keyed } from 'lit/directives/keyed.js';
 import { ref } from 'lit/directives/ref.js';
 import { type StyleInfo, styleMap } from 'lit/directives/style-map.js';
-
-interface ImageSource {
-  srcset: string;
-  type: ImageUrlForType;
-  mimeType?: string;
-  sizes?: string;
-}
-
-enum Layout {
-  RESPONSIVE = 'responsive',
-  FIXED = 'fixed',
-}
-
-const PIXEL_DENSITIES = [1, 2];
-
-// determines the order of sources, prefereing next-gen formats over legacy
-const typeScore = new Map<ImageUrlForType, number>([
-  ['png', 1],
-  ['jpeg', 1],
-  ['webp', 2],
-  ['avif', 3],
-]);
 
 @customElement('responsive-image')
 export class ResponsiveImage extends LitElement {
@@ -90,96 +74,28 @@ export class ResponsiveImage extends LitElement {
     return this.loadedSrc === this.src;
   }
 
-  get layout(): Layout {
-    return this.width === undefined && this.height === undefined
-      ? Layout.RESPONSIVE
-      : Layout.FIXED;
+  get layout(): ResponsiveImageLayout {
+    return getLayout(this);
   }
 
   get sources(): ImageSource[] {
-    const imageTypes = Array.isArray(this.src.imageTypes)
-      ? this.src.imageTypes
-      : [this.src.imageTypes];
-    if (this.layout === Layout.RESPONSIVE) {
-      return imageTypes.map((type) => {
-        let widths = this.src.availableWidths;
-        if (!widths) {
-          widths = env.deviceWidths;
-        }
-        const sources: string[] = widths.map((width) => {
-          const url = this.src.imageUrlFor(width, type);
-          return `${url} ${width}w`;
-        });
-
-        return {
-          srcset: sources.join(', '),
-          sizes: this.sizes ?? (this.size ? `${this.size}vw` : undefined),
-          type,
-          mimeType: type != 'auto' ? `image/${type}` : undefined,
-        };
-      });
-    }
-    const { width } = this;
-    if (width === undefined) {
-      return [];
-    }
-
-    return imageTypes.map((type) => {
-      const sources: string[] = PIXEL_DENSITIES.map((density) => {
-        const url = this.src.imageUrlFor(width * density, type)!;
-
-        return `${url} ${density}x`;
-      }).filter((source) => source !== undefined);
-
-      return {
-        srcset: sources.join(', '),
-        type,
-        mimeType: type != 'auto' ? `image/${type}` : undefined,
-      };
-    });
+    return getSources(this);
   }
 
   get sourcesSorted(): ImageSource[] {
-    return this.sources.sort(
-      (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0),
-    );
+    return getSourcesSorted(this.sources);
   }
 
   get imgWidth(): number | undefined {
-    if (this.layout === Layout.RESPONSIVE) {
-      // With responsive layout, the width attribute does not really matter, as we scale to 100%.
-      // We just need to set width and height with the correct aspect ratio to preven layout shift.
-      return env.deviceWidths.at(-1);
-    }
-
-    if (this.width) {
-      return this.width;
-    }
-
-    const ar = this.src.aspectRatio;
-    if (ar !== undefined && ar !== 0 && this.height !== undefined) {
-      return this.height * ar;
-    }
-
-    return undefined;
+    return getWidth(this);
   }
 
   get imgHeight(): number | undefined {
-    if (this.height) {
-      return this.height;
-    }
-
-    const ar = this.src.aspectRatio;
-    if (ar !== undefined && ar !== 0 && this.imgWidth !== undefined) {
-      return Math.round(this.imgWidth / ar);
-    }
-
-    return undefined;
+    return getHeight(this);
   }
 
   get imgSrc(): string | undefined {
-    const format = this.src.imageTypes === 'auto' ? 'auto' : undefined;
-    return this.src.imageUrlFor(this.imgWidth ?? 640, format);
+    return getSrc(this);
   }
 
   checkAlreadyLoaded(el?: HTMLImageElement) {
@@ -199,8 +115,8 @@ export class ResponsiveImage extends LitElement {
 
     const classes: ClassInfo = {
       'ri-img': true,
-      'ri-responsive': this.layout === Layout.RESPONSIVE,
-      'ri-fixed': this.layout === Layout.FIXED,
+      'ri-responsive': this.layout === 'responsive',
+      'ri-fixed': this.layout === 'fixed',
       ...(lqip?.class && !this.complete
         ? { [getValueOrCallback(lqip.class)]: true }
         : {}),
@@ -223,7 +139,7 @@ export class ResponsiveImage extends LitElement {
         srcset=${ifDefined(
           imageTypes === 'auto'
             ? // auto format assumes only one entry in sources
-              this.sources[0].srcset
+              this.sources[0]?.srcset
             : undefined,
         )}
         src=${ifDefined(this.imgSrc)}

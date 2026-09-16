@@ -1,32 +1,18 @@
 import {
-  env,
-  getValueOrCallback,
+  createLqipKey,
+  getClassNames,
+  getHeight,
+  getSources,
+  getSourcesSorted,
+  getSrc,
+  getStyles as getLqipStyles,
+  getWidth,
   type ImageData,
-  type ImageUrlForType,
+  type ResponsiveImageArgs,
 } from '@responsive-image/core';
 import React, { useState, useRef, useEffect } from 'react';
 
-export type ResponsiveImageLayout = 'responsive' | 'fixed';
-
-interface ResponsiveImageArgs {
-  src: ImageData;
-  /**
-   * The [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes) for `img`.
-   */
-  sizes?: string | undefined;
-  /**
-   * The [height attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#height) for `img`.
-   */
-  height?: number | undefined;
-  /**
-   * The [width attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width) for `img`.
-   */
-  width?: number | undefined;
-  /**
-   * Number of vw units to use for responsive layout.
-   */
-  size?: number | undefined;
-}
+export type { ResponsiveImageLayout } from '@responsive-image/core';
 
 export type ResponsiveImageProps = Omit<
   React.DetailedHTMLProps<
@@ -37,135 +23,6 @@ export type ResponsiveImageProps = Omit<
 > &
   ResponsiveImageArgs;
 
-interface ImageSource {
-  srcset: string;
-  type: ImageUrlForType;
-  mimeType: string | undefined;
-  sizes?: string | undefined;
-}
-
-const typeScore = new Map<string, number>([
-  ['png', 1],
-  ['jpeg', 1],
-  ['webp', 2],
-  ['avif', 3],
-]);
-
-const pixelDensities = [1, 2];
-
-function getLayout(props: ResponsiveImageArgs) {
-  const layout: ResponsiveImageLayout =
-    props.width === undefined && props.height === undefined
-      ? 'responsive'
-      : 'fixed';
-  return layout;
-}
-
-function getSources(props: ResponsiveImageArgs): ImageSource[] {
-  const layout = getLayout(props);
-  const imageTypes = Array.isArray(props.src.imageTypes)
-    ? props.src.imageTypes
-    : [props.src.imageTypes];
-  if (layout === 'responsive') {
-    return imageTypes.map((type) => {
-      let widths = props.src.availableWidths;
-      if (!widths) {
-        widths = env.deviceWidths;
-      }
-      const sources = widths.map((width) => {
-        const url = props.src.imageUrlFor(width, type);
-        return `${url} ${width}w`;
-      });
-
-      return {
-        srcset: sources.join(', '),
-        sizes: props.sizes ?? (props.size ? `${props.size}vw` : undefined),
-        type,
-        mimeType: type != 'auto' ? `image/${type}` : undefined,
-      };
-    });
-  }
-
-  const { width } = props;
-  if (width === undefined) {
-    return [];
-  }
-
-  return imageTypes.map((type) => {
-    const sources = pixelDensities
-      .map((density) => {
-        const url = props.src.imageUrlFor(width * density, type);
-        return `${url} ${density}x`;
-      })
-      .filter((source) => source !== undefined);
-
-    return {
-      srcset: sources.join(', '),
-      type,
-      mimeType: type != 'auto' ? `image/${type}` : undefined,
-    };
-  });
-}
-
-function getWidth(props: ResponsiveImageArgs) {
-  const layout = getLayout(props);
-  if (layout === 'responsive') {
-    // With responsive layout, the width attribute does not really matter, as we scale to 100%.
-    // We just need to set width and height with the correct aspect ratio to preven layout shift.
-    return env.deviceWidths.at(-1);
-  }
-  if (props.width !== undefined) {
-    return props.width;
-  }
-
-  const aspectRatio = props.src.aspectRatio;
-  if (aspectRatio && props.height !== undefined) {
-    return props.height * aspectRatio;
-  }
-
-  return undefined;
-}
-
-function getHeight(props: ResponsiveImageArgs) {
-  if (props.height !== undefined) {
-    return props.height;
-  }
-
-  const width = getWidth(props);
-  const aspectRatio = props.src.aspectRatio;
-  if (aspectRatio && width !== undefined) {
-    return Math.round(width / aspectRatio);
-  }
-
-  return undefined;
-}
-
-function getSrc(props: ResponsiveImageArgs) {
-  const format = props.src.imageTypes === 'auto' ? 'auto' : undefined;
-  const width = getWidth(props) ?? 640;
-  return props.src.imageUrlFor(width, format);
-}
-
-function getClassNames(
-  props: ResponsiveImageArgs,
-  isLoaded: boolean,
-  className?: string,
-) {
-  const layout = getLayout(props);
-  const classNames = [
-    'ri-img',
-    `ri-${layout === 'responsive' ? 'responsive' : 'fixed'}`,
-  ];
-  const lqipClass = props.src.lqip?.class;
-  if (lqipClass && !isLoaded) {
-    classNames.push(getValueOrCallback(lqipClass));
-  }
-  if (className) {
-    classNames.push(className);
-  }
-  return classNames.join(' ');
-}
-
 function camelCase(kebabCase: string): string {
   return kebabCase.replace(/(-.)/g, (dashChar) =>
     dashChar.charAt(1).toUpperCase(),
@@ -173,11 +30,7 @@ function camelCase(kebabCase: string): string {
 }
 
 function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
-  if (isLoaded) {
-    return undefined;
-  }
-
-  const styles = getValueOrCallback(props.src.lqip?.inlineStyles);
+  const styles = getLqipStyles(props, isLoaded);
   if (!styles) {
     return undefined;
   }
@@ -188,8 +41,7 @@ function getStyles(props: ResponsiveImageArgs, isLoaded: boolean) {
   return reactStyles;
 }
 
-let keyCounter = 0;
-const keyMap = new WeakMap<ImageData, number>();
+const getLqipKey = createLqipKey();
 
 export function ResponsiveImage(props: ResponsiveImageProps) {
   const [loadedSrc, setLoaded] = useState<ImageData | undefined>(undefined);
@@ -205,21 +57,12 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
   };
   const isLoaded = loadedSrc === src;
 
-  let key: number | undefined;
-
   // When LQIP is used, we need to use a key, so when src changes, the img element is recreated to re-apply LQIP styles without having
   // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
   // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
   // Ideally, we would just use src as the key, but React only allows for simple values (numbers or strings) as key, so we need to use
   // a mapping of src to generated primitive keys, that ensures that we get the same key for the same src
-  if (src.lqip) {
-    key = keyMap.get(src);
-
-    if (key === undefined) {
-      key = keyCounter++;
-      keyMap.set(src, key);
-    }
-  }
+  const key = getLqipKey(src);
 
   const sources = getSources(riProps);
 
@@ -260,18 +103,14 @@ export function ResponsiveImage(props: ResponsiveImageProps) {
 
   return (
     <picture>
-      {sources
-        .sort(
-          (a, b) => (typeScore.get(b.type) ?? 0) - (typeScore.get(a.type) ?? 0),
-        )
-        .map((s) => (
-          <source
-            key={s.mimeType}
-            srcSet={s.srcset}
-            type={s.mimeType}
-            sizes={s.sizes}
-          />
-        ))}
+      {getSourcesSorted(sources).map((s) => (
+        <source
+          key={s.mimeType}
+          srcSet={s.srcset}
+          type={s.mimeType}
+          sizes={s.sizes}
+        />
+      ))}
       {img}
     </picture>
   );
