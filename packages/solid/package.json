@@ -32,6 +32,7 @@
     "build": "rollup --config",
     "test.vitest": "vitest",
     "test.vitest:server": "vitest --mode ssr",
+    "test.vitest:2": "npm --prefix tests-v2 test --silent && npm --prefix tests-v2 test:ssr --silent",
     "test.vitest:watch": "vitest watch",
     "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
     "lint.eslint": "eslint .",
@@ -46,7 +47,7 @@
     "@responsive-image/core": "workspace:^"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.0"
+    "solid-js": "^1.6.0 || ^2.0.0-rc.9"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.29.7",

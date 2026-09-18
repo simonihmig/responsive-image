@@ -1,0 +1,18 @@
+{
+  "name": "@responsive-image/solid-tests-v2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:ssr": "vitest run --mode ssr"
+  },
+  "devDependencies": {
+    "@solidjs/vite-plugin": "3.0.0-next.44",
+    "@solidjs/web": "2.0.0-rc.9",
+    "@vitest/browser-playwright": "4.1.11",
+    "playwright": "1.62.1",
+    "solid-js": "2.0.0-rc.9",
+    "vite": "8.2.1",
+    "vitest": "4.1.11"
+  }
+}

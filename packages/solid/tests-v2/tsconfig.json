@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["src", "tests", "vitest.config.ts"]
+}
