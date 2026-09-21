@@ -9,7 +9,14 @@ import {
   type ImageData,
   type ResponsiveImageArgs,
 } from '@responsive-image/core';
-import { createMemo, createSignal, Show, type Component } from 'solid-js';
+import {
+  createMemo,
+  createSignal,
+  sharedConfig,
+  Show,
+  untrack,
+  type Component,
+} from 'solid-js';
 
 import type { ImgAttributes } from './types';
 
@@ -58,7 +65,16 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   // a bare `<img>` without a source reports `complete === true`.
   const isLoaded = () =>
     loadedSrc() === currentSrc() ||
+    // The DOM short-circuit below handles the client-render cache-hit case
+    // (image already complete, so `load` never fires). It must not run while
+    // the browser hydrates server-rendered markup: during claim the
+    // server-provided `src`/`srcset` + a complete (cached) image would
+    // evaluate it to `true`, collapsing the class to its non-LQIP value — the
+    // same value it computes after the load — so the spread's equality check
+    // never rewrites the class and the server's LQIP class sticks. While
+    // `sharedConfig.hydrating` the evaluation must mirror the server (false).
     (!isServer &&
+      !sharedConfig.hydrating &&
       !!imgEl &&
       (imgEl.getAttribute('src') !== null ||
         imgEl.getAttribute('srcset') !== null) &&
@@ -103,7 +119,15 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     // When LQIP is used, the key is our src, so when src changes, the img element is recreated to re-apply LQIP styles without having
     // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
     // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
-    <Show when={currentSrc()} keyed={!!currentSrc().lqip as false}>
+    <Show when={currentSrc()}
+      // The SDK evaluates `keyed` once, synchronously, in an untracked
+      // scope at component creation (Solid 1.x and 2.x alike), so a
+      // reactive read here would never update — Solid 2's dev runtime
+      // flags that as `STRICT_READ_UNTRACKED`. The value only decides
+      // between keyed and non-keyed child rendering at mount, so compute
+      // it explicitly non-tracking and document that it's static.
+      keyed={untrack(() => !!currentSrc().lqip)}
+    >
       <img
         // Note: call-expression attribute values are reactive in BOTH Solid
         // 1.x and 2.x. Passing a bare accessor reference (e.g.
@@ -150,7 +174,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
               (el.getAttribute('src') !== null ||
                 el.getAttribute('srcset') !== null) &&
               el.complete &&
-              !isLoaded()
+              loadedSrc() === undefined
             ) {
               setLoaded(currentSrc());
             }
