@@ -1,5 +1,14 @@
 # @responsive-image/wc
 
+## 2.0.6
+
+### Patch Changes
+
+- [#2634](https://github.com/simonihmig/responsive-image/pull/2634) [`57147a8`](https://github.com/simonihmig/responsive-image/commit/57147a81a946876af8f202acd0efca0c8ab59692) Thanks [@jaroel](https://github.com/jaroel)! - Refactor: move shared image component logic/constants to core
+
+- Updated dependencies [[`57147a8`](https://github.com/simonihmig/responsive-image/commit/57147a81a946876af8f202acd0efca0c8ab59692)]:
+  - @responsive-image/core@2.1.1
+
 ## 2.0.5
 
 ### Patch Changes
