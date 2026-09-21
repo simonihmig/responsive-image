@@ -184,16 +184,14 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     </Show>
   );
 
-  if (currentSrc().imageTypes === 'auto') {
-    return img;
-  }
-
   return (
+    <Show when={currentSrc().imageTypes !== 'auto'} fallback={img}>
     <picture>
       {sourcesSorted().map((s) => (
         <source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
       ))}
       {img}
     </picture>
+    </Show>
   );
 };
