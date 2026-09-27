@@ -119,7 +119,8 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     // When LQIP is used, the key is our src, so when src changes, the img element is recreated to re-apply LQIP styles without having
     // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
     // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
-    <Show when={currentSrc()}
+    <Show
+      when={currentSrc()}
       // The SDK evaluates `keyed` once, synchronously, in an untracked
       // scope at component creation (Solid 1.x and 2.x alike), so a
       // reactive read here would never update — Solid 2's dev runtime
@@ -186,12 +187,12 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
 
   return (
     <Show when={currentSrc().imageTypes !== 'auto'} fallback={img}>
-    <picture>
-      {sourcesSorted().map((s) => (
-        <source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
-      ))}
-      {img}
-    </picture>
+      <picture>
+        {sourcesSorted().map((s) => (
+          <source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
+        ))}
+        {img}
+      </picture>
     </Show>
   );
 };
