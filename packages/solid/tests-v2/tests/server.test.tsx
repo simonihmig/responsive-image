@@ -4,6 +4,8 @@ import { describe, expect, it } from 'vitest';
 
 import { ResponsiveImage } from '@responsive-image/solid';
 
+import { LQIP_IMAGE_DATA, LQIP_SSR_MARKUP } from './ssr-fixture';
+
 describe('environment', () => {
   it('runs on server', () => {
     expect(typeof window).toBe('undefined');
@@ -25,7 +27,7 @@ describe('ResponsiveImage', () => {
       <ResponsiveImage src={defaultImageData} />
     ));
     expect(string).toMatchInlineSnapshot(
-      `"<picture><source srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><img width="3840" height="2560" loading="lazy" decoding="async" src="/provider/w3840/image.jpeg" class="ri-img ri-responsive" /></picture>"`,
+      `"<picture _hk=70><!--$--><source _hk=710 srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source _hk=711 srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source _hk=712 srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><!--/--><!--$--><img _hk=40 width="3840" height="2560" loading="lazy" decoding="async" src="/provider/w3840/image.jpeg" class="ri-img ri-responsive" /><!--/--></picture>"`,
     );
   });
 
@@ -38,7 +40,7 @@ describe('ResponsiveImage', () => {
     };
     const string = renderToString(() => <ResponsiveImage src={imageData} />);
     expect(string).toMatchInlineSnapshot(
-      `"<picture><source srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><img width="3840" height="2560" loading="lazy" decoding="async" src="/provider/w3840/image.jpeg" class="ri-img ri-responsive test-class" /></picture>"`,
+      `"<picture _hk=60><!--$--><source _hk=610 srcset="/provider/w640/image.avif 640w, /provider/w750/image.avif 750w, /provider/w828/image.avif 828w, /provider/w1080/image.avif 1080w, /provider/w1200/image.avif 1200w, /provider/w1920/image.avif 1920w, /provider/w2048/image.avif 2048w, /provider/w3840/image.avif 3840w" type="image/avif"><source _hk=611 srcset="/provider/w640/image.webp 640w, /provider/w750/image.webp 750w, /provider/w828/image.webp 828w, /provider/w1080/image.webp 1080w, /provider/w1200/image.webp 1200w, /provider/w1920/image.webp 1920w, /provider/w2048/image.webp 2048w, /provider/w3840/image.webp 3840w" type="image/webp"><source _hk=612 srcset="/provider/w640/image.jpeg 640w, /provider/w750/image.jpeg 750w, /provider/w828/image.jpeg 828w, /provider/w1080/image.jpeg 1080w, /provider/w1200/image.jpeg 1200w, /provider/w1920/image.jpeg 1920w, /provider/w2048/image.jpeg 2048w, /provider/w3840/image.jpeg 3840w" type="image/jpeg"><!--/--><!--$--><img _hk=30 width="3840" height="2560" loading="lazy" decoding="async" src="/provider/w3840/image.jpeg" class="ri-img ri-responsive test-class" /><!--/--></picture>"`,
     );
   });
 
@@ -50,7 +52,18 @@ describe('ResponsiveImage', () => {
     };
     const string = renderToString(() => <ResponsiveImage src={imageData} />);
     expect(string).toMatchInlineSnapshot(
-      `"<img width="3840" height="2560" loading="lazy" decoding="async" srcSet="/provider/w320/image.auto 320w, /provider/w640/image.auto 640w, /provider/w960/image.auto 960w" src="/provider/w3840/image.auto" class="ri-img ri-responsive" />"`,
+      `"<img _hk=40 width="3840" height="2560" loading="lazy" decoding="async" srcSet="/provider/w320/image.auto 320w, /provider/w640/image.auto 640w, /provider/w960/image.auto 960w" src="/provider/w3840/image.auto" class="ri-img ri-responsive" />"`,
     );
+  });
+
+  it('renders markup the client hydration suite can claim', () => {
+    // `LQIP_SSR_MARKUP` is the fixture the browser suite feeds to
+    // `hydrate()`. Asserting the live output here is what keeps the two in
+    // sync: if the SSR output changes, this fails instead of the hydration
+    // tests quietly testing stale markup.
+    const string = renderToString(() => (
+      <ResponsiveImage src={LQIP_IMAGE_DATA} />
+    ));
+    expect(string).toBe(LQIP_SSR_MARKUP);
   });
 });

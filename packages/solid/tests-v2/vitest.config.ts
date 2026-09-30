@@ -10,8 +10,31 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      {
+        // The Solid plugin hard-codes `hydratable: false` whenever the Vite
+        // mode is exactly `"test"`, assuming a component test never hydrates.
+        // Vitest's browser server always runs in that mode, so a `hydrate()`
+        // test would compile to a plain client render and quietly test
+        // nothing. Renaming the mode in place (rather than returning it, which
+        // Vitest's browser server discards) is the only lever that reaches the
+        // plugin's own `config` hook.
+        name: 'solid-tests-v2:hydratable-mode',
+        enforce: 'pre' as const,
+        config(userConfig: { mode?: string }) {
+          if (!testSSR && userConfig.mode === 'test')
+            userConfig.mode = 'client';
+          return null;
+        },
+      },
       solid({
         hot: false,
+        // `ssr: true` selects the *hydratable* transforms, in both directions:
+        // `_hk` keys in the server markup, and `getNextElement` claims in the
+        // client build. Without it `renderToString` emits no keys, so
+        // `hydrate()` finds nothing to claim and silently builds a detached
+        // tree — every test that touches `hydrate()` then passes or fails for
+        // the wrong reason.
+        ssr: true,
         solid: { generate: testSSR ? 'ssr' : 'dom' },
       }),
     ],
@@ -28,6 +51,7 @@ export default defineConfig(({ mode }) => {
       },
       watch: false,
       isolate: !testSSR,
+      setupFiles: ['tests/setup.ts'],
       env: {
         NODE_ENV: testSSR ? 'production' : 'development',
         DEV: testSSR ? '' : '1',

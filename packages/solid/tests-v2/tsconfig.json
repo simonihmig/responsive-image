@@ -4,7 +4,17 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "noEmit": true,
-    "types": ["node"]
+    // Same posture as the v1 `tsconfig.json` one level up, now that the `paths`
+    // mapping below pulls `../src` into this program: the source imports its
+    // stylesheet for its side effect, and re-exports with a `.tsx` extension.
+    "allowImportingTsExtensions": true,
+    "types": ["node", "vite/client"],
+    // Mirrors the `resolve.alias` in `vitest.config.ts`: the tests exercise the
+    // source, not `dist`. Without this `tsc` resolves the package entry point
+    // and fails on `dist/index.d.ts`, which re-exports `./responsive-image.tsx`.
+    "paths": {
+      "@responsive-image/solid": ["../src/index.tsx"]
+    }
   },
   "include": ["src", "tests", "vitest.config.ts"]
 }
