@@ -12,7 +12,6 @@ import {
 import {
   createMemo,
   createSignal,
-  sharedConfig,
   Show,
   untrack,
   type Component,
@@ -54,30 +53,33 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   // when the prop changes.
   const currentSrc = createMemo(() => props.src);
 
+  const src = () => getSrc(props);
+
   // The `complete` check covers the case where the browser already has the
   // image (e.g. from cache) and the `load` event has already fired before the
   // element was inserted. It reads DOM properties (not signals), so it is
   // side-effect free and valid in both Solid 1.x and 2.x — writing a signal
   // during attribute application would throw `REACTIVE_WRITE_IN_OWNED_SCOPE`
-  // in Solid 2's dev runtime. The `src`/`srcset` attributes are set
-  // synchronously when they are applied (unlike `currentSrc`, which resolves
-  // asynchronously), so their presence guards against a premature read —
-  // a bare `<img>` without a source reports `complete === true`.
+  // in Solid 2's dev runtime.
   const isLoaded = () =>
     loadedSrc() === currentSrc() ||
     // The DOM short-circuit below handles the client-render cache-hit case
-    // (image already complete, so `load` never fires). It must not run while
-    // the browser hydrates server-rendered markup: during claim the
-    // server-provided `src`/`srcset` + a complete (cached) image would
-    // evaluate it to `true`, collapsing the class to its non-LQIP value — the
-    // same value it computes after the load — so the spread's equality check
-    // never rewrites the class and the server's LQIP class sticks. While
-    // `sharedConfig.hydrating` the evaluation must mirror the server (false).
+    // (image already complete, so `load` never fires). It needs no hydration
+    // guard: during a claim the ref has not run yet, so `imgEl` is still
+    // undefined and the check is skipped, which is what keeps the claim
+    // mirroring the server.
+    //
+    // Matching `src` against the rendered value is what scopes the check to
+    // the current image. A `src` swap recreates the element via `keyed`, but
+    // the ref only reassigns `imgEl` after the new element's attributes are
+    // computed — until then `imgEl` still points at the detached previous
+    // element, whose `complete` flips to `true` as soon as its request settles.
+    // Without this comparison a swapped-in image silently loses its LQIP, and
+    // whether it does depends on network timing. It also subsumes the previous
+    // attribute-presence guard: the rendered `src` is never null.
     (!isServer &&
-      !sharedConfig.hydrating &&
       !!imgEl &&
-      (imgEl.getAttribute('src') !== null ||
-        imgEl.getAttribute('srcset') !== null) &&
+      imgEl.getAttribute('src') === src() &&
       imgEl.complete);
 
   const attributes = createMemo(() => {
@@ -98,8 +100,6 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   const width = () => getWidth(props);
 
   const height = () => getHeight(props);
-
-  const src = () => getSrc(props);
 
   const sources = () => getSources(props);
 
@@ -126,8 +126,10 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
       // reactive read here would never update — Solid 2's dev runtime
       // flags that as `STRICT_READ_UNTRACKED`. The value only decides
       // between keyed and non-keyed child rendering at mount, so compute
-      // it explicitly non-tracking and document that it's static.
-      keyed={untrack(() => !!currentSrc().lqip)}
+      // it explicitly non-tracking and document that it's static. `keyed` is
+      // typed as a literal discriminant, while the runtime takes the boolean
+      // this evaluates to.
+      keyed={untrack(() => !!currentSrc().lqip) as true}
     >
       <img
         // Note: call-expression attribute values are reactive in BOTH Solid
