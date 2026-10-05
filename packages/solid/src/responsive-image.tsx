@@ -44,6 +44,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   const [loadedSrc, setLoaded] = createSignal<ImageData | undefined>(undefined);
 
   let imgEl: HTMLImageElement | undefined; // set via ref
+  let imgElSrc: ImageData | undefined; // src the current element was created for
 
   // Track the current source reactively: Solid 1.x keeps one component
   // instance across prop updates (so `when`/`keyed` and the `isLoaded`
@@ -69,18 +70,19 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
     // undefined and the check is skipped, which is what keeps the claim
     // mirroring the server.
     //
-    // Matching `src` against the rendered value is what scopes the check to
-    // the current image. A `src` swap recreates the element via `keyed`, but
-    // the ref only reassigns `imgEl` after the new element's attributes are
-    // computed — until then `imgEl` still points at the detached previous
-    // element, whose `complete` flips to `true` as soon as its request settles.
-    // Without this comparison a swapped-in image silently loses its LQIP, and
-    // whether it does depends on network timing. It also subsumes the previous
-    // attribute-presence guard: the rendered `src` is never null.
-    (!isServer &&
-      !!imgEl &&
-      imgEl.getAttribute('src') === src() &&
-      imgEl.complete);
+    // Requiring `imgElSrc === currentSrc()` is what scopes the check to the
+    // image the element is actually rendering. A `src` swap recreates the
+    // element via `keyed`, but the ref only reassigns `imgEl`/`imgElSrc` after
+    // the new element's attributes are computed — until then they still point
+    // at the detached previous element, whose `complete` flips to `true` as
+    // soon as its request settles. Without this comparison a swapped-in image
+    // silently loses its LQIP, and whether it does depends on network timing.
+    //
+    // Comparing the `ImageData` identity rather than the rendered `src` string
+    // is deliberate: two `src` values can render the same URL (only the LQIP
+    // differing), and then the stale element would pass a URL comparison and
+    // wrongly suppress the incoming image's LQIP.
+    (!isServer && !!imgEl && imgElSrc === currentSrc() && imgEl.complete);
 
   const attributes = createMemo(() => {
     const rest: Record<string, unknown> = {};
@@ -161,6 +163,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
           // delegated and `load` doesn't bubble) and Solid 2.x (which
           // dropped the `on:` namespace).
           imgEl = el;
+          imgElSrc = currentSrc();
           el.addEventListener('load', () => {
             setLoaded(currentSrc());
           });
