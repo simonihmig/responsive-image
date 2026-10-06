@@ -22,7 +22,6 @@ import {
 // of what they are about.
 const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
 
-
 /**
  * The Solid 2 counterpart of `@solidjs/testing-library`'s `render`, which the
  * Solid 1.x suite uses: same `{ container }` shape, so the mirrored cases read
