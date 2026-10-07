@@ -145,7 +145,7 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
               (el.getAttribute('src') !== null ||
                 el.getAttribute('srcset') !== null) &&
               el.complete &&
-              loadedSrc() === undefined
+              !isLoaded()
             ) {
               setLoaded(currentSrc());
             }
