@@ -41,6 +41,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
     const result: Record<string, unknown> = {};
     for (const key of Object.keys(props)) {
       if (
+        key !== 'style' && // Skip style because we merge them in styles()
         !responsiveImageArgs.includes(
           key as keyof ResponsiveImageArgs | 'class',
         )
@@ -64,12 +65,32 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
 
   const classNames = () => getClassNames(props, isLoaded(), props.class);
 
-  const styles = () => {
-    if (isLoaded() || isServer) {
-      return undefined;
+  // LQIP styles take precedence over user-provided styles while loading, and
+  // are merged so unrelated user styles (e.g. border-radius) are preserved.
+  const styles = (): Solid.JSX.CSSProperties | string | undefined => {
+    const lqipStyles =
+      isLoaded() || isServer ? undefined : getLqipStyles(props, isLoaded());
+    const userStyles = props['style'];
+
+    if (typeof userStyles === 'string') {
+      const lqipString = lqipStyles
+        ? Object.entries(lqipStyles)
+            .filter(([, value]) => value !== undefined)
+            .map(([property, value]) => `${property}: ${value}`)
+            .join('; ')
+        : '';
+
+      return [userStyles, lqipString].filter(Boolean).join('; ') || undefined;
     }
 
-    return getLqipStyles(props, isLoaded());
+    const merged: Record<string, string | undefined> = {
+      ...(userStyles as Record<string, string | undefined> | undefined),
+      ...lqipStyles,
+    };
+
+    return Object.keys(merged).length > 0
+      ? (merged as Solid.JSX.CSSProperties)
+      : undefined;
   };
 
   // check if src is already loaded (SSR) and update state so LQIP options are removed
