@@ -83,7 +83,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
     }
   });
 
-  const img = (
+  const renderImg = () => (
     // When LQIP is used, the key is our src, so when src changes, the img element is recreated to re-apply LQIP styles without having
     // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
     // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
@@ -115,16 +115,17 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
     </Solid.Show>
   );
 
-  if (Solid.untrack(() => props.src?.imageTypes === 'auto')) {
-    return img;
-  }
-
   return (
-    <picture>
-      {sourcesSorted().map((s) => (
-        <source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
-      ))}
-      {img}
-    </picture>
+    <Solid.Show
+      when={props.src && props.src.imageTypes !== 'auto'}
+      fallback={renderImg()}
+    >
+      <picture>
+        {sourcesSorted().map((s) => (
+          <source srcset={s.srcset} type={s.mimeType} sizes={s.sizes} />
+        ))}
+        {renderImg()}
+      </picture>
+    </Solid.Show>
   );
 };

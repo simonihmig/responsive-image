@@ -802,5 +802,18 @@ describe('ResponsiveImage', () => {
       expect(container.querySelector('picture')).not.toBeInTheDocument();
       expect(container.querySelector('source')).not.toBeInTheDocument();
     });
+
+    test('it switches to the auto layout when src imageTypes changes', () => {
+      const [image, setImage] = createSignal<ImageData>(defaultImageData);
+
+      const { container } = render(() => <ResponsiveImage src={image()} />);
+
+      expect(container.querySelector('picture')).toBeInTheDocument();
+
+      setImage(imageData);
+
+      expect(container.querySelector('picture')).not.toBeInTheDocument();
+      expect(container.querySelector('source')).not.toBeInTheDocument();
+    });
   });
 });
