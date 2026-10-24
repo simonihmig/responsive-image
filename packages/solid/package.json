@@ -33,6 +33,7 @@
     "test.vitest": "vitest",
     "test.vitest:server": "vitest --mode ssr",
     "test.vitest:watch": "vitest watch",
+    "test.vitest:v2": "pnpm --prefix tests-v2 test --silent && pnpm --prefix tests-v2 test:ssr --silent",
     "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
     "lint.eslint": "eslint .",
     "lint.eslint:fix": "eslint . --fix",
@@ -46,7 +47,7 @@
     "@responsive-image/core": "workspace:^"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.0"
+    "solid-js": "^1.6.0 || ^2.0.0-rc.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.29.7",
