@@ -31,6 +31,11 @@ export type ResponsiveImageProps = ResponsiveImageArgs & {
   [key: string]: unknown;
 };
 
+// `style` accepts a string or an object of (hyphenated) CSS properties. Typed
+// structurally so the source compiles against both Solid v1 and v2 typings
+// (v1 exposes `JSX.CSSProperties`, v2 moved the JSX namespace to @solidjs/web).
+type StyleValue = string | Record<string, string | number | undefined>;
+
 export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
   props,
 ) => {
@@ -67,7 +72,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
 
   // LQIP styles take precedence over user-provided styles while loading, and
   // are merged so unrelated user styles (e.g. border-radius) are preserved.
-  const styles = (): Solid.JSX.CSSProperties | string | undefined => {
+  const styles = (): StyleValue | undefined => {
     const lqipStyles =
       isLoaded() || isServer ? undefined : getLqipStyles(props, isLoaded());
     const userStyles = props['style'];
@@ -83,14 +88,14 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
       return [userStyles, lqipString].filter(Boolean).join('; ') || undefined;
     }
 
-    const merged: Record<string, string | undefined> = {
-      ...(userStyles as Record<string, string | undefined> | undefined),
+    const merged: Record<string, string | number | undefined> = {
+      ...(userStyles as
+        | Record<string, string | number | undefined>
+        | undefined),
       ...lqipStyles,
     };
 
-    return Object.keys(merged).length > 0
-      ? (merged as Solid.JSX.CSSProperties)
-      : undefined;
+    return Object.keys(merged).length > 0 ? merged : undefined;
   };
 
   // check if src is already loaded (SSR) and update state so LQIP options are removed
@@ -118,7 +123,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
         class={classNames()}
         loading="lazy"
         decoding="async"
-        srcSet={
+        srcset={
           props.src?.imageTypes === 'auto'
             ? // auto format assumes only one entry in sources
               sources()[0]?.srcset
