@@ -37,7 +37,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
   const [loadedSrc, setLoaded] = Solid.createSignal<ImageData | undefined>(
     undefined,
   );
-  const attributes = Solid.createMemo(() => {
+  const attributes = () => {
     const result: Record<string, unknown> = {};
     for (const key of Object.keys(props)) {
       if (
@@ -49,32 +49,28 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
       }
     }
     return result;
-  });
-  const isLoaded = Solid.createMemo(() => loadedSrc() === props.src);
+  };
+  const isLoaded = () => loadedSrc() === props.src;
 
-  const width = Solid.createMemo(() => getWidth(props));
+  const width = () => getWidth(props);
 
-  const height = Solid.createMemo(() => getHeight(props));
+  const height = () => getHeight(props);
 
-  const src = Solid.createMemo(() => getSrc(props));
+  const src = () => getSrc(props);
 
-  const sources = Solid.createMemo(() => getSources(props));
+  const sources = () => getSources(props);
 
-  const sourcesSorted = Solid.createMemo(() => getSourcesSorted(sources()));
+  const sourcesSorted = () => getSourcesSorted(sources());
 
-  const classNames = Solid.createMemo(() =>
-    getClassNames(props, isLoaded(), props.class),
-  );
+  const classNames = () => getClassNames(props, isLoaded(), props.class);
 
-  const styles = Solid.createMemo(() => {
+  const styles = () => {
     if (isLoaded() || isServer) {
       return undefined;
     }
 
     return getLqipStyles(props, isLoaded());
-  });
-
-  const lqipKey = Solid.createMemo(() => !!props.src?.lqip);
+  };
 
   // check if src is already loaded (SSR) and update state so LQIP options are removed
   let imgEl: HTMLImageElement | undefined;
@@ -93,7 +89,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
     // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
     <Solid.Show
       when={props.src}
-      keyed={Solid.untrack(() => lqipKey()) as false}
+      keyed={Solid.untrack(() => !!props.src?.lqip) as false}
     >
       <img
         width={width()}
