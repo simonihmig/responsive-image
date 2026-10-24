@@ -7,8 +7,8 @@ export default defineConfig({
   test: {
     browser: {
       enabled: true,
-      provider: playwright(),
-      instances: [{ name: 'chromium', browser: 'chromium' }],
+      provider: playwright({ launchOptions: { channel: 'chrome' } }),
+      instances: [{ name: 'Chrome', browser: 'chromium' }],
     },
     include: ['tests/client.test.{ts,tsx}'],
     env: {
