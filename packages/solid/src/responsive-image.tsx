@@ -53,8 +53,11 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   // only — writing a signal during attribute application would throw
   // `REACTIVE_WRITE_IN_OWNED_SCOPE` in Solid 2's dev runtime.
   const isLoaded = () => {
-    return loadedSrc() === currentSrc() || (!isServer && !!imgEl && imgElSrc === currentSrc() && imgEl.complete)
-  }
+    return (
+      loadedSrc() === currentSrc() ||
+      (!isServer && !!imgEl && imgElSrc === currentSrc() && imgEl.complete)
+    );
+  };
 
   const attributes = createMemo(() => {
     const rest: Record<string, unknown> = {};
