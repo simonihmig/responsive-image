@@ -17,14 +17,14 @@ export type { ResponsiveImageArgs } from '@responsive-image/core';
 
 const isServer = typeof window === 'undefined';
 
-const responsiveImageArgs: Array<keyof ResponsiveImageArgs | 'class'> = [
+const responsiveImageArgs = new Set<string>([
   'class',
   'src',
   'size',
   'sizes',
   'width',
   'height',
-];
+] satisfies Array<keyof ResponsiveImageArgs | 'class'>);
 
 export type ResponsiveImageProps = ResponsiveImageArgs & {
   class?: string;
@@ -47,9 +47,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
     for (const key of Object.keys(props)) {
       if (
         key !== 'style' && // Skip style because we merge them in styles()
-        !responsiveImageArgs.includes(
-          key as keyof ResponsiveImageArgs | 'class',
-        )
+        !responsiveImageArgs.has(key)
       ) {
         result[key] = props[key];
       }

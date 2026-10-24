@@ -53,7 +53,7 @@ export async function loaded(
   return loaded;
 }
 
-export async function trigger(el: HTMLElement) {
+export function trigger(el: HTMLElement) {
   const fakeEvent = new Event('load');
   getImg(el).dispatchEvent(fakeEvent);
 }
