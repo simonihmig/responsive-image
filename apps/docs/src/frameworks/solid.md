@@ -2,6 +2,10 @@
 
 The `@responsive-image/solid` package provides a native [SolidJS](https://www.solidjs.com/) image component to render responsive images.
 
+::: tip Compatibility
+Supports Solid **1.6 or above** and **Solid 2.x** (currently on the `2.0.0-rc` line). A single uncompiled source ships under the `solid` export condition, so the consumer's Solid toolchain compiles it for the installed major; a pre-compiled fallback covers non-Solid-aware tools.
+:::
+
 ## Installation
 
 In your application's directory:
