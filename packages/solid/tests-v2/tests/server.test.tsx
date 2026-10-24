@@ -52,7 +52,7 @@ describe('ResponsiveImage', () => {
     };
     const string = renderToString(() => <ResponsiveImage src={imageData} />);
     expect(string).toMatchInlineSnapshot(
-      `"<img _hk=40 width="3840" height="2560" loading="lazy" decoding="async" srcSet="/provider/w320/image.auto 320w, /provider/w640/image.auto 640w, /provider/w960/image.auto 960w" src="/provider/w3840/image.auto" class="ri-img ri-responsive" />"`,
+      `"<img _hk=40 width="3840" height="2560" loading="lazy" decoding="async" srcset="/provider/w320/image.auto 320w, /provider/w640/image.auto 640w, /provider/w960/image.auto 960w" src="/provider/w3840/image.auto" class="ri-img ri-responsive" />"`,
     );
   });
 

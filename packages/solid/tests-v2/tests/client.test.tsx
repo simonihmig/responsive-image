@@ -839,6 +839,59 @@ describe('ResponsiveImage', () => {
       expect(imgEl.complete).toBe(true);
       expect(imgEl).not.toHaveClass('lqip-test-class');
     });
+
+    test('it removes LQIP when the image becomes complete during the microtask', async () => {
+      const imageData: ImageData = {
+        imageTypes: ['jpeg', 'webp', 'avif'],
+        imageUrlFor() {
+          return FIXTURE_IMAGE;
+        },
+        lqip: {
+          class: 'lqip-test-class',
+        },
+      };
+
+      // Simulate an image that is not complete on first paint but finishes
+      // decoding before the queueMicrotask fallback runs, without firing a
+      // `load` event. `complete` is read-only, so override it on the
+      // prototype for the duration of the test.
+      const descriptor = Object.getOwnPropertyDescriptor(
+        HTMLImageElement.prototype,
+        'complete',
+      );
+      let complete = false;
+      Object.defineProperty(HTMLImageElement.prototype, 'complete', {
+        get() {
+          return complete;
+        },
+        configurable: true,
+      });
+
+      try {
+        const { container } = renderInto(() => (
+          <ResponsiveImage src={imageData} />
+        ));
+        const imgEl = container.querySelector('img')!;
+
+        // LQIP is applied on first paint because the image is not complete yet.
+        expect(imgEl).toHaveClass('lqip-test-class');
+
+        // The image finishes decoding before the microtask fallback runs.
+        complete = true;
+
+        await flush();
+
+        expect(imgEl).not.toHaveClass('lqip-test-class');
+      } finally {
+        if (descriptor) {
+          Object.defineProperty(
+            HTMLImageElement.prototype,
+            'complete',
+            descriptor,
+          );
+        }
+      }
+    });
   });
 
   describe('auto format', () => {

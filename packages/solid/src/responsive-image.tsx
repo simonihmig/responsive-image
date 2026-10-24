@@ -52,17 +52,9 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   // `imgEl.complete` covers cache hits, where `load` never fires. Reads DOM
   // only — writing a signal during attribute application would throw
   // `REACTIVE_WRITE_IN_OWNED_SCOPE` in Solid 2's dev runtime.
-  const isLoaded = () =>
-    loadedSrc() === currentSrc() ||
-    // `imgElSrc === currentSrc()` scopes the check to the image the element
-    // renders: a `src` swap recreates it via `keyed`, and until the new ref
-    // runs, `imgEl`/`imgElSrc` still point at the detached predecessor. No
-    // hydration guard needed — during a claim the ref has not run, so
-    // `imgEl` is undefined and the client claim mirrors the server.
-    // Comparing `ImageData` identity, not the rendered URL: two src values
-    // can render the same URL (only the LQIP differing), which a URL
-    // comparison would accept from the stale element.
-    (!isServer && !!imgEl && imgElSrc === currentSrc() && imgEl.complete);
+  const isLoaded = () => {
+    return loadedSrc() === currentSrc() || (!isServer && !!imgEl && imgElSrc === currentSrc() && imgEl.complete)
+  }
 
   const attributes = createMemo(() => {
     const rest: Record<string, unknown> = {};
@@ -109,13 +101,53 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
       keyed={untrack(() => !!currentSrc().lqip) as true}
     >
       <img
+        ref={(el) => {
+          // Attach the listener BEFORE src/srcset are applied (ref is first in
+          // source order) so cached or fast-loading images cannot fire `load`
+          // before we are listening. Native listener: `load` does not bubble and
+          // `on:` is gone in 2.x.
+          imgEl = el;
+          imgElSrc = currentSrc();
+          el.addEventListener('load', () => {
+            setLoaded(currentSrc());
+          });
+
+          // Covers images that are already complete by the time attributes land
+          // (cache hits), where `load` may not fire again. A single microtask
+          // is not always late enough for a cached decode, so also poll for a
+          // few frames.
+          queueMicrotask(() => {
+            if (
+              (el.getAttribute('src') !== null ||
+                el.getAttribute('srcset') !== null) &&
+              el.complete &&
+              loadedSrc() !== currentSrc()
+            ) {
+              setLoaded(currentSrc());
+            }
+          });
+          let frames = 0;
+          const checkComplete = () => {
+            if (loadedSrc() === currentSrc() || frames++ > 10) return;
+            if (
+              (el.getAttribute('src') !== null ||
+                el.getAttribute('srcset') !== null) &&
+              el.complete
+            ) {
+              setLoaded(currentSrc());
+            } else {
+              requestAnimationFrame(checkComplete);
+            }
+          };
+          requestAnimationFrame(checkComplete);
+        }}
         // Call-expression attribute values are reactive in both SDKs; a bare
         // accessor reference (`class={classNames}`) is not supported.
         width={width()}
         height={height()}
         loading="lazy"
         decoding="async"
-        srcSet={
+        srcset={
           currentSrc().imageTypes === 'auto'
             ? // auto format assumes only one entry in sources
               sources()[0]?.srcset
@@ -128,29 +160,6 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
         // Must stay after `src`/`srcset`: compilers evaluate attributes in source
         // order, so `isLoaded()` needs the current src when reading `complete`.
         class={classNames()}
-        ref={(el) => {
-          // Native listener, not `onLoad`: delegated in 1.x (where `load` doesn't
-          // bubble) and gone with the `on:` namespace in 2.x.
-          imgEl = el;
-          imgElSrc = currentSrc();
-          el.addEventListener('load', () => {
-            setLoaded(currentSrc());
-          });
-
-          // Solid 2 evaluates all attribute getters before applying any, so `class`
-          // sees a bare `complete === true` <img>. Re-check one microtask
-          // later, when the attributes are in the DOM.
-          queueMicrotask(() => {
-            if (
-              (el.getAttribute('src') !== null ||
-                el.getAttribute('srcset') !== null) &&
-              el.complete &&
-              !isLoaded()
-            ) {
-              setLoaded(currentSrc());
-            }
-          });
-        }}
       />
     </Show>
   );
