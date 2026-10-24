@@ -77,7 +77,6 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
   const lqipKey = Solid.createMemo(() => !!props.src?.lqip);
 
   // check if src is already loaded (SSR) and update state so LQIP options are removed
-  // eslint-disable-next-line no-unassigned-vars --  false positive
   let imgEl: HTMLImageElement | undefined;
   const onMountCompat =
     (Solid as Record<string, unknown>)['onSettled'] ??
@@ -92,30 +91,31 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
     // When LQIP is used, the key is our src, so when src changes, the img element is recreated to re-apply LQIP styles without having
     // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
     // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
-    <Solid.Show when={props.src} keyed={Solid.untrack(() => lqipKey())}>
-      {(_src: ImageData) => (
-        <img
-          width={width()}
-          height={height()}
-          class={classNames()}
-          loading="lazy"
-          decoding="async"
-          srcSet={
-            props.src?.imageTypes === 'auto'
-              ? // auto format assumes only one entry in sources
-                sources()[0]?.srcset
-              : undefined
-          }
-          src={src()}
-          {...attributes()}
-          data-ri-lqip={props.src?.lqip?.attribute}
-          style={styles()}
-          ref={(el: HTMLImageElement) => {
-            imgEl = el;
-          }}
-          onLoad={() => setLoaded(props.src)}
-        />
-      )}
+    <Solid.Show
+      when={props.src}
+      keyed={Solid.untrack(() => lqipKey()) as false}
+    >
+      <img
+        width={width()}
+        height={height()}
+        class={classNames()}
+        loading="lazy"
+        decoding="async"
+        srcSet={
+          props.src?.imageTypes === 'auto'
+            ? // auto format assumes only one entry in sources
+              sources()[0]?.srcset
+            : undefined
+        }
+        src={src()}
+        {...attributes()}
+        data-ri-lqip={props.src?.lqip?.attribute}
+        style={styles()}
+        ref={(el: HTMLImageElement) => {
+          imgEl = el;
+        }}
+        onLoad={() => setLoaded(props.src)}
+      />
     </Solid.Show>
   );
 

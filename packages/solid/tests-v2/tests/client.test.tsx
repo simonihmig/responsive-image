@@ -3,8 +3,8 @@ import { isServer, render as renderSolid } from '@solidjs/web';
 import { createSignal, flush } from 'solid-js';
 import { afterEach, describe, expect, test } from 'vitest';
 
-import { ResponsiveImage } from '../../src';
 import { loadImage, trigger } from './image.helper';
+import { ResponsiveImage } from '../../src';
 
 function render(view: () => unknown) {
   const container = document.createElement('div');
