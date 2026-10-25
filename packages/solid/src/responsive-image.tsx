@@ -36,6 +36,12 @@ export type ResponsiveImageProps = ResponsiveImageArgs & {
 // (v1 exposes `JSX.CSSProperties`, v2 moved the JSX namespace to @solidjs/web).
 type StyleValue = string | Record<string, string | number | undefined>;
 
+// compat: Solid v1 exposes `onMount`, v2 renamed it to `onSettled`.
+type HookName = 'onMount' | 'onSettled';
+type MountHook = (typeof Solid)[Extract<keyof typeof Solid, HookName>];
+const hooks: Partial<Record<HookName, MountHook>> = Solid;
+const onMountCompat = (hooks.onSettled ?? hooks.onMount)!;
+
 export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
   props,
 ) => {
@@ -98,10 +104,8 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
 
   // check if src is already loaded (SSR) and update state so LQIP options are removed
   let imgEl: HTMLImageElement | undefined;
-  const onMountCompat =
-    (Solid as Record<string, unknown>)['onSettled'] ??
-    (Solid as Record<string, unknown>)['onMount'];
-  (onMountCompat as (fn: () => void) => void)(() => {
+
+  onMountCompat(() => {
     if (imgEl?.complete) {
       setLoaded(props.src);
     }
