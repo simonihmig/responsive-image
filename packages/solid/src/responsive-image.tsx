@@ -15,6 +15,8 @@ import './responsive-image.css';
 
 export type { ResponsiveImageArgs } from '@responsive-image/core';
 
+// Not Solid's `isServer`: its specifier differs per major (`solid-js/web` in v1,
+// `@solidjs/web` in v2), so it cannot be imported from one static module.
 const isServer = typeof window === 'undefined';
 
 const responsiveImageArgs = new Set<string>([
