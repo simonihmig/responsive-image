@@ -1,5 +1,24 @@
 # @responsive-image/solid
 
+## 2.1.0
+
+### Minor Changes
+
+- [#2640](https://github.com/simonihmig/responsive-image/pull/2640) [`2375fe7`](https://github.com/simonihmig/responsive-image/commit/2375fe7e38afd2e0bc98667774f564d84dbadb39) Thanks [@jaroel](https://github.com/jaroel)! - Add Solid v2 support
+
+  The component is now type-checked and tested against both Solid v1 and v2 from the same package (the v2 test suite runs alongside the v1 suite).
+
+### Patch Changes
+
+- [#2640](https://github.com/simonihmig/responsive-image/pull/2640) [`2375fe7`](https://github.com/simonihmig/responsive-image/commit/2375fe7e38afd2e0bc98667774f564d84dbadb39) Thanks [@jaroel](https://github.com/jaroel)! - Merge custom `style` values with the LQIP styles instead of replacing them. Previously a custom `style` was discarded while the image was loading (and on Solid v2 it was lost entirely, as `style={undefined}` clears the attribute).
+
+- [#2634](https://github.com/simonihmig/responsive-image/pull/2634) [`57147a8`](https://github.com/simonihmig/responsive-image/commit/57147a81a946876af8f202acd0efca0c8ab59692) Thanks [@jaroel](https://github.com/jaroel)! - Refactor: move shared image component logic/constants to core
+
+- [#2640](https://github.com/simonihmig/responsive-image/pull/2640) [`2375fe7`](https://github.com/simonihmig/responsive-image/commit/2375fe7e38afd2e0bc98667774f564d84dbadb39) Thanks [@jaroel](https://github.com/jaroel)! - Switch between the `<picture>`/`<img>` markup reactively when `src` changes to or from an `imageTypes: 'auto'` image. Before, the layout was decided once at setup, so the stale structure was kept (and an auto-format image could be rendered with a bogus `<source>`).
+
+- Updated dependencies [[`57147a8`](https://github.com/simonihmig/responsive-image/commit/57147a81a946876af8f202acd0efca0c8ab59692)]:
+  - @responsive-image/core@2.1.1
+
 ## 2.0.5
 
 ### Patch Changes
