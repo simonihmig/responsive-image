@@ -119,6 +119,14 @@ describe('ResponsiveImage', () => {
           'data-test-image',
         );
       });
+
+      test('it forwards a custom style', async () => {
+        const { container } = render(() => (
+          <ResponsiveImage src={defaultImageData} style="color: red" />
+        ));
+
+        expect(container.querySelector('img')).toHaveStyle('color: red');
+      });
     });
   });
 
@@ -681,6 +689,46 @@ describe('ResponsiveImage', () => {
       expect(imgEl).not.toHaveStyle('border-left: solid 5px red');
     });
 
+    test('it merges custom styles with LQIP styles', () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: { 'background-color': 'rgb(0, 0, 255)' },
+        },
+      };
+
+      const { container } = render(() => (
+        <ResponsiveImage src={imageData} style="border-radius: 4px" />
+      ));
+      const imgEl = container.querySelector('img')!;
+
+      expect(imgEl).toHaveStyle('border-radius: 4px');
+      expect(imgEl).toHaveStyle('background-color: rgb(0, 0, 255)');
+    });
+
+    test('it lets LQIP styles win over conflicting custom styles until loaded', async () => {
+      const imageData: ImageData = {
+        ...defaultImageData,
+        lqip: {
+          inlineStyles: { 'background-color': 'rgb(0, 0, 255)' },
+        },
+      };
+
+      const { container } = render(() => (
+        <ResponsiveImage
+          src={imageData}
+          style="background-color: rgb(255, 0, 0)"
+        />
+      ));
+      const imgEl = container.querySelector('img')!;
+
+      expect(imgEl).toHaveStyle('background-color: rgb(0, 0, 255)');
+
+      await trigger(imgEl);
+
+      expect(imgEl).toHaveStyle('background-color: rgb(255, 0, 0)');
+    });
+
     test('it sets LQIP attribute from literal', async () => {
       const imageData: ImageData = {
         ...defaultImageData,
@@ -798,6 +846,19 @@ describe('ResponsiveImage', () => {
 
     test('it omits the picture and source tags', () => {
       const { container } = render(() => <ResponsiveImage src={imageData} />);
+
+      expect(container.querySelector('picture')).not.toBeInTheDocument();
+      expect(container.querySelector('source')).not.toBeInTheDocument();
+    });
+
+    test('it switches to the auto layout when src imageTypes changes', () => {
+      const [image, setImage] = createSignal<ImageData>(defaultImageData);
+
+      const { container } = render(() => <ResponsiveImage src={image()} />);
+
+      expect(container.querySelector('picture')).toBeInTheDocument();
+
+      setImage(imageData);
 
       expect(container.querySelector('picture')).not.toBeInTheDocument();
       expect(container.querySelector('source')).not.toBeInTheDocument();
