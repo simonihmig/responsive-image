@@ -10,7 +10,8 @@
     "lint": "pnpm turbo lint",
     "lint:fix": "pnpm run --filter '*' lint:fix",
     "prebuild": "pnpm turbo build --filter='./packages/*'",
-    "test": "pnpm turbo test"
+    "test": "pnpm turbo test",
+    "test:solid-v2": "node scripts/test-solid-v2.mjs"
   },
   "devDependencies": {
     "@changesets/changelog-github": "1.0.1",
