@@ -3,7 +3,6 @@ import { createSignal } from 'solid-js';
 import { afterEach, describe, expect, test } from 'vitest';
 
 import { ResponsiveImage } from '../src';
-
 import { loadImage, trigger } from './image.helper';
 import { cleanup, flush, isServer, render } from './solid';
 

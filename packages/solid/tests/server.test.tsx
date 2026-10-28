@@ -2,7 +2,6 @@ import { type ImageData } from '@responsive-image/core';
 import { describe, expect, it } from 'vitest';
 
 import { ResponsiveImage } from '../src';
-
 import { isServer, renderToString } from './solid';
 
 // the solid v1 and v2 server renderers differ in cosmetic ways (empty style
