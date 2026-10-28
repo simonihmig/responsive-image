@@ -39,7 +39,8 @@
     "lint.publint": "publint",
     "lint.prettier": "prettier . --check",
     "lint.prettier:fix": "prettier . --write",
-    "lint.types": "tsc --noEmit && tsc --noEmit -p tsconfig.v2.json",
+    "lint.types": "tsc --noEmit",
+    "lint.types:v2": "tsc --noEmit -p tsconfig.v2.json",
     "prepack": "pnpm turbo build"
   },
   "dependencies": {
