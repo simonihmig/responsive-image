@@ -1,11 +1,11 @@
 import { env, type ImageData } from '@responsive-image/core';
-import { cleanup, render } from '@solidjs/testing-library';
 import { createSignal } from 'solid-js';
-import { isServer } from 'solid-js/web';
 import { afterEach, describe, expect, test } from 'vitest';
 
 import { ResponsiveImage } from '../src';
+
 import { loadImage, trigger } from './image.helper';
+import { cleanup, flush, isServer, render } from './solid';
 
 afterEach(cleanup);
 
@@ -337,6 +337,7 @@ describe('ResponsiveImage', () => {
         aspectRatio: 1,
         availableWidths: [200, 400],
       });
+      flush();
 
       const imgEl2 = container.querySelector('img')!;
 
@@ -573,7 +574,9 @@ describe('ResponsiveImage', () => {
         aspectRatio: 1,
         availableWidths: [200, 400],
       });
+      flush();
       setWidth(200);
+      flush();
 
       // jpeg
       expect(
@@ -784,6 +787,7 @@ describe('ResponsiveImage', () => {
       };
 
       setImage(otherImage);
+      flush();
 
       const imgEl2 = container.querySelector('img')!;
 
@@ -859,6 +863,7 @@ describe('ResponsiveImage', () => {
       expect(container.querySelector('picture')).toBeInTheDocument();
 
       setImage(imageData);
+      flush();
 
       expect(container.querySelector('picture')).not.toBeInTheDocument();
       expect(container.querySelector('source')).not.toBeInTheDocument();

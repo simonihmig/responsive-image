@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/strictest/tsconfig.json",
   "include": ["src/**/*", "tests/**/*", "./*.ts"],
+  "exclude": ["tests/solid.v2.ts"],
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Bundler",
