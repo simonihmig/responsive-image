@@ -1,27 +1,26 @@
-import { createRequire } from 'node:module';
-
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
-const require = createRequire(import.meta.url);
+const { default: solidPkg } = await import('solid-js/package.json', {
+  with: { type: 'json' },
+});
 
-const isSolid2: boolean = require('solid-js/package.json').version.startsWith(
-  '2.',
-);
+const isSolid2: boolean = solidPkg.version.startsWith('2.');
 
 // the plugin package name differs between solid v1 and v2, and only one of them
 // is installed at a time
-function loadSolidPlugin() {
+async function loadSolidPlugin() {
   const name = isSolid2 ? '@solidjs/vite-plugin' : 'vite-plugin-solid';
-  const mod = require(name);
+  const mod = await import(name);
   return typeof mod === 'function' ? mod : mod.default;
 }
+
+const solidPlugin = await loadSolidPlugin();
 
 export default defineConfig(({ mode }) => {
   // to test in server environment, run with "--mode ssr" or "--mode test:ssr" flag
   // loads only server.test.ts file
   const testSSR = mode === 'test:ssr' || mode === 'ssr';
-  const solidPlugin = loadSolidPlugin();
 
   return {
     plugins: [
