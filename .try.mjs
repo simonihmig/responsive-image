@@ -46,15 +46,6 @@ export default {
       },
     },
     {
-      name: `solid-v1`,
-      cwd: 'packages/solid',
-      npm: {
-        devDependencies: {
-          'solid-js': `^1.9.14`,
-        },
-      },
-    },
-    {
       name: `solid-v2`,
       cwd: 'packages/solid',
       npm: {
