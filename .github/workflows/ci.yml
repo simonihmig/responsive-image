@@ -143,3 +143,6 @@ jobs:
         working-directory: ${{ matrix.cwd }}
         run: pnpm turbo test
         env: ${{ matrix.env }}
+      - name: Typecheck (solid v2)
+        if: matrix.name == 'solid-v2'
+        run: pnpm --filter @responsive-image/solid lint.types:v2

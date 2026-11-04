@@ -10,17 +10,6 @@
     "allowImportingTsExtensions": true,
     "jsx": "preserve",
     "jsxImportSource": "@solidjs/web",
-    "types": ["vite/client"],
-    "paths": {
-      "solid-js": ["./tests-v2/node_modules/solid-js"],
-      "solid-js/*": ["./tests-v2/node_modules/solid-js/*"],
-      "@solidjs/web": ["./tests-v2/node_modules/@solidjs/web/types/index.d.ts"],
-      "@solidjs/web/jsx-runtime": [
-        "./tests-v2/node_modules/@solidjs/web/types/jsx.d.ts"
-      ],
-      "@solidjs/web/jsx-dev-runtime": [
-        "./tests-v2/node_modules/@solidjs/web/types/jsx.d.ts"
-      ]
-    }
+    "types": ["vite/client"]
   }
 }
