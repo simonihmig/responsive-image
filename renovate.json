@@ -11,6 +11,7 @@
     "config:js-lib"
   ],
   "labels": ["dependencies"],
+  "prConcurrentLimit": 25,
   "packageRules": [
     {
       "matchDatasources": ["npm"],
