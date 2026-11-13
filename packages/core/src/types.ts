@@ -1,13 +1,7 @@
 export type ImageType = 'png' | 'jpeg' | 'webp' | 'avif';
 
 export type NonFunction =
-  | string
-  | number
-  | boolean
-  | undefined
-  | null
-  | object
-  | Array<unknown>;
+  string | number | boolean | undefined | null | object | Array<unknown>;
 export type ValueOrCallback<T extends NonFunction> = T | (() => T);
 
 export interface Lqip {
