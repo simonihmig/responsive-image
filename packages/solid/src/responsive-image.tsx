@@ -96,8 +96,7 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
 
     const merged: Record<string, string | number | undefined> = {
       ...(userStyles as
-        | Record<string, string | number | undefined>
-        | undefined),
+        Record<string, string | number | undefined> | undefined),
       ...lqipStyles,
     };
 
