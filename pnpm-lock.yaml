@@ -307,8 +307,8 @@ importers:
         specifier: 1.1.3
         version: 1.1.3
       ember-eslint-parser:
-        specifier: 0.14.4
-        version: 0.14.4(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(typescript@6.0.3)
+        specifier: 0.14.9
+        version: 0.14.9(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(typescript@6.0.3)
       ember-load-initializers:
         specifier: 3.0.1
         version: 3.0.1(ember-source@6.12.0(@glimmer/component@2.1.1(supports-color@8.1.1))(rsvp@4.8.5)(supports-color@8.1.1))
@@ -8210,8 +8210,8 @@ packages:
     resolution: {integrity: sha512-SB9NcZ27OtoUk+gfalsc3QU17+54OoqR668qHcuvHByk4KAhGxCKlkm9EBlKJcGr7yceOOAJqohTcCEBqfRw9g==}
     engines: {node: '>= 0.10.0'}
 
-  ember-eslint-parser@0.14.4:
-    resolution: {integrity: sha512-HSpJPP52KTpr2lbz41rHiWPsqSy4eXLZljpUez0RigVZJIbk3BWbRMHWeqL6GeylOVJPysD7Wx92Fg7mOFvbLA==}
+  ember-eslint-parser@0.14.9:
+    resolution: {integrity: sha512-42TiXJU7qK0xYokRhXyBYffId9u5gPokzQm28sCs5lRgj+XeYpdKUnpZuMpGwtPQs0TNGTS9UknBhDtOksqLFA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@babel/eslint-parser': ^7.28.6 || ^8.0.0
@@ -23450,7 +23450,7 @@ snapshots:
 
   ember-disable-prototype-extensions@1.1.3: {}
 
-  ember-eslint-parser@0.14.4(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@10.2.2))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(typescript@6.0.3):
+  ember-eslint-parser@0.14.9(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@10.2.2))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(typescript@6.0.3):
     dependencies:
       '@glimmer/syntax': 0.95.0
       '@typescript-eslint/tsconfig-utils': 8.67.0(typescript@6.0.3)
@@ -23466,7 +23466,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  ember-eslint-parser@0.14.4(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(typescript@6.0.3):
+  ember-eslint-parser@0.14.9(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(typescript@6.0.3):
     dependencies:
       '@glimmer/syntax': 0.95.0
       '@typescript-eslint/tsconfig-utils': 8.67.0(typescript@6.0.3)
@@ -24070,7 +24070,7 @@ snapshots:
       axobject-query: 4.1.0
       css-tree: 3.2.1
       editorconfig: 3.0.2
-      ember-eslint-parser: 0.14.4(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@10.2.2))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(typescript@6.0.3)
+      ember-eslint-parser: 0.14.9(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@10.2.2))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(typescript@6.0.3)
       ember-rfc176-data: 0.3.18
       eslint: 9.39.5(jiti@2.7.0)(supports-color@10.2.2)
       eslint-utils: 3.0.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))
@@ -24096,7 +24096,7 @@ snapshots:
       axobject-query: 4.1.0
       css-tree: 3.2.1
       editorconfig: 3.0.2
-      ember-eslint-parser: 0.14.4(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(typescript@6.0.3)
+      ember-eslint-parser: 0.14.9(@babel/eslint-parser@7.29.13(@babel/core@7.29.13(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(@typescript-eslint/parser@8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(typescript@6.0.3)
       ember-rfc176-data: 0.3.18
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       eslint-utils: 3.0.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
