@@ -957,8 +957,8 @@ importers:
         specifier: 4.62.4
         version: 4.62.4
       testem:
-        specifier: 3.20.1
-        version: 3.20.1(@babel/core@7.29.13(supports-color@10.2.2))(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)(underscore@1.13.8)
+        specifier: 3.20.2
+        version: 3.20.2(@babel/core@7.29.13(supports-color@10.2.2))(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)(underscore@1.13.8)
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -12586,8 +12586,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  testem@3.20.1:
-    resolution: {integrity: sha512-HMbcVlrRDt+GjEGJZrPSCp0XFzM7SSdmLvNSJm++hIITEIMoccCQGikvelOO/NjfZJ0HTZCEyvg3+CIStjaZqQ==}
+  testem@3.20.2:
+    resolution: {integrity: sha512-Y29LKJ4XHjr2oUZHHIDJbz7/AYDM8soqc7Irg6sfBI5W3nfOuuovyN2SEKnFw4LqGdQe0cFXZG3xAvt00INvWQ==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
     hasBin: true
 
@@ -23253,7 +23253,7 @@ snapshots:
       silent-error: 1.1.1(supports-color@10.2.2)
       sort-package-json: 3.7.1
       symlink-or-copy: 1.3.1
-      testem: 3.20.1(@babel/core@7.29.13(supports-color@10.2.2))(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)(underscore@1.13.8)
+      testem: 3.20.2(@babel/core@7.29.13(supports-color@10.2.2))(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)(underscore@1.13.8)
       tiny-lr: 2.0.0(supports-color@10.2.2)
       tree-sync: 2.1.0(supports-color@10.2.2)
       walk-sync: 4.0.2
@@ -23393,7 +23393,7 @@ snapshots:
       silent-error: 1.1.1(supports-color@8.1.1)
       sort-package-json: 3.7.1
       symlink-or-copy: 1.3.1
-      testem: 3.20.1(@babel/core@7.29.13(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
+      testem: 3.20.2(@babel/core@7.29.13(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       tiny-lr: 2.0.0(supports-color@8.1.1)
       tree-sync: 2.1.0(supports-color@8.1.1)
       walk-sync: 4.0.2
@@ -29580,7 +29580,7 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
 
-  testem@3.20.1(@babel/core@7.29.13(supports-color@10.2.2))(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)(underscore@1.13.8):
+  testem@3.20.2(@babel/core@7.29.13(supports-color@10.2.2))(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)(underscore@1.13.8):
     dependencies:
       '@xmldom/xmldom': 0.9.10
       backbone: 1.6.1
@@ -29658,7 +29658,7 @@ snapshots:
       - walrus
       - whiskers
 
-  testem@3.20.1(@babel/core@7.29.13(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1):
+  testem@3.20.2(@babel/core@7.29.13(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1):
     dependencies:
       '@xmldom/xmldom': 0.9.10
       backbone: 1.6.1
