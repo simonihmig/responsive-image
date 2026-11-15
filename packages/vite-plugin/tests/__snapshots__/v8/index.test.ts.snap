@@ -3,7 +3,7 @@
 exports[`LQIP > blurhash LQIP is supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
 import { decode2url as t } from "@responsive-image/core/blurhash/decode";
-//#region tests/fixtures/image.jpg
+// tests/fixtures/image.jpg
 var n = [
 	{
 		url: "/image-100w.jpg",
@@ -26,8 +26,7 @@ var n = [
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["jpeg", "webp"],
 	availableWidths: [100, 200],
@@ -38,13 +37,12 @@ console.log({
 		attribute: "bh:5:3:M53KT1R8D8y.t2M.oxylRoRlHYniyBRQXR"
 	}
 });
-//#endregion
 "
 `;
 
 exports[`LQIP > color LQIP is supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg
+// tests/fixtures/image.jpg
 var t = [
 	{
 		url: "/image-100w.jpg",
@@ -67,8 +65,7 @@ var t = [
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["jpeg", "webp"],
 	availableWidths: [100, 200],
@@ -76,7 +73,6 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "jpeg")?.url,
 	lqip: { class: "ri-dyn-XXX" }
 });
-//#endregion
 "
 `;
 
@@ -87,7 +83,7 @@ exports[`LQIP > color LQIP is supported 2`] = `
 
 exports[`LQIP > color LQIP with inline styles is supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg.xyz?_plugin=responsive-image/lqip/color-css&inline=1
+// tests/fixtures/image.jpg.xyz?_plugin=responsive-image/lqip/color-css&inline=1
 var t = { "background-color": "#083838" }, n = [
 	{
 		url: "/image-100w.jpg",
@@ -110,8 +106,7 @@ var t = { "background-color": "#083838" }, n = [
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["jpeg", "webp"],
 	availableWidths: [100, 200],
@@ -119,13 +114,12 @@ console.log({
 	imageUrlFor: (t, r) => e(n, t, r ?? "jpeg")?.url,
 	lqip: { inlineStyles: t }
 });
-//#endregion
 "
 `;
 
 exports[`LQIP > inline LQIP is supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg
+// tests/fixtures/image.jpg
 var t = [
 	{
 		url: "/image-100w.jpg",
@@ -148,8 +142,7 @@ var t = [
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["jpeg", "webp"],
 	availableWidths: [100, 200],
@@ -157,7 +150,6 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "jpeg")?.url,
 	lqip: { class: "ri-dyn-XXX" }
 });
-//#endregion
 "
 `;
 
@@ -168,7 +160,7 @@ exports[`LQIP > inline LQIP is supported 2`] = `
 
 exports[`LQIP > inline LQIP with inline styles is supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg.xyz?_plugin=responsive-image/lqip/inline-css&targetPixels=60&inline=1
+// tests/fixtures/image.jpg.xyz?_plugin=responsive-image/lqip/inline-css&targetPixels=60&inline=1
 var t = { "background-image": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQwMCAxNjAzIj4KPGZpbHRlciBpZD0iYiIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIuNSI+PC9mZUdhdXNzaWFuQmx1cj48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSJkaXNjcmV0ZSIgdGFibGVWYWx1ZXM9IjEgMSI+PC9mZUZ1bmNBPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj4KPGltYWdlIGZpbHRlcj0idXJsKCNiKSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFBa0FBQUFHQ0FJQUFBQ2VwU09TQUFBQUNYQklXWE1BQUFzVEFBQUxFd0VBbXB3WUFBQUFzRWxFUVZRSW1XTmdOamRtMTlEbmxOTmlrOVZrMFRKZ2NiTm50YlprMWpGZzFEZGdZUFp6NFBKdzR0VzE0Rll5NXRBejV3N3pZWE4zNG5LdzR3MXpaMkQxYytYT0NSR0tEeGF3ZE9NemNaWE1pWk9LQ1ZaSkMrTDNzbVpnTTdQbThiQVhqWFZVS2dvMnpRcEoycEJqVlJZaWFHZkJvcXpDd0tLcnpxR2p3YVdoSXVPdGI1NW5acDVqSWVoZ3ltNWt4S3Fwd2NBc0w4c2lMOG1xSzh0am95cmhxS3BUcVNNZXBNMWhhc1JpWWdnQXM0QWVMVTE3S1BjQUFBQUFTVVZPUks1Q1lJST0iPjwvaW1hZ2U+Cjwvc3ZnPg==)" }, n = [
 	{
 		url: "/image-100w.jpg",
@@ -191,8 +183,7 @@ var t = { "background-image": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["jpeg", "webp"],
 	availableWidths: [100, 200],
@@ -200,14 +191,13 @@ console.log({
 	imageUrlFor: (t, r) => e(n, t, r ?? "jpeg")?.url,
 	lqip: { inlineStyles: t }
 });
-//#endregion
 "
 `;
 
 exports[`LQIP > thumbhash LQIP is supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
 import { decode2url as t } from "@responsive-image/core/thumbhash/decode";
-//#region tests/fixtures/image.jpg
+// tests/fixtures/image.jpg
 var n = [
 	{
 		url: "/image-100w.jpg",
@@ -230,8 +220,7 @@ var n = [
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["jpeg", "webp"],
 	availableWidths: [100, 200],
@@ -242,13 +231,12 @@ console.log({
 		attribute: "th:jJcFFYI1fIWHe4dweXlYeUaAmWj3"
 	}
 });
-//#endregion
 "
 `;
 
 exports[`custom loader options are supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg
+// tests/fixtures/image.jpg
 var t = [{
 	url: "/test-100.png",
 	width: 100,
@@ -258,8 +246,7 @@ var t = [{
 	width: 200,
 	format: "png"
 }];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["png"],
 	availableWidths: [100, 200],
@@ -267,13 +254,12 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "png")?.url,
 	lqip: void 0
 });
-//#endregion
 "
 `;
 
 exports[`custom query params are supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg?w=100;200&format=png
+// tests/fixtures/image.jpg?w=100;200&format=png
 var t = [{
 	url: "/image-100w.png",
 	width: 100,
@@ -283,8 +269,7 @@ var t = [{
 	width: 200,
 	format: "png"
 }];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["png"],
 	availableWidths: [100, 200],
@@ -292,13 +277,12 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "png")?.url,
 	lqip: void 0
 });
-//#endregion
 "
 `;
 
 exports[`different aspect ratio 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg?w=100;200&format=png&aspect=2:3
+// tests/fixtures/image.jpg?w=100;200&format=png&aspect=2:3
 var t = [{
 	url: "/image-100w.png",
 	width: 100,
@@ -308,8 +292,7 @@ var t = [{
 	width: 200,
 	format: "png"
 }];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["png"],
 	availableWidths: [100, 200],
@@ -317,13 +300,12 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "png")?.url,
 	lqip: void 0
 });
-//#endregion
 "
 `;
 
 exports[`filter > it operates on included assets 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg
+// tests/fixtures/image.jpg
 var t = [
 	{
 		url: "/image-640w.jpg",
@@ -356,8 +338,7 @@ var t = [
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["jpeg", "webp"],
 	availableWidths: [
@@ -369,13 +350,12 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "jpeg")?.url,
 	lqip: void 0
 });
-//#endregion
 "
 `;
 
 exports[`imagetools params are supported 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg?w=100;200&format=png&grayscale
+// tests/fixtures/image.jpg?w=100;200&format=png&grayscale
 var t = [{
 	url: "/image-100w.png",
 	width: 100,
@@ -385,8 +365,7 @@ var t = [{
 	width: 200,
 	format: "png"
 }];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["png"],
 	availableWidths: [100, 200],
@@ -394,13 +373,12 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "png")?.url,
 	lqip: void 0
 });
-//#endregion
 "
 `;
 
 exports[`it produces expected output 1`] = `
 "import { findMatchingImage as e } from "@responsive-image/core";
-//#region tests/fixtures/image.jpg
+// tests/fixtures/image.jpg
 var t = [
 	{
 		url: "/image-640w.png",
@@ -433,8 +411,7 @@ var t = [
 		format: "webp"
 	}
 ];
-//#endregion
-//#region tests/fixtures/entry.js
+// tests/fixtures/entry.js
 console.log({
 	imageTypes: ["png", "webp"],
 	availableWidths: [
@@ -446,6 +423,5 @@ console.log({
 	imageUrlFor: (n, r) => e(t, n, r ?? "png")?.url,
 	lqip: void 0
 });
-//#endregion
 "
 `;
