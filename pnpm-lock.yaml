@@ -130,8 +130,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(supports-color@10.2.2)
       ember-qunit:
-        specifier: 9.1.0
-        version: 9.1.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2)
+        specifier: 9.2.0
+        version: 9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2)
       ember-resolver:
         specifier: 13.2.0
         version: 13.2.0
@@ -319,8 +319,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(supports-color@8.1.1)
       ember-qunit:
-        specifier: 9.1.0
-        version: 9.1.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1)
+        specifier: 9.2.0
+        version: 9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1)
       ember-resolver:
         specifier: 13.2.0
         version: 13.2.0
@@ -8284,12 +8284,6 @@ packages:
 
   ember-page-title@9.1.0:
     resolution: {integrity: sha512-+zBVORfzjnF8eNZ2kesVAV9+LaqIOvFDRK102c7jhpgM1oi3kbKRVh33+fRmF3tOFnWXwxbSiRfOgHS4rpMw+Q==}
-
-  ember-qunit@9.1.0:
-    resolution: {integrity: sha512-dE32lSODyv4em0ACBS8PDzrAIPKR75hhSpn/au0qFBlzbdmNA/VVsgv2aoFAVRdlQ0zYJ8EiNPFqsBFciIeXVA==}
-    peerDependencies:
-      '@ember/test-helpers': '>=3.0.3'
-      qunit: ^2.13.0
 
   ember-qunit@9.2.0:
     resolution: {integrity: sha512-y/v9D7/wfH9fWh6p6NPNZ4KMJ97ZdowoASNmLvLrrzDYSVHJDbbbOfFMKLfdvHF942PHMlf6NulKVezO4yNfmw==}
@@ -23698,7 +23692,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-qunit@9.1.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2):
+  ember-qunit@9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2):
     dependencies:
       '@ember/test-helpers': 5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
       '@embroider/addon-shim': 1.10.2(supports-color@10.2.2)
@@ -23707,7 +23701,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-qunit@9.1.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1):
+  ember-qunit@9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1):
     dependencies:
       '@ember/test-helpers': 5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
       '@embroider/addon-shim': 1.10.2(supports-color@8.1.1)
