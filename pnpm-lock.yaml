@@ -127,8 +127,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
       ember-page-title:
-        specifier: 9.0.3
-        version: 9.0.3(supports-color@10.2.2)
+        specifier: 9.1.0
+        version: 9.1.0(supports-color@10.2.2)
       ember-qunit:
         specifier: 9.1.0
         version: 9.1.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2)
@@ -316,8 +316,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
       ember-page-title:
-        specifier: 9.0.3
-        version: 9.0.3(supports-color@8.1.1)
+        specifier: 9.1.0
+        version: 9.1.0(supports-color@8.1.1)
       ember-qunit:
         specifier: 9.1.0
         version: 9.1.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1)
@@ -8256,9 +8256,8 @@ packages:
   ember-modifier@4.3.0:
     resolution: {integrity: sha512-O0rirSLQbGg0VJ/NqoQ4uN1bh2iAekZC/Ykma+FkjCM2ofrO38u+d8n3+AK6uVWeMJmogGX2KL+Is5fofoInJg==}
 
-  ember-page-title@9.0.3:
-    resolution: {integrity: sha512-fedRHUsvq8tIZgOii8jTrfAyeq+la/9H5eAzhNNwEyzo7nDMmqK2SxsyBUGXprd8fOacsPabLlzlucMi/4mUpA==}
-    engines: {node: 16.* || >= 18}
+  ember-page-title@9.1.0:
+    resolution: {integrity: sha512-+zBVORfzjnF8eNZ2kesVAV9+LaqIOvFDRK102c7jhpgM1oi3kbKRVh33+fRmF3tOFnWXwxbSiRfOgHS4rpMw+Q==}
 
   ember-qunit@9.1.0:
     resolution: {integrity: sha512-dE32lSODyv4em0ACBS8PDzrAIPKR75hhSpn/au0qFBlzbdmNA/VVsgv2aoFAVRdlQ0zYJ8EiNPFqsBFciIeXVA==}
@@ -23563,14 +23562,14 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  ember-page-title@9.0.3(supports-color@10.2.2):
+  ember-page-title@9.1.0(supports-color@10.2.2):
     dependencies:
       '@embroider/addon-shim': 1.10.2(supports-color@10.2.2)
       '@simple-dom/document': 1.4.0
     transitivePeerDependencies:
       - supports-color
 
-  ember-page-title@9.0.3(supports-color@8.1.1):
+  ember-page-title@9.1.0(supports-color@8.1.1):
     dependencies:
       '@embroider/addon-shim': 1.10.2(supports-color@8.1.1)
       '@simple-dom/document': 1.4.0
