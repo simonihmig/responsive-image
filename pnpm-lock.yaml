@@ -94,8 +94,8 @@ importers:
         specifier: 7.1.0
         version: 7.1.0(@babel/core@7.29.13(supports-color@10.2.2))(@types/babel__core@7.20.5)(rollup@4.68.2)(supports-color@10.2.2)
       '@tsconfig/ember':
-        specifier: 3.0.12
-        version: 3.0.12
+        specifier: 3.0.13
+        version: 3.0.13
       '@types/node':
         specifier: 22.20.5
         version: 22.20.5
@@ -268,8 +268,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/webpack
       '@tsconfig/ember':
-        specifier: 3.0.12
-        version: 3.0.12
+        specifier: 3.0.13
+        version: 3.0.13
       '@types/node':
         specifier: 22.20.5
         version: 22.20.5
@@ -5546,9 +5546,8 @@ packages:
       '@vue/compiler-sfc':
         optional: true
 
-  '@tsconfig/ember@3.0.12':
-    resolution: {integrity: sha512-ypFTXqIzQAB5HpYPi4TwDElDcUheWrKsEaYXgjiCAvsH6zxcQ4zUeuJqmfT+FoUlHTPZ3Xyel81OxrcjI+rilw==}
-    deprecated: Please use @ember/app-tsconfig or @ember/library-tsconfig instead. These live at https://github.com/ember-cli/tsconfigs
+  '@tsconfig/ember@3.0.13':
+    resolution: {integrity: sha512-/sOaDN37PWmMuXqd+7RTnJkMKIwui7feji2ffsl40hoIMjKbge2d8gojNKVrYg1qlQK62DF41ssinrWmZpKorg==}
 
   '@tsconfig/node22@22.0.6':
     resolution: {integrity: sha512-/5thavHAnWDZwH2H6eEn/T8pBEBhtuKaWGMslsj82kJfvzQgOgEMK7X4goBbIUjgVtAzPTtM9Ml64LA0uxO6Iw==}
@@ -19328,7 +19327,7 @@ snapshots:
       - '@vue/compiler-dom'
       - '@vue/server-renderer'
 
-  '@tsconfig/ember@3.0.12': {}
+  '@tsconfig/ember@3.0.13': {}
 
   '@tsconfig/node22@22.0.6': {}
 
