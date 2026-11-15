@@ -52,8 +52,8 @@ importers:
         specifier: 4.0.1
         version: 4.0.1
       '@ember/test-helpers':
-        specifier: 5.4.3
-        version: 5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
+        specifier: 5.8.0
+        version: 5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
       '@embroider/compat':
         specifier: 4.1.28
         version: 4.1.28(@embroider/core@4.6.10(@glint/template@1.11.1)(supports-color@10.2.2))(@glint/template@1.11.1)(supports-color@10.2.2)
@@ -131,7 +131,7 @@ importers:
         version: 9.1.0(supports-color@10.2.2)
       ember-qunit:
         specifier: 9.2.0
-        version: 9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2)
+        version: 9.2.0(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2)
       ember-resolver:
         specifier: 13.2.0
         version: 13.2.0
@@ -214,8 +214,8 @@ importers:
         specifier: 4.0.1
         version: 4.0.1
       '@ember/test-helpers':
-        specifier: 5.4.3
-        version: 5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
+        specifier: 5.8.0
+        version: 5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
       '@embroider/compat':
         specifier: 3.9.4
         version: 3.9.4(@embroider/core@3.5.10(@glint/template@1.8.1)(supports-color@8.1.1))(@glint/template@1.8.1)(supports-color@8.1.1)
@@ -320,7 +320,7 @@ importers:
         version: 9.1.0(supports-color@8.1.1)
       ember-qunit:
         specifier: 9.2.0
-        version: 9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1)
+        version: 9.2.0(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1)
       ember-resolver:
         specifier: 13.2.0
         version: 13.2.0
@@ -2485,9 +2485,6 @@ packages:
 
   '@ember/string@4.0.1':
     resolution: {integrity: sha512-VWeng8BSWrIsdPfffOQt/bKwNKJL7+37gPFh/6iZZ9bke+S83kKqkS30poo4bTGfRcMnvAE0ie7txom+iDu81Q==}
-
-  '@ember/test-helpers@5.4.3':
-    resolution: {integrity: sha512-WeNABJsXBidEXP87AH5gaI/KAyb0zEUYJxWa31A/Us5lqg85E3tPlHjBwCrlReOrJbSgvvArMnrdCwt7TRpjPQ==}
 
   '@ember/test-helpers@5.8.0':
     resolution: {integrity: sha512-JvQr0F8f5YfhshcG9gpOhZyuCPHFGMnWYaMH0rPf33W2R+CocSdp/aHr7D5wUg9Tl7aBiMJW6yz80MpTPVpTWQ==}
@@ -16038,34 +16035,23 @@ snapshots:
 
   '@ember/string@4.0.1': {}
 
-  '@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)':
-    dependencies:
-      '@ember/test-waiters': 4.1.2(supports-color@10.2.2)
-      '@embroider/addon-shim': 1.10.2(supports-color@10.2.2)
-      '@simple-dom/interface': 1.4.0
-      decorator-transforms: 2.4.0(@babel/core@7.29.13(supports-color@10.2.2))
-      dom-element-descriptors: 0.5.1
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)':
-    dependencies:
-      '@ember/test-waiters': 4.1.2(supports-color@8.1.1)
-      '@embroider/addon-shim': 1.10.2(supports-color@8.1.1)
-      '@simple-dom/interface': 1.4.0
-      decorator-transforms: 2.4.0(@babel/core@7.29.13(supports-color@8.1.1))
-      dom-element-descriptors: 0.5.1
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
   '@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@ember/test-waiters': 4.1.2(supports-color@10.2.2)
       '@embroider/addon-shim': 1.10.2(supports-color@10.2.2)
       '@simple-dom/interface': 1.4.0
       decorator-transforms: 2.4.0(@babel/core@7.29.13(supports-color@10.2.2))
+      dom-element-descriptors: 0.5.1
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+
+  '@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)':
+    dependencies:
+      '@ember/test-waiters': 4.1.2(supports-color@8.1.1)
+      '@embroider/addon-shim': 1.10.2(supports-color@8.1.1)
+      '@simple-dom/interface': 1.4.0
+      decorator-transforms: 2.4.0(@babel/core@7.29.13(supports-color@8.1.1))
       dom-element-descriptors: 0.5.1
     transitivePeerDependencies:
       - '@babel/core'
@@ -23593,28 +23579,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-qunit@9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2):
-    dependencies:
-      '@ember/test-helpers': 5.4.3(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
-      '@embroider/addon-shim': 1.10.2(supports-color@10.2.2)
-      qunit: 2.26.0
-      qunit-theme-ember: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
-
-  ember-qunit@9.2.0(@ember/test-helpers@5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1):
-    dependencies:
-      '@ember/test-helpers': 5.4.3(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
-      '@embroider/addon-shim': 1.10.2(supports-color@8.1.1)
-      qunit: 2.26.0
-      qunit-theme-ember: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
-
   ember-qunit@9.2.0(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2):
     dependencies:
       '@ember/test-helpers': 5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
       '@embroider/addon-shim': 1.10.2(supports-color@10.2.2)
+      qunit: 2.26.0
+      qunit-theme-ember: 1.0.0
+    transitivePeerDependencies:
+      - supports-color
+
+  ember-qunit@9.2.0(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1):
+    dependencies:
+      '@ember/test-helpers': 5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
+      '@embroider/addon-shim': 1.10.2(supports-color@8.1.1)
       qunit: 2.26.0
       qunit-theme-ember: 1.0.0
     transitivePeerDependencies:
