@@ -100,6 +100,10 @@ export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
   // of a mount hook, as that is `onMount` in Solid v1 but `onSettled` in v2.
   const checkComplete = (el: HTMLImageElement) => {
     const src = untrack(() => props.src);
+    // Only images with LQIP care about the loaded state: it removes the
+    // placeholder styles/classes. Non-LQIP images render identically either way,
+    // so updating the signal there only risks spurious re-renders.
+    if (!src?.lqip) return;
     queueMicrotask(() => {
       if (el.complete && el.src && src === props.src) {
         setLoaded(src);
