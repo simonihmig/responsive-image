@@ -59,7 +59,7 @@ export function cloudinary(
 
       const transformations = options.transformations
         ? Array.isArray(options.transformations)
-          ? options.transformations
+          ? [...options.transformations]
           : [options.transformations]
         : [];
 
