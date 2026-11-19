@@ -8,6 +8,11 @@ export default [
   })),
   ...nodeESM.map((c) => ({
     ...c,
-    files: ['eslint.config.mjs', 'rollup.config.mjs', 'vitest.config.ts'],
+    files: [
+      'eslint.config.mjs',
+      'rollup.config.mjs',
+      'vitest.config.ts',
+      'scripts/**/*',
+    ],
   })),
 ];

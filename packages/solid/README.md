@@ -25,9 +25,19 @@ pnpm test:solid-v2
 ```
 
 This applies the `solid-v2` scenario from [`.try.mjs`](../../.try.mjs), installs
-the v2 dependencies, runs the client and SSR suites, and restores
-`package.json` and `pnpm-lock.yaml` afterwards. It is the same setup the
-`solid-v2` CI job uses.
+the v2 dependencies, runs the client and SSR suites and the tree-shaking check,
+and restores `package.json` and `pnpm-lock.yaml` afterwards. It is the same
+setup the `solid-v2` CI job uses.
+
+The tree-shaking check bundles the built `dist` with Vite and fails if it
+retains `solid-js` code that `ResponsiveImage` does not use (e.g. after a
+namespace import `import * as Solid from 'solid-js'`). It is part of
+`pnpm test`; to run it alone against the installed Solid major:
+
+```sh
+pnpm --filter @responsive-image/solid build
+pnpm --filter @responsive-image/solid test.tree-shaking
+```
 
 ## Documentation
 

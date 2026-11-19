@@ -9,7 +9,7 @@ import {
   type ImageData,
   type ResponsiveImageArgs,
 } from '@responsive-image/core';
-import * as Solid from 'solid-js';
+import { createSignal, Show, untrack, type Component } from 'solid-js';
 
 import './responsive-image.css';
 
@@ -38,18 +38,8 @@ export type ResponsiveImageProps = ResponsiveImageArgs & {
 // (v1 exposes `JSX.CSSProperties`, v2 moved the JSX namespace to @solidjs/web).
 type StyleValue = string | Record<string, string | number | undefined>;
 
-// compat: Solid v1 exposes `onMount`, v2 renamed it to `onSettled`.
-type HookName = 'onMount' | 'onSettled';
-type MountHook = (typeof Solid)[Extract<keyof typeof Solid, HookName>];
-const hooks: Partial<Record<HookName, MountHook>> = Solid;
-const onMountCompat = (hooks.onSettled ?? hooks.onMount)!;
-
-export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
-  props,
-) => {
-  const [loadedSrc, setLoaded] = Solid.createSignal<ImageData | undefined>(
-    undefined,
-  );
+export const ResponsiveImage: Component<ResponsiveImageProps> = (props) => {
+  const [loadedSrc, setLoaded] = createSignal<ImageData | undefined>(undefined);
   const attributes = () => {
     const result: Record<string, unknown> = {};
     for (const key of Object.keys(props)) {
@@ -103,23 +93,25 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
     return Object.keys(merged).length > 0 ? merged : undefined;
   };
 
-  // check if src is already loaded (SSR) and update state so LQIP options are removed
-  let imgEl: HTMLImageElement | undefined;
-
-  onMountCompat(() => {
-    if (imgEl?.complete) {
-      setLoaded(props.src);
-    }
-  });
+  // An image that has already loaded (e.g. before hydration, or from cache)
+  // may never fire `load` for us, so mark it loaded to remove LQIP styles.
+  // Checked in a microtask (still before paint), as the ref runs before `src`
+  // is applied; an `<img>` without `src` also reports `complete`. A ref instead
+  // of a mount hook, as that is `onMount` in Solid v1 but `onSettled` in v2.
+  const checkComplete = (el: HTMLImageElement) => {
+    const src = untrack(() => props.src);
+    queueMicrotask(() => {
+      if (el.complete && el.src && src === props.src) {
+        setLoaded(src);
+      }
+    });
+  };
 
   const renderImg = () => (
     // When LQIP is used, the key is our src, so when src changes, the img element is recreated to re-apply LQIP styles without having
     // the previous src visible (<img> is a stateful element!). Without LQIP, reuse existing DOM.
     // See also https://github.com/simonihmig/responsive-image/issues/1583#issuecomment-3315142391
-    <Solid.Show
-      when={props.src}
-      keyed={Solid.untrack(() => !!props.src?.lqip) as false}
-    >
+    <Show when={props.src} keyed={untrack(() => !!props.src?.lqip) as false}>
       <img
         width={width()}
         height={height()}
@@ -136,16 +128,14 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
         {...attributes()}
         data-ri-lqip={props.src?.lqip?.attribute}
         style={styles()}
-        ref={(el: HTMLImageElement) => {
-          imgEl = el;
-        }}
+        ref={checkComplete}
         onLoad={() => setLoaded(props.src)}
       />
-    </Solid.Show>
+    </Show>
   );
 
   return (
-    <Solid.Show
+    <Show
       when={props.src && props.src.imageTypes !== 'auto'}
       fallback={renderImg()}
     >
@@ -155,6 +145,6 @@ export const ResponsiveImage: Solid.Component<ResponsiveImageProps> = (
         ))}
         {renderImg()}
       </picture>
-    </Solid.Show>
+    </Show>
   );
 };

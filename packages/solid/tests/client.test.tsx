@@ -823,7 +823,49 @@ describe('ResponsiveImage', () => {
 
       expect(imgEl).toBeDefined();
       expect(imgEl.complete).toBe(true);
+
+      // the complete check runs in a microtask, so before the next paint
+      await Promise.resolve();
+      flush();
+
       expect(imgEl).not.toHaveClass('lqip-test-class');
+    });
+
+    test('it does not apply LQIP when changing src to an already loaded image', async () => {
+      const [image, setImage] = createSignal<ImageData>({
+        ...defaultImageData,
+        lqip: { class: 'lqip-test-class' },
+      });
+
+      await loadImage('/test-assets/test-image.jpg?changed');
+
+      const { container } = render(() => <ResponsiveImage src={image()} />);
+      const imgEl = container.querySelector('img')!;
+
+      await Promise.resolve();
+      flush();
+
+      expect(imgEl.complete).toBe(false);
+      expect(imgEl).toHaveClass('lqip-test-class');
+
+      setImage({
+        imageTypes: ['jpeg'],
+        imageUrlFor() {
+          return '/test-assets/test-image.jpg?changed';
+        },
+        lqip: { class: 'lqip-test-class' },
+      });
+      flush();
+
+      const imgEl2 = container.querySelector('img')!;
+
+      expect(imgEl2).not.toBe(imgEl);
+      expect(imgEl2.complete).toBe(true);
+
+      await Promise.resolve();
+      flush();
+
+      expect(imgEl2).not.toHaveClass('lqip-test-class');
     });
   });
 
