@@ -274,7 +274,7 @@ importers:
         version: 2.13.1(@glint/template@1.11.1)(supports-color@10.2.2)(webpack@5.112.2(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@4.2.0)(esbuild@0.28.2)(lightningcss@1.33.0)(postcss@8.5.33)(sharp@0.35.5(@types/node@22.20.5))(uglify-js@3.19.3))
       ember-cli:
         specifier: 7.4.0
-        version: 7.4.0(@babel/core@7.29.13(supports-color@10.2.2))(@types/node@22.20.5)(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@10.2.2)(underscore@1.13.8)
+        version: 7.4.0(@babel/core@7.29.13(supports-color@10.2.2))(@types/node@22.20.5)(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)(underscore@1.13.8)
       ember-cli-babel:
         specifier: 8.3.2
         version: 8.3.2(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
@@ -445,7 +445,7 @@ importers:
         version: 2.13.1(@glint/template@1.11.1)(supports-color@8.1.1)(webpack@5.112.2(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@4.2.0)(esbuild@0.28.2)(lightningcss@1.33.0)(postcss@8.5.33)(sharp@0.35.5(@types/node@22.20.5))(uglify-js@3.19.3))
       ember-cli:
         specifier: 7.4.0
-        version: 7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@8.1.1)(underscore@1.13.8)
+        version: 7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(underscore@1.13.8)
       ember-cli-app-version:
         specifier: 7.0.0
         version: 7.0.0(ember-source@6.12.1(@glimmer/component@2.2.1(supports-color@8.1.1))(rsvp@4.8.5)(supports-color@8.1.1))(supports-color@8.1.1)
@@ -457,7 +457,7 @@ importers:
         version: 3.0.0(supports-color@8.1.1)
       ember-cli-dependency-checker:
         specifier: 3.3.3
-        version: 3.3.3(ember-cli@7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@8.1.1)(underscore@1.13.8))
+        version: 3.3.3(ember-cli@7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(underscore@1.13.8))
       ember-cli-htmlbars:
         specifier: 7.0.1
         version: 7.0.1(@babel/core@7.29.13(supports-color@8.1.1))(ember-source@6.12.1(@glimmer/component@2.2.1(supports-color@8.1.1))(rsvp@4.8.5)(supports-color@8.1.1))(supports-color@8.1.1)
@@ -602,10 +602,10 @@ importers:
         version: link:../../packages/react
       react:
         specifier: ^19.1.0
-        version: 19.2.9
+        version: 19.3.1
       react-dom:
         specifier: ^19.1.0
-        version: 19.2.9(react@19.2.9)
+        version: 19.3.1(react@19.3.1)
     devDependencies:
       '@eslint/js':
         specifier: 10.0.1
@@ -623,11 +623,11 @@ importers:
         specifier: 22.20.5
         version: 22.20.5
       '@types/react':
-        specifier: 19.2.18
-        version: 19.2.18
+        specifier: 19.3.0
+        version: 19.3.0
       '@types/react-dom':
-        specifier: 19.2.7
-        version: 19.2.7(@types/react@19.2.18)
+        specifier: 19.3.0
+        version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: 6.3.0
         version: 6.3.0(vite@8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
@@ -1119,7 +1119,7 @@ importers:
         version: 4.68.5
       testem:
         specifier: 3.21.5
-        version: 3.21.5(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@10.2.2)(underscore@1.13.8)
+        version: 3.21.5(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)(underscore@1.13.8)
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -1156,7 +1156,7 @@ importers:
         version: 10.4.1
       '@testing-library/react':
         specifier: 16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@tsconfig/strictest':
         specifier: 2.0.9
         version: 2.0.9
@@ -1164,11 +1164,11 @@ importers:
         specifier: 22.20.5
         version: 22.20.5
       '@types/react':
-        specifier: 19.2.18
-        version: 19.2.18
+        specifier: 19.3.0
+        version: 19.3.0
       '@types/react-dom':
-        specifier: 19.2.7
-        version: 19.2.7(@types/react@19.2.18)
+        specifier: 19.3.0
+        version: 19.3.0(@types/react@19.3.0)
       '@vitest/browser-playwright':
         specifier: 4.1.12
         version: 4.1.12(playwright@1.62.1)(vite@8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))(vitest@4.1.12)
@@ -1188,11 +1188,11 @@ importers:
         specifier: 0.3.25
         version: 0.3.25
       react:
-        specifier: 19.2.9
-        version: 19.2.9
+        specifier: 19.3.1
+        version: 19.3.1
       react-dom:
-        specifier: 19.2.9
-        version: 19.2.9(react@19.2.9)
+        specifier: 19.3.1
+        version: 19.3.1(react@19.3.1)
       rollup:
         specifier: 4.68.5
         version: 4.68.5
@@ -5302,13 +5302,13 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  '@types/react-dom@19.2.7':
-    resolution: {integrity: sha512-I8bPpDLcHBv1qiIiXDCy71Rt8eQDKJP0sMSWJphDdAcdqiJ1sGpZamavoEIRZmYzjia9LuEb2HlYdDpmoENpvQ==}
+  '@types/react-dom@19.3.0':
+    resolution: {integrity: sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q==}
     peerDependencies:
-      '@types/react': ^19.2.0
+      '@types/react': ^19.3.0
 
-  '@types/react@19.2.18':
-    resolution: {integrity: sha512-AnzbBERsrLKtk2XSfTbYRLjQPdy116Sty4q+T+Bp3IC4l6jNBvreVPAHmpq9qhXQM7CXZPjLVmGMw9sy+hxQ3w==}
+  '@types/react@19.3.0':
+    resolution: {integrity: sha512-N0rFCuH9YoxG9/m61l9MfpJKfmLOVU0em7ipIz6TRgSSkvReLB9vL85GB+yr8Bs5leqpvg96JSwF4ZS1s4viQg==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -11169,10 +11169,10 @@ packages:
   rc9@3.1.0:
     resolution: {integrity: sha512-ufjkNVzbRHKcCOmTahZkmVsyc3W+MSk3jY03m+a7tGHkIsdVMG9l10/3HvFbWkkKzY5VFp3pkRsIo/UYgmFL7Q==}
 
-  react-dom@19.2.9:
-    resolution: {integrity: sha512-YceU74W21fXEHszKBLj16MY0CmvpFKOs60iVrIyW/cCgOPsZJNaB6GVJEtIUqt6AG6EjzKLui5lPRrxAeS328Q==}
+  react-dom@19.3.1:
+    resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
     peerDependencies:
-      react: ^19.2.9
+      react: ^19.3.1
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
@@ -11180,8 +11180,8 @@ packages:
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
-  react@19.2.9:
-    resolution: {integrity: sha512-RuLdAokXv3sRmZa2/N8QH0KmTBIgDKC+buRUikGqow31+mGSGidLCX2o4XFq8OV+xBFWfhM9DVgTq1PPHADH4w==}
+  react@19.3.1:
+    resolution: {integrity: sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==}
     engines: {node: '>=0.10.0'}
 
   read-package-json-fast@6.0.0:
@@ -11585,8 +11585,8 @@ packages:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
 
-  scheduler@0.27.0:
-    resolution: {integrity: sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==}
+  scheduler@0.28.0:
+    resolution: {integrity: sha512-juorfCmIkIw8tT+p5BXSm6PJjQF/ycEYmKyzURCIt/RaZIhL+PulbQ9Yu2z1HdOJDdqDTlxA1+xKBmHXJsczAw==}
 
   schema-utils@2.7.1:
     resolution: {integrity: sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==}
@@ -18344,15 +18344,15 @@ snapshots:
       redent: 3.0.0
     optional: true
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
       '@babel/runtime': 7.29.14
       '@testing-library/dom': 10.4.1
-      react: 19.2.9
-      react-dom: 19.2.9(react@19.2.9)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
     optionalDependencies:
-      '@types/react': 19.2.18
-      '@types/react-dom': 19.2.7(@types/react@19.2.18)
+      '@types/react': 19.3.0
+      '@types/react-dom': 19.3.0(@types/react@19.3.0)
 
   '@testing-library/svelte@5.2.8(svelte@5.58.0(@typescript-eslint/types@8.73.0))(vite@8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))(vitest@4.1.12)':
     dependencies:
@@ -18557,11 +18557,11 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-dom@19.2.7(@types/react@19.2.18)':
+  '@types/react-dom@19.3.0(@types/react@19.3.0)':
     dependencies:
-      '@types/react': 19.2.18
+      '@types/react': 19.3.0
 
-  '@types/react@19.2.18':
+  '@types/react@19.3.0':
     dependencies:
       csstype: 3.2.3
 
@@ -21250,26 +21250,26 @@ snapshots:
       ora: 3.4.0
       through2: 3.0.2
 
-  consolidate@1.0.4(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(underscore@1.13.8):
+  consolidate@1.0.4(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(underscore@1.13.8):
     optionalDependencies:
       '@babel/core': 7.29.13(supports-color@10.2.2)
       ejs: 3.1.10
       handlebars: 4.7.9
       lodash: 4.18.1
       mustache: 4.2.0
-      react: 19.2.9
-      react-dom: 19.2.9(react@19.2.9)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
       underscore: 1.13.8
 
-  consolidate@1.0.4(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(underscore@1.13.8):
+  consolidate@1.0.4(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(underscore@1.13.8):
     optionalDependencies:
       '@babel/core': 7.29.13(supports-color@8.1.1)
       ejs: 3.1.10
       handlebars: 4.7.9
       lodash: 4.18.1
       mustache: 4.2.0
-      react: 19.2.9
-      react-dom: 19.2.9(react@19.2.9)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
       underscore: 1.13.8
 
   content-disposition@2.0.1: {}
@@ -21907,10 +21907,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-cli-dependency-checker@3.3.3(ember-cli@7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@8.1.1)(underscore@1.13.8)):
+  ember-cli-dependency-checker@3.3.3(ember-cli@7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(underscore@1.13.8)):
     dependencies:
       chalk: 2.4.2
-      ember-cli: 7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@8.1.1)(underscore@1.13.8)
+      ember-cli: 7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(underscore@1.13.8)
       find-yarn-workspace-root: 2.0.0
       is-git-url: 1.0.0
       resolve: 1.22.14
@@ -22032,7 +22032,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-cli@7.4.0(@babel/core@7.29.13(supports-color@10.2.2))(@types/node@22.20.5)(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@10.2.2)(underscore@1.13.8):
+  ember-cli@7.4.0(@babel/core@7.29.13(supports-color@10.2.2))(@types/node@22.20.5)(debug@4.4.3(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)(underscore@1.13.8):
     dependencies:
       '@ember-tooling/blueprint-blueprint': 0.3.0
       '@ember-tooling/blueprint-model': 0.7.1(supports-color@10.2.2)
@@ -22112,7 +22112,7 @@ snapshots:
       silent-error: 1.1.1(supports-color@10.2.2)
       sort-package-json: 3.7.1
       symlink-or-copy: 1.3.1
-      testem: 3.21.5(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@10.2.2)(underscore@1.13.8)
+      testem: 3.21.5(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)(underscore@1.13.8)
       tiny-lr: 2.0.0(supports-color@10.2.2)
       tree-sync: 2.1.0(supports-color@10.2.2)
       walk-sync: 4.0.2
@@ -22172,7 +22172,7 @@ snapshots:
       - walrus
       - whiskers
 
-  ember-cli@7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@8.1.1)(underscore@1.13.8):
+  ember-cli@7.4.0(@babel/core@7.29.13(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(underscore@1.13.8):
     dependencies:
       '@ember-tooling/blueprint-blueprint': 0.3.0
       '@ember-tooling/blueprint-model': 0.7.1(supports-color@8.1.1)
@@ -22252,7 +22252,7 @@ snapshots:
       silent-error: 1.1.1(supports-color@8.1.1)
       sort-package-json: 3.7.1
       symlink-or-copy: 1.3.1
-      testem: 3.21.5(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@8.1.1)(underscore@1.13.8)
+      testem: 3.21.5(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(underscore@1.13.8)
       tiny-lr: 2.0.0(supports-color@8.1.1)
       tree-sync: 2.1.0(supports-color@8.1.1)
       walk-sync: 4.0.2
@@ -26829,16 +26829,16 @@ snapshots:
       defu: 6.1.7
       destr: 2.0.5
 
-  react-dom@19.2.9(react@19.2.9):
+  react-dom@19.3.1(react@19.3.1):
     dependencies:
-      react: 19.2.9
-      scheduler: 0.27.0
+      react: 19.3.1
+      scheduler: 0.28.0
 
   react-is@17.0.2: {}
 
   react-is@18.3.1: {}
 
-  react@19.2.9: {}
+  react@19.3.1: {}
 
   read-package-json-fast@6.0.0:
     dependencies:
@@ -27339,7 +27339,7 @@ snapshots:
     dependencies:
       xmlchars: 2.2.0
 
-  scheduler@0.27.0: {}
+  scheduler@0.28.0: {}
 
   schema-utils@2.7.1:
     dependencies:
@@ -28317,7 +28317,7 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
 
-  testem@3.21.5(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@10.2.2)(underscore@1.13.8):
+  testem@3.21.5(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)(underscore@1.13.8):
     dependencies:
       '@xmldom/xmldom': 0.9.10
       backbone: 1.6.1
@@ -28325,7 +28325,7 @@ snapshots:
       chokidar: 5.0.0
       commander: 14.0.3
       compression: 1.8.2(supports-color@10.2.2)
-      consolidate: 1.0.4(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(underscore@1.13.8)
+      consolidate: 1.0.4(@babel/core@7.29.13(supports-color@10.2.2))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(underscore@1.13.8)
       execa: 9.6.1
       express: 5.3.0(supports-color@10.2.2)
       glob: 13.0.7
@@ -28392,7 +28392,7 @@ snapshots:
       - walrus
       - whiskers
 
-  testem@3.21.5(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(supports-color@8.1.1)(underscore@1.13.8):
+  testem@3.21.5(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(underscore@1.13.8):
     dependencies:
       '@xmldom/xmldom': 0.9.10
       backbone: 1.6.1
@@ -28400,7 +28400,7 @@ snapshots:
       chokidar: 5.0.0
       commander: 14.0.3
       compression: 1.8.2(supports-color@8.1.1)
-      consolidate: 1.0.4(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(underscore@1.13.8)
+      consolidate: 1.0.4(@babel/core@7.29.13(supports-color@8.1.1))(ejs@3.1.10)(handlebars@4.7.9)(lodash@4.18.1)(mustache@4.2.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(underscore@1.13.8)
       execa: 9.6.1
       express: 5.3.0(supports-color@8.1.1)
       glob: 13.0.7
