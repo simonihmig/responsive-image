@@ -72,6 +72,19 @@ describe('cloudinary', function () {
     );
   });
 
+  test('it does not accumulate resize params across calls with chained params', function () {
+    const transformations = [{ e: 'grayscale' }];
+    const result = cloudinary('foo/bar.jpg', { transformations });
+
+    expect(result.imageUrlFor(100, 'jpeg')).toBe(
+      'https://res.cloudinary.com/dummy/image/upload/e_grayscale/w_100,c_limit,q_auto/foo/bar.jpeg',
+    );
+    expect(result.imageUrlFor(200, 'jpeg')).toBe(
+      'https://res.cloudinary.com/dummy/image/upload/e_grayscale/w_200,c_limit,q_auto/foo/bar.jpeg',
+    );
+    expect(transformations).toEqual([{ e: 'grayscale' }]);
+  });
+
   test('it supports custom quality setting', function () {
     const result = cloudinary('foo/bar.jpg', {
       quality: 50,
