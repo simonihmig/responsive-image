@@ -27,6 +27,8 @@ try {
   run('pnpm install --no-frozen-lockfile', root);
   run('pnpm test.vitest', solidDir);
   run('pnpm test.vitest:server', solidDir);
+  run('pnpm build', solidDir);
+  run('pnpm test.tree-shaking', solidDir);
 } finally {
   writeFileSync(pkgPath, pkg);
   writeFileSync(lockPath, lock);
