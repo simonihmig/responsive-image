@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "test": {
+      "dependsOn": [
+        "test.ember",
+        "test.playwright",
+        "test.vitest",
+        "test.vitest:server",
+        "test.tree-shaking"
+      ],
+      "outputs": []
+    },
+    "test.tree-shaking": {
+      "dependsOn": ["build"],
+      "outputs": []
+    }
+  }
+}
