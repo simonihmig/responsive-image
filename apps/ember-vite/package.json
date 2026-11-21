@@ -95,8 +95,5 @@
   "exports": {
     "./tests/*": "./tests/*",
     "./*": "./app/*"
-  },
-  "volta": {
-    "extends": "../../package.json"
   }
 }
