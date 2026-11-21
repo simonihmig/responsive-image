@@ -585,8 +585,8 @@ importers:
         specifier: 3.9.10
         version: 3.9.10
       prettier-plugin-svelte:
-        specifier: 4.1.1
-        version: 4.1.1(prettier@3.9.10)(svelte@5.56.10(@typescript-eslint/types@8.73.0))
+        specifier: 4.2.0
+        version: 4.2.0(prettier@3.9.10)(svelte@5.56.10(@typescript-eslint/types@8.73.0))
       svelte:
         specifier: 5.56.10
         version: 5.56.10(@typescript-eslint/types@8.73.0)
@@ -1161,8 +1161,8 @@ importers:
         specifier: 3.9.10
         version: 3.9.10
       prettier-plugin-svelte:
-        specifier: 4.1.1
-        version: 4.1.1(prettier@3.9.10)(svelte@5.56.10(@typescript-eslint/types@8.73.0))
+        specifier: 4.2.0
+        version: 4.2.0(prettier@3.9.10)(svelte@5.56.10(@typescript-eslint/types@8.73.0))
       publint:
         specifier: 0.3.25
         version: 0.3.25
@@ -11024,8 +11024,8 @@ packages:
     peerDependencies:
       prettier: '>= 3.0.0'
 
-  prettier-plugin-svelte@4.1.1:
-    resolution: {integrity: sha512-wXvbXMjSvb4C9ENWTHXyd+ihakKCsJ6rJhLP6/8HFNj4GkZr48jqL9PoKsl2sk7SyCZRTnJ7O2TTowUpOxP/KA==}
+  prettier-plugin-svelte@4.2.0:
+    resolution: {integrity: sha512-VgUFSR6+7/KLloVSIgKMwY/9OFxaixY/xsOBUCP95ZKaxSa6JBtLKzq6L1L/Tw6Jc1C7K+op7D1Yu5qD+YdPHA==}
     engines: {node: '>=20'}
     peerDependencies:
       prettier: ^3.0.0
@@ -26974,7 +26974,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  prettier-plugin-svelte@4.1.1(prettier@3.9.10)(svelte@5.56.10(@typescript-eslint/types@8.73.0)):
+  prettier-plugin-svelte@4.2.0(prettier@3.9.10)(svelte@5.56.10(@typescript-eslint/types@8.73.0)):
     dependencies:
       prettier: 3.9.10
       svelte: 5.56.10(@typescript-eslint/types@8.73.0)
