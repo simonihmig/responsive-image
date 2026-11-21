@@ -44,13 +44,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
+      - uses: pnpm/setup@v3
         with:
-          node-version: 22
-          cache: 'pnpm'
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+          require-lockfile: true
+          cache: true
+          save-cache: ${{ github.ref == 'refs/heads/main' }}
       - name: TurboRepo local server
         uses: felixmosh/turborepo-gh-artifacts@v4
         with:
