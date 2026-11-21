@@ -18,13 +18,8 @@
         "test.ember",
         "test.playwright",
         "test.vitest",
-        "test.vitest:server",
-        "test.tree-shaking"
+        "test.vitest:server"
       ],
-      "outputs": []
-    },
-    "test.tree-shaking": {
-      "dependsOn": ["build"],
       "outputs": []
     },
     "test.ember": {
