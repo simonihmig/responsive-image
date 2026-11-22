@@ -1,6 +1,8 @@
 import type { Locator, Page } from '@playwright/test';
 
-export async function delayImageLoading(page: Page) {
+export async function delayImageLoading(
+  page: Page,
+): Promise<{ load: () => void }> {
   let load: () => void = () => {
     throw new Error('load helper was not assigned properly');
   };

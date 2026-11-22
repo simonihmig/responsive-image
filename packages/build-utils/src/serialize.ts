@@ -2,9 +2,9 @@ import { stringify } from 'javascript-stringify';
 
 import type { SafeString } from './types';
 
-export const SAFE_STRING = Symbol();
+export const SAFE_STRING: symbol = Symbol();
 
-export function serialize(value: unknown) {
+export function serialize(value: unknown): string | undefined {
   return stringify(
     value,
     (value, _space, next) => {

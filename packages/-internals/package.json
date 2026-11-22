@@ -7,8 +7,8 @@
   "author": "Simon Ihmig <simon.ihmig@gmail.com>",
   "private": "true",
   "scripts": {
-    "build": "pkgroll",
-    "dev": "pkgroll --watch",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
     "lint.eslint": "eslint . --cache",
     "lint.eslint:fix": "eslint . --fix",
@@ -23,13 +23,8 @@
     "src"
   ],
   "exports": {
-    "./eslint": {
-      "default": "./dist/eslint/index.js"
-    },
-    "./playwright": {
-      "types": "./dist/playwright/index.d.ts",
-      "default": "./dist/playwright/index.js"
-    },
+    "./eslint": "./dist/eslint.js",
+    "./playwright": "./dist/playwright.js",
     "./screenshots": "./src/playwright/__screenshots__/index.js"
   },
   "dependencies": {
@@ -47,9 +42,9 @@
     "@types/node": "22.20.5",
     "concurrently": "10.0.7",
     "eslint": "10.15.0",
-    "pkgroll": "2.29.1",
     "prettier": "3.10.1",
     "publint": "0.3.25",
+    "tsdown": "0.23.7",
     "typescript": "6.0.3"
   },
   "peerDependencies": {

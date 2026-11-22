@@ -16,17 +16,12 @@
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
+    ".": "./dist/index.js"
   },
   "scripts": {
-    "build": "pkgroll",
+    "build": "tsdown",
     "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
     "lint.eslint": "eslint .",
     "lint.eslint:fix": "eslint . --fix",
@@ -34,7 +29,7 @@
     "lint.prettier": "prettier . --check",
     "lint.prettier:fix": "prettier . --write",
     "lint.types": "tsc --noEmit",
-    "start": "pkgroll --watch",
+    "start": "tsdown --watch",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "prepack": "pnpm turbo build"
@@ -47,9 +42,9 @@
     "@tsconfig/strictest": "2.0.9",
     "concurrently": "10.0.7",
     "eslint": "10.15.0",
-    "pkgroll": "2.29.1",
     "prettier": "3.10.1",
     "publint": "0.3.25",
+    "tsdown": "0.23.7",
     "typescript": "6.0.3",
     "vitest": "4.1.12"
   },

@@ -16,11 +16,11 @@ const queryArraySeparator = ';';
 
 export const META_KEY = 'responsive-image';
 
-export function parseURL(id: string) {
+export function parseURL(id: string): URL {
   return new URL(id, 'file://');
 }
 
-export function getPathname(id: string) {
+export function getPathname(id: string): string {
   const url = parseURL(id);
   return decodeURIComponent(url.pathname);
 }
