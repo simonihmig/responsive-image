@@ -1,5 +1,11 @@
 # @responsive-image/cdn
 
+## 2.1.1
+
+### Patch Changes
+
+- [#2723](https://github.com/simonihmig/responsive-image/pull/2723) [`f36a254`](https://github.com/simonihmig/responsive-image/commit/f36a254635fae57567365d432be130e7ec87a6db) Thanks [@onetwothird](https://github.com/onetwothird)! - Fix cloudinary chained `transformations` array being mutated, which accumulated resize steps across `srcset` URLs
+
 ## 2.1.0
 
 ### Minor Changes
