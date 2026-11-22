@@ -32,7 +32,7 @@ export interface ImageSource {
   sizes?: string | undefined;
 }
 
-export const PIXEL_DENSITIES = [1, 2];
+export const PIXEL_DENSITIES: number[] = [1, 2];
 
 // determines the order of sources, preferring next-gen formats over legacy
 export const IMAGE_TYPE_SCORE: ReadonlyMap<ImageUrlForType, number> = new Map([

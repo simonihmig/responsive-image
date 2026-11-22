@@ -14,33 +14,16 @@
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./blurhash/decode": {
-      "types": "./dist/blurhash/decode.d.ts",
-      "default": "./dist/blurhash/decode.js"
-    },
-    "./blurhash/ssr": {
-      "types": "./dist/blurhash/ssr.d.ts",
-      "default": "./dist/blurhash/ssr.js"
-    },
-    "./thumbhash/decode": {
-      "types": "./dist/thumbhash/decode.d.ts",
-      "default": "./dist/thumbhash/decode.js"
-    },
-    "./thumbhash/ssr": {
-      "types": "./dist/thumbhash/ssr.d.ts",
-      "default": "./dist/thumbhash/ssr.js"
-    }
+    ".": "./dist/index.js",
+    "./blurhash/decode": "./dist/blurhash/decode.js",
+    "./blurhash/ssr": "./dist/blurhash/ssr.js",
+    "./thumbhash/decode": "./dist/thumbhash/decode.js",
+    "./thumbhash/ssr": "./dist/thumbhash/ssr.js"
   },
   "scripts": {
-    "build": "pkgroll",
+    "build": "tsdown",
     "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
     "lint.eslint": "eslint .",
     "lint.eslint:fix": "eslint . --fix",
@@ -48,7 +31,7 @@
     "lint.prettier": "prettier . --check",
     "lint.prettier:fix": "prettier . --write",
     "lint.types": "tsc --noEmit",
-    "start": "pkgroll --watch",
+    "dev": "tsdown --watch",
     "test.vitest": "vitest run",
     "test.vitest:watch": "vitest watch",
     "prepack": "pnpm turbo build"
@@ -66,11 +49,11 @@
     "blurhash": "2.0.5",
     "concurrently": "10.0.7",
     "eslint": "10.15.0",
-    "pkgroll": "2.29.1",
     "prettier": "3.10.1",
     "publint": "0.3.25",
     "thumbhash": "0.1.1",
-    "typescript": "6.0.3",
+    "tsdown": "0.23.7",
+    "typescript": "7.0.2",
     "vitest": "4.1.12"
   },
   "peerDependenciesMeta": {
