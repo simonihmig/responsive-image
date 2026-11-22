@@ -301,7 +301,7 @@ importers:
         version: 9.1.0(supports-color@10.2.2)
       ember-qunit:
         specifier: 9.2.1
-        version: 9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2)
+        version: 9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@3.0.0)(supports-color@10.2.2)
       ember-resolver:
         specifier: 13.2.0
         version: 13.2.0
@@ -339,8 +339,8 @@ importers:
         specifier: 2.1.8
         version: 2.1.8(prettier@3.10.1)(supports-color@10.2.2)
       qunit:
-        specifier: 2.26.0
-        version: 2.26.0
+        specifier: 3.0.0
+        version: 3.0.0
       qunit-dom:
         specifier: 3.6.0
         version: 3.6.0
@@ -490,7 +490,7 @@ importers:
         version: 9.1.0(supports-color@8.1.1)
       ember-qunit:
         specifier: 9.2.1
-        version: 9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1)
+        version: 9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@3.0.0)(supports-color@8.1.1)
       ember-resolver:
         specifier: 13.2.0
         version: 13.2.0
@@ -537,8 +537,8 @@ importers:
         specifier: 2.1.8
         version: 2.1.8(prettier@3.10.1)(supports-color@8.1.1)
       qunit:
-        specifier: 2.26.0
-        version: 2.26.0
+        specifier: 3.0.0
+        version: 3.0.0
       qunit-dom:
         specifier: 3.6.0
         version: 3.6.0
@@ -1092,7 +1092,7 @@ importers:
         version: 10.0.7
       ember-qunit:
         specifier: 9.2.1
-        version: 9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2)
+        version: 9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@3.0.0)(supports-color@10.2.2)
       ember-resolver:
         specifier: 13.2.0
         version: 13.2.0
@@ -1118,8 +1118,8 @@ importers:
         specifier: 2.1.8
         version: 2.1.8(prettier@3.10.1)(supports-color@10.2.2)
       qunit:
-        specifier: 2.26.0
-        version: 2.26.0
+        specifier: 3.0.0
+        version: 3.0.0
       qunit-dom:
         specifier: 3.6.0
         version: 3.6.0
@@ -6955,6 +6955,10 @@ packages:
     resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
     engines: {node: '>=14'}
 
+  commander@12.1.0:
+    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
+
   commander@14.0.3:
     resolution: {integrity: sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw==}
     engines: {node: '>=20'}
@@ -6965,10 +6969,6 @@ packages:
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
-
-  commander@7.2.0:
-    resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
-    engines: {node: '>= 10'}
 
   comment-parser@1.2.4:
     resolution: {integrity: sha512-pm0b+qv+CkWNriSTMsfnjChF9kH0kxz55y44Wo5le9qLxMj5xDQAaEd9ZN1ovSuk9CsrncWaFwgpOMg7ClJwkw==}
@@ -10291,8 +10291,8 @@ packages:
     resolution: {integrity: sha512-OmO8+GM1JUZqXET720VrJCwkjUCXmCMQm0Z3UDDRbfNLHS4NEAvY60j5jiFv0tkKw2PNNlqOLhahVmwJIOLDIQ==}
     engines: {node: '>=18'}
 
-  node-watch@0.7.3:
-    resolution: {integrity: sha512-3l4E8uMPY1HdMMryPRUAl+oIHtXtyiTlIiESNSVSNxcPfzAFzeTbXFQkZfAwBbo0B1qMSG8nUABx+Gd+YrbKrQ==}
+  node-watch@0.7.4:
+    resolution: {integrity: sha512-RinNxoz4W1cep1b928fuFhvAQ5ag/+1UlMDV7rbyGthBIgsiEouS4kvRayvvboxii4m8eolKOIBo3OjDqbc+uQ==}
     engines: {node: '>=6'}
 
   node@runtime:22.23.5:
@@ -11149,9 +11149,9 @@ packages:
   qunit-theme-ember@1.0.0:
     resolution: {integrity: sha512-vdMVVo6ecdCkWttMTKeyq1ZTLGHcA6zdze2zhguNuc3ritlJMhOXY5RDseqazOwqZVfCg3rtlmL3fMUyIzUyFQ==}
 
-  qunit@2.26.0:
-    resolution: {integrity: sha512-KSv16YomcYmiK90qTOJl3Bm5IvTf2upqQDdBQWCvSQWe94FWobnUgKOpvpvZdG7VkDt3TJSI8k8g9+GGGEd7Fw==}
-    engines: {node: '>=10'}
+  qunit@3.0.0:
+    resolution: {integrity: sha512-g4Fgw3uhqwdjzhUDa0bYGQyGzs1xRcIY/32c5zUydnnrgzcA8updYF9nIeUis+PfwuqX6UB/4JpCNMnrVBY6iA==}
+    engines: {node: '>=18'}
     hasBin: true
 
   radix3@1.1.2:
@@ -21134,13 +21134,13 @@ snapshots:
 
   commander@10.0.1: {}
 
+  commander@12.1.0: {}
+
   commander@14.0.3: {}
 
   commander@2.20.3: {}
 
   commander@4.1.1: {}
-
-  commander@7.2.0: {}
 
   comment-parser@1.2.4: {}
 
@@ -22395,20 +22395,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-qunit@9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@2.26.0)(supports-color@10.2.2):
+  ember-qunit@9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2))(qunit@3.0.0)(supports-color@10.2.2):
     dependencies:
       '@ember/test-helpers': 5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
       '@embroider/addon-shim': 1.10.2(supports-color@10.2.2)
-      qunit: 2.26.0
+      qunit: 3.0.0
       qunit-theme-ember: 1.0.0
     transitivePeerDependencies:
       - supports-color
 
-  ember-qunit@9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@2.26.0)(supports-color@8.1.1):
+  ember-qunit@9.2.1(@ember/test-helpers@5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1))(qunit@3.0.0)(supports-color@8.1.1):
     dependencies:
       '@ember/test-helpers': 5.8.0(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
       '@embroider/addon-shim': 1.10.2(supports-color@8.1.1)
-      qunit: 2.26.0
+      qunit: 3.0.0
       qunit-theme-ember: 1.0.0
     transitivePeerDependencies:
       - supports-color
@@ -25931,7 +25931,7 @@ snapshots:
 
   node-releases@2.0.60: {}
 
-  node-watch@0.7.3: {}
+  node-watch@0.7.4: {}
 
   node@runtime:22.23.5: {}
 
@@ -26801,10 +26801,10 @@ snapshots:
 
   qunit-theme-ember@1.0.0: {}
 
-  qunit@2.26.0:
+  qunit@3.0.0:
     dependencies:
-      commander: 7.2.0
-      node-watch: 0.7.3
+      commander: 12.1.0
+      node-watch: 0.7.4
       tiny-glob: 0.2.9
 
   radix3@1.1.2: {}
