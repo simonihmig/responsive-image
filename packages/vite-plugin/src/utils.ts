@@ -8,20 +8,20 @@ import type { ResolvedConfig, Rollup } from 'vite';
 
 export const META_KEY = 'responsive-image';
 
-export const defaultViteOptions = {
+export const defaultViteOptions: ViteOptions = {
   include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)\?.*responsive.*$/,
   name: '[name]-[width]w.[ext]',
   cache: true,
   styles: 'external',
-} satisfies ViteOptions;
+};
 
-export const viteOptionKeys = [
+export const viteOptionKeys: Array<keyof ViteOptions> = [
   'exclude',
   'include',
   'lqip',
   'name',
   'styles',
-] satisfies Array<keyof ViteOptions>;
+];
 
 export function getViteOptions(
   id: string | URL,

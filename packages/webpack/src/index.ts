@@ -10,7 +10,9 @@ const defaultLoaders: string[] = [
   '@responsive-image/webpack/loader',
 ];
 
-function responsiveImage(options?: Partial<Options>) {
+function responsiveImage(
+  options?: Partial<Options>,
+): string[] | { loader: string; options: Partial<Options> }[] {
   if (options) {
     return defaultLoaders.map((loader) => ({ loader, options }));
   }

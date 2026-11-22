@@ -17,19 +17,11 @@
     "vite plugin",
     "vite"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
   "exports": {
     ".": {
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      },
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      }
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./client": {
       "import": {
@@ -38,7 +30,7 @@
     }
   },
   "scripts": {
-    "build": "pkgroll",
+    "build": "tsdown",
     "lint:fix": "concurrently 'npm:lint.*:fix' --names 'fix:'",
     "lint.eslint": "eslint .",
     "lint.eslint:fix": "eslint . --fix",
@@ -47,7 +39,7 @@
     "lint.prettier:fix": "prettier . --write",
     "lint.types": "tsc --noEmit",
     "prepack": "pnpm turbo build",
-    "start": "pkgroll --watch",
+    "start": "tsdown --watch",
     "test.vitest": "vitest run",
     "test.vitest:watch": "vitest watch"
   },
@@ -68,9 +60,9 @@
     "eslint": "10.15.0",
     "glob": "14.0.6",
     "jest-image-snapshot": "6.5.2",
-    "pkgroll": "2.29.1",
     "prettier": "3.10.1",
     "publint": "0.3.25",
+    "tsdown": "0.23.7",
     "typescript": "6.0.3",
     "vite": "8.3.8",
     "vitest": "4.1.12"

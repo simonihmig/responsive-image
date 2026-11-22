@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "isolatedDeclarations": true,
+    "declaration": true
   },
   "include": ["src/**/*", "types/**/*", "tests/**/*"]
 }
