@@ -348,8 +348,8 @@ importers:
         specifier: 18.0.0
         version: 18.0.0
       stylelint-config-standard:
-        specifier: 40.0.0
-        version: 40.0.0(stylelint@18.0.0)
+        specifier: 41.0.0
+        version: 41.0.0(stylelint@18.0.0)
       stylelint-prettier:
         specifier: 5.1.0
         version: 5.1.0(prettier@3.10.1)(stylelint@18.0.0)
@@ -546,8 +546,8 @@ importers:
         specifier: 18.0.0
         version: 18.0.0
       stylelint-config-standard:
-        specifier: 40.0.0
-        version: 40.0.0(stylelint@18.0.0)
+        specifier: 41.0.0
+        version: 41.0.0(stylelint@18.0.0)
       stylelint-prettier:
         specifier: 5.1.0
         version: 5.1.0(prettier@3.10.1)(stylelint@18.0.0)
@@ -12028,17 +12028,17 @@ packages:
   styled_string@0.0.1:
     resolution: {integrity: sha512-DU2KZiB6VbPkO2tGSqQ9n96ZstUPjW7X4sGO6V2m1myIQluX0p1Ol8BrA/l6/EesqhMqXOIXs3cJNOy1UuU2BA==}
 
-  stylelint-config-recommended@18.0.0:
-    resolution: {integrity: sha512-mxgT2XY6YZ3HWWe3Di8umG6aBmWmHTblTgu/f10rqFXnyWxjKWwNdjSWkgkwCtxIKnqjSJzvFmPT5yabVIRxZg==}
-    engines: {node: '>=20.19.0'}
+  stylelint-config-recommended@19.1.0:
+    resolution: {integrity: sha512-DurXBzvz2cmVX2rM1JMDCbPIq+MRKhIPY743lFk1DjUoyx7giLfN+HR8Hilw+kE2nE5blaXhVf66edvQGnLdwA==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
     peerDependencies:
-      stylelint: ^17.0.0
+      stylelint: ^18.0.0
 
-  stylelint-config-standard@40.0.0:
-    resolution: {integrity: sha512-EznGJxOUhtWck2r6dJpbgAdPATIzvpLdK9+i5qPd4Lx70es66TkBPljSg4wN3Qnc6c4h2n+WbUrUynQ3fanjHw==}
-    engines: {node: '>=20.19.0'}
+  stylelint-config-standard@41.0.0:
+    resolution: {integrity: sha512-EJIvMOMARieBOLhw2yzN7BaVFiIY2Ex8CkbXahxP6tQZK41+N8OVUo57Uvx9iTr862h+thqDoDH7vQbeth1ryg==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
     peerDependencies:
-      stylelint: ^17.0.0
+      stylelint: ^18.0.0
 
   stylelint-prettier@5.1.0:
     resolution: {integrity: sha512-YYu3C6AlovZkSUsgyANyxmrzKF6BlK85voexN+iLlh1i1Lgl0IeGhwqFiPHPX8cMSkX0AC2/oHi06j/5iXSWgA==}
@@ -27894,14 +27894,14 @@ snapshots:
 
   styled_string@0.0.1: {}
 
-  stylelint-config-recommended@18.0.0(stylelint@18.0.0):
+  stylelint-config-recommended@19.1.0(stylelint@18.0.0):
     dependencies:
       stylelint: 18.0.0
 
-  stylelint-config-standard@40.0.0(stylelint@18.0.0):
+  stylelint-config-standard@41.0.0(stylelint@18.0.0):
     dependencies:
       stylelint: 18.0.0
-      stylelint-config-recommended: 18.0.0(stylelint@18.0.0)
+      stylelint-config-recommended: 19.1.0(stylelint@18.0.0)
 
   stylelint-prettier@5.1.0(prettier@3.10.1)(stylelint@18.0.0):
     dependencies:
