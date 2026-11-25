@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ResponsiveImage } from '@responsive-image/vue';
 import {
+  bunny,
   cloudinary,
   autorender,
   fastly,
@@ -21,6 +22,9 @@ setConfig<Config>('cdn', {
   autorender: {
     domain: 'assets.autorender.io',
     workspace: 'wB5HrlVhGq',
+  },
+  bunny: {
+    domain: 'responsive-image-test.b-cdn.net',
   },
   cloudinary: {
     cloudName: 'responsive-image',
@@ -66,6 +70,11 @@ setConfig<Config>('cdn', {
     <ResponsiveImage
       :src="fastly('image.webp', { aspectRatio: 2 })"
       data-test-fastly-image
+    />
+    <h2>Bunny Optimizer</h2>
+    <ResponsiveImage
+      :src="bunny('aurora-original.jpg', { aspectRatio: 1.4971927636 })"
+      data-test-bunny-image
     />
     <h2>imgix</h2>
     <ResponsiveImage

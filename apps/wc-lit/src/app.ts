@@ -2,6 +2,7 @@ import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   autorender,
+  bunny,
   cloudinary,
   fastly,
   imgix,
@@ -23,6 +24,9 @@ setConfig<Config>('cdn', {
   autorender: {
     domain: 'assets.autorender.io',
     workspace: 'wB5HrlVhGq',
+  },
+  bunny: {
+    domain: 'responsive-image-test.b-cdn.net',
   },
   cloudinary: {
     cloudName: 'responsive-image',
@@ -70,6 +74,13 @@ export class MyApp extends LitElement {
       <responsive-image
         .src=${fastly('image.webp', { aspectRatio: 2 })}
         data-test-fastly-image
+      ></responsive-image>
+
+      <h2>Bunny Optimizer</h2>
+
+      <responsive-image
+        .src=${bunny('aurora-original.jpg', { aspectRatio: 1.4971927636 })}
+        data-test-bunny-image
       ></responsive-image>
 
       <h2>imgix</h2>

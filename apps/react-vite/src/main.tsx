@@ -1,6 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { autorender, cloudinary, imgix, netlify } from '@responsive-image/cdn';
+import {
+  autorender,
+  bunny,
+  cloudinary,
+  imgix,
+  netlify,
+} from '@responsive-image/cdn';
 import { setConfig } from '@responsive-image/core';
 import { ResponsiveImage } from '@responsive-image/react';
 
@@ -16,6 +22,9 @@ setConfig('cdn', {
   autorender: {
     domain: 'assets.autorender.io',
     workspace: 'wB5HrlVhGq',
+  },
+  bunny: {
+    domain: 'responsive-image-test.b-cdn.net',
   },
   cloudinary: {
     cloudName: 'responsive-image',
@@ -47,6 +56,11 @@ createRoot(document.getElementById('root')!).render(
       <ResponsiveImage
         src={autorender('ar-juice.jpg')}
         data-test-autorender-image
+      />
+      <h2>Bunny Optimizer</h2>
+      <ResponsiveImage
+        src={bunny('aurora-original.jpg', { aspectRatio: 1.4971927636 })}
+        data-test-bunny-image
       />
       <h2>imgix</h2>
       <ResponsiveImage

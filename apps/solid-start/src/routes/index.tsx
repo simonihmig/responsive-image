@@ -1,5 +1,6 @@
 import {
   autorender,
+  bunny,
   cloudinary,
   fastly,
   imgix,
@@ -40,6 +41,11 @@ export default function Home() {
           aspectRatio: 2,
         })}
         data-test-fastly-image
+      />
+      <h2>Bunny Optimizer</h2>
+      <ResponsiveImage
+        src={bunny('aurora-original.jpg', { aspectRatio: 1.4971927636 })}
+        data-test-bunny-image
       />
       <h2>imgix</h2>
       <ResponsiveImage
