@@ -50,9 +50,9 @@ export default {
       cwd: 'packages/solid',
       npm: {
         devDependencies: {
-          'solid-js': `^2.0.0-rc.13`,
-          '@solidjs/web': `^2.0.0-rc.13`,
-          '@solidjs/vite-plugin': `^3.0.0-next.47`,
+          'solid-js': `^2.0.0`,
+          '@solidjs/web': `^2.0.0`,
+          '@solidjs/vite-plugin': `^3.0.0`,
           '@testing-library/jest-dom': `^6.9.1`,
         },
       },
