@@ -118,7 +118,7 @@ import { bunny } from '@responsive-image/cdn';
 
 :::
 
-You can also pass a full URL, which is useful if you serve images from more than one Pull Zone. In that case the configured `domain` is not used:
+You can also pass a full URL, for example to load an image from a different Pull Zone. The provider then ignores the configured `domain`:
 
 ```js
 bunny('https://other-zone.b-cdn.net/path/to/image.jpg');
@@ -390,7 +390,7 @@ export default function MyApp() {
 
 ### Image formats
 
-By default no `format` parameter is sent, so Bunny Optimizer picks the format based on what the browser supports (WebP must be enabled in your Optimizer settings for this).
+By default the provider leaves out the `format` parameter, and Bunny Optimizer picks a format the browser supports. This only works if WebP is enabled in your Optimizer settings.
 
 If you want a `picture` tag with one or more specific formats as `source` tags you can specify them using the `formats` argument. Supported formats are `webp`, `avif`, `jpeg`, `png` and `gif`:
 
