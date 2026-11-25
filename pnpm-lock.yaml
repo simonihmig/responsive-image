@@ -683,8 +683,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/vite-plugin
       '@solidjs/meta':
-        specifier: ^0.29.4
-        version: 0.29.4(solid-js@1.9.20)
+        specifier: ^2.0.0
+        version: 2.0.0(@solidjs/web@2.0.3(solid-js@1.9.20))(solid-js@1.9.20)
       '@solidjs/router':
         specifier: ^0.16.0
         version: 0.16.1(solid-js@1.9.20)
@@ -5095,10 +5095,11 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@solidjs/meta@0.29.4':
-    resolution: {integrity: sha512-zdIWBGpR9zGx1p1bzIPqF5Gs+Ks/BH8R6fWhmUa/dcK1L2rUC8BAcZJzNRYBQv74kScf1TSOs0EY//Vd/I0V8g==}
+  '@solidjs/meta@2.0.0':
+    resolution: {integrity: sha512-DcT6PbCm03u8fkO8GEhLF/Dcz1vLIy4L1f3GaSbcaVpLn8nF+dJRRkrQ/7366HJecNZGRysrcHl5R7IynH1CAQ==}
     peerDependencies:
-      solid-js: '>=1.8.4'
+      '@solidjs/web': ^2.0.0
+      solid-js: ^2.0.0
 
   '@solidjs/router@0.16.1':
     resolution: {integrity: sha512-IhyjedgC6LRpw/8CPGGI89FrV+r0xTHzOl2c4CRyzYQ1bLepJxbVI1LLKvsavMWY5TRBRacV7hAeOhuTXkjiqg==}
@@ -5119,6 +5120,12 @@ packages:
     peerDependenciesMeta:
       '@solidjs/router':
         optional: true
+
+  '@solidjs/web@2.0.3':
+    resolution: {integrity: sha512-XYl9JGOtQ8yJSZRnd6uC+5gYXsYvnIRNxhn89m+F1v6D4d4ZFdTJY2Lq/8XJ3YcjckkCrK/mNfd3kIiqqgnG7w==}
+    engines: {node: '>=22.12.0'}
+    peerDependencies:
+      solid-js: ^2.0.3
 
   '@speed-highlight/core@1.2.23':
     resolution: {integrity: sha512-iRoq6i6JDJP6Mt2A5JaPvzw0pgYHH6k92ij+yXiTrB7T2y9N789aWE3EHWj/5ztlJBokcCBja3iYLVdu5wgnkg==}
@@ -11861,6 +11868,12 @@ packages:
     peerDependencies:
       seroval: ^1.0
 
+  seroval-plugins@1.8.0:
+    resolution: {integrity: sha512-96vBb12rDvPPwdKUgWw1op3fGq8AVBFOr0IllbnM72yR5J9WWXF18cQ4g1XfDO7HCyh2dt70P3XdtyRayP8FWg==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      seroval: ^1.8.0
+
   seroval@1.6.12:
     resolution: {integrity: sha512-CqbIVfk/7GL3ITwZI55lcPbpQbjHZ2DD5cUj4iH7E9YsCfHNJV1mx7yNp86Z84w5IpmkZZS/2s5vPOWmVWSdQg==}
     engines: {node: '>=10'}
@@ -18476,8 +18489,9 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@solidjs/meta@0.29.4(solid-js@1.9.20)':
+  '@solidjs/meta@2.0.0(@solidjs/web@2.0.3(solid-js@1.9.20))(solid-js@1.9.20)':
     dependencies:
+      '@solidjs/web': 2.0.3(solid-js@1.9.20)
       solid-js: 1.9.20
 
   '@solidjs/router@0.16.1(solid-js@1.9.20)':
@@ -18495,7 +18509,7 @@ snapshots:
       html-to-image: 1.11.13
       radix3: 1.1.2
       seroval: 1.8.1
-      seroval-plugins: 1.6.12(seroval@1.8.1)
+      seroval-plugins: 1.8.0(seroval@1.8.1)
       shiki: 1.29.2
       source-map-js: 1.2.4
       terracotta: 1.1.0(solid-js@1.9.20)
@@ -18514,6 +18528,13 @@ snapshots:
       solid-js: 1.9.20
     optionalDependencies:
       '@solidjs/router': 0.16.1(solid-js@1.9.20)
+
+  '@solidjs/web@2.0.3(solid-js@1.9.20)':
+    dependencies:
+      csstype: 3.2.4
+      seroval: 1.8.1
+      seroval-plugins: 1.8.0(seroval@1.8.1)
+      solid-js: 1.9.20
 
   '@speed-highlight/core@1.2.23': {}
 
@@ -27799,7 +27820,7 @@ snapshots:
     dependencies:
       seroval: 1.6.12
 
-  seroval-plugins@1.6.12(seroval@1.8.1):
+  seroval-plugins@1.8.0(seroval@1.8.1):
     dependencies:
       seroval: 1.8.1
 
