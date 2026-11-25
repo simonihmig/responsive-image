@@ -26,7 +26,7 @@ pnpm add @responsive-image/cdn
 
 :::
 
-In your bunny.net dashboard, enable Bunny Optimizer on your Pull Zone and turn on the **Dynamic Image API** under **Optimizer → Settings**. To let Bunny Optimizer pick the best format automatically, also enable **WebP** there.
+In your [bunny.net](https://bunny.net) dashboard, enable Bunny Optimizer on your Pull Zone and turn on the **Dynamic Image API** under **Optimizer → Settings**. To let Bunny Optimizer pick the best format automatically, also enable **WebP** there.
 
 Then set the hostname of your Pull Zone in your configuration, which you can set up in your application (e.g. `app.js`):
 
