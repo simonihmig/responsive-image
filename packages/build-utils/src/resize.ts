@@ -1,4 +1,5 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
 
 import { getCacheFilename } from './utils';
 
@@ -11,6 +12,14 @@ import type {
 import type { ImageType } from '@responsive-image/core';
 import type { ImageConfig } from 'imagetools-core';
 import type { Metadata } from 'sharp';
+
+// Multiple modules can reference the same image (with the same configuration),
+// and their transforms run concurrently. As they all share the same cache file,
+// a reader could otherwise observe a cache file that is still being written,
+// emitting empty or corrupted image data. Deduplicate the work per cache file
+// and write the cache atomically.
+const pendingCacheWrites = new Map<string, Promise<Buffer>>();
+let tmpFileCounter = 0;
 
 export async function generateResizedImage(
   input: ImageLoaderChainedResult,
@@ -31,26 +40,7 @@ export async function generateResizedImage(
     );
   }
 
-  const data = async () => {
-    let cacheFile: string | undefined = undefined;
-
-    if (options.cache && input.hash) {
-      const cacheDir = options.cacheDir ?? './node_modules/.cache';
-
-      cacheFile = getCacheFilename(input, config, format, cacheDir);
-
-      await mkdir(cacheDir, { recursive: true });
-
-      try {
-        const buffer = await readFile(cacheFile);
-
-        return buffer;
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (e) {
-        // do nothing
-      }
-    }
-
+  const generateImage = async (): Promise<Buffer> => {
     const imagetools = await import('imagetools-core');
 
     const { transforms } = imagetools.generateTransforms(
@@ -64,16 +54,70 @@ export async function generateResizedImage(
       input.sharp,
     );
 
-    const resizedImageData = await resizedImage.toBuffer();
+    return resizedImage.toBuffer();
+  };
 
-    if (options.cache && cacheFile) {
-      // console.log(
-      //   `writing to cache file ${cacheFile} for ${JSON.stringify(config)}`,
-      // );
-      await writeFile(cacheFile, resizedImageData);
+  const data = (): Promise<Buffer> => {
+    if (!options.cache || !input.hash) {
+      return generateImage();
     }
 
-    return resizedImageData;
+    const cacheDir = options.cacheDir ?? './node_modules/.cache';
+    const cacheFile = getCacheFilename(input, config, format, cacheDir);
+
+    const pending = pendingCacheWrites.get(cacheFile);
+    if (pending) {
+      return pending;
+    }
+
+    const promise = (async () => {
+      await mkdir(dirname(cacheFile), { recursive: true });
+
+      try {
+        const buffer = await readFile(cacheFile);
+
+        // Treat empty cache entries as a cache miss, as those might be left
+        // behind by a failed (or interrupted) write
+        if (buffer.length > 0) {
+          return buffer;
+        }
+      } catch (e) {
+        // Only a missing cache file is a regular cache miss. Other errors
+        // (permissions, IO) should surface instead of being silently retried.
+        if ((e as NodeJS.ErrnoException).code !== 'ENOENT') {
+          throw e;
+        }
+      }
+
+      const resizedImageData = await generateImage();
+
+      if (resizedImageData.length === 0) {
+        // Fail loudly instead of emitting a broken asset silently
+        throw new Error(
+          `@responsive-image/build-utils generated an empty image for ${JSON.stringify(config)}`,
+        );
+      }
+
+      // Write to a temporary file first and rename it, so concurrent readers
+      // never see a partially written cache file
+      const tmpFile = `${cacheFile}.${process.pid}-${tmpFileCounter++}.tmp`;
+
+      try {
+        await writeFile(tmpFile, resizedImageData);
+        await rename(tmpFile, cacheFile);
+      } finally {
+        // no-op after a successful rename, but cleans up a failed write
+        await rm(tmpFile, { force: true });
+      }
+
+      return resizedImageData;
+    })().finally(() => {
+      pendingCacheWrites.delete(cacheFile);
+    });
+
+    pendingCacheWrites.set(cacheFile, promise);
+
+    return promise;
   };
 
   return {
