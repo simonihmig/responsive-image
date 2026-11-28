@@ -235,8 +235,8 @@ importers:
         specifier: 5.8.0
         version: 5.8.0(@babel/core@7.29.13(supports-color@10.2.2))(supports-color@10.2.2)
       '@embroider/compat':
-        specifier: 4.1.28
-        version: 4.1.28(@embroider/core@4.6.10(@glint/template@1.11.1)(supports-color@10.2.2))(@glint/template@1.11.1)(supports-color@10.2.2)
+        specifier: 4.1.29
+        version: 4.1.29(@embroider/core@4.6.10(@glint/template@1.11.1)(supports-color@10.2.2))(@glint/template@1.11.1)(supports-color@10.2.2)
       '@embroider/config-meta-loader':
         specifier: 1.0.1
         version: 1.0.1
@@ -1056,11 +1056,11 @@ importers:
         specifier: 4.1.2
         version: 4.1.2(supports-color@10.2.2)
       '@embroider/addon-dev':
-        specifier: 8.5.0
-        version: 8.5.0(@glint/template@1.11.1)(rollup@4.68.8)(supports-color@10.2.2)
+        specifier: 8.5.1
+        version: 8.5.1(@glint/template@1.11.1)(rollup@4.68.8)(supports-color@10.2.2)
       '@embroider/compat':
-        specifier: 4.1.28
-        version: 4.1.28(@embroider/core@4.6.10(@glint/template@1.11.1)(supports-color@10.2.2))(@glint/template@1.11.1)(supports-color@10.2.2)
+        specifier: 4.1.29
+        version: 4.1.29(@embroider/core@4.6.10(@glint/template@1.11.1)(supports-color@10.2.2))(@glint/template@1.11.1)(supports-color@10.2.2)
       '@embroider/core':
         specifier: 4.6.10
         version: 4.6.10(@glint/template@1.11.1)(supports-color@10.2.2)
@@ -2682,8 +2682,8 @@ packages:
       rollup:
         optional: true
 
-  '@embroider/addon-dev@8.5.0':
-    resolution: {integrity: sha512-zr851qMWNZC5C0l31nic3R/yxLZAywAl98nEv/cup2gR3gSfREBkYsmF9JzRVWlrouslLMXa3oHL99ueQ87KGQ==}
+  '@embroider/addon-dev@8.5.1':
+    resolution: {integrity: sha512-+F8HlYnH+p2UGb57MGMXucIo523r9edf1HvUNrIarLmdUYlOXlag4notdISYGSWzlPEq7wVJdWokknFgPfMNEg==}
     engines: {node: 12.* || 14.* || >= 16}
     hasBin: true
     peerDependencies:
@@ -2709,8 +2709,8 @@ packages:
     peerDependencies:
       '@embroider/core': ^3.5.10
 
-  '@embroider/compat@4.1.28':
-    resolution: {integrity: sha512-ta7vnAPeS0bb8tXC4f5JStcT0xj+kdYm+vye1fR2Gn/ekx1Vr0ziTbaWITRfFjICMIgodRMf7pGnlt3OODwUWQ==}
+  '@embroider/compat@4.1.29':
+    resolution: {integrity: sha512-pZwBN4EkGIHCyWXSCX/9YVnNuy7r2q87LUfRvYiLmNG15KYsgV/lt3BbpRz8zFuY86T2ku7RLgV6uMMy9pG+ww==}
     engines: {node: '>= 20.19.*'}
     peerDependencies:
       '@embroider/core': ^4.6.10
@@ -15917,7 +15917,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/addon-dev@8.5.0(@glint/template@1.11.1)(rollup@4.68.8)(supports-color@10.2.2)':
+  '@embroider/addon-dev@8.5.1(@glint/template@1.11.1)(rollup@4.68.8)(supports-color@10.2.2)':
     dependencies:
       '@embroider/core': 4.6.10(@glint/template@1.11.1)(supports-color@10.2.2)
       '@rollup/pluginutils': 5.4.0(rollup@4.68.8)
@@ -16019,7 +16019,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/compat@4.1.28(@embroider/core@4.6.10(@glint/template@1.11.1)(supports-color@10.2.2))(@glint/template@1.11.1)(supports-color@10.2.2)':
+  '@embroider/compat@4.1.29(@embroider/core@4.6.10(@glint/template@1.11.1)(supports-color@10.2.2))(@glint/template@1.11.1)(supports-color@10.2.2)':
     dependencies:
       '@babel/code-frame': 7.29.7
       '@babel/core': 7.29.13(supports-color@10.2.2)
