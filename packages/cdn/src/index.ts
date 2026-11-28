@@ -1,4 +1,5 @@
 export * from './autorender.ts';
+export * from './bunny.ts';
 export * from './cloudinary.ts';
 export * from './fastly.ts';
 export * from './imgix.ts';

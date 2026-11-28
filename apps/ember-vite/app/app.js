@@ -16,6 +16,9 @@ setConfig('cdn', {
     domain: 'assets.autorender.io',
     workspace: 'wB5HrlVhGq',
   },
+  bunny: {
+    domain: 'responsive-image-test.b-cdn.net',
+  },
   cloudinary: {
     cloudName: 'responsive-image',
   },

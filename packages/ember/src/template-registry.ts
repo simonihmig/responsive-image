@@ -1,5 +1,6 @@
 import type ResponsiveImageComponent from './components/responsive-image.gts';
 import type AutorenderProvider from './helpers/responsive-image-autorender';
+import type BunnyProvider from './helpers/responsive-image-bunny';
 import type CloudinaryProvider from './helpers/responsive-image-cloudinary';
 import type FastlyProvider from './helpers/responsive-image-fastly';
 import type ImgixProvider from './helpers/responsive-image-imgix.ts';
@@ -10,6 +11,7 @@ export default interface Registry {
   ResponsiveImage: typeof ResponsiveImageComponent;
   'responsive-image-resolve': typeof ResponsiveImageResolve;
   'responsive-image-autorender': typeof AutorenderProvider;
+  'responsive-image-bunny': typeof BunnyProvider;
   'responsive-image-cloudinary': typeof CloudinaryProvider;
   'responsive-image-fastly': typeof FastlyProvider;
   'responsive-image-netlify': typeof NetlifyProvider;

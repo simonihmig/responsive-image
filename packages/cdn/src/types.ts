@@ -1,4 +1,5 @@
 import type { AutorenderConfig } from './autorender';
+import type { BunnyConfig } from './bunny';
 import type { CloudinaryConfig } from './cloudinary';
 import type { FastlyConfig } from './fastly';
 import type { ImgixConfig } from './imgix';
@@ -7,6 +8,7 @@ import type { ImageTypeAuto, ImageType } from '@responsive-image/core';
 
 export interface Config {
   autorender?: AutorenderConfig;
+  bunny?: BunnyConfig;
   imgix?: ImgixConfig;
   fastly?: FastlyConfig;
   cloudinary?: CloudinaryConfig;
